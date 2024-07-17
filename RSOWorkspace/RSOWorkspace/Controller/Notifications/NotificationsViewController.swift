@@ -9,12 +9,14 @@ import UIKit
 
 class NotificationsViewController: UIViewController {
     
+    var coordinator: RSOTabBarCordinator?
     @IBOutlet weak var tableView: UITableView!
     var notificationList:[Notifications] = []
     var eventHandler: ((_ event: Event) -> Void)?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.coordinator?.hideBackButton(isHidden: false)
         setupTableView()
         fetchNotifications()
     }
@@ -27,6 +29,11 @@ class NotificationsViewController: UIViewController {
         tableView.dataSource = self
         
     }
+    @IBAction func backButtonAction(_ sender: Any) {
+      self.navigationController?.popViewController(animated: true)
+    }
+    
+    
     private func fetchNotifications () {
         self.eventHandler?(.loading)
         APIManager.shared.request(
