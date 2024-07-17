@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Poppins-Medium.ttf">
+            <string>Poppins-Medium</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Notifications View Controller-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController storyboardIdentifier="NotificationsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Y6W-OH-hqX" customClass="NotificationsViewController" customModule="RSOWorkspace" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notifications" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IO8-ZV-tEZ">
+                                <rect key="frame" x="25" y="69" width="343" height="31"/>
+                                <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="22"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="0kT-DM-gO2">
+                                <rect key="frame" x="0.0" y="128" width="393" height="724"/>
+                                <color key="backgroundColor" name="F2F2F2"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="Y6W-OH-hqX" id="dt8-Gi-TL4"/>
+                                    <outlet property="delegate" destination="Y6W-OH-hqX" id="lQQ-Dh-OQO"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" name="F2F2F2"/>
+                        <constraints>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="IO8-ZV-tEZ" secondAttribute="trailing" constant="25" id="0TV-Aa-MIA"/>
+                            <constraint firstItem="IO8-ZV-tEZ" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="10" id="8Jm-ec-Xcb"/>
+                            <constraint firstItem="0kT-DM-gO2" firstAttribute="top" secondItem="IO8-ZV-tEZ" secondAttribute="bottom" constant="28" id="LOA-yV-hjq"/>
+                            <constraint firstItem="0kT-DM-gO2" firstAttribute="top" relation="greaterThanOrEqual" secondItem="IO8-ZV-tEZ" secondAttribute="bottom" constant="25" id="TZp-QV-mdW"/>
+                            <constraint firstAttribute="bottom" secondItem="0kT-DM-gO2" secondAttribute="bottom" id="foU-UX-znK"/>
+                            <constraint firstItem="IO8-ZV-tEZ" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="25" id="jhX-c8-HfJ"/>
+                            <constraint firstItem="0kT-DM-gO2" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="m7b-WZ-RZK"/>
+                            <constraint firstItem="0kT-DM-gO2" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="pja-7U-8ak"/>
+                            <constraint firstItem="0kT-DM-gO2" firstAttribute="top" secondItem="IO8-ZV-tEZ" secondAttribute="bottom" id="soN-8u-tA5"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="TZp-QV-mdW"/>
+                                <exclude reference="soN-8u-tA5"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="0kT-DM-gO2" id="KMz-mG-gzH"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="116.79389312977099" y="-23.239436619718312"/>
+        </scene>
+    </scenes>
+    <resources>
+        <namedColor name="F2F2F2">
+            <color red="0.94900000095367432" green="0.94900000095367432" blue="0.94900000095367432" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

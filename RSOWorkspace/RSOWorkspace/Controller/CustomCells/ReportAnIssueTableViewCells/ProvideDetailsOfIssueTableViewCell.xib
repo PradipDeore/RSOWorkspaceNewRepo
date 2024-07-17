@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Inter-Medium.ttf">
+            <string>Inter-Medium</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ProvideDetailsOfIssueTableViewCell" id="KGk-i7-Jjw" customClass="ProvideDetailsOfIssueTableViewCell" customModule="RSOWorkspace" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="449" height="150"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="449" height="150"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vyI-gJ-cdX">
+                        <rect key="frame" x="25" y="0.0" width="399" height="150"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="l6u-bc-CVS">
+                                <rect key="frame" x="0.0" y="0.0" width="399" height="150"/>
+                                <color key="backgroundColor" name="F0F0F0"/>
+                                <color key="textColor" name="828282"/>
+                                <fontDescription key="fontDescription" name="Inter-Medium" family="Inter" pointSize="16"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" name="F2F2F2"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="l6u-bc-CVS" secondAttribute="bottom" id="Yqh-KR-4aq"/>
+                            <constraint firstItem="l6u-bc-CVS" firstAttribute="leading" secondItem="vyI-gJ-cdX" secondAttribute="leading" id="hVN-Ze-IRn"/>
+                            <constraint firstItem="l6u-bc-CVS" firstAttribute="top" secondItem="vyI-gJ-cdX" secondAttribute="top" id="pTT-jk-CQX"/>
+                            <constraint firstAttribute="trailing" secondItem="l6u-bc-CVS" secondAttribute="trailing" id="pjF-49-ulz"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="vyI-gJ-cdX" secondAttribute="trailing" constant="25" id="5dR-ng-zxm"/>
+                    <constraint firstAttribute="bottom" secondItem="vyI-gJ-cdX" secondAttribute="bottom" id="SVZ-Su-yfs"/>
+                    <constraint firstItem="vyI-gJ-cdX" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="25" id="U4W-An-jUC"/>
+                    <constraint firstItem="vyI-gJ-cdX" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="Ye4-7s-2cJ"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="textFieldView" destination="l6u-bc-CVS" id="qVc-P4-f9r"/>
+            </connections>
+            <point key="canvasLocation" x="167" y="-18"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <namedColor name="828282">
+            <color red="0.50999999046325684" green="0.50999999046325684" blue="0.50999999046325684" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="F0F0F0">
+            <color red="0.94099998474121094" green="0.94099998474121094" blue="0.94099998474121094" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="F2F2F2">
+            <color red="0.94900000095367432" green="0.94900000095367432" blue="0.94900000095367432" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

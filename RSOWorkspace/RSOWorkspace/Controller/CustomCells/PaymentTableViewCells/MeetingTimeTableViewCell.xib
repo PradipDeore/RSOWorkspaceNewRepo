@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Inter-Bold.ttf">
+            <string>Inter-Bold</string>
+        </array>
+        <array key="Poppins-SemiBold.ttf">
+            <string>Poppins-SemiBold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MeetingTimeTableViewCell" rowHeight="80" id="KGk-i7-Jjw" customClass="MeetingTimeTableViewCell" customModule="RSOWorkspace" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="356" height="80"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="356" height="80"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EMd-Ep-N6J">
+                        <rect key="frame" x="25" y="5" width="306" height="26"/>
+                        <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gdc-Vk-JpC">
+                        <rect key="frame" x="25" y="39" width="249" height="32"/>
+                        <subviews>
+                            <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="      9:00 AM -12:00 PM" minimumFontSize="17" id="UGt-fe-Qsx">
+                                <rect key="frame" x="0.0" y="0.0" width="241" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" name="Inter-Bold" family="Inter" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="32" id="bl3-T3-zWJ"/>
+                        </constraints>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a86-jd-3wH" userLabel="HoursView">
+                        <rect key="frame" x="271" y="39" width="60" height="32"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="cXV-qL-PhA">
+                                <rect key="frame" x="5" y="5" width="50" height="22"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="25l-oQ-BQV">
+                                        <rect key="frame" x="0.0" y="0.0" width="14" height="22"/>
+                                        <fontDescription key="fontDescription" name="Inter-Bold" family="Inter" pointSize="16"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hrs" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8kB-v4-hno">
+                                        <rect key="frame" x="14" y="0.0" width="36" height="22"/>
+                                        <fontDescription key="fontDescription" name="Inter-Bold" family="Inter" pointSize="16"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="cXV-qL-PhA" secondAttribute="bottom" constant="5" id="1ta-qw-zDv"/>
+                            <constraint firstAttribute="trailing" secondItem="cXV-qL-PhA" secondAttribute="trailing" constant="5" id="9hf-QJ-Q5G"/>
+                            <constraint firstAttribute="width" constant="60" id="HQO-y0-WBG"/>
+                            <constraint firstAttribute="height" constant="32" id="U6z-P3-Lkc"/>
+                            <constraint firstItem="cXV-qL-PhA" firstAttribute="top" secondItem="a86-jd-3wH" secondAttribute="top" constant="5" id="fC7-E1-MKl"/>
+                            <constraint firstItem="cXV-qL-PhA" firstAttribute="leading" secondItem="a86-jd-3wH" secondAttribute="leading" constant="5" id="xaI-Sz-ZYz"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="EMd-Ep-N6J" secondAttribute="trailing" constant="25" id="BEx-cw-FFd"/>
+                    <constraint firstItem="Gdc-Vk-JpC" firstAttribute="top" secondItem="EMd-Ep-N6J" secondAttribute="bottom" constant="8" id="Jd1-bN-8tr"/>
+                    <constraint firstAttribute="trailing" secondItem="a86-jd-3wH" secondAttribute="trailing" constant="25" id="M02-cG-RyI"/>
+                    <constraint firstAttribute="bottom" secondItem="Gdc-Vk-JpC" secondAttribute="bottom" constant="9" id="MJD-7V-ddy"/>
+                    <constraint firstItem="EMd-Ep-N6J" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="QKz-nW-8Jh"/>
+                    <constraint firstAttribute="bottom" secondItem="a86-jd-3wH" secondAttribute="bottom" constant="9" id="Stq-Y7-3MB"/>
+                    <constraint firstItem="EMd-Ep-N6J" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="25" id="jbr-S1-brk"/>
+                    <constraint firstItem="a86-jd-3wH" firstAttribute="leading" secondItem="Gdc-Vk-JpC" secondAttribute="trailing" constant="-3" id="mzm-Jz-Dk1"/>
+                    <constraint firstItem="Gdc-Vk-JpC" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="25" id="oxe-oE-0uw"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <connections>
+                <outlet property="lblHours" destination="25l-oQ-BQV" id="0Fn-Q2-Rj7"/>
+                <outlet property="textFieldView" destination="Gdc-Vk-JpC" id="ZrV-Yc-vdU"/>
+                <outlet property="txtTime" destination="UGt-fe-Qsx" id="f7i-Ez-aDx"/>
+            </connections>
+            <point key="canvasLocation" x="91.603053435114504" y="1.4084507042253522"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

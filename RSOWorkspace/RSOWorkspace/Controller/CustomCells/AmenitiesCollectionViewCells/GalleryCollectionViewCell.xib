@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Poppins-Bold.ttf">
+            <string>Poppins-Bold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="GalleryCollectionViewCell" id="gTV-IL-0wX" customClass="GalleryCollectionViewCell" customModule="RSOWorkspace" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="181" height="211"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="181" height="211"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Dg-JG-A5k">
+                        <rect key="frame" x="25" y="0.0" width="156" height="211"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gallery1" translatesAutoresizingMaskIntoConstraints="NO" id="oUX-Iw-FM0">
+                                <rect key="frame" x="0.0" y="0.0" width="156" height="211"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cafeteria" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TKb-LU-u0F">
+                                <rect key="frame" x="12" y="174" width="132" height="13"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="13" id="Iej-HL-n0E"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Poppins-Bold" family="Poppins" pointSize="11"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="TKb-LU-u0F" secondAttribute="trailing" constant="12" id="FMs-Nd-VjU"/>
+                            <constraint firstAttribute="bottom" secondItem="oUX-Iw-FM0" secondAttribute="bottom" id="OCW-tI-9SK"/>
+                            <constraint firstItem="oUX-Iw-FM0" firstAttribute="top" secondItem="5Dg-JG-A5k" secondAttribute="top" id="Uvd-h6-Ba7"/>
+                            <constraint firstItem="oUX-Iw-FM0" firstAttribute="leading" secondItem="5Dg-JG-A5k" secondAttribute="leading" id="YLp-mS-UPN"/>
+                            <constraint firstAttribute="bottom" secondItem="TKb-LU-u0F" secondAttribute="bottom" constant="24" id="b9r-KD-jpL"/>
+                            <constraint firstItem="TKb-LU-u0F" firstAttribute="leading" secondItem="5Dg-JG-A5k" secondAttribute="leading" constant="12" id="mHb-Ta-s7r"/>
+                            <constraint firstAttribute="trailing" secondItem="oUX-Iw-FM0" secondAttribute="trailing" id="vZZ-bi-BWi"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="5Dg-JG-A5k" secondAttribute="trailing" id="BAx-bm-6w7"/>
+                <constraint firstItem="5Dg-JG-A5k" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="25" id="Len-bL-heD"/>
+                <constraint firstItem="5Dg-JG-A5k" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="btz-jv-FqR"/>
+                <constraint firstAttribute="bottom" secondItem="5Dg-JG-A5k" secondAttribute="bottom" id="e3H-GO-A3z"/>
+            </constraints>
+            <size key="customSize" width="181" height="211"/>
+            <connections>
+                <outlet property="imgGalleryImage" destination="oUX-Iw-FM0" id="JAp-cn-V1G"/>
+                <outlet property="lblgallerytitle" destination="TKb-LU-u0F" id="cVC-7J-fCF"/>
+            </connections>
+            <point key="canvasLocation" x="67.938931297709928" y="42.605633802816904"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="gallery1" width="300" height="432"/>
+    </resources>
+</document>

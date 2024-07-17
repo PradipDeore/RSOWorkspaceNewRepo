@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Inter-Bold.ttf">
+            <string>Inter-Bold</string>
+        </array>
+        <array key="Poppins-SemiBold.ttf">
+            <string>Poppins-SemiBold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="AddPicsTableViewCell" rowHeight="130" id="KGk-i7-Jjw" customClass="AddPicsTableViewCell" customModule="RSOWorkspace" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="157" height="130"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="157" height="130"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HsK-eM-Yyj">
+                        <rect key="frame" x="25" y="0.0" width="100" height="126"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7fx-3J-Tsn">
+                                <rect key="frame" x="0.0" y="0.0" width="100" height="126"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vI7-ZA-3gL" customClass="RSOButton" customModule="RSOWorkspace" customModuleProvider="target">
+                                <rect key="frame" x="35" y="20" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="AlD-tX-Z0t"/>
+                                    <constraint firstAttribute="height" constant="30" id="SQH-Lb-JKt"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Inter-Bold" family="Inter" pointSize="21"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="+"/>
+                                <connections>
+                                    <action selector="btnAddPicAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="ucK-1g-CI9"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add pics" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B1H-eB-cwO">
+                                <rect key="frame" x="16" y="67" width="68" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="68" id="2gp-xu-e1U"/>
+                                    <constraint firstAttribute="height" constant="21" id="OFU-cj-FJk"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="12"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" name="B9D0AA"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="126" id="1cd-UM-VQj"/>
+                            <constraint firstItem="vI7-ZA-3gL" firstAttribute="leading" secondItem="HsK-eM-Yyj" secondAttribute="leading" constant="35" id="86C-hq-XRD"/>
+                            <constraint firstItem="7fx-3J-Tsn" firstAttribute="top" secondItem="HsK-eM-Yyj" secondAttribute="top" id="AHW-ki-AF2"/>
+                            <constraint firstItem="B1H-eB-cwO" firstAttribute="centerX" secondItem="vI7-ZA-3gL" secondAttribute="centerX" id="Fwh-zy-b1V"/>
+                            <constraint firstItem="7fx-3J-Tsn" firstAttribute="leading" secondItem="HsK-eM-Yyj" secondAttribute="leading" id="K4M-1k-lsB"/>
+                            <constraint firstItem="vI7-ZA-3gL" firstAttribute="top" secondItem="HsK-eM-Yyj" secondAttribute="top" constant="20" id="Mnx-YJ-gDU"/>
+                            <constraint firstAttribute="width" constant="100" id="SC6-lx-oVI"/>
+                            <constraint firstAttribute="trailing" secondItem="7fx-3J-Tsn" secondAttribute="trailing" id="Twm-K9-uiv"/>
+                            <constraint firstItem="B1H-eB-cwO" firstAttribute="top" secondItem="vI7-ZA-3gL" secondAttribute="bottom" constant="17" id="Wyf-rH-GCF"/>
+                            <constraint firstAttribute="trailing" secondItem="vI7-ZA-3gL" secondAttribute="trailing" constant="35" id="h56-0L-Jht"/>
+                            <constraint firstAttribute="bottom" secondItem="7fx-3J-Tsn" secondAttribute="bottom" id="llb-cA-13K"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <constraints>
+                    <constraint firstItem="HsK-eM-Yyj" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="86t-rg-zfV"/>
+                    <constraint firstAttribute="bottom" secondItem="HsK-eM-Yyj" secondAttribute="bottom" id="Qte-d1-V0o"/>
+                    <constraint firstItem="HsK-eM-Yyj" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="25" id="W9E-HH-0Oa"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="addPicsLabel" destination="B1H-eB-cwO" id="AOa-bx-hHf"/>
+                <outlet property="btnAdd" destination="vI7-ZA-3gL" id="zS7-cg-Wcv"/>
+                <outlet property="photoImageView" destination="7fx-3J-Tsn" id="wDx-06-jnP"/>
+                <outlet property="photoView" destination="HsK-eM-Yyj" id="vxn-vX-ow2"/>
+            </connections>
+            <point key="canvasLocation" x="23.664122137404579" y="9.1549295774647899"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <namedColor name="B9D0AA">
+            <color red="0.72500002384185791" green="0.81599998474121094" blue="0.66699999570846558" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

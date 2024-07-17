@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Inter-Medium.ttf">
+            <string>Inter-Medium</string>
+        </array>
+        <array key="Poppins-Medium.ttf">
+            <string>Poppins-Medium</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="InviteGuestsTableViewCell" rowHeight="50" id="KGk-i7-Jjw" customClass="InviteGuestsTableViewCell" customModule="RSOWorkspace" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="312" height="50"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="312" height="50"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F60-Ym-k8i" userLabel="guestEmailView">
+                        <rect key="frame" x="25" y="5" width="170" height="34.666666666666664"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="abdul@yahoo.com" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="meD-kI-am8">
+                                <rect key="frame" x="20" y="10" width="120" height="14.666666666666664"/>
+                                <fontDescription key="fontDescription" name="Inter-Medium" family="Inter" pointSize="12"/>
+                                <color key="textColor" name="454545"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V1G-i5-zcA">
+                                <rect key="frame" x="140" y="0.0" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="LhZ-TK-D8r"/>
+                                    <constraint firstAttribute="height" constant="30" id="qGG-iF-db1"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="15"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="X">
+                                    <color key="titleColor" name="000000"/>
+                                </state>
+                                <connections>
+                                    <action selector="btndeleTappedAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="8Gb-9I-wj2"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="V1G-i5-zcA" secondAttribute="trailing" id="38c-Tp-VcA"/>
+                            <constraint firstAttribute="width" constant="170" id="5ko-Bh-Gqy"/>
+                            <constraint firstItem="meD-kI-am8" firstAttribute="top" secondItem="F60-Ym-k8i" secondAttribute="top" constant="10" id="CvJ-BW-Y0E"/>
+                            <constraint firstItem="V1G-i5-zcA" firstAttribute="top" secondItem="F60-Ym-k8i" secondAttribute="top" id="DRY-GW-zsX"/>
+                            <constraint firstAttribute="bottom" secondItem="meD-kI-am8" secondAttribute="bottom" constant="10" id="Ylh-j2-GIf"/>
+                            <constraint firstItem="V1G-i5-zcA" firstAttribute="leading" secondItem="meD-kI-am8" secondAttribute="trailing" id="Z53-yU-7Cv"/>
+                            <constraint firstItem="meD-kI-am8" firstAttribute="leading" secondItem="F60-Ym-k8i" secondAttribute="leading" constant="20" id="euL-fp-W8K"/>
+                            <constraint firstAttribute="bottom" secondItem="V1G-i5-zcA" secondAttribute="bottom" id="o4h-xo-szJ"/>
+                        </constraints>
+                    </view>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eff-ul-k4O" customClass="RSOButton" customModule="RSOWorkspace" customModuleProvider="target">
+                        <rect key="frame" x="205" y="5" width="44" height="44"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="44" id="BXL-zh-NrE"/>
+                            <constraint firstAttribute="height" constant="44" id="Jyj-dq-36S"/>
+                        </constraints>
+                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                        <state key="normal" image="add"/>
+                        <connections>
+                            <action selector="btnInviteGuestsTappedAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="2BS-Yc-Jkr"/>
+                        </connections>
+                    </button>
+                </subviews>
+                <color key="backgroundColor" name="F2F2F2"/>
+                <constraints>
+                    <constraint firstItem="F60-Ym-k8i" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="25" id="2BJ-Xx-gV1"/>
+                    <constraint firstAttribute="bottom" secondItem="F60-Ym-k8i" secondAttribute="bottom" constant="5" id="2Lr-R8-LHE"/>
+                    <constraint firstAttribute="trailing" secondItem="Eff-ul-k4O" secondAttribute="trailing" constant="25" id="Fa6-WY-QWP"/>
+                    <constraint firstItem="Eff-ul-k4O" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="POY-MR-5S0"/>
+                    <constraint firstItem="Eff-ul-k4O" firstAttribute="leading" secondItem="F60-Ym-k8i" secondAttribute="trailing" constant="10" id="UVC-ZM-fXC"/>
+                    <constraint firstItem="F60-Ym-k8i" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="nAm-cK-RgW"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <connections>
+                <outlet property="btnAdd" destination="Eff-ul-k4O" id="GID-UA-Bq9"/>
+                <outlet property="btnDelete" destination="V1G-i5-zcA" id="ZZk-N3-w2K"/>
+                <outlet property="guestEmailView" destination="F60-Ym-k8i" id="1qA-KT-RHc"/>
+                <outlet property="lblGuestName" destination="meD-kI-am8" id="BV6-Gg-zKA"/>
+            </connections>
+            <point key="canvasLocation" x="83.969465648854964" y="-8.4507042253521139"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="add" width="18" height="19"/>
+        <namedColor name="000000">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="454545">
+            <color red="0.27099999785423279" green="0.27099999785423279" blue="0.27099999785423279" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="F2F2F2">
+            <color red="0.94900000095367432" green="0.94900000095367432" blue="0.94900000095367432" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

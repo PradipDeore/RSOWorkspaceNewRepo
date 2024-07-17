@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Inter-SemiBold.ttf">
+            <string>Inter-SemiBold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="aboutRSOTableViewCell" rowHeight="99" id="KGk-i7-Jjw" customClass="aboutRSOTableViewCell" customModule="RSOWorkspace" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="367" height="99"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="367" height="99"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UNt-oK-On0">
+                        <rect key="frame" x="25" y="0.0" width="317" height="86"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="about1" translatesAutoresizingMaskIntoConstraints="NO" id="Rnk-FR-uQU">
+                                <rect key="frame" x="0.0" y="34.666666666666664" width="45" height="44.999999999999993"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="45" id="PWX-y6-9ZA"/>
+                                    <constraint firstAttribute="height" constant="45" id="bDc-LQ-eJi"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fully Customizable" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lwl-t0-F7o">
+                                <rect key="frame" x="67" y="9" width="240" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="wlY-YG-DU5"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Inter-SemiBold" family="Inter" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Versatile office spaces that flex with your business growth which make us the perfect choice for all business sizes." textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h6B-lV-OKa">
+                                <rect key="frame" x="57" y="30" width="255" height="54"/>
+                                <fontDescription key="fontDescription" name="Inter-SemiBold" family="Inter" pointSize="12"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="h6B-lV-OKa" secondAttribute="trailing" constant="5" id="6Lg-jH-SqO"/>
+                            <constraint firstItem="h6B-lV-OKa" firstAttribute="leading" secondItem="Rnk-FR-uQU" secondAttribute="trailing" constant="12" id="6T9-8M-HAc"/>
+                            <constraint firstItem="lwl-t0-F7o" firstAttribute="leading" secondItem="UNt-oK-On0" secondAttribute="leading" constant="67" id="7dp-7W-5UU"/>
+                            <constraint firstItem="lwl-t0-F7o" firstAttribute="top" secondItem="UNt-oK-On0" secondAttribute="top" constant="9" id="9aB-dT-Ltm"/>
+                            <constraint firstItem="h6B-lV-OKa" firstAttribute="top" secondItem="lwl-t0-F7o" secondAttribute="bottom" id="I4Z-CO-8cU"/>
+                            <constraint firstAttribute="bottom" secondItem="h6B-lV-OKa" secondAttribute="bottom" constant="2" id="YhD-Px-K2A"/>
+                            <constraint firstItem="Rnk-FR-uQU" firstAttribute="centerY" secondItem="h6B-lV-OKa" secondAttribute="centerY" id="caS-x5-Ops"/>
+                            <constraint firstItem="Rnk-FR-uQU" firstAttribute="leading" secondItem="UNt-oK-On0" secondAttribute="leading" id="up6-wP-ffs"/>
+                            <constraint firstAttribute="trailing" secondItem="lwl-t0-F7o" secondAttribute="trailing" constant="10" id="vK1-KG-bsG"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <constraints>
+                    <constraint firstItem="UNt-oK-On0" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="25" id="Crp-IA-Fu5"/>
+                    <constraint firstAttribute="trailing" secondItem="UNt-oK-On0" secondAttribute="trailing" constant="25" id="U8p-du-Oeh"/>
+                    <constraint firstAttribute="bottom" secondItem="UNt-oK-On0" secondAttribute="bottom" constant="13" id="XpU-wS-wde"/>
+                    <constraint firstItem="UNt-oK-On0" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="qPo-LV-FH0"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <connections>
+                <outlet property="imgAbout" destination="Rnk-FR-uQU" id="zjo-uF-WnT"/>
+                <outlet property="lblDescription" destination="h6B-lV-OKa" id="xOc-7I-8Jf"/>
+                <outlet property="lblTitle" destination="lwl-t0-F7o" id="MSg-AR-lCR"/>
+            </connections>
+            <point key="canvasLocation" x="87.786259541984734" y="8.0985915492957758"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="about1" width="70" height="70"/>
+    </resources>
+</document>

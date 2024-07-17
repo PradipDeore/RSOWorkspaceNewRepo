@@ -1,0 +1,241 @@
+//
+//  ConfirmedDeskBookingViewController.swift
+//  RSOWorkspace
+//
+//  Created by Sumit Aquil on 18/04/24.
+//
+
+import UIKit
+
+class ConfirmedDeskBookingViewController: UIViewController{
+   
+    var coordinator: RSOTabBarCordinator?
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var containerView: UIView!
+    var cornerRadius: CGFloat = 10.0
+    
+    var eventHandler: ((_ event: Event) -> Void)?
+    var apiResponseData:StoreRoomBookingResponse?
+    
+    private let cellIdentifiersConfirmDesk: [CellTypeConfirmDesk] = [ .confirmedLocation, .confirmedSelectedDesks, .confirmedTime, .confirmedDate,  .confirmedTeamMembers,  .confirmAndProceedToPayment, .buttonEdit]
+    
+    private let cellHeights: [CGFloat] = [ 70, 70, 70, 70, 60, 40, 40]
+    
+   // var bookingConfirmDetails : ConfirmBookingRequestModel?
+    var confirmdeskBookingResponse: ConfirmDeskBookingDetailsModel?
+  
+    var roomId: Int = 0
+    var teamMembersArray:[String] = [""]
+    var locationName :String = ""
+    var timeRange = ""
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setupTableView()
+        customizeCell()
+    }
+    
+    private func customizeCell(){
+        containerView.layer.cornerRadius = cornerRadius
+        containerView.layer.masksToBounds = true
+        
+        let shadowColor = UIColor.black.withAlphaComponent(0.5)
+        containerView.layer.shadowColor = shadowColor.cgColor
+        containerView.layer.shadowOffset = CGSize(width: 0, height: 4.0)
+        containerView.layer.shadowRadius = 10.0
+        containerView.layer.shadowOpacity = 0.19
+        containerView.layer.masksToBounds = false
+        containerView.layer.shadowPath = UIBezierPath(roundedRect:  CGRect(x: 0, y: containerView.bounds.height - 4, width: containerView.bounds.width, height: 4), cornerRadius: containerView.layer.cornerRadius).cgPath
+    }
+    
+    @IBAction func btnHideViewTappedAction(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    private func setupTableView() {
+        tableView.dataSource = self
+        tableView.delegate = self
+        
+        navigationController?.navigationBar.isHidden = true
+        
+        for type in cellIdentifiersConfirmDesk {
+            tableView.register(UINib(nibName: type.rawValue, bundle: nil), forCellReuseIdentifier: type.rawValue)
+        }
+    }
+//    func storeRoomBookingAPI(requestModel: StoreRoomBookingRequest) {
+//        self.eventHandler?(.loading)
+//        
+//        APIManager.shared.request(
+//            modelType: StoreRoomBookingResponse.self,
+//            type: PaymentRoomBookingEndPoint.getStoreRoomBooking(requestModel: requestModel)) { response in
+//                self.eventHandler?(.stopLoading)
+//                switch response {
+//                case .success(let response):
+//                    
+//                    self.apiResponseData = response
+//                    DispatchQueue.main.async {
+//                        let paymentVC = UIViewController.createController(storyBoard: .Payment, ofType: PaymentViewController.self)
+//                        paymentVC.requestParameters = self.bookingConfirmDetails
+//                        paymentVC.coordinator = self.coordinator
+//                        paymentVC.bookingId = response.booking_id ?? 0
+//                        self.navigationController?.pushViewController(paymentVC, animated: true)
+//                    }
+//                    self.eventHandler?(.dataLoaded)
+//                case .failure(let error):
+//                    self.eventHandler?(.error(error))
+//                    DispatchQueue.main.async {
+//                        //  Unsuccessful
+//                        self.view.makeToast("\(error.localizedDescription)", duration: 2.0, position: .center)
+//                    }
+//                }
+//            }
+//    }
+}
+
+extension ConfirmedDeskBookingViewController: UITableViewDataSource, UITableViewDelegate {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return cellIdentifiersConfirmDesk.count
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if section == 4{
+            return  confirmdeskBookingResponse?.teamMembersArray.count ?? 0
+        }
+        return 1
+    }
+   
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = SectionHeaderView(reuseIdentifier: "SectionHeaderView")
+            if section == 0 {
+                headerView.sectionLabel.text = "Confirm Booking"
+                headerView.sectionLabel.font = RSOFont.poppins(size: 20.0, type: .SemiBold)
+            } else if section == 4 {
+                headerView.sectionLabel.text = "Team Members"
+                headerView.labelHeight = 15 // Set a different height for this section
+            }  else {
+                return nil
+            }
+            return headerView
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cellType = cellIdentifiersConfirmDesk[indexPath.section]
+        
+        switch cellType {
+       
+        case .confirmedLocation:
+            let cell = tableView.dequeueReusableCell(withIdentifier: cellType.rawValue, for: indexPath) as! BookingConfirmedLocationTableViewCell
+            cell.txtLocation.text = confirmdeskBookingResponse?.location
+            cell.selectionStyle = .none
+            return cell
+       
+        case .confirmedSelectedDesks:
+            let cell = tableView.dequeueReusableCell(withIdentifier: cellType.rawValue, for: indexPath) as! SelectDesksTableViewCell
+            cell.selectionStyle = .none
+            return cell
+       
+        case .confirmedDate:
+            let cell = tableView.dequeueReusableCell(withIdentifier: cellType.rawValue, for: indexPath) as! BookingConfirmedDateTableViewCell
+            cell.lblDate.text = confirmdeskBookingResponse?.date
+            cell.selectionStyle = .none
+
+            return cell
+            
+        case .confirmedTime:
+            let cell = tableView.dequeueReusableCell(withIdentifier: cellType.rawValue, for: indexPath) as! BookingConfirmedTimeTableViewCell
+
+            if let startTime = self.confirmdeskBookingResponse?.startTime, let endTime = self.confirmdeskBookingResponse?.endTime {
+                timeRange = "\(startTime) - \(endTime)"
+                cell.txtTime.text = timeRange
+               
+            } else {
+                cell.txtTime.text = "Unavailable"
+            }
+            cell.selectionStyle = .none
+
+            return cell
+        
+        case .confirmedTeamMembers:
+            let cell = tableView.dequeueReusableCell(withIdentifier: cellType.rawValue, for: indexPath) as! BookingConfirmedTeamMembersTableViewCell
+            
+            cell.selectionStyle = .none
+            if let teamMember = confirmdeskBookingResponse?.teamMembersArray[indexPath.row]{
+                cell.lblName.text = teamMember
+                teamMembersArray.append(teamMember)
+            }
+            cell.selectionStyle = .none
+
+            return cell
+            
+        case .confirmAndProceedToPayment:
+            let cell = tableView.dequeueReusableCell(withIdentifier: cellType.rawValue, for: indexPath) as! ConfirmAndProceedToPayementTableViewCell
+            //cell.delegate = self
+            cell.selectionStyle = .none
+            return cell
+      
+        case .buttonEdit:
+            let cell = tableView.dequeueReusableCell(withIdentifier: cellType.rawValue, for: indexPath) as! ButtonEditTableViewCell
+            cell.delegate = self
+            cell.selectionStyle = .none
+
+            return cell
+        default:
+            let cell = tableView.dequeueReusableCell(withIdentifier: cellType.rawValue, for: indexPath)
+            cell.selectionStyle = .none
+            
+//            if let labelCell = cell as? SelectMeetingRoomLabelTableViewCell {
+//                labelCell.lblMeetingRoom.text = "Booking Confirmed"
+//
+//                return labelCell
+//            }
+            
+            return cell
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return cellHeights[indexPath.section]
+    }
+}
+
+extension ConfirmedDeskBookingViewController {
+    enum Event {
+        case loading
+        case stopLoading
+        case dataLoaded
+        case error(Error?)
+    }
+    
+    enum CellTypeConfirmDesk: String {
+        //case selectMeetingRoom = "SelectMeetingRoomLabelTableViewCell"
+        case confirmedLocation = "BookingConfirmedLocationTableViewCell"
+        case confirmedSelectedDesks = "SelectDesksTableViewCell"
+        case confirmedTime = "BookingConfirmedTimeTableViewCell"
+        case confirmedDate = "BookingConfirmedDateTableViewCell"
+        case confirmedTeamMembers = "BookingConfirmedTeamMembersTableViewCell"
+        case confirmAndProceedToPayment = "ConfirmAndProceedToPayementTableViewCell"
+        case buttonEdit = "ButtonEditTableViewCell"
+    }
+}
+extension ConfirmedDeskBookingViewController:ButtonEditTableViewCellDelegate{
+    func navigateToBookingDetails() {
+        self.dismiss(animated:true)
+
+    }
+}
+//extension ConfirmedDeskBookingViewController:ConfirmAndProceedToPayementTableViewCellDelegate{
+//    func btnConfirmAndProceedTappedAction() {
+//       
+//        let startTime = self.bookingConfirmDetails?.startTime
+//        let endTime = self.bookingConfirmDetails?.endTime
+//        let BookingTime = "\(startTime ?? "00:00") - \(endTime ?? "00:00")"
+//        let locationId = String(locationId)
+//        let location = StoreRoomLocation(id: locationId, name: locationName)
+//
+//        let requestModel = StoreRoomBookingRequest(amenities: amenitiesArray, configurations_id: seatingConfigueId, date: dateOfBooking, guestList: guestEmailArray, location: location, memberList: teamMembersArray, roomId: roomId, time: BookingTime)
+//        print("parameters",requestModel)
+//        storeRoomBookingAPI(requestModel: requestModel)
+//
+//    }
+//  
+//}

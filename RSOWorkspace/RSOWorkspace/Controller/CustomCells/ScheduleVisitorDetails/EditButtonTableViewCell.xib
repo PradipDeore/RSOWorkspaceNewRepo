@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Poppins-Bold.ttf">
+            <string>Poppins-Bold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="EditButtonTableViewCell" customModule="RSOWorkspace" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="McC-26-Fa1">
+                        <rect key="frame" x="25" y="0.0" width="270" height="44"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2yH-eE-KWg" customClass="RSOButton" customModule="RSOWorkspace" customModuleProvider="target">
+                                <rect key="frame" x="68" y="6" width="134" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="32" id="hu2-Vn-63C"/>
+                                    <constraint firstAttribute="width" constant="134" id="lfO-Jz-rLg"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Poppins-Bold" family="Poppins" pointSize="12"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="EDIT"/>
+                                <connections>
+                                    <action selector="btnEditTappedAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="IFO-5l-7G5"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="2yH-eE-KWg" firstAttribute="centerX" secondItem="McC-26-Fa1" secondAttribute="centerX" id="8xc-cN-J3w"/>
+                            <constraint firstItem="2yH-eE-KWg" firstAttribute="centerY" secondItem="McC-26-Fa1" secondAttribute="centerY" id="ZWb-oH-RRu"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="McC-26-Fa1" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="25" id="9c9-ov-rDT"/>
+                    <constraint firstAttribute="trailing" secondItem="McC-26-Fa1" secondAttribute="trailing" constant="25" id="AXz-Sh-3es"/>
+                    <constraint firstAttribute="bottom" secondItem="McC-26-Fa1" secondAttribute="bottom" id="Ek5-vC-M8f"/>
+                    <constraint firstItem="McC-26-Fa1" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="NhC-oZ-w3z"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="btnEdit" destination="2yH-eE-KWg" id="Ge9-mQ-ASv"/>
+            </connections>
+            <point key="canvasLocation" x="80" y="-11"/>
+        </tableViewCell>
+    </objects>
+</document>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Inter-Bold.ttf">
+            <string>Inter-Bold</string>
+        </array>
+        <array key="Poppins-SemiBold.ttf">
+            <string>Poppins-SemiBold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BookingConfirmedDateTableViewCell" id="KGk-i7-Jjw" customClass="BookingConfirmedDateTableViewCell" customModule="RSOWorkspace" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="294" height="70"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="294" height="70"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3mX-pZ-VdE">
+                        <rect key="frame" x="25" y="5" width="249" height="25"/>
+                        <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="14"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tuw-uk-8Pc">
+                        <rect key="frame" x="25" y="38" width="194" height="32"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Friday   10 . JAN . 2023   " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2To-m9-qhs">
+                                <rect key="frame" x="0.0" y="0.0" width="194" height="32"/>
+                                <fontDescription key="fontDescription" name="Inter-Bold" family="Inter" pointSize="14"/>
+                                <color key="textColor" name="2C2C2C"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" name="EFEFEF"/>
+                        <constraints>
+                            <constraint firstItem="2To-m9-qhs" firstAttribute="top" secondItem="Tuw-uk-8Pc" secondAttribute="top" id="034-dT-bLR"/>
+                            <constraint firstItem="2To-m9-qhs" firstAttribute="leading" secondItem="Tuw-uk-8Pc" secondAttribute="leading" id="FB8-FX-bdV"/>
+                            <constraint firstAttribute="trailing" secondItem="2To-m9-qhs" secondAttribute="trailing" id="HRf-zD-yat"/>
+                            <constraint firstAttribute="bottom" secondItem="2To-m9-qhs" secondAttribute="bottom" id="KaA-Sx-6DW"/>
+                            <constraint firstAttribute="height" constant="32" id="dVv-4X-wPG"/>
+                            <constraint firstAttribute="width" constant="194" id="o73-3h-Nkv"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="3mX-pZ-VdE" secondAttribute="trailing" constant="20" id="H01-df-0jG"/>
+                    <constraint firstItem="3mX-pZ-VdE" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="25" id="X5t-Jm-tMJ"/>
+                    <constraint firstItem="Tuw-uk-8Pc" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="25" id="oww-8d-9vz"/>
+                    <constraint firstItem="3mX-pZ-VdE" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="uIU-mq-3uI"/>
+                    <constraint firstAttribute="bottom" secondItem="Tuw-uk-8Pc" secondAttribute="bottom" id="vZj-zB-Ut3"/>
+                    <constraint firstItem="Tuw-uk-8Pc" firstAttribute="top" secondItem="3mX-pZ-VdE" secondAttribute="bottom" constant="8" id="zD2-dq-dbw"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="datetextFieldView" destination="Tuw-uk-8Pc" id="mvK-zl-xTR"/>
+                <outlet property="lblDate" destination="2To-m9-qhs" id="e3r-Bh-y7P"/>
+            </connections>
+            <point key="canvasLocation" x="71.755725190839698" y="-11.267605633802818"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <namedColor name="2C2C2C">
+            <color red="0.17299999296665192" green="0.17299999296665192" blue="0.17299999296665192" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="EFEFEF">
+            <color red="0.93699997663497925" green="0.93699997663497925" blue="0.93699997663497925" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

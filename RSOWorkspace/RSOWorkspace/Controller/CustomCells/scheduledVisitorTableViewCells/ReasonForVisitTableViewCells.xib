@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Inter-Medium.ttf">
+            <string>Inter-Medium</string>
+        </array>
+        <array key="Poppins-SemiBold.ttf">
+            <string>Poppins-SemiBold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ReasonForVisitTableViewCells" rowHeight="144" id="KGk-i7-Jjw" customClass="ReasonForVisitTableViewCells" customModule="RSOWorkspace" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="108"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="393" height="108"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uXy-ij-AKe">
+                        <rect key="frame" x="25" y="0.0" width="343" height="108"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reason for Visit" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9IZ-ho-dwH">
+                                <rect key="frame" x="20" y="8.3333333333333339" width="303" height="28.666666666666664"/>
+                                <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fhC-37-Pnx">
+                                <rect key="frame" x="10" y="53" width="323" height="34"/>
+                                <subviews>
+                                    <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Select a Reason" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FsC-F4-HAC">
+                                        <rect key="frame" x="0.0" y="0.0" width="323" height="34"/>
+                                        <color key="backgroundColor" name="EFEFEF"/>
+                                        <color key="textColor" name="828282"/>
+                                        <fontDescription key="fontDescription" name="Inter-Medium" family="Inter" pointSize="16"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g1y-1f-d6E">
+                                        <rect key="frame" x="10" y="0.0" width="313" height="34"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain"/>
+                                        <connections>
+                                            <action selector="dropdownButtonTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="cLt-RE-6s9"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="FsC-F4-HAC" firstAttribute="leading" secondItem="fhC-37-Pnx" secondAttribute="leading" id="9rl-0z-50S"/>
+                                    <constraint firstAttribute="trailing" secondItem="g1y-1f-d6E" secondAttribute="trailing" id="9yy-A9-CZv"/>
+                                    <constraint firstAttribute="height" constant="34" id="FiW-dd-SKs"/>
+                                    <constraint firstAttribute="width" constant="300" id="Rra-OE-BCO"/>
+                                    <constraint firstAttribute="trailing" secondItem="FsC-F4-HAC" secondAttribute="trailing" id="ZjC-ZT-cG1"/>
+                                    <constraint firstItem="g1y-1f-d6E" firstAttribute="leading" secondItem="fhC-37-Pnx" secondAttribute="leading" constant="10" id="cX4-KT-dVS"/>
+                                    <constraint firstAttribute="bottom" secondItem="FsC-F4-HAC" secondAttribute="bottom" id="eXs-oz-Ia6"/>
+                                    <constraint firstAttribute="bottom" secondItem="g1y-1f-d6E" secondAttribute="bottom" id="iKr-0q-jEz"/>
+                                    <constraint firstItem="g1y-1f-d6E" firstAttribute="top" secondItem="fhC-37-Pnx" secondAttribute="top" id="o6x-WB-YSK"/>
+                                    <constraint firstItem="FsC-F4-HAC" firstAttribute="top" secondItem="fhC-37-Pnx" secondAttribute="top" id="rSh-WQ-Tcw"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="Rra-OE-BCO"/>
+                                    </mask>
+                                </variation>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="9IZ-ho-dwH" firstAttribute="leading" secondItem="uXy-ij-AKe" secondAttribute="leading" constant="20" id="7o6-4e-ve9"/>
+                            <constraint firstAttribute="bottom" secondItem="fhC-37-Pnx" secondAttribute="bottom" constant="21" id="CLN-nN-DlX"/>
+                            <constraint firstItem="fhC-37-Pnx" firstAttribute="leading" secondItem="uXy-ij-AKe" secondAttribute="leading" constant="10" id="Eut-Pp-lVa"/>
+                            <constraint firstAttribute="trailing" secondItem="fhC-37-Pnx" secondAttribute="trailing" constant="29" id="M4p-H3-efa"/>
+                            <constraint firstItem="fhC-37-Pnx" firstAttribute="top" secondItem="9IZ-ho-dwH" secondAttribute="bottom" constant="16" id="OA0-KS-EgZ"/>
+                            <constraint firstAttribute="trailing" secondItem="9IZ-ho-dwH" secondAttribute="trailing" constant="20" id="eox-5C-Asi"/>
+                            <constraint firstAttribute="trailing" secondItem="fhC-37-Pnx" secondAttribute="trailing" constant="10" id="wgj-sV-mCP"/>
+                            <constraint firstItem="9IZ-ho-dwH" firstAttribute="top" secondItem="uXy-ij-AKe" secondAttribute="top" constant="8.3299999237060547" id="zBJ-t7-1Gc"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="M4p-H3-efa"/>
+                            </mask>
+                        </variation>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="uXy-ij-AKe" secondAttribute="trailing" constant="25" id="WY5-pP-1v2"/>
+                    <constraint firstAttribute="trailing" secondItem="uXy-ij-AKe" secondAttribute="trailing" constant="25" id="hbl-5B-dGt"/>
+                    <constraint firstAttribute="bottom" secondItem="uXy-ij-AKe" secondAttribute="bottom" id="qMu-1g-p4Z"/>
+                    <constraint firstItem="uXy-ij-AKe" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="25" id="rn7-3O-ZCf"/>
+                    <constraint firstItem="uXy-ij-AKe" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="uIm-yS-w1O"/>
+                </constraints>
+                <variation key="default">
+                    <mask key="constraints">
+                        <exclude reference="WY5-pP-1v2"/>
+                    </mask>
+                </variation>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <connections>
+                <outlet property="containerView" destination="uXy-ij-AKe" id="SDg-8i-lRg"/>
+                <outlet property="txtSelectReason" destination="FsC-F4-HAC" id="cwU-rF-FHn"/>
+            </connections>
+            <point key="canvasLocation" x="81.679389312977094" y="-26.760563380281692"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <namedColor name="828282">
+            <color red="0.50999999046325684" green="0.50999999046325684" blue="0.50999999046325684" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="EFEFEF">
+            <color red="0.93699997663497925" green="0.93699997663497925" blue="0.93699997663497925" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

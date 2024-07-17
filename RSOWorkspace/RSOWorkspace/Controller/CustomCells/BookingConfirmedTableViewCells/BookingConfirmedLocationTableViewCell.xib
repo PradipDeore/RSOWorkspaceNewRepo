@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Inter-Bold.ttf">
+            <string>Inter-Bold</string>
+        </array>
+        <array key="Poppins-SemiBold.ttf">
+            <string>Poppins-SemiBold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BookingConfirmedLocationTableViewCell" rowHeight="70" id="KGk-i7-Jjw" customClass="BookingConfirmedLocationTableViewCell" customModule="RSOWorkspace" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="263" height="70"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="263" height="70"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yox-Cr-9ST">
+                        <rect key="frame" x="25" y="5" width="213" height="19.666666666666668"/>
+                        <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="14"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TvM-1q-k1F">
+                        <rect key="frame" x="25" y="32.666666666666664" width="194" height="33.999999999999993"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Dubai" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="d2u-i1-bmx">
+                                <rect key="frame" x="0.0" y="0.0" width="194" height="34"/>
+                                <color key="backgroundColor" name="EFEFEF"/>
+                                <color key="textColor" name="2C2C2C"/>
+                                <fontDescription key="fontDescription" name="Inter-Bold" family="Inter" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="d2u-i1-bmx" secondAttribute="bottom" id="BUE-p0-K1x"/>
+                            <constraint firstItem="d2u-i1-bmx" firstAttribute="leading" secondItem="TvM-1q-k1F" secondAttribute="leading" id="ExE-HE-cFF"/>
+                            <constraint firstItem="d2u-i1-bmx" firstAttribute="top" secondItem="TvM-1q-k1F" secondAttribute="top" id="bXD-eV-iW2"/>
+                            <constraint firstAttribute="height" constant="34" id="hjf-9k-Er4"/>
+                            <constraint firstAttribute="width" constant="194" id="hwV-ZX-mjH"/>
+                            <constraint firstAttribute="trailing" secondItem="d2u-i1-bmx" secondAttribute="trailing" id="uUq-7V-QV3"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="yox-Cr-9ST" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="8PM-Y2-GfE"/>
+                    <constraint firstItem="yox-Cr-9ST" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="25" id="ihy-ph-84o"/>
+                    <constraint firstAttribute="trailing" secondItem="yox-Cr-9ST" secondAttribute="trailing" constant="25" id="m5Z-9W-5R6"/>
+                    <constraint firstAttribute="trailing" secondItem="TvM-1q-k1F" secondAttribute="trailing" constant="40" id="rXn-HL-ZKt"/>
+                    <constraint firstItem="TvM-1q-k1F" firstAttribute="top" secondItem="yox-Cr-9ST" secondAttribute="bottom" constant="8" id="wJo-qe-Gnk"/>
+                    <constraint firstItem="TvM-1q-k1F" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="25" id="xNJ-m9-94b"/>
+                </constraints>
+                <variation key="default">
+                    <mask key="constraints">
+                        <exclude reference="rXn-HL-ZKt"/>
+                    </mask>
+                </variation>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="textFieldView" destination="TvM-1q-k1F" id="Nt2-W8-Jfg"/>
+                <outlet property="txtLocation" destination="d2u-i1-bmx" id="u1u-Up-2TO"/>
+            </connections>
+            <point key="canvasLocation" x="121.37404580152672" y="-22.535211267605636"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <namedColor name="2C2C2C">
+            <color red="0.17299999296665192" green="0.17299999296665192" blue="0.17299999296665192" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="EFEFEF">
+            <color red="0.93699997663497925" green="0.93699997663497925" blue="0.93699997663497925" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

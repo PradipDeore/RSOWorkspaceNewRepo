@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Inter-Medium.ttf">
+            <string>Inter-Medium</string>
+        </array>
+        <array key="Inter-SemiBold.ttf">
+            <string>Inter-SemiBold</string>
+        </array>
+        <array key="Poppins-SemiBold.ttf">
+            <string>Poppins-SemiBold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ProfileDetailsTableViewCell" rowHeight="202" id="KGk-i7-Jjw" customClass="ProfileDetailsTableViewCell" customModule="RSOWorkspace" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="352" height="202"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="352" height="202"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nAq-D6-AJe" userLabel="ContainerView" customClass="ShadowedView" customModule="RSOWorkspace" customModuleProvider="target">
+                        <rect key="frame" x="25" y="42" width="302" height="155"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Feeniks Digital" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m3n-6n-HmV">
+                                <rect key="frame" x="10" y="65" width="282" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="hgw-eE-lh9"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Inter-SemiBold" family="Inter" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chris James" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SO5-sm-Fuu">
+                                <rect key="frame" x="190.33333333333334" y="5" width="101.66666666666666" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="25" id="1SC-Mm-AfF"/>
+                                    <constraint firstAttribute="height" constant="25" id="IvQ-c8-moe"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="16"/>
+                                <color key="textColor" name="2C2C2C"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="1SC-Mm-AfF"/>
+                                    </mask>
+                                </variation>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="john@feeniks.com" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uuR-hs-8PW">
+                                <rect key="frame" x="10" y="120" width="198" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="22" id="9sd-eA-pkV"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Inter-SemiBold" family="Inter" pointSize="14"/>
+                                <color key="textColor" name="595959"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+971 50 658 5250" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y5S-q5-Q2A">
+                                <rect key="frame" x="10" y="101" width="282" height="17"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="17" id="UNY-hy-tSW"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Inter-SemiBold" family="Inter" pointSize="14"/>
+                                <color key="textColor" name="595959"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Marketing Manager" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JLU-hh-rS2">
+                                <rect key="frame" x="161" y="31" width="131" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="22" id="Kby-JJ-5cP"/>
+                                    <constraint firstAttribute="height" constant="22" id="cGD-NA-wmM"/>
+                                    <constraint firstAttribute="width" constant="131" id="s7X-or-ooG"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Inter-Medium" family="Inter" pointSize="14"/>
+                                <color key="textColor" name="595959"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="Kby-JJ-5cP"/>
+                                    </mask>
+                                </variation>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profileIcon" translatesAutoresizingMaskIntoConstraints="NO" id="Gko-SV-vYa">
+                                <rect key="frame" x="27" y="-34" width="91" height="91"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="91" id="SqZ-aG-sFu"/>
+                                    <constraint firstAttribute="width" constant="91" id="miZ-ql-o9v"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hEd-KV-3w8" customClass="RSOButton" customModule="RSOWorkspace" customModuleProvider="target">
+                                <rect key="frame" x="218" y="118" width="79" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="79" id="Jiq-aQ-9uu"/>
+                                    <constraint firstAttribute="height" constant="24" id="QbJ-1t-7wd"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="12"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Edit"/>
+                                <connections>
+                                    <action selector="btnEditAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="JuQ-7D-c3L"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="m3n-6n-HmV" firstAttribute="leading" secondItem="nAq-D6-AJe" secondAttribute="leading" constant="10" id="49U-HO-jhk"/>
+                            <constraint firstItem="Gko-SV-vYa" firstAttribute="leading" secondItem="nAq-D6-AJe" secondAttribute="leading" constant="27" id="4V7-Vi-P8m"/>
+                            <constraint firstAttribute="bottom" secondItem="uuR-hs-8PW" secondAttribute="bottom" constant="13" id="50C-x9-fdP"/>
+                            <constraint firstAttribute="trailing" secondItem="m3n-6n-HmV" secondAttribute="trailing" constant="10" id="5ff-YG-qgm"/>
+                            <constraint firstItem="SO5-sm-Fuu" firstAttribute="top" secondItem="nAq-D6-AJe" secondAttribute="top" constant="5" id="8hz-an-Efm"/>
+                            <constraint firstItem="y5S-q5-Q2A" firstAttribute="leading" secondItem="nAq-D6-AJe" secondAttribute="leading" constant="10" id="9Ub-zH-Ywb"/>
+                            <constraint firstAttribute="trailing" secondItem="JLU-hh-rS2" secondAttribute="trailing" constant="10" id="Aw2-fz-w8Q"/>
+                            <constraint firstItem="hEd-KV-3w8" firstAttribute="leading" secondItem="uuR-hs-8PW" secondAttribute="trailing" constant="10" id="C0D-Fr-TQH"/>
+                            <constraint firstItem="uuR-hs-8PW" firstAttribute="leading" secondItem="nAq-D6-AJe" secondAttribute="leading" constant="10" id="Ixf-hu-dXi"/>
+                            <constraint firstItem="y5S-q5-Q2A" firstAttribute="top" secondItem="m3n-6n-HmV" secondAttribute="bottom" constant="11" id="Jvq-fM-db3"/>
+                            <constraint firstItem="JLU-hh-rS2" firstAttribute="top" secondItem="SO5-sm-Fuu" secondAttribute="bottom" constant="1" id="KY0-4s-tnD"/>
+                            <constraint firstItem="SO5-sm-Fuu" firstAttribute="leading" secondItem="Gko-SV-vYa" secondAttribute="trailing" constant="76" id="QYr-MN-dR3"/>
+                            <constraint firstAttribute="height" constant="155" id="TIk-kI-N1c"/>
+                            <constraint firstAttribute="trailing" secondItem="y5S-q5-Q2A" secondAttribute="trailing" constant="10" id="U1q-3b-9vJ"/>
+                            <constraint firstItem="m3n-6n-HmV" firstAttribute="top" secondItem="Gko-SV-vYa" secondAttribute="bottom" constant="8" id="c1x-Kz-gZJ"/>
+                            <constraint firstItem="uuR-hs-8PW" firstAttribute="top" secondItem="y5S-q5-Q2A" secondAttribute="bottom" constant="2" id="emO-Rj-phZ"/>
+                            <constraint firstAttribute="trailing" secondItem="hEd-KV-3w8" secondAttribute="trailing" constant="5" id="lwC-5M-1yM"/>
+                            <constraint firstAttribute="trailing" secondItem="SO5-sm-Fuu" secondAttribute="trailing" constant="10" id="mmF-0h-RyQ"/>
+                            <constraint firstItem="Gko-SV-vYa" firstAttribute="top" secondItem="nAq-D6-AJe" secondAttribute="top" constant="-34" id="rri-eE-Gdd"/>
+                            <constraint firstAttribute="bottom" secondItem="hEd-KV-3w8" secondAttribute="bottom" constant="13" id="zPC-tK-HDa"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="QYr-MN-dR3"/>
+                            </mask>
+                        </variation>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="nAq-D6-AJe" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="34" id="IjY-7x-BRf"/>
+                    <constraint firstAttribute="trailing" secondItem="nAq-D6-AJe" secondAttribute="trailing" constant="25" id="V7q-xb-EPE"/>
+                    <constraint firstAttribute="bottom" secondItem="nAq-D6-AJe" secondAttribute="bottom" constant="5" id="joY-UZ-t2O"/>
+                    <constraint firstItem="nAq-D6-AJe" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="25" id="y2N-1r-2y3"/>
+                </constraints>
+                <variation key="default">
+                    <mask key="constraints">
+                        <exclude reference="IjY-7x-BRf"/>
+                    </mask>
+                </variation>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <connections>
+                <outlet property="btnEdit" destination="hEd-KV-3w8" id="Ndi-5H-fdf"/>
+                <outlet property="containerView" destination="nAq-D6-AJe" id="MLo-0l-Tmc"/>
+                <outlet property="imgProfile" destination="Gko-SV-vYa" id="4S8-uZ-zxJ"/>
+                <outlet property="lblCompanyName" destination="m3n-6n-HmV" id="h27-y9-s7X"/>
+                <outlet property="lblDesignation" destination="JLU-hh-rS2" id="qmj-nS-fp5"/>
+                <outlet property="lblEmail" destination="uuR-hs-8PW" id="qx6-YL-j3X"/>
+                <outlet property="lblName" destination="SO5-sm-Fuu" id="25v-tm-BYr"/>
+                <outlet property="lblPhoneNo" destination="y5S-q5-Q2A" id="sgz-K7-tOV"/>
+            </connections>
+            <point key="canvasLocation" x="83.969465648854964" y="-40.845070422535215"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="profileIcon" width="39" height="39"/>
+        <namedColor name="2C2C2C">
+            <color red="0.17299999296665192" green="0.17299999296665192" blue="0.17299999296665192" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="595959">
+            <color red="0.34900000691413879" green="0.34900000691413879" blue="0.34900000691413879" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

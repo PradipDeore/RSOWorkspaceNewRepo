@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Inter-Bold.ttf">
+            <string>Inter-Bold</string>
+        </array>
+        <array key="Poppins-SemiBold.ttf">
+            <string>Poppins-SemiBold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="LocationTableViewCell" rowHeight="50" id="KGk-i7-Jjw" customClass="LocationTableViewCell" customModule="RSOWorkspace" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="352" height="50"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="352" height="50"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uTX-qZ-5Ya">
+                        <rect key="frame" x="25" y="0.0" width="302" height="45.666666666666664"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SCB-aC-wyM">
+                                <rect key="frame" x="0.0" y="0.0" width="302" height="45.666666666666664"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Dubai" textAlignment="justified" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bBm-cZ-bfd" customClass="RSOTextField" customModule="RSOWorkspace" customModuleProvider="target">
+                                        <rect key="frame" x="66" y="5" width="228" height="32"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="32" id="orP-Cj-ecb"/>
+                                        </constraints>
+                                        <color key="textColor" name="000000"/>
+                                        <fontDescription key="fontDescription" name="Inter-Bold" family="Inter" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GJf-O3-u1M">
+                                        <rect key="frame" x="0.0" y="12.000000000000002" width="61" height="19.666666666666671"/>
+                                        <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="14"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" name="F2F2F2"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="bBm-cZ-bfd" secondAttribute="trailing" constant="8" id="8DY-P0-4EE"/>
+                                    <constraint firstItem="GJf-O3-u1M" firstAttribute="leading" secondItem="SCB-aC-wyM" secondAttribute="leading" id="BPC-rg-WM2"/>
+                                    <constraint firstAttribute="bottom" secondItem="bBm-cZ-bfd" secondAttribute="bottom" constant="8" id="BXb-TL-hob"/>
+                                    <constraint firstItem="bBm-cZ-bfd" firstAttribute="leading" secondItem="GJf-O3-u1M" secondAttribute="trailing" constant="5" id="PX5-mc-BbS"/>
+                                    <constraint firstAttribute="bottom" secondItem="GJf-O3-u1M" secondAttribute="bottom" constant="14" id="Zek-Qs-SwF"/>
+                                    <constraint firstItem="GJf-O3-u1M" firstAttribute="top" secondItem="SCB-aC-wyM" secondAttribute="top" constant="12" id="dAh-wP-9Dn"/>
+                                    <constraint firstItem="bBm-cZ-bfd" firstAttribute="top" secondItem="SCB-aC-wyM" secondAttribute="top" constant="5" id="my2-dt-jJC"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="SCB-aC-wyM" firstAttribute="leading" secondItem="uTX-qZ-5Ya" secondAttribute="leading" id="7TX-5H-D6I"/>
+                            <constraint firstAttribute="trailing" secondItem="SCB-aC-wyM" secondAttribute="trailing" id="IRm-7f-sRu"/>
+                            <constraint firstItem="SCB-aC-wyM" firstAttribute="top" secondItem="uTX-qZ-5Ya" secondAttribute="top" id="Pjr-VO-BDh"/>
+                            <constraint firstAttribute="bottom" secondItem="SCB-aC-wyM" secondAttribute="bottom" id="sBJ-5h-DcY"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <constraints>
+                    <constraint firstItem="uTX-qZ-5Ya" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="6Hc-IQ-Qbk"/>
+                    <constraint firstAttribute="trailing" secondItem="uTX-qZ-5Ya" secondAttribute="trailing" constant="25" id="QZI-0D-m7d"/>
+                    <constraint firstItem="uTX-qZ-5Ya" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="25" id="QpI-eY-rhB"/>
+                    <constraint firstAttribute="bottom" secondItem="uTX-qZ-5Ya" secondAttribute="bottom" id="b5c-7k-UbB"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <connections>
+                <outlet property="containerView" destination="uTX-qZ-5Ya" id="gpz-5X-h4p"/>
+                <outlet property="txtLocation" destination="bBm-cZ-bfd" id="7dE-bI-YFg"/>
+            </connections>
+            <point key="canvasLocation" x="-116.03053435114504" y="-22.887323943661972"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <namedColor name="000000">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="F2F2F2">
+            <color red="0.94900000095367432" green="0.94900000095367432" blue="0.94900000095367432" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

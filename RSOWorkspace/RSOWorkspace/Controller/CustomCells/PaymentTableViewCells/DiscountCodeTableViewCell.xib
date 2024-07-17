@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Inter-Medium.ttf">
+            <string>Inter-Medium</string>
+        </array>
+        <array key="Poppins-Bold.ttf">
+            <string>Poppins-Bold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DiscountCodeTableViewCell" rowHeight="59" id="KGk-i7-Jjw" customClass="DiscountCodeTableViewCell" customModule="RSOWorkspace" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="391" height="59"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="391" height="59"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mVX-8D-SoB" customClass="RSOTextField" customModule="RSOWorkspace" customModuleProvider="target">
+                        <rect key="frame" x="25" y="12" width="194" height="32"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="32" id="BbE-un-OWI"/>
+                            <constraint firstAttribute="width" constant="194" id="V9g-XJ-oRQ"/>
+                        </constraints>
+                        <color key="textColor" name="454545"/>
+                        <fontDescription key="fontDescription" name="Inter-Medium" family="Inter" pointSize="12"/>
+                        <textInputTraits key="textInputTraits"/>
+                    </textField>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Zj-AV-jVL" customClass="RSOButton" customModule="RSOWorkspace" customModuleProvider="target">
+                        <rect key="frame" x="260" y="11" width="106" height="32"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="106" id="56G-4x-vbE"/>
+                            <constraint firstAttribute="height" constant="32" id="G3g-VO-wSL"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="Poppins-Bold" family="Poppins" pointSize="12"/>
+                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                        <state key="normal" title="APPLY"/>
+                    </button>
+                </subviews>
+                <color key="backgroundColor" name="F2F2F2"/>
+                <constraints>
+                    <constraint firstItem="mVX-8D-SoB" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="25" id="5fu-Jc-yEn"/>
+                    <constraint firstAttribute="bottom" secondItem="mVX-8D-SoB" secondAttribute="bottom" constant="13" id="DBS-G1-Z7i"/>
+                    <constraint firstItem="5Zj-AV-jVL" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="11" id="F4T-v1-4Cn"/>
+                    <constraint firstAttribute="trailing" secondItem="5Zj-AV-jVL" secondAttribute="trailing" constant="25" id="Mlf-jz-zxb"/>
+                    <constraint firstItem="mVX-8D-SoB" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="sib-av-kuX"/>
+                    <constraint firstAttribute="bottom" secondItem="5Zj-AV-jVL" secondAttribute="bottom" constant="13" id="t5Y-1t-n8d"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="btnApply" destination="5Zj-AV-jVL" id="bVZ-Bo-N0K"/>
+                <outlet property="txtDiscount" destination="mVX-8D-SoB" id="b0v-yb-FKY"/>
+            </connections>
+            <point key="canvasLocation" x="118.32061068702289" y="-5.9859154929577469"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <namedColor name="454545">
+            <color red="0.27099999785423279" green="0.27099999785423279" blue="0.27099999785423279" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="F2F2F2">
+            <color red="0.94900000095367432" green="0.94900000095367432" blue="0.94900000095367432" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

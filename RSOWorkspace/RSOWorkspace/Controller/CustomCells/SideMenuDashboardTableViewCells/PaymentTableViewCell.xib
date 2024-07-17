@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Inter-Bold.ttf">
+            <string>Inter-Bold</string>
+        </array>
+        <array key="Inter-Medium.ttf">
+            <string>Inter-Medium</string>
+        </array>
+        <array key="Inter-SemiBold.ttf">
+            <string>Inter-SemiBold</string>
+        </array>
+        <array key="Poppins-SemiBold.ttf">
+            <string>Poppins-SemiBold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PaymentTableViewCell" rowHeight="203" id="KGk-i7-Jjw" customClass="PaymentTableViewCell" customModule="RSOWorkspace" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="388" height="210"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="388" height="210"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="afW-bd-gDb">
+                        <rect key="frame" x="25" y="0.0" width="338" height="210"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Payments" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VMU-gP-0BA">
+                                <rect key="frame" x="10" y="14.000000000000002" width="82.666666666666671" height="22.666666666666671"/>
+                                <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="JANUARY" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gik-9o-eSr">
+                                <rect key="frame" x="10" y="52.666666666666664" width="318" height="16.999999999999993"/>
+                                <fontDescription key="fontDescription" name="Inter-SemiBold" family="Inter" pointSize="14"/>
+                                <color key="textColor" name="2C2C2C"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DGw-om-CFW">
+                                <rect key="frame" x="176" y="166" width="152" height="24"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Select Month" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="r3p-7w-Ecd">
+                                        <rect key="frame" x="0.0" y="0.0" width="152" height="24"/>
+                                        <color key="textColor" name="616161"/>
+                                        <fontDescription key="fontDescription" name="Inter-Medium" family="Inter" pointSize="10"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MlT-86-uO0">
+                                        <rect key="frame" x="0.0" y="0.0" width="152" height="24"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain"/>
+                                        <connections>
+                                            <action selector="btnMonthDropdownTappedAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="HQg-EF-UeE"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" name="F0F0F0"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="r3p-7w-Ecd" secondAttribute="trailing" id="B06-nd-X0S"/>
+                                    <constraint firstItem="r3p-7w-Ecd" firstAttribute="top" secondItem="DGw-om-CFW" secondAttribute="top" id="BMl-io-4KD"/>
+                                    <constraint firstAttribute="bottom" secondItem="MlT-86-uO0" secondAttribute="bottom" id="EFk-A8-kGu"/>
+                                    <constraint firstItem="r3p-7w-Ecd" firstAttribute="leading" secondItem="DGw-om-CFW" secondAttribute="leading" id="GBu-So-EiP"/>
+                                    <constraint firstItem="MlT-86-uO0" firstAttribute="leading" secondItem="DGw-om-CFW" secondAttribute="leading" id="ZIN-7G-Zm0"/>
+                                    <constraint firstAttribute="trailing" secondItem="MlT-86-uO0" secondAttribute="trailing" id="exi-dx-xGd"/>
+                                    <constraint firstItem="MlT-86-uO0" firstAttribute="top" secondItem="DGw-om-CFW" secondAttribute="top" id="fqE-tw-iL3"/>
+                                    <constraint firstAttribute="bottom" secondItem="r3p-7w-Ecd" secondAttribute="bottom" id="kIT-rR-G8y"/>
+                                    <constraint firstAttribute="height" constant="24" id="tyO-sY-61x"/>
+                                    <constraint firstAttribute="width" constant="152" id="wfV-RN-uxp"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1F6-Wc-xyI">
+                                <rect key="frame" x="308" y="14" width="20" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="ANM-u6-2wq"/>
+                                    <constraint firstAttribute="width" constant="20" id="W9p-tb-lGY"/>
+                                </constraints>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" image="DownArrow"/>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AED" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2ae-IK-9oH">
+                                <rect key="frame" x="238" y="51" width="35" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="35" id="M2y-oo-hgz"/>
+                                    <constraint firstAttribute="height" constant="21" id="biE-pk-ul1"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Inter-SemiBold" family="Inter" pointSize="14"/>
+                                <color key="textColor" name="2C2C2C"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="300.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oNC-qL-x4v">
+                                <rect key="frame" x="278" y="50" width="50" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="5P9-q4-o91"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Inter-SemiBold" family="Inter" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gcY-dl-31a">
+                                <rect key="frame" x="208" y="77" width="120" height="19"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="19" id="D75-Ep-BkR"/>
+                                    <constraint firstAttribute="width" constant="120" id="XxP-hs-he5"/>
+                                </constraints>
+                                <string key="text">Payment due
+</string>
+                                <fontDescription key="fontDescription" name="Inter-Bold" family="Inter" pointSize="12"/>
+                                <color key="textColor" name="616161"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pay before 10/2/23 to avoid late payment fee" textAlignment="right" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pcq-IC-4Eh">
+                                <rect key="frame" x="134" y="97" width="194" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="34" id="seA-FX-rTZ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Inter-Medium" family="Inter" pointSize="10"/>
+                                <color key="textColor" name="616161"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="View Past Bills" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y8a-fd-aLv">
+                                <rect key="frame" x="10" y="171" width="125" height="19"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="19" id="ckN-sP-kvH"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="16"/>
+                                <color key="textColor" name="000000"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="gcY-dl-31a" secondAttribute="trailing" constant="10" id="7gZ-UO-V6Z"/>
+                            <constraint firstItem="oNC-qL-x4v" firstAttribute="top" secondItem="1F6-Wc-xyI" secondAttribute="bottom" constant="16" id="9fO-TC-1Fd"/>
+                            <constraint firstItem="Y8a-fd-aLv" firstAttribute="leading" secondItem="afW-bd-gDb" secondAttribute="leading" constant="10" id="Bv7-vQ-03a"/>
+                            <constraint firstItem="DGw-om-CFW" firstAttribute="leading" secondItem="Y8a-fd-aLv" secondAttribute="trailing" constant="41" id="D0M-Eg-CUQ"/>
+                            <constraint firstItem="VMU-gP-0BA" firstAttribute="leading" secondItem="afW-bd-gDb" secondAttribute="leading" constant="10" id="Ekg-8R-qUk"/>
+                            <constraint firstItem="Pcq-IC-4Eh" firstAttribute="leading" secondItem="afW-bd-gDb" secondAttribute="leading" constant="134" id="JRl-AP-O1k"/>
+                            <constraint firstItem="DGw-om-CFW" firstAttribute="top" secondItem="Pcq-IC-4Eh" secondAttribute="bottom" constant="35" id="NTX-QG-JPU"/>
+                            <constraint firstItem="1F6-Wc-xyI" firstAttribute="top" secondItem="afW-bd-gDb" secondAttribute="top" constant="14" id="OYg-Kh-izI"/>
+                            <constraint firstAttribute="trailing" secondItem="DGw-om-CFW" secondAttribute="trailing" constant="10" id="Q29-Wo-CvF"/>
+                            <constraint firstAttribute="trailing" secondItem="1F6-Wc-xyI" secondAttribute="trailing" constant="10" id="RYr-Ml-8i4"/>
+                            <constraint firstItem="oNC-qL-x4v" firstAttribute="leading" secondItem="2ae-IK-9oH" secondAttribute="trailing" constant="5" id="cwa-1n-oEq"/>
+                            <constraint firstItem="gik-9o-eSr" firstAttribute="top" secondItem="VMU-gP-0BA" secondAttribute="bottom" constant="16" id="frt-Tz-Z9W"/>
+                            <constraint firstAttribute="trailing" secondItem="Pcq-IC-4Eh" secondAttribute="trailing" constant="10" id="gvv-UR-6gc"/>
+                            <constraint firstItem="gik-9o-eSr" firstAttribute="leading" secondItem="afW-bd-gDb" secondAttribute="leading" constant="10" id="haL-Vk-CrV"/>
+                            <constraint firstAttribute="trailing" secondItem="oNC-qL-x4v" secondAttribute="trailing" constant="10" id="hmP-1W-bVZ"/>
+                            <constraint firstAttribute="bottom" secondItem="Y8a-fd-aLv" secondAttribute="bottom" constant="20" id="ijb-hT-5PC"/>
+                            <constraint firstItem="VMU-gP-0BA" firstAttribute="top" secondItem="afW-bd-gDb" secondAttribute="top" constant="14" id="j7d-3g-ao9"/>
+                            <constraint firstAttribute="trailing" secondItem="gik-9o-eSr" secondAttribute="trailing" constant="10" id="lW3-G2-Iyd"/>
+                            <constraint firstItem="gcY-dl-31a" firstAttribute="top" secondItem="oNC-qL-x4v" secondAttribute="bottom" constant="6" id="m7M-KZ-CUd"/>
+                            <constraint firstItem="2ae-IK-9oH" firstAttribute="top" secondItem="afW-bd-gDb" secondAttribute="top" constant="51" id="xxj-OJ-nBi"/>
+                            <constraint firstAttribute="trailing" secondItem="VMU-gP-0BA" secondAttribute="trailing" constant="10" id="yF6-Hm-RaT"/>
+                            <constraint firstItem="Pcq-IC-4Eh" firstAttribute="top" secondItem="gcY-dl-31a" secondAttribute="bottom" constant="1" id="yp2-36-7JD"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="yF6-Hm-RaT"/>
+                            </mask>
+                        </variation>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <constraints>
+                    <constraint firstItem="afW-bd-gDb" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="BhZ-j7-cq5"/>
+                    <constraint firstItem="afW-bd-gDb" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="25" id="C03-1u-XhE"/>
+                    <constraint firstAttribute="trailing" secondItem="afW-bd-gDb" secondAttribute="trailing" constant="25" id="NHv-6F-amS"/>
+                    <constraint firstAttribute="bottom" secondItem="afW-bd-gDb" secondAttribute="bottom" id="htJ-I5-GRf"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <connections>
+                <outlet property="containerView" destination="afW-bd-gDb" id="LnG-TN-DkA"/>
+                <outlet property="lblMonthName" destination="oNC-qL-x4v" id="KkF-Vl-BuB"/>
+                <outlet property="lblPaymentAmount" destination="oNC-qL-x4v" id="LMp-cd-fVK"/>
+                <outlet property="monthView" destination="DGw-om-CFW" id="dZE-pf-8d2"/>
+                <outlet property="txtMothName" destination="r3p-7w-Ecd" id="VI9-X5-aaK"/>
+            </connections>
+            <point key="canvasLocation" x="201.52671755725191" y="14.084507042253522"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="DownArrow" width="14" height="17"/>
+        <namedColor name="000000">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="2C2C2C">
+            <color red="0.17299999296665192" green="0.17299999296665192" blue="0.17299999296665192" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="616161">
+            <color red="0.37999999523162842" green="0.37999999523162842" blue="0.37999999523162842" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="F0F0F0">
+            <color red="0.94099998474121094" green="0.94099998474121094" blue="0.94099998474121094" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Poppins-Bold.ttf">
+            <string>Poppins-Bold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="ButtonCancelAndSaveTableViewCell" customModule="RSOWorkspace" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="360" height="44"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="360" height="44"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0ev-RE-HD5">
+                        <rect key="frame" x="26" y="0.0" width="308" height="39"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="WrC-NI-hyU">
+                                <rect key="frame" x="0.0" y="5" width="308" height="29"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="meV-Af-RNO" customClass="RSOButton" customModule="RSOWorkspace" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="134" height="29"/>
+                                        <color key="backgroundColor" name="768D70"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="32" id="JQX-Ym-1Vu"/>
+                                            <constraint firstAttribute="width" constant="134" id="ee2-dE-tbB"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Poppins-Bold" family="Poppins" pointSize="12"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="CANCEL"/>
+                                        <connections>
+                                            <action selector="btnCancelTappedAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="RVA-bC-4zT"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v9J-0B-ydP" customClass="RSOButton" customModule="RSOWorkspace" customModuleProvider="target">
+                                        <rect key="frame" x="174" y="0.0" width="134" height="29"/>
+                                        <fontDescription key="fontDescription" name="Poppins-Bold" family="Poppins" pointSize="12"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="SAVE"/>
+                                        <connections>
+                                            <action selector="btnSaveTappedAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="wPK-1f-8Ma"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="v9J-0B-ydP" firstAttribute="height" secondItem="meV-Af-RNO" secondAttribute="height" id="3nG-hA-0ye"/>
+                                    <constraint firstItem="v9J-0B-ydP" firstAttribute="width" secondItem="meV-Af-RNO" secondAttribute="width" id="AZi-FT-heQ"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="WrC-NI-hyU" firstAttribute="leading" secondItem="0ev-RE-HD5" secondAttribute="leading" id="35j-bO-wfC"/>
+                            <constraint firstAttribute="bottom" secondItem="WrC-NI-hyU" secondAttribute="bottom" constant="5" id="J3J-rm-djS"/>
+                            <constraint firstAttribute="trailing" secondItem="WrC-NI-hyU" secondAttribute="trailing" id="bkj-zx-d9z"/>
+                            <constraint firstItem="WrC-NI-hyU" firstAttribute="top" secondItem="0ev-RE-HD5" secondAttribute="top" constant="5" id="nXa-cm-MLg"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="0ev-RE-HD5" secondAttribute="bottom" id="1TL-KP-VWT"/>
+                    <constraint firstAttribute="trailing" secondItem="0ev-RE-HD5" secondAttribute="trailing" constant="26" id="PHd-c0-6Ms"/>
+                    <constraint firstItem="0ev-RE-HD5" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="26" id="mZ6-eH-vh5"/>
+                    <constraint firstItem="0ev-RE-HD5" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="sLc-7K-Udi"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <connections>
+                <outlet property="btnCancel" destination="meV-Af-RNO" id="m21-Ki-jki"/>
+                <outlet property="btnSave" destination="v9J-0B-ydP" id="NuB-wP-BVJ"/>
+            </connections>
+            <point key="canvasLocation" x="111.45038167938931" y="-11.267605633802818"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <namedColor name="768D70">
+            <color red="0.46299999952316284" green="0.55299997329711914" blue="0.43900001049041748" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

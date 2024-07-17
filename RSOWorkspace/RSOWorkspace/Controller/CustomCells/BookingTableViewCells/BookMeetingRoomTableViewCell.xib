@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Inter-Medium.ttf">
+            <string>Inter-Medium</string>
+        </array>
+        <array key="Poppins-Medium.ttf">
+            <string>Poppins-Medium</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BookMeetingRoomTableViewCell" rowHeight="100" id="KGk-i7-Jjw" customClass="BookMeetingRoomTableViewCell" customModule="RSOWorkspace" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="344" height="99"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="344" height="99"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u4q-5k-zjV">
+                        <rect key="frame" x="25" y="0.0" width="294" height="99"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Book Meeting Room" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OGf-1r-3n1">
+                                <rect key="frame" x="25" y="10" width="175" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="175" id="B8c-xo-qvK"/>
+                                    <constraint firstAttribute="height" constant="20" id="LgF-a7-f8b"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="meetingRoom" translatesAutoresizingMaskIntoConstraints="NO" id="6U7-Zg-gp7">
+                                <rect key="frame" x="238" y="10" width="36" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="36" id="AOV-dd-5EN"/>
+                                    <constraint firstAttribute="height" constant="34" id="nSA-eP-LTn"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ba1-EB-Cb8">
+                                <rect key="frame" x="25" y="38" width="183" height="53"/>
+                                <fontDescription key="fontDescription" name="Inter-Medium" family="Inter" pointSize="10"/>
+                                <color key="textColor" name="616161"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="ba1-EB-Cb8" firstAttribute="top" secondItem="OGf-1r-3n1" secondAttribute="bottom" constant="8" id="1vR-8Z-VtY"/>
+                            <constraint firstItem="6U7-Zg-gp7" firstAttribute="top" secondItem="u4q-5k-zjV" secondAttribute="top" constant="10" id="9j6-km-b4M"/>
+                            <constraint firstItem="6U7-Zg-gp7" firstAttribute="leading" secondItem="ba1-EB-Cb8" secondAttribute="trailing" constant="30" id="E2l-k6-kv7"/>
+                            <constraint firstItem="OGf-1r-3n1" firstAttribute="leading" secondItem="u4q-5k-zjV" secondAttribute="leading" constant="25" id="Ll9-PL-6xV"/>
+                            <constraint firstItem="ba1-EB-Cb8" firstAttribute="leading" secondItem="u4q-5k-zjV" secondAttribute="leading" constant="25" id="cj9-vl-RqY"/>
+                            <constraint firstAttribute="trailing" secondItem="6U7-Zg-gp7" secondAttribute="trailing" constant="20" id="fCR-O3-uMY"/>
+                            <constraint firstItem="OGf-1r-3n1" firstAttribute="top" secondItem="u4q-5k-zjV" secondAttribute="top" constant="10" id="l40-Tj-yMU"/>
+                            <constraint firstAttribute="bottom" secondItem="ba1-EB-Cb8" secondAttribute="bottom" constant="8" id="thm-At-qjB"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="u4q-5k-zjV" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="3NA-6i-6LW"/>
+                    <constraint firstAttribute="bottom" secondItem="u4q-5k-zjV" secondAttribute="bottom" id="E6Q-zl-teN"/>
+                    <constraint firstAttribute="trailing" secondItem="u4q-5k-zjV" secondAttribute="trailing" constant="25" id="Ipe-QU-s9d"/>
+                    <constraint firstItem="u4q-5k-zjV" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="25" id="P24-3i-l3o"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <connections>
+                <outlet property="containerView" destination="u4q-5k-zjV" id="EDb-52-rN1"/>
+            </connections>
+            <point key="canvasLocation" x="65.648854961832058" y="10.91549295774648"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="meetingRoom" width="33" height="33"/>
+        <namedColor name="616161">
+            <color red="0.37999999523162842" green="0.37999999523162842" blue="0.37999999523162842" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

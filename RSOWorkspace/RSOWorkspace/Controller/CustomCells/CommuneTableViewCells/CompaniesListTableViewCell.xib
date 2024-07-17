@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Inter-SemiBold.ttf">
+            <string>Inter-SemiBold</string>
+        </array>
+        <array key="Poppins-SemiBold.ttf">
+            <string>Poppins-SemiBold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CompaniesListTableViewCell" rowHeight="154" id="KGk-i7-Jjw" customClass="CompaniesListTableViewCell" customModule="RSOWorkspace" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="349" height="154"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="349" height="154"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aIO-Kx-XOZ">
+                        <rect key="frame" x="25" y="0.0" width="299" height="154"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Feeniks Digital" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BYA-As-04j">
+                                <rect key="frame" x="0.0" y="10" width="279" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="Z9L-ia-5Tg"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Inter-SemiBold" family="Inter" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User experience design" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j5M-sV-sAf">
+                                <rect key="frame" x="0.0" y="40" width="289" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="N0z-z2-0L3"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="14"/>
+                                <color key="textColor" name="595959"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JF5-sG-bR0" customClass="RSOButton" customModule="RSOWorkspace" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="100" width="79" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="79" id="3A6-5J-52s"/>
+                                    <constraint firstAttribute="height" constant="24" id="wIG-7o-XBx"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Inter-SemiBold" family="Inter" pointSize="14"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Call"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L2H-qS-Axw" customClass="RSOButton" customModule="RSOWorkspace" customModuleProvider="target">
+                                <rect key="frame" x="102" y="100" width="150" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="24" id="K9c-a8-A1h"/>
+                                    <constraint firstAttribute="width" constant="150" id="hhq-xe-6lB"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Inter-SemiBold" family="Inter" pointSize="14"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Browse Members"/>
+                                <connections>
+                                    <action selector="btnBrowseMembersTappedActDelegate:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="8hU-oc-nXl"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="BYA-As-04j" firstAttribute="top" secondItem="aIO-Kx-XOZ" secondAttribute="top" constant="10" id="33w-z0-M7o"/>
+                            <constraint firstItem="JF5-sG-bR0" firstAttribute="top" secondItem="j5M-sV-sAf" secondAttribute="bottom" constant="10" id="Bzb-7m-ZMB"/>
+                            <constraint firstItem="j5M-sV-sAf" firstAttribute="leading" secondItem="aIO-Kx-XOZ" secondAttribute="leading" id="D55-YI-Cnl"/>
+                            <constraint firstItem="JF5-sG-bR0" firstAttribute="leading" secondItem="aIO-Kx-XOZ" secondAttribute="leading" id="J0d-Rw-0jX"/>
+                            <constraint firstAttribute="trailing" secondItem="j5M-sV-sAf" secondAttribute="trailing" constant="10" id="Uh3-8N-7nw"/>
+                            <constraint firstItem="BYA-As-04j" firstAttribute="leading" secondItem="aIO-Kx-XOZ" secondAttribute="leading" id="XtC-kZ-lWV"/>
+                            <constraint firstItem="j5M-sV-sAf" firstAttribute="top" secondItem="BYA-As-04j" secondAttribute="bottom" constant="5" id="Zdn-2p-Pf8"/>
+                            <constraint firstItem="L2H-qS-Axw" firstAttribute="leading" secondItem="JF5-sG-bR0" secondAttribute="trailing" constant="23" id="hbX-sF-1jj"/>
+                            <constraint firstItem="L2H-qS-Axw" firstAttribute="top" secondItem="j5M-sV-sAf" secondAttribute="bottom" constant="10" id="j54-RL-VBo"/>
+                            <constraint firstItem="JF5-sG-bR0" firstAttribute="top" secondItem="j5M-sV-sAf" secondAttribute="bottom" constant="10" id="kB3-DQ-uvh"/>
+                            <constraint firstItem="JF5-sG-bR0" firstAttribute="top" secondItem="j5M-sV-sAf" secondAttribute="bottom" id="kEm-jA-tE0"/>
+                            <constraint firstAttribute="trailing" secondItem="BYA-As-04j" secondAttribute="trailing" constant="20" id="rDe-5K-ji2"/>
+                            <constraint firstAttribute="bottom" secondItem="JF5-sG-bR0" secondAttribute="bottom" constant="26.329999999999998" id="sP9-dI-w2y"/>
+                            <constraint firstAttribute="bottom" secondItem="L2H-qS-Axw" secondAttribute="bottom" constant="26.329999999999998" id="vOC-gI-RgQ"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="sP9-dI-w2y"/>
+                                <exclude reference="kB3-DQ-uvh"/>
+                                <exclude reference="kEm-jA-tE0"/>
+                                <exclude reference="vOC-gI-RgQ"/>
+                            </mask>
+                        </variation>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="aIO-Kx-XOZ" secondAttribute="trailing" constant="25" id="2MX-Pl-gPf"/>
+                    <constraint firstItem="aIO-Kx-XOZ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="25" id="JlB-xf-LfG"/>
+                    <constraint firstItem="aIO-Kx-XOZ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="bGK-lj-YyN"/>
+                    <constraint firstAttribute="bottom" secondItem="aIO-Kx-XOZ" secondAttribute="bottom" id="n8O-gw-tgi"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <connections>
+                <outlet property="btnBrowseMembers" destination="L2H-qS-Axw" id="0a3-rH-FUs"/>
+                <outlet property="btnCall" destination="JF5-sG-bR0" id="hzY-Jv-UAb"/>
+                <outlet property="lblCompaniesSubtitle" destination="j5M-sV-sAf" id="7jH-yf-ZI1"/>
+                <outlet property="lblCompanyName" destination="BYA-As-04j" id="HJs-Ot-xVv"/>
+            </connections>
+            <point key="canvasLocation" x="145.80152671755724" y="-29.577464788732396"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <namedColor name="595959">
+            <color red="0.34900000691413879" green="0.34900000691413879" blue="0.34900000691413879" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

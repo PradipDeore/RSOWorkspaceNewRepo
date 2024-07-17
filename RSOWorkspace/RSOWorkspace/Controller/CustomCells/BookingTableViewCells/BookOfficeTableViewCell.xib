@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Inter-Light.ttf">
+            <string>Inter-Light</string>
+        </array>
+        <array key="Inter-Medium.ttf">
+            <string>Inter-Medium</string>
+        </array>
+        <array key="Poppins-Medium.ttf">
+            <string>Poppins-Medium</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BookOfficeTableViewCell" rowHeight="200" id="KGk-i7-Jjw" customClass="BookOfficeTableViewCell" customModule="RSOWorkspace" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="200"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="200"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wGk-Tr-05d">
+                        <rect key="frame" x="25" y="0.0" width="270" height="200"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Book an Office" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3YU-jk-Ev8">
+                                <rect key="frame" x="25" y="10" width="182" height="28"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="182" id="VIM-9d-EGj"/>
+                                    <constraint firstAttribute="height" constant="28" id="giq-1d-4wy"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="office" translatesAutoresizingMaskIntoConstraints="NO" id="ZNz-eX-Yju">
+                                <rect key="frame" x="214" y="10" width="36" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="34" id="1g5-Pn-XX1"/>
+                                    <constraint firstAttribute="width" constant="36" id="TfG-7d-JNh"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ads-id-7tl" customClass="RSOButton" customModule="RSOWorkspace" customModuleProvider="target">
+                                <rect key="frame" x="25" y="98" width="180" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="22" id="5H7-cw-raj"/>
+                                    <constraint firstAttribute="width" constant="180" id="pbY-l7-SXp"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Inter-Light" family="Inter" pointSize="14"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Short Term Booking">
+                                    <color key="titleColor" name="FEFEFE"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pwn-Qj-sPG" customClass="RSOButton" customModule="RSOWorkspace" customModuleProvider="target">
+                                <rect key="frame" x="25" y="145" width="180" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="22" id="YIj-au-Q0W"/>
+                                    <constraint firstAttribute="width" constant="180" id="dlb-sM-TjY"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Inter-Medium" family="Inter" pointSize="14"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Long Term Booking">
+                                    <color key="titleColor" name="FEFEFE"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="ads-id-7tl" firstAttribute="leading" secondItem="wGk-Tr-05d" secondAttribute="leading" constant="25" id="Oyi-8X-w1h"/>
+                            <constraint firstAttribute="trailing" secondItem="ZNz-eX-Yju" secondAttribute="trailing" constant="20" id="TQS-01-UVo"/>
+                            <constraint firstItem="Pwn-Qj-sPG" firstAttribute="top" secondItem="ads-id-7tl" secondAttribute="bottom" constant="25" id="ZdS-zV-ZhL"/>
+                            <constraint firstItem="Pwn-Qj-sPG" firstAttribute="leading" secondItem="wGk-Tr-05d" secondAttribute="leading" constant="25" id="ZrA-yr-oGs"/>
+                            <constraint firstItem="3YU-jk-Ev8" firstAttribute="top" secondItem="wGk-Tr-05d" secondAttribute="top" constant="10" id="aGb-xt-1JK"/>
+                            <constraint firstItem="3YU-jk-Ev8" firstAttribute="leading" secondItem="wGk-Tr-05d" secondAttribute="leading" constant="25" id="iu8-My-Fa1"/>
+                            <constraint firstItem="ZNz-eX-Yju" firstAttribute="top" secondItem="wGk-Tr-05d" secondAttribute="top" constant="10" id="l9a-lK-FUb"/>
+                            <constraint firstItem="ads-id-7tl" firstAttribute="top" secondItem="3YU-jk-Ev8" secondAttribute="bottom" constant="60" id="vBf-Cb-DyM"/>
+                            <constraint firstAttribute="bottom" secondItem="Pwn-Qj-sPG" secondAttribute="bottom" constant="20" id="yLg-5C-vQQ"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="yLg-5C-vQQ"/>
+                            </mask>
+                        </variation>
+                    </view>
+                </subviews>
+                <color key="backgroundColor" name="F2F2F2"/>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="wGk-Tr-05d" secondAttribute="bottom" id="19c-gN-Rob"/>
+                    <constraint firstAttribute="trailing" secondItem="wGk-Tr-05d" secondAttribute="trailing" constant="25" id="cA1-73-Hgr"/>
+                    <constraint firstItem="wGk-Tr-05d" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="k2n-I3-whX"/>
+                    <constraint firstItem="wGk-Tr-05d" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="25" id="riT-9c-fXM"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <connections>
+                <outlet property="btnLongTermBooking" destination="Pwn-Qj-sPG" id="TGX-5a-K4H"/>
+                <outlet property="btnShortTermBooking" destination="ads-id-7tl" id="lnI-mb-LSD"/>
+                <outlet property="containerView" destination="wGk-Tr-05d" id="DSA-Zs-xuz"/>
+            </connections>
+            <point key="canvasLocation" x="65.648854961832058" y="18.661971830985916"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="office" width="34" height="34"/>
+        <namedColor name="F2F2F2">
+            <color red="0.94900000095367432" green="0.94900000095367432" blue="0.94900000095367432" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="FEFEFE">
+            <color red="0.99607843137254903" green="0.99607843137254903" blue="0.99607843137254903" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>
