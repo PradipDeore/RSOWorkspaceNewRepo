@@ -93,7 +93,7 @@ class MeetingRoomsCollectionViewCell: UICollectionViewCell {
 
     
     @IBAction func btnBookTappedAction(_ sender: Any) {
-        if let _ = RSOToken.shared.getToken() {
+       if let _ = RSOToken.shared.getToken() {
             if self.tag == 1{
                 backActionDelegate?.showBookRoomDetailsVC(meetingRoomId: selectedMeetingRoom!)
             }else{
