@@ -18,5 +18,13 @@ class NotificationTableViewCell: UITableViewCell {
         // Initialization code
     }
 
+    func setNotifications(item : Notifications){
+        if let imgUrl = item.image, !imgUrl.isEmpty {
+            if let imageUrl = URL(string: imageBasePath + imgUrl) {
+                self.imgNotification.kf.setImage(with: imageUrl)
+            }
+        }
+        self.lblDescription.text = item.description
+    }
    
 }
