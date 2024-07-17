@@ -14,8 +14,6 @@ class LaunchViewController: UIViewController {
         if let _ = RSOToken.shared.getToken(){
             RSOTabBarViewController.presentAsRootController()
         }else{
-            /*let deskListingVC = UIViewController.createController(storyBoard: .Products, ofType: RoomListingViewController.self)
-            self.navigationController?.pushViewController(deskListingVC, animated: true)*/
             GetStartedViewController.presentAsRootController()
         }
     }

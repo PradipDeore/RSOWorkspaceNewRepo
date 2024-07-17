@@ -179,12 +179,25 @@ extension SideMenuMainViewController: SideMenuViewControllerDelegate {
             self.navigationController?.pushViewController(aboutUsVC, animated: true)
            // Logout
         case "Logout":
-            let loginVC = UIViewController.createController(storyBoard: .GetStarted, ofType: LogInViewController.self)
-            self.navigationController?.pushViewController(loginVC, animated: true)
+          self.logout()
         default:
             break
         }
     }
+  func logout() {
+      let alertController = UIAlertController(title: "Logout", message: "Are you sure you want to logout?", preferredStyle: .alert)
+      
+      let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+      alertController.addAction(cancelAction)
+      
+      let logoutAction = UIAlertAction(title: "Logout", style: .destructive) { _ in
+        RSOToken.shared.clearAll()
+        GetStartedViewController.presentAsRootController()
+
+      }
+      alertController.addAction(logoutAction)
+      self.present(alertController, animated: true, completion: nil)
+  }
 }
 
 extension SideMenuMainViewController: UIGestureRecognizerDelegate {
