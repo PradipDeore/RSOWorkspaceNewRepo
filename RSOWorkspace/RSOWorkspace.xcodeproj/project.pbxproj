@@ -377,6 +377,7 @@
 		58F458512B91FD5C00CF8AFA /* BookRoomDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F458502B91FD5C00CF8AFA /* BookRoomDetailsViewController.swift */; };
 		58F88E402BA8230200771268 /* ReportAnIssueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F88E3F2BA8230200771268 /* ReportAnIssueViewController.swift */; };
 		58F96E242C479DFA009C4DC5 /* subServicesRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F96E232C479DFA009C4DC5 /* subServicesRequestModel.swift */; };
+		EEA44D812C4805530081EE0D /* RSOToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA44D802C4805530081EE0D /* RSOToastView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -754,6 +755,7 @@
 		58F88E3F2BA8230200771268 /* ReportAnIssueViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportAnIssueViewController.swift; sourceTree = "<group>"; };
 		58F96E232C479DFA009C4DC5 /* subServicesRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = subServicesRequestModel.swift; sourceTree = "<group>"; };
 		ED9F47D9AF3AEFFB5207EE9B /* Pods-RSOWorkspace.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RSOWorkspace.debug.xcconfig"; path = "Target Support Files/Pods-RSOWorkspace/Pods-RSOWorkspace.debug.xcconfig"; sourceTree = "<group>"; };
+		EEA44D802C4805530081EE0D /* RSOToastView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSOToastView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1096,10 +1098,10 @@
 		588D8A702B627A6B00545748 /* RSOWorkspace */ = {
 			isa = PBXGroup;
 			children = (
-				58EB0E382BB6D60800DC2827 /* SideMenu-IOS-Swift */,
 				58BAEB202B6CC83D000B140C /* Controller */,
 				58BAEB1E2B6CC82A000B140C /* StoryBoard */,
 				58BAEB1F2B6CC836000B140C /* Model */,
+				58EB0E382BB6D60800DC2827 /* SideMenu-IOS-Swift */,
 				58251BD22B861065002F7F28 /* Network */,
 				588D8A712B627A6B00545748 /* AppDelegate.swift */,
 				588D8A732B627A6B00545748 /* SceneDelegate.swift */,
@@ -1180,6 +1182,7 @@
 		58ACDB372B78C7550041B755 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				EEA44D802C4805530081EE0D /* RSOToastView.swift */,
 				58BEF25A2C47DDC500C78CF4 /* Extension */,
 				58E6E9342B88714D00EB3600 /* TabView */,
 				58ACDB382B78C78F0041B755 /* RSOButton.swift */,
@@ -2012,6 +2015,7 @@
 				58D513342BCA4C2C00B87739 /* PaymentRoomBookingRequest.swift in Sources */,
 				58EB2CEC2BA567CA00D69C46 /* OnDemandServiceCollectionViewCell.swift in Sources */,
 				58EB0E482BB6D62600DC2827 /* SideMenuCell.swift in Sources */,
+				EEA44D812C4805530081EE0D /* RSOToastView.swift in Sources */,
 				58F88E402BA8230200771268 /* ReportAnIssueViewController.swift in Sources */,
 				580418092BD0F004008EA858 /* ConfirmedDeskBookingViewController.swift in Sources */,
 				58C7C5072BAAA2A800CF6578 /* FindMembersTableViewCell.swift in Sources */,
