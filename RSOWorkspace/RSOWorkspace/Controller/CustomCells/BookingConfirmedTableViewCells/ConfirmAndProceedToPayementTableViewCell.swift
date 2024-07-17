@@ -22,6 +22,7 @@ class ConfirmAndProceedToPayementTableViewCell: UITableViewCell {
     }
 
     @IBAction func btnConfirmAndProceedTappedAction(_ sender: Any) {
-        delegate?.btnConfirmAndProceedTappedAction()
+      btnConfirmAndProceed.isEnabled = false
+      delegate?.btnConfirmAndProceedTappedAction()
     }
 }
