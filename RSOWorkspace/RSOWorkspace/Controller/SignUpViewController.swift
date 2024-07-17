@@ -30,8 +30,10 @@ class SignUpViewController: UIViewController {
       DispatchQueue.main.async {
         switch event {
         case .dataLoaded:
-          self.navigationController?.popViewController(animated: true)
           RSOToastView.shared.show("\(message)", duration: 2.0, position: .center)
+          DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+            self.navigationController?.popViewController(animated: true)
+          }
         case .error(_):
           RSOToastView.shared.show("\(message)", duration: 2.0, position: .center)
         }
