@@ -16,8 +16,6 @@ class OnDemandServicesViewController: UIViewController {
     var cornerRadius: CGFloat = 10.0
     
     var onDemandServiceArray:[Service] = []
-    //    let onDemandServicesName = ["IT Services", "PRO", "Courier","Stationery","Furniture","Chauffeur","Valet","Catering","Grocery","Housekeeping","Water","Refreshments"]
-    //    let onDemandImageArray = ["itServices", "pro", "courier","stationary","furniture","Chauffeur","valet","catering","grocery","housekeeping","water","refreshments"]
     
     var eventHandler: ((_ event: Event) -> Void)?
     
@@ -33,7 +31,7 @@ class OnDemandServicesViewController: UIViewController {
         collectionView.backgroundColor = .white
         
         customizeCell()
-        fetchServices()
+        fetchServices(serviceId: 1)
         
     }
     func customizeCell(){
@@ -43,11 +41,11 @@ class OnDemandServicesViewController: UIViewController {
         self.containerView.addShadow()
     }
     
-    private func fetchServices() {
+    private func fetchServices(serviceId:Int) {
         self.eventHandler?(.loading)
         APIManager.shared.request(
             modelType: ServiceResponse.self, // Assuming your API returns an array of Services
-            type: ServicesEndPoint.onDemandServices) { response in
+            type: ServicesEndPoint.onDemandServices(serviceId: serviceId)) { response in
                 self.eventHandler?(.stopLoading)
                 switch response {
                 case .success(let response):
