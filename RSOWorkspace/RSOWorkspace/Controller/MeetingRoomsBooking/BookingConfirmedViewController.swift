@@ -243,8 +243,8 @@ extension BookingConfirmedViewController {
 }
 extension BookingConfirmedViewController:ButtonEditTableViewCellDelegate{
     func navigateToBookingDetails() {
-        self.dismiss(animated:true)
-
+        //self.dismiss(animated:true)
+      self.navigationController?.popViewController(animated: true)
     }
 }
 extension BookingConfirmedViewController:ConfirmAndProceedToPayementTableViewCellDelegate{
