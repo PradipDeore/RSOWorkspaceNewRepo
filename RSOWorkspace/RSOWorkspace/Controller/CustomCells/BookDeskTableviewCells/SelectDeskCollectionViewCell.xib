@@ -16,17 +16,17 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SelectDeskCollectionViewCell" id="gTV-IL-0wX" customClass="SelectDeskCollectionViewCell" customModule="RSOWorkspace" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="108" height="62"/>
+            <rect key="frame" x="0.0" y="0.0" width="108" height="58"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="108" height="62"/>
+                <rect key="frame" x="0.0" y="0.0" width="108" height="58"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wld-vF-HKQ">
-                        <rect key="frame" x="0.0" y="5" width="100" height="50"/>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wld-vF-HKQ" customClass="ShadowedView" customModule="RSOWorkspace" customModuleProvider="target">
+                        <rect key="frame" x="5" y="5" width="98" height="48"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="C 100" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="amw-Cq-yAu">
-                                <rect key="frame" x="27.333333333333332" y="15.666666666666666" width="45.666666666666671" height="18.666666666666679"/>
+                                <rect key="frame" x="26.333333333333332" y="14.33333333333333" width="45.666666666666671" height="19.666666666666671"/>
                                 <fontDescription key="fontDescription" name="Inter-Bold" family="Inter" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -34,10 +34,8 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="50" id="4my-de-p3s"/>
-                            <constraint firstItem="amw-Cq-yAu" firstAttribute="centerY" secondItem="Wld-vF-HKQ" secondAttribute="centerY" id="TgH-H3-iQL"/>
-                            <constraint firstItem="amw-Cq-yAu" firstAttribute="centerX" secondItem="Wld-vF-HKQ" secondAttribute="centerX" id="iZG-Gf-reh"/>
-                            <constraint firstAttribute="width" constant="100" id="r9i-kL-eat"/>
+                            <constraint firstItem="amw-Cq-yAu" firstAttribute="centerY" secondItem="Wld-vF-HKQ" secondAttribute="centerY" id="dyU-fC-nmm"/>
+                            <constraint firstItem="amw-Cq-yAu" firstAttribute="centerX" secondItem="Wld-vF-HKQ" secondAttribute="centerX" id="jgZ-fw-yrI"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -45,21 +43,17 @@
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="Wld-vF-HKQ" secondAttribute="trailing" constant="10" id="48z-FU-vIy"/>
-                <constraint firstItem="Wld-vF-HKQ" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="FR2-rs-UZy"/>
-                <constraint firstItem="Wld-vF-HKQ" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="5" id="eXJ-RX-t19"/>
+                <constraint firstAttribute="bottom" secondItem="Wld-vF-HKQ" secondAttribute="bottom" constant="5" id="Ak3-Gg-qgR"/>
+                <constraint firstItem="Wld-vF-HKQ" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="L1y-mz-GBc"/>
+                <constraint firstItem="Wld-vF-HKQ" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="5" id="S39-i9-gYi"/>
+                <constraint firstAttribute="trailing" secondItem="Wld-vF-HKQ" secondAttribute="trailing" constant="5" id="dFn-4t-A1G"/>
             </constraints>
-            <size key="customSize" width="108" height="62"/>
-            <variation key="default">
-                <mask key="constraints">
-                    <exclude reference="48z-FU-vIy"/>
-                </mask>
-            </variation>
+            <size key="customSize" width="108" height="58"/>
             <connections>
                 <outlet property="deskNoView" destination="Wld-vF-HKQ" id="2cU-5T-OlJ"/>
                 <outlet property="lblDeskNo" destination="amw-Cq-yAu" id="zfv-UT-Kcc"/>
             </connections>
-            <point key="canvasLocation" x="-312.97709923664121" y="17.605633802816904"/>
+            <point key="canvasLocation" x="-319.08396946564886" y="16.197183098591552"/>
         </collectionViewCell>
     </objects>
 </document>

@@ -26,7 +26,7 @@ class RSOTabBarViewController: UIViewController {
     private var lastSelectedTabIndex = 0
     var scoreAPICount = 0
     var roomName = ""
-    private var tabButtons = [UIButton]()
+     var tabButtons = [UIButton]()
     private var viewControllers = [UIViewController]()
     
     override func viewDidLoad() {
@@ -100,7 +100,7 @@ class RSOTabBarViewController: UIViewController {
             button.leadingAnchor.constraint(equalTo: tabBarView.leadingAnchor, constant: CGFloat(originX)).isActive = true
         }
     }
-    @objc private func tabButtonTapped(_ sender: UIButton?) {
+    @objc  func tabButtonTapped(_ sender: UIButton?) {
         guard let sender = sender, let index = tabButtons.firstIndex(of: sender) else { return }
         // Update the selected tab button
         for (buttonIndex, button) in tabButtons.enumerated() {

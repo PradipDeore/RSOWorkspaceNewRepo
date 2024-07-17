@@ -16,7 +16,7 @@ class NotificationsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.coordinator?.hideBackButton(isHidden: false)
+       
         setupTableView()
         fetchNotifications()
     }
@@ -30,7 +30,8 @@ class NotificationsViewController: UIViewController {
         
     }
     @IBAction func backButtonAction(_ sender: Any) {
-      self.navigationController?.popViewController(animated: true)
+        self.navigationController?.popViewController(animated: true)
+        self.coordinator?.loadHomeScreen()
     }
     
     

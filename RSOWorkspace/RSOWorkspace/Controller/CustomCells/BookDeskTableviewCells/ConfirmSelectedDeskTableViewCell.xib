@@ -22,11 +22,11 @@
                 <rect key="frame" x="0.0" y="0.0" width="135" height="44"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jOf-H4-qLE">
-                        <rect key="frame" x="25" y="0.0" width="85" height="44"/>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jOf-H4-qLE" customClass="ShadowedView" customModule="RSOWorkspace" customModuleProvider="target">
+                        <rect key="frame" x="25" y="5" width="85" height="34"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="C 100" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZGW-O1-8AE">
-                                <rect key="frame" x="19.666666666666668" y="12.666666666666666" width="45.666666666666657" height="18.666666666666671"/>
+                                <rect key="frame" x="19.666666666666668" y="7.3333333333333339" width="45.666666666666657" height="19.666666666666664"/>
                                 <fontDescription key="fontDescription" name="Inter-Bold" family="Inter" pointSize="16"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
@@ -37,18 +37,23 @@
                             <constraint firstItem="ZGW-O1-8AE" firstAttribute="centerX" secondItem="jOf-H4-qLE" secondAttribute="centerX" id="5cg-Sc-eEy"/>
                             <constraint firstItem="ZGW-O1-8AE" firstAttribute="centerY" secondItem="jOf-H4-qLE" secondAttribute="centerY" id="lQw-Ci-jwt"/>
                         </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                <real key="value" value="10"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </view>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="bottom" secondItem="jOf-H4-qLE" secondAttribute="bottom" id="4be-3i-U0V"/>
+                    <constraint firstAttribute="bottom" secondItem="jOf-H4-qLE" secondAttribute="bottom" constant="5" id="4be-3i-U0V"/>
                     <constraint firstItem="jOf-H4-qLE" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="25" id="gRj-np-lco"/>
                     <constraint firstAttribute="trailing" secondItem="jOf-H4-qLE" secondAttribute="trailing" constant="25" id="izl-Rs-QYz"/>
-                    <constraint firstItem="jOf-H4-qLE" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="uv9-Z1-6Hn"/>
+                    <constraint firstItem="jOf-H4-qLE" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="uv9-Z1-6Hn"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="deskNoView" destination="jOf-H4-qLE" id="0YB-bR-WtF"/>
+                <outlet property="deskNoView" destination="jOf-H4-qLE" id="glg-6f-laW"/>
             </connections>
             <point key="canvasLocation" x="41.984732824427482" y="-20.422535211267608"/>
         </tableViewCell>

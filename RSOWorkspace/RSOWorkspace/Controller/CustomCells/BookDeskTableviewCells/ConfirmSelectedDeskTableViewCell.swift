@@ -9,18 +9,12 @@ import UIKit
 
 class ConfirmSelectedDeskTableViewCell: UITableViewCell {
 
-    var cornerRadius: CGFloat = 10.0
-    @IBOutlet weak var deskNoView: UIView!
+    @IBOutlet weak var deskNoView: ShadowedView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-       customizeCell()
+        
     }
-    func customizeCell(){
-        self.deskNoView.layer.cornerRadius = cornerRadius
-        self.deskNoView.layer.masksToBounds = true
-      
-        self.addShadow()
-    }
+   
     
 }
