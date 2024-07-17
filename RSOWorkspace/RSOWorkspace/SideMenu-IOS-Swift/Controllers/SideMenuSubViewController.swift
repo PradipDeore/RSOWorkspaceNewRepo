@@ -12,7 +12,8 @@ protocol SideMenuViewControllerDelegate {
 }
 class SideMenuSubViewController: UIViewController {
     
-    @IBOutlet var headerImageView: UIImageView!
+  @IBOutlet var roundedView: UIView!
+  @IBOutlet var headerImageView: UIImageView!
     @IBOutlet var sideMenuTableView: UITableView!
     @IBOutlet var footerLabel: UILabel!
    
@@ -46,7 +47,7 @@ class SideMenuSubViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+      roundedView.layer.cornerRadius = 35
         // TableView
         self.sideMenuTableView.delegate = self
         self.sideMenuTableView.dataSource = self

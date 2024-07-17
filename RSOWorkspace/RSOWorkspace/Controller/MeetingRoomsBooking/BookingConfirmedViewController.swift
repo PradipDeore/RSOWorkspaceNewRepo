@@ -40,7 +40,10 @@ class BookingConfirmedViewController: UIViewController{
         setupTableView()
         customizeCell()
     }
-    
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    self.tableView.reloadData()
+  }
     private func customizeCell(){
         containerView.layer.cornerRadius = cornerRadius
         containerView.layer.masksToBounds = true
@@ -189,7 +192,7 @@ extension BookingConfirmedViewController: UITableViewDataSource, UITableViewDele
             
         case .confirmAndProceedToPayment:
             let cell = tableView.dequeueReusableCell(withIdentifier: cellType.rawValue, for: indexPath) as! ConfirmAndProceedToPayementTableViewCell
-            // cell.selectionStyle = .none
+          cell.btnConfirmAndProceed.isEnabled = true
             cell.delegate = self
             cell.selectionStyle = .none
 
@@ -240,8 +243,8 @@ extension BookingConfirmedViewController {
 }
 extension BookingConfirmedViewController:ButtonEditTableViewCellDelegate{
     func navigateToBookingDetails() {
-        self.dismiss(animated:true)
-
+        //self.dismiss(animated:true)
+      self.navigationController?.popViewController(animated: true)
     }
 }
 extension BookingConfirmedViewController:ConfirmAndProceedToPayementTableViewCellDelegate{
