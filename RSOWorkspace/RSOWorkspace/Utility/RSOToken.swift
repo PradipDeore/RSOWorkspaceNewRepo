@@ -18,4 +18,7 @@ class RSOToken {
         print("token is \(token)")
         return token
     }
+  func clearAll() {
+    UserDefaults.standard.removeObject(forKey: "Token")
+  }
 }

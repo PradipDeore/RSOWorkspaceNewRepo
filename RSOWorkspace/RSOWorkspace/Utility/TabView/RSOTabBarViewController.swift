@@ -74,6 +74,7 @@ class RSOTabBarViewController: UIViewController {
         searchRSOVC.modalPresentationStyle = .overFullScreen
         searchRSOVC.modalTransitionStyle = .crossDissolve
         searchRSOVC.view.backgroundColor = UIColor.clear
+      searchRSOVC.searchDelegate = self
         self.present(searchRSOVC, animated: true)
     }
     private func setupTabBarView() {
@@ -142,3 +143,14 @@ class RSOTabBarViewController: UIViewController {
     }
 }
 
+extension RSOTabBarViewController: SearchingDelegate {
+  func didSearch(searchString: String) {
+    DispatchQueue.main.async {
+      let deskListingVC = UIViewController.createController(storyBoard: .Products, ofType: RoomListingViewController.self)
+      //deskListingVC.searchMeetingRooms = txtSearch
+      deskListingVC.coordinator = self.coordinator
+      deskListingVC.isSearchEnabled = true
+      self.navigationController?.pushViewController(deskListingVC, animated: false)
+    }
+  }
+}

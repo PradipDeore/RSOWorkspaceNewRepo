@@ -6,9 +6,12 @@
 //
 
 import UIKit
+protocol SearchingDelegate: AnyObject {
+  func didSearch(searchString: String)
+}
 
 class SearchRSOViewController: UIViewController {
-
+  weak var searchDelegate:SearchingDelegate?
     @IBOutlet weak var txtSearch: RSOTextField!
     @IBOutlet weak var btnSearch: RSOButton!
     var cornerRadius: CGFloat = 10.0
@@ -45,13 +48,12 @@ class SearchRSOViewController: UIViewController {
     
     @IBAction func btnSearchTappedAction(_ sender: Any) {
         //let selectedCompany = companiesListArray[index]
-        
+      self.dismiss(animated: false) {
+        self.searchDelegate?.didSearch(searchString: "")
+      }
         //if let txtSearch = txtSearch.text, !txtSearch.isEmpty{
             
-            let deskListingVC = UIViewController.createController(storyBoard: .Products, ofType: RoomListingViewController.self)
-           // deskListingVC.searchMeetingRooms = txtSearch 
-            deskListingVC.isSearchEnabled = true
-            self.present(deskListingVC, animated: true)
+
         //}
     }
 }

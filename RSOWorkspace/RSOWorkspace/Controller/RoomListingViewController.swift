@@ -120,7 +120,7 @@ class RoomListingViewController: UIViewController {
     @IBOutlet weak var searchBarHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var txtSearch: RSOTextField!
     @IBOutlet weak var collectionView: RSOMeetingRoomsCollectionView!
-    
+  var coordinator: RSOTabBarCordinator?
     @IBOutlet weak var txtSearchHeightConstraint: NSLayoutConstraint!
     
     var isSearchEnabled = false
@@ -189,7 +189,9 @@ extension  RoomListingViewController: BookButtonActionDelegate {
     }
     
     func showBookMeetingRoomsVC() {
-        
+      let bookMeetingRoomVC = UIViewController.createController(storyBoard: .Booking, ofType: BookMeetingRoomViewController.self)
+      bookMeetingRoomVC.coordinator = self.coordinator
+      navigationController?.pushViewController(bookMeetingRoomVC, animated: true)
     }
     
     func showLogInVC() {
