@@ -10,7 +10,7 @@ import UIKit
 class SideMenuMainViewController: UIViewController,RSOTabCoordinated {
     
     var coordinator: RSOTabBarCordinator?
-  
+    
     private var sideMenuViewController: SideMenuSubViewController!
     private var sideMenuRevealWidth: CGFloat = 300
     private var paddingForRotation: CGFloat = 110
@@ -21,13 +21,13 @@ class SideMenuMainViewController: UIViewController,RSOTabCoordinated {
     private var draggingIsEnabled: Bool = false
     private var panBaseLocation: CGFloat = 0.0
     private var revealSideMenuOnTop: Bool = true
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupSideMenu()
     }
     
-   
+    
     private func setupSideMenu() {
         addShadowView()
         addSideMenuViewController()
@@ -75,7 +75,7 @@ class SideMenuMainViewController: UIViewController,RSOTabCoordinated {
         let vc = UIViewController.createController(storyBoard: .TabBar, ofType: RSOTabBarViewController.self)
         view.insertSubview(vc.view, at: revealSideMenuOnTop ? 0 : 1)
         addChild(vc)
-
+        
         if !revealSideMenuOnTop {
             if isExpanded {
                 vc.view.frame.origin.x = sideMenuRevealWidth
@@ -115,9 +115,9 @@ class SideMenuMainViewController: UIViewController,RSOTabCoordinated {
             self.isExpanded = true
         }
     }
-
+    
     func hideMenu() {
-       // sideMenuShadowView.isHidden = true
+        // sideMenuShadowView.isHidden = true
         UIView.animate(withDuration: 0.5, animations: {
             self.sideMenuShadowView.alpha = 0.0
             if self.revealFromLeft {
@@ -138,12 +138,12 @@ class SideMenuMainViewController: UIViewController,RSOTabCoordinated {
 }
 
 extension SideMenuMainViewController: SideMenuViewControllerDelegate {
-   
+    
     func selectedCell(_ row: Int,menuTitle title:String) {
         DispatchQueue.main.async { self.sideMenuState(expanded: false) }
-       
+        
         switch title {
-       
+            
         case "My Profile": // My Profile
             let profileVC = UIViewController.createController(storyBoard: .Profile, ofType: ProfileViewController.self)
             self.navigationController?.pushViewController(profileVC, animated: true)
@@ -153,51 +153,55 @@ extension SideMenuMainViewController: SideMenuViewControllerDelegate {
         case "Schedule Visitors": // Scheduled Visitors
             let scheduleVisitorsVC = UIViewController.createController(storyBoard: .VisitorManagement, ofType: ScheduleVisitorsViewController.self)
             self.navigationController?.pushViewController(scheduleVisitorsVC, animated: true)
-       
+            
         case "My Visitors":
             let myvisitorsDetailsVC = UIViewController.createController(storyBoard: .VisitorManagement, ofType: MyVisitorsViewController.self)
             self.navigationController?.pushViewController(myvisitorsDetailsVC, animated: true)
-       
+            
         case "Amenities":
             let amenitiesVC = UIViewController.createController(storyBoard: .Feedback, ofType: AmenitiesViewController.self)
             self.navigationController?.pushViewController(amenitiesVC, animated: true)
-       
+            
+        case "Payments":
+            let paymentsVC = UIViewController.createController(storyBoard: .Payment, ofType: SideMenuPaymentsViewController.self)
+            self.navigationController?.pushViewController(paymentsVC, animated: true)
+            
         case "Feedback":
             let feedbackVC = UIViewController.createController(storyBoard: .Feedback, ofType: FeedbackViewController.self)
             self.navigationController?.pushViewController(feedbackVC, animated: true)
-       
+            
         case "FAQs":
             let faqVC = UIViewController.createController(storyBoard: .Feedback, ofType: FAQViewController.self)
             self.navigationController?.pushViewController(faqVC, animated: true)
-        
+            
         case "Locations":
             let locationVC = UIViewController.createController(storyBoard: .Feedback, ofType: LocationViewController.self)
             self.navigationController?.pushViewController(locationVC, animated: true)
-       
+            
         case "About Us":
             let aboutUsVC = UIViewController.createController(storyBoard: .Feedback, ofType: RSOWorkspaceViewController.self)
             self.navigationController?.pushViewController(aboutUsVC, animated: true)
-           // Logout
+            // Logout
         case "Logout":
-          self.logout()
+            self.logout()
         default:
             break
         }
     }
-  func logout() {
-      let alertController = UIAlertController(title: "Logout", message: "Are you sure you want to logout?", preferredStyle: .alert)
-      
-      let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-      alertController.addAction(cancelAction)
-      
-      let logoutAction = UIAlertAction(title: "Logout", style: .destructive) { _ in
-        RSOToken.shared.clearAll()
-        GetStartedViewController.presentAsRootController()
-
-      }
-      alertController.addAction(logoutAction)
-      self.present(alertController, animated: true, completion: nil)
-  }
+    func logout() {
+        let alertController = UIAlertController(title: "Logout", message: "Are you sure you want to logout?", preferredStyle: .alert)
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alertController.addAction(cancelAction)
+        
+        let logoutAction = UIAlertAction(title: "Logout", style: .destructive) { _ in
+            RSOToken.shared.clearAll()
+            GetStartedViewController.presentAsRootController()
+            
+        }
+        alertController.addAction(logoutAction)
+        self.present(alertController, animated: true, completion: nil)
+    }
 }
 
 extension SideMenuMainViewController: UIGestureRecognizerDelegate {
