@@ -25,11 +25,9 @@ class DeskListingViewController: UIViewController {
     // MARK: - Data Fetching
     
     func fetchOfficeDesk() {
-        collectionView.eventHandler?(.loading)
         APIManager.shared.request(
             modelType: OfficeItemsResponse.self,
             type: DeskBookingEndPoint.desks) { response in
-                self.collectionView.eventHandler?(.stopLoading)
                 switch response {
                 case .success(let response):
                     let deskList = response.data

@@ -25,6 +25,7 @@ class RoomListingViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    coordinator?.hideBackButton(isHidden: false)
     
     self.collectionView.backActionDelegate = self
     
@@ -39,15 +40,19 @@ class RoomListingViewController: UIViewController {
 
   }
   
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    coordinator?.setTitle(title: "Meeting Rooms")
+  }
+  
   // MARK: - Data Fetching
   
   func fetchRooms() {
-    collectionView.eventHandler?(.loading)
+    RSOLoader.showLoader()
     APIManager.shared.request(
       modelType: ResponseData.self,
       type: DeskEndPoint.meetingRooms) { response in
         DispatchQueue.main.async {
-          self.collectionView.eventHandler?(.stopLoading)
           switch response {
           case .success(let response):
             let roomList = response.data
@@ -57,9 +62,15 @@ class RoomListingViewController: UIViewController {
             if !self.searchingText.isEmpty {
               self.filterMeetingRooms(searchText: self.searchingText)
             }
+            DispatchQueue.main.async {
+              RSOLoader.removeLoader()
+            }
             self.collectionView.eventHandler?(.dataLoaded)
           case .failure(let error):
             self.collectionView.eventHandler?(.error(error))
+            DispatchQueue.main.async {
+              RSOLoader.removeLoader()
+            }
           }
         }
       }
@@ -67,8 +78,6 @@ class RoomListingViewController: UIViewController {
 }
 extension RoomListingViewController {
     enum Event {
-        case loading
-        case stopLoading
         case dataLoaded
         case error(Error?)
     }

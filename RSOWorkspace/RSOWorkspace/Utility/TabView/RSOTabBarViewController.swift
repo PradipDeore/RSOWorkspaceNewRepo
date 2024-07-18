@@ -143,11 +143,12 @@ class RSOTabBarViewController: UIViewController {
 extension RSOTabBarViewController: SearchingDelegate {
   func didSearch(searchString: String) {
     DispatchQueue.main.async {
+      guard let currentNavcontroller = self.viewControllers.first as? UINavigationController else { return }
       let roomListingVC = UIViewController.createController(storyBoard: .Products, ofType: RoomListingViewController.self)
       roomListingVC.searchingText = searchString
       roomListingVC.coordinator = self.coordinator
       roomListingVC.isSearchEnabled = true
-      self.navigationController?.pushViewController(roomListingVC, animated: false)
+      currentNavcontroller.pushViewController(roomListingVC, animated: false)
     }
   }
 }
