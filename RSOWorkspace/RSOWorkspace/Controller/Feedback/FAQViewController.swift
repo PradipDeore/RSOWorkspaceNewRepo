@@ -12,7 +12,14 @@ class FAQViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     var eventHandler: ((_ event: Event) -> Void)?
-    var myFAQResponse: FAQResponse?
+    var myFAQResponse: FAQResponse? {
+        didSet {
+            isExpandedArray = Array(repeating: false, count: myFAQResponse?.data.count ?? 0)
+        }
+    }
+    
+    var isExpandedArray: [Bool] = []
+   
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
@@ -31,7 +38,7 @@ class FAQViewController: UIViewController {
     }
     
     private func registerTableCells() {
-        let cellIdentifiers = ["FAQTableViewCell"]
+        let cellIdentifiers = ["FAQTitleTableViewCell","FAQDescriptionTableViewCell"]
         for identifier in cellIdentifiers {
             tableView.register(UINib(nibName: identifier, bundle: nil), forCellReuseIdentifier: identifier)
         }
@@ -45,7 +52,7 @@ class FAQViewController: UIViewController {
                 switch response {
                 case .success(let response):
                     self.myFAQResponse = response
-                   // print ("myProfileResponseCount",self.myProfileResponse)
+                    // print ("myProfileResponseCount",self.myProfileResponse)
                     DispatchQueue.main.async {
                         self.tableView.reloadData()
                     }
@@ -59,75 +66,60 @@ class FAQViewController: UIViewController {
 extension FAQViewController: UITableViewDataSource, UITableViewDelegate {
     
     enum SectionType: Int, CaseIterable {
-        case faq = 0
+        case faqTitle = 0
+        case faqDescription
         
         var cellIdentifier: String {
             switch self {
-            case .faq: return "FAQTableViewCell"
+            case .faqTitle: return "FAQTitleTableViewCell"
+            case .faqDescription: return "FAQDescriptionTableViewCell"
             }
         }
         
         var heightForRow: CGFloat {
             switch self {
-            case .faq: return 191
-         
+            case .faqTitle: return 72
+            case .faqDescription:return 191
+                
             }
         }
     }
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return SectionType.allCases.count
-    }
+
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 10
     }
     
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        return UIView()
-    }
+    func numberOfSections(in tableView: UITableView) -> Int {
+            return 1 // Ensure only one section is present
+        }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return myFAQResponse?.data.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let section = SectionType(rawValue: indexPath.section) else {
-            return UITableViewCell()
+        guard let item = myFAQResponse?.data[indexPath.row] else { return UITableViewCell() }
+        
+        if isExpandedArray[indexPath.row] {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "FAQDescriptionTableViewCell", for: indexPath) as! FAQDescriptionTableViewCell
+            cell.setData(item: item)
+            cell.selectionStyle = .none
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "FAQTitleTableViewCell", for: indexPath) as! FAQTitleTableViewCell
+            cell.setData(item: item)
+            cell.selectionStyle = .none
+            return cell
         }
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: section.cellIdentifier, for: indexPath)
-        
-        switch section {
-        case .faq:
-            if let faqCell = cell as? FAQTableViewCell {
-                
-                let item = myFAQResponse?.data[indexPath.row]
-             
-                if let faq = item{
-                    faqCell.setData(item: faq)
-                }
-                if indexPath.row == 0{
-                    faqCell.containerView.backgroundColor = .E_3_E_3_E_3
-                }
-                else{
-                    faqCell.containerView.backgroundColor = .white
-
-                }
-                return faqCell
-            }
-        
-        default:
-            break
-        }
-        return cell
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        isExpandedArray[indexPath.row].toggle() // Toggle the expanded state
+        tableView.reloadRows(at: [indexPath], with: .automatic)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        guard let section = SectionType(rawValue: indexPath.section) else {
-            return 100
-        }
-        return section.heightForRow
+        return isExpandedArray[indexPath.row] ? 191 : 72
     }
 }
 
