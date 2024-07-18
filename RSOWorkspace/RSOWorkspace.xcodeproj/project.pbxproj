@@ -164,8 +164,8 @@
 		588D8A7E2B627A6D00545748 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 588D8A7C2B627A6D00545748 /* LaunchScreen.storyboard */; };
 		589464102BA57CA500DC6472 /* ConciergeStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5894640F2BA57CA500DC6472 /* ConciergeStoryboard.storyboard */; };
 		589BBA9C2BBBEE7C00DCEF70 /* FAQViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589BBA9B2BBBEE7C00DCEF70 /* FAQViewController.swift */; };
-		589BBAA02BBBEF3D00DCEF70 /* FAQTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589BBA9E2BBBEF3D00DCEF70 /* FAQTableViewCell.swift */; };
-		589BBAA12BBBEF3D00DCEF70 /* FAQTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 589BBA9F2BBBEF3D00DCEF70 /* FAQTableViewCell.xib */; };
+		589BBAA02BBBEF3D00DCEF70 /* FAQTitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589BBA9E2BBBEF3D00DCEF70 /* FAQTitleTableViewCell.swift */; };
+		589BBAA12BBBEF3D00DCEF70 /* FAQTitleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 589BBA9F2BBBEF3D00DCEF70 /* FAQTitleTableViewCell.xib */; };
 		589BBAA32BBBF54C00DCEF70 /* FAQEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589BBAA22BBBF54C00DCEF70 /* FAQEndPoint.swift */; };
 		589BBAA52BBBF64C00DCEF70 /* FAQResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589BBAA42BBBF64C00DCEF70 /* FAQResponse.swift */; };
 		589FB6872B763EBA0067255E /* GetStartedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589FB6862B763EBA0067255E /* GetStartedViewController.swift */; };
@@ -228,6 +228,8 @@
 		58BB6B172B986CB3001E1F3D /* PaymentMethodTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58BB6B152B986CB3001E1F3D /* PaymentMethodTableViewCell.xib */; };
 		58BB6B1A2B986D1B001E1F3D /* MeetingTimeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58BB6B182B986D1B001E1F3D /* MeetingTimeTableViewCell.swift */; };
 		58BB6B1B2B986D1B001E1F3D /* MeetingTimeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58BB6B192B986D1B001E1F3D /* MeetingTimeTableViewCell.xib */; };
+		58BCBC182C48F27000465381 /* FAQDescriptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58BCBC162C48F27000465381 /* FAQDescriptionTableViewCell.swift */; };
+		58BCBC192C48F27000465381 /* FAQDescriptionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58BCBC172C48F27000465381 /* FAQDescriptionTableViewCell.xib */; };
 		58BCFBB42B7A215F00342275 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58BCFBB32B7A215F00342275 /* LogInViewController.swift */; };
 		58BE5E682B8C6FBF002244F5 /* RSOMeetingRoomsCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58BE5E672B8C6FBF002244F5 /* RSOMeetingRoomsCollectionView.swift */; };
 		58BE90C32B9F0551001FCE54 /* RSOCollectionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58BE90C22B9F0551001FCE54 /* RSOCollectionItem.swift */; };
@@ -539,8 +541,8 @@
 		588D8A7F2B627A6D00545748 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5894640F2BA57CA500DC6472 /* ConciergeStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ConciergeStoryboard.storyboard; sourceTree = "<group>"; };
 		589BBA9B2BBBEE7C00DCEF70 /* FAQViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQViewController.swift; sourceTree = "<group>"; };
-		589BBA9E2BBBEF3D00DCEF70 /* FAQTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FAQTableViewCell.swift; path = RSOWorkspace/Controller/Feedback/FAQTableViewCell.swift; sourceTree = SOURCE_ROOT; };
-		589BBA9F2BBBEF3D00DCEF70 /* FAQTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = FAQTableViewCell.xib; path = RSOWorkspace/Controller/Feedback/FAQTableViewCell.xib; sourceTree = SOURCE_ROOT; };
+		589BBA9E2BBBEF3D00DCEF70 /* FAQTitleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FAQTitleTableViewCell.swift; path = RSOWorkspace/Controller/Feedback/FAQTitleTableViewCell.swift; sourceTree = SOURCE_ROOT; };
+		589BBA9F2BBBEF3D00DCEF70 /* FAQTitleTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = FAQTitleTableViewCell.xib; path = RSOWorkspace/Controller/Feedback/FAQTitleTableViewCell.xib; sourceTree = SOURCE_ROOT; };
 		589BBAA22BBBF54C00DCEF70 /* FAQEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQEndPoint.swift; sourceTree = "<group>"; };
 		589BBAA42BBBF64C00DCEF70 /* FAQResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQResponse.swift; sourceTree = "<group>"; };
 		589FB6862B763EBA0067255E /* GetStartedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetStartedViewController.swift; sourceTree = "<group>"; };
@@ -602,6 +604,8 @@
 		58BB6B152B986CB3001E1F3D /* PaymentMethodTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PaymentMethodTableViewCell.xib; sourceTree = "<group>"; };
 		58BB6B182B986D1B001E1F3D /* MeetingTimeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingTimeTableViewCell.swift; sourceTree = "<group>"; };
 		58BB6B192B986D1B001E1F3D /* MeetingTimeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MeetingTimeTableViewCell.xib; sourceTree = "<group>"; };
+		58BCBC162C48F27000465381 /* FAQDescriptionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FAQDescriptionTableViewCell.swift; path = RSOWorkspace/Controller/CustomCells/FAQDescriptionTableViewCell.swift; sourceTree = SOURCE_ROOT; };
+		58BCBC172C48F27000465381 /* FAQDescriptionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = FAQDescriptionTableViewCell.xib; path = RSOWorkspace/Controller/CustomCells/FAQDescriptionTableViewCell.xib; sourceTree = SOURCE_ROOT; };
 		58BCFBB32B7A215F00342275 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		58BE5E672B8C6FBF002244F5 /* RSOMeetingRoomsCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSOMeetingRoomsCollectionView.swift; sourceTree = "<group>"; };
 		58BE90C22B9F0551001FCE54 /* RSOCollectionItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSOCollectionItem.swift; sourceTree = "<group>"; };
@@ -1128,8 +1132,10 @@
 		589BBA9D2BBBEEF600DCEF70 /* FAQCustomTableViewCells */ = {
 			isa = PBXGroup;
 			children = (
-				589BBA9E2BBBEF3D00DCEF70 /* FAQTableViewCell.swift */,
-				589BBA9F2BBBEF3D00DCEF70 /* FAQTableViewCell.xib */,
+				589BBA9E2BBBEF3D00DCEF70 /* FAQTitleTableViewCell.swift */,
+				589BBA9F2BBBEF3D00DCEF70 /* FAQTitleTableViewCell.xib */,
+				58BCBC162C48F27000465381 /* FAQDescriptionTableViewCell.swift */,
+				58BCBC172C48F27000465381 /* FAQDescriptionTableViewCell.xib */,
 			);
 			path = FAQCustomTableViewCells;
 			sourceTree = "<group>";
@@ -1829,6 +1835,7 @@
 				588D8A7B2B627A6D00545748 /* Assets.xcassets in Resources */,
 				581D97DB2BA3391B00EDDC3B /* AmenityPriceTableViewCell.xib in Resources */,
 				588333902B7E08E6008334A0 /* Inter-Thin.ttf in Resources */,
+				58BCBC192C48F27000465381 /* FAQDescriptionTableViewCell.xib in Resources */,
 				581F30BE2BBFBE240083A400 /* ReasonForVisitTableViewCell.xib in Resources */,
 				588D8A792B627A6B00545748 /* Main.storyboard in Resources */,
 				583403AE2B99EFC100318BB8 /* CancelAndRequestButtonTableViewCell.xib in Resources */,
@@ -1837,7 +1844,7 @@
 				58713EAB2BC926550012DD4E /* SelectDesksTableViewCell.xib in Resources */,
 				58A16CD42BBC7D5B0003DD50 /* LocationOpenTableViewCell.xib in Resources */,
 				589FB6A02B7644A90067255E /* Poppins-BoldItalic.ttf in Resources */,
-				589BBAA12BBBEF3D00DCEF70 /* FAQTableViewCell.xib in Resources */,
+				589BBAA12BBBEF3D00DCEF70 /* FAQTitleTableViewCell.xib in Resources */,
 				58713EB52BC94AA20012DD4E /* InviteGuestsCollectionViewCell.xib in Resources */,
 				58E2D0E22BBA89AD0016DEB6 /* RewardPointsTableViewCell.xib in Resources */,
 				589FB6A22B7644A90067255E /* Poppins-Medium.ttf in Resources */,
@@ -2118,7 +2125,7 @@
 				5843D7662BC6C7F600D5C8DD /* ConfirmAndProceedTableViewCell.swift in Sources */,
 				58BF55992BCFEC8D00524828 /* DeskListingViewController.swift in Sources */,
 				589BBAA32BBBF54C00DCEF70 /* FAQEndPoint.swift in Sources */,
-				589BBAA02BBBEF3D00DCEF70 /* FAQTableViewCell.swift in Sources */,
+				589BBAA02BBBEF3D00DCEF70 /* FAQTitleTableViewCell.swift in Sources */,
 				58BF85232B875D5B009FF06C /* SignUpRequestModel.swift in Sources */,
 				58B461562B80A91200C3FF21 /* RSOSocialButton.swift in Sources */,
 				58E2D0CF2BBA6ABD0016DEB6 /* ProfileViewController.swift in Sources */,
@@ -2143,6 +2150,7 @@
 				58ACDB3B2B78D10A0041B755 /* Constants.swift in Sources */,
 				58B6A7CA2BCE5412008A2286 /* StatusTypeEnum.swift in Sources */,
 				58BE5E682B8C6FBF002244F5 /* RSOMeetingRoomsCollectionView.swift in Sources */,
+				58BCBC182C48F27000465381 /* FAQDescriptionTableViewCell.swift in Sources */,
 				58ED2D1F2B8F4C1D004D06C8 /* MyBookingEndPoint.swift in Sources */,
 				586FA7042BBC28DA00EA2772 /* aboutRSOTableViewCell.swift in Sources */,
 				58ED2D232B8F50CE004D06C8 /* BookingResponse.swift in Sources */,
@@ -2338,6 +2346,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;

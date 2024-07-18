@@ -13,12 +13,7 @@ class LocationOpenTableViewCell: UITableViewCell {
     @IBOutlet weak var lblLocation: UILabel!
     @IBOutlet weak var btnLocationArrow: UIButton!
     var cornerRadius: CGFloat = 10.0
-    var isExpanded: Bool = false {
-           didSet {
-               // Update the cell UI based on the expansion state
-               // For example, show or hide additional content
-           }
-       }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         customizeCell()

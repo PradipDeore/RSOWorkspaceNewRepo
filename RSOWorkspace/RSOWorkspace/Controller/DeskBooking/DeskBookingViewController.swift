@@ -313,15 +313,12 @@ extension DeskBookingViewController:sendteamMemberNameDelegate{
 }
 extension DeskBookingViewController:SelectedDeskTableViewCellDelegate{
     func getselectedDeskNo(selectedDeskNo: [Int]) {
-        
-    }
-    
-    func getselectedDeskNo(selectedDeskNo: String) {
-        //self.selectedDeskNo = selectedDeskNo
-        let selectedDeskNoInt = Int(selectedDeskNo)
+        //let selectedDeskNoInt = Int(selectedDeskNo)
        // apiRequestModelDeskListing.desk_id = selectedDeskNoInt
         self.displayBookingDetailsNextScreen.teamMembersArray = teamMembersArray
     }
+    
+    
 }
 extension DeskBookingViewController: GetRoomsBtnTableViewCellDelegate {
     func getMeetingRooms() {

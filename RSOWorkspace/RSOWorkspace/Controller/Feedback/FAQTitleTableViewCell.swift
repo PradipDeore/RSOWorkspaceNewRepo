@@ -7,10 +7,9 @@
 
 import UIKit
 
-class FAQTableViewCell: UITableViewCell {
+class FAQTitleTableViewCell: UITableViewCell {
 
     @IBOutlet weak var lbltitle: UILabel!
-    @IBOutlet weak var lblDescription: UILabel!
     @IBOutlet weak var containerView: UIView!
     var cornerRadius: CGFloat = 10.0
 
@@ -20,7 +19,6 @@ class FAQTableViewCell: UITableViewCell {
     }
     func setData(item: FaqData){
         self.lbltitle.text = item.title
-        self.lblDescription.text = item.description
         
     }
     func customizeCell(){
