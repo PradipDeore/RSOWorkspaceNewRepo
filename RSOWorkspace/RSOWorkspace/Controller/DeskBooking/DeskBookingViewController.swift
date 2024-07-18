@@ -206,7 +206,7 @@ extension DeskBookingViewController: UITableViewDataSource, UITableViewDelegate 
         case .btnGetRooms:
             return 46
         case .selectDesks:
-            return 70
+            return 80
         case .buttonbookingConfirm:
             return 50
         }

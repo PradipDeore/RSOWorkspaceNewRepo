@@ -23,32 +23,46 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notifications" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IO8-ZV-tEZ">
-                                <rect key="frame" x="25" y="69" width="343" height="31"/>
+                                <rect key="frame" x="25" y="79" width="343" height="31"/>
                                 <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="22"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="0kT-DM-gO2">
-                                <rect key="frame" x="0.0" y="128" width="393" height="724"/>
+                                <rect key="frame" x="0.0" y="138" width="393" height="714"/>
                                 <color key="backgroundColor" name="F2F2F2"/>
                                 <connections>
                                     <outlet property="dataSource" destination="Y6W-OH-hqX" id="dt8-Gi-TL4"/>
                                     <outlet property="delegate" destination="Y6W-OH-hqX" id="lQQ-Dh-OQO"/>
                                 </connections>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vTY-ZS-PXe">
+                                <rect key="frame" x="16" y="50" width="45" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="45" id="GqG-pK-kcd"/>
+                                    <constraint firstAttribute="height" constant="24" id="zul-E9-GkL"/>
+                                </constraints>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" image="backArrow"/>
+                                <connections>
+                                    <action selector="backButtonAction:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="fA4-vK-9gW"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" name="F2F2F2"/>
                         <constraints>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="IO8-ZV-tEZ" secondAttribute="trailing" constant="25" id="0TV-Aa-MIA"/>
-                            <constraint firstItem="IO8-ZV-tEZ" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="10" id="8Jm-ec-Xcb"/>
+                            <constraint firstItem="IO8-ZV-tEZ" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="20" id="8Jm-ec-Xcb"/>
                             <constraint firstItem="0kT-DM-gO2" firstAttribute="top" secondItem="IO8-ZV-tEZ" secondAttribute="bottom" constant="28" id="LOA-yV-hjq"/>
                             <constraint firstItem="0kT-DM-gO2" firstAttribute="top" relation="greaterThanOrEqual" secondItem="IO8-ZV-tEZ" secondAttribute="bottom" constant="25" id="TZp-QV-mdW"/>
+                            <constraint firstItem="vTY-ZS-PXe" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="W5u-xC-til"/>
                             <constraint firstAttribute="bottom" secondItem="0kT-DM-gO2" secondAttribute="bottom" id="foU-UX-znK"/>
                             <constraint firstItem="IO8-ZV-tEZ" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="25" id="jhX-c8-HfJ"/>
                             <constraint firstItem="0kT-DM-gO2" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="m7b-WZ-RZK"/>
                             <constraint firstItem="0kT-DM-gO2" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="pja-7U-8ak"/>
                             <constraint firstItem="0kT-DM-gO2" firstAttribute="top" secondItem="IO8-ZV-tEZ" secondAttribute="bottom" id="soN-8u-tA5"/>
+                            <constraint firstItem="vTY-ZS-PXe" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" constant="50" id="tez-ex-Wxv"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
@@ -67,6 +81,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="backArrow" width="27" height="24"/>
         <namedColor name="F2F2F2">
             <color red="0.94900000095367432" green="0.94900000095367432" blue="0.94900000095367432" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

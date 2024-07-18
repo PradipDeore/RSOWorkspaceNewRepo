@@ -10,9 +10,7 @@ import UIKit
 
 protocol RSOTabCoordinated: AnyObject {
     var coordinator: RSOTabBarCordinator? { get set }
-    
 }
-
 class RSOTabBarCordinator {
     private let tabBarController: RSOTabBarViewController
     init(tabBarController: RSOTabBarViewController) {
@@ -44,6 +42,9 @@ class RSOTabBarCordinator {
     }
     func setTitle(title:String){
         self.tabBarController.lblGreeting.text = title
+    }
+    func loadHomeScreen(){
+      self.tabBarController.tabButtonTapped( self.tabBarController.tabButtons.first)
     }
     
 }
