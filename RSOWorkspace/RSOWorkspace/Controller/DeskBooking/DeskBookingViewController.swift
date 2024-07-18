@@ -30,11 +30,9 @@ enum SectionTypeDeskBooking: Int, CaseIterable {
     case selectDesks
     case buttonbookingConfirm
 }
-
 class DeskBookingViewController: UIViewController{
     
     var coordinator: RSOTabBarCordinator?
-    
     var teamMemberNameDelegate:sendteamMemberNameDelegate?
    
     @IBOutlet weak var tableView: UITableView!
@@ -49,7 +47,7 @@ class DeskBookingViewController: UIViewController{
 
     var selectedDeskId = 0
     var selectedLocation = ""
-    
+    var selectedDeskNo = ""
     // var selectedMeetingRoomDate = ""
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -177,7 +175,7 @@ extension DeskBookingViewController: UITableViewDataSource, UITableViewDelegate 
             return cell
         case .selectDesks:
             let cell =  tableView.dequeueReusableCell(withIdentifier: CellIdentifierDeskBooking.selectDesks.rawValue, for: indexPath) as! SelectDesksTableViewCell
-            
+            cell.delegate = self
             return cell
         case .buttonbookingConfirm:
             let cell =  tableView.dequeueReusableCell(withIdentifier: CellIdentifierDeskBooking.buttonbookingConfirm.rawValue, for: indexPath) as! ButtonBookingConfirmTableViewCell
@@ -308,11 +306,22 @@ extension DeskBookingViewController:sendteamMemberNameDelegate{
             }
             teamMembersArray.append(name)
             //self.confirmBookingDetails.teamMembers = teamMembersArray
-            self.displayBookingDetailsNextScreen.teamMembersArray = teamMembersArray
+       // apiRequestModelDeskListing.teammembers = teamMembersArray
+        self.displayBookingDetailsNextScreen.teamMembersArray = teamMembersArray
             tableView.reloadData()
         }
+}
+extension DeskBookingViewController:SelectedDeskTableViewCellDelegate{
+    func getselectedDeskNo(selectedDeskNo: [Int]) {
+        
+    }
     
-  
+    func getselectedDeskNo(selectedDeskNo: String) {
+        //self.selectedDeskNo = selectedDeskNo
+        let selectedDeskNoInt = Int(selectedDeskNo)
+       // apiRequestModelDeskListing.desk_id = selectedDeskNoInt
+        self.displayBookingDetailsNextScreen.teamMembersArray = teamMembersArray
+    }
 }
 extension DeskBookingViewController: GetRoomsBtnTableViewCellDelegate {
     func getMeetingRooms() {

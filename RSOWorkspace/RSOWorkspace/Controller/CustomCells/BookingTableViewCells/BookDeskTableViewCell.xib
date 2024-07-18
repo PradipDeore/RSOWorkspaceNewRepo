@@ -56,7 +56,7 @@
                                 </constraints>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" name="E3E3E3"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="B7C-rY-MAJ" firstAttribute="leading" secondItem="MYC-29-YcB" secondAttribute="leading" constant="25" id="0jK-h1-3jn"/>
                             <constraint firstItem="rpW-E3-fCn" firstAttribute="top" secondItem="MYC-29-YcB" secondAttribute="top" constant="10" id="8jc-En-ejU"/>
@@ -87,9 +87,6 @@
         <image name="desk" width="36" height="34"/>
         <namedColor name="616161">
             <color red="0.37999999523162842" green="0.37999999523162842" blue="0.37999999523162842" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="E3E3E3">
-            <color red="0.88999998569488525" green="0.88999998569488525" blue="0.88999998569488525" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>
