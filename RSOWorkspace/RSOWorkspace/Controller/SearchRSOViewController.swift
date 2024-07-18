@@ -51,9 +51,5 @@ class SearchRSOViewController: UIViewController {
       self.dismiss(animated: false) {
         self.searchDelegate?.didSearch(searchString: self.txtSearch.text ?? "")
       }
-        //if let txtSearch = txtSearch.text, !txtSearch.isEmpty{
-            
-
-        //}
     }
 }

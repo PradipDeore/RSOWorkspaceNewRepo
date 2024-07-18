@@ -155,6 +155,7 @@
                         <outlet property="tabBarView" destination="dEu-My-SzU" id="fDK-Ei-2Nx"/>
                         <outlet property="titleLabelLeadingConstaint" destination="hEa-M1-qbY" id="2Id-t0-Kt4"/>
                         <outlet property="topBarView" destination="NH0-sq-1of" id="6rn-cY-4Hf"/>
+                        <outlet property="topbarHeightConstraint" destination="PsQ-Mn-Rvs" id="dHx-Cw-xTs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

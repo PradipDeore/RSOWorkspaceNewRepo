@@ -22,11 +22,9 @@ class DashboardMeetingRoomsTableViewCell: UITableViewCell {
     }
 
     func fetchRooms() {
-        collectionView.eventHandler?(.loading)
         APIManager.shared.request(
             modelType: ResponseData.self,
             type: DeskEndPoint.meetingRooms) { response in
-                self.collectionView.eventHandler?(.stopLoading)
                 switch response {
                 case .success(let response):
                     let roomList = response.data
@@ -39,11 +37,9 @@ class DashboardMeetingRoomsTableViewCell: UITableViewCell {
             }
     }
     func fetchOfficeDesk() {
-        collectionView.eventHandler?(.loading)
         APIManager.shared.request(
             modelType: OfficeItemsResponse.self,
             type: DeskBookingEndPoint.desks) { response in
-                self.collectionView.eventHandler?(.stopLoading)
                 switch response {
                 case .success(let response):
                     let deskList = response.data

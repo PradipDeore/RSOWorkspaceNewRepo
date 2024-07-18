@@ -40,6 +40,13 @@ class RSOTabBarCordinator {
             self.tabBarController.titleLabelLeadingConstaint.constant = 0
         }
     }
+  func hideTopViewForHome(isHidden : Bool) {
+      if isHidden {
+        self.tabBarController.topbarHeightConstraint.constant = 0
+      } else {
+        self.tabBarController.topbarHeightConstraint.constant = 50
+      }
+  }
     func setTitle(title:String){
         self.tabBarController.lblGreeting.text = title
     }
@@ -47,4 +54,11 @@ class RSOTabBarCordinator {
       self.tabBarController.tabButtonTapped( self.tabBarController.tabButtons.first)
     }
     
+  func getInnerNavigationVC(at index: Int) -> UINavigationController? {
+    if index < self.tabBarController.viewControllers.count {
+      let navVC = self.tabBarController.viewControllers[index] as? UINavigationController
+      return navVC
+    }
+    return nil
+  }
 }

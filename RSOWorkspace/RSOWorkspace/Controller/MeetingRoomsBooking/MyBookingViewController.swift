@@ -58,13 +58,11 @@ class MyBookingViewController: UIViewController {
         setButtonAppearance(button: btnWorkDesk, backgroundColor: defaultButtonColor, textColor: .white)
     }
     func myBookingListingAPI() {
-        eventHandler?(.loading)
+      RSOLoader.showLoader()
         APIManager.shared.request(
             modelType: MyBookingResponse.self,
             type: MyBookingEndPoint.myBookingListing) { [weak self] response in
                 guard let self = self else { return }
-                self.eventHandler?(.stopLoading)
-                
                 switch response {
                 case .success(let responseData):
                     let bookings = responseData
@@ -72,8 +70,7 @@ class MyBookingViewController: UIViewController {
                         DispatchQueue.main.async {
                             self.myBookingResponseData = bookings
                             self.reloadData()
-                           
-                            //RSOToastView.shared.show("\(responseData.status)", duration: 2.0, position: .center)
+                          RSOLoader.removeLoader()
                         }
                     
                         self.eventHandler?(.dataLoaded)
@@ -81,6 +78,7 @@ class MyBookingViewController: UIViewController {
                 case .failure(let error):
                     self.eventHandler?(.error(error))
                     DispatchQueue.main.async {
+                      RSOLoader.removeLoader()
                         RSOToastView.shared.show("\(error.localizedDescription)", duration: 2.0, position: .center)
                     }
                 }
@@ -190,8 +188,6 @@ extension MyBookingViewController: UITableViewDataSource, UITableViewDelegate {
 
 extension MyBookingViewController {
     enum Event {
-        case loading
-        case stopLoading
         case dataLoaded
         case error(Error?)
     }
