@@ -10,7 +10,7 @@ import Kingfisher
 class subServicesViewController: UIViewController {
     
     var coordinator: RSOTabBarCordinator?
-
+    
     @IBOutlet weak var lblSubService: UILabel!
     @IBOutlet weak var imgService: UIImageView!
     @IBOutlet weak var containerView: UIView!
@@ -27,7 +27,7 @@ class subServicesViewController: UIViewController {
     var eventHandler: ((_ event: Event) -> Void)?
     var service: Service?
     var cornerRadius: CGFloat = 10.0
-    
+    var serviceId = 0
     override func viewDidLoad() {
         super.viewDidLoad()
         coordinator?.hideBackButton(isHidden:false)
@@ -73,6 +73,7 @@ class subServicesViewController: UIViewController {
             let action = UIAlertAction(title: option.title, style: .default) { [weak self] _ in
                 print("Selected option: \(option.title)")
                 self?.txtSubServices.text = option.title
+                self?.serviceId = option.id
             }
             alertController.addAction(action)
         }
@@ -81,7 +82,7 @@ class subServicesViewController: UIViewController {
         self.present(alertController, animated: true)
     }
     private func areFieldsValid() -> Bool {
-       
+        
         guard let subServiceText = txtSubServices.text, !subServiceText.isEmpty else {
             RSOToastView.shared.show("Please select a sub-service", duration: 2.0, position: .center)
             return false
@@ -90,45 +91,53 @@ class subServicesViewController: UIViewController {
             RSOToastView.shared.show("Please provide details about the issue", duration: 2.0, position: .center)
             return false
         }
-
+        subServicesAPI(service_id :serviceId, description:detailsText)
+        
         return true
+        
     }
     @IBAction func btnRequestActionTapped(_ sender: Any) {
-            guard areFieldsValid() else {
-                return
+        
+        guard areFieldsValid() else {
+            return
+        }
+        
+    }
+    func subServicesAPI(service_id :Int,description:String) {
+        self.eventHandler?(.loading)
+        let requestModel = subServicesRequestModel(service_id: service_id,description:description)
+        print("requestModel",requestModel)
+        APIManager.shared.request(
+            modelType: ReportAnIssueResponse.self,
+            type: ServicesEndPoint.subServices(requestModel: requestModel)) { response in
+                self.eventHandler?(.stopLoading)
+                switch response {
+                case .success(let response):
+                    //record inserted successfully
+                    DispatchQueue.main.async {
+                        RSOToastView.shared.show("\(response.message)", duration: 3.0, position: .center)
+                        // Reset the form
+                        self.resetForm()
+                    }
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                        self.dismiss(animated: true, completion: nil)
+                        
+                    }
+                    self.eventHandler?(.dataLoaded)
+                case .failure(let error):
+                    self.eventHandler?(.error(error))
+                    DispatchQueue.main.async {
+                        //  Unsuccessful
+                        RSOToastView.shared.show("\(error.localizedDescription)", duration: 2.0, position: .center)
+                    }
+                }
             }
     }
-//    func fetchsubServicesAPI(service_id :Int, sub_service_id:String,description:String) {
-//        self.eventHandler?(.loading)
-//        let requestModel = subServicesRequestModel(service_id: service_id, sub_service_id: sub_service_id,description:description)
-//        print("requestModel",requestModel)
-//        APIManager.shared.request(
-//            modelType: ReportAnIssueResponse.self,
-//            type: ServicesEndPoint.reportAnIssue(requestModel: requestModel)) { response in
-//                self.eventHandler?(.stopLoading)
-//                switch response {
-//                case .success(let response):
-//                    self.service = response
-//                    //record inserted successfully
-//                    DispatchQueue.main.async {
-//                        RSOToastView.shared.show("\(response.message)", duration: 3.0, position: .center)
-//                        
-//                        // Reset the form
-//                        self.resetForm()
-//                    }
-//                    DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-//                        self.dismiss(animated: true, completion: nil)
-//                    }
-//                    self.eventHandler?(.dataLoaded)
-//                case .failure(let error):
-//                    self.eventHandler?(.error(error))
-//                    DispatchQueue.main.async {
-//                        //  Unsuccessful
-//                        RSOToastView.shared.show("\(error.localizedDescription)", duration: 2.0, position: .center)
-//                    }
-//                }
-//            }
-//    }
+    private func resetForm() {
+            self.txtSubServices.text = ""
+            self.txtProvideDetailsTextView.text = ""
+            self.serviceId = 0
+        }
 }
 
 extension subServicesViewController {

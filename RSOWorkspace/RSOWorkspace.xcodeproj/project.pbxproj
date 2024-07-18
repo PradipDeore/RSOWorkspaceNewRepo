@@ -237,6 +237,7 @@
 		58BCBC282C49286E00465381 /* PaymentMethodTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58BCBC262C49286E00465381 /* PaymentMethodTableViewCell.xib */; };
 		58BCBC2B2C49298100465381 /* PayNowButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58BCBC292C49298100465381 /* PayNowButtonTableViewCell.swift */; };
 		58BCBC2C2C49298100465381 /* PayNowButtonTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58BCBC2A2C49298100465381 /* PayNowButtonTableViewCell.xib */; };
+		58BCBC2E2C4944B100465381 /* subServiceResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58BCBC2D2C4944B100465381 /* subServiceResponseModel.swift */; };
 		58BCFBB42B7A215F00342275 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58BCFBB32B7A215F00342275 /* LogInViewController.swift */; };
 		58BE5E682B8C6FBF002244F5 /* RSOMeetingRoomsCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58BE5E672B8C6FBF002244F5 /* RSOMeetingRoomsCollectionView.swift */; };
 		58BE90C32B9F0551001FCE54 /* RSOCollectionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58BE90C22B9F0551001FCE54 /* RSOCollectionItem.swift */; };
@@ -621,6 +622,7 @@
 		58BCBC262C49286E00465381 /* PaymentMethodTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PaymentMethodTableViewCell.xib; sourceTree = "<group>"; };
 		58BCBC292C49298100465381 /* PayNowButtonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayNowButtonTableViewCell.swift; sourceTree = "<group>"; };
 		58BCBC2A2C49298100465381 /* PayNowButtonTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PayNowButtonTableViewCell.xib; sourceTree = "<group>"; };
+		58BCBC2D2C4944B100465381 /* subServiceResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = subServiceResponseModel.swift; sourceTree = "<group>"; };
 		58BCFBB32B7A215F00342275 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		58BE5E672B8C6FBF002244F5 /* RSOMeetingRoomsCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSOMeetingRoomsCollectionView.swift; sourceTree = "<group>"; };
 		58BE90C22B9F0551001FCE54 /* RSOCollectionItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSOCollectionItem.swift; sourceTree = "<group>"; };
@@ -1418,6 +1420,7 @@
 				58B405FC2BCCEC460045DD4C /* StoreRoomBookingResponse.swift */,
 				58B406022BCCFF690045DD4C /* OfficeItemsResponse.swift */,
 				58BF55962BCF8E9C00524828 /* DeskListingItem.swift */,
+				58BCBC2D2C4944B100465381 /* subServiceResponseModel.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -2110,6 +2113,7 @@
 				58BF851D2B873609009FF06C /* LoginRequestModel.swift in Sources */,
 				58F261BF2BBD92FA00A5D633 /* ScheduleVisitorsViewController.swift in Sources */,
 				58E997D52BBE87A00051BEF3 /* ReasonForVisit.swift in Sources */,
+				58BCBC2E2C4944B100465381 /* subServiceResponseModel.swift in Sources */,
 				583D9E002B90A2FD0073AAC3 /* Location.swift in Sources */,
 				583D9E062B90C4730073AAC3 /* RSOCustomCalendarView.swift in Sources */,
 				58A6358F2B7F5CD500A5D2F2 /* LoginBackgroundView.swift in Sources */,

@@ -8,6 +8,5 @@
 import Foundation
 struct subServicesRequestModel: Codable {
     let service_id: Int
-    let sub_service_id: Int
     let description: String
 }
