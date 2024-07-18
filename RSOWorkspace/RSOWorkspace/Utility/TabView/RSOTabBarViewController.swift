@@ -63,11 +63,8 @@ class RSOTabBarViewController: UIViewController {
     
     @IBAction func btnNotificationsAction(_ sender: UIButton) {
         let notificationVC = UIViewController.createController(storyBoard: . Notifications, ofType: NotificationsViewController.self)
-        self.topBarView.isHidden = true
-        notificationVC.modalPresentationStyle = .overFullScreen
-        notificationVC.modalTransitionStyle = .crossDissolve
-        notificationVC.view.backgroundColor = UIColor.clear
-        self.present(notificationVC, animated: true)
+      notificationVC.coordinator = self.coordinator
+      self.navigationController?.pushViewController(notificationVC, animated: true)
     }
     @IBAction func btnSearchRSOTAppedAction(_ sender: Any) {
         let searchRSOVC = UIViewController.createController(storyBoard: . TabBar, ofType: SearchRSOViewController.self)
