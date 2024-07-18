@@ -65,7 +65,7 @@ class SelectMeetingRoomTableViewCell: UITableViewCell {
                 case .failure(let error):
                     self.eventHandler?(.error(error))
                     DispatchQueue.main.async {
-                        self.collectionView.makeToast("\(error.localizedDescription)", duration: 2.0, position: .center)
+                      RSOToastView.shared.show("\(error.localizedDescription)", duration: 2.0, position: .center)
                     }
                 }
             }
@@ -95,7 +95,7 @@ class SelectMeetingRoomTableViewCell: UITableViewCell {
                 case .failure(let error):
                     self.eventHandler?(.error(error))
                     DispatchQueue.main.async {
-                        self.collectionView.makeToast("\(error.localizedDescription)", duration: 2.0, position: .center)
+                      RSOToastView.shared.show("\(error.localizedDescription)", duration: 2.0, position: .center)
                     }
                 }
             }

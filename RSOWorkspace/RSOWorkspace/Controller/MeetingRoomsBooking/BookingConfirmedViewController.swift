@@ -83,6 +83,7 @@ class BookingConfirmedViewController: UIViewController{
                     
                     self.apiResponseData = response
                     DispatchQueue.main.async {
+                      RSOLoader.removeLoader()
                         let paymentVC = UIViewController.createController(storyBoard: .Payment, ofType: PaymentViewController.self)
                         paymentVC.requestParameters = self.bookingConfirmDetails
                         paymentVC.coordinator = self.coordinator
@@ -93,6 +94,7 @@ class BookingConfirmedViewController: UIViewController{
                 case .failure(let error):
                     self.eventHandler?(.error(error))
                     DispatchQueue.main.async {
+                      RSOLoader.removeLoader()
                         //  Unsuccessful
                         RSOToastView.shared.show("\(error.localizedDescription)", duration: 2.0, position: .center)
                     }
@@ -249,7 +251,7 @@ extension BookingConfirmedViewController:ButtonEditTableViewCellDelegate{
 }
 extension BookingConfirmedViewController:ConfirmAndProceedToPayementTableViewCellDelegate{
     func btnConfirmAndProceedTappedAction() {
-       
+      RSOLoader.showLoader()
         let startTime = self.bookingConfirmDetails?.startTime
         let endTime = self.bookingConfirmDetails?.endTime
         let BookingTime = "\(startTime ?? "00:00") - \(endTime ?? "00:00")"

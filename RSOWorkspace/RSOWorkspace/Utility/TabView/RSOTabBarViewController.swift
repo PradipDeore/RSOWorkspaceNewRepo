@@ -63,11 +63,8 @@ class RSOTabBarViewController: UIViewController {
     
     @IBAction func btnNotificationsAction(_ sender: UIButton) {
         let notificationVC = UIViewController.createController(storyBoard: . Notifications, ofType: NotificationsViewController.self)
-        self.topBarView.isHidden = true
-        notificationVC.modalPresentationStyle = .overFullScreen
-        notificationVC.modalTransitionStyle = .crossDissolve
-        notificationVC.view.backgroundColor = UIColor.clear
-        self.present(notificationVC, animated: true)
+      notificationVC.coordinator = self.coordinator
+      self.navigationController?.pushViewController(notificationVC, animated: true)
     }
     @IBAction func btnSearchRSOTAppedAction(_ sender: Any) {
         let searchRSOVC = UIViewController.createController(storyBoard: . TabBar, ofType: SearchRSOViewController.self)
@@ -146,11 +143,11 @@ class RSOTabBarViewController: UIViewController {
 extension RSOTabBarViewController: SearchingDelegate {
   func didSearch(searchString: String) {
     DispatchQueue.main.async {
-      let deskListingVC = UIViewController.createController(storyBoard: .Products, ofType: RoomListingViewController.self)
-      //deskListingVC.searchMeetingRooms = txtSearch
-      deskListingVC.coordinator = self.coordinator
-      deskListingVC.isSearchEnabled = true
-      self.navigationController?.pushViewController(deskListingVC, animated: false)
+      let roomListingVC = UIViewController.createController(storyBoard: .Products, ofType: RoomListingViewController.self)
+      roomListingVC.searchingText = searchString
+      roomListingVC.coordinator = self.coordinator
+      roomListingVC.isSearchEnabled = true
+      self.navigationController?.pushViewController(roomListingVC, animated: false)
     }
   }
 }
