@@ -18,7 +18,7 @@ class GetStartedViewController: UIViewController {
     }
     
     @IBAction func btnLogInTappedAction(_ sender: Any) {
-//        self.view.makeToast("This is a piece of toast")
+//        RSOToastView.shared.show("This is a piece of toast")
 //return
         let logInVC = UIViewController.createController(storyBoard: .GetStarted, ofType: LogInViewController.self)
         self.navigationController?.pushViewController(logInVC, animated: true)

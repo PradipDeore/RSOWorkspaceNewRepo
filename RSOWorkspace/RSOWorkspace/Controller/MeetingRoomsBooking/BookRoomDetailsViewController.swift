@@ -105,7 +105,7 @@ class BookRoomDetailsViewController: UIViewController {
                 case .failure(let error):
                     self.eventHandler?(.error(error))
                     DispatchQueue.main.async {
-                        self.view.makeToast("\(error.localizedDescription)", duration: 2.0, position: .center)
+                        RSOToastView.shared.show("\(error.localizedDescription)", duration: 2.0, position: .center)
                     }
                 }
             }

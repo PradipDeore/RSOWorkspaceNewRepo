@@ -83,11 +83,11 @@ class subServicesViewController: UIViewController {
     private func areFieldsValid() -> Bool {
        
         guard let subServiceText = txtSubServices.text, !subServiceText.isEmpty else {
-            self.view.makeToast("Please select a sub-service", duration: 2.0, position: .center)
+            RSOToastView.shared.show("Please select a sub-service", duration: 2.0, position: .center)
             return false
         }
         guard let detailsText = txtProvideDetailsTextView.text, !detailsText.isEmpty else {
-            self.view.makeToast("Please provide details about the issue", duration: 2.0, position: .center)
+            RSOToastView.shared.show("Please provide details about the issue", duration: 2.0, position: .center)
             return false
         }
 
@@ -111,7 +111,7 @@ class subServicesViewController: UIViewController {
 //                    self.service = response
 //                    //record inserted successfully
 //                    DispatchQueue.main.async {
-//                        self.view.makeToast("\(response.message)", duration: 3.0, position: .center)
+//                        RSOToastView.shared.show("\(response.message)", duration: 3.0, position: .center)
 //                        
 //                        // Reset the form
 //                        self.resetForm()
@@ -124,7 +124,7 @@ class subServicesViewController: UIViewController {
 //                    self.eventHandler?(.error(error))
 //                    DispatchQueue.main.async {
 //                        //  Unsuccessful
-//                        self.view.makeToast("\(error.localizedDescription)", duration: 2.0, position: .center)
+//                        RSOToastView.shared.show("\(error.localizedDescription)", duration: 2.0, position: .center)
 //                    }
 //                }
 //            }

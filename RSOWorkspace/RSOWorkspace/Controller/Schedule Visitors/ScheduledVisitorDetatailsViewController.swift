@@ -48,7 +48,7 @@ class ScheduledVisitorDetatailsViewController: UIViewController {
                     let response = responseData
                     if response.status == true{
                         DispatchQueue.main.async {
-                            self.view.makeToast("\(response.message)", duration: 2.0, position: .center)
+                            RSOToastView.shared.show("\(response.message)", duration: 2.0, position: .center)
                             self.tableView.reloadData()
                         }
                     }
@@ -56,7 +56,7 @@ class ScheduledVisitorDetatailsViewController: UIViewController {
                 case .failure(let error):
                     self.eventHandler?(.error(error))
                     DispatchQueue.main.async {
-                        self.view.makeToast("\(error.localizedDescription)", duration: 2.0, position: .center)
+                        RSOToastView.shared.show("\(error.localizedDescription)", duration: 2.0, position: .center)
                     }
                 }
             }
@@ -218,7 +218,7 @@ extension ScheduledVisitorDetatailsViewController:ConfirmAndProceedTableViewCell
     func navigateToMyvisitors() {
         scheduleVisitorsAPIDetails(requestModel: requestModel)
         self.dismiss(animated:true)
-        self.view.makeToast("Visitor Created Succesfully", duration: 2.0, position: .center)
+        RSOToastView.shared.show("Visitor Created Succesfully", duration: 2.0, position: .center)
     }
 }
 extension ScheduledVisitorDetatailsViewController:ConfirmAndProceedToPayementTableViewCellDelegate{

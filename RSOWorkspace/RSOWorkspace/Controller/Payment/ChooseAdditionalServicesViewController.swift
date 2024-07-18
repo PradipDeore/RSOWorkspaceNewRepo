@@ -65,7 +65,7 @@ class ChooseAdditionalServicesViewController: UIViewController {
                     self.apiResponseData = response
                     //Booking Saved successfully
                     DispatchQueue.main.async {
-                        self.view.makeToast("\(response.message)", duration: 2.0, position: .center)
+                        RSOToastView.shared.show("\(response.message)", duration: 2.0, position: .center)
                     }
                     
                     // Pause execution for 5 seconds using DispatchQueue
@@ -77,7 +77,7 @@ class ChooseAdditionalServicesViewController: UIViewController {
                     self.eventHandler?(.error(error))
                     DispatchQueue.main.async {
                         //  Unsuccessful
-                        self.view.makeToast("\(error.localizedDescription)", duration: 2.0, position: .center)
+                        RSOToastView.shared.show("\(error.localizedDescription)", duration: 2.0, position: .center)
                     }
                 }
             }

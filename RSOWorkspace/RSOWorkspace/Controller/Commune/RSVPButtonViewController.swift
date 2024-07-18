@@ -55,7 +55,7 @@ class RSVPButtonViewController: UIViewController {
                     
                     //record inserted successfully
                     DispatchQueue.main.async {
-                        self.view.makeToast("\(response.message)", duration: 3.0, position: .center)
+                        RSOToastView.shared.show("\(response.message)", duration: 3.0, position: .center)
                     }
                     
                     // Pause execution for 5 seconds using DispatchQueue
@@ -70,7 +70,7 @@ class RSVPButtonViewController: UIViewController {
                     self.eventHandler?(.error(error))
                     DispatchQueue.main.async {
                         //  Unsuccessful
-                        self.view.makeToast("\(error.localizedDescription)", duration: 2.0, position: .center)
+                        RSOToastView.shared.show("\(error.localizedDescription)", duration: 2.0, position: .center)
                     }
                 }
             }
@@ -82,19 +82,19 @@ class RSVPButtonViewController: UIViewController {
               let email = txtEmail.text, !email.isEmpty,
               let phone = txtPhone.text, !phone.isEmpty else {
             // Show an error message for any missing or empty field
-            self.view.makeToast("All fields are required", duration: 2.0, position: .center)
+            RSOToastView.shared.show("All fields are required", duration: 2.0, position: .center)
             return
         }
         
         // Check if email is valid
         guard RSOValidator.isValidEmail(email) else {
-            self.view.makeToast("Invalid email", duration: 2.0, position: .center)
+            RSOToastView.shared.show("Invalid email", duration: 2.0, position: .center)
             return
         }
         
         // Check if phone number is valid
         guard RSOValidator.validatePhoneNumber(phone) else {
-            self.view.makeToast("Phone Number must contain at least 10 digits", duration: 2.0, position: .center)
+            RSOToastView.shared.show("Phone Number must contain at least 10 digits", duration: 2.0, position: .center)
             return
         }
         rsvpAPI(name: name, companyname: company, email: email, phone: phone)

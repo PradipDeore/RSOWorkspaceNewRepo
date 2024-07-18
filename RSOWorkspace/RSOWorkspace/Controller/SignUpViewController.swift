@@ -73,30 +73,30 @@ class SignUpViewController: UIViewController {
   @IBAction func btnSubmitTappedAction(_ sender: Any) {
     
     guard let email = txtEmail.text, !email.isEmpty else {
-      self.view.makeToast("Please enter your email", duration: 2.0, position: .center)
+      RSOToastView.shared.show("Please enter your email", duration: 2.0, position: .center)
       return
     }
     // Check if email is valid
     if !RSOValidator.isValidEmail(email) {
-      self.view.makeToast("Invalid email", duration: 2.0, position: .center)
+      RSOToastView.shared.show("Invalid email", duration: 2.0, position: .center)
       return
     }
     guard let password = txtPassword.text, !password.isEmpty else {
-      self.view.makeToast("Please enter your password", duration: 2.0, position: .center)
+      RSOToastView.shared.show("Please enter your password", duration: 2.0, position: .center)
       return
     }
     // Check if password is valid
     if !RSOValidator.isValidPassword(password) {
-      self.view.makeToast("The password must be more than 8 characters, at least 1 lower case, 1 upper case, 1 digit", duration: 2.0, position: .center)
+      RSOToastView.shared.show("The password must be more than 8 characters, at least 1 lower case, 1 upper case, 1 digit", duration: 2.0, position: .center)
       return
     }
     guard let phone = txtPhone.text, !phone.isEmpty else{
-      self.view.makeToast("Please enter your phone",duration: 2.0,position: .center)
+      RSOToastView.shared.show("Please enter your phone",duration: 2.0,position: .center)
       return
     }
     // check if phone number is valid
     if !RSOValidator.validatePhoneNumber(phone){
-      self.view.makeToast("Phone Number must contains at least 10 digits",duration: 2.0,position: .center)
+      RSOToastView.shared.show("Phone Number must contains at least 10 digits",duration: 2.0,position: .center)
       return
     }
     signUpAPI(email: email, password: password, phone: phone)

@@ -84,7 +84,7 @@ class ConfirmedDeskBookingViewController: UIViewController{
 //                    self.eventHandler?(.error(error))
 //                    DispatchQueue.main.async {
 //                        //  Unsuccessful
-//                        self.view.makeToast("\(error.localizedDescription)", duration: 2.0, position: .center)
+//                        RSOToastView.shared.show("\(error.localizedDescription)", duration: 2.0, position: .center)
 //                    }
 //                }
 //            }

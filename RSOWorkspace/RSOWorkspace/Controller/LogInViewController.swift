@@ -42,21 +42,21 @@ class LogInViewController: UIViewController {
                         
                         DispatchQueue.main.async {
                             // Login successful
-                            self.view.makeToast("Login successful!", duration: 2.0, position: .center)
+                            RSOToastView.shared.show("Login successful!", duration: 2.0, position: .center)
                             RSOTabBarViewController.presentAsRootController()
                         }
                         self.eventHandler?(.dataLoaded)
                     }else{
                         DispatchQueue.main.async {
                             // Login successful
-                            self.view.makeToast(response.message ?? "LogIn Failed!", duration: 2.0, position: .center)
+                            RSOToastView.shared.show(response.message ?? "LogIn Failed!", duration: 2.0, position: .center)
                         }
                     }
                 case .failure(let error):
                     self.eventHandler?(.error(error))
                     DispatchQueue.main.async {
                         // Login successful
-                        self.view.makeToast("Login failed!", duration: 2.0, position: .center)
+                        RSOToastView.shared.show("Login failed!", duration: 2.0, position: .center)
                     }
                 }
             }
@@ -70,24 +70,24 @@ class LogInViewController: UIViewController {
     @IBAction func btnLogInTappedAction(_ sender: Any) {
        
         guard let email = txtEmail.text, !email.isEmpty else {
-            self.view.makeToast("Please enter your email", duration: 2.0, position: .center)
+            RSOToastView.shared.show("Please enter your email", duration: 2.0, position: .center)
             return
         }
         
         // Check if email is valid
         if !RSOValidator.isValidEmail(email) {
-            self.view.makeToast("Invalid email", duration: 2.0, position: .center)
+            RSOToastView.shared.show("Invalid email", duration: 2.0, position: .center)
             return
         }
         
         guard let password = txtPassword.text, !password.isEmpty else {
-            self.view.makeToast("Please enter your password", duration: 2.0, position: .center)
+            RSOToastView.shared.show("Please enter your password", duration: 2.0, position: .center)
             return
         }
         
         // Check if password is valid
         /*if !RSOValidator.isValidPassword(password) {
-            self.view.makeToast("The password must be more than 8 characters, at least 1 lower case, 1 upper case, 1 digit", duration: 2.0, position: .center)
+            RSOToastView.shared.show("The password must be more than 8 characters, at least 1 lower case, 1 upper case, 1 digit", duration: 2.0, position: .center)
             return
         }*/
         loginAPI(email: email, password: password)

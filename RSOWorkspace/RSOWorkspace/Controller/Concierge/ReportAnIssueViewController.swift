@@ -84,7 +84,7 @@ class ReportAnIssueViewController: UIViewController {
                     self.reportAnIssueRespnseData = response
                     //record inserted successfully
                     DispatchQueue.main.async {
-                        self.view.makeToast("\(response.message)", duration: 3.0, position: .center)
+                        RSOToastView.shared.show("\(response.message)", duration: 3.0, position: .center)
                         
                         // Reset the form
                         self.resetForm()
@@ -97,7 +97,7 @@ class ReportAnIssueViewController: UIViewController {
                     self.eventHandler?(.error(error))
                     DispatchQueue.main.async {
                         //  Unsuccessful
-                        self.view.makeToast("\(error.localizedDescription)", duration: 2.0, position: .center)
+                        RSOToastView.shared.show("\(error.localizedDescription)", duration: 2.0, position: .center)
                     }
                 }
             }
@@ -193,7 +193,7 @@ extension ReportAnIssueViewController:RequestButtonTableViewCellDelegate{
     func requestButtonTapped() {
         // Validate the required fields
         guard location_id != 0, !descriptionOfIssue.isEmpty else {
-            self.view.makeToast("All fields are required", duration: 2.0, position: .center)
+            RSOToastView.shared.show("All fields are required", duration: 2.0, position: .center)
             return
         }
         reportAnIssueAPI(locationid: location_id, description: descriptionOfIssue)

@@ -73,7 +73,7 @@ class MyBookingViewController: UIViewController {
                             self.myBookingResponseData = bookings
                             self.reloadData()
                            
-                            //self.view.makeToast("\(responseData.status)", duration: 2.0, position: .center)
+                            //RSOToastView.shared.show("\(responseData.status)", duration: 2.0, position: .center)
                         }
                     
                         self.eventHandler?(.dataLoaded)
@@ -81,7 +81,7 @@ class MyBookingViewController: UIViewController {
                 case .failure(let error):
                     self.eventHandler?(.error(error))
                     DispatchQueue.main.async {
-                        self.view.makeToast("\(error.localizedDescription)", duration: 2.0, position: .center)
+                        RSOToastView.shared.show("\(error.localizedDescription)", duration: 2.0, position: .center)
                     }
                 }
             }
@@ -134,7 +134,7 @@ class MyBookingViewController: UIViewController {
                 filteredSections = []
                 self.tableView.reloadData()
                 // Show error message if no bookings data is available
-                self.view.makeToast("No Future Booking", duration: 2.0, position: .center)
+                RSOToastView.shared.show("No Future Booking", duration: 2.0, position: .center)
             }
         }else {
             

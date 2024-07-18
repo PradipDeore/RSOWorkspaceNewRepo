@@ -220,7 +220,7 @@ extension BookMeetingRoomViewController: GetRoomsBtnTableViewCellDelegate {
             self.tableView.reloadData()
         }
         else{
-            self.view.makeToast("No Rooms Available", duration: 2.0, position: .bottom)
+            RSOToastView.shared.show("No Rooms Available", duration: 2.0, position: .bottom)
         }
     }
 }

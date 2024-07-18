@@ -69,7 +69,7 @@ class UpdateProfileViewController: UIViewController {
                     //record Updated successfully
                     DispatchQueue.main.async {
                         self.dismissDelegate?.subviewDismmised()
-                        self.view.makeToast("\(response.message)", duration: 2.0, position: .center)
+                        RSOToastView.shared.show("\(response.message)", duration: 2.0, position: .center)
                     }
                     
                     // Pause execution for 5 seconds using DispatchQueue
@@ -81,7 +81,7 @@ class UpdateProfileViewController: UIViewController {
                     self.eventHandler?(.error(error))
                     DispatchQueue.main.async {
                         //  Unsuccessful
-                        self.view.makeToast("\(error.localizedDescription)", duration: 2.0, position: .center)
+                        RSOToastView.shared.show("\(error.localizedDescription)", duration: 2.0, position: .center)
                     }
                 }
             }

@@ -63,13 +63,13 @@ class DashboardViewController: UIViewController, RSOTabCoordinated {
                         self.eventHandler?(.dataLoaded)
                     if responseData.status == false {
                         DispatchQueue.main.async {
-                            self.view.makeToast("No Future Booking", duration: 2.0, position: .center)
+                            RSOToastView.shared.show("No Future Booking", duration: 2.0, position: .center)
                         }
                     }
                 case .failure(let error):
                     self.eventHandler?(.error(error))
                     DispatchQueue.main.async {
-                        self.view.makeToast("\(error.localizedDescription)", duration: 2.0, position: .center)
+                        RSOToastView.shared.show("\(error.localizedDescription)", duration: 2.0, position: .center)
                     }
                 }
             }
@@ -254,7 +254,7 @@ extension DashboardViewController: DashboardDeskTypeTableViewCellDelegate {
 //                    // Check if there are no future bookings
 //                    if responseData.status == false, responseData.msg == "No Future Booking." {
 //                        DispatchQueue.main.async {
-//                            self.view.makeToast("No Future Booking", duration: 2.0, position: .center)
+//                            RSOToastView.shared.show("No Future Booking", duration: 2.0, position: .center)
 //                        }
 //                        return
 //                    }
@@ -271,7 +271,7 @@ extension DashboardViewController: DashboardDeskTypeTableViewCellDelegate {
 //                case .failure(let error):
 //                    self.eventHandler?(.error(error))
 //                    DispatchQueue.main.async {
-//                        self.view.makeToast("\(error.localizedDescription)", duration: 2.0, position: .center)
+//                        RSOToastView.shared.show("\(error.localizedDescription)", duration: 2.0, position: .center)
 //                    }
 //                }
 //            }

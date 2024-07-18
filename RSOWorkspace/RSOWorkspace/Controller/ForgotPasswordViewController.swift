@@ -43,27 +43,27 @@ class ForgotPasswordViewController: UIViewController {
                     //save token in user defaults
                     DispatchQueue.main.async {
                         // Login successful
-                        self.view.makeToast("\(response.message)", duration: 2.0, position: .center)
+                        RSOToastView.shared.show("\(response.message)", duration: 2.0, position: .center)
                     }
                     self.eventHandler?(.dataLoaded)
                 case .failure(let error):
                     self.eventHandler?(.error(error))
                     DispatchQueue.main.async {
                         // Login successful
-                        self.view.makeToast("\(error.localizedDescription)", duration: 2.0, position: .center)
+                        RSOToastView.shared.show("\(error.localizedDescription)", duration: 2.0, position: .center)
                     }
                 }
             }
     }
     @IBAction func btnSubmitTappedAction(_ sender: Any) {
         guard let email = txtEmail.text, !email.isEmpty else {
-            self.view.makeToast("Please enter your email", duration: 2.0, position: .center)
+            RSOToastView.shared.show("Please enter your email", duration: 2.0, position: .center)
             return
         }
         
         // Check if email is valid
         if !RSOValidator.isValidEmail(email) {
-            self.view.makeToast("Invalid email", duration: 2.0, position: .center)
+            RSOToastView.shared.show("Invalid email", duration: 2.0, position: .center)
             return
         }
         forgotPasswordAPI(email:email)

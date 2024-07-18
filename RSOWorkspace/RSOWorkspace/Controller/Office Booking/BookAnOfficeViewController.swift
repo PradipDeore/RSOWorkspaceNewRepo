@@ -57,13 +57,13 @@ class BookAnOfficeViewController: UIViewController {
                     // Handle successful response with bookings
                     self.officeBookingResonseData = responseData.data
                     DispatchQueue.main.async {
-                        self.view.makeToast("Booking Saved For Office", duration: 2.0, position: .center)
+                        RSOToastView.shared.show("Booking Saved For Office", duration: 2.0, position: .center)
                     }
                     self.eventHandler?(.dataLoaded)
                 case .failure(let error):
                     self.eventHandler?(.error(error))
                     DispatchQueue.main.async {
-                        self.view.makeToast("\(error.localizedDescription)", duration: 2.0, position: .center)
+                        RSOToastView.shared.show("\(error.localizedDescription)", duration: 2.0, position: .center)
                     }
                 }
             }
@@ -76,7 +76,7 @@ class BookAnOfficeViewController: UIViewController {
 //              let noOfSeatsText = txtNoOfSeats.text, let noOfSeats = Int(noOfSeatsText),
 //              let provideDetails = txtprovideDetails.text else {
 //            // Show an alert or toast to inform the user that all fields are required
-//            self.view.makeToast("Please fill in all fields", duration: 2.0, position: .center)
+//            RSOToastView.shared.show("Please fill in all fields", duration: 2.0, position: .center)
 //            return
 //        }
 //        
