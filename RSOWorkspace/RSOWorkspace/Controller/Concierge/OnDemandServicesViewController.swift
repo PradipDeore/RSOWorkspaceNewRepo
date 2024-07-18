@@ -31,6 +31,7 @@ class OnDemandServicesViewController: UIViewController {
         collectionView.backgroundColor = .white
         
         customizeCell()
+        
         fetchServices(serviceId: 1)
         
     }

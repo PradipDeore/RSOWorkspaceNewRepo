@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Inter-Medium.ttf">
+            <string>Inter-Medium</string>
+        </array>
+        <array key="Inter-SemiBold.ttf">
+            <string>Inter-SemiBold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PaymentDateTableViewCell" rowHeight="112" id="KGk-i7-Jjw" customClass="PaymentDateTableViewCell" customModule="RSOWorkspace" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="327" height="112"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="327" height="112"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="JANUARY" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qgZ-Er-5t0">
+                        <rect key="frame" x="8" y="9" width="120" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="7xs-aw-AMv"/>
+                            <constraint firstAttribute="width" constant="120" id="AAe-Rc-Yjn"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="Inter-SemiBold" family="Inter" pointSize="16"/>
+                        <color key="textColor" name="2C2C2C"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AED" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9yF-xI-bsz">
+                        <rect key="frame" x="211.33333333333334" y="10" width="46.000000000000028" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="AhO-zZ-Eno"/>
+                            <constraint firstAttribute="width" constant="46" id="DNy-fB-6Tt"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="Inter-SemiBold" family="Inter" pointSize="16"/>
+                        <color key="textColor" name="2C2C2C"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="700.00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mvy-Do-XP1">
+                        <rect key="frame" x="263.33333333333331" y="9" width="55.666666666666686" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="wWj-FG-JKD"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="Inter-SemiBold" family="Inter" pointSize="16"/>
+                        <color key="textColor" name="2C2C2C"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Payment Due" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QHq-r7-sNv">
+                        <rect key="frame" x="176" y="35" width="137" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="137" id="Iar-ZD-D6j"/>
+                            <constraint firstAttribute="height" constant="20" id="r8n-7f-jwt"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="Inter-SemiBold" family="Inter" pointSize="12"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pay before 10/2/23 to avoid late payment fee" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sar-Py-KFy">
+                        <rect key="frame" x="157" y="60" width="157" height="41"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="157" id="ONG-XQ-9PC"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="Inter-Medium" family="Inter" pointSize="12"/>
+                        <color key="textColor" name="616161"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="QHq-r7-sNv" firstAttribute="top" secondItem="9yF-xI-bsz" secondAttribute="bottom" constant="5" id="0DZ-cA-Gqs"/>
+                    <constraint firstItem="Mvy-Do-XP1" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="9" id="2rh-5B-pUZ"/>
+                    <constraint firstItem="Mvy-Do-XP1" firstAttribute="leading" secondItem="9yF-xI-bsz" secondAttribute="trailing" constant="6" id="7Vp-eq-P0H"/>
+                    <constraint firstItem="9yF-xI-bsz" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="A7t-iw-QIT"/>
+                    <constraint firstItem="sar-Py-KFy" firstAttribute="top" secondItem="QHq-r7-sNv" secondAttribute="bottom" constant="5" id="LMz-2s-IZr"/>
+                    <constraint firstAttribute="trailing" secondItem="QHq-r7-sNv" secondAttribute="trailing" constant="14" id="hCi-GT-45P"/>
+                    <constraint firstItem="qgZ-Er-5t0" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="lNZ-yf-Ohi"/>
+                    <constraint firstAttribute="trailing" secondItem="sar-Py-KFy" secondAttribute="trailing" constant="13" id="nQ1-mo-Wk9"/>
+                    <constraint firstAttribute="trailing" secondItem="Mvy-Do-XP1" secondAttribute="trailing" constant="8" id="oMD-Tx-bPp"/>
+                    <constraint firstItem="qgZ-Er-5t0" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="9" id="v25-Hc-QDa"/>
+                    <constraint firstAttribute="bottom" secondItem="sar-Py-KFy" secondAttribute="bottom" constant="11" id="vHK-cD-mDU"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <point key="canvasLocation" x="133.58778625954199" y="12.67605633802817"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <namedColor name="2C2C2C">
+            <color red="0.17299999296665192" green="0.17299999296665192" blue="0.17299999296665192" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="616161">
+            <color red="0.37999999523162842" green="0.37999999523162842" blue="0.37999999523162842" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

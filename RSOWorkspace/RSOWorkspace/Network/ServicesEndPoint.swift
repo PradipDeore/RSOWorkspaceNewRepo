@@ -9,7 +9,7 @@ import Foundation
 
 enum ServicesEndPoint {
     case onDemandServices(serviceId:Int?) // Module - GET
-    case subSevices(requestModel:subServicesRequestModel)
+    case subServices(requestModel:subServicesRequestModel)
     case reportAnIssue(requestModel: ReportAnIssueRequestModel)
 }
 extension ServicesEndPoint: EndPointType {
@@ -20,8 +20,8 @@ extension ServicesEndPoint: EndPointType {
             return "on-demand-service??service_id=\(serviceid)"
         case .reportAnIssue:
             return "report-issue"
-        case .subSevices(requestModel: let requestModel):
-            return "demand-service"
+        case .subServices(requestModel: let requestModel):
+            return "concierge-service"
         }
     }
     
@@ -39,7 +39,7 @@ extension ServicesEndPoint: EndPointType {
             return .get
         case .reportAnIssue:
             return .post
-        case .subSevices(requestModel: let requestModel):
+        case .subServices(requestModel: let requestModel):
             return .post
         }
     }
@@ -50,7 +50,7 @@ extension ServicesEndPoint: EndPointType {
             return nil
         case .reportAnIssue(let requestModel):
             return requestModel
-        case .subSevices(requestModel: let requestModel):
+        case .subServices(requestModel: let requestModel):
             return requestModel
         }
     }

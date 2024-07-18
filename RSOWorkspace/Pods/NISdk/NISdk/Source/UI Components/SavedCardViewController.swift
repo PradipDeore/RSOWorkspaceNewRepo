@@ -37,21 +37,22 @@ class SavedCardViewController: UIViewController, UITextFieldDelegate {
     
     var paymentInProgress: Bool = false {
         didSet {
+            self.cvvTextField.isEnabled = false
+            self.payButton.isEnabled = self.paymentInProgress
             if(self.paymentInProgress) {
                 self.loadingSpinner.startAnimating()
                 self.payButton.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.7)
-                self.payButton.isEnabled = false
             } else {
                 self.loadingSpinner.stopAnimating()
                 self.payButton.backgroundColor = UIColor(red: 0, green: 0, blue: 0, alpha: 1)
-                self.payButton.isEnabled = true
             }
         }
     }
     
     let cardPreviewContainer = UIView()
     let loadingSpinner: UIActivityIndicatorView = {
-        let spinner = UIActivityIndicatorView(style: .white)
+        let spinner = UIActivityIndicatorView(style: .medium)
+        spinner.color = .gray
         spinner.isHidden = true
         spinner.hidesWhenStopped = true
         return spinner

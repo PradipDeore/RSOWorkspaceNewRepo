@@ -224,12 +224,20 @@
 		58BB6B0B2B986BB5001E1F3D /* MeetingRoomPriceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58BB6B092B986BB5001E1F3D /* MeetingRoomPriceTableViewCell.xib */; };
 		58BB6B122B986C65001E1F3D /* DiscountCodeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58BB6B102B986C65001E1F3D /* DiscountCodeTableViewCell.swift */; };
 		58BB6B132B986C65001E1F3D /* DiscountCodeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58BB6B112B986C65001E1F3D /* DiscountCodeTableViewCell.xib */; };
-		58BB6B162B986CB3001E1F3D /* PaymentMethodTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58BB6B142B986CB3001E1F3D /* PaymentMethodTableViewCell.swift */; };
-		58BB6B172B986CB3001E1F3D /* PaymentMethodTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58BB6B152B986CB3001E1F3D /* PaymentMethodTableViewCell.xib */; };
 		58BB6B1A2B986D1B001E1F3D /* MeetingTimeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58BB6B182B986D1B001E1F3D /* MeetingTimeTableViewCell.swift */; };
 		58BB6B1B2B986D1B001E1F3D /* MeetingTimeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58BB6B192B986D1B001E1F3D /* MeetingTimeTableViewCell.xib */; };
 		58BCBC182C48F27000465381 /* FAQDescriptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58BCBC162C48F27000465381 /* FAQDescriptionTableViewCell.swift */; };
 		58BCBC192C48F27000465381 /* FAQDescriptionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58BCBC172C48F27000465381 /* FAQDescriptionTableViewCell.xib */; };
+		58BCBC1B2C491F1B00465381 /* SideMenuPaymentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58BCBC1A2C491F1B00465381 /* SideMenuPaymentsViewController.swift */; };
+		58BCBC1F2C49281C00465381 /* PaymentDateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58BCBC1D2C49281C00465381 /* PaymentDateTableViewCell.swift */; };
+		58BCBC202C49281C00465381 /* PaymentDateTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58BCBC1E2C49281C00465381 /* PaymentDateTableViewCell.xib */; };
+		58BCBC232C49283200465381 /* PaymentDetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58BCBC212C49283200465381 /* PaymentDetailsTableViewCell.swift */; };
+		58BCBC242C49283200465381 /* PaymentDetailsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58BCBC222C49283200465381 /* PaymentDetailsTableViewCell.xib */; };
+		58BCBC272C49286E00465381 /* PaymentMethodTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58BCBC252C49286E00465381 /* PaymentMethodTableViewCell.swift */; };
+		58BCBC282C49286E00465381 /* PaymentMethodTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58BCBC262C49286E00465381 /* PaymentMethodTableViewCell.xib */; };
+		58BCBC2B2C49298100465381 /* PayNowButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58BCBC292C49298100465381 /* PayNowButtonTableViewCell.swift */; };
+		58BCBC2C2C49298100465381 /* PayNowButtonTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58BCBC2A2C49298100465381 /* PayNowButtonTableViewCell.xib */; };
+		58BCBC2E2C4944B100465381 /* subServiceResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58BCBC2D2C4944B100465381 /* subServiceResponseModel.swift */; };
 		58BCFBB42B7A215F00342275 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58BCFBB32B7A215F00342275 /* LogInViewController.swift */; };
 		58BE5E682B8C6FBF002244F5 /* RSOMeetingRoomsCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58BE5E672B8C6FBF002244F5 /* RSOMeetingRoomsCollectionView.swift */; };
 		58BE90C32B9F0551001FCE54 /* RSOCollectionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58BE90C22B9F0551001FCE54 /* RSOCollectionItem.swift */; };
@@ -601,12 +609,20 @@
 		58BB6B092B986BB5001E1F3D /* MeetingRoomPriceTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MeetingRoomPriceTableViewCell.xib; sourceTree = "<group>"; };
 		58BB6B102B986C65001E1F3D /* DiscountCodeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscountCodeTableViewCell.swift; sourceTree = "<group>"; };
 		58BB6B112B986C65001E1F3D /* DiscountCodeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DiscountCodeTableViewCell.xib; sourceTree = "<group>"; };
-		58BB6B142B986CB3001E1F3D /* PaymentMethodTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentMethodTableViewCell.swift; sourceTree = "<group>"; };
-		58BB6B152B986CB3001E1F3D /* PaymentMethodTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PaymentMethodTableViewCell.xib; sourceTree = "<group>"; };
 		58BB6B182B986D1B001E1F3D /* MeetingTimeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeetingTimeTableViewCell.swift; sourceTree = "<group>"; };
 		58BB6B192B986D1B001E1F3D /* MeetingTimeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MeetingTimeTableViewCell.xib; sourceTree = "<group>"; };
 		58BCBC162C48F27000465381 /* FAQDescriptionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FAQDescriptionTableViewCell.swift; path = RSOWorkspace/Controller/CustomCells/FAQDescriptionTableViewCell.swift; sourceTree = SOURCE_ROOT; };
 		58BCBC172C48F27000465381 /* FAQDescriptionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = FAQDescriptionTableViewCell.xib; path = RSOWorkspace/Controller/CustomCells/FAQDescriptionTableViewCell.xib; sourceTree = SOURCE_ROOT; };
+		58BCBC1A2C491F1B00465381 /* SideMenuPaymentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuPaymentsViewController.swift; sourceTree = "<group>"; };
+		58BCBC1D2C49281C00465381 /* PaymentDateTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentDateTableViewCell.swift; sourceTree = "<group>"; };
+		58BCBC1E2C49281C00465381 /* PaymentDateTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PaymentDateTableViewCell.xib; sourceTree = "<group>"; };
+		58BCBC212C49283200465381 /* PaymentDetailsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentDetailsTableViewCell.swift; sourceTree = "<group>"; };
+		58BCBC222C49283200465381 /* PaymentDetailsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PaymentDetailsTableViewCell.xib; sourceTree = "<group>"; };
+		58BCBC252C49286E00465381 /* PaymentMethodTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentMethodTableViewCell.swift; sourceTree = "<group>"; };
+		58BCBC262C49286E00465381 /* PaymentMethodTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PaymentMethodTableViewCell.xib; sourceTree = "<group>"; };
+		58BCBC292C49298100465381 /* PayNowButtonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayNowButtonTableViewCell.swift; sourceTree = "<group>"; };
+		58BCBC2A2C49298100465381 /* PayNowButtonTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PayNowButtonTableViewCell.xib; sourceTree = "<group>"; };
+		58BCBC2D2C4944B100465381 /* subServiceResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = subServiceResponseModel.swift; sourceTree = "<group>"; };
 		58BCFBB32B7A215F00342275 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		58BE5E672B8C6FBF002244F5 /* RSOMeetingRoomsCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSOMeetingRoomsCollectionView.swift; sourceTree = "<group>"; };
 		58BE90C22B9F0551001FCE54 /* RSOCollectionItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSOCollectionItem.swift; sourceTree = "<group>"; };
@@ -881,6 +897,7 @@
 		58374A3C2B84B9F600CA34C5 /* CustomCells */ = {
 			isa = PBXGroup;
 			children = (
+				58BCBC1C2C4927DA00465381 /* SideMenuPaymentTableViewCells */,
 				580418112BD107ED008EA858 /* NotificationsTablvewCells */,
 				58B406072BCD46FA0045DD4C /* SideMenuDashboardTableViewCells */,
 				58713EA72BC9261A0012DD4E /* BookDeskTableviewCells */,
@@ -1319,6 +1336,7 @@
 			children = (
 				58BB6B052B98699D001E1F3D /* PaymentViewController.swift */,
 				5834039E2B99C99C00318BB8 /* ChooseAdditionalServicesViewController.swift */,
+				58BCBC1A2C491F1B00465381 /* SideMenuPaymentsViewController.swift */,
 			);
 			path = Payment;
 			sourceTree = "<group>";
@@ -1334,8 +1352,6 @@
 				581D97D92BA3391B00EDDC3B /* AmenityPriceTableViewCell.xib */,
 				58BB6B102B986C65001E1F3D /* DiscountCodeTableViewCell.swift */,
 				58BB6B112B986C65001E1F3D /* DiscountCodeTableViewCell.xib */,
-				58BB6B142B986CB3001E1F3D /* PaymentMethodTableViewCell.swift */,
-				58BB6B152B986CB3001E1F3D /* PaymentMethodTableViewCell.xib */,
 				583403922B998E8E00318BB8 /* TotalTableViewCell.swift */,
 				583403932B998E8E00318BB8 /* TotalTableViewCell.xib */,
 				583403962B99A13E00318BB8 /* PayWithRewardPointsTableViewCell.swift */,
@@ -1344,6 +1360,21 @@
 				5834039B2B99AF2400318BB8 /* ButtonPayNowTableViewCell.xib */,
 			);
 			path = PaymentTableViewCells;
+			sourceTree = "<group>";
+		};
+		58BCBC1C2C4927DA00465381 /* SideMenuPaymentTableViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				58BCBC1D2C49281C00465381 /* PaymentDateTableViewCell.swift */,
+				58BCBC1E2C49281C00465381 /* PaymentDateTableViewCell.xib */,
+				58BCBC212C49283200465381 /* PaymentDetailsTableViewCell.swift */,
+				58BCBC222C49283200465381 /* PaymentDetailsTableViewCell.xib */,
+				58BCBC252C49286E00465381 /* PaymentMethodTableViewCell.swift */,
+				58BCBC262C49286E00465381 /* PaymentMethodTableViewCell.xib */,
+				58BCBC292C49298100465381 /* PayNowButtonTableViewCell.swift */,
+				58BCBC2A2C49298100465381 /* PayNowButtonTableViewCell.xib */,
+			);
+			path = SideMenuPaymentTableViewCells;
 			sourceTree = "<group>";
 		};
 		58BEF25A2C47DDC500C78CF4 /* Extension */ = {
@@ -1389,6 +1420,7 @@
 				58B405FC2BCCEC460045DD4C /* StoreRoomBookingResponse.swift */,
 				58B406022BCCFF690045DD4C /* OfficeItemsResponse.swift */,
 				58BF55962BCF8E9C00524828 /* DeskListingItem.swift */,
+				58BCBC2D2C4944B100465381 /* subServiceResponseModel.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -1737,6 +1769,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				58BCBC2C2C49298100465381 /* PayNowButtonTableViewCell.xib in Resources */,
 				58EB2CED2BA567CA00D69C46 /* OnDemandServiceCollectionViewCell.xib in Resources */,
 				583403AA2B99CE3F00318BB8 /* ProvideRequirementDetailsTableViewCell.xib in Resources */,
 				583D9DFC2B9084CB0073AAC3 /* SelectLocationTableViewCell.xib in Resources */,
@@ -1750,6 +1783,7 @@
 				58A16CD82BBC7D6E0003DD50 /* LocationCloseTableViewCell.xib in Resources */,
 				58D584A82B96F40100D17D0A /* BookingConfirmedGuestsTableViewCell.xib in Resources */,
 				5862D9262BC0374400214AE2 /* LabelVisitorsTableViewCell.xib in Resources */,
+				58BCBC282C49286E00465381 /* PaymentMethodTableViewCell.xib in Resources */,
 				589FB6AA2B7644A90067255E /* Poppins-Bold.ttf in Resources */,
 				587DA92F2BA43F1B00D27769 /* OnDemandServicesTableViewCell.xib in Resources */,
 				58F261C82BBD9A2F00A5D633 /* VisitorsTableViewCell.xib in Resources */,
@@ -1758,6 +1792,7 @@
 				58E2D0D42BBA70590016DEB6 /* ProfileDetailsTableViewCell.xib in Resources */,
 				58ED2D1A2B8F386C004D06C8 /* Booking.storyboard in Resources */,
 				588333942B7E08E6008334A0 /* Inter-ExtraLight.ttf in Resources */,
+				58BCBC242C49283200465381 /* PaymentDetailsTableViewCell.xib in Resources */,
 				588333962B7E08E6008334A0 /* Inter-SemiBold.ttf in Resources */,
 				5864882C2BBAD2890024CBA2 /* Feedback.storyboard in Resources */,
 				580418192BD12589008EA858 /* ConfirmSelectedDeskTableViewCell.xib in Resources */,
@@ -1779,6 +1814,7 @@
 				58E6F7182BA826B6009D4E21 /* RequestButtonTableViewCell.xib in Resources */,
 				58D5849C2B96F35700D17D0A /* BookingConfirmedTimeTableViewCell.xib in Resources */,
 				582A27302C462E7A00CD5729 /* AddPaymentMethodTableViewCell.xib in Resources */,
+				58BCBC202C49281C00465381 /* PaymentDateTableViewCell.xib in Resources */,
 				58E6E93C2B88719B00EB3600 /* TabBar.storyboard in Resources */,
 				586FA7052BBC28DA00EA2772 /* aboutRSOTableViewCell.xib in Resources */,
 				589FB6AB2B7644A90067255E /* Poppins-Black.ttf in Resources */,
@@ -1866,7 +1902,6 @@
 				58E6E9652B89D9BB00EB3600 /* DashboardDeskTypeTableViewCell.xib in Resources */,
 				58B4060C2BCD47380045DD4C /* PaymentTableViewCell.xib in Resources */,
 				584B4B542B922DFE00C6F5B2 /* TimeTableViewCell.xib in Resources */,
-				58BB6B172B986CB3001E1F3D /* PaymentMethodTableViewCell.xib in Resources */,
 				581F30C52BC020F90083A400 /* InviteVisitorsTableViewCell.xib in Resources */,
 				58F4584C2B91DB2900CF8AFA /* MeetingRoomsCollectionViewCell.xib in Resources */,
 				581F30B62BBFBDDC0083A400 /* VisitorsTimeTableViewCell.xib in Resources */,
@@ -1926,6 +1961,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				58BCBC1F2C49281C00465381 /* PaymentDateTableViewCell.swift in Sources */,
 				583403A92B99CE3F00318BB8 /* ProvideRequirementDetailsTableViewCell.swift in Sources */,
 				58D5848A2B96DA1400D17D0A /* AddTeamMemberViewController.swift in Sources */,
 				58E6E94F2B88A5C500EB3600 /* MyBookingCloseTableViewCell.swift in Sources */,
@@ -2005,7 +2041,6 @@
 				583D9E032B90B0300073AAC3 /* SelectDateTableViewCell.swift in Sources */,
 				58C9AC0A2B8DC43A00C719D1 /* BookOfficeTableViewCell.swift in Sources */,
 				58BB6B0A2B986BB5001E1F3D /* MeetingRoomPriceTableViewCell.swift in Sources */,
-				58BB6B162B986CB3001E1F3D /* PaymentMethodTableViewCell.swift in Sources */,
 				58EB0E142BB695DB00DC2827 /* BookAnOfficeViewController.swift in Sources */,
 				58D513362BCA4C8600B87739 /* PaymentRoomBookingResponse.swift in Sources */,
 				58E6E9412B88765800EB3600 /* BookingViewController.swift in Sources */,
@@ -2068,6 +2103,7 @@
 				58F96E242C479DFA009C4DC5 /* subServicesRequestModel.swift in Sources */,
 				58E6F70F2BA82567009D4E21 /* AddPicsTableViewCell.swift in Sources */,
 				58ED2D1D2B8F38B8004D06C8 /* MyBookingViewController.swift in Sources */,
+				58BCBC232C49283200465381 /* PaymentDetailsTableViewCell.swift in Sources */,
 				583C60552BC3AB3700755275 /* ScheduleVisitorsRequest.swift in Sources */,
 				58BB6B122B986C65001E1F3D /* DiscountCodeTableViewCell.swift in Sources */,
 				58D5848F2B96EE9800D17D0A /* BookingConfirmedViewController.swift in Sources */,
@@ -2077,9 +2113,11 @@
 				58BF851D2B873609009FF06C /* LoginRequestModel.swift in Sources */,
 				58F261BF2BBD92FA00A5D633 /* ScheduleVisitorsViewController.swift in Sources */,
 				58E997D52BBE87A00051BEF3 /* ReasonForVisit.swift in Sources */,
+				58BCBC2E2C4944B100465381 /* subServiceResponseModel.swift in Sources */,
 				583D9E002B90A2FD0073AAC3 /* Location.swift in Sources */,
 				583D9E062B90C4730073AAC3 /* RSOCustomCalendarView.swift in Sources */,
 				58A6358F2B7F5CD500A5D2F2 /* LoginBackgroundView.swift in Sources */,
+				58BCBC272C49286E00465381 /* PaymentMethodTableViewCell.swift in Sources */,
 				58E2D0E12BBA89AD0016DEB6 /* RewardPointsTableViewCell.swift in Sources */,
 				58F261C32BBD96B500A5D633 /* ReasonForVisitTableViewCells.swift in Sources */,
 				58D5AFF62BB5BBBF001FF067 /* ReportAnIssueRequestModel.swift in Sources */,
@@ -2127,6 +2165,7 @@
 				58A16CD02BBC767F0003DD50 /* LocationViewController.swift in Sources */,
 				5843D7662BC6C7F600D5C8DD /* ConfirmAndProceedTableViewCell.swift in Sources */,
 				58BF55992BCFEC8D00524828 /* DeskListingViewController.swift in Sources */,
+				58BCBC1B2C491F1B00465381 /* SideMenuPaymentsViewController.swift in Sources */,
 				589BBAA32BBBF54C00DCEF70 /* FAQEndPoint.swift in Sources */,
 				589BBAA02BBBEF3D00DCEF70 /* FAQTitleTableViewCell.swift in Sources */,
 				58BF85232B875D5B009FF06C /* SignUpRequestModel.swift in Sources */,
@@ -2141,6 +2180,7 @@
 				5883339E2B7E349E008334A0 /* VerifyViewController.swift in Sources */,
 				581F30B52BBFBDDC0083A400 /* VisitorsTimeTableViewCell.swift in Sources */,
 				58B406052BCD46360045DD4C /* SideMenuDashboardViewController.swift in Sources */,
+				58BCBC2B2C49298100465381 /* PayNowButtonTableViewCell.swift in Sources */,
 				58E6F70B2BA82552009D4E21 /* SelectAnAreaTableViewCell.swift in Sources */,
 				581F30C12BC00D8B0083A400 /* InviteVisitorsViewController.swift in Sources */,
 				583DBEC12BB1465300C3F93B /* EventResponse.swift in Sources */,

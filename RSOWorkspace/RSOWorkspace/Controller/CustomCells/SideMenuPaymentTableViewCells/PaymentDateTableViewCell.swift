@@ -1,19 +1,18 @@
 //
-//  PaymentMethodTableViewCell.swift
+//  PaymentDateTableViewCell.swift
 //  RSOWorkspace
 //
-//  Created by Sumit Aquil on 06/03/24.
+//  Created by Sumit Aquil on 18/07/24.
 //
 
 import UIKit
 
-class PaymentMethodTableViewCell: UITableViewCell {
+class PaymentDateTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
 
-   
     
 }

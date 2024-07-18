@@ -10,7 +10,7 @@ import UIKit
 class SideMenuMainViewController: UIViewController,RSOTabCoordinated {
     
     var coordinator: RSOTabBarCordinator?
-  
+    
     private var sideMenuViewController: SideMenuSubViewController!
     private var sideMenuRevealWidth: CGFloat = 300
     private var paddingForRotation: CGFloat = 110
@@ -21,13 +21,13 @@ class SideMenuMainViewController: UIViewController,RSOTabCoordinated {
     private var draggingIsEnabled: Bool = false
     private var panBaseLocation: CGFloat = 0.0
     private var revealSideMenuOnTop: Bool = true
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupSideMenu()
     }
     
-   
+    
     private func setupSideMenu() {
         addShadowView()
         addSideMenuViewController()
@@ -75,7 +75,7 @@ class SideMenuMainViewController: UIViewController,RSOTabCoordinated {
         let vc = UIViewController.createController(storyBoard: .TabBar, ofType: RSOTabBarViewController.self)
         view.insertSubview(vc.view, at: revealSideMenuOnTop ? 0 : 1)
         addChild(vc)
-
+        
         if !revealSideMenuOnTop {
             if isExpanded {
                 vc.view.frame.origin.x = sideMenuRevealWidth
@@ -115,9 +115,9 @@ class SideMenuMainViewController: UIViewController,RSOTabCoordinated {
             self.isExpanded = true
         }
     }
-
+    
     func hideMenu() {
-       // sideMenuShadowView.isHidden = true
+        // sideMenuShadowView.isHidden = true
         UIView.animate(withDuration: 0.5, animations: {
             self.sideMenuShadowView.alpha = 0.0
             if self.revealFromLeft {
@@ -138,14 +138,14 @@ class SideMenuMainViewController: UIViewController,RSOTabCoordinated {
 }
 
 extension SideMenuMainViewController: SideMenuViewControllerDelegate {
-   
+    
     func selectedCell(_ row: Int,menuTitle title:String) {
         DispatchQueue.main.async { self.sideMenuState(expanded: false) }
       let menuNavVC = self.coordinator?.getInnerNavigationVC(at: 0) ?? self.navigationController
       self.coordinator?.hideBackButton(isHidden: true)
       self.coordinator?.hideTopViewForHome(isHidden: true)
         switch title {
-       
+            
         case "My Profile": // My Profile
             let profileVC = UIViewController.createController(storyBoard: .Profile, ofType: ProfileViewController.self)
           menuNavVC?.pushViewController(profileVC, animated: true)
@@ -159,6 +159,10 @@ extension SideMenuMainViewController: SideMenuViewControllerDelegate {
         case "My Visitors":
             let myvisitorsDetailsVC = UIViewController.createController(storyBoard: .VisitorManagement, ofType: MyVisitorsViewController.self)
           menuNavVC?.pushViewController(myvisitorsDetailsVC, animated: true)
+       
+        case "Payments":
+            let paymentsVC = UIViewController.createController(storyBoard: .Payment, ofType: SideMenuPaymentsViewController.self)
+          menuNavVC?.pushViewController(paymentsVC, animated: true)
        
         case "Amenities":
             let amenitiesVC = UIViewController.createController(storyBoard: .Feedback, ofType: AmenitiesViewController.self)
@@ -181,25 +185,25 @@ extension SideMenuMainViewController: SideMenuViewControllerDelegate {
           menuNavVC?.pushViewController(aboutUsVC, animated: true)
            // Logout
         case "Logout":
-          self.logout()
+            self.logout()
         default:
             break
         }
     }
-  func logout() {
-      let alertController = UIAlertController(title: "Logout", message: "Are you sure you want to logout?", preferredStyle: .alert)
-      
-      let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-      alertController.addAction(cancelAction)
-      
-      let logoutAction = UIAlertAction(title: "Logout", style: .destructive) { _ in
-        RSOToken.shared.clearAll()
-        GetStartedViewController.presentAsRootController()
-
-      }
-      alertController.addAction(logoutAction)
-      self.present(alertController, animated: true, completion: nil)
-  }
+    func logout() {
+        let alertController = UIAlertController(title: "Logout", message: "Are you sure you want to logout?", preferredStyle: .alert)
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alertController.addAction(cancelAction)
+        
+        let logoutAction = UIAlertAction(title: "Logout", style: .destructive) { _ in
+            RSOToken.shared.clearAll()
+            GetStartedViewController.presentAsRootController()
+            
+        }
+        alertController.addAction(logoutAction)
+        self.present(alertController, animated: true, completion: nil)
+    }
 }
 
 extension SideMenuMainViewController: UIGestureRecognizerDelegate {
