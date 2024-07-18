@@ -10,8 +10,9 @@ import UIKit
 
 class RoomListingViewController: UIViewController {
   
+  @IBOutlet var textFieldBackground: UIView!
   @IBOutlet weak var searchBarHeightConstraint: NSLayoutConstraint!
-  @IBOutlet weak var txtSearch: RSOTextField!
+  @IBOutlet weak var txtSearch: UITextField!
   @IBOutlet weak var collectionView: RSOMeetingRoomsCollectionView!
   var coordinator: RSOTabBarCordinator?
   @IBOutlet weak var txtSearchHeightConstraint: NSLayoutConstraint!
@@ -32,8 +33,8 @@ class RoomListingViewController: UIViewController {
     // Hide or show search bar based on isSearchEnabled
     txtSearchHeightConstraint.constant = isSearchEnabled ? 45 : 0
     txtSearch.setUpTextFieldView(leftImageName: nil, rightImageName: "search")
-    txtSearch.customBorderWidth = 0.0
     txtSearch.text = self.searchingText
+    self.textFieldBackground.layer.cornerRadius = 10
     fetchRooms()
 
   }

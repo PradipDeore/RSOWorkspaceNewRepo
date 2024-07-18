@@ -106,26 +106,31 @@ extension BookMeetingRoomViewController: UITableViewDataSource, UITableViewDeleg
         switch section {
         case .selectLocation:
             let cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifier.selectLocation.rawValue, for: indexPath) as! SelectLocationTableViewCell
+          cell.selectionStyle = .none
             cell.delegate = self
             cell.dropdownOptions = dropdownOptions
             return cell
         case .selectDate:
             let  cell =  tableView.dequeueReusableCell(withIdentifier: CellIdentifier.selectDate.rawValue, for: indexPath) as! SelectDateTableViewCell
             cell.delegate = self
+          cell.selectionStyle = .none
             return cell
         case .selectTime:
             let cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifier.selectTime.rawValue, for: indexPath) as! SelectTimeTableViewCell
             cell.delegate = self
+          cell.selectionStyle = .none
             return cell
         case .btnGetRooms:
             let cell =  tableView.dequeueReusableCell(withIdentifier: CellIdentifier.btnGetRooms.rawValue, for: indexPath) as! GetRoomsBtnTableViewCell
             cell.delegate = self
+          cell.selectionStyle = .none
             return cell
         case .selectMeetingRoomLabel:
             return tableView.dequeueReusableCell(withIdentifier: CellIdentifier.selectMeetingRoomLabel.rawValue, for: indexPath)
         case .selectMeetingRoom:
             let cell =  tableView.dequeueReusableCell(withIdentifier: CellIdentifier.selectMeetingRoom.rawValue, for: indexPath)as! SelectMeetingRoomTableViewCell
             cell.collectionView.tag = 1
+          cell.selectionStyle = .none
             cell.collectionView.backActionDelegate = self
             
             cell.eventHandler = { [weak self] event in
