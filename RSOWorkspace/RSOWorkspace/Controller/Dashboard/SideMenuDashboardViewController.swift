@@ -10,7 +10,8 @@ import UIKit
 
 class SideMenuDashboardViewController: UIViewController {
     
-    @IBOutlet weak var tableView: UITableView!
+  @IBOutlet var topViewHeightConstraint: NSLayoutConstraint!
+  @IBOutlet weak var tableView: UITableView!
     var eventHandler: ((_ event: Event) -> Void)?
     
     var myProfileResponse:MyProfile?

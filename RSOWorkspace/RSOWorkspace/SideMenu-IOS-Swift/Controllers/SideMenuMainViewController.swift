@@ -141,42 +141,44 @@ extension SideMenuMainViewController: SideMenuViewControllerDelegate {
    
     func selectedCell(_ row: Int,menuTitle title:String) {
         DispatchQueue.main.async { self.sideMenuState(expanded: false) }
-       
+      let menuNavVC = self.coordinator?.getInnerNavigationVC(at: 0) ?? self.navigationController
+      self.coordinator?.hideBackButton(isHidden: true)
+      self.coordinator?.hideTopViewForHome(isHidden: true)
         switch title {
        
         case "My Profile": // My Profile
             let profileVC = UIViewController.createController(storyBoard: .Profile, ofType: ProfileViewController.self)
-            self.navigationController?.pushViewController(profileVC, animated: true)
+          menuNavVC?.pushViewController(profileVC, animated: true)
         case "Dashboard": // My Profile
             let dashboardVC = UIViewController.createController(storyBoard: .Dashboard, ofType: SideMenuDashboardViewController.self)
-            self.navigationController?.pushViewController(dashboardVC, animated: true)
+          menuNavVC?.pushViewController(dashboardVC, animated: true)
         case "Schedule Visitors": // Scheduled Visitors
             let scheduleVisitorsVC = UIViewController.createController(storyBoard: .VisitorManagement, ofType: ScheduleVisitorsViewController.self)
-            self.navigationController?.pushViewController(scheduleVisitorsVC, animated: true)
+          menuNavVC?.pushViewController(scheduleVisitorsVC, animated: true)
        
         case "My Visitors":
             let myvisitorsDetailsVC = UIViewController.createController(storyBoard: .VisitorManagement, ofType: MyVisitorsViewController.self)
-            self.navigationController?.pushViewController(myvisitorsDetailsVC, animated: true)
+          menuNavVC?.pushViewController(myvisitorsDetailsVC, animated: true)
        
         case "Amenities":
             let amenitiesVC = UIViewController.createController(storyBoard: .Feedback, ofType: AmenitiesViewController.self)
-            self.navigationController?.pushViewController(amenitiesVC, animated: true)
+          menuNavVC?.pushViewController(amenitiesVC, animated: true)
        
         case "Feedback":
             let feedbackVC = UIViewController.createController(storyBoard: .Feedback, ofType: FeedbackViewController.self)
-            self.navigationController?.pushViewController(feedbackVC, animated: true)
+          menuNavVC?.pushViewController(feedbackVC, animated: true)
        
         case "FAQs":
             let faqVC = UIViewController.createController(storyBoard: .Feedback, ofType: FAQViewController.self)
-            self.navigationController?.pushViewController(faqVC, animated: true)
+          menuNavVC?.pushViewController(faqVC, animated: true)
         
         case "Locations":
             let locationVC = UIViewController.createController(storyBoard: .Feedback, ofType: LocationViewController.self)
-            self.navigationController?.pushViewController(locationVC, animated: true)
+          menuNavVC?.pushViewController(locationVC, animated: true)
        
         case "About Us":
             let aboutUsVC = UIViewController.createController(storyBoard: .Feedback, ofType: RSOWorkspaceViewController.self)
-            self.navigationController?.pushViewController(aboutUsVC, animated: true)
+          menuNavVC?.pushViewController(aboutUsVC, animated: true)
            // Logout
         case "Logout":
           self.logout()

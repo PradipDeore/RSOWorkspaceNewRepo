@@ -10,7 +10,8 @@ import UIKit
 
 class RSOTabBarViewController: UIViewController {
     
-    @IBOutlet weak var backButtonWidthConstraint: NSLayoutConstraint!
+  @IBOutlet var topbarHeightConstraint: NSLayoutConstraint!
+  @IBOutlet weak var backButtonWidthConstraint: NSLayoutConstraint!
     @IBOutlet weak var lblGreeting: UILabel!
     
     @IBOutlet weak var topBarView: UIView!
@@ -27,7 +28,7 @@ class RSOTabBarViewController: UIViewController {
     var scoreAPICount = 0
     var roomName = ""
      var tabButtons = [UIButton]()
-    private var viewControllers = [UIViewController]()
+    var viewControllers = [UIViewController]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,7 +58,6 @@ class RSOTabBarViewController: UIViewController {
         currentNavcontroller?.popViewController(animated: true)
             }
     func showGreetingMessage(){
-        
         self.lblGreeting.text = RSOGreetings.greetingForCurrentTime()
     }
     
@@ -112,6 +112,7 @@ class RSOTabBarViewController: UIViewController {
                let window = sceneDelegate.window,
                let rootNavigationController = window.rootViewController as? UINavigationController,
                let mainViewController = rootNavigationController.viewControllers.first as? SideMenuMainViewController {
+              mainViewController.coordinator = coordinator
                 mainViewController.showMenu()
                 return
             }

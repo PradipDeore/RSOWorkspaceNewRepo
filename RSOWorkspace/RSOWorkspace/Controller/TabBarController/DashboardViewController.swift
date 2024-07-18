@@ -24,6 +24,7 @@ class DashboardViewController: UIViewController, RSOTabCoordinated {
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     coordinator?.hideBackButton(isHidden: true)
+    coordinator?.hideTopViewForHome(isHidden: false)
     coordinator?.setTitle(title: pagetitle)
     
   }

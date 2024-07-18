@@ -93,9 +93,9 @@
                                 <variation key="default">
                                     <mask key="constraints">
                                         <exclude reference="bS5-fL-mvj"/>
+                                        <exclude reference="3lw-Ru-fWw"/>
                                         <exclude reference="XHI-T3-903"/>
                                         <exclude reference="q8i-8a-8Dp"/>
-                                        <exclude reference="3lw-Ru-fWw"/>
                                         <exclude reference="Y7X-jG-ODx"/>
                                     </mask>
                                 </variation>
@@ -119,6 +119,7 @@
                     </view>
                     <connections>
                         <outlet property="tableView" destination="E7R-mQ-cvc" id="21e-Kp-fag"/>
+                        <outlet property="topViewHeightConstraint" destination="ouk-P6-Q0Y" id="d4V-FS-kbs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nDc-4t-jZ8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
