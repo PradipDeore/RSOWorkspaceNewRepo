@@ -129,7 +129,7 @@ extension DashboardViewController: UITableViewDataSource, UITableViewDelegate {
         }
         
         let cell = tableView.dequeueReusableCell(withIdentifier: section.cellIdentifier, for: indexPath)
-        
+        cell.selectionStyle = .none
         switch section {
         case .myBookingClose:
             if let myBookingCell = cell as? MyBookingCloseTableViewCell {

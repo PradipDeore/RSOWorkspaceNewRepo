@@ -7,8 +7,12 @@
 
 import UIKit
 
+protocol SelectedDeskTableViewCellDelegate:AnyObject{
+    func getselectedDeskNo(selectedDeskNo:[Int])
+}
 class SelectDesksTableViewCell: UITableViewCell , UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
+    weak var delegate: SelectedDeskTableViewCellDelegate?
     @IBOutlet weak var collectionView: UICollectionView!
     var selectedDeskNo = ""
     override func awakeFromNib() {
@@ -34,17 +38,14 @@ class SelectDesksTableViewCell: UITableViewCell , UICollectionViewDataSource, UI
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         // Dequeue your custom cell
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SelectDeskCollectionViewCell", for: indexPath) as! SelectDeskCollectionViewCell
-        // Set alternating background colors based on index
+       
         if indexPath.item % 2 == 0 {
-            // Even index: black background
             cell.deskNoView.backgroundColor = .black
             cell.lblDeskNo.textColor = .white
         } else {
-            // Odd index: white background
             cell.deskNoView.backgroundColor = .white
-            
+            cell.lblDeskNo.textColor = .black
         }
-        // Set the desk number (for example purposes)
         cell.lblDeskNo.text = "C\(indexPath.item + 1) "
         
         return cell
@@ -55,17 +56,16 @@ class SelectDesksTableViewCell: UITableViewCell , UICollectionViewDataSource, UI
             let selectedDeskNumber = cell.lblDeskNo.text
             print("Selected desk number: \(String(describing: selectedDeskNumber))")
             self.selectedDeskNo = selectedDeskNumber ?? ""
-            
+            // delegate?.getselectedDeskNo(selectedDeskNo: selectedDeskNumber)
         }
     }
+
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         let width:CGFloat = 95
-        let height: CGFloat = 50 // Height of the item
+        let height: CGFloat = 50
         return CGSize(width: width , height: height)
     }
-    //    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-    //        return 20
-    //    }
+   
     
 }

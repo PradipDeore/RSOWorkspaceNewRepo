@@ -52,7 +52,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" name="E3E3E3"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="fBj-UY-ssZ" firstAttribute="leading" secondItem="udf-ic-Vu3" secondAttribute="trailing" constant="8" id="652-Yy-TAG"/>
                             <constraint firstItem="yOV-Ok-hq6" firstAttribute="leading" secondItem="HW4-yj-KrY" secondAttribute="leading" constant="10" id="Ahy-gl-CoT"/>
@@ -85,9 +85,6 @@
         <image name="onDemandService" width="57" height="57"/>
         <namedColor name="616161">
             <color red="0.37999999523162842" green="0.37999999523162842" blue="0.37999999523162842" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="E3E3E3">
-            <color red="0.88999998569488525" green="0.88999998569488525" blue="0.88999998569488525" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>
