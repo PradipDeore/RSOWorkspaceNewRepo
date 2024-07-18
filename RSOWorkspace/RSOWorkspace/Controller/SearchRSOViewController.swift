@@ -49,7 +49,7 @@ class SearchRSOViewController: UIViewController {
     @IBAction func btnSearchTappedAction(_ sender: Any) {
         //let selectedCompany = companiesListArray[index]
       self.dismiss(animated: false) {
-        self.searchDelegate?.didSearch(searchString: "")
+        self.searchDelegate?.didSearch(searchString: self.txtSearch.text ?? "")
       }
         //if let txtSearch = txtSearch.text, !txtSearch.isEmpty{
             
