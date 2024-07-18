@@ -69,9 +69,9 @@ class MeetingRoomsCollectionViewCell: UICollectionViewCell {
     func setData(item : RSOCollectionItem){
         self.selectedMeetingRoom = item.id
         self.lblroomName.text = item.roomName
-        self.lblnoofCapacity.text = "\(item.capacity!) People"
+        self.lblnoofCapacity.text = "\(item.capacity ?? 0) People"
         self.lblLocation.text = item.locationName
-        self.lblroomPrice.text = "\(item.roomPrice!) /Hr"
+        self.lblroomPrice.text = "\(item.roomPrice ?? "0") /Hr"
         //let amenityDetails = item.amenityDetails
         //print(amenityDetails!)
         if let imageUrl = item.roomImage, !imageUrl.isEmpty {

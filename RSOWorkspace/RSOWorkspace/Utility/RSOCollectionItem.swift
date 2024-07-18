@@ -15,7 +15,7 @@ struct RSOCollectionItem: Codable {
     let roomPrice: String?
     let locationName: String?
     let type : String?
-    let roomAmenityDetails: String?
+    let roomAmenityDetails: [RoomAmenities]?
     let roomAmenitiesDesk:[ListingAmenityDetail]
     let officeAmenityDesk:[AmenityDetail]
     
@@ -36,13 +36,13 @@ struct RSOCollectionItem: Codable {
     // Initializer to convert from MeetingRoom
     init(meetingRoomList: MeetingRoomListing) {
         self.id = meetingRoomList.id
-        self.roomName = meetingRoomList.name
+      self.roomName = meetingRoomList.roomName ?? ""
         self.capacity = meetingRoomList.capacity
         self.description = meetingRoomList.description
-        self.roomImage = meetingRoomList.image
-        self.roomPrice = meetingRoomList.price
-        self.roomAmenityDetails = meetingRoomList.amenityDetails
-        self.type = meetingRoomList.type
+        self.roomImage = meetingRoomList.roomImage
+        self.roomPrice = meetingRoomList.roomPrice
+        self.roomAmenityDetails = meetingRoomList.roomAmenityDetails
+        self.type = "room"
         self.locationName = nil
         self.roomAmenitiesDesk = []
         self.officeAmenityDesk = []

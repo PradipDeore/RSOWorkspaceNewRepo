@@ -384,6 +384,7 @@
 		58F88E402BA8230200771268 /* ReportAnIssueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F88E3F2BA8230200771268 /* ReportAnIssueViewController.swift */; };
 		58F96E242C479DFA009C4DC5 /* subServicesRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F96E232C479DFA009C4DC5 /* subServicesRequestModel.swift */; };
 		EEA44D812C4805530081EE0D /* RSOToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA44D802C4805530081EE0D /* RSOToastView.swift */; };
+		EEE105B52C49256B007ECE4D /* RSOLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE105B42C49256B007ECE4D /* RSOLoader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -768,6 +769,7 @@
 		58F96E232C479DFA009C4DC5 /* subServicesRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = subServicesRequestModel.swift; sourceTree = "<group>"; };
 		ED9F47D9AF3AEFFB5207EE9B /* Pods-RSOWorkspace.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RSOWorkspace.debug.xcconfig"; path = "Target Support Files/Pods-RSOWorkspace/Pods-RSOWorkspace.debug.xcconfig"; sourceTree = "<group>"; };
 		EEA44D802C4805530081EE0D /* RSOToastView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSOToastView.swift; sourceTree = "<group>"; };
+		EEE105B42C49256B007ECE4D /* RSOLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSOLoader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1214,6 +1216,7 @@
 				583D9E052B90C4730073AAC3 /* RSOCustomCalendarView.swift */,
 				58BE90C22B9F0551001FCE54 /* RSOCollectionItem.swift */,
 				586C69562C45910800B0E229 /* UserSessionHelper.swift */,
+				EEE105B42C49256B007ECE4D /* RSOLoader.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -2152,6 +2155,7 @@
 				58BE5E682B8C6FBF002244F5 /* RSOMeetingRoomsCollectionView.swift in Sources */,
 				58BCBC182C48F27000465381 /* FAQDescriptionTableViewCell.swift in Sources */,
 				58ED2D1F2B8F4C1D004D06C8 /* MyBookingEndPoint.swift in Sources */,
+				EEE105B52C49256B007ECE4D /* RSOLoader.swift in Sources */,
 				586FA7042BBC28DA00EA2772 /* aboutRSOTableViewCell.swift in Sources */,
 				58ED2D232B8F50CE004D06C8 /* BookingResponse.swift in Sources */,
 				58E05E222B8610FB00189E99 /* EndPointType.swift in Sources */,

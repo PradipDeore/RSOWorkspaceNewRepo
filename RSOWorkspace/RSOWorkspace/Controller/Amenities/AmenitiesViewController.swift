@@ -23,88 +23,84 @@ enum SectionTypeAmenities: Int, CaseIterable {
     case gallery
 }
 class AmenitiesViewController: UIViewController{
-    @IBOutlet weak var tableView: UITableView!
+  @IBOutlet weak var tableView: UITableView!
+  
+  var listItems: [RSOCollectionItem] = []
+  var location: ApiResponse?
+  var dropdownOptions: [Location] = []
+  var eventHandler: ((_ event: Event) -> Void)?
+  var apiRequestModelRoomListing = BookMeetingRoomRequestModel()
+  var displayBookingDetailsNextScreen = DisplayBookingDetailsModel()
+  var roomList : [MeetingRoomListing] = []
+  var selectedMeetingRoomId = 0
+  var selectedLocation = ""
+  
+  // var selectedMeetingRoomDate = ""
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    setupTableView()
+    fetchLocations()
+    fetchMeetingRoomsAndReloadTable()
+  }
+  @IBAction func btnBackAction(_ sender: Any) {
+    self.navigationController?.popViewController(animated: true)
     
-    var listItems: [RSOCollectionItem] = []
-    var location: ApiResponse?
-    var dropdownOptions: [Location] = []
-    var eventHandler: ((_ event: Event) -> Void)?
-    var apiRequestModelRoomListing = BookMeetingRoomRequestModel()
-    var displayBookingDetailsNextScreen = DisplayBookingDetailsModel()
-    var roomList : [MeetingRoomListing] = []
-    var selectedMeetingRoomId = 0
-    var selectedLocation = ""
- 
-    // var selectedMeetingRoomDate = ""
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        setupTableView()
-        fetchLocations()
-        fetchMeetingRoomsAndReloadTable()
-    }
-    @IBAction func btnBackAction(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
-        
-    }
-    private func setupTableView() {
-        tableView.dataSource = self
-        tableView.delegate = self
-        tableView.registertableCells()
-        tableView.register(UINib(nibName: "DashboardMeetingRoomsTableViewCell", bundle: nil), forCellReuseIdentifier: "DashboardMeetingRoomsTableViewCell")
-        navigationController?.navigationBar.isHidden = true
-    }
+  }
+  private func setupTableView() {
+    tableView.dataSource = self
+    tableView.delegate = self
+    tableView.registertableCells()
+    tableView.register(UINib(nibName: "DashboardMeetingRoomsTableViewCell", bundle: nil), forCellReuseIdentifier: "DashboardMeetingRoomsTableViewCell")
+    navigationController?.navigationBar.isHidden = true
+  }
+  
+  private func fetchLocations() {
+    APIManager.shared.request(
+      modelType: ApiResponse.self, // Assuming your API returns an array of locations
+      type: LocationEndPoint.locations) { response in
+        switch response {
+        case .success(let response):
+          self.dropdownOptions = response.data
+          DispatchQueue.main.async {
+            self.tableView.reloadData()
+          }
+          self.eventHandler?(.dataLoaded)
+        case .failure(let error):
+          self.eventHandler?(.error(error))
+        }
+      }
+  }
+  //to display meeting rooms on load also not working
+  private func fetchMeetingRoomsAndReloadTable() {
+    RSOLoader.showLoader()
+    fetchmeetingRooms(id: 1, requestModel: apiRequestModelRoomListing)
+    tableView.reloadData()
+  }
+  func fetchmeetingRooms(id: Int, requestModel: BookMeetingRoomRequestModel) {
     
-    private func fetchLocations() {
-        self.eventHandler?(.loading)
-        APIManager.shared.request(
-            modelType: ApiResponse.self, // Assuming your API returns an array of locations
-            type: LocationEndPoint.locations) { response in
-                self.eventHandler?(.stopLoading)
-                switch response {
-                case .success(let response):
-                    self.dropdownOptions = response.data
-                    DispatchQueue.main.async {
-                        self.tableView.reloadData()
-                    }
-                    self.eventHandler?(.dataLoaded)
-                case .failure(let error):
-                    self.eventHandler?(.error(error))
-                }
+    APIManager.shared.request(
+      modelType: MeetingRoomListingResponse.self,
+      type: MyBookingEndPoint.getAvailableMeetingRoomListing(id: id, requestModel: requestModel)) { [weak self] response in
+        DispatchQueue.main.async {
+          guard let self = self else { return }
+          RSOLoader.removeLoader()
+          switch response {
+          case .success(let responseData):
+            // Handle successful response with bookings
+            self.roomList = responseData.data
+            
+            self.tableView.reloadData()
+            self.eventHandler?(.dataLoaded)
+          case .failure(let error):
+            self.eventHandler?(.error(error))
+            DispatchQueue.main.async {
+              RSOToastView.shared.show("\(error.localizedDescription)", duration: 2.0, position: .center)
             }
-    }
-    //to display meeting rooms on load also not working
-    private func fetchMeetingRoomsAndReloadTable() {
-        fetchmeetingRooms(id: selectedMeetingRoomId, requestModel: apiRequestModelRoomListing)
-        tableView.reloadData()
-    }
-    func fetchmeetingRooms(id: Int, requestModel: BookMeetingRoomRequestModel) {
-        self.eventHandler?(.loading)
-        
-        APIManager.shared.request(
-            modelType: MeetingRoomListingResponse.self,
-            type: MyBookingEndPoint.getAvailableMeetingRoomListing(id: id, requestModel: requestModel)) { [weak self] response in
-                
-                guard let self = self else { return }
-                self.eventHandler?(.stopLoading)
-                
-                switch response {
-                case .success(let responseData):
-                    // Handle successful response with bookings
-                    self.roomList = responseData.data
-                   
-                    DispatchQueue.main.async {
-                        self.tableView.reloadData()
-                    }
-                    self.eventHandler?(.dataLoaded)
-                case .failure(let error):
-                    self.eventHandler?(.error(error))
-                    DispatchQueue.main.async {
-                        self.tableView.makeToast("\(error.localizedDescription)", duration: 2.0, position: .center)
-                    }
-                }
-            }
-    }
-    
+          }
+        }
+      }
+  }
+  
 }
 
 // MARK: - UITableViewDataSource, UITableViewDelegate
@@ -237,8 +233,6 @@ extension AmenitiesViewController: DashboardDeskTypeTableViewCellDelegate {
 
 extension AmenitiesViewController {
     enum Event {
-        case loading
-        case stopLoading
         case dataLoaded
         case error(Error?)
     }

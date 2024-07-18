@@ -9,6 +9,7 @@ target 'RSOWorkspace' do
  pod 'Toast-Swift'
  pod 'Kingfisher'
  pod 'NISdk'
+ pod 'ProgressHUD'
   # Pods for RSOWorkspace
 
 end
