@@ -11,9 +11,11 @@ class FeedbackViewController: UIViewController {
 
     @IBOutlet weak var imgEmojies: UIImageView!
     
+    @IBOutlet weak var provideDetailsTextView: UITextView!
+   
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        provideDetailsTextView.addPlaceholder(text: "Please provide any details")
         self.imgEmojies.setRounded()
     }
     

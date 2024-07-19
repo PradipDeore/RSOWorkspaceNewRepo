@@ -10,15 +10,11 @@ import Toast_Swift
 class ScheduledVisitorDetatailsViewController: UIViewController {
     
     var displayscheduleVisitorsDetails : DisplayScheduleVisitorsDetailModel!
-    
     var requestModel : ScheduleVisitorsRequest!
-    
     var coordinator: RSOTabBarCordinator?
-    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var containerView: UIView!
     var cornerRadius: CGFloat = 10.0
-    
     var eventHandler: ((_ event: Event) -> Void)?
     
     private let cellIdentifiers: [CellType] = [.date, .time,  .labelVisitor, .visitors, .reasonForvisit, .buttonEdit, .confirmAndProceed]
