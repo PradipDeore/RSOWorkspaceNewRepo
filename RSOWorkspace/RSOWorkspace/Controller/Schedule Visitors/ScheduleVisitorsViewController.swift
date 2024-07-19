@@ -40,23 +40,18 @@ class ScheduleVisitorsViewController: UIViewController{
     var apiRequestScheduleVisitorsRequest = ScheduleVisitorsRequest()
     var displayscheduleVisitorsDetailsNextScreen = DisplayScheduleVisitorsDetailModel()
     
-    
     // var selectedMeetingRoomDate = ""
     override func viewDidLoad() {
         super.viewDidLoad()
        
-     
-       
         let emptyVisitor = VisitorDetails(visitorName: "", visitorEmail: "", visitorPhone: "")
         visitorsDetailArray.append(emptyVisitor)
-        
         setupTableView()
         fetchreasonForVisit()
     }
     
     @IBAction func btnBackAction(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
-        
     }
     private func setupTableView() {
         tableView.dataSource = self
