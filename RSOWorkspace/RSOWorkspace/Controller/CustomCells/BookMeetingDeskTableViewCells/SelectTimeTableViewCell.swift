@@ -14,12 +14,17 @@ class SelectTimeTableViewCell: UITableViewCell {
 
     weak var delegate: SelectTimeTableViewCellDelegate?
 
-    @IBOutlet weak var btnBookfullDay: RSOButton!
+  @IBOutlet var timePanel: UIView!
+  @IBOutlet weak var btnBookfullDay: RSOButton!
     @IBOutlet weak var selectStartTime: UIDatePicker!
     @IBOutlet weak var selectEndTime: UIDatePicker!
     override func awakeFromNib() {
         super.awakeFromNib()
         self.btnBookfullDay.layer.cornerRadius = btnBookfullDay.bounds.height / 2
+      if let bgView = selectEndTime.subviews.first?.subviews.first?.subviews.first {
+        bgView.backgroundColor = .clear
+    }
+      timePanel.layer.cornerRadius = 6
     }
     @IBAction func selectStartTime(_ sender: UIDatePicker) {
         let selectedStartTime = sender.date

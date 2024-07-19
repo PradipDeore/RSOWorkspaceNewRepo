@@ -19,7 +19,7 @@ class ShadowedView: UIView {
         }
     }
     
-    @IBInspectable var shadowColor: UIColor = UIColor.black.withAlphaComponent(0.5) {
+    @IBInspectable var shadowColor: UIColor = UIColor.black.withAlphaComponent(0.25) {
         didSet {
             self.layer.shadowColor = shadowColor.cgColor
         }
@@ -37,7 +37,7 @@ class ShadowedView: UIView {
         }
     }
     
-    @IBInspectable var shadowRadius: CGFloat = 10.0 {
+  @IBInspectable var shadowRadius: CGFloat = 4.0 {
         didSet {
             self.layer.shadowRadius = shadowRadius
         }

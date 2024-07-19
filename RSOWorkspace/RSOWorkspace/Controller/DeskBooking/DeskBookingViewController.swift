@@ -110,81 +110,76 @@ extension DeskBookingViewController: UITableViewDataSource, UITableViewDelegate 
         return 1
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let section = SectionTypeDeskBooking(rawValue: indexPath.section) else { return UITableViewCell() }
-        
-        switch section {
-        case .selectLocation:
-            let cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifierDeskBooking.selectLocation.rawValue, for: indexPath) as! SelectLocationTableViewCell
-            cell.delegate = self
-            cell.dropdownOptions = dropdownOptions
-            return cell
-        case .selectDate:
-            let  cell =  tableView.dequeueReusableCell(withIdentifier: CellIdentifierDeskBooking.selectDate.rawValue, for: indexPath) as! SelectDateTableViewCell
-            cell.delegate = self
-            return cell
-        case .selectTime:
-            let cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifierDeskBooking.selectTime.rawValue, for: indexPath) as! SelectTimeTableViewCell
-            cell.delegate = self
-            return cell
-        case .addTeamMembers:
-            let cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifierDeskBooking.addTeamMembers.rawValue, for: indexPath) as! InviteTeamMembersTableViewCell
-            cell.delegate = self
-            
-            cell.lblteammemberName.text = teamMembersArray[indexPath.row]
-            cell.btnAdd.isHidden = !(indexPath.row == 0)
-            cell.teamMemberView.isHidden = false
-            if indexPath.row == 0 {
-                if teamMembersArray.first == ""{
-                    cell.teamMemberView.isHidden = true
-                }
-            }
-            return cell
-        case .btnGetRooms:
-            let cell =  tableView.dequeueReusableCell(withIdentifier: CellIdentifierDeskBooking.btnGetRooms.rawValue, for: indexPath) as! GetRoomsBtnTableViewCell
-            cell.delegate = self
-            return cell
-        case .selectMeetingRoomLabel:
-            let cell =  tableView.dequeueReusableCell(withIdentifier: CellIdentifierDeskBooking.selectMeetingRoomLabel.rawValue, for: indexPath) as! SelectMeetingRoomLabelTableViewCell
-            cell.lblMeetingRoom.text = "Select Desk Type"
-            cell.lblMeetingRoom.font = UIFont(name: "Poppins-SemiBold", size: 14)
-            return cell
-        case .selectDesksType:
-            let cell =  tableView.dequeueReusableCell(withIdentifier: CellIdentifierDeskBooking.selectDesksType.rawValue, for: indexPath)as! SelectMeetingRoomTableViewCell
-            cell.collectionView.tag = 1
-            cell.collectionView.backActionDelegate = self
-            
-//                        cell.eventHandler = { [weak self] event in
-//                            // Handle events here based on the event type
-//                            switch event {
-//                            case .dataLoaded:
-//                                // Handle data loaded event
-//                                self?.listItems = cell.collectionView.listItems
-//                                if self?.selectedDeskId == 1{
-//                                    cell.collectionView.reloadData()
-//                                }
-//                            default:
-//                                print("default")
-//                            }
-//                        }
-            if selectedDeskId > 0{
-                cell.fetchDesks(id: selectedDeskId,
-                                requestModel: apiRequestModelDeskListing)
-                
-            }
-            return cell
-        case .selectDesks:
-            let cell =  tableView.dequeueReusableCell(withIdentifier: CellIdentifierDeskBooking.selectDesks.rawValue, for: indexPath) as! SelectDesksTableViewCell
-            cell.delegate = self
-            return cell
-        case .buttonbookingConfirm:
-            let cell =  tableView.dequeueReusableCell(withIdentifier: CellIdentifierDeskBooking.buttonbookingConfirm.rawValue, for: indexPath) as! ButtonBookingConfirmTableViewCell
-            cell.delegate = self
-            cell.btnConfirm.setTitle("Confirm Booking", for: .normal)
-            
-            return cell
+  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    guard let section = SectionTypeDeskBooking(rawValue: indexPath.section) else { return UITableViewCell() }
+    
+    switch section {
+    case .selectLocation:
+      let cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifierDeskBooking.selectLocation.rawValue, for: indexPath) as! SelectLocationTableViewCell
+      cell.delegate = self
+      cell.dropdownOptions = dropdownOptions
+      cell.selectionStyle = .none
+      return cell
+    case .selectDate:
+      let  cell =  tableView.dequeueReusableCell(withIdentifier: CellIdentifierDeskBooking.selectDate.rawValue, for: indexPath) as! SelectDateTableViewCell
+      cell.delegate = self
+      cell.selectionStyle = .none
+      return cell
+    case .selectTime:
+      let cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifierDeskBooking.selectTime.rawValue, for: indexPath) as! SelectTimeTableViewCell
+      cell.delegate = self
+      cell.selectionStyle = .none
+      return cell
+    case .addTeamMembers:
+      let cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifierDeskBooking.addTeamMembers.rawValue, for: indexPath) as! InviteTeamMembersTableViewCell
+      cell.delegate = self
+      
+      cell.lblteammemberName.text = teamMembersArray[indexPath.row]
+      cell.btnAdd.isHidden = !(indexPath.row == 0)
+      cell.teamMemberView.isHidden = false
+      if indexPath.row == 0 {
+        if teamMembersArray.first == ""{
+          cell.teamMemberView.isHidden = true
         }
+      }
+      cell.selectionStyle = .none
+      return cell
+    case .btnGetRooms:
+      let cell =  tableView.dequeueReusableCell(withIdentifier: CellIdentifierDeskBooking.btnGetRooms.rawValue, for: indexPath) as! GetRoomsBtnTableViewCell
+      cell.delegate = self
+      cell.selectionStyle = .none
+      return cell
+    case .selectMeetingRoomLabel:
+      let cell =  tableView.dequeueReusableCell(withIdentifier: CellIdentifierDeskBooking.selectMeetingRoomLabel.rawValue, for: indexPath) as! SelectMeetingRoomLabelTableViewCell
+      cell.lblMeetingRoom.text = "Select Desk Type"
+      cell.lblMeetingRoom.font = UIFont(name: "Poppins-SemiBold", size: 14)
+      cell.selectionStyle = .none
+      return cell
+    case .selectDesksType:
+      let cell =  tableView.dequeueReusableCell(withIdentifier: CellIdentifierDeskBooking.selectDesksType.rawValue, for: indexPath)as! SelectMeetingRoomTableViewCell
+      cell.collectionView.tag = 1
+      cell.collectionView.backActionDelegate = self
+      
+      if selectedDeskId > 0{
+        cell.fetchDesks(id: selectedDeskId,
+                        requestModel: apiRequestModelDeskListing)
+        
+      }
+      cell.selectionStyle = .none
+      return cell
+    case .selectDesks:
+      let cell =  tableView.dequeueReusableCell(withIdentifier: CellIdentifierDeskBooking.selectDesks.rawValue, for: indexPath) as! SelectDesksTableViewCell
+      cell.delegate = self
+      cell.selectionStyle = .none
+      return cell
+    case .buttonbookingConfirm:
+      let cell =  tableView.dequeueReusableCell(withIdentifier: CellIdentifierDeskBooking.buttonbookingConfirm.rawValue, for: indexPath) as! ButtonBookingConfirmTableViewCell
+      cell.delegate = self
+      cell.btnConfirm.setTitle("Confirm Booking", for: .normal)
+      cell.selectionStyle = .none
+      return cell
     }
+  }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         guard let section = SectionTypeDeskBooking(rawValue: indexPath.section) else { return 0 }
         
