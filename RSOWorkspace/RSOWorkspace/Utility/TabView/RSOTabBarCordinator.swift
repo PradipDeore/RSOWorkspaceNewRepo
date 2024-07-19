@@ -12,7 +12,7 @@ protocol RSOTabCoordinated: AnyObject {
     var coordinator: RSOTabBarCordinator? { get set }
 }
 class RSOTabBarCordinator {
-    private let tabBarController: RSOTabBarViewController
+     let tabBarController: RSOTabBarViewController
     init(tabBarController: RSOTabBarViewController) {
         self.tabBarController = tabBarController
     }
@@ -55,7 +55,8 @@ class RSOTabBarCordinator {
       self.tabBarController.tabButtonTapped( self.tabBarController.tabButtons.first)
     }
     
-  func getInnerNavigationVC(at index: Int) -> UINavigationController? {
+  func getInnerNavigationVC() -> UINavigationController? {
+    let index = self.tabBarController.lastSelectedTabIndex
     if index < self.tabBarController.viewControllers.count {
       let navVC = self.tabBarController.viewControllers[index] as? UINavigationController
       return navVC
