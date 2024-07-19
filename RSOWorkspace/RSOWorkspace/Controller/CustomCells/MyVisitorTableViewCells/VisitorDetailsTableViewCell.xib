@@ -28,7 +28,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="017-ac-QQt" userLabel="ContainerView">
-                        <rect key="frame" x="25" y="0.0" width="333" height="155"/>
+                        <rect key="frame" x="25" y="0.0" width="332" height="155"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9:00 AM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a8Z-DS-2UB">
                                 <rect key="frame" x="14" y="15" width="100" height="20"/>
@@ -61,7 +61,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="abdul@yahoo.com" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D0F-hg-dtJ">
-                                <rect key="frame" x="146" y="15" width="177" height="15"/>
+                                <rect key="frame" x="146" y="15" width="176" height="15"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="15" id="KWn-HL-RnV"/>
                                 </constraints>
@@ -70,7 +70,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="abdul@yahoo.com" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jGQ-es-m1Z">
-                                <rect key="frame" x="145" y="38" width="178" height="15"/>
+                                <rect key="frame" x="145" y="38" width="177" height="15"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="15" id="HeY-RK-hbf"/>
                                 </constraints>
@@ -101,38 +101,33 @@
                                     <constraint firstAttribute="bottom" secondItem="R7W-xi-Nwb" secondAttribute="bottom" constant="3" id="z2U-Ko-nf7"/>
                                 </constraints>
                             </view>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="60" translatesAutoresizingMaskIntoConstraints="NO" id="tiY-5M-xcp">
-                                <rect key="frame" x="15" y="124" width="308" height="25"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lns-EW-6gb" customClass="RSOButton" customModule="RSOWorkspace" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="124" height="25"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="124" id="821-U8-OyE"/>
-                                            <constraint firstAttribute="height" constant="25" id="MtD-9P-Vun"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="12"/>
-                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <state key="normal" title="Edit"/>
-                                        <connections>
-                                            <action selector="btnEditAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="FTN-Uf-dFI"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RWt-4J-hQr" customClass="RSOButton" customModule="RSOWorkspace" customModuleProvider="target">
-                                        <rect key="frame" x="184" y="0.0" width="124" height="25"/>
-                                        <color key="backgroundColor" name="768D70"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="124" id="TKR-6q-Gqu"/>
-                                            <constraint firstAttribute="height" constant="25" id="VOf-oZ-fC5"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="12"/>
-                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <state key="normal" title="Cancel"/>
-                                        <connections>
-                                            <action selector="btnCancelAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="dQa-db-ssT"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lns-EW-6gb" customClass="RSOButton" customModule="RSOWorkspace" customModuleProvider="target">
+                                <rect key="frame" x="15" y="124" width="124" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="124" id="821-U8-OyE"/>
+                                    <constraint firstAttribute="height" constant="25" id="MtD-9P-Vun"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="12"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Edit"/>
+                                <connections>
+                                    <action selector="btnEditAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="FTN-Uf-dFI"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RWt-4J-hQr" customClass="RSOButton" customModule="RSOWorkspace" customModuleProvider="target">
+                                <rect key="frame" x="199" y="124" width="124" height="25"/>
+                                <color key="backgroundColor" name="768D70"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="124" id="TKR-6q-Gqu"/>
+                                    <constraint firstAttribute="height" constant="25" id="VOf-oZ-fC5"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="12"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Cancel"/>
+                                <connections>
+                                    <action selector="btnCancelAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="dQa-db-ssT"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
@@ -141,18 +136,19 @@
                             <constraint firstItem="Ipw-xK-Iq2" firstAttribute="top" secondItem="vYu-lQ-Si1" secondAttribute="bottom" constant="13" id="OWO-1Y-oH7"/>
                             <constraint firstItem="a8Z-DS-2UB" firstAttribute="top" secondItem="017-ac-QQt" secondAttribute="top" constant="15" id="RSG-dl-6PA"/>
                             <constraint firstItem="jGQ-es-m1Z" firstAttribute="leading" secondItem="vYu-lQ-Si1" secondAttribute="trailing" constant="139" id="RyL-VB-YwS"/>
+                            <constraint firstItem="lns-EW-6gb" firstAttribute="top" secondItem="Ipw-xK-Iq2" secondAttribute="bottom" constant="22" id="Sk4-PZ-rKI"/>
                             <constraint firstAttribute="trailing" secondItem="jGQ-es-m1Z" secondAttribute="trailing" constant="10" id="SkX-gt-WEC"/>
                             <constraint firstItem="a8Z-DS-2UB" firstAttribute="leading" secondItem="017-ac-QQt" secondAttribute="leading" constant="14" id="ZGH-qg-Pd1"/>
                             <constraint firstItem="jGQ-es-m1Z" firstAttribute="top" secondItem="D0F-hg-dtJ" secondAttribute="bottom" constant="8" id="bMW-wB-tSH"/>
-                            <constraint firstItem="tiY-5M-xcp" firstAttribute="top" secondItem="Ipw-xK-Iq2" secondAttribute="bottom" constant="22" id="bcl-mu-3H5"/>
+                            <constraint firstItem="lns-EW-6gb" firstAttribute="leading" secondItem="Ipw-xK-Iq2" secondAttribute="leading" id="cLq-RO-6CP"/>
                             <constraint firstItem="vYu-lQ-Si1" firstAttribute="top" secondItem="a8Z-DS-2UB" secondAttribute="bottom" constant="2" id="fOz-yt-dcm"/>
                             <constraint firstItem="D0F-hg-dtJ" firstAttribute="top" secondItem="017-ac-QQt" secondAttribute="top" constant="15" id="hdw-vv-z3k"/>
                             <constraint firstItem="D0F-hg-dtJ" firstAttribute="leading" secondItem="6fa-YB-qem" secondAttribute="trailing" constant="8" id="jVC-9p-Kn6"/>
-                            <constraint firstAttribute="trailing" secondItem="tiY-5M-xcp" secondAttribute="trailing" constant="10" id="lUq-TD-UGD"/>
                             <constraint firstItem="jGQ-es-m1Z" firstAttribute="leading" secondItem="vYu-lQ-Si1" secondAttribute="trailing" constant="32" id="mGB-Bg-qqN"/>
                             <constraint firstAttribute="trailing" secondItem="D0F-hg-dtJ" secondAttribute="trailing" constant="10" id="mQ8-iQ-lig"/>
+                            <constraint firstItem="lns-EW-6gb" firstAttribute="baseline" secondItem="RWt-4J-hQr" secondAttribute="baseline" id="nO1-fB-ggg"/>
+                            <constraint firstItem="RWt-4J-hQr" firstAttribute="leading" secondItem="lns-EW-6gb" secondAttribute="trailing" constant="60" id="qQy-a4-LEv"/>
                             <constraint firstItem="vYu-lQ-Si1" firstAttribute="leading" secondItem="017-ac-QQt" secondAttribute="leading" constant="13" id="vif-IZ-xAp"/>
-                            <constraint firstItem="tiY-5M-xcp" firstAttribute="leading" secondItem="017-ac-QQt" secondAttribute="leading" constant="15" id="xGu-fZ-ZRS"/>
                             <constraint firstItem="6fa-YB-qem" firstAttribute="leading" secondItem="a8Z-DS-2UB" secondAttribute="trailing" constant="9" id="y1U-z2-Dlo"/>
                         </constraints>
                         <variation key="default">

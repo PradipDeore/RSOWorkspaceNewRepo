@@ -7,24 +7,28 @@
 
 import UIKit
 
+protocol EditVisitorDetailsTableViewCellDelegate:AnyObject{
+    func showeditVisitorDetailsScreen(for indexPath: IndexPath)
+}
 class VisitorDetailsTableViewCell: UITableViewCell {
-
+    
+    weak var delegate: EditVisitorDetailsTableViewCellDelegate?
     @IBOutlet weak var btnEdit: RSOButton!
     @IBOutlet weak var ReasonForVisitView: UIView!
     @IBOutlet weak var btnCancel: RSOButton!
     @IBOutlet weak var containerView: UIView!
     var cornerRadius: CGFloat = 10.0
-
+    var indexPath: IndexPath?
     @IBOutlet weak var lblStartTime: UILabel!
     @IBOutlet weak var lblEndtime: UILabel!
-    
     @IBOutlet weak var lblVisitorEmail: UILabel!
-    
     @IBOutlet weak var lblReasonForVisit: UILabel!
+   
     override func awakeFromNib() {
         super.awakeFromNib()
         ReasonForVisitView.setCornerRadiusForView()
         btnCancel.backgroundColor = ._768_D_70
+        btnCancel.isHidden = true
         btnCancel.setCornerRadiusToButton2()
         btnEdit.setCornerRadiusToButton2()
         customizeCell()
@@ -44,12 +48,12 @@ class VisitorDetailsTableViewCell: UITableViewCell {
     }
     
     func setData(item : MyVisitor){
-       
+        
         if let startDateString = item.startTime{
             //convert the date string in date format
-        let startDate =  Date.dateFromString(startDateString, format: .hhmmss)
+            let startDate =  Date.dateFromString(startDateString, format: .hhmmss)
             //convert date in hhmma format
-        lblStartTime.text = Date.formatSelectedDate(format: .hhmma, date: startDate)
+            lblStartTime.text = Date.formatSelectedDate(format: .hhmma, date: startDate)
         }
         if let endDateString = item.endTime{
             let endDate =  Date.dateFromString(endDateString, format: .hhmmss)
@@ -57,15 +61,18 @@ class VisitorDetailsTableViewCell: UITableViewCell {
         }
         self.lblReasonForVisit.text = item.reason
         
-//        if let visitor = item.visitorDetails {
-//            let email = visitor
-//            self.lblVisitorEmail.text = email
-//        }
+        
     }
+    func setVisitorDetails(visitor: VisitorDetail) {
+            lblVisitorEmail.text = visitor.visitorEmail
+        }
     @IBAction func btnCancelAction(_ sender: Any) {
     }
     
     @IBAction func btnEditAction(_ sender: Any) {
+        if let indexPath = indexPath {
+            delegate?.showeditVisitorDetailsScreen(for: indexPath)
+        }
     }
     
 }
