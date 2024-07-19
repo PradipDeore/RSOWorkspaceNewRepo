@@ -106,7 +106,6 @@
 		5864882F2BBAD2CD0024CBA2 /* FeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5864882E2BBAD2CD0024CBA2 /* FeedbackViewController.swift */; };
 		58696B0D2BAD833800937A4F /* RSVPButtonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58696B0C2BAD833800937A4F /* RSVPButtonViewController.swift */; };
 		58696B0F2BAD8C1300937A4F /* FindMembersCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58696B0E2BAD8C1300937A4F /* FindMembersCardViewController.swift */; };
-		586C69572C45910800B0E229 /* UserSessionHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586C69562C45910800B0E229 /* UserSessionHelper.swift */; };
 		586FA6FE2BBC1A2B00EA2772 /* RSOWorkspaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586FA6FD2BBC1A2B00EA2772 /* RSOWorkspaceViewController.swift */; };
 		586FA7002BBC268300EA2772 /* AboutRSOModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586FA6FF2BBC268300EA2772 /* AboutRSOModel.swift */; };
 		586FA7042BBC28DA00EA2772 /* aboutRSOTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586FA7022BBC28DA00EA2772 /* aboutRSOTableViewCell.swift */; };
@@ -392,6 +391,7 @@
 		58F88E402BA8230200771268 /* ReportAnIssueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F88E3F2BA8230200771268 /* ReportAnIssueViewController.swift */; };
 		58F96E242C479DFA009C4DC5 /* subServicesRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F96E232C479DFA009C4DC5 /* subServicesRequestModel.swift */; };
 		EEA44D812C4805530081EE0D /* RSOToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA44D802C4805530081EE0D /* RSOToastView.swift */; };
+		EEDD34FE2C4A1D1200DE2732 /* UserSessionHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDD34FD2C4A1D1200DE2732 /* UserSessionHelper.swift */; };
 		EEE105B52C49256B007ECE4D /* RSOLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE105B42C49256B007ECE4D /* RSOLoader.swift */; };
 /* End PBXBuildFile section */
 
@@ -490,7 +490,6 @@
 		5864882E2BBAD2CD0024CBA2 /* FeedbackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackViewController.swift; sourceTree = "<group>"; };
 		58696B0C2BAD833800937A4F /* RSVPButtonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSVPButtonViewController.swift; sourceTree = "<group>"; };
 		58696B0E2BAD8C1300937A4F /* FindMembersCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindMembersCardViewController.swift; sourceTree = "<group>"; };
-		586C69562C45910800B0E229 /* UserSessionHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSessionHelper.swift; sourceTree = "<group>"; };
 		586FA6FD2BBC1A2B00EA2772 /* RSOWorkspaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSOWorkspaceViewController.swift; sourceTree = "<group>"; };
 		586FA6FF2BBC268300EA2772 /* AboutRSOModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutRSOModel.swift; sourceTree = "<group>"; };
 		586FA7022BBC28DA00EA2772 /* aboutRSOTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = aboutRSOTableViewCell.swift; sourceTree = "<group>"; };
@@ -785,6 +784,7 @@
 		679B083A745FEFA843A18302 /* Pods-RSOWorkspace.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RSOWorkspace.release.xcconfig"; path = "Target Support Files/Pods-RSOWorkspace/Pods-RSOWorkspace.release.xcconfig"; sourceTree = "<group>"; };
 		7AB224176F3C3ECB7C30B655 /* Pods-RSOWorkspace.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RSOWorkspace.debug.xcconfig"; path = "Target Support Files/Pods-RSOWorkspace/Pods-RSOWorkspace.debug.xcconfig"; sourceTree = "<group>"; };
 		EEA44D802C4805530081EE0D /* RSOToastView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSOToastView.swift; sourceTree = "<group>"; };
+		EEDD34FD2C4A1D1200DE2732 /* UserSessionHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserSessionHelper.swift; path = ../../../../../Desktop/UserSessionHelper.swift; sourceTree = "<group>"; };
 		EEE105B42C49256B007ECE4D /* RSOLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSOLoader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -1224,6 +1224,7 @@
 		58ACDB372B78C7550041B755 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				EEDD34FD2C4A1D1200DE2732 /* UserSessionHelper.swift */,
 				EEA44D802C4805530081EE0D /* RSOToastView.swift */,
 				58BEF25A2C47DDC500C78CF4 /* Extension */,
 				58E6E9342B88714D00EB3600 /* TabView */,
@@ -1240,7 +1241,6 @@
 				58BE5E672B8C6FBF002244F5 /* RSOMeetingRoomsCollectionView.swift */,
 				583D9E052B90C4730073AAC3 /* RSOCustomCalendarView.swift */,
 				58BE90C22B9F0551001FCE54 /* RSOCollectionItem.swift */,
-				586C69562C45910800B0E229 /* UserSessionHelper.swift */,
 				EEE105B42C49256B007ECE4D /* RSOLoader.swift */,
 			);
 			path = Utility;
@@ -2001,7 +2001,6 @@
 				58B4060B2BCD47380045DD4C /* PaymentTableViewCell.swift in Sources */,
 				5843D7622BC6875E00D5C8DD /* EditButtonTableViewCell.swift in Sources */,
 				5864882A2BBAB58F0024CBA2 /* MyProfileEndPoint.swift in Sources */,
-				586C69572C45910800B0E229 /* UserSessionHelper.swift in Sources */,
 				58EB0E452BB6D62600DC2827 /* SideMenuMainViewController.swift in Sources */,
 				58B406012BCCFDAC0045DD4C /* DeskRequestModel.swift in Sources */,
 				58127A8E2BAC41BB001693D6 /* ListOfMembersViewController.swift in Sources */,
@@ -2020,6 +2019,7 @@
 				58F2635C2BAC211A00AEDEC9 /* BrowseMembersViewController.swift in Sources */,
 				58BF2F192B8C967000620846 /* SearchRSOViewController.swift in Sources */,
 				58E2D0DD2BBA7E110016DEB6 /* MembershipPlanTableViewCell.swift in Sources */,
+				EEDD34FE2C4A1D1200DE2732 /* UserSessionHelper.swift in Sources */,
 				58E6F7172BA826B6009D4E21 /* RequestButtonTableViewCell.swift in Sources */,
 				58BEF2632C47DDC500C78CF4 /* UILabel.swift in Sources */,
 				58F263552BAC12FB00AEDEC9 /* CompaniesListTableViewCell.swift in Sources */,

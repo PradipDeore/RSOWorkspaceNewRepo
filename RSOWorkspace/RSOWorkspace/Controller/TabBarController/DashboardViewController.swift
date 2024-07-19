@@ -102,7 +102,8 @@ extension DashboardViewController: UITableViewDataSource, UITableViewDelegate {
     var heightForRow: CGFloat {
       switch self {
       case .myBookingClose: return 45
-      case .marketPlace, .meetingRooms: return 209
+      case .marketPlace:  return UserHelper.shared.isGuest() ? 0 : 209
+      case .meetingRooms: return 209
       case .deskType: return 35
       }
     }

@@ -47,21 +47,26 @@ class ProfileViewController: UIViewController {
         }
     }
     private func fetchMyProfiles() {
-        self.eventHandler?(.loading)
+      DispatchQueue.main.async {
+        RSOLoader.showLoader()
+      }
         APIManager.shared.request(
             modelType: MyProfile.self, // Assuming your API returns an array of MyProfile
             type: MyProfileEndPoint.myProfile) { response in
-                self.eventHandler?(.stopLoading)
                 switch response {
                 case .success(let response):
                     self.myProfileResponse = response
                    // print ("myProfileResponseCount",self.myProfileResponse)
                     DispatchQueue.main.async {
+                      RSOLoader.removeLoader()
                         self.tableView.reloadData()
                     }
                     self.eventHandler?(.dataLoaded)
                 case .failure(let error):
                     self.eventHandler?(.error(error))
+                  DispatchQueue.main.async {
+                    RSOLoader.removeLoader()
+                  }
                 }
             }
     }
@@ -90,7 +95,7 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
             switch self {
             case .profileDetails: return 202
             case .changePassword: return 50
-            case .membershipPlan: return 189
+            case .membershipPlan: return UserHelper.shared.isGuest() ? 0 : 189
             case .paymentMethod: return 50
             case .rewardPoints:
                 return 131
@@ -103,13 +108,9 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 10
+        return 5
     }
-    
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        return UIView()
-    }
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
@@ -127,13 +128,7 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
             if let profileDetailsCell = cell as? ProfileDetailsTableViewCell {
                 profileDetailsCell.delegate = self
                 //only one object in response for member
-                // Assuming myProfileResponse is an optional of type MyProfile
-                let defaultProfile = MyProfile(status: false, data: ProfileData(firstName: "", lastName: "", email: "", phone: "", designation: "", rewardPoints: 0, membershipName: "", desc: "", companyName: nil))
-
-                // Usage of nil-coalescing operator
-                let profileToUse = myProfileResponse ?? defaultProfile
-                profileDetailsCell.setData(item: profileToUse)
-               
+                profileDetailsCell.setData()
                 return profileDetailsCell
             }
         case .changePassword:
@@ -189,8 +184,6 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
 
 extension ProfileViewController {
     enum Event {
-        case loading
-        case stopLoading
         case dataLoaded
         case error(Error?)
     }

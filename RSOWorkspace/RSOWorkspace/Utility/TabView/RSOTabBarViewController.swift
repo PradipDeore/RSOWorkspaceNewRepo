@@ -37,6 +37,9 @@ class RSOTabBarViewController: UIViewController {
         coordinator = RSOTabBarCordinator(tabBarController: self)
         setupTabBarView()
         for (index, item) in RSOTabItem.allCases.enumerated() {
+          if index == 3 && UserHelper.shared.isGuest() {
+              continue // Skip adding the report tab if it's set to false
+          }
             let viewController = item.createTabChildController()
             // set coordinator value
             if let childViewController = viewController as? RSOTabCoordinated {
@@ -77,8 +80,20 @@ class RSOTabBarViewController: UIViewController {
     private func setupTabBarView() {
         // Create and configure the tab buttons\
         let screenWidth = UIScreen.main.bounds.width
-        let itemWidth = Int(screenWidth) / RSOTabItem.allCases.count
+        var itemCount = RSOTabItem.allCases.count
+        if UserHelper.shared.isGuest() {
+          itemCount = itemCount - 1
+        }
         for (index, item) in RSOTabItem.allCases.enumerated() {
+          print("index=", index)
+          print("item=", item)
+          if index == 3 && UserHelper.shared.isGuest() {
+              continue // Skip adding the report tab if it's set to false
+          }
+          let itemWidth = Int(screenWidth) / itemCount
+          print("itemWidth=", itemWidth)
+          print("itemCount=", itemCount)
+
             let button = TabBarButton()
             let fontNormal = UIFont.systemFont(ofSize: 11)
             let fontSelected = UIFont.boldSystemFont(ofSize: 11)
@@ -89,11 +104,11 @@ class RSOTabBarViewController: UIViewController {
             tabBarView.addSubview(button)
             tabButtons.append(button)
             button.translatesAutoresizingMaskIntoConstraints = false
-            button.widthAnchor.constraint(equalTo: tabBarView.widthAnchor, multiplier: 1.0 / CGFloat(RSOTabItem.allCases.count)).isActive = true
+            button.widthAnchor.constraint(equalTo: tabBarView.widthAnchor, multiplier: 1.0 / CGFloat(itemCount)).isActive = true
             button.topAnchor.constraint(equalTo: tabBarView.topAnchor).isActive = true
             button.bottomAnchor.constraint(equalTo: tabBarView.bottomAnchor).isActive = true
             let screenWidth = UIScreen.main.bounds.width
-            let originX = index * itemWidth
+          let originX = (tabButtons.count - 1 ) * itemWidth
             button.leadingAnchor.constraint(equalTo: tabBarView.leadingAnchor, constant: CGFloat(originX)).isActive = true
         }
     }

@@ -12,8 +12,6 @@ class LogInViewController: UIViewController {
     @IBOutlet weak var txtPassword: RSOTextField!
     @IBOutlet weak var btnLogIn: RSOButton!
     
-    var userlogInDataSuccess: LogInSuccessResponse?
-    var userLoginFailed:LogInErrorResponse?
     var eventHandler: ((_ event: Event) -> Void)? // Data Binding Closure
     
     override func viewDidLoad() {
@@ -26,41 +24,46 @@ class LogInViewController: UIViewController {
         txtPassword.addPasswordToggle()
     }
     
-    func loginAPI(email: String, password: String) {
-        self.eventHandler?(.loading)
-        let requestModel = LoginRequestModel(email: email, password: password)
-        APIManager.shared.request(
-            modelType: LogInSuccessResponse.self,
-            type: LogInSignUpEndPoint.logIn(requestModel: requestModel)) { response in
-                self.eventHandler?(.stopLoading)
-                switch response {
-                case .success(let response):
-                    self.userlogInDataSuccess = response
-                    //save token in user defaults
-                    if let token = response.token{
-                        RSOToken.shared.save(token: token)
-                        
-                        DispatchQueue.main.async {
-                            // Login successful
-                            RSOToastView.shared.show("Login successful!", duration: 2.0, position: .center)
-                            RSOTabBarViewController.presentAsRootController()
-                        }
-                        self.eventHandler?(.dataLoaded)
-                    }else{
-                        DispatchQueue.main.async {
-                            // Login successful
-                            RSOToastView.shared.show(response.message ?? "LogIn Failed!", duration: 2.0, position: .center)
-                        }
-                    }
-                case .failure(let error):
-                    self.eventHandler?(.error(error))
-                    DispatchQueue.main.async {
-                        // Login successful
-                        RSOToastView.shared.show("Login failed!", duration: 2.0, position: .center)
-                    }
-                }
+  func loginAPI(email: String, password: String) {
+    RSOLoader.showLoader()
+    let requestModel = LoginRequestModel(email: email, password: password)
+    APIManager.shared.request(
+      modelType: LogInSuccessResponse.self,
+      type: LogInSignUpEndPoint.logIn(requestModel: requestModel)) { response in
+        switch response {
+        case .success(let response):
+          //save token in user defaults
+          if let token = response.token, let user = response.data {
+            // Save data to user default
+            // -------------------  -------------------
+            RSOToken.shared.save(token: token)
+            UserHelper.shared.saveUser(user)
+            UserHelper.shared.saveUserIsGuest(response.isGuest ?? false)
+            // -------------------  -------------------
+            DispatchQueue.main.async {
+              RSOLoader.removeLoader()
+              // Login successful
+              RSOToastView.shared.show("Login successful!", duration: 2.0, position: .center)
+              RSOTabBarViewController.presentAsRootController()
             }
-    }
+            self.eventHandler?(.dataLoaded)
+          }else{
+            DispatchQueue.main.async {
+              RSOLoader.removeLoader()
+              // Login successful
+              RSOToastView.shared.show(response.message ?? "LogIn Failed!", duration: 2.0, position: .center)
+            }
+          }
+        case .failure(let error):
+          self.eventHandler?(.error(error))
+          DispatchQueue.main.async {
+            RSOLoader.removeLoader()
+            // Login successful
+            RSOToastView.shared.show("Login failed!", duration: 2.0, position: .center)
+          }
+        }
+      }
+  }
     @IBAction func btnForgotPassTappedAction(_ sender: Any) {
         
         let forgotPassVC = UIViewController.createController(storyBoard: .GetStarted, ofType: ForgotPasswordViewController.self)
@@ -102,8 +105,6 @@ class LogInViewController: UIViewController {
 }
 extension LogInViewController {
     enum Event {
-        case loading
-        case stopLoading
         case dataLoaded
         case error(Error?)
     }

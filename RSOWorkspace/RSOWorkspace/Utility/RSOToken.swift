@@ -7,18 +7,25 @@
 
 import Foundation
 class RSOToken {
-    static var shared = RSOToken()
-    private init() {
-    }
-    func save(token:String){
-        UserDefaults.standard.setValue(token, forKey: "Token")
-    }
-    func getToken()-> String?{
-        let token = UserDefaults.standard.string(forKey: "Token")
-        print("token is \(token)")
-        return token
-    }
+  static var shared = RSOToken()
+  private let userDefaults = UserDefaults.standard
+  private let tokenKey = "Token"
+  
+  private init() {
+  }
+  func save(token:String){
+    userDefaults.setValue(token, forKey: tokenKey)
+  }
+  func getToken()-> String?{
+    let token = userDefaults.string(forKey: tokenKey)
+    print("token is \(String(describing: token))")
+    return token
+  }
+  func isLoggedIn()-> Bool {
+   let result = (userDefaults.string(forKey: tokenKey) != nil)
+    return result
+  }
   func clearAll() {
-    UserDefaults.standard.removeObject(forKey: "Token")
+    userDefaults.removeObject(forKey: tokenKey)
   }
 }
