@@ -79,7 +79,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="19" translatesAutoresizingMaskIntoConstraints="NO" id="iEz-CW-cvh">
-                                <rect key="frame" x="36.666666666666657" y="583.66666666666663" width="320" height="176"/>
+                                <rect key="frame" x="36.666666666666657" y="593.66666666666663" width="320" height="111"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AQV-DF-ztG" customClass="RSOButton" customModule="RSOWorkspace" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="46"/>
@@ -123,27 +123,6 @@
                                         </userDefinedRuntimeAttributes>
                                         <connections>
                                             <action selector="btnExploreTappedAction:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="VPx-vb-vzX"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NIw-L7-9Qm" customClass="RSOButton" customModule="RSOWorkspace" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="130" width="320" height="46"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="46" id="Bj1-Sl-7YQ"/>
-                                            <constraint firstAttribute="width" constant="320" id="qpr-DS-KeS"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="Poppins-Bold" family="Poppins" pointSize="15"/>
-                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <state key="normal" title="GUEST LOGIN"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="23"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="customBackgroundColor">
-                                                <color key="value" red="0.23529411759999999" green="0.35294117650000001" blue="0.65098039220000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <action selector="btnGuestLoginTappedAction:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="rPp-Gh-ANS"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -195,7 +174,7 @@
                             <constraint firstItem="1e9-Kv-13L" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="8tH-eX-vFH"/>
                             <constraint firstItem="eTN-Iv-kyO" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="20" id="Czp-IV-eb1"/>
                             <constraint firstItem="chD-4l-e9G" firstAttribute="centerY" secondItem="vDu-zF-Fre" secondAttribute="centerY" constant="50" id="DD3-5e-9cG"/>
-                            <constraint firstItem="iEz-CW-cvh" firstAttribute="top" secondItem="chD-4l-e9G" secondAttribute="bottom" constant="20" id="DOE-aR-PSC"/>
+                            <constraint firstItem="iEz-CW-cvh" firstAttribute="top" secondItem="chD-4l-e9G" secondAttribute="bottom" constant="30" id="DOE-aR-PSC"/>
                             <constraint firstAttribute="bottom" secondItem="1e9-Kv-13L" secondAttribute="bottom" id="GkW-MK-NPG"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="iEz-CW-cvh" secondAttribute="trailing" constant="30" id="Pe2-nR-I3k"/>
                             <constraint firstItem="iEz-CW-cvh" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="T3m-TP-J3F"/>
