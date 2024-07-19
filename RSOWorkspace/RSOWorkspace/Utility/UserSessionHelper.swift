@@ -46,7 +46,19 @@ class UserHelper {
   func getUserFirstName() -> String? {
     return userDefaults.string(forKey: firstNameKey)
   }
-  
+    func getFullname() -> String? {
+        var firstName = ""
+        var lastName = ""
+        if let fName = getUserFirstName() {
+          firstName =  fName
+        }
+        if let lName = getUserLastName() {
+          lastName = lName
+        }
+
+        let name = firstName + " " + lastName
+        return name
+    }
   func getUserLastName() -> String? {
     return userDefaults.string(forKey: lastNameKey)
   }

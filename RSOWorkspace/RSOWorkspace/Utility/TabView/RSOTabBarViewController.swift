@@ -144,7 +144,12 @@ class RSOTabBarViewController: UIViewController {
         }
         lastSelectedTabIndex = index
     }
-    
+    func updateButtonSelection(_ index: Int) {
+        // Update the selected tab button
+        for (buttonIndex, button) in tabButtons.enumerated() {
+            button.isSelected = (buttonIndex == index)
+        }
+    }
     class func presentAsRootController() {
         // Create your RSOTabBarVC instance
        // let rsoTabBarVC = UIViewController.createController(storyBoard: .TabBar, ofType: RSOTabBarViewController.self)

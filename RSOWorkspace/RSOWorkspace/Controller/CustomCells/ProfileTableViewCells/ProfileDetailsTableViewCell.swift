@@ -39,16 +39,10 @@ class ProfileDetailsTableViewCell: UITableViewCell {
   }
   func setData(){
     let user = UserHelper.shared
-    if let firstName = user.getUserFirstName() {
-      self.firstName =  firstName
-    }
-    if let lastName = user.getUserLastName() {
-      self.lastName = lastName
-    }
     if let desg = user.getUserDesignation() {
       self.designation = desg
     }
-    self.lblName.text = firstName + " " + lastName
+    self.lblName.text = user.getFullname()
     self.lblCompanyName.text = user.getUserCompanyID()
     self.lblEmail.text = user.getUserEmail()
     self.lblDesignation.text = self.designation

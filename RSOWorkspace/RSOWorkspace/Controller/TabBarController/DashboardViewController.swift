@@ -26,6 +26,7 @@ class DashboardViewController: UIViewController, RSOTabCoordinated {
     coordinator?.hideBackButton(isHidden: true)
     coordinator?.hideTopViewForHome(isHidden: false)
     coordinator?.setTitle(title: pagetitle)
+    coordinator?.updateButtonSelection(0)
   }
   
   private func setupTableView() {

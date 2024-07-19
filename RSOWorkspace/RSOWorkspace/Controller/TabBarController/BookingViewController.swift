@@ -20,6 +20,7 @@ class BookingViewController: UIViewController,RSOTabCoordinated {
         self.coordinator?.hideTopViewForHome(isHidden: false)
         coordinator?.hideBackButton(isHidden: true)
         coordinator?.setTitle(title: "Booking")
+        coordinator?.updateButtonSelection(1)
     }
     private func setupTableView() {
         tableView.register(UINib(nibName: "BookDeskTableViewCell", bundle: nil), forCellReuseIdentifier: "BookDeskTableViewCell")

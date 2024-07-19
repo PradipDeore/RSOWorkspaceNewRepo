@@ -25,7 +25,7 @@ class ConciergeViewController: UIViewController,RSOTabCoordinated{
         coordinator?.hideBackButton(isHidden: true)
         coordinator?.setTitle(title: "Concierge")
         self.coordinator?.hideTopViewForHome(isHidden: false)
-        
+        coordinator?.updateButtonSelection(2)
     }
     private func setupTableView() {
         tableView.register(UINib(nibName: "OnDemandServicesTableViewCell", bundle: nil), forCellReuseIdentifier: "OnDemandServicesTableViewCell")
