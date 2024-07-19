@@ -95,7 +95,7 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
             switch self {
             case .profileDetails: return 202
             case .changePassword: return 50
-            case .membershipPlan: return 189
+            case .membershipPlan: return UserHelper.shared.isGuest() ? 0 : 189
             case .paymentMethod: return 50
             case .rewardPoints:
                 return 131
@@ -108,13 +108,9 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 10
+        return 5
     }
-    
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        return UIView()
-    }
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
