@@ -130,22 +130,26 @@ extension MyVisitorsViewController: UITableViewDataSource, UITableViewDelegate {
                 cell.lblInviteMoreVisitors.isHidden = true
                 cell.indexPath = indexPath
                 // Set visitor details to cell's text fields
-                //                cell.txtEmail.text = item.visitorDetails
-                //                cell.txtName.text = item.name
-                //                cell.txtPhone.text = item.phone
+                if let visitorDetailsArray = item.visitorDetailsArray, !visitorDetailsArray.isEmpty {
+                    // Display the first visitor email for simplicity
+                    let visitor = visitorDetailsArray[0]
+                    cell.txtName.text = visitor.visitorName
+                    cell.txtEmail.text = visitor.visitorEmail
+                    cell.txtPhone.text = visitor.visitorPhone
+                }
                 return cell
             } else {
                 let cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifierMyVisitors.visitorDetails.rawValue, for: indexPath) as! VisitorDetailsTableViewCell
                 let item = myVisitorResponse[indexPath.row]
                 cell.setData(item: item)
                 // Ensure the visitor details are parsed
-                        if let visitorDetailsArray = item.visitorDetailsArray, !visitorDetailsArray.isEmpty {
-                            // Display the first visitor email for simplicity
-                            let visitor = visitorDetailsArray[0]
-                            cell.setVisitorDetails(visitor: visitor)
-                        } else {
-                            cell.setVisitorDetails(visitor: VisitorDetail(visitorName: nil, visitorEmail: "No visitors available", visitorPhone: nil))
-                        }
+                if let visitorDetailsArray = item.visitorDetailsArray, !visitorDetailsArray.isEmpty {
+                    // Display the first visitor email for simplicity
+                    let visitor = visitorDetailsArray[0]
+                    cell.setVisitorDetails(visitor: visitor)
+                } else {
+                    cell.setVisitorDetails(visitor: VisitorDetail(visitorName: nil, visitorEmail: "No visitors available", visitorPhone: nil))
+                }
                 cell.delegate = self
                 cell.indexPath = indexPath
                 cell.selectionStyle = .none
