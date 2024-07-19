@@ -129,6 +129,7 @@ class SideMenuMainViewController: UIViewController,RSOTabCoordinated {
             self.view.layoutIfNeeded()
         }) { _ in
             self.isExpanded = false
+
         }
     }
     @objc private func handleTapGesture(sender: UITapGestureRecognizer) {

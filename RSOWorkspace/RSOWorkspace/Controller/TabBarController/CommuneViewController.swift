@@ -16,14 +16,15 @@ class CommuneViewController: UIViewController,RSOTabCoordinated{
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        coordinator?.hideBackButton(isHidden: true)
-        coordinator?.setTitle(title: "Commune")
-        
         setupTableView()
     }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        coordinator?.hideBackButton(isHidden: true)
+        self.coordinator?.hideTopViewForHome(isHidden: false)
+        coordinator?.setTitle(title: "Commune")
+    }
     private func setupTableView() {
-
-
         tableView.dataSource = self
         tableView.delegate = self
         navigationController?.navigationBar.isHidden = true

@@ -13,11 +13,14 @@ class BookingViewController: UIViewController,RSOTabCoordinated {
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        coordinator?.hideBackButton(isHidden: true)
-        coordinator?.setTitle(title: "Booking")
         setupTableView()
     }
-    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.coordinator?.hideTopViewForHome(isHidden: false)
+        coordinator?.hideBackButton(isHidden: true)
+        coordinator?.setTitle(title: "Booking")
+    }
     private func setupTableView() {
         tableView.register(UINib(nibName: "BookDeskTableViewCell", bundle: nil), forCellReuseIdentifier: "BookDeskTableViewCell")
         tableView.register(UINib(nibName: "BookMeetingRoomTableViewCell", bundle: nil), forCellReuseIdentifier: "BookMeetingRoomTableViewCell")

@@ -15,14 +15,18 @@ class ConciergeViewController: UIViewController,RSOTabCoordinated{
     @IBOutlet weak var btnchatBot: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
-        coordinator?.hideBackButton(isHidden: true)
-        coordinator?.setTitle(title: "Concierge")
         
         setupTableView()
         btnchatBot.layer.cornerRadius = 9.0
         btnchatBot.layer.masksToBounds = true
     }
-    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        coordinator?.hideBackButton(isHidden: true)
+        coordinator?.setTitle(title: "Concierge")
+        self.coordinator?.hideTopViewForHome(isHidden: false)
+        
+    }
     private func setupTableView() {
         tableView.register(UINib(nibName: "OnDemandServicesTableViewCell", bundle: nil), forCellReuseIdentifier: "OnDemandServicesTableViewCell")
         tableView.register(UINib(nibName: "ReportAnIssueTableViewCell", bundle: nil), forCellReuseIdentifier: "ReportAnIssueTableViewCell")

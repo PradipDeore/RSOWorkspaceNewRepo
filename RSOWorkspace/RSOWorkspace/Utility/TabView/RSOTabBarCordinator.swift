@@ -41,6 +41,7 @@ class RSOTabBarCordinator {
         }
     }
   func hideTopViewForHome(isHidden : Bool) {
+      return 
       if isHidden {
         self.tabBarController.topbarHeightConstraint.constant = 0
       } else {
