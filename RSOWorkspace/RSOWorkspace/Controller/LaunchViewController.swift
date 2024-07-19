@@ -11,7 +11,7 @@ class LaunchViewController: UIViewController {
     @IBOutlet weak var btnStart: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
-        if let _ = RSOToken.shared.getToken(){
+      if RSOToken.shared.isLoggedIn() {
             RSOTabBarViewController.presentAsRootController()
         }else{
             GetStartedViewController.presentAsRootController()

@@ -198,8 +198,8 @@ extension SideMenuMainViewController: SideMenuViewControllerDelegate {
         
         let logoutAction = UIAlertAction(title: "Logout", style: .destructive) { _ in
             RSOToken.shared.clearAll()
+            UserHelper.shared.clearUser()
             GetStartedViewController.presentAsRootController()
-            
         }
         alertController.addAction(logoutAction)
         self.present(alertController, animated: true, completion: nil)

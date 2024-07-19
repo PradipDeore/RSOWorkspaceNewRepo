@@ -55,19 +55,23 @@ class UpdateProfileViewController: UIViewController {
     }
     
     func updateProfileAPI(fname :String?, lname:String?, designation:String?) {
-        self.eventHandler?(.loading)
+      RSOLoader.showLoader()
         let requestModel = UpdateProfileRequestModel(first_name: fname, last_name: lname, designation: designation)
         print("requestModel",requestModel)
         APIManager.shared.request(
             modelType: UpdateProfileResponse.self,
             type: MyProfileEndPoint.updateProfile(requestModel: requestModel)) { response in
-                self.eventHandler?(.stopLoading)
+                
                 switch response {
                 case .success(let response):
                     
                     self.updateProfileResponseData = response
+                  UserHelper.shared.saveUserFirstName(firstName: fname)
+                  UserHelper.shared.saveUserLastName(lastName: lname)
+                  UserHelper.shared.saveUserDesignation(designation: designation)
                     //record Updated successfully
                     DispatchQueue.main.async {
+                      RSOLoader.removeLoader()
                         self.dismissDelegate?.subviewDismmised()
                         RSOToastView.shared.show("\(response.message)", duration: 2.0, position: .center)
                     }
@@ -80,6 +84,7 @@ class UpdateProfileViewController: UIViewController {
                 case .failure(let error):
                     self.eventHandler?(.error(error))
                     DispatchQueue.main.async {
+                      RSOLoader.removeLoader()
                         //  Unsuccessful
                         RSOToastView.shared.show("\(error.localizedDescription)", duration: 2.0, position: .center)
                     }
@@ -115,8 +120,6 @@ class UpdateProfileViewController: UIViewController {
 }
 extension UpdateProfileViewController {
     enum Event {
-        case loading
-        case stopLoading
         case dataLoaded
         case error(Error?)
     }

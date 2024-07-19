@@ -18,13 +18,18 @@ class RSOGreetings {
         let hour = calendar.component(.hour, from: currentDate)
         
         // Determine the appropriate greeting based on the time of the day
+      var msg = ""
         if hour >= 6 && hour < 12 {
-            return "Good Morning"
+          msg = "Good Morning"
         } else if hour >= 12 && hour < 18 {
-            return "Good Afternoon"
+          msg = "Good Afternoon"
         } else {
-            return "Good Evening"
+          msg = "Good Evening"
         }
+      if let name = UserHelper.shared.getUserFirstName() {
+        msg = msg + " " + name
+      }
+      return msg
     }
 }
 
