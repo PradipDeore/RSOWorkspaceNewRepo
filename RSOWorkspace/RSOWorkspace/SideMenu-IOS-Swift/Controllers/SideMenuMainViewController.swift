@@ -111,8 +111,9 @@ class SideMenuMainViewController: UIViewController,RSOTabCoordinated {
                 self.sideMenuTrailingConstraint.constant = (self.paddingForRotation)
             }
             self.view.layoutIfNeeded()
-        }) { _ in
+        }) { [self] _ in
             self.isExpanded = true
+          self.coordinator?.tabBarController.tabButtonTapped(self.coordinator?.tabBarController.tabButtons[(coordinator?.tabBarController.lastSelectedTabIndex)!])
         }
     }
     
@@ -141,7 +142,7 @@ extension SideMenuMainViewController: SideMenuViewControllerDelegate {
     
     func selectedCell(_ row: Int,menuTitle title:String) {
         DispatchQueue.main.async { self.sideMenuState(expanded: false) }
-      let menuNavVC = self.coordinator?.getInnerNavigationVC(at: 0) ?? self.navigationController
+      let menuNavVC = self.coordinator?.getInnerNavigationVC() ?? self.navigationController
       self.coordinator?.hideBackButton(isHidden: true)
       self.coordinator?.hideTopViewForHome(isHidden: true)
         switch title {

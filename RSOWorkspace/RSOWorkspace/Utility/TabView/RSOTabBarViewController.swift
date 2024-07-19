@@ -24,7 +24,7 @@ class RSOTabBarViewController: UIViewController {
     @IBOutlet var tabViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet var containerView: UIView!
     @IBOutlet var tabBarView: UIView!
-    private var lastSelectedTabIndex = 0
+    var lastSelectedTabIndex = 0
     var scoreAPICount = 0
     var roomName = ""
      var tabButtons = [UIButton]()
