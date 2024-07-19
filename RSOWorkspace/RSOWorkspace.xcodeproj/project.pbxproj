@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5626B401B87B81EF061046D2 /* Pods_RSOWorkspace.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1EFCCAB186EDE33C8C4CD54C /* Pods_RSOWorkspace.framework */; };
+		580255DE2C4A7B22000FF860 /* UserSessionHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580255DD2C4A7B22000FF860 /* UserSessionHelper.swift */; };
 		580418092BD0F004008EA858 /* ConfirmedDeskBookingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580418082BD0F004008EA858 /* ConfirmedDeskBookingViewController.swift */; };
 		5804180B2BD0F438008EA858 /* ConfirmDeskBookingDetailsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5804180A2BD0F438008EA858 /* ConfirmDeskBookingDetailsModel.swift */; };
 		5804180C2BD0FED9008EA858 /* BookingConfirmedLocationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D584912B96F2FB00D17D0A /* BookingConfirmedLocationTableViewCell.swift */; };
@@ -391,12 +392,12 @@
 		58F88E402BA8230200771268 /* ReportAnIssueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F88E3F2BA8230200771268 /* ReportAnIssueViewController.swift */; };
 		58F96E242C479DFA009C4DC5 /* subServicesRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F96E232C479DFA009C4DC5 /* subServicesRequestModel.swift */; };
 		EEA44D812C4805530081EE0D /* RSOToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA44D802C4805530081EE0D /* RSOToastView.swift */; };
-		EEDD34FE2C4A1D1200DE2732 /* UserSessionHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDD34FD2C4A1D1200DE2732 /* UserSessionHelper.swift */; };
 		EEE105B52C49256B007ECE4D /* RSOLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE105B42C49256B007ECE4D /* RSOLoader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		1EFCCAB186EDE33C8C4CD54C /* Pods_RSOWorkspace.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RSOWorkspace.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		580255DD2C4A7B22000FF860 /* UserSessionHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSessionHelper.swift; sourceTree = "<group>"; };
 		580418082BD0F004008EA858 /* ConfirmedDeskBookingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmedDeskBookingViewController.swift; sourceTree = "<group>"; };
 		5804180A2BD0F438008EA858 /* ConfirmDeskBookingDetailsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmDeskBookingDetailsModel.swift; sourceTree = "<group>"; };
 		580418162BD12589008EA858 /* ConfirmSelectedDeskTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmSelectedDeskTableViewCell.swift; sourceTree = "<group>"; };
@@ -784,7 +785,6 @@
 		679B083A745FEFA843A18302 /* Pods-RSOWorkspace.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RSOWorkspace.release.xcconfig"; path = "Target Support Files/Pods-RSOWorkspace/Pods-RSOWorkspace.release.xcconfig"; sourceTree = "<group>"; };
 		7AB224176F3C3ECB7C30B655 /* Pods-RSOWorkspace.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RSOWorkspace.debug.xcconfig"; path = "Target Support Files/Pods-RSOWorkspace/Pods-RSOWorkspace.debug.xcconfig"; sourceTree = "<group>"; };
 		EEA44D802C4805530081EE0D /* RSOToastView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSOToastView.swift; sourceTree = "<group>"; };
-		EEDD34FD2C4A1D1200DE2732 /* UserSessionHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserSessionHelper.swift; path = ../../../../../Desktop/UserSessionHelper.swift; sourceTree = "<group>"; };
 		EEE105B42C49256B007ECE4D /* RSOLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSOLoader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -1224,7 +1224,7 @@
 		58ACDB372B78C7550041B755 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
-				EEDD34FD2C4A1D1200DE2732 /* UserSessionHelper.swift */,
+				580255DD2C4A7B22000FF860 /* UserSessionHelper.swift */,
 				EEA44D802C4805530081EE0D /* RSOToastView.swift */,
 				58BEF25A2C47DDC500C78CF4 /* Extension */,
 				58E6E9342B88714D00EB3600 /* TabView */,
@@ -2019,7 +2019,7 @@
 				58F2635C2BAC211A00AEDEC9 /* BrowseMembersViewController.swift in Sources */,
 				58BF2F192B8C967000620846 /* SearchRSOViewController.swift in Sources */,
 				58E2D0DD2BBA7E110016DEB6 /* MembershipPlanTableViewCell.swift in Sources */,
-				EEDD34FE2C4A1D1200DE2732 /* UserSessionHelper.swift in Sources */,
+				580255DE2C4A7B22000FF860 /* UserSessionHelper.swift in Sources */,
 				58E6F7172BA826B6009D4E21 /* RequestButtonTableViewCell.swift in Sources */,
 				58BEF2632C47DDC500C78CF4 /* UILabel.swift in Sources */,
 				58F263552BAC12FB00AEDEC9 /* CompaniesListTableViewCell.swift in Sources */,
