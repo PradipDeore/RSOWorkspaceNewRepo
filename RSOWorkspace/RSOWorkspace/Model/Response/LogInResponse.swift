@@ -29,7 +29,8 @@ struct UserData: Codable {
     let id: Int
     let firstName, lastName: String?
     let email: String?
-    let companyID, designation: String?
+    let companyID: Int?
+    let designation: String?
     let status: String?
 
     enum CodingKeys: String, CodingKey {

@@ -11,6 +11,7 @@ enum MyBookingEndPoint {
     case getAvailableMeetingRoomListing(id: Int, requestModel: BookMeetingRoomRequestModel)
     case getDetailsOfMeetingRooms(id: Int, requestModel: BookMeetingRoomRequestModel)
     case officeBooking(requestModel: BookOfficeRequestModel)
+    case bookingDeskDetails(id : Int)
 }
 extension MyBookingEndPoint: EndPointType {
     var path: String {
@@ -23,6 +24,8 @@ extension MyBookingEndPoint: EndPointType {
             return "room-details/\(id)"
         case .officeBooking(requestModel: let requestModel):
             return "store-officebooking"
+        case .bookingDeskDetails(id: let id):
+            return "booking-desk-details/\(id)"
         }
     }
     var url: URL? {
@@ -39,9 +42,11 @@ extension MyBookingEndPoint: EndPointType {
             return .get
         case .officeBooking(requestModel: let requestModel):
             return .post
+        case .bookingDeskDetails(id: let id):
+            return .get
+            
         }
     }
-
     var body: Encodable? {
         switch self {
         case .myBookingListing:
@@ -52,10 +57,10 @@ extension MyBookingEndPoint: EndPointType {
             return requestModel
         case .officeBooking(requestModel: let requestModel):
             return requestModel
+        case .bookingDeskDetails(id: let id):
+            return nil
         }
     }
-    
-
     var headers: [String : String]? {
         //APIManager.commonHeaders
         var commonHeaders = APIManager.commonHeaders

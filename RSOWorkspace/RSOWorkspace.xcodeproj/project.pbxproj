@@ -22,6 +22,8 @@
 		5804181F2BD13BF5008EA858 /* NotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5804181E2BD13BF5008EA858 /* NotificationsViewController.swift */; };
 		580418232BD13DC7008EA858 /* NotificationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580418212BD13DC7008EA858 /* NotificationTableViewCell.swift */; };
 		580418242BD13DC7008EA858 /* NotificationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 580418222BD13DC7008EA858 /* NotificationTableViewCell.xib */; };
+		5805931A2C4F92DE00FE18B2 /* ViewFloorPlanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580593192C4F92DE00FE18B2 /* ViewFloorPlanViewController.swift */; };
+		5805931C2C4F98AE00FE18B2 /* BookingDeskDetailsResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5805931B2C4F98AE00FE18B2 /* BookingDeskDetailsResponseModel.swift */; };
 		58127A8B2BAC32D1001693D6 /* ComapaniesSearchMembersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58127A892BAC32D1001693D6 /* ComapaniesSearchMembersTableViewCell.swift */; };
 		58127A8C2BAC32D1001693D6 /* ComapaniesSearchMembersTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58127A8A2BAC32D1001693D6 /* ComapaniesSearchMembersTableViewCell.xib */; };
 		58127A8E2BAC41BB001693D6 /* ListOfMembersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58127A8D2BAC41BB001693D6 /* ListOfMembersViewController.swift */; };
@@ -407,6 +409,8 @@
 		5804181E2BD13BF5008EA858 /* NotificationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsViewController.swift; sourceTree = "<group>"; };
 		580418212BD13DC7008EA858 /* NotificationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationTableViewCell.swift; sourceTree = "<group>"; };
 		580418222BD13DC7008EA858 /* NotificationTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotificationTableViewCell.xib; sourceTree = "<group>"; };
+		580593192C4F92DE00FE18B2 /* ViewFloorPlanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewFloorPlanViewController.swift; sourceTree = "<group>"; };
+		5805931B2C4F98AE00FE18B2 /* BookingDeskDetailsResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingDeskDetailsResponseModel.swift; sourceTree = "<group>"; };
 		58127A892BAC32D1001693D6 /* ComapaniesSearchMembersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComapaniesSearchMembersTableViewCell.swift; sourceTree = "<group>"; };
 		58127A8A2BAC32D1001693D6 /* ComapaniesSearchMembersTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ComapaniesSearchMembersTableViewCell.xib; sourceTree = "<group>"; };
 		58127A8D2BAC41BB001693D6 /* ListOfMembersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfMembersViewController.swift; sourceTree = "<group>"; };
@@ -1054,6 +1058,7 @@
 				58713EA52BC90A820012DD4E /* DeskBookingViewController.swift */,
 				580418082BD0F004008EA858 /* ConfirmedDeskBookingViewController.swift */,
 				58BF55982BCFEC8C00524828 /* DeskListingViewController.swift */,
+				580593192C4F92DE00FE18B2 /* ViewFloorPlanViewController.swift */,
 			);
 			path = DeskBooking;
 			sourceTree = "<group>";
@@ -1295,6 +1300,7 @@
 				5804180A2BD0F438008EA858 /* ConfirmDeskBookingDetailsModel.swift */,
 				58BEF2762C4805BF00C78CF4 /* OfficeBookingResponseModel.swift */,
 				58BEF27A2C48164400C78CF4 /* NotificationResponseModel.swift */,
+				5805931B2C4F98AE00FE18B2 /* BookingDeskDetailsResponseModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1967,6 +1973,7 @@
 				58BCBC1F2C49281C00465381 /* PaymentDateTableViewCell.swift in Sources */,
 				583403A92B99CE3F00318BB8 /* ProvideRequirementDetailsTableViewCell.swift in Sources */,
 				58D5848A2B96DA1400D17D0A /* AddTeamMemberViewController.swift in Sources */,
+				5805931A2C4F92DE00FE18B2 /* ViewFloorPlanViewController.swift in Sources */,
 				58E6E94F2B88A5C500EB3600 /* MyBookingCloseTableViewCell.swift in Sources */,
 				58B405FD2BCCEC460045DD4C /* StoreRoomBookingResponse.swift in Sources */,
 				5843D7702BC7007900D5C8DD /* MyVisitorResponse.swift in Sources */,
@@ -2137,6 +2144,7 @@
 				583D9DFE2B90A2190073AAC3 /* LocationEndPoint.swift in Sources */,
 				58E6E9382B88714D00EB3600 /* RSOTab.swift in Sources */,
 				58E2D0D92BBA7B0E0016DEB6 /* ChangePasswordTableViewCell.swift in Sources */,
+				5805931C2C4F98AE00FE18B2 /* BookingDeskDetailsResponseModel.swift in Sources */,
 				58713EB42BC94AA20012DD4E /* InviteGuestsCollectionViewCell.swift in Sources */,
 				58374A482B84D53400CA34C5 /* RSOView.swift in Sources */,
 				58B405FB2BCCEABC0045DD4C /* StoreRoomBookingRequest.swift in Sources */,

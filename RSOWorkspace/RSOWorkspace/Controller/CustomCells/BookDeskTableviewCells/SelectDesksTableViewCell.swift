@@ -9,6 +9,7 @@ import UIKit
 
 protocol SelectedDeskTableViewCellDelegate:AnyObject{
     func getselectedDeskNo(selectedDeskNo:[Int])
+    func viewFloorPlan()
 }
 class SelectDesksTableViewCell: UITableViewCell , UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
@@ -24,8 +25,6 @@ class SelectDesksTableViewCell: UITableViewCell , UICollectionViewDataSource, UI
         // Set up collection view properties
         collectionView.dataSource = self
         collectionView.delegate = self
-        
-        
     }
     
     // MARK: - UICollectionViewDataSource
@@ -54,9 +53,9 @@ class SelectDesksTableViewCell: UITableViewCell , UICollectionViewDataSource, UI
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let cell = collectionView.cellForItem(at: indexPath) as? SelectDeskCollectionViewCell {
             let selectedDeskNumber = cell.lblDeskNo.text
-          //  print("Selected desk number: \(String(describing: selectedDeskNumber))")
+           // print("Selected desk number: \(String(describing: selectedDeskNumber))")
             //self.selectedDeskNo = selectedDeskNumber ?? ""
-            // delegate?.getselectedDeskNo(selectedDeskNo: selectedDeskNumber)
+             //delegate?.getselectedDeskNo(selectedDeskNo: selectedDeskNumber)
         }
     }
 
@@ -66,5 +65,8 @@ class SelectDesksTableViewCell: UITableViewCell , UICollectionViewDataSource, UI
         return CGSize(width: width , height: height)
     }
    
+    @IBAction func btnViewFloorPlan(_ sender: Any) {
+        delegate?.viewFloorPlan()
+    }
     
 }
