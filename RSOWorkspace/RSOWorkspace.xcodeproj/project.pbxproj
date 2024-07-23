@@ -26,6 +26,9 @@
 		5805931C2C4F98AE00FE18B2 /* BookingDeskDetailsResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5805931B2C4F98AE00FE18B2 /* BookingDeskDetailsResponseModel.swift */; };
 		5805931E2C4FC6DC00FE18B2 /* StoreDeskBookingRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5805931D2C4FC6DC00FE18B2 /* StoreDeskBookingRequest.swift */; };
 		580593202C4FC83400FE18B2 /* StoreDeskBookingResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5805931F2C4FC83400FE18B2 /* StoreDeskBookingResponseModel.swift */; };
+		580593242C4FD98F00FE18B2 /* floorPlanCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580593222C4FD98E00FE18B2 /* floorPlanCollectionViewCell.swift */; };
+		580593252C4FD98F00FE18B2 /* floorPlanCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 580593232C4FD98E00FE18B2 /* floorPlanCollectionViewCell.xib */; };
+		580593272C4FE56500FE18B2 /* ConfirmDeskBookingRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580593262C4FE56500FE18B2 /* ConfirmDeskBookingRequestModel.swift */; };
 		58127A8B2BAC32D1001693D6 /* ComapaniesSearchMembersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58127A892BAC32D1001693D6 /* ComapaniesSearchMembersTableViewCell.swift */; };
 		58127A8C2BAC32D1001693D6 /* ComapaniesSearchMembersTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58127A8A2BAC32D1001693D6 /* ComapaniesSearchMembersTableViewCell.xib */; };
 		58127A8E2BAC41BB001693D6 /* ListOfMembersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58127A8D2BAC41BB001693D6 /* ListOfMembersViewController.swift */; };
@@ -415,6 +418,9 @@
 		5805931B2C4F98AE00FE18B2 /* BookingDeskDetailsResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingDeskDetailsResponseModel.swift; sourceTree = "<group>"; };
 		5805931D2C4FC6DC00FE18B2 /* StoreDeskBookingRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreDeskBookingRequest.swift; sourceTree = "<group>"; };
 		5805931F2C4FC83400FE18B2 /* StoreDeskBookingResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreDeskBookingResponseModel.swift; sourceTree = "<group>"; };
+		580593222C4FD98E00FE18B2 /* floorPlanCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = floorPlanCollectionViewCell.swift; sourceTree = "<group>"; };
+		580593232C4FD98E00FE18B2 /* floorPlanCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = floorPlanCollectionViewCell.xib; sourceTree = "<group>"; };
+		580593262C4FE56500FE18B2 /* ConfirmDeskBookingRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmDeskBookingRequestModel.swift; sourceTree = "<group>"; };
 		58127A892BAC32D1001693D6 /* ComapaniesSearchMembersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComapaniesSearchMembersTableViewCell.swift; sourceTree = "<group>"; };
 		58127A8A2BAC32D1001693D6 /* ComapaniesSearchMembersTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ComapaniesSearchMembersTableViewCell.xib; sourceTree = "<group>"; };
 		58127A8D2BAC41BB001693D6 /* ListOfMembersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfMembersViewController.swift; sourceTree = "<group>"; };
@@ -844,6 +850,15 @@
 			path = Notifications;
 			sourceTree = "<group>";
 		};
+		580593212C4FD96000FE18B2 /* BookDeskCollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				580593222C4FD98E00FE18B2 /* floorPlanCollectionViewCell.swift */,
+				580593232C4FD98E00FE18B2 /* floorPlanCollectionViewCell.xib */,
+			);
+			path = BookDeskCollectionViewCell;
+			sourceTree = "<group>";
+		};
 		581D3D2F2B8DBFB100D83334 /* BookingTableViewCells */ = {
 			isa = PBXGroup;
 			children = (
@@ -915,6 +930,7 @@
 		58374A3C2B84B9F600CA34C5 /* CustomCells */ = {
 			isa = PBXGroup;
 			children = (
+				580593212C4FD96000FE18B2 /* BookDeskCollectionViewCell */,
 				58BCBC1C2C4927DA00465381 /* SideMenuPaymentTableViewCells */,
 				580418112BD107ED008EA858 /* NotificationsTablvewCells */,
 				58B406072BCD46FA0045DD4C /* SideMenuDashboardTableViewCells */,
@@ -1470,6 +1486,7 @@
 				58B6A7C92BCE5412008A2286 /* StatusTypeEnum.swift */,
 				58F96E232C479DFA009C4DC5 /* subServicesRequestModel.swift */,
 				58BEF2742C48047600C78CF4 /* BookOfficeRequestModel.swift */,
+				580593262C4FE56500FE18B2 /* ConfirmDeskBookingRequestModel.swift */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -1873,6 +1890,7 @@
 				58E6F7102BA82567009D4E21 /* AddPicsTableViewCell.xib in Resources */,
 				589FB69E2B7644A90067255E /* Poppins-ThinItalic.ttf in Resources */,
 				589FB6A62B7644A90067255E /* Poppins-BlackItalic.ttf in Resources */,
+				580593252C4FD98F00FE18B2 /* floorPlanCollectionViewCell.xib in Resources */,
 				581F30BA2BBFBE0E0083A400 /* VisitorsListableViewCell.xib in Resources */,
 				58E6E9612B89D99B00EB3600 /* DashboardMarketPlaceTableViewCell.xib in Resources */,
 				58D584942B96F2FB00D17D0A /* BookingConfirmedLocationTableViewCell.xib in Resources */,
@@ -2125,6 +2143,7 @@
 				583C60552BC3AB3700755275 /* ScheduleVisitorsRequest.swift in Sources */,
 				58BB6B122B986C65001E1F3D /* DiscountCodeTableViewCell.swift in Sources */,
 				58D5848F2B96EE9800D17D0A /* BookingConfirmedViewController.swift in Sources */,
+				580593242C4FD98F00FE18B2 /* floorPlanCollectionViewCell.swift in Sources */,
 				580418182BD12589008EA858 /* ConfirmSelectedDeskTableViewCell.swift in Sources */,
 				58BA7F4D2B870D3400F66C75 /* LogInSignUpEndPoint.swift in Sources */,
 				58ACDB392B78C78F0041B755 /* RSOButton.swift in Sources */,
@@ -2226,6 +2245,7 @@
 				5843D75B2BC6768C00D5C8DD /* ScheduleVisitorResponse.swift in Sources */,
 				5864882F2BBAD2CD0024CBA2 /* FeedbackViewController.swift in Sources */,
 				582591022BBED4620011ECDA /* MyBookingResponse.swift in Sources */,
+				580593272C4FE56500FE18B2 /* ConfirmDeskBookingRequestModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

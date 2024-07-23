@@ -10,16 +10,11 @@ import UIKit
 class SelectSeatingConfigCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet weak var seatingConfigImage: UIImageView!
-    
     @IBOutlet weak var configImageview: UIView!
     var cornerRadius: CGFloat = 10.0
-
     @IBOutlet weak var containerView: UIView!
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
-        //contentView.layer.cornerRadius = 4
-        //contentView.layer.masksToBounds = true
         customizeCell()
     }
     func customizeCell(){
@@ -35,4 +30,5 @@ class SelectSeatingConfigCollectionViewCell: UICollectionViewCell {
         self.layer.masksToBounds = false
         self.layer.shadowPath = UIBezierPath(roundedRect:  CGRect(x: 0, y: self.bounds.height - 4, width: self.bounds.width, height: 4), cornerRadius: self.containerView.layer.cornerRadius).cgPath
     }
+    
 }

@@ -60,7 +60,7 @@ extension DeskBookingEndPoint: EndPointType {
         case .bookingDeskDetails(id: let id):
             return nil
         case .storeDeskBooking(requestModel: let requestModel):
-            return nil
+            return requestModel
         }
     }
     
