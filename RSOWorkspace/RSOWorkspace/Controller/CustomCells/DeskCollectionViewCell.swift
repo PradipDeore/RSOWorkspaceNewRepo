@@ -27,6 +27,7 @@ class DeskCollectionViewCell: UICollectionViewCell {
     
     var cornerRadius: CGFloat = 10.0
     var roomName = ""
+  
     override func awakeFromNib() {
         super.awakeFromNib()
         customizeCell()
@@ -45,6 +46,7 @@ class DeskCollectionViewCell: UICollectionViewCell {
         self.layer.shadowOpacity = 19.0
         self.layer.masksToBounds = false
         self.layer.shadowPath = UIBezierPath(roundedRect:  CGRect(x: 0, y: self.bounds.height - 4, width: self.bounds.width, height: 4), cornerRadius: self.containerView.layer.cornerRadius).cgPath
+      self.containerView.backgroundColor =  .white
     }
     func setData(item : RSOCollectionItem){
         print("Item type: \(item.type ?? "nil")") // Debug print for item type
@@ -63,6 +65,13 @@ class DeskCollectionViewCell: UICollectionViewCell {
             let url = URL(string: imageBasePath + imageUrl)
             self.imgRoomImage.kf.setImage(with: url)
         }
+      btnBook.isHidden = true
+      if item.isItemSelected ?? false {
+        self.containerView.backgroundColor = UIColor(named: "E3E3E3")
+      } else {
+        self.containerView.backgroundColor = .white
+      }
+
     }
     @IBAction func btnBookTappedAction(_ sender: Any) {
         if let _ = RSOToken.shared.getToken() {
