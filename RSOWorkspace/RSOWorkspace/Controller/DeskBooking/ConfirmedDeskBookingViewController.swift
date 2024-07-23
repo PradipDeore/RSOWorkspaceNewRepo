@@ -25,9 +25,9 @@ class ConfirmedDeskBookingViewController: UIViewController{
   // var bookingConfirmDetails : ConfirmBookingRequestModel?
   var confirmdeskBookingResponse: ConfirmDeskBookingDetailsModel?
  
- var bookingConfirmDetails:ConfirmBookingRequestModel?
-  
-    var roomId: Int = 0
+ var deskbookingConfirmDetails:StoreDeskBookingRequest?
+    
+  var roomId: Int = 0
   var teamMembersArray:[String] = [""]
   var locationName :String = ""
   var timeRange = ""
@@ -78,13 +78,16 @@ class ConfirmedDeskBookingViewController: UIViewController{
                   switch response {
                   case .success(let response):
                       self.apiResponseData = response
+                     
                       print("===Store desk booking api response\(response)")
                       DispatchQueue.main.async {
                           let paymentVC = UIViewController.createController(storyBoard: .Payment, ofType: PaymentViewController.self)
-                          paymentVC.requestParameters = self.bookingConfirmDetails
+                          //paymentVC.requestParameters = self.bookingConfirmDetails
                           paymentVC.coordinator = self.coordinator
                           //paymentVC.bookingId = response.booking_id ?? 0
-                          self.navigationController?.pushViewController(paymentVC, animated: true)
+                          //self.navigationController?.pushViewController(paymentVC, animated: true)
+                          self.present(paymentVC, animated: true)
+                          
                       }
                       self.eventHandler?(.dataLoaded)
                   case .failure(let error):
@@ -235,15 +238,41 @@ extension ConfirmedDeskBookingViewController:ButtonEditTableViewCellDelegate{
 }
 extension ConfirmedDeskBookingViewController:ConfirmAndProceedToPayementTableViewCellDelegate{
     func btnConfirmAndProceedTappedAction() {
-        let startTime = self.bookingConfirmDetails?.startTime
-        let endTime = self.bookingConfirmDetails?.endTime
-        let BookingTime = "\(startTime ?? "00:00") - \(endTime ?? "00:00")"
-        //let locationId = String(locationId)
-       // let location = StoreRoomLocation(id: locationId, name: locationName)
+//        let startTime = self.deskbookingConfirmDetails?.start_time
+//        let endTime = self.deskbookingConfirmDetails?.end_time
+//        let BookingTime = "\(startTime ?? "00:00") - \(endTime ?? "00:00")"
+//        let date = self.deskbookingConfirmDetails?.date
+//        let desktype = self.deskbookingConfirmDetails?.desktype
+//        let deskID = self.deskbookingConfirmDetails?.desk_id ?? []
+//        let teamMemberes = self.deskbookingConfirmDetails?.teammembers ?? []
+        
+//        let requestModel = StoreDeskBookingRequest(start_time: startTime, end_time: endTime, date: date, is_fullday: "NO", desktype: desktype, desk_id: deskID, teammembers: teamMemberes)
+        //print("parameters",requestModel)
+       // storeDeskBookingAPI(requestModel: requestModel)
+        
+        guard let startTime = self.deskbookingConfirmDetails?.start_time,
+                 let endTime = self.deskbookingConfirmDetails?.end_time,
+                 let date = self.deskbookingConfirmDetails?.date,
+                 let desktype = self.deskbookingConfirmDetails?.desktype else {
+               print("Error: One or more required parameters are missing.")
+               return
+           }
 
-        let requestModel = StoreDeskBookingRequest(start_time: "09:00", end_time: "17:00", date: "2024-07-18", is_fullday: "NO", desktype: 1, desk_id: [1, 2, 3], teammembers: [4, 5, 6])
-        print("parameters",requestModel)
-        storeDeskBookingAPI(requestModel: requestModel)
+           let deskID = self.deskbookingConfirmDetails?.desk_id ?? []
+           let teamMembers = self.deskbookingConfirmDetails?.teammembers ?? []
+           
+           let requestModel = StoreDeskBookingRequest(
+               start_time: startTime,
+               end_time: endTime,
+               date: date,
+               is_fullday: "NO",
+               desktype: desktype,
+               desk_id: deskID,
+               teammembers: teamMembers
+           )
+           
+           print("Parameters: \(requestModel)")
+           storeDeskBookingAPI(requestModel: requestModel)
 
     }
 

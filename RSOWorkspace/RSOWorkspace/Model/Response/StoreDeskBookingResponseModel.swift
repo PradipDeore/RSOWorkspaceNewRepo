@@ -8,10 +8,11 @@
 import Foundation
 
 struct StoreDeskBookingResponseModel: Codable {
-    let status: Bool
-    let vatpercent: String
-    let data: StoreDeskBooking
-    let desks: [Desk]
+    var status: Bool?
+    var vatpercent: String?
+    var data: StoreDeskBooking?
+    var desks: [Desk]?
+    var msg: String?
 }
 
 struct StoreDeskBooking: Codable {

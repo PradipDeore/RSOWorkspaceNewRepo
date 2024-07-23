@@ -44,8 +44,9 @@ class DeskBookingViewController: UIViewController{
     var displayBookingDetailsNextScreen = ConfirmDeskBookingDetailsModel()
     var deskList:[RSOCollectionItem] = []
     var selectedDeskList:[RSOCollectionItem] = []
+    var viewFloorPlanSeatingConfig:[RoomConfiguration] = []
     var teamMembersArray:[String] = [""]
-
+    var deskbookingConfirmDetails = StoreDeskBookingRequest()
     var selectedDeskId = 0
     var selectedLocation = ""
     var selectedDeskNo = ""
@@ -99,6 +100,8 @@ class DeskBookingViewController: UIViewController{
           print("fetchDesk list",listItems)
           self.deskList = listItems
           let indexpath = IndexPath(row: 0, section: SectionTypeDeskBooking.selectDesks.rawValue)
+            self.viewFloorPlanSeatingConfig = responseData.roomConfiguration
+
           DispatchQueue.main.async {
             self.tableView.reloadRows(at: [indexpath], with: .automatic)
           }
@@ -251,6 +254,7 @@ extension DeskBookingViewController:ButtonBookingConfirmTableViewCellDelegate{
         //confirmDeskBookingDetailsVC.requestModel = apiRequestModelDeskListing
       confirmDeskBookingDetailsVC.deskList = selectedDeskList
         confirmDeskBookingDetailsVC.confirmdeskBookingResponse = displayBookingDetailsNextScreen
+        confirmDeskBookingDetailsVC.deskbookingConfirmDetails = self.deskbookingConfirmDetails
         self.present(confirmDeskBookingDetailsVC,animated: true)
     }
    
@@ -278,6 +282,8 @@ extension DeskBookingViewController: SelectDateTableViewCellDelegate {
         // save formated date to show in next screen
         let displayDate = Date.formatSelectedDate(format: .EEEEddMMMMyyyy, date: actualFormatOfDate)
         displayBookingDetailsNextScreen.date = displayDate
+        self.deskbookingConfirmDetails.date = apiDate
+
         
     }
 }
@@ -289,6 +295,8 @@ extension DeskBookingViewController: SelectTimeTableViewCellDelegate{
         //display in next vc
         let displayStartTime = Date.formatSelectedDate(format: .hhmma, date: startTime)
         displayBookingDetailsNextScreen.startTime = displayStartTime
+        self.deskbookingConfirmDetails.start_time = apiStartTime
+
     }
     
     func didSelectEndTime(_ endTime: Date) {
@@ -298,6 +306,8 @@ extension DeskBookingViewController: SelectTimeTableViewCellDelegate{
         //display in next vc
         let displayEndTime = Date.formatSelectedDate(format: .hhmma, date: endTime)
         displayBookingDetailsNextScreen.endTime = displayEndTime
+        self.deskbookingConfirmDetails.end_time = apiEndTime
+
         
     }
 }
@@ -334,6 +344,8 @@ extension DeskBookingViewController:sendteamMemberNameDelegate{
 extension DeskBookingViewController:SelectedDeskTableViewCellDelegate{
     func viewFloorPlan() {
         let viewFloorPlanVC = UIViewController.createController(storyBoard: .Booking, ofType: ViewFloorPlanViewController.self)
+        viewFloorPlanVC.floorPlansSeatingConfig = self.viewFloorPlanSeatingConfig
+        
         self.navigationController?.pushViewController(viewFloorPlanVC, animated: true)
     }
     
@@ -342,6 +354,7 @@ extension DeskBookingViewController:SelectedDeskTableViewCellDelegate{
         displayBookingDetailsNextScreen.selected_desk_no = selectedDeskNo
         self.selectedDeskList = selectedDeskList
         self.displayBookingDetailsNextScreen.selected_desk_no = selectedDeskNo
+      self.deskbookingConfirmDetails.desk_id = selectedDeskNo
     }
     
 }
@@ -373,7 +386,8 @@ extension DeskBookingViewController: BookButtonActionDelegate{
         //confirmDeskBookingDetailsVC.requestModel = apiRequestModelDeskListing
       confirmDeskBookingDetailsVC.deskList = self.deskList
         confirmDeskBookingDetailsVC.confirmdeskBookingResponse = displayBookingDetailsNextScreen
-       // confirmDeskBookingDetailsVC.coordinator = self.coordinator
+        
+        confirmDeskBookingDetailsVC.coordinator = self.coordinator
         self.navigationController?.pushViewController(confirmDeskBookingDetailsVC, animated: true)
         
     }
@@ -393,6 +407,7 @@ extension DeskBookingViewController: BookButtonActionDelegate{
       self.selectedDeskTypeId = selectedId
     print("selected desk type:", selectedId)
     displayBookingDetailsNextScreen.deskId = selectedId
+      deskbookingConfirmDetails.desktype = selectedId
     fetchDesks(id: selectedId)
   }
 }

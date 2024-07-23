@@ -749,39 +749,60 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qih-3T-e3o">
-                                <rect key="frame" x="24.666666666666657" y="337" width="344" height="178"/>
+                                <rect key="frame" x="24.666666666666657" y="134" width="344" height="584"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="32" translatesAutoresizingMaskIntoConstraints="NO" id="Dbh-8J-clY">
-                                        <rect key="frame" x="16" y="115" width="312" height="28"/>
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="b6x-3P-brM">
+                                        <rect key="frame" x="10" y="10" width="324" height="501"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ek3-FT-Q9g">
+                                            <size key="itemSize" width="128" height="128"/>
+                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        </collectionViewFlowLayout>
+                                        <cells/>
+                                    </collectionView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Dbh-8J-clY">
+                                        <rect key="frame" x="16" y="521" width="312" height="28"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZCy-na-2FW" customClass="RSOButton" customModule="RSOWorkspace" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="236" height="28"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="154.33333333333334" height="28"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="28" id="1JY-XP-6fH"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="Poppins-Bold" family="Poppins" pointSize="15"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" title="SELECT"/>
+                                                <connections>
+                                                    <action selector="btnSelectAction:" destination="6T8-42-eiy" eventType="touchUpInside" id="2hg-mO-SQk"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wBo-GW-uPA" customClass="RSOButton" customModule="RSOWorkspace" customModuleProvider="target">
-                                                <rect key="frame" x="268" y="0.0" width="44" height="28"/>
+                                                <rect key="frame" x="164.33333333333337" y="0.0" width="147.66666666666663" height="28"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="28" id="EBB-Xs-pmM"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="Poppins-Bold" family="Poppins" pointSize="15"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                 <state key="normal" title="Close"/>
+                                                <connections>
+                                                    <action selector="btnCloseAction:" destination="6T8-42-eiy" eventType="touchUpInside" id="EkB-jR-lH8"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                     </stackView>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="b6x-3P-brM" secondAttribute="trailing" constant="10" id="03k-pN-unV"/>
+                                    <constraint firstItem="b6x-3P-brM" firstAttribute="top" secondItem="qih-3T-e3o" secondAttribute="top" constant="10" id="Pux-as-uRm"/>
                                     <constraint firstAttribute="bottom" secondItem="Dbh-8J-clY" secondAttribute="bottom" constant="35" id="RVS-id-wHR"/>
+                                    <constraint firstItem="b6x-3P-brM" firstAttribute="leading" secondItem="qih-3T-e3o" secondAttribute="leading" constant="10" id="WhB-8R-W5U"/>
                                     <constraint firstAttribute="trailing" secondItem="Dbh-8J-clY" secondAttribute="trailing" constant="16" id="Xve-WB-fKD"/>
-                                    <constraint firstAttribute="height" constant="178" id="ZxT-UK-qUu"/>
+                                    <constraint firstAttribute="height" constant="584" id="ZxT-UK-qUu"/>
                                     <constraint firstAttribute="width" constant="344" id="c2J-6i-pWA"/>
                                     <constraint firstItem="Dbh-8J-clY" firstAttribute="leading" secondItem="qih-3T-e3o" secondAttribute="leading" constant="16" id="poF-tT-ZhU"/>
+                                    <constraint firstItem="Dbh-8J-clY" firstAttribute="top" secondItem="b6x-3P-brM" secondAttribute="bottom" constant="10" id="qtG-fP-pBa"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -796,6 +817,12 @@
                             <constraint firstItem="tjd-lH-DNv" firstAttribute="top" secondItem="HNk-W0-gic" secondAttribute="top" id="zbv-EI-pd6"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="btnClose" destination="wBo-GW-uPA" id="Y7y-oO-4vJ"/>
+                        <outlet property="btnSelect" destination="ZCy-na-2FW" id="4uv-eK-DOf"/>
+                        <outlet property="collectionView" destination="b6x-3P-brM" id="1a6-hb-3Qq"/>
+                        <outlet property="floorPlanView" destination="qih-3T-e3o" id="vyL-Ei-ndc"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="poQ-eU-k87" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

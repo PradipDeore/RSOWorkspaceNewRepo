@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="floorPlanCollectionViewCell" customModule="RSOWorkspace" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="104" height="109"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="104" height="109"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qad-Ym-gBd">
+                        <rect key="frame" x="0.0" y="0.0" width="104" height="109"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vlL-kB-b1J">
+                                <rect key="frame" x="0.0" y="0.0" width="104" height="109"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="seatingConfig1" translatesAutoresizingMaskIntoConstraints="NO" id="4js-le-NL5">
+                                        <rect key="frame" x="10" y="10" width="84" height="89"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="4js-le-NL5" firstAttribute="top" secondItem="vlL-kB-b1J" secondAttribute="top" constant="10" id="0Z1-bU-spL"/>
+                                    <constraint firstItem="4js-le-NL5" firstAttribute="leading" secondItem="vlL-kB-b1J" secondAttribute="leading" constant="10" id="Apb-ix-ZMa"/>
+                                    <constraint firstAttribute="bottom" secondItem="4js-le-NL5" secondAttribute="bottom" constant="10" id="E7K-Y5-yyZ"/>
+                                    <constraint firstAttribute="trailing" secondItem="4js-le-NL5" secondAttribute="trailing" constant="10" id="mth-iP-enA"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="vlL-kB-b1J" firstAttribute="leading" secondItem="qad-Ym-gBd" secondAttribute="leading" id="KDy-NI-DXc"/>
+                            <constraint firstItem="vlL-kB-b1J" firstAttribute="top" secondItem="qad-Ym-gBd" secondAttribute="top" id="Ooa-QO-Itr"/>
+                            <constraint firstAttribute="trailing" secondItem="vlL-kB-b1J" secondAttribute="trailing" id="SCH-cF-1qx"/>
+                            <constraint firstAttribute="bottom" secondItem="vlL-kB-b1J" secondAttribute="bottom" id="oDg-nG-T42"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="qad-Ym-gBd" secondAttribute="bottom" id="Ihq-DV-eZb"/>
+                <constraint firstItem="qad-Ym-gBd" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="jO9-gh-9vC"/>
+                <constraint firstAttribute="trailing" secondItem="qad-Ym-gBd" secondAttribute="trailing" id="lKe-dH-b2m"/>
+                <constraint firstItem="qad-Ym-gBd" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="pee-sE-jNy"/>
+            </constraints>
+            <size key="customSize" width="188" height="115"/>
+            <connections>
+                <outlet property="configImageview" destination="vlL-kB-b1J" id="Mcl-zL-bxp"/>
+                <outlet property="containerView" destination="qad-Ym-gBd" id="aq8-xW-ZoI"/>
+                <outlet property="seatingConfigImage" destination="4js-le-NL5" id="LlB-93-EHp"/>
+            </connections>
+            <point key="canvasLocation" x="18" y="-58"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="seatingConfig1" width="75" height="75"/>
+    </resources>
+</document>

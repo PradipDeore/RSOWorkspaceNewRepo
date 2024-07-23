@@ -10,17 +10,12 @@ import Kingfisher
 
 class SelectSeatingConfigTableViewCell: UITableViewCell, UICollectionViewDataSource, UICollectionViewDelegate {
     
-    // MARK: - Properties
-    
     @IBOutlet weak var collectionView: UICollectionView!
-    
     var confirmBookingDetails = ConfirmBookingRequestModel()
-    
     // Data source for the collection view
     var sittingConfigurations: [ConfigurationDetails] = []
     var seatingConfigueId: Int = 0
 
-    // MARK: - Initialization
     
     override func awakeFromNib() {
         super.awakeFromNib()
