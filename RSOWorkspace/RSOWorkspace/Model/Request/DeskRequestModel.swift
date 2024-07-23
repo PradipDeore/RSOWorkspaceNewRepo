@@ -12,9 +12,9 @@ struct DeskRequestModel: Codable {
     var startTime: String = Date.formatSelectedDate(format: .HHmm, date: nil)
     var endTime: String = Date.formatSelectedDate(format: .HHmm, date: nil)
     var isFullDay :String = "No"
-    var desktype: Int = 1
-    var desk_id:[Int] = [1,2,3]
-    var teammembers:[Int] = [1,2,3]
+    var desktype: Int = 0
+    var desk_id:[Int] = []
+    var teammembers:[Int] = []
     
     enum CodingKeys: String, CodingKey {
         case locationid
