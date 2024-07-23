@@ -18,7 +18,7 @@ struct RSOCollectionItem: Codable {
     let roomAmenityDetails: [RoomAmenities]?
     let roomAmenitiesDesk:[ListingAmenityDetail]
     let officeAmenityDesk:[AmenityDetail]
-    
+    var isItemSelected: Bool?
     // Initializer to convert from MeetingRoomsItem
     init(meetingRoomItem: MeetingRoomsItem) {
         self.id = meetingRoomItem.id
@@ -32,6 +32,7 @@ struct RSOCollectionItem: Codable {
         self.roomAmenitiesDesk = []
         self.officeAmenityDesk = []
         self.type = "room"
+        self.isItemSelected = false
     }
     // Initializer to convert from MeetingRoom
     init(meetingRoomList: MeetingRoomListing) {
@@ -46,6 +47,7 @@ struct RSOCollectionItem: Codable {
         self.locationName = nil
         self.roomAmenitiesDesk = []
         self.officeAmenityDesk = []
+        self.isItemSelected = false
     }
     // Initializer to convert from DeskItem
     init(deskItem: Office) {
@@ -60,7 +62,7 @@ struct RSOCollectionItem: Codable {
         self.type = deskItem.type
         self.locationName = nil
         self.roomAmenitiesDesk = []
-
+        self.isItemSelected = false
     }
     // Initializer to convert from DeskListItem
     init(deskLisitngItem: DeskListingItem) {
@@ -75,5 +77,6 @@ struct RSOCollectionItem: Codable {
         self.type = deskLisitngItem.type
         self.roomAmenityDetails = nil
         self.officeAmenityDesk = []
+        self.isItemSelected = false
     }
 }

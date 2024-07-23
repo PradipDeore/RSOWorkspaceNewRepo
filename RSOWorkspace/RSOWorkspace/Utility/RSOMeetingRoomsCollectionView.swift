@@ -94,6 +94,10 @@ extension RSOMeetingRoomsCollectionView: UICollectionViewDataSource {
             fatalError("Unsupported item type: \(item.type ?? "nil")")
         }
     }
+  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    listItems[indexPath.row].isItemSelected?.toggle()
+    self.reloadData()
+  }
 }
 
 // MARK: - UICollectionViewDelegateFlowLayout
