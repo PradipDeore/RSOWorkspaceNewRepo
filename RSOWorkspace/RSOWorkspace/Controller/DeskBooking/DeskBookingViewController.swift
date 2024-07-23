@@ -43,6 +43,7 @@ class DeskBookingViewController: UIViewController{
     var apiRequestModelDeskListing = DeskRequestModel()
     var displayBookingDetailsNextScreen = ConfirmDeskBookingDetailsModel()
     var deskList:[RSOCollectionItem] = []
+    var selectedDeskList:[RSOCollectionItem] = []
     var teamMembersArray:[String] = [""]
 
     var selectedDeskId = 0
@@ -61,18 +62,15 @@ class DeskBookingViewController: UIViewController{
     }
   
     private func setupTableView() {
-        
         tableView.dataSource = self
         tableView.delegate = self
         tableView.registerCellsDeskBooking()
     }
     
     private func fetchLocations() {
-        self.eventHandler?(.loading)
         APIManager.shared.request(
             modelType: ApiResponse.self, // Assuming your API returns an array of locations
             type: LocationEndPoint.locations) { response in
-                self.eventHandler?(.stopLoading)
                 switch response {
                 case .success(let response):
                     self.dropdownOptions = response.data
@@ -86,14 +84,12 @@ class DeskBookingViewController: UIViewController{
             }
     }
   func fetchDesks(id: Int) {
-    self.eventHandler?(.loading)
     
     APIManager.shared.request(
       modelType: BookingDeskDetailsResponseModel.self,
       type: DeskBookingEndPoint.bookingDeskDetails(id: id)) { [weak self] response in
         
         guard let self = self else { return }
-        self.eventHandler?(.stopLoading)
         
         switch response {
         case .success(let responseData):
@@ -253,6 +249,7 @@ extension DeskBookingViewController:ButtonBookingConfirmTableViewCellDelegate{
         let confirmDeskBookingDetailsVC = UIViewController.createController(storyBoard: .Booking, ofType: ConfirmedDeskBookingViewController.self)
        // confirmDeskBookingDetailsVC.meetingId = meetingRoomId
         //confirmDeskBookingDetailsVC.requestModel = apiRequestModelDeskListing
+      confirmDeskBookingDetailsVC.deskList = selectedDeskList
         confirmDeskBookingDetailsVC.confirmdeskBookingResponse = displayBookingDetailsNextScreen
         self.present(confirmDeskBookingDetailsVC,animated: true)
     }
@@ -340,11 +337,12 @@ extension DeskBookingViewController:SelectedDeskTableViewCellDelegate{
         self.navigationController?.pushViewController(viewFloorPlanVC, animated: true)
     }
     
-    func getselectedDeskNo(selectedDeskNo: [Int]) {
+  func getselectedDeskNo(selectedDeskNo: [Int], selectedDeskList: [RSOCollectionItem]) {
         apiRequestModelDeskListing.desk_id = selectedDeskNo
+        displayBookingDetailsNextScreen.selected_desk_no = selectedDeskNo
+        self.selectedDeskList = selectedDeskList
         self.displayBookingDetailsNextScreen.selected_desk_no = selectedDeskNo
     }
-    
     
 }
 extension DeskBookingViewController: GetRoomsBtnTableViewCellDelegate {
@@ -362,8 +360,6 @@ extension DeskBookingViewController: GetRoomsBtnTableViewCellDelegate {
 
 extension DeskBookingViewController {
     enum Event {
-        case loading
-        case stopLoading
         case dataLoaded
         case error(Error?)
     }
@@ -375,6 +371,7 @@ extension DeskBookingViewController: BookButtonActionDelegate{
         let confirmDeskBookingDetailsVC = UIViewController.createController(storyBoard: .Booking, ofType: ConfirmedDeskBookingViewController.self)
        // confirmDeskBookingDetailsVC.meetingId = meetingRoomId
         //confirmDeskBookingDetailsVC.requestModel = apiRequestModelDeskListing
+      confirmDeskBookingDetailsVC.deskList = self.deskList
         confirmDeskBookingDetailsVC.confirmdeskBookingResponse = displayBookingDetailsNextScreen
        // confirmDeskBookingDetailsVC.coordinator = self.coordinator
         self.navigationController?.pushViewController(confirmDeskBookingDetailsVC, animated: true)
@@ -395,6 +392,7 @@ extension DeskBookingViewController: BookButtonActionDelegate{
   func didSelect(selectedId: Int) {
       self.selectedDeskTypeId = selectedId
     print("selected desk type:", selectedId)
+    displayBookingDetailsNextScreen.deskId = selectedId
     fetchDesks(id: selectedId)
   }
 }
