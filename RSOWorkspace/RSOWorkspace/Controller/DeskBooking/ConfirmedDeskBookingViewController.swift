@@ -24,7 +24,7 @@ class ConfirmedDeskBookingViewController: UIViewController{
   
   // var bookingConfirmDetails : ConfirmBookingRequestModel?
   var confirmdeskBookingResponse: ConfirmDeskBookingDetailsModel?
-  
+  var bookingConfirmDetails:ConfirmBookingRequestModel?
   var roomId: Int = 0
   var teamMembersArray:[String] = [""]
   var locationName :String = ""
