@@ -15,7 +15,7 @@ class SelectDesksTableViewCell: UITableViewCell , UICollectionViewDataSource, UI
     
     weak var delegate: SelectedDeskTableViewCellDelegate?
     @IBOutlet weak var collectionView: UICollectionView!
-    var selectedDeskNo:[Int] = [1,2,3]
+    var deskList:[RSOCollectionItem] = []
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -31,32 +31,31 @@ class SelectDesksTableViewCell: UITableViewCell , UICollectionViewDataSource, UI
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // Return the number of items in your collection view
-        return 4/* Your number of items */
+      return deskList.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         // Dequeue your custom cell
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SelectDeskCollectionViewCell", for: indexPath) as! SelectDeskCollectionViewCell
-       
-        if indexPath.item % 2 == 0 {
+      let desk = deskList[indexPath.row]
+      if desk.isItemSelected ?? false {
             cell.deskNoView.backgroundColor = .black
             cell.lblDeskNo.textColor = .white
         } else {
             cell.deskNoView.backgroundColor = .white
             cell.lblDeskNo.textColor = .black
         }
-        cell.lblDeskNo.text = "C\(indexPath.item + 1) "
+      cell.lblDeskNo.text = desk.roomName
         
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if let cell = collectionView.cellForItem(at: indexPath) as? SelectDeskCollectionViewCell {
-            let selectedDeskNumber = cell.lblDeskNo.text
-           // print("Selected desk number: \(String(describing: selectedDeskNumber))")
-            //self.selectedDeskNo = selectedDeskNumber ?? ""
-             //delegate?.getselectedDeskNo(selectedDeskNo: selectedDeskNumber)
-        }
+
+      deskList[indexPath.row].isItemSelected?.toggle()
+      self.collectionView.reloadData()
+      let selectedDeskListing = deskList.filter({ $0.isItemSelected ?? false }).map( { $0.id })
+        delegate?.getselectedDeskNo(selectedDeskNo: selectedDeskListing)
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

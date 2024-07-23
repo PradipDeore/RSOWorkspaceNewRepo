@@ -124,10 +124,10 @@ struct Interval: Codable {
 
 // MARK: - DeskType
 struct DeskType: Codable {
-    let id: Int
-    let name: String
-    let isDeleted: Int
-    let createdAt, updatedAt, deskNo: String
+    let id: Int?
+    let name: String?
+    let isDeleted: Int?
+    let createdAt, updatedAt, deskNo: String?
 
     enum CodingKeys: String, CodingKey {
         case id, name

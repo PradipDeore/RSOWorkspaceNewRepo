@@ -11,6 +11,7 @@ enum DeskBookingEndPoint {
     case desks
     case getDesksLisiting(id: Int, requestModel: DeskRequestModel)
     case getDetailsOfMeetingRooms(id: Int, requestModel: BookMeetingRoomRequestModel)
+  case bookingDeskDetails(id : Int)
 }
 extension DeskBookingEndPoint: EndPointType {
 
@@ -22,6 +23,8 @@ extension DeskBookingEndPoint: EndPointType {
             return "desk-listing/\(id)"
         case .getDetailsOfMeetingRooms(let id ,_):
             return "room-details/\(id)"
+        case .bookingDeskDetails(id: let id):
+            return "booking-desk-details/\(id)"
         }
     }
     var url: URL? {
@@ -36,6 +39,8 @@ extension DeskBookingEndPoint: EndPointType {
             return .get
         case .getDetailsOfMeetingRooms:
             return .get
+        case .bookingDeskDetails(id: let id):
+            return .get
         }
     }
 
@@ -47,6 +52,8 @@ extension DeskBookingEndPoint: EndPointType {
             return requestModel
         case .getDetailsOfMeetingRooms(_, let requestModel):
             return requestModel
+        case .bookingDeskDetails(id: let id):
+            return nil
         }
     }
     

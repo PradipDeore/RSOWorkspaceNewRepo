@@ -79,4 +79,19 @@ struct RSOCollectionItem: Codable {
         self.officeAmenityDesk = []
         self.isItemSelected = false
     }
+  // Initializer to convert from DeskListItem
+  init(deskType: DeskType) {
+    self.id = deskType.id ?? 0
+    self.roomName = deskType.deskNo ?? ""
+    self.isItemSelected = false
+    self.capacity = 0
+    self.description = ""
+    self.roomImage = ""
+    self.roomPrice = ""
+    self.locationName = nil
+    self.roomAmenitiesDesk = []
+    self.type = "desk"
+    self.roomAmenityDetails = nil
+    self.officeAmenityDesk = []
+  }
 }

@@ -95,8 +95,12 @@ extension RSOMeetingRoomsCollectionView: UICollectionViewDataSource {
         }
     }
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    for i in 0..<listItems.count {
+            listItems[i].isItemSelected = false
+        }
     listItems[indexPath.row].isItemSelected?.toggle()
     self.reloadData()
+    backActionDelegate?.didSelect(selectedId: listItems[indexPath.row].id)
   }
 }
 

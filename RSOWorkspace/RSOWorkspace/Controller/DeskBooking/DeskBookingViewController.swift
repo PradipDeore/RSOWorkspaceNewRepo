@@ -42,7 +42,7 @@ class DeskBookingViewController: UIViewController{
     var eventHandler: ((_ event: Event) -> Void)?
     var apiRequestModelDeskListing = DeskRequestModel()
     var displayBookingDetailsNextScreen = ConfirmDeskBookingDetailsModel()
-  
+    var deskList:[RSOCollectionItem] = []
     var teamMembersArray:[String] = [""]
 
     var selectedDeskId = 0
@@ -84,7 +84,36 @@ class DeskBookingViewController: UIViewController{
                 }
             }
     }
+  func fetchDesks(id: Int) {
+    self.eventHandler?(.loading)
     
+    APIManager.shared.request(
+      modelType: BookingDeskDetailsResponseModel.self,
+      type: DeskBookingEndPoint.bookingDeskDetails(id: id)) { [weak self] response in
+        
+        guard let self = self else { return }
+        self.eventHandler?(.stopLoading)
+        
+        switch response {
+        case .success(let responseData):
+          // Handle successful response with bookings
+          let deskList = responseData.deskTypes
+          let listItems: [RSOCollectionItem] = deskList.map { RSOCollectionItem(deskType: $0) }
+          print("fetchDesk list",listItems)
+          self.deskList = listItems
+          let indexpath = IndexPath(row: 0, section: SectionTypeDeskBooking.selectDesks.rawValue)
+          DispatchQueue.main.async {
+            self.tableView.reloadRows(at: [indexpath], with: .automatic)
+          }
+          self.eventHandler?(.dataLoaded)
+        case .failure(let error):
+          self.eventHandler?(.error(error))
+          DispatchQueue.main.async {
+            RSOToastView.shared.show("\(error.localizedDescription)", duration: 2.0, position: .center)
+          }
+        }
+      }
+  }
 }
 
 // MARK: - UITableViewDataSource, UITableViewDelegate
@@ -169,6 +198,8 @@ extension DeskBookingViewController: UITableViewDataSource, UITableViewDelegate 
       return cell
     case .selectDesks:
       let cell =  tableView.dequeueReusableCell(withIdentifier: CellIdentifierDeskBooking.selectDesks.rawValue, for: indexPath) as! SelectDesksTableViewCell
+      cell.deskList = self.deskList
+      cell.collectionView.reloadData()
       cell.delegate = self
       cell.selectionStyle = .none
       return cell
@@ -360,4 +391,9 @@ extension DeskBookingViewController: BookButtonActionDelegate{
         let loginVC = UIViewController.createController(storyBoard: .GetStarted, ofType: LogInViewController.self)
         sceneDelegate.window?.rootViewController?.present(loginVC, animated: true, completion: nil)
     }
+  
+  func didSelect(selectedId: Int) {
+    print("selected desk type:", selectedId)
+    fetchDesks(id: selectedId)
+  }
 }
