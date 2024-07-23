@@ -65,34 +65,34 @@ class ConfirmedDeskBookingViewController: UIViewController{
       tableView.register(UINib(nibName: type.rawValue, bundle: nil), forCellReuseIdentifier: type.rawValue)
     }
   }
-  //    func storeRoomBookingAPI(requestModel: StoreRoomBookingRequest) {
-  //        self.eventHandler?(.loading)
-  //
-  //        APIManager.shared.request(
-  //            modelType: StoreRoomBookingResponse.self,
-  //            type: PaymentRoomBookingEndPoint.getStoreRoomBooking(requestModel: requestModel)) { response in
-  //                self.eventHandler?(.stopLoading)
-  //                switch response {
-  //                case .success(let response):
-  //
-  //                    self.apiResponseData = response
-  //                    DispatchQueue.main.async {
-  //                        let paymentVC = UIViewController.createController(storyBoard: .Payment, ofType: PaymentViewController.self)
-  //                        paymentVC.requestParameters = self.bookingConfirmDetails
-  //                        paymentVC.coordinator = self.coordinator
-  //                        paymentVC.bookingId = response.booking_id ?? 0
-  //                        self.navigationController?.pushViewController(paymentVC, animated: true)
-  //                    }
-  //                    self.eventHandler?(.dataLoaded)
-  //                case .failure(let error):
-  //                    self.eventHandler?(.error(error))
-  //                    DispatchQueue.main.async {
-  //                        //  Unsuccessful
-  //                        RSOToastView.shared.show("\(error.localizedDescription)", duration: 2.0, position: .center)
-  //                    }
-  //                }
-  //            }
-  //    }
+      func storeRoomBookingAPI(requestModel: StoreRoomBookingRequest) {
+          self.eventHandler?(.loading)
+  
+          APIManager.shared.request(
+              modelType: StoreRoomBookingResponse.self,
+              type: PaymentRoomBookingEndPoint.getStoreRoomBooking(requestModel: requestModel)) { response in
+                  self.eventHandler?(.stopLoading)
+                  switch response {
+                  case .success(let response):
+  
+                      self.apiResponseData = response
+                      DispatchQueue.main.async {
+                          let paymentVC = UIViewController.createController(storyBoard: .Payment, ofType: PaymentViewController.self)
+                          paymentVC.requestParameters = self.bookingConfirmDetails
+                          paymentVC.coordinator = self.coordinator
+                          paymentVC.bookingId = response.booking_id ?? 0
+                          self.navigationController?.pushViewController(paymentVC, animated: true)
+                      }
+                      self.eventHandler?(.dataLoaded)
+                  case .failure(let error):
+                      self.eventHandler?(.error(error))
+                      DispatchQueue.main.async {
+                          //  Unsuccessful
+                          RSOToastView.shared.show("\(error.localizedDescription)", duration: 2.0, position: .center)
+                      }
+                  }
+              }
+      }
 }
 
 extension ConfirmedDeskBookingViewController: UITableViewDataSource, UITableViewDelegate {

@@ -49,7 +49,7 @@ extension PaymentRoomBookingEndPoint: EndPointType {
     }
     var headers: [String : String]? {
         //APIManager.commonHeaders
-        var commonHeaders = APIManager.commonHeaders
+        let commonHeaders = APIManager.commonHeaders
         return commonHeaders
     }
 }

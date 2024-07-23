@@ -11,7 +11,7 @@ enum DeskBookingEndPoint {
     case desks
     case getDesksLisiting(id: Int, requestModel: DeskRequestModel)
     case getDetailsOfMeetingRooms(id: Int, requestModel: BookMeetingRoomRequestModel)
-  case bookingDeskDetails(id : Int)
+    case bookingDeskDetails(id : Int)
 }
 extension DeskBookingEndPoint: EndPointType {
 
@@ -60,7 +60,7 @@ extension DeskBookingEndPoint: EndPointType {
 
     var headers: [String : String]? {
         //APIManager.commonHeaders
-        var commonHeaders = APIManager.commonHeaders
+        let commonHeaders = APIManager.commonHeaders
         return commonHeaders
     }
 }

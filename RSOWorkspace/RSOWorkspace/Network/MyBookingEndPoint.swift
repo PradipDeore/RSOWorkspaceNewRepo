@@ -21,7 +21,7 @@ extension MyBookingEndPoint: EndPointType {
             return "meeting-rooms-listing/\(id)"
         case .getDetailsOfMeetingRooms(let id ,_):
             return "room-details/\(id)"
-        case .officeBooking(requestModel: let requestModel):
+        case .officeBooking:
             return "store-officebooking"
         }
     }
@@ -37,7 +37,7 @@ extension MyBookingEndPoint: EndPointType {
             return .get
         case .getDetailsOfMeetingRooms:
             return .get
-        case .officeBooking(requestModel: let requestModel):
+        case .officeBooking:
             return .post
             
         }
@@ -57,7 +57,7 @@ extension MyBookingEndPoint: EndPointType {
     }
     var headers: [String : String]? {
         //APIManager.commonHeaders
-        var commonHeaders = APIManager.commonHeaders
+        let commonHeaders = APIManager.commonHeaders
         return commonHeaders
     }
 }
