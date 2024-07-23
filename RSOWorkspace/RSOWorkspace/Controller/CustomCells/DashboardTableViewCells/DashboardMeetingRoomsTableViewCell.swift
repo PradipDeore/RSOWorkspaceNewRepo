@@ -22,9 +22,15 @@ class DashboardMeetingRoomsTableViewCell: UITableViewCell {
     }
 
     func fetchRooms() {
+      DispatchQueue.main.async {
+        RSOLoader.showLoader()
+      }
         APIManager.shared.request(
             modelType: ResponseData.self,
             type: DeskEndPoint.meetingRooms) { response in
+              DispatchQueue.main.async {
+                RSOLoader.removeLoader()
+              }
                 switch response {
                 case .success(let response):
                     let roomList = response.data
@@ -37,9 +43,15 @@ class DashboardMeetingRoomsTableViewCell: UITableViewCell {
             }
     }
     func fetchOfficeDesk() {
+      DispatchQueue.main.async {
+        RSOLoader.showLoader()
+      }
         APIManager.shared.request(
             modelType: OfficeItemsResponse.self,
             type: DeskBookingEndPoint.desks) { response in
+              DispatchQueue.main.async {
+                RSOLoader.removeLoader()
+              }
                 switch response {
                 case .success(let response):
                     let deskList = response.data

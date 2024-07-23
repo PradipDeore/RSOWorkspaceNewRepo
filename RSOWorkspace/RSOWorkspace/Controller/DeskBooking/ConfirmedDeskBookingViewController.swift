@@ -69,12 +69,16 @@ class ConfirmedDeskBookingViewController: UIViewController{
   }
     
     func storeDeskBookingAPI(requestModel: StoreDeskBookingRequest) {
-          self.eventHandler?(.loading)
-  
+      
+      DispatchQueue.main.async {
+        RSOLoader.showLoader()
+      }
           APIManager.shared.request(
               modelType: StoreDeskBookingResponseModel.self,
               type: DeskBookingEndPoint.storeDeskBooking(requestModel: requestModel)) { response in
-                  self.eventHandler?(.stopLoading)
+                DispatchQueue.main.async {
+                  RSOLoader.removeLoader()
+                }
                   switch response {
                   case .success(let response):
                       self.apiResponseData = response
@@ -192,17 +196,6 @@ extension ConfirmedDeskBookingViewController: UITableViewDataSource, UITableView
       cell.selectionStyle = .none
       
       return cell
-    default:
-      let cell = tableView.dequeueReusableCell(withIdentifier: cellType.rawValue, for: indexPath)
-      cell.selectionStyle = .none
-      
-      //            if let labelCell = cell as? SelectMeetingRoomLabelTableViewCell {
-      //                labelCell.lblMeetingRoom.text = "Booking Confirmed"
-      //
-      //                return labelCell
-      //            }
-      
-      return cell
     }
   }
   
@@ -213,8 +206,6 @@ extension ConfirmedDeskBookingViewController: UITableViewDataSource, UITableView
 
 extension ConfirmedDeskBookingViewController {
   enum Event {
-    case loading
-    case stopLoading
     case dataLoaded
     case error(Error?)
   }
@@ -238,34 +229,20 @@ extension ConfirmedDeskBookingViewController:ButtonEditTableViewCellDelegate{
 }
 extension ConfirmedDeskBookingViewController:ConfirmAndProceedToPayementTableViewCellDelegate{
     func btnConfirmAndProceedTappedAction() {
-//        let startTime = self.deskbookingConfirmDetails?.start_time
-//        let endTime = self.deskbookingConfirmDetails?.end_time
-//        let BookingTime = "\(startTime ?? "00:00") - \(endTime ?? "00:00")"
-//        let date = self.deskbookingConfirmDetails?.date
-//        let desktype = self.deskbookingConfirmDetails?.desktype
-//        let deskID = self.deskbookingConfirmDetails?.desk_id ?? []
-//        let teamMemberes = self.deskbookingConfirmDetails?.teammembers ?? []
+        let apidefaultTime = Date.formatSelectedDate(format: .HHmm, date: Date())
         
-//        let requestModel = StoreDeskBookingRequest(start_time: startTime, end_time: endTime, date: date, is_fullday: "NO", desktype: desktype, desk_id: deskID, teammembers: teamMemberes)
-        //print("parameters",requestModel)
-       // storeDeskBookingAPI(requestModel: requestModel)
-        
-        guard let startTime = self.deskbookingConfirmDetails?.start_time,
-                 let endTime = self.deskbookingConfirmDetails?.end_time,
-                 let date = self.deskbookingConfirmDetails?.date,
-                 let desktype = self.deskbookingConfirmDetails?.desktype else {
-               print("Error: One or more required parameters are missing.")
-               return
-           }
-
-           let deskID = self.deskbookingConfirmDetails?.desk_id ?? []
-           let teamMembers = self.deskbookingConfirmDetails?.teammembers ?? []
+        let startTime = self.deskbookingConfirmDetails?.start_time ?? apidefaultTime
+        let endTime = self.deskbookingConfirmDetails?.end_time ?? apidefaultTime
+        let date = self.deskbookingConfirmDetails?.date ?? ""
+        let desktype = self.deskbookingConfirmDetails?.desktype ?? 0
+        let deskID = self.deskbookingConfirmDetails?.desk_id ?? []
+        let teamMembers = self.deskbookingConfirmDetails?.teammembers ?? []
            
            let requestModel = StoreDeskBookingRequest(
                start_time: startTime,
                end_time: endTime,
                date: date,
-               is_fullday: "NO",
+               is_fullday: "No",
                desktype: desktype,
                desk_id: deskID,
                teammembers: teamMembers

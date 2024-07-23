@@ -27,7 +27,7 @@ class DeskCollectionViewCell: UICollectionViewCell {
     
     var cornerRadius: CGFloat = 10.0
     var roomName = ""
-  
+  var selectedMeetingRoom = 0
     override func awakeFromNib() {
         super.awakeFromNib()
         customizeCell()
@@ -50,7 +50,7 @@ class DeskCollectionViewCell: UICollectionViewCell {
     }
     func setData(item : RSOCollectionItem){
         print("Item type: \(item.type ?? "nil")") // Debug print for item type
-
+      selectedMeetingRoom = item.id
         self.lbldeskName.text = item.roomName
         self.lblNoOfPeople.text = "\(item.capacity!) Person"
             if item.type == "office" {
@@ -65,18 +65,12 @@ class DeskCollectionViewCell: UICollectionViewCell {
             let url = URL(string: imageBasePath + imageUrl)
             self.imgRoomImage.kf.setImage(with: url)
         }
-      btnBook.isHidden = true
-      if item.isItemSelected ?? false {
-        self.containerView.backgroundColor = UIColor(named: "E3E3E3")
-      } else {
-        self.containerView.backgroundColor = .white
-      }
 
     }
     @IBAction func btnBookTappedAction(_ sender: Any) {
         if let _ = RSOToken.shared.getToken() {
             if self.tag == 1{
-//                backActionDelegate?.showBookRoomDetailsVC(meetingRoomId: selectedMeetingRoom!)
+                backActionDelegate?.showBookRoomDetailsVC(meetingRoomId: selectedMeetingRoom)
             }else{
                 backActionDelegate?.showDeskBookingVC()
 
