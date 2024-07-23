@@ -48,6 +48,7 @@ class DeskBookingViewController: UIViewController{
     var selectedDeskId = 0
     var selectedLocation = ""
     var selectedDeskNo = ""
+    var selectedDeskTypeId = 0
     // var selectedMeetingRoomDate = ""
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -340,9 +341,8 @@ extension DeskBookingViewController:SelectedDeskTableViewCellDelegate{
     }
     
     func getselectedDeskNo(selectedDeskNo: [Int]) {
-        //let selectedDeskNoInt = Int(selectedDeskNo)
-       // apiRequestModelDeskListing.desk_id = selectedDeskNoInt
-        self.displayBookingDetailsNextScreen.teamMembersArray = teamMembersArray
+        apiRequestModelDeskListing.desk_id = selectedDeskNo
+        self.displayBookingDetailsNextScreen.selected_desk_no = selectedDeskNo
     }
     
     
@@ -393,6 +393,7 @@ extension DeskBookingViewController: BookButtonActionDelegate{
     }
   
   func didSelect(selectedId: Int) {
+      self.selectedDeskTypeId = selectedId
     print("selected desk type:", selectedId)
     fetchDesks(id: selectedId)
   }

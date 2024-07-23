@@ -13,4 +13,5 @@ struct ConfirmDeskBookingDetailsModel {
     var startTime: String = Date.formatSelectedDate(format: .hhmma, date: nil)
     var endTime: String = Date.formatSelectedDate(format: .hhmma, date: nil)
     var teamMembersArray:[String] = []
+    var selected_desk_no:[Int] = []
 }
