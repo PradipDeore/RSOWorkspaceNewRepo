@@ -10,7 +10,7 @@ import Foundation
 enum PaymentRoomBookingEndPoint {
     case getBookingOfRooms(requestModel: PaymentRoomBookingRequest)
     case getStoreRoomBooking(requestModel: StoreRoomBookingRequest)
-
+    case payment(requestModel: NiPaymentRequestModel)
 }
 extension PaymentRoomBookingEndPoint: EndPointType {
 
@@ -20,6 +20,8 @@ extension PaymentRoomBookingEndPoint: EndPointType {
             return "payment-roombooking"
         case .getStoreRoomBooking:
             return "store-roombooking"
+        case .payment:
+            return "ios-payment"
         }
     }
     var url: URL? {
@@ -31,6 +33,8 @@ extension PaymentRoomBookingEndPoint: EndPointType {
             return .post
         case .getStoreRoomBooking:
             return .post
+        case .payment:
+            return .post
         }
     }
     var body: Encodable? {
@@ -38,6 +42,8 @@ extension PaymentRoomBookingEndPoint: EndPointType {
         case .getBookingOfRooms(let requestModel):
             return requestModel
         case .getStoreRoomBooking(let requestModel):
+            return requestModel
+        case .payment(let requestModel):
             return requestModel
         }
     }

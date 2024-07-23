@@ -14,9 +14,7 @@ class OnDemandServicesViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var containerView: UIView!
     var cornerRadius: CGFloat = 10.0
-    
     var onDemandServiceArray:[Service] = []
-    
     var eventHandler: ((_ event: Event) -> Void)?
     
     override func viewDidLoad() {
@@ -24,21 +22,17 @@ class OnDemandServicesViewController: UIViewController {
         
         coordinator?.hideBackButton(isHidden:false)
         coordinator?.setTitle(title: "Concierge")
-        
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(UINib(nibName: "OnDemandServiceCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "OnDemandServiceCollectionViewCell")
         collectionView.backgroundColor = .white
-        
         customizeCell()
-        
         fetchServices(serviceId: 1)
         
     }
     func customizeCell(){
         self.containerView.layer.cornerRadius = cornerRadius
         self.containerView.layer.masksToBounds = true
-        
         self.containerView.addShadow()
     }
     
@@ -51,6 +45,7 @@ class OnDemandServicesViewController: UIViewController {
                 switch response {
                 case .success(let response):
                     self.onDemandServiceArray = response.data
+                    
                     DispatchQueue.main.async {
                         self.collectionView.reloadData()
                     }
@@ -95,6 +90,7 @@ extension OnDemandServicesViewController: UICollectionViewDelegate, UICollection
         let subServiceVC = UIViewController.createController(storyBoard: .ConciergeStoryboard, ofType: subServicesViewController.self)
         subServiceVC.service = itemService
         subServiceVC.coordinator = self.coordinator
+        subServiceVC.subServiceId = itemService.id
         self.navigationController?.pushViewController(subServiceVC, animated: true)
         
     }

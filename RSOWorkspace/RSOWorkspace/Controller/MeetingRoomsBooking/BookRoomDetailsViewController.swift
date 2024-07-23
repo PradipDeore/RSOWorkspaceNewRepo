@@ -268,7 +268,6 @@ extension BookRoomDetailsViewController: UITableViewDataSource, UITableViewDeleg
             return 100
         }
     }
-    
 }
 
 extension BookRoomDetailsViewController:InviteTeamMembersTableViewCellDelegate{
@@ -332,7 +331,6 @@ extension BookRoomDetailsViewController:ButtonBookingConfirmTableViewCellDelegat
         let amenityNames = self.confirmBookingDetails.amenityArray.map { $0.name ?? ""}
         let bookingConfirmVC = UIViewController.createController(storyBoard: .Booking, ofType: BookingConfirmedViewController.self)
         bookingConfirmVC.bookingConfirmDetails = self.confirmBookingDetails
-
         bookingConfirmVC.coordinator = self.coordinator
         bookingConfirmVC.guestEmailArray = self.guestEmailArray.filter { $0 != "" }
         bookingConfirmVC.roomId = self.confirmBookingDetails.meetingId
@@ -356,17 +354,12 @@ extension BookRoomDetailsViewController {
         case dataLoaded
         case error(Error?)
     }
-    
 }
 extension BookRoomDetailsViewController:BookButtonActionDelegate{
     func showBookRoomDetailsVC(meetingRoomId: Int) {
-        
     }
-    
     func showBookMeetingRoomsVC() {
-        
     }
-    
     func showLogInVC() {
         
     }

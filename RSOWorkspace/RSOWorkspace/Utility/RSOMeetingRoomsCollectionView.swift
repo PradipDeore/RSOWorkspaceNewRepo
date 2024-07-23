@@ -66,15 +66,6 @@ extension RSOMeetingRoomsCollectionView: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//        let cell = dequeueReusableCell(withReuseIdentifier: "MeetingRoomsCollectionViewCell", for: indexPath) as! MeetingRoomsCollectionViewCell
-//        cell.customizeCell()
-//        let item = listItems[indexPath.row]
-//        cell.backActionDelegate = self.backActionDelegate
-//        cell.tag = self.tag
-//        cell.setData(item: item)
-//        cell.btnBook.isHidden = hideBookButton
-//        cell.isAmenitiesScreen = true
-//        return cell
         let item = listItems[indexPath.row]
        
         guard let itemType = item.type else {

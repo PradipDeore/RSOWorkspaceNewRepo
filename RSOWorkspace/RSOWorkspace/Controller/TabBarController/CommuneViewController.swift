@@ -23,6 +23,7 @@ class CommuneViewController: UIViewController,RSOTabCoordinated{
         coordinator?.hideBackButton(isHidden: true)
         self.coordinator?.hideTopViewForHome(isHidden: false)
         coordinator?.setTitle(title: "Commune")
+        coordinator?.updateButtonSelection(3)
     }
     private func setupTableView() {
         tableView.dataSource = self

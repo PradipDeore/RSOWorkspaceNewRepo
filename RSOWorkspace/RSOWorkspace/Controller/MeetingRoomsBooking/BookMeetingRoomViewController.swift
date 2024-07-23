@@ -132,18 +132,6 @@ extension BookMeetingRoomViewController: UITableViewDataSource, UITableViewDeleg
             cell.collectionView.tag = 1
           cell.selectionStyle = .none
             cell.collectionView.backActionDelegate = self
-            
-            cell.eventHandler = { [weak self] event in
-                // Handle events here based on the event type
-                switch event {
-                case .dataLoaded:
-                    // Handle data loaded event
-                    self?.listItems = cell.collectionView.listItems
-                    print("cell.collectionView.listItems=",cell.collectionView.listItems)
-                default:
-                    print("default")
-                }
-            }
             if selectedMeetingRoomId > 0{
                 cell.fetchmeetingRooms(id: selectedMeetingRoomId,
                                        requestModel: apiRequestModelRoomListing)

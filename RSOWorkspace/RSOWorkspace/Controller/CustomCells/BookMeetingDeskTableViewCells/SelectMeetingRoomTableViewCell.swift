@@ -42,14 +42,12 @@ class SelectMeetingRoomTableViewCell: UITableViewCell {
     }
     
     func fetchmeetingRooms(id: Int, requestModel: BookMeetingRoomRequestModel) {
-        self.eventHandler?(.loading)
         
         APIManager.shared.request(
             modelType: MeetingRoomListingResponse.self,
             type: MyBookingEndPoint.getAvailableMeetingRoomListing(id: id, requestModel: requestModel)) { [weak self] response in
                 
                 guard let self = self else { return }
-                self.eventHandler?(.stopLoading)
                 
                 switch response {
                 case .success(let responseData):

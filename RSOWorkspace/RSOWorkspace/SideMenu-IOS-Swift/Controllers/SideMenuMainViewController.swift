@@ -113,7 +113,6 @@ class SideMenuMainViewController: UIViewController,RSOTabCoordinated {
             self.view.layoutIfNeeded()
         }) { [self] _ in
             self.isExpanded = true
-          self.coordinator?.tabBarController.tabButtonTapped(self.coordinator?.tabBarController.tabButtons[(coordinator?.tabBarController.lastSelectedTabIndex)!])
         }
     }
     

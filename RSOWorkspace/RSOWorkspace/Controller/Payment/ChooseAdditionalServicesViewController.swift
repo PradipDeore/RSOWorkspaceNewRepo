@@ -5,9 +5,17 @@
 //  Created by Sumit Aquil on 07/03/24.
 //
 
+import NISdk
 import UIKit
-import Toast_Swift
+import PassKit
 
+enum PaymentType: String {
+    case applePay = "Apple Pay"
+    case debitCreditCard = "Debit/Credit Card"
+    case tabby = "Tabby"
+    case cashOnDelivery = "Cash On Delivery"
+    case unknown = "Unknown"
+}
 class ChooseAdditionalServicesViewController: UIViewController {
     var bookingId: Int = 0
     var selectedServices: [String] = []
@@ -51,6 +59,31 @@ class ChooseAdditionalServicesViewController: UIViewController {
     @IBAction func btnHideViewTappedAction(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
+    func checkoutNavigation() {
+     /* let type =  paymentTypes[selectedPaymentTypeIndex]
+      switch type {
+      case .applePay:
+        print("applePay")
+      case .debitCreditCard:
+        print("debitCreditCard")
+          var requestModel = PaymentRequestModel()
+          requestModel.customerID = UserSessionHelper.shared.getCustomerId()
+          requestModel.total = Int(cartServiceManager.getTotal())
+          requestModel.email = UserSessionHelper.shared.getUserEmail()
+          self.checkoutServiceManager.createOrder(requestModel: requestModel)
+      case .tabby:
+        print("tabby")
+      case .cashOnDelivery:
+        GPToastView.shared.show(self.checkoutServiceManager.checkoutReponse?.message ?? "")
+        let delayInSeconds = 2.0
+        DispatchQueue.main.asyncAfter(deadline: .now() + delayInSeconds) {
+          let myOrderVC = UIViewController.createController(storyBoard: .Profile, ofType: MyOrdersViewController.self)
+          self.navigationController?.pushViewController(myOrderVC, animated: true)
+        }
+      case .unknown:
+        print("unknown")
+      }*/
+    }
     func paymentRoomBookingAPI(additionalrequirements :[String], bookingid:Int, requirementdetails:String,totalprice:Double,vatamount:Double) {
         self.eventHandler?(.loading)
         let requestModel = PaymentRoomBookingRequest(additional_requirements: additionalrequirements, booking_id: bookingid, requirement_details: requirementdetails, total_price: totalprice, vatamount: vatamount)
@@ -63,15 +96,10 @@ class ChooseAdditionalServicesViewController: UIViewController {
                 case .success(let response):
                     
                     self.apiResponseData = response
-                    //Booking Saved successfully
-                    DispatchQueue.main.async {
-                        RSOToastView.shared.show("\(response.message)", duration: 2.0, position: .center)
-                    }
-                    
-                    // Pause execution for 5 seconds using DispatchQueue
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-                        self.navigationController?.popToRootViewController(animated: true)
-                    }
+                    var requestModel = NiPaymentRequestModel()
+                    requestModel.total = Int(totalprice)
+                    requestModel.email = UserHelper.shared.getUserEmail()
+                    self.makePayment(requestModel: requestModel)
                     self.eventHandler?(.dataLoaded)
                 case .failure(let error):
                     self.eventHandler?(.error(error))
@@ -81,6 +109,25 @@ class ChooseAdditionalServicesViewController: UIViewController {
                     }
                 }
             }
+    }
+    func makePayment(requestModel: NiPaymentRequestModel) {
+      APIManager.shared.request(
+        modelType: PaymentResponseModel.self,
+        type: PaymentRoomBookingEndPoint.payment(requestModel: requestModel)
+      ) { response in
+        switch response {
+        case .success(let response):
+            let orderResponse = response.data
+            DispatchQueue.main.async {
+                self.showCardPaymentUI(orderResponse: orderResponse)
+            }
+        case .failure(let error):
+            DispatchQueue.main.async {
+                //  Unsuccessful
+                RSOToastView.shared.show("\(error.localizedDescription)", duration: 2.0, position: .center)
+            }
+        }
+      }
     }
 }
 extension ChooseAdditionalServicesViewController: UITableViewDataSource, UITableViewDelegate {
@@ -185,13 +232,48 @@ extension ChooseAdditionalServicesViewController:CancelAndRequestButtonTableView
         let cell = tableView.dequeueReusableCell(withIdentifier: "ProvideRequirementDetailsTableViewCell", for: IndexPath(row: 0, section: 2)) as! ProvideRequirementDetailsTableViewCell
         let details = cell.txtViewrequirnmentDetails.text
         //print("details=", details)
-        self.paymentRoomBookingAPI(additionalrequirements: ["Stationary"], bookingid: self.bookingId, requirementdetails: details ?? "", totalprice: 315.0, vatamount: 15.0)
+        self.paymentRoomBookingAPI(additionalrequirements: ["Stationary"], bookingid: self.bookingId, requirementdetails: details ?? "", totalprice: totalPrice, vatamount: 0.0)
       
     }
     
     func btnCancelTappedAction() {
-        UIViewController.createController(storyBoard: .Payment, ofType: ChooseAdditionalServicesViewController.self)
-        self.dismiss(animated: true)
+        self.navigationController?.popViewController(animated: true)
     }
     
+}
+extension ChooseAdditionalServicesViewController: CardPaymentDelegate, ApplePayDelegate {
+
+    func paymentDidComplete(with status: PaymentStatus) {
+      if(status == .PaymentSuccess) {
+        // Payment was successful
+          //Booking Saved successfully
+          DispatchQueue.main.async {
+              RSOToastView.shared.show("Payment successfull", duration: 2.0, position: .center)
+          }
+      } else if(status == .PaymentFailed) {
+         // Payment failed
+      } else if(status == .PaymentCancelled) {
+        // Payment was cancelled by user
+      }
+    }
+
+
+    func authorizationDidComplete(with status: AuthorizationStatus) {
+      if(status == .AuthFailed) {
+        // Authentication failed
+        return
+      }
+      // Authentication was successful
+    }
+    
+    // On creating an order, call the following method to show the card payment UI
+    func showCardPaymentUI(orderResponse: OrderResponse) {
+      let sharedSDKInstance = NISdk.sharedInstance
+      sharedSDKInstance.showCardPaymentViewWith(cardPaymentDelegate: self,
+                                            overParent: self,
+                                            for: orderResponse)
+    }
+  func presentApplePay(orderResponse: OrderResponse) {
+
+  }
 }

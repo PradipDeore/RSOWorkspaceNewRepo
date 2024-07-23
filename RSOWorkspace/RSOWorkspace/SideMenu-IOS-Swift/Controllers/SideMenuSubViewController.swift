@@ -57,6 +57,10 @@ class SideMenuSubViewController: UIViewController {
     fetchMyProfiles()
     
   }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+    }
   func createMenu() -> [SideMenuModel] {
     var menu: [SideMenuModel] = [
       SideMenuModel(title: "My Profile"),

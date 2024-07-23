@@ -87,10 +87,8 @@ class MyVisitorsViewController: UIViewController{
 extension MyVisitorsViewController: UITableViewDataSource, UITableViewDelegate {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        
         return SectionTypeMyVisitors.allCases.count
     }
-    
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 10
     }

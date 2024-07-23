@@ -14,3 +14,12 @@ struct PaymentRequestModel{
     var amenities:[String?] = []
     var amenitiesPrice: String = ""
 }
+struct NiPaymentRequestModel: Codable {
+    var total: Int?
+    var email: String?
+    
+    init() {
+        self.total = 0
+        self.email = ""
+    }
+}
