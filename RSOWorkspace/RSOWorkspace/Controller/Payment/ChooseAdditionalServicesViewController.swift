@@ -96,10 +96,19 @@ class ChooseAdditionalServicesViewController: UIViewController {
                 case .success(let response):
                     
                     self.apiResponseData = response
+                  if UserHelper.shared.isGuest() {
                     var requestModel = NiPaymentRequestModel()
                     requestModel.total = Int(totalprice)
                     requestModel.email = UserHelper.shared.getUserEmail()
                     self.makePayment(requestModel: requestModel)
+                  } else {
+                    DispatchQueue.main.async {
+                      RSOToastView.shared.show(response.message, duration: 2.0, position: .center)
+                      DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                        self.navigationController?.popToRootViewController(animated: true)
+                      }
+                    }
+                  }
                     self.eventHandler?(.dataLoaded)
                 case .failure(let error):
                     self.eventHandler?(.error(error))
@@ -246,14 +255,23 @@ extension ChooseAdditionalServicesViewController: CardPaymentDelegate, ApplePayD
     func paymentDidComplete(with status: PaymentStatus) {
       if(status == .PaymentSuccess) {
         // Payment was successful
-          //Booking Saved successfully
           DispatchQueue.main.async {
-              RSOToastView.shared.show("Payment successfull", duration: 2.0, position: .center)
+            RSOToastView.shared.show(self.apiResponseData?.message, duration: 2.0, position: .center)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+              self.navigationController?.popToRootViewController(animated: true)
+            }
           }
       } else if(status == .PaymentFailed) {
          // Payment failed
+        DispatchQueue.main.async {
+          RSOToastView.shared.show("Payment failed", duration: 2.0, position: .center)
+        }
       } else if(status == .PaymentCancelled) {
         // Payment was cancelled by user
+        // Payment failed
+       DispatchQueue.main.async {
+         RSOToastView.shared.show("Payment cancelled", duration: 2.0, position: .center)
+       }
       }
     }
 

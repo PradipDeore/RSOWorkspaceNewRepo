@@ -89,7 +89,7 @@ class BookRoomDetailsViewController: UIViewController {
                     // set time to calucaulate difference withou am pm from response
                     self.confirmBookingDetails.startTime = item?.datetime.startTime ?? "0.0"
                     self.confirmBookingDetails.endTime = item?.datetime.endTime ?? "0.0"
-                    self.confirmBookingDetails.teamMembers = item?.members ?? []
+                  self.confirmBookingDetails.teamMembers = item?.members!.compactMap({ $0.email }) ?? []
                     self.confirmBookingDetails.location = item?.data.locationName  ?? ""
                     
                     self.dateOfBooking = requestModel.date

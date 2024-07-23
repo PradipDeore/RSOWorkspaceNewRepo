@@ -11,7 +11,7 @@ struct RoomDetailResponse: Codable {
     let status: Bool
     let data: RoomData
     let amenity: [Amenity]
-    let members: [String]? // Assuming it's an array of strings or null
+    let members: [Member]? // Assuming it's an array of strings or null
     let datetime: Datetime
 }
 

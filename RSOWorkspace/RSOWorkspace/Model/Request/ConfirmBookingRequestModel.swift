@@ -83,7 +83,7 @@ struct ConfirmBookingRequestModel{
         self.date = model.datetime.date
         self.startTime = model.datetime.startTime
         self.endTime = model.datetime.endTime
-        self.teamMembers = model.members ?? []
+        //self.teamMembers = model.members ?? []
         self.amenityArray = model.amenity
 
     }
