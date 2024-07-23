@@ -2923,8 +2923,8 @@
             filePath = "RSOWorkspace/Controller/DeskBooking/DeskBookingViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "344"
-            endingLineNumber = "344"
+            startingLineNumber = "349"
+            endingLineNumber = "349"
             landmarkName = "showBookRoomDetailsVC(meetingRoomId:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -2941,8 +2941,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "359"
             endingLineNumber = "359"
-            landmarkName = "BookRoomDetailsViewController"
-            landmarkType = "21">
+            landmarkName = "showBookRoomDetailsVC(meetingRoomId:)"
+            landmarkType = "7">
             <Locations>
                <Location
                   uuid = "B8D40638-B506-4ABA-B431-1932E65A959D - e8cdd04db57c2b24"

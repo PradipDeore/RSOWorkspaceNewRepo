@@ -53,6 +53,9 @@
                         <state key="normal" title="   View Floor Plan" image="floorPlan">
                             <color key="titleColor" name="000000"/>
                         </state>
+                        <connections>
+                            <action selector="btnViewFloorPlan:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="blP-g8-1QK"/>
+                        </connections>
                     </button>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

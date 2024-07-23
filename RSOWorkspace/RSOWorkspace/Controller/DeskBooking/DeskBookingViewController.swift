@@ -191,7 +191,7 @@ extension DeskBookingViewController: UITableViewDataSource, UITableViewDelegate 
         case .selectTime:
             return 80
         case .addTeamMembers:
-            return 60
+            return UserHelper.shared.isGuest() ? 0: 60
         case .selectMeetingRoomLabel:
             return 20
         case .selectDesksType:
@@ -303,6 +303,11 @@ extension DeskBookingViewController:sendteamMemberNameDelegate{
         }
 }
 extension DeskBookingViewController:SelectedDeskTableViewCellDelegate{
+    func viewFloorPlan() {
+        let viewFloorPlanVC = UIViewController.createController(storyBoard: .Booking, ofType: ViewFloorPlanViewController.self)
+        self.navigationController?.pushViewController(viewFloorPlanVC, animated: true)
+    }
+    
     func getselectedDeskNo(selectedDeskNo: [Int]) {
         //let selectedDeskNoInt = Int(selectedDeskNo)
        // apiRequestModelDeskListing.desk_id = selectedDeskNoInt
