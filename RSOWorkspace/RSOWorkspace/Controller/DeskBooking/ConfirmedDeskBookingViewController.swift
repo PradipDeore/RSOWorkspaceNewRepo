@@ -15,7 +15,7 @@ class ConfirmedDeskBookingViewController: UIViewController{
   var cornerRadius: CGFloat = 10.0
   
   var eventHandler: ((_ event: Event) -> Void)?
-  var apiResponseData:StoreRoomBookingResponse?
+  var apiResponseData:StoreDeskBookingResponseModel?
   var deskList:[RSOCollectionItem] = []
   
   private let cellIdentifiersConfirmDesk: [CellTypeConfirmDesk] = [ .confirmedLocation, .confirmedSelectedDesks, .confirmedTime, .confirmedDate,  .confirmedTeamMembers,  .confirmAndProceedToPayment, .buttonEdit]
@@ -24,8 +24,10 @@ class ConfirmedDeskBookingViewController: UIViewController{
   
   // var bookingConfirmDetails : ConfirmBookingRequestModel?
   var confirmdeskBookingResponse: ConfirmDeskBookingDetailsModel?
-  var bookingConfirmDetails:ConfirmBookingRequestModel?
-  var roomId: Int = 0
+ 
+ var bookingConfirmDetails:ConfirmBookingRequestModel?
+  
+    var roomId: Int = 0
   var teamMembersArray:[String] = [""]
   var locationName :String = ""
   var timeRange = ""
@@ -65,22 +67,23 @@ class ConfirmedDeskBookingViewController: UIViewController{
       tableView.register(UINib(nibName: type.rawValue, bundle: nil), forCellReuseIdentifier: type.rawValue)
     }
   }
-      func storeRoomBookingAPI(requestModel: StoreRoomBookingRequest) {
+    
+    func storeDeskBookingAPI(requestModel: StoreDeskBookingRequest) {
           self.eventHandler?(.loading)
   
           APIManager.shared.request(
-              modelType: StoreRoomBookingResponse.self,
-              type: PaymentRoomBookingEndPoint.getStoreRoomBooking(requestModel: requestModel)) { response in
+              modelType: StoreDeskBookingResponseModel.self,
+              type: DeskBookingEndPoint.storeDeskBooking(requestModel: requestModel)) { response in
                   self.eventHandler?(.stopLoading)
                   switch response {
                   case .success(let response):
-  
                       self.apiResponseData = response
+                      print("===Store desk booking api response\(response)")
                       DispatchQueue.main.async {
                           let paymentVC = UIViewController.createController(storyBoard: .Payment, ofType: PaymentViewController.self)
                           paymentVC.requestParameters = self.bookingConfirmDetails
                           paymentVC.coordinator = self.coordinator
-                          paymentVC.bookingId = response.booking_id ?? 0
+                          //paymentVC.bookingId = response.booking_id ?? 0
                           self.navigationController?.pushViewController(paymentVC, animated: true)
                       }
                       self.eventHandler?(.dataLoaded)
@@ -176,7 +179,7 @@ extension ConfirmedDeskBookingViewController: UITableViewDataSource, UITableView
       
     case .confirmAndProceedToPayment:
       let cell = tableView.dequeueReusableCell(withIdentifier: cellType.rawValue, for: indexPath) as! ConfirmAndProceedToPayementTableViewCell
-      //cell.delegate = self
+      cell.delegate = self
       cell.selectionStyle = .none
       return cell
       
@@ -230,19 +233,18 @@ extension ConfirmedDeskBookingViewController:ButtonEditTableViewCellDelegate{
     
   }
 }
-//extension ConfirmedDeskBookingViewController:ConfirmAndProceedToPayementTableViewCellDelegate{
-//    func btnConfirmAndProceedTappedAction() {
-//
-//        let startTime = self.bookingConfirmDetails?.startTime
-//        let endTime = self.bookingConfirmDetails?.endTime
-//        let BookingTime = "\(startTime ?? "00:00") - \(endTime ?? "00:00")"
-//        let locationId = String(locationId)
-//        let location = StoreRoomLocation(id: locationId, name: locationName)
-//
-//        let requestModel = StoreRoomBookingRequest(amenities: amenitiesArray, configurations_id: seatingConfigueId, date: dateOfBooking, guestList: guestEmailArray, location: location, memberList: teamMembersArray, roomId: roomId, time: BookingTime)
-//        print("parameters",requestModel)
-//        storeRoomBookingAPI(requestModel: requestModel)
-//
-//    }
-//
-//}
+extension ConfirmedDeskBookingViewController:ConfirmAndProceedToPayementTableViewCellDelegate{
+    func btnConfirmAndProceedTappedAction() {
+        let startTime = self.bookingConfirmDetails?.startTime
+        let endTime = self.bookingConfirmDetails?.endTime
+        let BookingTime = "\(startTime ?? "00:00") - \(endTime ?? "00:00")"
+        //let locationId = String(locationId)
+       // let location = StoreRoomLocation(id: locationId, name: locationName)
+
+        let requestModel = StoreDeskBookingRequest(start_time: "09:00", end_time: "17:00", date: "2024-07-18", is_fullday: "NO", desktype: 1, desk_id: [1, 2, 3], teammembers: [4, 5, 6])
+        print("parameters",requestModel)
+        storeDeskBookingAPI(requestModel: requestModel)
+
+    }
+
+}

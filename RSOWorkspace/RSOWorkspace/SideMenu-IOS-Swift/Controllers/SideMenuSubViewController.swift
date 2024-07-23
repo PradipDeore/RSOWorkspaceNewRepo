@@ -155,7 +155,6 @@ extension SideMenuSubViewController: UITableViewDataSource {
         lineView.heightAnchor.constraint(equalToConstant: 2)
       ])
     }
-    
     return cell
   }
   
