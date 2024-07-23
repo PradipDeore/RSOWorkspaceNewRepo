@@ -30,20 +30,15 @@ class ScheduleVisitorsViewController: UIViewController{
     
     @IBOutlet weak var tableView: UITableView!
     var listItems: [RSOCollectionItem] = []
-    
     var visitorEmailDelegate:sendVisitorEmailDelegate?
-        
     var visitorsDetailArray : [VisitorDetails] = []
     var ddOptions: [Reason] = []
-    
     var eventHandler: ((_ event: Event) -> Void)?
     var apiRequestScheduleVisitorsRequest = ScheduleVisitorsRequest()
     var displayscheduleVisitorsDetailsNextScreen = DisplayScheduleVisitorsDetailModel()
     
-    // var selectedMeetingRoomDate = ""
     override func viewDidLoad() {
         super.viewDidLoad()
-       
         let emptyVisitor = VisitorDetails(visitorName: "", visitorEmail: "", visitorPhone: "")
         visitorsDetailArray.append(emptyVisitor)
         setupTableView()
@@ -85,7 +80,6 @@ class ScheduleVisitorsViewController: UIViewController{
                 }
             }
     }
-    
 }
 
 // MARK: - UITableViewDataSource, UITableViewDelegate
@@ -167,7 +161,6 @@ extension ScheduleVisitorsViewController: UITableViewDataSource, UITableViewDele
                 }
                 return cell
             }
-            
             
         case .btnCancelAndSave:
             let cell =  tableView.dequeueReusableCell(withIdentifier: CellIdentifierScheduleVisitors.btnCancelAndSave.rawValue, for: indexPath)as! ButtonCancelAndSaveTableViewCell

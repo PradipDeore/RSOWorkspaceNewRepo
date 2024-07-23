@@ -73,7 +73,9 @@ class MeetingRoomsCollectionViewCell: UICollectionViewCell {
         self.lblLocation.text = item.locationName
         self.lblroomPrice.text = "\(item.roomPrice ?? "0") /Hr"
         //let amenityDetails = item.amenityDetails
-        //print(amenityDetails!)
+        print("setData for room")
+        print("name for room=", item.roomName)
+        print("name for price=", item.roomPrice)
         if let imageUrl = item.roomImage, !imageUrl.isEmpty {
             let url = URL(string: imageBasePath + imageUrl)
             self.imgroomImage.kf.setImage(with: url)

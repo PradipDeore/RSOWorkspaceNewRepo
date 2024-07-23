@@ -14,7 +14,7 @@ class SelectDesksTableViewCell: UITableViewCell , UICollectionViewDataSource, UI
     
     weak var delegate: SelectedDeskTableViewCellDelegate?
     @IBOutlet weak var collectionView: UICollectionView!
-    var selectedDeskNo = ""
+    var selectedDeskNo:[Int] = [1,2,3]
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -54,14 +54,13 @@ class SelectDesksTableViewCell: UITableViewCell , UICollectionViewDataSource, UI
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let cell = collectionView.cellForItem(at: indexPath) as? SelectDeskCollectionViewCell {
             let selectedDeskNumber = cell.lblDeskNo.text
-            print("Selected desk number: \(String(describing: selectedDeskNumber))")
-            self.selectedDeskNo = selectedDeskNumber ?? ""
+          //  print("Selected desk number: \(String(describing: selectedDeskNumber))")
+            //self.selectedDeskNo = selectedDeskNumber ?? ""
             // delegate?.getselectedDeskNo(selectedDeskNo: selectedDeskNumber)
         }
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
         let width:CGFloat = 95
         let height: CGFloat = 50
         return CGSize(width: width , height: height)

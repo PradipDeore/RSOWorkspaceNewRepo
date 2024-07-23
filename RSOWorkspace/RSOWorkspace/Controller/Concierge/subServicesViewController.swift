@@ -28,6 +28,7 @@ class subServicesViewController: UIViewController {
     var service: Service?
     var cornerRadius: CGFloat = 10.0
     var serviceId = 0
+    var subServiceId = 0
     override func viewDidLoad() {
         super.viewDidLoad()
         coordinator?.hideBackButton(isHidden:false)
@@ -74,6 +75,7 @@ class subServicesViewController: UIViewController {
                 print("Selected option: \(option.title)")
                 self?.txtSubServices.text = option.title
                 self?.serviceId = option.id
+                
             }
             alertController.addAction(action)
         }
@@ -91,7 +93,10 @@ class subServicesViewController: UIViewController {
             RSOToastView.shared.show("Please provide details about the issue", duration: 2.0, position: .center)
             return false
         }
-        subServicesAPI(service_id :serviceId, description:detailsText)
+        guard let member_id = UserHelper.shared.getUserId() else {
+            return false
+        }
+        subServicesAPI(service_id: serviceId, description: detailsText, sub_service_id: subServiceId, member_id: member_id)
         
         return true
         
@@ -103,9 +108,9 @@ class subServicesViewController: UIViewController {
         }
         
     }
-    func subServicesAPI(service_id :Int,description:String) {
+    func subServicesAPI(service_id :Int,description:String,sub_service_id:Int,member_id:Int) {
         self.eventHandler?(.loading)
-        let requestModel = subServicesRequestModel(service_id: service_id,description:description)
+        let requestModel = subServicesRequestModel(service_id: service_id, sub_service_id: sub_service_id, description: description, member_id: member_id)
         print("requestModel",requestModel)
         APIManager.shared.request(
             modelType: ReportAnIssueResponse.self,

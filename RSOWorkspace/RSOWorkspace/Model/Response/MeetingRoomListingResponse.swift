@@ -27,11 +27,11 @@ struct MeetingRoomListing: Codable {
   
   private enum CodingKeys: String, CodingKey {
     case id
-    case roomName = "room_name"
+    case roomName = "name"
     case capacity
     case description
-    case roomImage = "room_image"
-    case roomPrice = "room_price"
+    case roomImage = "image"
+    case roomPrice = "price"
     case locationName = "location_name"
     case roomAmenityDetails = "room_amenity_details"
   }

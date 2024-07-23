@@ -224,8 +224,6 @@ extension DeskBookingViewController:ButtonBookingConfirmTableViewCellDelegate{
         confirmDeskBookingDetailsVC.confirmdeskBookingResponse = displayBookingDetailsNextScreen
         self.present(confirmDeskBookingDetailsVC,animated: true)
     }
-    
-   
    
 }
 extension DeskBookingViewController: SelectLocationTableViewCellDelegate {
@@ -233,11 +231,9 @@ extension DeskBookingViewController: SelectLocationTableViewCellDelegate {
     func dropdownButtonTapped(selectedOption: Location) {
         // Implement what you want to do with the selected option, for example:
         print("Selected option: \(selectedOption.name),\(selectedOption.id)")
-      
         selectedDeskId = selectedOption.id
         apiRequestModelDeskListing.locationid = selectedOption.id
         displayBookingDetailsNextScreen.location = selectedOption.name
-
     }
     
     func presentAlertController(alertController: UIAlertController) {

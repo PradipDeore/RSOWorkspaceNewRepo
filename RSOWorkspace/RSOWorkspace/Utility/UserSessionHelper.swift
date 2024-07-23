@@ -39,10 +39,13 @@ class UserHelper {
   }
   
   func isGuest() -> Bool {
-    return false
+    return true
     return userDefaults.bool(forKey: userIsGuestKey)
   }
   
+func getUserId() -> Int? {
+      return userDefaults.integer(forKey: customerIdKey)
+}
   func getUserFirstName() -> String? {
     return userDefaults.string(forKey: firstNameKey)
   }
