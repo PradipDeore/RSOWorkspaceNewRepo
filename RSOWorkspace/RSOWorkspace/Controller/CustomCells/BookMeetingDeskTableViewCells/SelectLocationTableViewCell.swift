@@ -44,8 +44,6 @@ class SelectLocationTableViewCell: UITableViewCell {
                 // Assign the selected option to the text field
                 
                 self?.txtLocation.text = option.name
-                
-                
                 // Notify the delegate about the selected option
                 self?.delegate?.dropdownButtonTapped(selectedOption: option)
             }

@@ -45,7 +45,7 @@ class SelectTimeTableViewCell: UITableViewCell {
         let selectedEndTime = sender.date
         print("Selected End time: \(selectedEndTime)")
         delegate?.didSelectEndTime(selectedEndTime)
-        
+        validateStartEndTime()
     }
   @IBAction func isFullDayAction(_ sender: Any) {
     btnBookfullDay.isSelected.toggle()
@@ -73,9 +73,19 @@ class SelectTimeTableViewCell: UITableViewCell {
     self.delegate?.selectFulldayStatus(btnBookfullDay.isSelected)
   }
   func setEndDateLaterStartDate() {
-    if let nextHour = Date.adding(to: self.selectStartTime.date, hours: 2) {
-      selectEndTime.date = nextHour
-      delegate?.didSelectEndTime(nextHour)
+    let startDate = self.selectStartTime.date
+    if let nextHour = Date.adding(to: startDate, hours: 2) {
+      // Check if the end time is valid (within the same day and greater than the start time)
+      if Calendar.current.isDate(nextHour, inSameDayAs: startDate) && nextHour > startDate {
+        selectEndTime.date = nextHour
+        delegate?.didSelectEndTime(nextHour)
+      } else {
+        // If adding 2 hours crosses midnight, set the end time to 11:59 PM of the same day
+        if let endOfDay = Calendar.current.date(bySettingHour: 23, minute: 59, second: 59, of: startDate) {
+          selectEndTime.date = endOfDay
+          delegate?.didSelectEndTime(endOfDay)
+        }
+      }
     }
   }
   // Function to get the start date with current date and 9 AM time
@@ -86,5 +96,11 @@ class SelectTimeTableViewCell: UITableViewCell {
   // Function to get the end date with current date and 6 PM time
   func getEndDateWithCurrentDateAnd6PM() -> Date? {
     return Date.dateForGivenTime(hour: 18)
+  }
+  func validateStartEndTime() {
+    if selectStartTime.date > selectEndTime.date {
+      setEndDateLaterStartDate()
+      RSOToastView.shared.show("End time must be greater than start time.", duration: 2.0, position: .center)
+        }
   }
 }
