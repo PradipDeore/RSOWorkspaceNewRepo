@@ -19,7 +19,7 @@ class PaymentViewController: UIViewController {
     var totalPrice:Double = 0.0
     var vatAmount:Double = 0.0
     var couponData : [CouponDetails] = []
-    private let cellIdentifiers: [(CellType,CGFloat)] = [(.selectMeetingRoomLabel,20.0),(.meetingTime,80),(.meetingRoomPrice,40),(.amenityPrice,50),(.totalCell,191),(.discount,60),(.paywithrewardPoints,157),(.buttonPayNow,40)]
+    private let cellIdentifiers: [(CellType,CGFloat)] = [(.selectMeetingRoomLabel,20.0),(.meetingTime,80),(.meetingRoomPrice,40),(.amenityPrice,50),(.totalCell,191),(.discount,60),(.paymentMethods,97),(.buttonPayNow,40)]
     
     override func viewDidLoad() {
         super.viewDidLoad()
