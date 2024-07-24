@@ -138,21 +138,12 @@ extension PaymentViewController: UITableViewDataSource, UITableViewDelegate {
             if let obj = self.requestParameters{
               let deskCount = self.requestParameters?.deskList.count ?? 0
               if deskCount > 0 {
-                var subTotal = 0.0
                 if let deskList = self.requestParameters?.deskList {
-                  for desk in deskList {
-                    let roomPrice = desk.price
-                    let roomPriceFloat = Float(roomPrice) ?? 0.0
-                    let totalRoomPrice = roomPriceFloat * obj.timeDifferece
-                    subTotal = subTotal + Double(totalRoomPrice)
-                  }
-                  cell.lblSubTotal.text = "\(subTotal)"
-                  let totalVat = subTotal * 5 / 100
-                  cell.lblVat.text = "\(totalVat)"
-                  vatAmount = Double(totalVat)
-                  let finalTotal = subTotal + totalVat
-                  cell.lblTotalPrice.text = "\(finalTotal)" // subttotal + vat
-                  totalPrice = Double(finalTotal)
+                  cell.lblSubTotal.text = "\(obj.deskSubTotal)"
+                  cell.lblVat.text = "\(obj.deskVatTotal)"
+                  vatAmount = Double(obj.deskVatTotal)
+                  cell.lblTotalPrice.text = "\(obj.deskFinalTotal)" // subttotal + vat
+                  totalPrice = Double(obj.deskFinalTotal)
                 }
               } else {
                 cell.lblSubTotal.text = "\(obj.subTotal)"
