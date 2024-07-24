@@ -24,7 +24,7 @@ class ConfirmedDeskBookingViewController: UIViewController{
   
   // var bookingConfirmDetails : ConfirmBookingRequestModel?
   var confirmdeskBookingResponse: ConfirmDeskBookingDetailsModel?
- 
+  var bookingConfirmDetails = ConfirmBookingRequestModel()
  var deskbookingConfirmDetails:StoreDeskBookingRequest?
     
   var roomId: Int = 0
