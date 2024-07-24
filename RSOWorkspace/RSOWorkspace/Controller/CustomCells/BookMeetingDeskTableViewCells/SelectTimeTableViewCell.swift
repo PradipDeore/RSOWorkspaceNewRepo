@@ -9,6 +9,7 @@ import UIKit
 protocol SelectTimeTableViewCellDelegate: AnyObject {
     func didSelectStartTime(_ startTime: Date)
     func didSelectEndTime(_ endTime: Date)
+    func selectFulldayStatus(_ isFullDay: Bool)
 }
 class SelectTimeTableViewCell: UITableViewCell {
 
@@ -25,6 +26,7 @@ class SelectTimeTableViewCell: UITableViewCell {
         bgView.backgroundColor = .clear
     }
       timePanel.layer.cornerRadius = 6
+      updateButtonState()
     }
     @IBAction func selectStartTime(_ sender: UIDatePicker) {
         let selectedStartTime = sender.date
@@ -40,4 +42,54 @@ class SelectTimeTableViewCell: UITableViewCell {
         delegate?.didSelectEndTime(selectedEndTime)
         
     }
+  @IBAction func isFullDayAction(_ sender: Any) {
+    btnBookfullDay.isSelected.toggle()
+    updateButtonState()
+    if btnBookfullDay.isSelected {
+      let calendar = Calendar.current
+      if let selectedStartTime = getStartDateWithCurrentDateAnd9AM(), let selectedEndTime = getEndDateWithCurrentDateAnd6PM() {
+        delegate?.didSelectStartTime(selectedStartTime)
+        delegate?.didSelectEndTime(selectedEndTime)
+        selectStartTime.date = selectedStartTime
+        selectEndTime.date = selectedEndTime
+      }
+    } else {
+      let selectedStartTime = Date()
+        delegate?.didSelectStartTime(selectedStartTime)
+        delegate?.didSelectEndTime(selectedStartTime)
+        selectStartTime.date = selectedStartTime
+        selectEndTime.date = selectedStartTime
+    }
+  }
+  func updateButtonState() {
+    if btnBookfullDay.isSelected {
+      btnBookfullDay.backgroundColor = UIColor.black
+    } else {
+      btnBookfullDay.backgroundColor = UIColor.lightGray
+    }
+    self.delegate?.selectFulldayStatus(btnBookfullDay.isSelected)
+  }
+  // Function to get the start date with current date and 9 AM time
+  func getStartDateWithCurrentDateAnd9AM() -> Date? {
+      let calendar = Calendar.current
+      let currentDate = Date()
+      var components = calendar.dateComponents([.year, .month, .day], from: currentDate)
+      components.hour = 9
+      components.minute = 0
+      components.second = 0
+      
+      return calendar.date(from: components)
+  }
+
+  // Function to get the end date with current date and 6 PM time
+  func getEndDateWithCurrentDateAnd6PM() -> Date? {
+      let calendar = Calendar.current
+      let currentDate = Date()
+      var components = calendar.dateComponents([.year, .month, .day], from: currentDate)
+      components.hour = 18
+      components.minute = 0
+      components.second = 0
+      
+      return calendar.date(from: components)
+  }
 }

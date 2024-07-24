@@ -80,15 +80,25 @@ class BookingConfirmedViewController: UIViewController{
                 case .success(let response):
                     
                     self.apiResponseData = response
+                  if let errorMessage = response.message, errorMessage.isEmpty == false {
+                    self.eventHandler?(.error(errorMessage as? Error))
                     DispatchQueue.main.async {
                       RSOLoader.removeLoader()
-                        let paymentVC = UIViewController.createController(storyBoard: .Payment, ofType: PaymentViewController.self)
-                        paymentVC.requestParameters = self.bookingConfirmDetails
-                        paymentVC.coordinator = self.coordinator
-                        paymentVC.bookingId = response.booking_id ?? 0
-                        self.navigationController?.pushViewController(paymentVC, animated: true)
+                      //  Unsuccessful
+                      RSOToastView.shared.show("\(errorMessage)", duration: 2.0, position: .center)
+
+                    }
+                  } else {
+                    DispatchQueue.main.async {
+                      RSOLoader.removeLoader()
+                      let paymentVC = UIViewController.createController(storyBoard: .Payment, ofType: PaymentViewController.self)
+                      paymentVC.requestParameters = self.bookingConfirmDetails
+                      paymentVC.coordinator = self.coordinator
+                      paymentVC.bookingId = response.booking_id ?? 0
+                      self.navigationController?.pushViewController(paymentVC, animated: true)
                     }
                     self.eventHandler?(.dataLoaded)
+                  }
                 case .failure(let error):
                     self.eventHandler?(.error(error))
                     DispatchQueue.main.async {

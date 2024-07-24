@@ -15,6 +15,7 @@ struct StoreRoomBookingResponse: Codable {
     let room_details: RoomDetails?
     let amenities: [String]?
     let booking_id: Int?
+    let message: String?
 }
 
 struct RoomDetails: Codable {

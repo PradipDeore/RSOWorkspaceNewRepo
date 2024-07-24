@@ -42,7 +42,7 @@ class BookMeetingRoomViewController: UIViewController{
     var selectedMeetingRoomId = 0
     var selectedLocation = ""
     var locationId:Int = 0
-
+    var selectedFullDay = ""
     // var selectedMeetingRoomDate = ""
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -187,6 +187,7 @@ extension BookMeetingRoomViewController: SelectDateTableViewCellDelegate {
 }
 extension BookMeetingRoomViewController: SelectTimeTableViewCellDelegate{
     func didSelectStartTime(_ startTime: Date) {
+  
         // for api request
         let apiStartTime = Date.formatSelectedDate(format: .HHmm, date: startTime)
         apiRequestModelRoomListing.startTime = apiStartTime
@@ -204,6 +205,10 @@ extension BookMeetingRoomViewController: SelectTimeTableViewCellDelegate{
         displayBookingDetailsNextScreen.endTime = displayEndTime
         
     }
+  func selectFulldayStatus(_ isFullDay: Bool) {
+    selectedFullDay = isFullDay ? "Yes" : "No"
+  }
+
 }
 extension BookMeetingRoomViewController: GetRoomsBtnTableViewCellDelegate {
     func getMeetingRooms() {
@@ -240,6 +245,7 @@ extension BookMeetingRoomViewController: BookButtonActionDelegate{
     func showBookRoomDetailsVC(meetingRoomId: Int) {
         let bookRoomDetailsVC = UIViewController.createController(storyBoard: .Booking, ofType: BookRoomDetailsViewController.self)
         bookRoomDetailsVC.meetingId = meetingRoomId
+      apiRequestModelRoomListing.isFullDay = selectedFullDay
         bookRoomDetailsVC.requestModel = apiRequestModelRoomListing
         bookRoomDetailsVC.displayBookingDetails = displayBookingDetailsNextScreen
         bookRoomDetailsVC.coordinator = self.coordinator

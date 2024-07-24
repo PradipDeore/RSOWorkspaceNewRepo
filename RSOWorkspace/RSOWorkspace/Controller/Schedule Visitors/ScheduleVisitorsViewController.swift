@@ -221,6 +221,10 @@ extension ScheduleVisitorsViewController: SelectDateTableViewCellDelegate {
     }
 }
 extension ScheduleVisitorsViewController: SelectTimeTableViewCellDelegate{
+  func selectFulldayStatus(_ isFullDay: Bool) {
+  
+  }
+  
     func didSelectStartTime(_ startTime: Date) {
         // for api request
         let apiStartTime = Date.formatSelectedDate(format: .HHmm, date: startTime)

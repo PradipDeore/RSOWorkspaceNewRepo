@@ -135,9 +135,6 @@ extension PaymentViewController: UITableViewDataSource, UITableViewDelegate {
             let buttonPayNowCell = tableView.dequeueReusableCell(withIdentifier: cellType.rawValue, for: indexPath) as! ButtonPayNowTableViewCell
             buttonPayNowCell.delegate = self
             return buttonPayNowCell
-            
-        default:
-            return UITableViewCell()
         }
         
         let cell = tableView.dequeueReusableCell(withIdentifier: cellType.rawValue, for: indexPath)

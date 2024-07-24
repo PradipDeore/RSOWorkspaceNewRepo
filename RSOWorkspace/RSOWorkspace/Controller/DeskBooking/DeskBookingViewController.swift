@@ -288,6 +288,10 @@ extension DeskBookingViewController: SelectDateTableViewCellDelegate {
     }
 }
 extension DeskBookingViewController: SelectTimeTableViewCellDelegate{
+  func selectFulldayStatus(_ isFullDay: Bool) {
+    apiRequestModelDeskListing.isFullDay =  isFullDay ? "Yes" : "No"
+  }
+  
     func didSelectStartTime(_ startTime: Date) {
         // for api request
         let apiStartTime = Date.formatSelectedDate(format: .HHmm, date: startTime)

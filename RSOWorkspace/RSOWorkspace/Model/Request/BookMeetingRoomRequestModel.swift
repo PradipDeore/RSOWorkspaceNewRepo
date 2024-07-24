@@ -12,7 +12,7 @@ struct BookMeetingRoomRequestModel: Codable {
     var date: String = Date.formatSelectedDate(format: .yyyyMMdd, date: nil)
     var startTime: String = Date.formatSelectedDate(format: .HHmm, date: nil)
     var endTime: String = Date.formatSelectedDate(format: .HHmm, date: nil)
-    var isFullDay = false
+    var isFullDay = "No"
     
     enum CodingKeys: String, CodingKey {
         case date
