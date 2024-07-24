@@ -142,10 +142,14 @@ extension BookMeetingRoomViewController: UITableViewDataSource, UITableViewDeleg
       cell.collectionView.tag = 1
       cell.selectionStyle = .none
       cell.collectionView.backActionDelegate = self
+      cell.eventHandler = { [weak self] (status, list) in
+        guard let self = self else { return }
+        self.listItems = list ?? []
+        print("eventHandler listItems", listItems)
+      }
       if selectedMeetingRoomId > 0{
         cell.fetchmeetingRooms(id: selectedMeetingRoomId,
                                requestModel: apiRequestModelRoomListing)
-        
       }
       return cell
     }

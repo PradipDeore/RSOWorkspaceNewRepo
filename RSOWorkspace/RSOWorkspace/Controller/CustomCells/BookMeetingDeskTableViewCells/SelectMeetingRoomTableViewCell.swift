@@ -9,90 +9,86 @@ import UIKit
 
 
 class SelectMeetingRoomTableViewCell: UITableViewCell {
+  
+  @IBOutlet weak var collectionView: RSOMeetingRoomsCollectionView!
+  var selectedMeetingRoom :RSOCollectionItem?
+  
+  var meetingId: Int = 0 {
+    didSet {
+      if meetingId > 0 {
+        self.collectionView.listItems = self.collectionView.listItems.filter { $0.id == self.meetingId }
+      }
+      print("count of collection view list", self.collectionView.listItems.count)
+      DispatchQueue.main.async {
+        self.collectionView.reloadData()
+      }
+    }
+  }
+  
+  enum EventHandler {
+    case dataLoaded
+    case error(Error)
+  }
+  
+  var eventHandler: ((EventHandler, _ listItems: [RSOCollectionItem]? ) -> Void)?
+  override func awakeFromNib() {
+    super.awakeFromNib()
+    // Initialization code
+    collectionView.scrollDirection = .horizontal
+    collectionView.isPagingEnabled = true
+    collectionView.showsHorizontalScrollIndicator = false // Hide horizontal scroll indicator
+  }
+  
+  func fetchmeetingRooms(id: Int, requestModel: BookMeetingRoomRequestModel) {
     
-    @IBOutlet weak var collectionView: RSOMeetingRoomsCollectionView!
-    var selectedMeetingRoom :RSOCollectionItem?
-    
-    var meetingId: Int = 0 {
-        didSet {
-            if meetingId > 0 {
-                self.collectionView.listItems = self.collectionView.listItems.filter { $0.id == self.meetingId }
-            }
+    APIManager.shared.request(
+      modelType: MeetingRoomListingResponse.self,
+      type: MyBookingEndPoint.getAvailableMeetingRoomListing(id: id, requestModel: requestModel)) { [weak self] response in
+        DispatchQueue.main.async {
+          guard let self = self else { return }
+          
+          switch response {
+          case .success(let responseData):
+            // Handle successful response with bookings
+            let roomList = responseData.data
+            let listItems: [RSOCollectionItem] = roomList.map { RSOCollectionItem(meetingRoomList: $0) }
+            self.collectionView.listItems = listItems
             print("count of collection view list", self.collectionView.listItems.count)
-            DispatchQueue.main.async {
-                self.collectionView.reloadData()
-            }
+            self.collectionView.reloadData()
+            self.eventHandler?(.dataLoaded, listItems)
+          case .failure(let error):
+            self.eventHandler?(.error(error), nil)
+            RSOToastView.shared.show("\(error.localizedDescription)", duration: 2.0, position: .center)
+          }
         }
-    }
-    
-    enum EventHandler {
+      }
+  }
+  
+  func fetchDesks(id: Int, requestModel: DeskRequestModel) {
+    APIManager.shared.request(
+      modelType: DeskListingResponse.self,
+      type: DeskBookingEndPoint.getDesksLisiting(id: id, requestModel: requestModel)) { [weak self] response in
         
-        case dataLoaded
-        case error(Error)
-    }
-    
-    var eventHandler: ((EventHandler) -> Void)?
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-        collectionView.scrollDirection = .horizontal
-        collectionView.isPagingEnabled = true
-        collectionView.showsHorizontalScrollIndicator = false // Hide horizontal scroll indicator
-    }
-    
-    func fetchmeetingRooms(id: Int, requestModel: BookMeetingRoomRequestModel) {
+        guard let self = self else { return }
         
-        APIManager.shared.request(
-            modelType: MeetingRoomListingResponse.self,
-            type: MyBookingEndPoint.getAvailableMeetingRoomListing(id: id, requestModel: requestModel)) { [weak self] response in
-                
-                guard let self = self else { return }
-                
-                switch response {
-                case .success(let responseData):
-                    // Handle successful response with bookings
-                    let roomList = responseData.data
-                    let listItems: [RSOCollectionItem] = roomList.map { RSOCollectionItem(meetingRoomList: $0) }
-                    self.collectionView.listItems = listItems
-                    print("count of collection view list", self.collectionView.listItems.count)
-                    DispatchQueue.main.async {
-                        self.collectionView.reloadData()
-                    }
-                    self.eventHandler?(.dataLoaded)
-                case .failure(let error):
-                    self.eventHandler?(.error(error))
-                    DispatchQueue.main.async {
-                      RSOToastView.shared.show("\(error.localizedDescription)", duration: 2.0, position: .center)
-                    }
-                }
-            }
-    }
-    
-    func fetchDesks(id: Int, requestModel: DeskRequestModel) {
-        APIManager.shared.request(
-            modelType: DeskListingResponse.self,
-            type: DeskBookingEndPoint.getDesksLisiting(id: id, requestModel: requestModel)) { [weak self] response in
-                
-                guard let self = self else { return }
-                
-                switch response {
-                case .success(let responseData):
-                    // Handle successful response with bookings
-                    let deskList = responseData.data
-                    let listItems: [RSOCollectionItem] = deskList.map { RSOCollectionItem(deskLisitngItem: $0) }
-                    self.collectionView.listItems = listItems
-                    print("count of collection view list",self.collectionView.listItems.count)
-                    DispatchQueue.main.async {
-                        self.collectionView.reloadData()
-                    }
-                    self.eventHandler?(.dataLoaded)
-                case .failure(let error):
-                    self.eventHandler?(.error(error))
-                    DispatchQueue.main.async {
-                      RSOToastView.shared.show("\(error.localizedDescription)", duration: 2.0, position: .center)
-                    }
-                }
-            }
-    }
-   
+        switch response {
+        case .success(let responseData):
+          // Handle successful response with bookings
+          let deskList = responseData.data
+          let listItems: [RSOCollectionItem] = deskList.map { RSOCollectionItem(deskLisitngItem: $0) }
+          self.collectionView.listItems = listItems
+          print("count of collection view list",self.collectionView.listItems.count)
+          DispatchQueue.main.async {
+            self.collectionView.reloadData()
+          }
+          self.eventHandler?(.dataLoaded, listItems)
+        case .failure(let error):
+          self.eventHandler?(.error(error), nil)
+          DispatchQueue.main.async {
+            RSOToastView.shared.show("\(error.localizedDescription)", duration: 2.0, position: .center)
+          }
+        }
+      }
+  }
+  
 }
