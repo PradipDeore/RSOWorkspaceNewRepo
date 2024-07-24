@@ -23,8 +23,9 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wwV-sT-YSc">
                                 <rect key="frame" x="0.0" y="0.0" width="104" height="109"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="seatingConfig1" translatesAutoresizingMaskIntoConstraints="NO" id="YJn-ph-UFd">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="seatingConfig1" translatesAutoresizingMaskIntoConstraints="NO" id="YJn-ph-UFd">
                                         <rect key="frame" x="10" y="10" width="84" height="89"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

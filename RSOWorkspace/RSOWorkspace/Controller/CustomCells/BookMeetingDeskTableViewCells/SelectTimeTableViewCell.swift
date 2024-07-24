@@ -31,21 +31,14 @@ class SelectTimeTableViewCell: UITableViewCell {
       DispatchQueue.main.async {
         self.selectStartTime.date = Date()
         self.delegate?.didSelectStartTime(self.selectStartTime.date)
-        if let nextHour = Date.adding(to: self.selectStartTime.date, hours: 2) {
-          self.selectEndTime.date = nextHour
-          self.delegate?.didSelectEndTime(nextHour)
-        }
+        self.setEndDateLaterStartDate()
       }
     }
     @IBAction func selectStartTime(_ sender: UIDatePicker) {
         let selectedStartTime = sender.date
-        print("Selected Start time: \(selectedStartTime)")
         // Pass the selected time to the delegate
         delegate?.didSelectStartTime(selectedStartTime)
-      if let nextHour = Date.adding(to: selectedStartTime, hours: 2) {
-        selectEndTime.date = nextHour
-        delegate?.didSelectEndTime(nextHour)
-      }
+        setEndDateLaterStartDate()
     }
  
     @IBAction func selectEndTime(_ sender: UIDatePicker) {
@@ -68,10 +61,7 @@ class SelectTimeTableViewCell: UITableViewCell {
       let selectedStartTime = Date()
       selectStartTime.date = selectedStartTime
         delegate?.didSelectStartTime(selectedStartTime)
-      if let nextHour = Date.adding(to: self.selectStartTime.date, hours: 2) {
-        selectEndTime.date = nextHour
-        delegate?.didSelectEndTime(nextHour)
-      }
+      setEndDateLaterStartDate()
     }
   }
   func updateButtonState() {
@@ -81,6 +71,12 @@ class SelectTimeTableViewCell: UITableViewCell {
       btnBookfullDay.backgroundColor = UIColor.lightGray
     }
     self.delegate?.selectFulldayStatus(btnBookfullDay.isSelected)
+  }
+  func setEndDateLaterStartDate() {
+    if let nextHour = Date.adding(to: self.selectStartTime.date, hours: 2) {
+      selectEndTime.date = nextHour
+      delegate?.didSelectEndTime(nextHour)
+    }
   }
   // Function to get the start date with current date and 9 AM time
   func getStartDateWithCurrentDateAnd9AM() -> Date? {
