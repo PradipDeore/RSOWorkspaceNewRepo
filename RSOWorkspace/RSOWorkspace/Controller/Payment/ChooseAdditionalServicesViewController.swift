@@ -28,7 +28,7 @@ class ChooseAdditionalServicesViewController: UIViewController {
   var vatAmount:Double = 0.0
   var provideRequirementDet = ""
   var additionalServicesArray:[String] = []
-  
+  var paymentServiceManager = PaymentNetworkManager.shared
   var eventHandler: ((_ event: Event) -> Void)?
   
   private let cellIdentifiers: [(CellType,CGFloat)] = [(.chooseAdditionalServicesLabel,20.0),(.chooseAdditionaServices,60),(.provideRequirementDet,70),(.cancelAndRequestButton,45)]
@@ -84,67 +84,7 @@ class ChooseAdditionalServicesViewController: UIViewController {
      print("unknown")
      }*/
   }
-  func paymentRoomBookingAPI(additionalrequirements :[String], bookingid:Int, requirementdetails:String,totalprice:Double,vatamount:Double) {
-    DispatchQueue.main.async {
-      RSOLoader.showLoader()
-    }
-    let requestModel = PaymentRoomBookingRequest(additional_requirements: additionalrequirements, booking_id: bookingid, requirement_details: requirementdetails, total_price: totalprice, vatamount: vatamount)
-    print("requestModel",requestModel)
-    APIManager.shared.request(
-      modelType: PaymentRoomBookingResponse.self,
-      type: PaymentRoomBookingEndPoint.paymentRoombooking(requestModel: requestModel)) { response in
-        DispatchQueue.main.async {
-          RSOLoader.removeLoader()
-          switch response {
-          case .success(let response):
-            if response.status.isError {
-              RSOToastView.shared.show(response.message, duration: 2.0, position: .center)
-              DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-                self.navigationController?.popToRootViewController(animated: true)
-              }
-            } else {
-              self.apiResponseData = response
-              if UserHelper.shared.isGuest() {
-                var requestModel = NiPaymentRequestModel()
-                requestModel.total = Int(totalprice)
-                requestModel.email = UserHelper.shared.getUserEmail()
-                self.makePayment(requestModel: requestModel)
-              } else {
-                RSOToastView.shared.show(response.message, duration: 2.0, position: .center)
-                DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-                  self.navigationController?.popToRootViewController(animated: true)
-                }
-              }
-              self.eventHandler?(.dataLoaded)
-            }
-          case .failure(let error):
-            self.eventHandler?(.error(error))
-            //  Unsuccessful
-            RSOToastView.shared.show("\(error.localizedDescription)", duration: 2.0, position: .center)
-          }
-        }
-      }
-  }
-  func makePayment(requestModel: NiPaymentRequestModel) {
-    DispatchQueue.main.async {
-      RSOLoader.showLoader()
-    }
-    APIManager.shared.request(
-      modelType: PaymentResponseModel.self,
-      type: PaymentRoomBookingEndPoint.payment(requestModel: requestModel)
-    ) { response in
-      DispatchQueue.main.async {
-        switch response {
-        case .success(let response):
-          let orderResponse = response.data
-          self.showCardPaymentUI(orderResponse: orderResponse)
-        case .failure(let error):
-          //  Unsuccessful
-          RSOToastView.shared.show("\(error.localizedDescription)", duration: 2.0, position: .center)
-        }
-      }
-    }
-  }
+  
 }
 extension ChooseAdditionalServicesViewController: UITableViewDataSource, UITableViewDelegate {
   
@@ -238,8 +178,8 @@ extension ChooseAdditionalServicesViewController:CancelAndRequestButtonTableView
   func btnRequestTappedAction() {
     let details = "RSO booking"
     //print("details=", details)
-    self.paymentRoomBookingAPI(additionalrequirements: selectedServices, bookingid: self.bookingId, requirementdetails: details, totalprice: totalPrice, vatamount: vatAmount)
-    
+      paymentServiceManager.currentViewController = self 
+      paymentServiceManager.paymentRoomBookingAPI(additionalrequirements: selectedServices, bookingid: self.bookingId, requirementdetails: details, totalprice: totalPrice, vatamount: vatAmount)
   }
   
   func btnCancelTappedAction() {
@@ -247,48 +187,4 @@ extension ChooseAdditionalServicesViewController:CancelAndRequestButtonTableView
   }
   
 }
-extension ChooseAdditionalServicesViewController: CardPaymentDelegate, ApplePayDelegate {
-  
-  func paymentDidComplete(with status: PaymentStatus) {
-    if(status == .PaymentSuccess) {
-      // Payment was successful
-      DispatchQueue.main.async {
-        RSOToastView.shared.show(self.apiResponseData?.message, duration: 2.0, position: .center)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-          self.navigationController?.popToRootViewController(animated: true)
-        }
-      }
-    } else if(status == .PaymentFailed) {
-      // Payment failed
-      DispatchQueue.main.async {
-        RSOToastView.shared.show("Payment failed", duration: 2.0, position: .center)
-      }
-    } else if(status == .PaymentCancelled) {
-      // Payment was cancelled by user
-      // Payment failed
-      DispatchQueue.main.async {
-        RSOToastView.shared.show("Payment cancelled", duration: 2.0, position: .center)
-      }
-    }
-  }
-  
-  
-  func authorizationDidComplete(with status: AuthorizationStatus) {
-    if(status == .AuthFailed) {
-      // Authentication failed
-      return
-    }
-    // Authentication was successful
-  }
-  
-  // On creating an order, call the following method to show the card payment UI
-  func showCardPaymentUI(orderResponse: OrderResponse) {
-    let sharedSDKInstance = NISdk.sharedInstance
-    sharedSDKInstance.showCardPaymentViewWith(cardPaymentDelegate: self,
-                                              overParent: self,
-                                              for: orderResponse)
-  }
-  func presentApplePay(orderResponse: OrderResponse) {
-    
-  }
-}
+

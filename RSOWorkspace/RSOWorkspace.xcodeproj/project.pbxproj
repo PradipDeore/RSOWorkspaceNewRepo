@@ -207,6 +207,8 @@
 		58A7FBD62BA0B89A00B48DFF /* RoomDetailResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A7FBD52BA0B89A00B48DFF /* RoomDetailResponse.swift */; };
 		58ACDB392B78C78F0041B755 /* RSOButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58ACDB382B78C78F0041B755 /* RSOButton.swift */; };
 		58ACDB3B2B78D10A0041B755 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58ACDB3A2B78D10A0041B755 /* Constants.swift */; };
+		58AE87B72C50FF6D004A99D6 /* CouponDetailsResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AE87B62C50FF6D004A99D6 /* CouponDetailsResponseModel.swift */; };
+		58AE87B92C513591004A99D6 /* PaymentNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AE87B82C513591004A99D6 /* PaymentNetworkManager.swift */; };
 		58B405FB2BCCEABC0045DD4C /* StoreRoomBookingRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B405FA2BCCEABC0045DD4C /* StoreRoomBookingRequest.swift */; };
 		58B405FD2BCCEC460045DD4C /* StoreRoomBookingResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B405FC2BCCEC460045DD4C /* StoreRoomBookingResponse.swift */; };
 		58B405FF2BCCF9810045DD4C /* DeskBookingEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B405FE2BCCF9810045DD4C /* DeskBookingEndPoint.swift */; };
@@ -600,6 +602,8 @@
 		58A7FBD52BA0B89A00B48DFF /* RoomDetailResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomDetailResponse.swift; sourceTree = "<group>"; };
 		58ACDB382B78C78F0041B755 /* RSOButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSOButton.swift; sourceTree = "<group>"; };
 		58ACDB3A2B78D10A0041B755 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		58AE87B62C50FF6D004A99D6 /* CouponDetailsResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponDetailsResponseModel.swift; sourceTree = "<group>"; };
+		58AE87B82C513591004A99D6 /* PaymentNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentNetworkManager.swift; sourceTree = "<group>"; };
 		58B405FA2BCCEABC0045DD4C /* StoreRoomBookingRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreRoomBookingRequest.swift; sourceTree = "<group>"; };
 		58B405FC2BCCEC460045DD4C /* StoreRoomBookingResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreRoomBookingResponse.swift; sourceTree = "<group>"; };
 		58B405FE2BCCF9810045DD4C /* DeskBookingEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeskBookingEndPoint.swift; sourceTree = "<group>"; };
@@ -1373,6 +1377,7 @@
 				58BB6B052B98699D001E1F3D /* PaymentViewController.swift */,
 				5834039E2B99C99C00318BB8 /* ChooseAdditionalServicesViewController.swift */,
 				58BCBC1A2C491F1B00465381 /* SideMenuPaymentsViewController.swift */,
+				58AE87B82C513591004A99D6 /* PaymentNetworkManager.swift */,
 			);
 			path = Payment;
 			sourceTree = "<group>";
@@ -1459,6 +1464,7 @@
 				58BCBC2D2C4944B100465381 /* subServiceResponseModel.swift */,
 				58399EA82C4E41E700B7B565 /* PaymentResponseModel.swift */,
 				5805931F2C4FC83400FE18B2 /* StoreDeskBookingResponseModel.swift */,
+				58AE87B62C50FF6D004A99D6 /* CouponDetailsResponseModel.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -2020,6 +2026,7 @@
 				58F458482B91D79200CF8AFA /* MeetingRoomListingResponse.swift in Sources */,
 				58C9AC062B8DC42900C719D1 /* OtherBookingsTableViewCell.swift in Sources */,
 				583403AD2B99EFC100318BB8 /* CancelAndRequestButtonTableViewCell.swift in Sources */,
+				58AE87B72C50FF6D004A99D6 /* CouponDetailsResponseModel.swift in Sources */,
 				5883339C2B7E27A2008334A0 /* SignUpViewController.swift in Sources */,
 				58E6E9432B88766F00EB3600 /* ConciergeViewController.swift in Sources */,
 				58BA7F4F2B8718EB00F66C75 /* RSOToken.swift in Sources */,
@@ -2214,6 +2221,7 @@
 				58C9ABFE2B8DC3FE00C719D1 /* BookDeskTableViewCell.swift in Sources */,
 				5843D7592BC6747E00D5C8DD /* DisplayScheduleVisitorsDetailModel.swift in Sources */,
 				58E05E282B861FC200189E99 /* LogInResponse.swift in Sources */,
+				58AE87B92C513591004A99D6 /* PaymentNetworkManager.swift in Sources */,
 				58F458512B91FD5C00CF8AFA /* BookRoomDetailsViewController.swift in Sources */,
 				5883339E2B7E349E008334A0 /* VerifyViewController.swift in Sources */,
 				581F30B52BBFBDDC0083A400 /* VisitorsTimeTableViewCell.swift in Sources */,

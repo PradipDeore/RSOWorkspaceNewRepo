@@ -50,12 +50,7 @@ class MeetingRoomsCollectionViewCell: UICollectionViewCell {
         self.bookMeetingRoomView.isHidden = false
         self.btnBook.isHidden = false
         self.isAmenitiesScreen = true
-//        if self.isAmenitiesScreen {
-//            self.lblLocation.isHidden = true
-//        }
-//        else{
-//            self.lblLocation.isHidden = false
-//        }
+
     }
    
     func customizeCell(){

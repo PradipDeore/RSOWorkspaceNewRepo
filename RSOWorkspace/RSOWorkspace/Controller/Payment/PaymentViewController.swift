@@ -13,11 +13,12 @@ class PaymentViewController: UIViewController {
     var bookingId: Int = 0
     @IBOutlet weak var tableView: UITableView!
     var eventHandler: ((_ event: Event) -> Void)?
-    
+    var paymentServiceManager = PaymentNetworkManager.shared
     var requestParameters : ConfirmBookingRequestModel?
     var intHours = 0
     var totalPrice:Double = 0.0
     var vatAmount:Double = 0.0
+    var couponData : [CouponDetails] = []
     private let cellIdentifiers: [(CellType,CGFloat)] = [(.selectMeetingRoomLabel,20.0),(.meetingTime,80),(.meetingRoomPrice,40),(.amenityPrice,50),(.totalCell,191),(.discount,60),(.paymentMethods,97),(.buttonPayNow,40)]
     
     override func viewDidLoad() {
@@ -42,6 +43,22 @@ class PaymentViewController: UIViewController {
             tableView.register(UINib(nibName: type.rawValue, bundle: nil), forCellReuseIdentifier: type.rawValue)
         }
     }
+    private func applyCouponAPI(couponCode: String) {
+        APIManager.shared.request(
+            modelType: CouponDetailsResponseModel.self,
+            type: PaymentRoomBookingEndPoint.applyCoupon) { response in
+                switch response {
+                case .success(let response):
+                    self.couponData = response.data
+                    DispatchQueue.main.async {
+                        self.tableView.reloadData()
+                    }
+                    self.eventHandler?(.dataLoaded)
+                case .failure(let error):
+                    self.eventHandler?(.error(error))
+                }
+            }
+    }
 }
 extension PaymentViewController: UITableViewDataSource, UITableViewDelegate {
     
@@ -54,6 +71,8 @@ extension PaymentViewController: UITableViewDataSource, UITableViewDelegate {
         switch cellType{
         case .amenityPrice:
             return self.requestParameters?.amenityArray.count ?? 0
+        case .discount:
+            return couponData.isEmpty ? 1 : couponData.count
           
         case .meetingRoomPrice:
           let deskCount = self.requestParameters?.deskList.count ?? 0
@@ -157,6 +176,21 @@ extension PaymentViewController: UITableViewDataSource, UITableViewDelegate {
             return cell
         case .discount:
             let cell = tableView.dequeueReusableCell(withIdentifier: cellType.rawValue, for: indexPath) as! DiscountCodeTableViewCell
+            if !couponData.isEmpty {
+                let coupon = couponData[indexPath.row]
+                cell.setData(item: coupon)
+                cell.applyCouponAction = {
+                    self.applyCouponAPI(couponCode: coupon.couponCode)
+                }
+            } else {
+                cell.applyCouponAction = {
+                    guard let couponCode = cell.txtDiscount.text, !couponCode.isEmpty else {
+                        // Handle empty text field
+                        return
+                    }
+                    self.applyCouponAPI(couponCode: couponCode)
+                }
+            }
             return cell
         case .paymentMethods:
             let cell = tableView.dequeueReusableCell(withIdentifier: cellType.rawValue, for: indexPath) as! PaymentMethodTableViewCell
@@ -209,6 +243,17 @@ extension PaymentViewController {
 extension PaymentViewController:ButtonPayNowTableViewCellDelegate{
     
     func btnPayNowTappedAction() {
+        if let obj = self.requestParameters {
+            let deskCount = self.requestParameters?.deskList.count ?? 0
+            if deskCount > 0 {
+                var requestModel = NiPaymentRequestModel()
+                requestModel.total = Int(totalPrice)
+                requestModel.email = UserHelper.shared.getUserEmail()
+                paymentServiceManager.currentViewController = self
+                paymentServiceManager.makePayment(requestModel: requestModel)
+            }
+        }
+        
         let additionalServicesVC = UIViewController.createController(storyBoard: .Payment, ofType: ChooseAdditionalServicesViewController.self)
         additionalServicesVC.vatAmount = self.vatAmount
         additionalServicesVC.totalPrice = self.totalPrice

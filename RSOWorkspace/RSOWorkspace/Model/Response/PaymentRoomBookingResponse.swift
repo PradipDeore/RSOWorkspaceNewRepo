@@ -47,3 +47,9 @@ struct PaymentRoomBookingResponse: Codable {
     let status: Status
     let message: String
 }
+
+struct PaymentDeskBookingResponse: Codable {
+    let status: Status
+    let msg: String
+}
+

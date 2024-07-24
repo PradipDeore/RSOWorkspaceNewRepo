@@ -21,6 +21,7 @@ struct ConfirmBookingRequestModel{
   var guest: [String] = []
   var amenityArray: [Amenity] = []
   var deskList: [Desk] = []
+    
   //computed property
   var floatPrice : Float {
     let price =  Float(self.roomprice) ?? 0.0
