@@ -27,6 +27,11 @@ class PaymentViewController: UIViewController {
         coordinator?.hideBackButton(isHidden: false)
         
     }
+  
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    self.tableView.reloadData()
+  }
     private func setupTableView() {
         tableView.dataSource = self
         tableView.delegate = self
@@ -68,6 +73,13 @@ extension PaymentViewController: UITableViewDataSource, UITableViewDelegate {
             return self.requestParameters?.amenityArray.count ?? 0
         case .discount:
             return couponData.isEmpty ? 1 : couponData.count
+          
+        case .meetingRoomPrice:
+          let deskCount = self.requestParameters?.deskList.count ?? 0
+          if deskCount > 0 {
+            return deskCount
+          }
+          return 1
         default:
             return 1
         }
@@ -75,9 +87,7 @@ extension PaymentViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 0
     }
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        return UIView()
-    }
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cellType = cellIdentifiers[indexPath.section].0
@@ -105,13 +115,24 @@ extension PaymentViewController: UITableViewDataSource, UITableViewDelegate {
             let cell = tableView.dequeueReusableCell(withIdentifier: cellType.rawValue, for: indexPath) as! MeetingRoomPriceTableViewCell
             
             if let obj = self.requestParameters {
+              let deskCount = self.requestParameters?.deskList.count ?? 0
+              if deskCount > 0 {
+                let desk = self.requestParameters?.deskList[indexPath.row]
+                let roomPrice = desk?.price ?? "0.0"
+                //print("roomPrice",roomPrice)
+                let roomPriceFloat = Float(roomPrice) ?? 0.0
+                cell.lblmeetingRoomprice.text = "\(roomPrice)"
+                cell.lblHours.text = "\(Int(obj.timeDifferece))" // endtime - starttime
+                let totalRoomPrice = roomPriceFloat * obj.timeDifferece
+                cell.lbltotalPrice.text = "\(totalRoomPrice)"
+                
+              } else {
                 let roomPrice = obj.roomprice.integerValue ?? 0
                 //print("roomPrice",roomPrice)
                 cell.lblmeetingRoomprice.text = "\(roomPrice)"
-                
                 cell.lblHours.text = "\(Int(obj.timeDifferece))" // endtime - starttime
                 cell.lbltotalPrice.text = "\(obj.totalOfMeetingRoom)"
-                
+              }
             }
             return cell
         case .amenityPrice:
@@ -134,12 +155,22 @@ extension PaymentViewController: UITableViewDataSource, UITableViewDelegate {
         case .totalCell:
             let cell = tableView.dequeueReusableCell(withIdentifier: cellType.rawValue, for: indexPath) as! TotalTableViewCell
             if let obj = self.requestParameters{
+              let deskCount = self.requestParameters?.deskList.count ?? 0
+              if deskCount > 0 {
+                if let deskList = self.requestParameters?.deskList {
+                  cell.lblSubTotal.text = "\(obj.deskSubTotal)"
+                  cell.lblVat.text = "\(obj.deskVatTotal)"
+                  vatAmount = Double(obj.deskVatTotal)
+                  cell.lblTotalPrice.text = "\(obj.deskFinalTotal)" // subttotal + vat
+                  totalPrice = Double(obj.deskFinalTotal)
+                }
+              } else {
                 cell.lblSubTotal.text = "\(obj.subTotal)"
-                
                 cell.lblVat.text = "\(obj.calculatedVat)"
                 vatAmount = Double(obj.calculatedVat)
                 cell.lblTotalPrice.text = "\(obj.finalTotal)" // subttotal + vat
                 totalPrice = Double(obj.finalTotal)
+              }
                 
             }
             return cell

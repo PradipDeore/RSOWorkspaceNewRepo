@@ -24,9 +24,9 @@ class ConfirmedDeskBookingViewController: UIViewController{
   
   // var bookingConfirmDetails : ConfirmBookingRequestModel?
   var confirmdeskBookingResponse: ConfirmDeskBookingDetailsModel?
- 
- var deskbookingConfirmDetails:StoreDeskBookingRequest?
-    
+  var bookingConfirmDetails = ConfirmBookingRequestModel()
+  var deskbookingConfirmDetails:StoreDeskBookingRequest?
+  
   var roomId: Int = 0
   var teamMembersArray:[String] = [""]
   var locationName :String = ""
@@ -67,42 +67,45 @@ class ConfirmedDeskBookingViewController: UIViewController{
       tableView.register(UINib(nibName: type.rawValue, bundle: nil), forCellReuseIdentifier: type.rawValue)
     }
   }
+  
+  func storeDeskBookingAPI(requestModel: StoreDeskBookingRequest) {
     
-    func storeDeskBookingAPI(requestModel: StoreDeskBookingRequest) {
-      
-      DispatchQueue.main.async {
-        RSOLoader.showLoader()
-      }
-          APIManager.shared.request(
-              modelType: StoreDeskBookingResponseModel.self,
-              type: DeskBookingEndPoint.storeDeskBooking(requestModel: requestModel)) { response in
-                DispatchQueue.main.async {
-                  RSOLoader.removeLoader()
-                }
-                  switch response {
-                  case .success(let response):
-                      self.apiResponseData = response
-                     
-                      print("===Store desk booking api response\(response)")
-                      DispatchQueue.main.async {
-                          let paymentVC = UIViewController.createController(storyBoard: .Payment, ofType: PaymentViewController.self)
-                          //paymentVC.requestParameters = self.bookingConfirmDetails
-                          paymentVC.coordinator = self.coordinator
-                          //paymentVC.bookingId = response.booking_id ?? 0
-                          //self.navigationController?.pushViewController(paymentVC, animated: true)
-                          self.present(paymentVC, animated: true)
-                          
-                      }
-                      self.eventHandler?(.dataLoaded)
-                  case .failure(let error):
-                      self.eventHandler?(.error(error))
-                      DispatchQueue.main.async {
-                          //  Unsuccessful
-                          RSOToastView.shared.show("\(error.localizedDescription)", duration: 2.0, position: .center)
-                      }
-                  }
+    DispatchQueue.main.async {
+      RSOLoader.showLoader()
+    }
+    APIManager.shared.request(
+      modelType: StoreDeskBookingResponseModel.self,
+      type: DeskBookingEndPoint.storeDeskBooking(requestModel: requestModel)) { response in
+        DispatchQueue.main.async {
+          RSOLoader.removeLoader()
+          switch response {
+          case .success(let response):
+              self.apiResponseData = response
+              if let errorMessage = response.msg, errorMessage.isEmpty == false {
+                self.eventHandler?(.error(errorMessage as? Error))
+                //  Unsuccessful
+                self.navigationController?.popViewController(animated: true)
+                RSOToastView.shared.show("\(errorMessage)", duration: 2.0, position: .center)
+                
+              } else {
+                // Start time
+                self.bookingConfirmDetails.setValues(response: response)
+                let paymentVC = UIViewController.createController(storyBoard: .Payment, ofType: PaymentViewController.self)
+                paymentVC.requestParameters = self.bookingConfirmDetails
+                paymentVC.coordinator = self.coordinator
+                paymentVC.bookingId = response.data?.deskTypeID ?? 0
+                self.navigationController?.pushViewController(paymentVC, animated: true)
               }
+              
+            self.eventHandler?(.dataLoaded)
+          case .failure(let error):
+            self.eventHandler?(.error(error))
+              //  Unsuccessful
+              RSOToastView.shared.show("\(error.localizedDescription)", duration: 2.0, position: .center)
+          }
+        }
       }
+  }
 }
 
 extension ConfirmedDeskBookingViewController: UITableViewDataSource, UITableViewDelegate {
