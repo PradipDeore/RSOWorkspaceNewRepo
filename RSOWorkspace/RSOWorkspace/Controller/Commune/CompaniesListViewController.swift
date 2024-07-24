@@ -33,11 +33,9 @@ class CompaniesListViewController: UIViewController {
         navigationController?.navigationBar.isHidden = true
     }
     func fetchCompaniesList() {
-        self.eventHandler?(.loading)
         APIManager.shared.request(
             modelType: CompanyListResponse.self, // Assuming your API returns an array of Services
             type: CommuneEndPoint.companyList) { response in
-                self.eventHandler?(.stopLoading)
                 switch response {
                 case .success(let response):
                     self.companiesListArray = response.data
@@ -114,8 +112,7 @@ extension CompaniesListViewController:ButtonBrowseMambersDelegate{
 }
 extension CompaniesListViewController {
     enum Event {
-        case loading
-        case stopLoading
+        
         case dataLoaded
         case error(Error?)
     }

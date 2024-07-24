@@ -54,11 +54,9 @@ class ReportAnIssueViewController: UIViewController {
         tableView.register(UINib(nibName: "RequestButtonTableViewCell", bundle: nil), forCellReuseIdentifier: "RequestButtonTableViewCell")
     }
     private func fetchLocations() {
-        self.eventHandler?(.loading)
         APIManager.shared.request(
             modelType: ApiResponse.self, // Assuming your API returns an array of locations
             type: LocationEndPoint.locations) { response in
-                self.eventHandler?(.stopLoading)
                 switch response {
                 case .success(let response):
                     self.dropdownOptions = response.data
@@ -72,13 +70,11 @@ class ReportAnIssueViewController: UIViewController {
             }
     }
     func reportAnIssueAPI(locationid :Int, description:String) {
-        self.eventHandler?(.loading)
         let requestModel = ReportAnIssueRequestModel(location_id: locationid, description: description)
         print("requestModel",requestModel)
         APIManager.shared.request(
             modelType: ReportAnIssueResponse.self,
             type: ServicesEndPoint.reportAnIssue(requestModel: requestModel)) { response in
-                self.eventHandler?(.stopLoading)
                 switch response {
                 case .success(let response):
                     self.reportAnIssueRespnseData = response
@@ -202,8 +198,7 @@ extension ReportAnIssueViewController:RequestButtonTableViewCellDelegate{
 
 extension ReportAnIssueViewController {
     enum Event {
-        case loading
-        case stopLoading
+        
         case dataLoaded
         case error(Error?)
     }

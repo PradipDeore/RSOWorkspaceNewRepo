@@ -26,8 +26,7 @@ class SelectMeetingRoomTableViewCell: UITableViewCell {
     }
     
     enum EventHandler {
-        case loading
-        case stopLoading
+        
         case dataLoaded
         case error(Error)
     }
@@ -70,14 +69,11 @@ class SelectMeetingRoomTableViewCell: UITableViewCell {
     }
     
     func fetchDesks(id: Int, requestModel: DeskRequestModel) {
-        self.eventHandler?(.loading)
-        
         APIManager.shared.request(
             modelType: DeskListingResponse.self,
             type: DeskBookingEndPoint.getDesksLisiting(id: id, requestModel: requestModel)) { [weak self] response in
                 
                 guard let self = self else { return }
-                self.eventHandler?(.stopLoading)
                 
                 switch response {
                 case .success(let responseData):

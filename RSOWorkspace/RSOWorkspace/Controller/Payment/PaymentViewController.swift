@@ -158,8 +158,7 @@ extension PaymentViewController: UITableViewDataSource, UITableViewDelegate {
 
 extension PaymentViewController {
     enum Event {
-        case loading
-        case stopLoading
+        
         case dataLoaded
         case error(Error?)
     }

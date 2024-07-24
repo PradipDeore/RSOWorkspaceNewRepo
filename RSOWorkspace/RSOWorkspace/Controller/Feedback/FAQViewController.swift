@@ -44,11 +44,9 @@ class FAQViewController: UIViewController {
         }
     }
     private func fetchFAQs() {
-        self.eventHandler?(.loading)
         APIManager.shared.request(
             modelType: FAQResponse.self, // Assuming your API returns an array of MyProfile
             type: FAQEndPoint.faqs) { response in
-                self.eventHandler?(.stopLoading)
                 switch response {
                 case .success(let response):
                     self.myFAQResponse = response
@@ -125,8 +123,7 @@ extension FAQViewController: UITableViewDataSource, UITableViewDelegate {
 
 extension FAQViewController {
     enum Event {
-        case loading
-        case stopLoading
+        
         case dataLoaded
         case error(Error?)
     }

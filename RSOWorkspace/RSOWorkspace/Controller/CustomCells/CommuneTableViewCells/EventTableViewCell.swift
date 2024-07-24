@@ -25,11 +25,9 @@ class EventTableViewCell: UITableViewCell {
         fetchEvents() 
     }
     func fetchEvents() {
-        self.eventHandler?(.loading)
         APIManager.shared.request(
             modelType: EventResponse.self, // Assuming your API returns an array of Services
             type: CommuneEndPoint.events) { response in
-                self.eventHandler?(.stopLoading)
                 switch response {
                 case .success(let response):
                     self.eventsArray = response.data
@@ -85,8 +83,7 @@ private extension EventTableViewCell {
 }
 extension EventTableViewCell {
     enum Event {
-        case loading
-        case stopLoading
+        
         case dataLoaded
         case error(Error?)
     }

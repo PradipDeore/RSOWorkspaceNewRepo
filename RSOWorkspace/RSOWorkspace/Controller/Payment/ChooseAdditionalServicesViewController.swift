@@ -85,13 +85,17 @@ class ChooseAdditionalServicesViewController: UIViewController {
       }*/
     }
     func paymentRoomBookingAPI(additionalrequirements :[String], bookingid:Int, requirementdetails:String,totalprice:Double,vatamount:Double) {
-        self.eventHandler?(.loading)
+      DispatchQueue.main.async {
+        RSOLoader.showLoader()
+      }
         let requestModel = PaymentRoomBookingRequest(additional_requirements: additionalrequirements, booking_id: bookingid, requirement_details: requirementdetails, total_price: totalprice, vatamount: vatamount)
         print("requestModel",requestModel)
         APIManager.shared.request(
             modelType: PaymentRoomBookingResponse.self,
             type: PaymentRoomBookingEndPoint.getBookingOfRooms(requestModel: requestModel)) { response in
-                self.eventHandler?(.stopLoading)
+              DispatchQueue.main.async {
+                RSOLoader.removeLoader()
+              }
                 switch response {
                 case .success(let response):
                     
@@ -189,14 +193,7 @@ extension ChooseAdditionalServicesViewController: UITableViewDataSource, UITable
             let cell = tableView.dequeueReusableCell(withIdentifier: cellType.rawValue, for: indexPath) as! CancelAndRequestButtonTableViewCell
             cell.delegate = self
             return cell
-        default:
-            return UITableViewCell()
-            
         }
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellType.rawValue, for: indexPath)
-        cell.selectionStyle = .none
-        return cell
-      
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -206,8 +203,6 @@ extension ChooseAdditionalServicesViewController: UITableViewDataSource, UITable
 
 extension ChooseAdditionalServicesViewController {
     enum Event {
-        case loading
-        case stopLoading
         case dataLoaded
         case error(Error?)
     }
@@ -238,10 +233,9 @@ extension ChooseAdditionalServicesViewController:ChooseAdditionalServicesCellDel
 extension ChooseAdditionalServicesViewController:CancelAndRequestButtonTableViewCellDelegate{
     
     func btnRequestTappedAction() {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ProvideRequirementDetailsTableViewCell", for: IndexPath(row: 0, section: 2)) as! ProvideRequirementDetailsTableViewCell
-        let details = cell.txtViewrequirnmentDetails.text
+        let details = "RSO booking"
         //print("details=", details)
-        self.paymentRoomBookingAPI(additionalrequirements: ["Stationary"], bookingid: self.bookingId, requirementdetails: details ?? "", totalprice: totalPrice, vatamount: 0.0)
+        self.paymentRoomBookingAPI(additionalrequirements: ["Stationary"], bookingid: self.bookingId, requirementdetails: details, totalprice: totalPrice, vatamount: 0.0)
       
     }
     

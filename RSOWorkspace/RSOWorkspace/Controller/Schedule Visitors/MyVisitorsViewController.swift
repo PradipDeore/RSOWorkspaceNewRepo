@@ -57,11 +57,9 @@ class MyVisitorsViewController: UIViewController{
         tableView.register(UINib(nibName: "VisitorsTableViewCell", bundle: nil), forCellReuseIdentifier: "VisitorsTableViewCell")
     }
     private func fetchMyVisitors() {
-        self.eventHandler?(.loading)
         APIManager.shared.request(
             modelType: MyVisitorAPIResponse.self,
             type: VisitorsEndPoint.myVisitors) { response in
-                self.eventHandler?(.stopLoading)
                 switch response {
                 case .success(let response):
                     self.myVisitorResponse = response.data
@@ -200,8 +198,7 @@ extension MyVisitorsViewController:DisplayVisitorDetailsDelegate{
 }
 extension MyVisitorsViewController {
     enum Event {
-        case loading
-        case stopLoading
+        
         case dataLoaded
         case error(Error?)
     }

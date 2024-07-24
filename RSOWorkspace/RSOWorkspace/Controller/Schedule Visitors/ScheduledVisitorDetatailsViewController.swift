@@ -31,14 +31,12 @@ class ScheduledVisitorDetatailsViewController: UIViewController {
     }
     
     func scheduleVisitorsAPIDetails( requestModel: ScheduleVisitorsRequest) {
-        self.eventHandler?(.loading)
         
         APIManager.shared.request(
             modelType: ScheduleVisitorResponse.self,
             type: VisitorsEndPoint.scheduleVisitors(requestModel: requestModel)) { [weak self] response in
                 
                 guard let self = self else { return }
-                self.eventHandler?(.stopLoading)
                 switch response {
                 case .success(let responseData):
                     let response = responseData
@@ -188,8 +186,7 @@ extension ScheduledVisitorDetatailsViewController: UITableViewDataSource, UITabl
 
 extension ScheduledVisitorDetatailsViewController {
     enum Event {
-        case loading
-        case stopLoading
+        
         case dataLoaded
         case error(Error?)
     }

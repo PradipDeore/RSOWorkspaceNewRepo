@@ -31,12 +31,10 @@ class ForgotPasswordViewController: UIViewController {
     }
     
     func forgotPasswordAPI(email: String) {
-        self.eventHandler?(.loading)
         let requestModel = ForgotPasswordRequestModel(email: email)
         APIManager.shared.request(
             modelType: ForgotPasswordResponse.self,
             type: LogInSignUpEndPoint.forgotPassword(requestModel: requestModel)) { response in
-                self.eventHandler?(.stopLoading)
                 switch response {
                 case .success(let response):
                     self.otpResponse = response
@@ -72,8 +70,7 @@ class ForgotPasswordViewController: UIViewController {
 }
 extension ForgotPasswordViewController {
     enum Event {
-        case loading
-        case stopLoading
+        
         case dataLoaded
         case error(Error?)
     }

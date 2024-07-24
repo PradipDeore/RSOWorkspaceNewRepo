@@ -72,12 +72,10 @@ class BookingConfirmedViewController: UIViewController{
         }
     }
     func storeRoomBookingAPI(requestModel: StoreRoomBookingRequest) {
-        self.eventHandler?(.loading)
         
         APIManager.shared.request(
             modelType: StoreRoomBookingResponse.self,
             type: PaymentRoomBookingEndPoint.getStoreRoomBooking(requestModel: requestModel)) { response in
-                self.eventHandler?(.stopLoading)
                 switch response {
                 case .success(let response):
                     
@@ -225,8 +223,7 @@ extension BookingConfirmedViewController: UITableViewDataSource, UITableViewDele
 
 extension BookingConfirmedViewController {
     enum Event {
-        case loading
-        case stopLoading
+        
         case dataLoaded
         case error(Error?)
     }

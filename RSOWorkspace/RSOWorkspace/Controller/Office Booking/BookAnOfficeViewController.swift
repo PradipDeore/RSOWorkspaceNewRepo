@@ -43,14 +43,12 @@ class BookAnOfficeViewController: UIViewController {
         
     }
     func bookOffice(requestModel: BookOfficeRequestModel) {
-        self.eventHandler?(.loading)
         
         APIManager.shared.request(
             modelType: OfficeBookingResponseModel.self,
             type: MyBookingEndPoint.officeBooking(requestModel: requestModel)) { [weak self] response in
                 
                 guard let self = self else { return }
-                self.eventHandler?(.stopLoading)
                 
                 switch response {
                 case .success(let responseData):
@@ -95,8 +93,7 @@ class BookAnOfficeViewController: UIViewController {
 
 extension BookAnOfficeViewController {
     enum Event {
-        case loading
-        case stopLoading
+        
         case dataLoaded
         case error(Error?)
     }

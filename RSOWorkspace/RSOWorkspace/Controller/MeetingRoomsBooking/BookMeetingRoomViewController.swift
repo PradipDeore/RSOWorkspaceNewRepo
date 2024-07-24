@@ -60,11 +60,9 @@ class BookMeetingRoomViewController: UIViewController{
     }
     
     private func fetchLocations() {
-        self.eventHandler?(.loading)
         APIManager.shared.request(
             modelType: ApiResponse.self, // Assuming your API returns an array of locations
             type: LocationEndPoint.locations) { response in
-                self.eventHandler?(.stopLoading)
                 switch response {
                 case .success(let response):
                     self.dropdownOptions = response.data
@@ -222,8 +220,7 @@ extension BookMeetingRoomViewController: GetRoomsBtnTableViewCellDelegate {
 
 extension BookMeetingRoomViewController {
     enum Event {
-        case loading
-        case stopLoading
+        
         case dataLoaded
         case error(Error?)
     }

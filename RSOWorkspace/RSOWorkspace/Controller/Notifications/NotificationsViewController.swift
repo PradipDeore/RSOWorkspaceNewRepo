@@ -36,11 +36,9 @@ class NotificationsViewController: UIViewController {
     
     
     private func fetchNotifications () {
-        self.eventHandler?(.loading)
         APIManager.shared.request(
             modelType: NotificationResponseModel.self, // Assuming your API returns an array of Services
             type: NotificationEndPoint.notifications) { response in
-                self.eventHandler?(.stopLoading)
                 switch response {
                 case .success(let response):
                     self.notificationList = response.data
@@ -75,8 +73,7 @@ extension NotificationsViewController: UITableViewDelegate, UITableViewDataSourc
 }
 extension NotificationsViewController {
     enum Event {
-        case loading
-        case stopLoading
+        
         case dataLoaded
         case error(Error?)
     }

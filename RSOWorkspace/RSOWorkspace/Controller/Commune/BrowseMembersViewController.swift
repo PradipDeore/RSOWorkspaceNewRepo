@@ -76,12 +76,9 @@ class BrowseMembersViewController: UIViewController {
         navigationController?.navigationBar.isHidden = true
     }
     func fetchCompaniesAndMembers() {
-        eventHandler?(.loading)
-        
         // Fetch companies
         APIManager.shared.request(modelType: CompanyListResponse.self, type: CommuneEndPoint.companyList) { [weak self] response in
             guard let self = self else { return }
-            self.eventHandler?(.stopLoading)
             switch response {
             case .success(let response):
                 self.companyList = response.data
@@ -99,11 +96,9 @@ class BrowseMembersViewController: UIViewController {
     }
     
     func fetchListOfMembers(requestModel: MemberSearchRequest?, forCompany company: Company) {
-        eventHandler?(.loading)
  
         APIManager.shared.request(modelType: MemberListResponse.self, type: CommuneEndPoint.memberList(requestModel: requestModel ?? MemberSearchRequest(membersSearch: nil, companyId: nil))) { [weak self] response in
             guard let self = self else { return }
-            self.eventHandler?(.stopLoading)
             switch response {
             case .success(let response):
                 let members = response.data
@@ -287,8 +282,7 @@ extension BrowseMembersViewController:LabelMemberNameTappedDelegate{
 }
 extension BrowseMembersViewController {
     enum Event {
-        case loading
-        case stopLoading
+        
         case dataLoaded
         case error(Error?)
     }

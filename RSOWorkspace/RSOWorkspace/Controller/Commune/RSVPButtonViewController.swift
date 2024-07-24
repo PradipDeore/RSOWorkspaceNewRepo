@@ -42,13 +42,11 @@ class RSVPButtonViewController: UIViewController {
     }
     
     func rsvpAPI(name :String, companyname:String,email:String,phone: String) {
-        self.eventHandler?(.loading)
         let requestModel = rsvpRequestModel(name: name, companyName: companyname, email: email, phone: phone)
         print("requestModel",requestModel)
         APIManager.shared.request(
             modelType: rsvpResponse.self,
             type: CommuneEndPoint.rsvp(requestModel: requestModel)) { response in
-                self.eventHandler?(.stopLoading)
                 switch response {
                 case .success(let response):
                     self.rsvpResponseData = response
@@ -107,8 +105,7 @@ class RSVPButtonViewController: UIViewController {
 }
 extension RSVPButtonViewController {
     enum Event {
-        case loading
-        case stopLoading
+        
         case dataLoaded
         case error(Error?)
     }

@@ -47,8 +47,7 @@ class DeskListingViewController: UIViewController {
 }
 extension DeskListingViewController {
     enum Event {
-        case loading
-        case stopLoading
+        
         case dataLoaded
         case error(Error?)
     }

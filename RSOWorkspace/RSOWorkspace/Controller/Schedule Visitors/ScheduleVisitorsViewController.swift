@@ -62,11 +62,9 @@ class ScheduleVisitorsViewController: UIViewController{
     }
     
     private func fetchreasonForVisit() {
-        self.eventHandler?(.loading)
         APIManager.shared.request(
             modelType: ReasonForVisit.self, // Assuming your API returns an array of locations
             type: VisitorsEndPoint.reasonForVisit) { response in
-                self.eventHandler?(.stopLoading)
                 switch response {
                 case .success(let response):
                     self.ddOptions = response.data
@@ -325,8 +323,7 @@ extension ScheduleVisitorsViewController:sendVisitorEmailDelegate{
 
 extension ScheduleVisitorsViewController {
     enum Event {
-        case loading
-        case stopLoading
+        
         case dataLoaded
         case error(Error?)
     }

@@ -25,11 +25,9 @@ class MarketPlaceViewController: UIViewController {
     }
     
     func fetchMarketPlaces() {
-        collectionView.eventHandler?(.loading)
         APIManager.shared.request(
             modelType: MarketPlaceResponse.self,
             type: DeskEndPoint.marketPlaces) { [weak self] response in
-                self?.collectionView.eventHandler?(.stopLoading)
                 switch response {
                 case .success(let response):
                     self?.listItems = response.data
@@ -43,8 +41,7 @@ class MarketPlaceViewController: UIViewController {
 
 extension MarketPlaceViewController {
     enum Event {
-        case loading
-        case stopLoading
+        
         case dataLoaded
         case error(Error?)
     }

@@ -37,11 +37,9 @@ class OnDemandServicesViewController: UIViewController {
     }
     
     private func fetchServices(serviceId:Int) {
-        self.eventHandler?(.loading)
         APIManager.shared.request(
             modelType: ServiceResponse.self, // Assuming your API returns an array of Services
             type: ServicesEndPoint.onDemandServices(serviceId: serviceId)) { response in
-                self.eventHandler?(.stopLoading)
                 switch response {
                 case .success(let response):
                     self.onDemandServiceArray = response.data
@@ -107,8 +105,7 @@ extension OnDemandServicesViewController: UICollectionViewDelegate, UICollection
 
 extension OnDemandServicesViewController {
     enum Event {
-        case loading
-        case stopLoading
+        
         case dataLoaded
         case error(Error?)
     }

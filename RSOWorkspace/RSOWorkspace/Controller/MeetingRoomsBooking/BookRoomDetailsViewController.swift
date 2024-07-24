@@ -66,7 +66,6 @@ class BookRoomDetailsViewController: UIViewController {
         navigationController?.navigationBar.isHidden = true
     }
     func fetchRoomDetails(id: Int, requestModel: BookMeetingRoomRequestModel) {
-        self.eventHandler?(.loading)
         var startTime :String?
         var endTime:String?
         APIManager.shared.request(
@@ -74,7 +73,6 @@ class BookRoomDetailsViewController: UIViewController {
             type: MyBookingEndPoint.getDetailsOfMeetingRooms(id: id, requestModel: requestModel)) { [weak self] response in
                 
                 guard let self = self else { return }
-                self.eventHandler?(.stopLoading)
                 
                 switch response {
                 case .success(let responseData):
@@ -349,8 +347,7 @@ extension BookRoomDetailsViewController:ButtonBookingConfirmTableViewCellDelegat
 }
 extension BookRoomDetailsViewController {
     enum Event {
-        case loading
-        case stopLoading
+        
         case dataLoaded
         case error(Error?)
     }

@@ -64,12 +64,9 @@ class ListOfMembersViewController: UIViewController {
     }
     
     func fetchCompaniesAndMembers() {
-        eventHandler?(.loading)
-        
         // Fetch companies
         APIManager.shared.request(modelType: CompanyListResponse.self, type: CommuneEndPoint.companyList) { [weak self] response in
             guard let self = self else { return }
-            self.eventHandler?(.stopLoading)
             switch response {
             case .success(let response):
                 self.companyList = response.data
@@ -86,11 +83,9 @@ class ListOfMembersViewController: UIViewController {
     }
     
     func fetchListOfMembers(requestModel: MemberSearchRequest?, forCompany company: Company) {
-        eventHandler?(.loading)
  
         APIManager.shared.request(modelType: MemberListResponse.self, type: CommuneEndPoint.memberList(requestModel: requestModel ?? MemberSearchRequest(membersSearch: nil, companyId: nil))) { [weak self] response in
             guard let self = self else { return }
-            self.eventHandler?(.stopLoading)
             switch response {
             case .success(let response):
                 let members = response.data
@@ -110,12 +105,10 @@ class ListOfMembersViewController: UIViewController {
         }
     }
     func fetchListOfMembers(requestModel:MemberSearchRequest?) {
-        self.eventHandler?(.loading)
        
         APIManager.shared.request(
             modelType: MemberListResponse.self, // Assuming your API returns an array of Services
             type: CommuneEndPoint.memberList(requestModel: requestModel ?? MemberSearchRequest(membersSearch: nil, companyId: nil))){ response in
-                self.eventHandler?(.stopLoading)
                 switch response {
                 case .success(let response):
                     self.memberListArray = response.data
@@ -188,8 +181,7 @@ extension ListOfMembersViewController: UITableViewDataSource, UITableViewDelegat
 
 extension ListOfMembersViewController {
     enum Event {
-        case loading
-        case stopLoading
+        
         case dataLoaded
         case error(Error?)
     }

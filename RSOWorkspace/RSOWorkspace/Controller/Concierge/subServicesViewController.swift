@@ -109,13 +109,11 @@ class subServicesViewController: UIViewController {
         
     }
     func subServicesAPI(service_id :Int,description:String,sub_service_id:Int,member_id:Int) {
-        self.eventHandler?(.loading)
         let requestModel = subServicesRequestModel(service_id: service_id, sub_service_id: sub_service_id, description: description, member_id: member_id)
         print("requestModel",requestModel)
         APIManager.shared.request(
             modelType: ReportAnIssueResponse.self,
             type: ServicesEndPoint.subServices(requestModel: requestModel)) { response in
-                self.eventHandler?(.stopLoading)
                 switch response {
                 case .success(let response):
                     //record inserted successfully
@@ -147,8 +145,7 @@ class subServicesViewController: UIViewController {
 
 extension subServicesViewController {
     enum Event {
-        case loading
-        case stopLoading
+        
         case dataLoaded
         case error(Error?)
     }

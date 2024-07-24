@@ -104,8 +104,6 @@ extension CommuneViewController: UITableViewDataSource, UITableViewDelegate {
             if let eventsCell = cell as? EventTableViewCell {
                 eventsCell.delegateButtonRSVP = self
             }
-        default:
-            break
         }
         return cell
     }
@@ -120,8 +118,7 @@ extension CommuneViewController: UITableViewDataSource, UITableViewDelegate {
 
 extension CommuneViewController {
     enum Event {
-        case loading
-        case stopLoading
+        
         case dataLoaded
         case error(Error?)
     }

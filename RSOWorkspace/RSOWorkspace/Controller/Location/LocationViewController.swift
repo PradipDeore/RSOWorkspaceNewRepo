@@ -49,11 +49,9 @@ class LocationViewController: UIViewController {
     }
 
     private func fetchLocations() {
-        self.eventHandler?(.loading)
         APIManager.shared.request(
             modelType: ApiResponse.self,
             type: LocationEndPoint.locations) { response in
-                self.eventHandler?(.stopLoading)
                 switch response {
                 case .success(let response):
                     self.dropdownOptions = response.data
@@ -244,8 +242,7 @@ extension LocationViewController: BookButtonActionDelegate {
 // MARK: - Enums
 extension LocationViewController {
     enum Event {
-        case loading
-        case stopLoading
+        
         case dataLoaded
         case error(Error?)
     }

@@ -45,11 +45,9 @@ class SideMenuDashboardViewController: UIViewController {
         }
     }
     private func fetchMyProfiles() {
-        self.eventHandler?(.loading)
         APIManager.shared.request(
             modelType: MyProfile.self, // Assuming your API returns an array of MyProfile
             type: MyProfileEndPoint.myProfile) { response in
-                self.eventHandler?(.stopLoading)
                 switch response {
                 case .success(let response):
                     self.myProfileResponse = response
@@ -147,8 +145,7 @@ extension SideMenuDashboardViewController: UITableViewDataSource, UITableViewDel
 
 extension SideMenuDashboardViewController {
     enum Event {
-        case loading
-        case stopLoading
+        
         case dataLoaded
         case error(Error?)
     }
