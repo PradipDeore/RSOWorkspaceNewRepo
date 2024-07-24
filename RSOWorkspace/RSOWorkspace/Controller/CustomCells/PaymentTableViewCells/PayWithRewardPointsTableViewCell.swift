@@ -10,12 +10,14 @@ import UIKit
 class PayWithRewardPointsTableViewCell: UITableViewCell {
 
     @IBOutlet weak var containerView: UIView!
+    
+    @IBOutlet weak var lblRewardPoints: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         containerView.setCornerRadiusForView()
     }
-
-    
+   
     
 }

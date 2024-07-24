@@ -11,7 +11,7 @@ class DiscountCodeTableViewCell: UITableViewCell {
 
     @IBOutlet weak var txtDiscount: RSOTextField!
     @IBOutlet weak var btnApply: RSOButton!
-    
+    var applyCouponAction: (() -> Void)?
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -20,7 +20,12 @@ class DiscountCodeTableViewCell: UITableViewCell {
         btnApply.setCornerRadiusToButton()
         txtDiscount.placeholderColor = ._454545
     }
-
+    func setData(item : CouponDetails){
+        self.txtDiscount.text = item.couponCode
+    }
    
+    @IBAction func btnApplyCouponCodeAction(_ sender: Any) {
+        applyCouponAction?()
+    }
     
 }

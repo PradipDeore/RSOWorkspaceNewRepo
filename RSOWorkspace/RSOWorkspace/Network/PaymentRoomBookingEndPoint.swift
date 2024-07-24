@@ -11,6 +11,7 @@ enum PaymentRoomBookingEndPoint {
     case getBookingOfRooms(requestModel: PaymentRoomBookingRequest)
     case getStoreRoomBooking(requestModel: StoreRoomBookingRequest)
     case payment(requestModel: NiPaymentRequestModel)
+    case applyCoupon
 }
 extension PaymentRoomBookingEndPoint: EndPointType {
 
@@ -22,6 +23,8 @@ extension PaymentRoomBookingEndPoint: EndPointType {
             return "store-roombooking"
         case .payment:
             return "ios-payment"
+        case .applyCoupon:
+            return "coupon-details"
         }
     }
     var url: URL? {
@@ -35,6 +38,8 @@ extension PaymentRoomBookingEndPoint: EndPointType {
             return .post
         case .payment:
             return .post
+        case .applyCoupon:
+            return .get
         }
     }
     var body: Encodable? {
@@ -45,6 +50,8 @@ extension PaymentRoomBookingEndPoint: EndPointType {
             return requestModel
         case .payment(let requestModel):
             return requestModel
+        case .applyCoupon:
+            return nil
         }
     }
     var headers: [String : String]? {

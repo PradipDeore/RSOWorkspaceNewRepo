@@ -166,6 +166,7 @@
             <color key="backgroundColor" name="F2F2F2"/>
             <connections>
                 <outlet property="containerView" destination="IQO-MD-fl7" id="K06-Vd-bev"/>
+                <outlet property="lblRewardPoints" destination="YVT-CN-qDw" id="cHo-mQ-7ni"/>
             </connections>
             <point key="canvasLocation" x="125.95419847328243" y="4.5774647887323949"/>
         </tableViewCell>

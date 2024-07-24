@@ -251,6 +251,12 @@ extension BookMeetingRoomViewController: BookButtonActionDelegate{
         bookRoomDetailsVC.coordinator = self.coordinator
         bookRoomDetailsVC.locationId = locationId
         bookRoomDetailsVC.listItems = listItems.filter({ $0.id == meetingRoomId })
+        print("Filtered listItems: \(bookRoomDetailsVC.listItems)") // Debugging line
+               
+        // Ensure listItems is not empty
+        if bookRoomDetailsVC.listItems.isEmpty {
+                   print("No meeting room found for id: \(meetingRoomId)") // Debugging line
+               }
         self.navigationController?.pushViewController(bookRoomDetailsVC, animated: true)
     }
     func showBookMeetingRoomsVC() {
