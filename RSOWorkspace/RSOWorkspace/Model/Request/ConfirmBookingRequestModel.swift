@@ -92,7 +92,7 @@ struct ConfirmBookingRequestModel{
   }
   var deskVatTotal: Float {
     var vatTotal: Float = 0.0
-    vatTotal = subTotal * 5 / 100
+    vatTotal = deskSubTotal * 5 / 100
     return vatTotal
   }
   var deskFinalTotal: Float {

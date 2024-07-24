@@ -30,10 +30,11 @@ class DeskListingViewController: UIViewController {
             type: DeskBookingEndPoint.desks) { response in
                 switch response {
                 case .success(let response):
-                    let deskList = response.data
+                  if let deskList = response.data {
                     let listItems: [RSOCollectionItem] = deskList.map { RSOCollectionItem(deskItem: $0) }
                     self.collectionView.listItems = listItems
                     self.collectionView.eventHandler?(.dataLoaded)
+                  }
                 case .failure(let error):
                     self.collectionView.eventHandler?(.error(error))
                 }

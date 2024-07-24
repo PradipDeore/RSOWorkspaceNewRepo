@@ -9,21 +9,23 @@ import Foundation
 
 // MARK: - BookingDeskDetailsResponseModel
 struct BookingDeskDetailsResponseModel: Codable {
-    let status: Bool
-    let data: BookingData
-    let members: [BookingDeskDetailsMember]
-    let companies: [BookingDeskDetailsCompany]
-    let interval: [Interval]
-    let deskTypes: [DeskType]
-    let amenities: [BookingDeskDetailsAmenity]
-    let roomConfiguration: [RoomConfiguration]
-
-    enum CodingKeys: String, CodingKey {
-        case status, data, members, companies, interval
-        case deskTypes = "desk_types"
-        case amenities
-        case roomConfiguration = "roomConfiguration"
-    }
+  let status: Bool
+  var data: BookingData?
+  var members: [BookingDeskDetailsMember]?
+  var companies: [BookingDeskDetailsCompany]?
+  var interval: [Interval]?
+  var deskTypes: [DeskType]?
+  var amenities: [BookingDeskDetailsAmenity]?
+  var roomConfiguration: [RoomConfiguration]?
+  var message: String?
+  
+  enum CodingKeys: String, CodingKey {
+    case status, data, members, companies, interval
+    case deskTypes = "desk_types"
+    case amenities
+    case roomConfiguration = "roomConfiguration"
+    case message
+  }
 }
 
 // MARK: - BookingData

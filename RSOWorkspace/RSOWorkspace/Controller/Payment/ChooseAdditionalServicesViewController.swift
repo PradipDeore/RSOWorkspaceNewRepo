@@ -178,7 +178,8 @@ extension ChooseAdditionalServicesViewController:CancelAndRequestButtonTableView
   func btnRequestTappedAction() {
     let details = "RSO booking"
     //print("details=", details)
-      paymentServiceManager.currentViewController = self 
+      paymentServiceManager.isDeskPayment = false
+      paymentServiceManager.currentViewController = self
       paymentServiceManager.paymentRoomBookingAPI(additionalrequirements: selectedServices, bookingid: self.bookingId, requirementdetails: details, totalprice: totalPrice, vatamount: vatAmount)
   }
   

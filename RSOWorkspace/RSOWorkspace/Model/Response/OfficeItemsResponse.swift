@@ -8,7 +8,8 @@
 import Foundation
 struct OfficeItemsResponse: Codable {
     let status: Bool
-    let data: [Office]
+    var data: [Office]?
+    var message: String?
 }
 
 struct Office: Codable {

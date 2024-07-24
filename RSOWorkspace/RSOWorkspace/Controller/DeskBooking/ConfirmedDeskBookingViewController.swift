@@ -120,7 +120,15 @@ extension ConfirmedDeskBookingViewController: UITableViewDataSource, UITableView
     }
     return 1
   }
-  
+  func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    if section == 0 {
+      return 30
+    }
+    if section == 4 {
+      return 20
+    }
+    return 0
+  }
   
   func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
     let headerView = SectionHeaderView(reuseIdentifier: "SectionHeaderView")

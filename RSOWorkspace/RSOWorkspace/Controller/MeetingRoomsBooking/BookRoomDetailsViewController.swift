@@ -117,9 +117,10 @@ extension BookRoomDetailsViewController: UITableViewDataSource, UITableViewDeleg
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 0
+      return 0
     }
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+
         return UIView() // Return an empty view for the header between sections
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -127,9 +128,9 @@ extension BookRoomDetailsViewController: UITableViewDataSource, UITableViewDeleg
         if section == 12{
             return item?.amenity.count ?? 0
         }else if section == 10{
-            return guestEmailArray.count
+          return UserHelper.shared.isGuest() ? 0 : guestEmailArray.count
         }else if section == 8{
-            return teamMembersArray.count
+          return UserHelper.shared.isGuest() ? 0 : teamMembersArray.count
         }
         return 1
     }
@@ -249,13 +250,13 @@ extension BookRoomDetailsViewController: UITableViewDataSource, UITableViewDeleg
         case 6:
             return 120
         case 7:
-            return UserHelper.shared.isGuest() ? 0: 20
+            return UserHelper.shared.isGuest() ? 0 : 20
         case 8:
-            return UserHelper.shared.isGuest() ? 0: 60
+            return UserHelper.shared.isGuest() ? 0 : 60
         case 9:
-            return UserHelper.shared.isGuest() ? 0: 20
+            return UserHelper.shared.isGuest() ? 0 : 20
         case 10:
-            return UserHelper.shared.isGuest() ? 0: 50
+            return UserHelper.shared.isGuest() ? 0 : 50
         case 11:
             return 20
         case 12:

@@ -99,26 +99,37 @@ class DeskBookingViewController: UIViewController{
     APIManager.shared.request(
       modelType: BookingDeskDetailsResponseModel.self,
       type: DeskBookingEndPoint.bookingDeskDetails(id: id)) { [weak self] response in
-        
-        guard let self = self else { return }
-        
-        switch response {
-        case .success(let responseData):
-          // Handle successful response with bookings
-          let deskList = responseData.deskTypes
-          let listItems: [RSOCollectionItem] = deskList.map { RSOCollectionItem(deskType: $0) }
-          print("fetchDesk list",listItems)
-          self.deskList = listItems
-          let indexpath = IndexPath(row: 0, section: SectionTypeDeskBooking.selectDesks.rawValue)
-            self.viewFloorPlanSeatingConfig = responseData.roomConfiguration
+        DispatchQueue.main.async {
+          guard let self = self else { return }
+          
+          switch response {
+          case .success(let responseData):
+            // Handle successful response with bookings
+            if let errorMessage = responseData.message, errorMessage.isEmpty == false {
+              self.eventHandler?(.error(errorMessage as? Error))
+              //  Unsuccessful
+              self.deskList = []
+              RSOToastView.shared.show("\(errorMessage)", duration: 2.0, position: .center)
+              
+            } else {
+              
+              if let deskList = responseData.deskTypes {
+                let listItems: [RSOCollectionItem] = deskList.map { RSOCollectionItem(deskType: $0) }
+                print("fetchDesk list",listItems)
+                self.deskList = listItems
+              }
+              self.eventHandler?(.dataLoaded)
 
-          DispatchQueue.main.async {
-            self.tableView.reloadRows(at: [indexpath], with: .automatic)
-          }
-          self.eventHandler?(.dataLoaded)
-        case .failure(let error):
-          self.eventHandler?(.error(error))
-          DispatchQueue.main.async {
+            }
+            self.apiRequestModelDeskListing.desk_id = []
+            self.displayBookingDetailsNextScreen.selected_desk_no = []
+            self.selectedDeskList = []
+            self.deskbookingConfirmDetails.desk_id = []
+              let indexpath1 = IndexPath(row: 0, section: SectionTypeDeskBooking.selectDesks.rawValue)
+              let indexpath2 = IndexPath(row: 0, section: SectionTypeDeskBooking.buttonbookingConfirm.rawValue)
+              self.tableView.reloadRows(at: [indexpath1,indexpath2], with: .automatic)
+          case .failure(let error):
+            self.eventHandler?(.error(error))
             RSOToastView.shared.show("\(error.localizedDescription)", duration: 2.0, position: .center)
           }
         }
@@ -217,6 +228,9 @@ extension DeskBookingViewController: UITableViewDataSource, UITableViewDelegate 
       let cell =  tableView.dequeueReusableCell(withIdentifier: CellIdentifierDeskBooking.buttonbookingConfirm.rawValue, for: indexPath) as! ButtonBookingConfirmTableViewCell
       cell.delegate = self
       cell.btnConfirm.setTitle("Confirm Booking", for: .normal)
+      let isItemSelected = !selectedDeskList.isEmpty
+      cell.btnConfirm.isEnabled = !self.deskList.isEmpty && isItemSelected
+      cell.btnConfirm.alpha = cell.btnConfirm.isEnabled ? 1.0 : 0.4
       cell.selectionStyle = .none
       return cell
     }
@@ -371,6 +385,10 @@ extension DeskBookingViewController:SelectedDeskTableViewCellDelegate{
         self.selectedDeskList = selectedDeskList
         self.displayBookingDetailsNextScreen.selected_desk_no = selectedDeskNo
       self.deskbookingConfirmDetails.desk_id = selectedDeskNo
+    DispatchQueue.main.async {
+      let indexpath = IndexPath(row: 0, section: SectionTypeDeskBooking.buttonbookingConfirm.rawValue)
+      self.tableView.reloadRows(at: [indexpath], with: .automatic)
+    }
     }
     
 }
