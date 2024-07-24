@@ -2859,7 +2859,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "374"
             endingLineNumber = "374"
-            landmarkName = "getMeetingRooms()"
+            landmarkName = "sendteamMemberName(name:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -3618,8 +3618,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "231"
             endingLineNumber = "231"
-            landmarkName = "navigateToBookingDetails()"
-            landmarkType = "7">
+            landmarkName = "CellTypeConfirmDesk"
+            landmarkType = "13">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -4735,8 +4735,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "370"
             endingLineNumber = "370"
-            landmarkName = "getMeetingRooms()"
-            landmarkType = "7">
+            landmarkName = "DeskBookingViewController"
+            landmarkType = "21">
             <Locations>
                <Location
                   uuid = "3B5BB5CF-F258-47B1-BD89-9BFA3B237F23 - ace0e24391605551"
@@ -4826,8 +4826,8 @@
             filePath = "RSOWorkspace/Controller/DeskBooking/ConfirmedDeskBookingViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "256"
-            endingLineNumber = "256"
+            startingLineNumber = "255"
+            endingLineNumber = "255"
             landmarkName = "btnConfirmAndProceedTappedAction()"
             landmarkType = "7">
          </BreakpointContent>
@@ -5028,8 +5028,8 @@
             filePath = "RSOWorkspace/Controller/DeskBooking/ConfirmedDeskBookingViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "246"
-            endingLineNumber = "246"
+            startingLineNumber = "245"
+            endingLineNumber = "245"
             landmarkName = "btnConfirmAndProceedTappedAction()"
             landmarkType = "7">
             <Locations>
@@ -5093,7 +5093,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "310"
             endingLineNumber = "310"
-            landmarkName = "didSelectEndTime(_:)"
+            landmarkName = "presentAlertController(alertController:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
