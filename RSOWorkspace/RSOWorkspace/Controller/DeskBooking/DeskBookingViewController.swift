@@ -255,7 +255,9 @@ extension DeskBookingViewController:ButtonBookingConfirmTableViewCellDelegate{
       confirmDeskBookingDetailsVC.deskList = selectedDeskList
         confirmDeskBookingDetailsVC.confirmdeskBookingResponse = displayBookingDetailsNextScreen
         confirmDeskBookingDetailsVC.deskbookingConfirmDetails = self.deskbookingConfirmDetails
-        self.present(confirmDeskBookingDetailsVC,animated: true)
+        //self.present(confirmDeskBookingDetailsVC,animated: true)
+      self.navigationController?.pushViewController(confirmDeskBookingDetailsVC, animated: true)
+
     }
    
 }

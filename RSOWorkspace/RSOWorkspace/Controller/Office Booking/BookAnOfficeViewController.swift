@@ -48,8 +48,7 @@ class BookAnOfficeViewController: UIViewController {
             modelType: OfficeBookingResponseModel.self,
             type: MyBookingEndPoint.officeBooking(requestModel: requestModel)) { [weak self] response in
                 
-                guard let self = self else { return }
-                
+                guard let self = self else { return }                
                 switch response {
                 case .success(let responseData):
                     // Handle successful response with bookings

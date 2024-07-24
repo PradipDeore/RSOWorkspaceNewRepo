@@ -12,6 +12,7 @@ enum RSODateFormat: String{
     case HHmm = "HH:mm"
     case hhmma = "hh:mm a"
     case hhmmss = "hh:mm:ss"
+    case HHmmss = "HH:mm:ss"
 }
 
 extension Date {
@@ -43,6 +44,11 @@ extension Date {
            dateFormatter.dateFormat = format.rawValue
            return dateFormatter.date(from: dateString)
        }
+  static func convertTo(_ dateString: String, givenFormat: RSODateFormat, newFormat:RSODateFormat) -> String? {
+    let date = Date.dateFromString(dateString, format: givenFormat)
+    let dateString = Date.formatSelectedDate(format: newFormat, date: date)
+    return dateString
+  }
        
     func stringFromDate(format: RSODateFormat) -> String {
            let dateFormatter = DateFormatter()

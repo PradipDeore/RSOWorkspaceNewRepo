@@ -26,6 +26,11 @@ class PaymentViewController: UIViewController {
         coordinator?.hideBackButton(isHidden: false)
         
     }
+  
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    self.tableView.reloadData()
+  }
     private func setupTableView() {
         tableView.dataSource = self
         tableView.delegate = self
@@ -57,9 +62,7 @@ extension PaymentViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 0
     }
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        return UIView()
-    }
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cellType = cellIdentifiers[indexPath.section].0

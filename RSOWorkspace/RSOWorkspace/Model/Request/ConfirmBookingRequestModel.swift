@@ -28,21 +28,26 @@ struct ConfirmBookingRequestModel{
     
     //computed property
     var timeDifferece : Float{
+      get {
         let formatter = DateFormatter()
         formatter.dateFormat = "HH:mm"
         
         if let startTimeDate = formatter.date(from: self.startTime),
            let endTimeDate = formatter.date(from: self.endTime) {
-            print("startTimeDate",startTimeDate)
-            print("endTimeDate",endTimeDate)
-            let calendar = Calendar.current
-            let components = calendar.dateComponents([.hour], from: startTimeDate, to: endTimeDate)
-            
-            if let differenceInHours = components.hour {
-                return Float(differenceInHours)
-            }
+          print("startTimeDate",startTimeDate)
+          print("endTimeDate",endTimeDate)
+          let calendar = Calendar.current
+          let components = calendar.dateComponents([.hour], from: startTimeDate, to: endTimeDate)
+          
+          if let differenceInHours = components.hour {
+            return Float(differenceInHours)
+          }
         }
         return 0.0
+      }
+      set{
+        
+      }
     }
     
     var totalOfAmenity: Float {
@@ -85,6 +90,30 @@ struct ConfirmBookingRequestModel{
         self.endTime = model.datetime.endTime
         //self.teamMembers = model.members ?? []
         self.amenityArray = model.amenity
-
     }
+  mutating func setValues(response: StoreDeskBookingResponseModel){
+    let startTimeString = response.data?.startTime ?? ""
+    if let regularStartTime = Date.convertTo(startTimeString, givenFormat: .HHmmss, newFormat: .HHmm) {
+      self.startTime = regularStartTime
+    }
+    if let displayStartTime = Date.convertTo(startTimeString, givenFormat: .HHmmss, newFormat: .hhmma) {
+      self.displayStartTime = displayStartTime
+    }
+    // End time
+    let endTimeString = response.data?.endTime ?? ""
+    if let regularEndTime = Date.convertTo(endTimeString, givenFormat: .HHmmss, newFormat: .HHmm) {
+      self.endTime = regularEndTime
+    }
+    
+    if let displayEndTime = Date.convertTo(endTimeString, givenFormat: .HHmmss, newFormat: .hhmma) {
+      self.displayendTime = displayEndTime
+      
+    }
+    // Display date
+    let bookingdate = response.data?.date ?? ""
+    self.date = bookingdate
+    
+    self.roomprice = "\(response.data?.totalPrice ?? 0)"
+    self.meetingId = response.data?.deskTypeID ?? 0
+  }
 }
