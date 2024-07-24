@@ -13,7 +13,7 @@ class PaymentViewController: UIViewController {
     var bookingId: Int = 0
     @IBOutlet weak var tableView: UITableView!
     var eventHandler: ((_ event: Event) -> Void)?
-    
+    var paymentServiceManager = PaymentNetworkManager.shared
     var requestParameters : ConfirmBookingRequestModel?
     var intHours = 0
     var totalPrice:Double = 0.0
@@ -243,6 +243,17 @@ extension PaymentViewController {
 extension PaymentViewController:ButtonPayNowTableViewCellDelegate{
     
     func btnPayNowTappedAction() {
+        if let obj = self.requestParameters {
+            let deskCount = self.requestParameters?.deskList.count ?? 0
+            if deskCount > 0 {
+                var requestModel = NiPaymentRequestModel()
+                requestModel.total = Int(totalPrice)
+                requestModel.email = UserHelper.shared.getUserEmail()
+                paymentServiceManager.currentViewController = self
+                paymentServiceManager.makePayment(requestModel: requestModel)
+            }
+        }
+        
         let additionalServicesVC = UIViewController.createController(storyBoard: .Payment, ofType: ChooseAdditionalServicesViewController.self)
         additionalServicesVC.vatAmount = self.vatAmount
         additionalServicesVC.totalPrice = self.totalPrice

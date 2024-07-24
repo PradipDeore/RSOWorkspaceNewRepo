@@ -12,14 +12,14 @@ enum PaymentRoomBookingEndPoint {
     case getStoreRoomBooking(requestModel: StoreRoomBookingRequest)
     case payment(requestModel: NiPaymentRequestModel)
     case applyCoupon
-    case paymentDeskbooking(requestModel: PaymentRoomBookingRequest)
+    case paymentDeskbooking(requestModel: PaymentDeskBookingRequest)
 }
 extension PaymentRoomBookingEndPoint: EndPointType {
 
     var path: String {
         switch self {
         case .paymentRoombooking:
-            return "payment-deskbooking"
+            return "payment-roombooking"
         case .getStoreRoomBooking:
             return "store-roombooking"
         case .payment:

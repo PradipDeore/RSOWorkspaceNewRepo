@@ -334,8 +334,8 @@
             filePath = "RSOWorkspace/Model/Request/ConfirmBookingRequestModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "32"
-            endingLineNumber = "32"
+            startingLineNumber = "33"
+            endingLineNumber = "33"
             landmarkName = "timeDifferece"
             landmarkType = "24">
          </BreakpointContent>
@@ -350,8 +350,8 @@
             filePath = "RSOWorkspace/Model/Request/ConfirmBookingRequestModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "26"
-            endingLineNumber = "26"
+            startingLineNumber = "27"
+            endingLineNumber = "27"
             landmarkName = "floatPrice"
             landmarkType = "24">
          </BreakpointContent>
@@ -366,10 +366,10 @@
             filePath = "RSOWorkspace/Model/Request/ConfirmBookingRequestModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "79"
-            endingLineNumber = "79"
-            landmarkName = "setValues(model:)"
-            landmarkType = "7">
+            startingLineNumber = "80"
+            endingLineNumber = "80"
+            landmarkName = "finalTotal"
+            landmarkType = "24">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -382,8 +382,8 @@
             filePath = "RSOWorkspace/Model/Request/ConfirmBookingRequestModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "47"
-            endingLineNumber = "47"
+            startingLineNumber = "48"
+            endingLineNumber = "48"
             landmarkName = "timeDifferece"
             landmarkType = "24">
          </BreakpointContent>
@@ -398,8 +398,8 @@
             filePath = "RSOWorkspace/Model/Request/ConfirmBookingRequestModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "44"
-            endingLineNumber = "44"
+            startingLineNumber = "45"
+            endingLineNumber = "45"
             landmarkName = "timeDifferece"
             landmarkType = "24">
          </BreakpointContent>
@@ -414,8 +414,8 @@
             filePath = "RSOWorkspace/Model/Request/ConfirmBookingRequestModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "36"
-            endingLineNumber = "36"
+            startingLineNumber = "37"
+            endingLineNumber = "37"
             landmarkName = "timeDifferece"
             landmarkType = "24">
          </BreakpointContent>
@@ -430,8 +430,8 @@
             filePath = "RSOWorkspace/Model/Request/ConfirmBookingRequestModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "37"
-            endingLineNumber = "37"
+            startingLineNumber = "38"
+            endingLineNumber = "38"
             landmarkName = "timeDifferece"
             landmarkType = "24">
          </BreakpointContent>
@@ -604,8 +604,8 @@
             filePath = "RSOWorkspace/Controller/Payment/ChooseAdditionalServicesViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "214"
-            endingLineNumber = "214"
+            startingLineNumber = "154"
+            endingLineNumber = "154"
             landmarkName = "CellType"
             landmarkType = "13">
          </BreakpointContent>
@@ -620,8 +620,8 @@
             filePath = "RSOWorkspace/Controller/Payment/ChooseAdditionalServicesViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "215"
-            endingLineNumber = "215"
+            startingLineNumber = "155"
+            endingLineNumber = "155"
             landmarkName = "CellType"
             landmarkType = "13">
          </BreakpointContent>
@@ -636,8 +636,8 @@
             filePath = "RSOWorkspace/Controller/Payment/ChooseAdditionalServicesViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "220"
-            endingLineNumber = "220"
+            startingLineNumber = "160"
+            endingLineNumber = "160"
             landmarkName = "ChooseAdditionalServicesViewController"
             landmarkType = "21">
          </BreakpointContent>
@@ -732,8 +732,8 @@
             filePath = "RSOWorkspace/Controller/Payment/ChooseAdditionalServicesViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "217"
-            endingLineNumber = "217"
+            startingLineNumber = "157"
+            endingLineNumber = "157"
             landmarkName = "CellType"
             landmarkType = "13">
          </BreakpointContent>
@@ -2998,8 +2998,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "87"
             endingLineNumber = "87"
-            landmarkName = "paymentRoomBookingAPI(additionalrequirements:bookingid:requirementdetails:totalprice:vatamount:)"
-            landmarkType = "7">
+            landmarkName = "ChooseAdditionalServicesViewController"
+            landmarkType = "3">
             <Locations>
                <Location
                   uuid = "EDE93AE3-B642-4BFE-B3FA-2917CBC38F09 - ae4b34b927a64d77"
@@ -3618,7 +3618,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "231"
             endingLineNumber = "231"
-            landmarkName = "btnConfirmAndProceedTappedAction()"
+            landmarkName = "navigateToBookingDetails()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -3632,8 +3632,8 @@
             filePath = "RSOWorkspace/Model/Request/ConfirmBookingRequestModel.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "27"
-            endingLineNumber = "27"
+            startingLineNumber = "28"
+            endingLineNumber = "28"
             landmarkName = "floatPrice"
             landmarkType = "24">
          </BreakpointContent>
@@ -4828,8 +4828,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "256"
             endingLineNumber = "256"
-            landmarkName = "ConfirmedDeskBookingViewController"
-            landmarkType = "21">
+            landmarkName = "btnConfirmAndProceedTappedAction()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy

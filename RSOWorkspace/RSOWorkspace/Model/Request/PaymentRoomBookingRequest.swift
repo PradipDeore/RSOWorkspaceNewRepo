@@ -13,6 +13,10 @@ struct PaymentRoomBookingRequest: Codable {
     let requirement_details: String
     let total_price: Double
     let vatamount: Double
-    
+}
 
+struct PaymentDeskBookingRequest: Codable {
+    let booking_id: Int
+    let total_price: Double
+    let vatamount: Double
 }
