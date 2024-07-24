@@ -92,7 +92,7 @@ class ChooseAdditionalServicesViewController: UIViewController {
     print("requestModel",requestModel)
     APIManager.shared.request(
       modelType: PaymentRoomBookingResponse.self,
-      type: PaymentRoomBookingEndPoint.getBookingOfRooms(requestModel: requestModel)) { response in
+      type: PaymentRoomBookingEndPoint.paymentRoombooking(requestModel: requestModel)) { response in
         DispatchQueue.main.async {
           RSOLoader.removeLoader()
           switch response {
@@ -238,7 +238,7 @@ extension ChooseAdditionalServicesViewController:CancelAndRequestButtonTableView
   func btnRequestTappedAction() {
     let details = "RSO booking"
     //print("details=", details)
-    self.paymentRoomBookingAPI(additionalrequirements: ["Stationary"], bookingid: self.bookingId, requirementdetails: details, totalprice: totalPrice, vatamount: 0.0)
+    self.paymentRoomBookingAPI(additionalrequirements: selectedServices, bookingid: self.bookingId, requirementdetails: details, totalprice: totalPrice, vatamount: vatAmount)
     
   }
   

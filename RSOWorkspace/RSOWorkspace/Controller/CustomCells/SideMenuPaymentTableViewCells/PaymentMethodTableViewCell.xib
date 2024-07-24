@@ -64,9 +64,12 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="visalogo" translatesAutoresizingMaskIntoConstraints="NO" id="TSh-FP-qab">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="visalogo" translatesAutoresizingMaskIntoConstraints="NO" id="TSh-FP-qab">
                                 <rect key="frame" x="27" y="40" width="59" height="29"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="29" id="ScK-Om-HXo"/>
+                                    <constraint firstAttribute="width" constant="59" id="mHg-G7-LOc"/>
+                                </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" name="F2F2F2"/>
@@ -75,10 +78,13 @@
                             <constraint firstItem="X5s-Up-snh" firstAttribute="leading" secondItem="sjM-zu-wkf" secondAttribute="leading" constant="8" id="BSu-Lh-DpQ"/>
                             <constraint firstAttribute="trailing" secondItem="X5s-Up-snh" secondAttribute="trailing" constant="10" id="DYu-aG-OZO"/>
                             <constraint firstItem="Mm1-aq-uza" firstAttribute="top" secondItem="X5s-Up-snh" secondAttribute="bottom" constant="10" id="Kep-L5-qJB"/>
+                            <constraint firstAttribute="bottom" secondItem="TSh-FP-qab" secondAttribute="bottom" constant="15" id="L4g-6O-vAA"/>
+                            <constraint firstItem="Mm1-aq-uza" firstAttribute="leading" secondItem="TSh-FP-qab" secondAttribute="trailing" constant="29" id="NqQ-F2-qMZ"/>
                             <constraint firstAttribute="trailing" secondItem="Mm1-aq-uza" secondAttribute="trailing" constant="12" id="eXx-41-wlQ"/>
                         </constraints>
                     </view>
                 </subviews>
+                <color key="backgroundColor" name="F2F2F2"/>
                 <constraints>
                     <constraint firstItem="sjM-zu-wkf" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="MTl-k0-Kta"/>
                     <constraint firstItem="sjM-zu-wkf" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="6" id="Osb-jk-IUT"/>

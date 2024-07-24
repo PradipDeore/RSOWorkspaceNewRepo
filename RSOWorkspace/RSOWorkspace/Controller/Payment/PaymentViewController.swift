@@ -18,7 +18,7 @@ class PaymentViewController: UIViewController {
     var intHours = 0
     var totalPrice:Double = 0.0
     var vatAmount:Double = 0.0
-    private let cellIdentifiers: [(CellType,CGFloat)] = [(.selectMeetingRoomLabel,20.0),(.meetingTime,80),(.meetingRoomPrice,40),(.amenityPrice,50),(.totalCell,191),(.discount,60),(.paywithrewardPoints,157),(.buttonPayNow,40)]
+    private let cellIdentifiers: [(CellType,CGFloat)] = [(.selectMeetingRoomLabel,20.0),(.meetingTime,80),(.meetingRoomPrice,40),(.amenityPrice,50),(.totalCell,191),(.discount,60),(.paymentMethods,97),(.buttonPayNow,40)]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -158,9 +158,12 @@ extension PaymentViewController: UITableViewDataSource, UITableViewDelegate {
         case .discount:
             let cell = tableView.dequeueReusableCell(withIdentifier: cellType.rawValue, for: indexPath) as! DiscountCodeTableViewCell
             return cell
-        case .paywithrewardPoints:
-            let cell = tableView.dequeueReusableCell(withIdentifier: cellType.rawValue, for: indexPath) as! PayWithRewardPointsTableViewCell
+        case .paymentMethods:
+            let cell = tableView.dequeueReusableCell(withIdentifier: cellType.rawValue, for: indexPath) as! PaymentMethodTableViewCell
             return cell
+//        case .paywithrewardPoints:
+//            let cell = tableView.dequeueReusableCell(withIdentifier: cellType.rawValue, for: indexPath) as! PayWithRewardPointsTableViewCell
+           // return cell
         case .buttonPayNow:
             let buttonPayNowCell = tableView.dequeueReusableCell(withIdentifier: cellType.rawValue, for: indexPath) as! ButtonPayNowTableViewCell
             buttonPayNowCell.delegate = self
@@ -197,7 +200,8 @@ extension PaymentViewController {
         case amenityPrice = "AmenityPriceTableViewCell"
         case totalCell = "TotalTableViewCell"
         case discount = "DiscountCodeTableViewCell"
-        case paywithrewardPoints = "PayWithRewardPointsTableViewCell"
+       // case paywithrewardPoints = "PayWithRewardPointsTableViewCell"
+        case paymentMethods = "PaymentMethodTableViewCell"
         case buttonPayNow = "ButtonPayNowTableViewCell"
         
     }

@@ -23,6 +23,7 @@ class SelectDateTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         customizeCell()
+        calender.minimumDate = Date()
         dateSelected(calender)
     }
       func customizeCell(){

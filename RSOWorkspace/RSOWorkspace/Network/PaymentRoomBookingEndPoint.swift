@@ -8,20 +8,23 @@
 import Foundation
 
 enum PaymentRoomBookingEndPoint {
-    case getBookingOfRooms(requestModel: PaymentRoomBookingRequest)
+    case paymentRoombooking(requestModel: PaymentRoomBookingRequest)
     case getStoreRoomBooking(requestModel: StoreRoomBookingRequest)
     case payment(requestModel: NiPaymentRequestModel)
+    case paymentDeskbooking(requestModel: PaymentRoomBookingRequest)
 }
 extension PaymentRoomBookingEndPoint: EndPointType {
 
     var path: String {
         switch self {
-        case .getBookingOfRooms:
-            return "payment-roombooking"
+        case .paymentRoombooking:
+            return "payment-deskbooking"
         case .getStoreRoomBooking:
             return "store-roombooking"
         case .payment:
             return "ios-payment"
+        case .paymentDeskbooking:
+            return "payment-deskbooking"
         }
     }
     var url: URL? {
@@ -29,21 +32,25 @@ extension PaymentRoomBookingEndPoint: EndPointType {
     }
     var method: HTTPMethods {
         switch self {
-        case .getBookingOfRooms:
+        case .paymentRoombooking:
             return .post
         case .getStoreRoomBooking:
             return .post
         case .payment:
             return .post
+        case .paymentDeskbooking:
+            return .post
         }
     }
     var body: Encodable? {
         switch self {
-        case .getBookingOfRooms(let requestModel):
+        case .paymentRoombooking(let requestModel):
             return requestModel
         case .getStoreRoomBooking(let requestModel):
             return requestModel
         case .payment(let requestModel):
+            return requestModel
+        case .paymentDeskbooking(let requestModel):
             return requestModel
         }
     }

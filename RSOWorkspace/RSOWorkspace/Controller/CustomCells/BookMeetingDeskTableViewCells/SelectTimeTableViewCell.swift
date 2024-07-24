@@ -27,18 +27,30 @@ class SelectTimeTableViewCell: UITableViewCell {
     }
       timePanel.layer.cornerRadius = 6
       updateButtonState()
+      // set defalt date
+      DispatchQueue.main.async {
+        self.selectStartTime.date = Date()
+        self.delegate?.didSelectStartTime(self.selectStartTime.date)
+        if let nextHour = Date.adding(to: self.selectStartTime.date, hours: 2) {
+          self.selectEndTime.date = nextHour
+          self.delegate?.didSelectEndTime(nextHour)
+        }
+      }
     }
     @IBAction func selectStartTime(_ sender: UIDatePicker) {
         let selectedStartTime = sender.date
         print("Selected Start time: \(selectedStartTime)")
         // Pass the selected time to the delegate
         delegate?.didSelectStartTime(selectedStartTime)
+      if let nextHour = Date.adding(to: selectedStartTime, hours: 2) {
+        selectEndTime.date = nextHour
+        delegate?.didSelectEndTime(nextHour)
+      }
     }
  
     @IBAction func selectEndTime(_ sender: UIDatePicker) {
         let selectedEndTime = sender.date
         print("Selected End time: \(selectedEndTime)")
-        //self.selectTime.text = selectedTime
         delegate?.didSelectEndTime(selectedEndTime)
         
     }
@@ -46,7 +58,6 @@ class SelectTimeTableViewCell: UITableViewCell {
     btnBookfullDay.isSelected.toggle()
     updateButtonState()
     if btnBookfullDay.isSelected {
-      let calendar = Calendar.current
       if let selectedStartTime = getStartDateWithCurrentDateAnd9AM(), let selectedEndTime = getEndDateWithCurrentDateAnd6PM() {
         delegate?.didSelectStartTime(selectedStartTime)
         delegate?.didSelectEndTime(selectedEndTime)
@@ -55,10 +66,12 @@ class SelectTimeTableViewCell: UITableViewCell {
       }
     } else {
       let selectedStartTime = Date()
+      selectStartTime.date = selectedStartTime
         delegate?.didSelectStartTime(selectedStartTime)
-        delegate?.didSelectEndTime(selectedStartTime)
-        selectStartTime.date = selectedStartTime
-        selectEndTime.date = selectedStartTime
+      if let nextHour = Date.adding(to: self.selectStartTime.date, hours: 2) {
+        selectEndTime.date = nextHour
+        delegate?.didSelectEndTime(nextHour)
+      }
     }
   }
   func updateButtonState() {
@@ -71,25 +84,11 @@ class SelectTimeTableViewCell: UITableViewCell {
   }
   // Function to get the start date with current date and 9 AM time
   func getStartDateWithCurrentDateAnd9AM() -> Date? {
-      let calendar = Calendar.current
-      let currentDate = Date()
-      var components = calendar.dateComponents([.year, .month, .day], from: currentDate)
-      components.hour = 9
-      components.minute = 0
-      components.second = 0
-      
-      return calendar.date(from: components)
+    return Date.dateForGivenTime(hour: 9)
   }
 
   // Function to get the end date with current date and 6 PM time
   func getEndDateWithCurrentDateAnd6PM() -> Date? {
-      let calendar = Calendar.current
-      let currentDate = Date()
-      var components = calendar.dateComponents([.year, .month, .day], from: currentDate)
-      components.hour = 18
-      components.minute = 0
-      components.second = 0
-      
-      return calendar.date(from: components)
+    return Date.dateForGivenTime(hour: 18)
   }
 }
