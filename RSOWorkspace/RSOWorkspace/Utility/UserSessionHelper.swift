@@ -39,7 +39,6 @@ class UserHelper {
   }
   
   func isGuest() -> Bool {
-    return true
     return userDefaults.bool(forKey: userIsGuestKey)
   }
   
