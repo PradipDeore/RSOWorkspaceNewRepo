@@ -15,6 +15,7 @@ class ProvideRequirementDetailsTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         textFieldView.setCornerRadiusForView()
+      txtViewrequirnmentDetails.addPlaceholder(text: "Provide Requirnment Details")
     }
  
 }

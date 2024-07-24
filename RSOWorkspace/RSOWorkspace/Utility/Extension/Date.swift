@@ -74,6 +74,17 @@ extension Date {
     
     return (dayName, dateMonth)
   }
-  
+  static func adding(to givenDate:Date, hours: Int) -> Date? {
+    let calendar = Calendar.current
+    return calendar.date(byAdding: .hour, value: hours, to: givenDate)
+  }
+  static func dateForGivenTime(hour: Int, minute: Int = 0, second: Int = 0) -> Date? {
+    let calendar = Calendar.current
+    var components = calendar.dateComponents([.year, .month, .day], from: Date())
+    components.hour = hour
+    components.minute = minute
+    components.second = second
+    return calendar.date(from: components)
+  }
 }
 

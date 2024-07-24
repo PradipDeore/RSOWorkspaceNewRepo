@@ -48,6 +48,7 @@ class DeskBookingViewController: UIViewController{
     var teamMembersArray:[String] = [""]
     var deskbookingConfirmDetails = StoreDeskBookingRequest()
     var selectedDeskId = 0
+    var locationId = 0
     var selectedLocation = ""
     var selectedDeskNo = ""
     var selectedDeskTypeId = 0
@@ -69,17 +70,26 @@ class DeskBookingViewController: UIViewController{
     }
     
     private func fetchLocations() {
+      RSOLoader.showLoader()
         APIManager.shared.request(
             modelType: ApiResponse.self, // Assuming your API returns an array of locations
             type: LocationEndPoint.locations) { response in
                 switch response {
                 case .success(let response):
                     self.dropdownOptions = response.data
-                    DispatchQueue.main.async {
-                        self.tableView.reloadData()
+                  DispatchQueue.main.async {
+                    RSOLoader.removeLoader()
+                    if let selectedOption = self.dropdownOptions.last {
+                      self.locationId = selectedOption.id
+                      self.displayBookingDetailsNextScreen.location = selectedOption.name
                     }
+                    self.tableView.reloadData()
+                  }
                     self.eventHandler?(.dataLoaded)
                 case .failure(let error):
+                  DispatchQueue.main.async {
+                    RSOLoader.removeLoader()
+                  }
                     self.eventHandler?(.error(error))
                 }
             }

@@ -192,11 +192,12 @@ extension PaymentViewController: UITableViewDataSource, UITableViewDelegate {
                 }
             }
             return cell
-        case .paywithrewardPoints:
-            let cell = tableView.dequeueReusableCell(withIdentifier: cellType.rawValue, for: indexPath) as! PayWithRewardPointsTableViewCell
-           // let rewardPoints = couponData[indexPath.row].rewardsPoints
-            //cell.setData(item: rewardPoints)
+        case .paymentMethods:
+            let cell = tableView.dequeueReusableCell(withIdentifier: cellType.rawValue, for: indexPath) as! PaymentMethodTableViewCell
             return cell
+//        case .paywithrewardPoints:
+//            let cell = tableView.dequeueReusableCell(withIdentifier: cellType.rawValue, for: indexPath) as! PayWithRewardPointsTableViewCell
+           // return cell
         case .buttonPayNow:
             let buttonPayNowCell = tableView.dequeueReusableCell(withIdentifier: cellType.rawValue, for: indexPath) as! ButtonPayNowTableViewCell
             buttonPayNowCell.delegate = self
@@ -233,7 +234,8 @@ extension PaymentViewController {
         case amenityPrice = "AmenityPriceTableViewCell"
         case totalCell = "TotalTableViewCell"
         case discount = "DiscountCodeTableViewCell"
-        case paywithrewardPoints = "PayWithRewardPointsTableViewCell"
+       // case paywithrewardPoints = "PayWithRewardPointsTableViewCell"
+        case paymentMethods = "PaymentMethodTableViewCell"
         case buttonPayNow = "ButtonPayNowTableViewCell"
         
     }
