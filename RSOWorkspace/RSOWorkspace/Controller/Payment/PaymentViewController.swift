@@ -54,7 +54,13 @@ extension PaymentViewController: UITableViewDataSource, UITableViewDelegate {
         switch cellType{
         case .amenityPrice:
             return self.requestParameters?.amenityArray.count ?? 0
-       
+          
+        case .meetingRoomPrice:
+          let deskCount = self.requestParameters?.deskList.count ?? 0
+          if deskCount > 0 {
+            return deskCount
+          }
+          return 1
         default:
             return 1
         }
@@ -90,13 +96,24 @@ extension PaymentViewController: UITableViewDataSource, UITableViewDelegate {
             let cell = tableView.dequeueReusableCell(withIdentifier: cellType.rawValue, for: indexPath) as! MeetingRoomPriceTableViewCell
             
             if let obj = self.requestParameters {
+              let deskCount = self.requestParameters?.deskList.count ?? 0
+              if deskCount > 0 {
+                let desk = self.requestParameters?.deskList[indexPath.row]
+                let roomPrice = desk?.price ?? "0.0"
+                //print("roomPrice",roomPrice)
+                let roomPriceFloat = Float(roomPrice) ?? 0.0
+                cell.lblmeetingRoomprice.text = "\(roomPrice)"
+                cell.lblHours.text = "\(Int(obj.timeDifferece))" // endtime - starttime
+                let totalRoomPrice = roomPriceFloat * obj.timeDifferece
+                cell.lbltotalPrice.text = "\(totalRoomPrice)"
+                
+              } else {
                 let roomPrice = obj.roomprice.integerValue ?? 0
                 //print("roomPrice",roomPrice)
                 cell.lblmeetingRoomprice.text = "\(roomPrice)"
-                
                 cell.lblHours.text = "\(Int(obj.timeDifferece))" // endtime - starttime
                 cell.lbltotalPrice.text = "\(obj.totalOfMeetingRoom)"
-                
+              }
             }
             return cell
         case .amenityPrice:
@@ -119,12 +136,31 @@ extension PaymentViewController: UITableViewDataSource, UITableViewDelegate {
         case .totalCell:
             let cell = tableView.dequeueReusableCell(withIdentifier: cellType.rawValue, for: indexPath) as! TotalTableViewCell
             if let obj = self.requestParameters{
+              let deskCount = self.requestParameters?.deskList.count ?? 0
+              if deskCount > 0 {
+                var subTotal = 0.0
+                if let deskList = self.requestParameters?.deskList {
+                  for desk in deskList {
+                    let roomPrice = desk.price
+                    let roomPriceFloat = Float(roomPrice) ?? 0.0
+                    let totalRoomPrice = roomPriceFloat * obj.timeDifferece
+                    subTotal = subTotal + Double(totalRoomPrice)
+                  }
+                  cell.lblSubTotal.text = "\(subTotal)"
+                  let totalVat = subTotal * 5 / 100
+                  cell.lblVat.text = "\(totalVat)"
+                  vatAmount = Double(totalVat)
+                  let finalTotal = subTotal + totalVat
+                  cell.lblTotalPrice.text = "\(finalTotal)" // subttotal + vat
+                  totalPrice = Double(finalTotal)
+                }
+              } else {
                 cell.lblSubTotal.text = "\(obj.subTotal)"
-                
                 cell.lblVat.text = "\(obj.calculatedVat)"
                 vatAmount = Double(obj.calculatedVat)
                 cell.lblTotalPrice.text = "\(obj.finalTotal)" // subttotal + vat
                 totalPrice = Double(obj.finalTotal)
+              }
                 
             }
             return cell

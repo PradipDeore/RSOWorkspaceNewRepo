@@ -56,17 +56,17 @@
                                                 <rect key="frame" x="5" y="10" width="117.66666666666667" height="32"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="145" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Nj-wz-NKC">
-                                                        <rect key="frame" x="0.0" y="0.0" width="65" height="32"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="77" height="32"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="32" id="jRf-T8-7qK"/>
-                                                            <constraint firstAttribute="width" constant="87" id="qXR-bY-hzc"/>
+                                                            <constraint firstAttribute="width" constant="100" id="qXR-bY-hzc"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" name="Inter-Medium" family="Inter" pointSize="16"/>
                                                         <color key="textColor" name="2C2C2C"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="X" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iQr-rp-rWJ">
-                                                        <rect key="frame" x="65" y="0.0" width="10.666666666666671" height="32"/>
+                                                        <rect key="frame" x="77" y="0.0" width="10.666666666666671" height="32"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="32" id="wdL-1f-m2E"/>
                                                             <constraint firstAttribute="width" constant="10.67" id="xkc-gF-6xU"/>
@@ -76,9 +76,9 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Pn-Cs-cW9">
-                                                        <rect key="frame" x="75.666666666666686" y="0.0" width="42" height="32"/>
+                                                        <rect key="frame" x="87.666666666666657" y="0.0" width="30" height="32"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="width" constant="42" id="caL-mR-cX6"/>
+                                                            <constraint firstAttribute="width" constant="30" id="caL-mR-cX6"/>
                                                             <constraint firstAttribute="height" constant="32" id="rFo-Zb-6eV"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" name="Inter-Medium" family="Inter" pointSize="16"/>
