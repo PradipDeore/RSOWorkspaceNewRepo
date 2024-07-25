@@ -9,7 +9,6 @@ import UIKit
 
 class DashboardMeetingRoomsTableViewCell: UITableViewCell {
    
-   
     @IBOutlet weak var collectionView: RSOMeetingRoomsCollectionView!
     
     override func awakeFromNib() {
@@ -42,20 +41,42 @@ class DashboardMeetingRoomsTableViewCell: UITableViewCell {
                 }
             }
     }
-    func fetchOfficeDesk() {
+//    func fetchOfficeDesk() {
+//      DispatchQueue.main.async {
+//        RSOLoader.showLoader()
+//      }
+//        APIManager.shared.request(
+//            modelType: OfficeItemsResponse.self,
+//            type: DeskBookingEndPoint.offices) { response in
+//              DispatchQueue.main.async {
+//                RSOLoader.removeLoader()
+//              }
+//                switch response {
+//                case .success(let response):
+//                  if let deskList = response.data {
+//                    let listItems: [RSOCollectionItem] = deskList.map { RSOCollectionItem(deskItem: $0) }
+//                    self.collectionView.listItems = listItems
+//                    self.collectionView.eventHandler?(.dataLoaded)
+//                  }
+//                case .failure(let error):
+//                    self.collectionView.eventHandler?(.error(error))
+//                }
+//            }
+//    }
+    func fetchOfficeDesk(id: Int?, requestModel: BookOfficeRequestModel?) {
       DispatchQueue.main.async {
         RSOLoader.showLoader()
       }
         APIManager.shared.request(
             modelType: OfficeItemsResponse.self,
-            type: DeskBookingEndPoint.desks) { response in
+            type: DeskBookingEndPoint.offices(id: id, requestModel: requestModel)) { response in
               DispatchQueue.main.async {
                 RSOLoader.removeLoader()
               }
                 switch response {
                 case .success(let response):
-                  if let deskList = response.data {
-                    let listItems: [RSOCollectionItem] = deskList.map { RSOCollectionItem(deskItem: $0) }
+                  if let officeList = response.data {
+                    let listItems: [RSOCollectionItem] = officeList.map { RSOCollectionItem(deskItem: $0) }
                     self.collectionView.listItems = listItems
                     self.collectionView.eventHandler?(.dataLoaded)
                   }

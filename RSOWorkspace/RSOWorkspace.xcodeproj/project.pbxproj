@@ -288,6 +288,8 @@
 		58C9AC072B8DC42900C719D1 /* OtherBookingsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58C9AC052B8DC42900C719D1 /* OtherBookingsTableViewCell.xib */; };
 		58C9AC0A2B8DC43A00C719D1 /* BookOfficeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C9AC082B8DC43A00C719D1 /* BookOfficeTableViewCell.swift */; };
 		58C9AC0B2B8DC43A00C719D1 /* BookOfficeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58C9AC092B8DC43A00C719D1 /* BookOfficeTableViewCell.xib */; };
+		58CE5FF82C5243B000278890 /* ShortTermBookAnOfficeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58CE5FF72C5243B000278890 /* ShortTermBookAnOfficeViewController.swift */; };
+		58CE5FFC2C52448200278890 /* OfficeBooking.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58CE5FFB2C52448200278890 /* OfficeBooking.storyboard */; };
 		58CF11982BA94F2E00B95EE9 /* ServicesEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58CF11972BA94F2E00B95EE9 /* ServicesEndPoint.swift */; };
 		58CF119A2BA9502800B95EE9 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58CF11992BA9502800B95EE9 /* Service.swift */; };
 		58CF119C2BA95EA700B95EE9 /* subServicesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58CF119B2BA95EA700B95EE9 /* subServicesViewController.swift */; };
@@ -682,6 +684,8 @@
 		58C9AC052B8DC42900C719D1 /* OtherBookingsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OtherBookingsTableViewCell.xib; sourceTree = "<group>"; };
 		58C9AC082B8DC43A00C719D1 /* BookOfficeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookOfficeTableViewCell.swift; sourceTree = "<group>"; };
 		58C9AC092B8DC43A00C719D1 /* BookOfficeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BookOfficeTableViewCell.xib; sourceTree = "<group>"; };
+		58CE5FF72C5243B000278890 /* ShortTermBookAnOfficeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortTermBookAnOfficeViewController.swift; sourceTree = "<group>"; };
+		58CE5FFB2C52448200278890 /* OfficeBooking.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = OfficeBooking.storyboard; sourceTree = "<group>"; };
 		58CF11972BA94F2E00B95EE9 /* ServicesEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesEndPoint.swift; sourceTree = "<group>"; };
 		58CF11992BA9502800B95EE9 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		58CF119B2BA95EA700B95EE9 /* subServicesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = subServicesViewController.swift; sourceTree = "<group>"; };
@@ -1309,6 +1313,7 @@
 				58F261BB2BBD91D300A5D633 /* VisitorManagement.storyboard */,
 				58B4060D2BCD4BD30045DD4C /* Dashboard.storyboard */,
 				5804181B2BD13A51008EA858 /* Notifications.storyboard */,
+				58CE5FFB2C52448200278890 /* OfficeBooking.storyboard */,
 			);
 			path = StoryBoard;
 			sourceTree = "<group>";
@@ -1623,6 +1628,7 @@
 			isa = PBXGroup;
 			children = (
 				58EB0E132BB695DB00DC2827 /* BookAnOfficeViewController.swift */,
+				58CE5FF72C5243B000278890 /* ShortTermBookAnOfficeViewController.swift */,
 			);
 			path = "Office Booking";
 			sourceTree = "<group>";
@@ -1847,6 +1853,7 @@
 				589FB6A42B7644A90067255E /* Poppins-ExtraBoldItalic.ttf in Resources */,
 				5883338D2B7E08E6008334A0 /* Inter-VariableFont_slnt,wght.ttf in Resources */,
 				58E6F70C2BA82552009D4E21 /* SelectAnAreaTableViewCell.xib in Resources */,
+				58CE5FFC2C52448200278890 /* OfficeBooking.storyboard in Resources */,
 				588333932B7E08E6008334A0 /* Inter-ExtraBold.ttf in Resources */,
 				589FB6A32B7644A90067255E /* Poppins-SemiBoldItalic.ttf in Resources */,
 				58E6F7182BA826B6009D4E21 /* RequestButtonTableViewCell.xib in Resources */,
@@ -2092,6 +2099,7 @@
 				583403A02B99C99C00318BB8 /* ChooseAdditionalServicesViewController.swift in Sources */,
 				58BEF2612C47DDC500C78CF4 /* String.swift in Sources */,
 				583DBEBF2BB1447700C3F93B /* CommuneEndPoint.swift in Sources */,
+				58CE5FF82C5243B000278890 /* ShortTermBookAnOfficeViewController.swift in Sources */,
 				58BB6B012B983BCB001E1F3D /* TagFlowLayout.swift in Sources */,
 				584318D02BB2AEC50094F50C /* MemberSearchRequest.swift in Sources */,
 				58D584AF2B96F49700D17D0A /* ButtonEditTableViewCell.swift in Sources */,

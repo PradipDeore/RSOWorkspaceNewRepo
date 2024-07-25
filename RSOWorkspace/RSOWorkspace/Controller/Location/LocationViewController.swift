@@ -195,7 +195,7 @@ extension LocationViewController: DashboardDeskTypeTableViewCellDelegate {
             }
         case "Workspace":
             if let meetingRoomsCell = tableView.visibleCells.compactMap({ $0 as? DashboardMeetingRoomsTableViewCell }).first {
-                meetingRoomsCell.fetchOfficeDesk()
+                meetingRoomsCell.fetchOfficeDesk(id: nil, requestModel: nil)
             } else {
                 print("DashboardMeetingRoomsTableViewCell not found")
             }

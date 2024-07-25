@@ -8,7 +8,7 @@
 import Foundation
 
 enum DeskBookingEndPoint {
-    case desks
+    case offices(id: Int?, requestModel: BookOfficeRequestModel?)
     case getDesksLisiting(id: Int, requestModel: DeskRequestModel)
     case getDetailsOfMeetingRooms(id: Int, requestModel: BookMeetingRoomRequestModel)
     case bookingDeskDetails(id : Int)
@@ -18,8 +18,13 @@ extension DeskBookingEndPoint: EndPointType {
 
     var path: String {
         switch self {
-        case .desks:
-            return "office-listing/1"   //https://finance.ardemos.co.in/rso/api/office-listing/1?start_time=11:00&end_time=13:00&date=2024-01-31&is_fullday=Yes
+        case .offices(let id ,_):
+            //https://finance.ardemos.co.in/rso/api/office-listing/1?start_time=11:00&end_time=13:00&date=2024-01-31&is_fullday=Yes
+            if let locationId = id {
+              return "office-listing/\(locationId)"
+            } else {
+                return "office-listing/1"
+            }
         case .getDesksLisiting(let id ,_):
             return "desk-listing/\(id)"
         case .getDetailsOfMeetingRooms(let id ,_):
@@ -36,7 +41,7 @@ extension DeskBookingEndPoint: EndPointType {
 
     var method: HTTPMethods {
         switch self {
-        case .desks:
+        case .offices:
             return .get
         case .getDesksLisiting:
             return .get
@@ -51,8 +56,8 @@ extension DeskBookingEndPoint: EndPointType {
 
     var body: Encodable? {
         switch self {
-        case .desks:
-            return nil
+        case .offices(_, let requestModel):
+            return requestModel
         case .getDesksLisiting(_, let requestModel):
             return requestModel
         case .getDetailsOfMeetingRooms(_, let requestModel):

@@ -546,6 +546,9 @@
                                                                 <fontDescription key="fontDescription" name="Poppins-Bold" family="Poppins" pointSize="16"/>
                                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                                 <state key="normal" title="Submit"/>
+                                                                <connections>
+                                                                    <action selector="btnSubmitTappedAction:" destination="aQj-kj-1C3" eventType="touchUpInside" id="g9k-6k-r2v"/>
+                                                                </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kaQ-BT-Eak">
                                                                 <rect key="frame" x="222.66666666666663" y="788" width="130" height="59"/>
@@ -766,7 +769,7 @@
                                         <rect key="frame" x="16" y="521" width="312" height="28"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZCy-na-2FW" customClass="RSOButton" customModule="RSOWorkspace" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="154.33333333333334" height="28"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="166.33333333333334" height="28"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="28" id="1JY-XP-6fH"/>
                                                 </constraints>
@@ -778,7 +781,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wBo-GW-uPA" customClass="RSOButton" customModule="RSOWorkspace" customModuleProvider="target">
-                                                <rect key="frame" x="164.33333333333337" y="0.0" width="147.66666666666663" height="28"/>
+                                                <rect key="frame" x="176.33333333333337" y="0.0" width="135.66666666666663" height="28"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="28" id="EBB-Xs-pmM"/>
                                                 </constraints>

@@ -22,6 +22,7 @@ enum SBName: String {
     case VisitorManagement
     case Dashboard
     case Notifications
+    case OfficeBooking
     
 }
 

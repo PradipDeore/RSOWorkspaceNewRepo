@@ -60,6 +60,9 @@
                                 <state key="normal" title="Short Term Booking">
                                     <color key="titleColor" name="FEFEFE"/>
                                 </state>
+                                <connections>
+                                    <action selector="btnShortTermBookingAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="v02-w4-5MI"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pwn-Qj-sPG" customClass="RSOButton" customModule="RSOWorkspace" customModuleProvider="target">
                                 <rect key="frame" x="25" y="145" width="180" height="22"/>
@@ -72,6 +75,9 @@
                                 <state key="normal" title="Long Term Booking">
                                     <color key="titleColor" name="FEFEFE"/>
                                 </state>
+                                <connections>
+                                    <action selector="btnLongTermBookingAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="3QK-cq-kpc"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -117,7 +123,7 @@
             <color red="0.94900000095367432" green="0.94900000095367432" blue="0.94900000095367432" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="FEFEFE">
-            <color red="0.99607843137254903" green="0.99607843137254903" blue="0.99607843137254903" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.99599999189376831" green="0.99599999189376831" blue="0.99599999189376831" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

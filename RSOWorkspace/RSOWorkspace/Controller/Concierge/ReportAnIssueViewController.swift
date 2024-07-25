@@ -136,18 +136,22 @@ extension ReportAnIssueViewController: UITableViewDelegate, UITableViewDataSourc
             let cell = tableView.dequeueReusableCell(withIdentifier: "SelectAnAreaTableViewCell", for: indexPath) as! SelectAnAreaTableViewCell
             cell.delegate = self
             cell.dropdownOptions = dropdownOptions
+            cell.selectionStyle = .none
             return cell
         case .addPics:
             let cell = tableView.dequeueReusableCell(withIdentifier: "AddPicsTableViewCell", for: indexPath) as! AddPicsTableViewCell
             cell.delegate = self
+            cell.selectionStyle = .none
             return cell
         case .provideDetails:
             let cell = tableView.dequeueReusableCell(withIdentifier: "ProvideDetailsOfIssueTableViewCell", for: indexPath) as! ProvideDetailsOfIssueTableViewCell
             cell.delegate = self
+            cell.selectionStyle = .none
             return cell
         case .requestButton:
             let cell = tableView.dequeueReusableCell(withIdentifier: "RequestButtonTableViewCell", for: indexPath) as! RequestButtonTableViewCell
             cell.delegate = self
+            cell.selectionStyle = .none
             return cell
         }
     }

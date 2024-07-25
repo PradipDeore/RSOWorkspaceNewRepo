@@ -14,7 +14,6 @@ class DeskListingViewController: UIViewController {
     
     var listItems: [Office] = [] // Declaring listItems here
     var filteredItems: [Office] = []
-
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -27,7 +26,7 @@ class DeskListingViewController: UIViewController {
     func fetchOfficeDesk() {
         APIManager.shared.request(
             modelType: OfficeItemsResponse.self,
-            type: DeskBookingEndPoint.desks) { response in
+            type: DeskBookingEndPoint.offices(id: nil, requestModel: nil)) { response in
                 switch response {
                 case .success(let response):
                   if let deskList = response.data {

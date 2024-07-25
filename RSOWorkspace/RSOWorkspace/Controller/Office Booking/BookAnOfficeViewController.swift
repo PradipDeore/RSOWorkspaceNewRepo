@@ -30,7 +30,6 @@ class BookAnOfficeViewController: UIViewController {
         
         coordinator?.hideBackButton(isHidden:false)
         coordinator?.setTitle(title: "Book an Office")
-        
         setButtonsANDTextFields()
         
     }
@@ -65,18 +64,18 @@ class BookAnOfficeViewController: UIViewController {
                 }
             }
     }
-    @IBAction func btnSubmitTappedAction(_ sender: Any) {
-//        guard let name = txtName.text, !name.isEmpty,
-//              let email = txtEmail.text, !email.isEmpty,
-//              let phone = txtPhone.text, !phone.isEmpty,
-//              let interestedIn = txtInterestedIn.text, !interestedIn.isEmpty,
-//              let noOfSeatsText = txtNoOfSeats.text, let noOfSeats = Int(noOfSeatsText),
-//              let provideDetails = txtprovideDetails.text else {
-//            // Show an alert or toast to inform the user that all fields are required
-//            RSOToastView.shared.show("Please fill in all fields", duration: 2.0, position: .center)
-//            return
-//        }
-//        
+   @IBAction func btnSubmitTappedAction(_ sender: Any) {
+        guard let name = txtName.text, !name.isEmpty,
+              let email = txtEmail.text, !email.isEmpty,
+              let phone = txtPhone.text, !phone.isEmpty,
+              let interestedIn = txtInterestedIn.text, !interestedIn.isEmpty,
+              let noOfSeatsText = txtNoOfSeats.text, let noOfSeats = Int(noOfSeatsText),
+              let provideDetails = txtprovideDetails.text else {
+            // Show an alert or toast to inform the user that all fields are required
+            RSOToastView.shared.show("Please fill in all fields", duration: 2.0, position: .center)
+            return
+        }
+        
 //        let requestModel = BookOfficeRequestModel(
 //            name: name,
 //            email: email,

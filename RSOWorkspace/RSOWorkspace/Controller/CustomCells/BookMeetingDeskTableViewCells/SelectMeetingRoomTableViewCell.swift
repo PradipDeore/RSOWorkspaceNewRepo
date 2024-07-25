@@ -90,5 +90,34 @@ class SelectMeetingRoomTableViewCell: UITableViewCell {
         }
       }
   }
+    
+    func fetchOfficeDesk(id: Int, requestModel: BookOfficeRequestModel) {
+      DispatchQueue.main.async {
+        RSOLoader.showLoader()
+      }
+        APIManager.shared.request(
+            modelType: OfficeItemsResponse.self,
+            type: DeskBookingEndPoint.offices(id: id, requestModel: requestModel)) { response in
+              DispatchQueue.main.async {
+                RSOLoader.removeLoader()
+              }
+                switch response {
+                case .success(let response):
+                  if let officeList = response.data {
+                    let listItems: [RSOCollectionItem] = officeList.map { RSOCollectionItem(deskItem: $0) }
+                    self.collectionView.listItems = listItems
+                      DispatchQueue.main.async {
+                        self.collectionView.reloadData()
+                      }
+                      self.eventHandler?(.dataLoaded, listItems)
+                  }
+                case .failure(let error):
+                    self.eventHandler?(.error(error), nil)
+                    DispatchQueue.main.async {
+                      RSOToastView.shared.show("\(error.localizedDescription)", duration: 2.0, position: .center)
+                    }
+                }
+            }
+    }
   
 }

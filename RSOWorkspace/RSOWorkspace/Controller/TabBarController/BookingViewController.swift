@@ -86,7 +86,21 @@ extension BookingViewController: UITableViewDataSource, UITableViewDelegate {
         guard let section = BookingSection(rawValue: indexPath.section) else {
             return UITableViewCell()
         }
-        
+        switch section
+        {
+        case .office:
+            let cell =  tableView.dequeueReusableCell(withIdentifier: "BookOfficeTableViewCell", for: indexPath) as! BookOfficeTableViewCell
+            cell.delegate = self
+            cell.selectionStyle = .none
+            return cell
+        case .desk:
+            break
+        case .meetingRoom:
+            break
+        case .otherBookings:
+            break
+
+        }
         let cell = tableView.dequeueReusableCell(withIdentifier: section.cellIdentifier, for: indexPath)
         cell.selectionStyle = .none
         return cell
@@ -109,9 +123,8 @@ extension BookingViewController: UITableViewDataSource, UITableViewDelegate {
             // Handle selection if needed
             break
         case .office:
-            let bookAnOfficeVC = UIViewController.createController(storyBoard: .Booking, ofType: BookAnOfficeViewController.self)
-            bookAnOfficeVC.coordinator = self.coordinator
-            self.navigationController?.pushViewController(bookAnOfficeVC, animated: true)
+           break
+         
         }
     }
     
@@ -122,5 +135,18 @@ extension BookingViewController: UITableViewDataSource, UITableViewDelegate {
         return section.height
     }
 }
-
-
+extension BookingViewController:BookOfficeTableViewCellDelegate{
+    func NavigateToShortTermOfficeBooking() {
+        let bookOfficeVC = UIViewController.createController(storyBoard: .OfficeBooking, ofType: ShortTermBookAnOfficeViewController.self)
+        bookOfficeVC.coordinator = self.coordinator
+        self.navigationController?.pushViewController(bookOfficeVC, animated: true)
+    }
+    
+    func NavigateToLongTermOfficeBooking() {
+        let bookOfficeVC = UIViewController.createController(storyBoard: .Booking, ofType: BookAnOfficeViewController.self)
+        bookOfficeVC.coordinator = self.coordinator
+        self.navigationController?.pushViewController(bookOfficeVC, animated: true)
+    }
+    
+    
+}
