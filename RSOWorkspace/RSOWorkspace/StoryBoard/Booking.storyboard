@@ -537,20 +537,7 @@
                                                                     <constraint firstAttribute="bottom" secondItem="sgD-RD-Jft" secondAttribute="bottom" id="ygv-7B-lav"/>
                                                                 </constraints>
                                                             </view>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9UQ-1D-1Yb" customClass="RSOButton" customModule="RSOWorkspace" customModuleProvider="target">
-                                                                <rect key="frame" x="19.666666666666657" y="716" width="333" height="46"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="width" constant="333" id="chp-Tm-Pok"/>
-                                                                    <constraint firstAttribute="height" constant="46" id="js5-bR-1hk"/>
-                                                                </constraints>
-                                                                <fontDescription key="fontDescription" name="Poppins-Bold" family="Poppins" pointSize="16"/>
-                                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                                <state key="normal" title="Submit"/>
-                                                                <connections>
-                                                                    <action selector="btnSubmitTappedAction:" destination="aQj-kj-1C3" eventType="touchUpInside" id="g9k-6k-r2v"/>
-                                                                </connections>
-                                                            </button>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kaQ-BT-Eak">
+                                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kaQ-BT-Eak">
                                                                 <rect key="frame" x="222.66666666666663" y="788" width="130" height="59"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="59" id="583-ir-zVJ"/>
@@ -559,12 +546,26 @@
                                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                                                 <state key="normal" image="chatbot"/>
                                                             </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9UQ-1D-1Yb" customClass="RSOButton" customModule="RSOWorkspace" customModuleProvider="target">
+                                                                <rect key="frame" x="20" y="645" width="333" height="46"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" constant="333" id="O2l-0L-MbM"/>
+                                                                    <constraint firstAttribute="height" constant="46" id="woe-cI-Orw"/>
+                                                                </constraints>
+                                                                <fontDescription key="fontDescription" name="Poppins-Bold" family="Poppins" pointSize="16"/>
+                                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                                <state key="normal" title="Submit"/>
+                                                                <connections>
+                                                                    <action selector="btnSubmitTappedAction:" destination="aQj-kj-1C3" eventType="touchUpInside" id="g9k-6k-r2v"/>
+                                                                </connections>
+                                                            </button>
                                                         </subviews>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
                                                             <constraint firstItem="8zU-gW-lCj" firstAttribute="leading" secondItem="8Hx-Xc-2Cm" secondAttribute="leading" id="1Rj-on-3AD"/>
                                                             <constraint firstItem="mes-L0-2pj" firstAttribute="top" secondItem="gWo-hn-9un" secondAttribute="bottom" constant="21" id="1j1-8P-cWg"/>
                                                             <constraint firstItem="gWo-hn-9un" firstAttribute="leading" secondItem="wKv-Ux-vEd" secondAttribute="trailing" constant="20" id="55d-7x-Qzv"/>
+                                                            <constraint firstItem="9UQ-1D-1Yb" firstAttribute="top" secondItem="mes-L0-2pj" secondAttribute="bottom" constant="82" id="5XF-Gc-WwP"/>
                                                             <constraint firstItem="rSB-1d-Nsx" firstAttribute="top" secondItem="YWq-Al-zYM" secondAttribute="bottom" constant="34" id="8ZW-Dm-98X"/>
                                                             <constraint firstItem="mGw-B8-Wg2" firstAttribute="leading" secondItem="gWo-hn-9un" secondAttribute="trailing" constant="20" id="El0-GF-Gch"/>
                                                             <constraint firstItem="YWq-Al-zYM" firstAttribute="height" secondItem="8zU-gW-lCj" secondAttribute="height" id="GgN-Vi-wt7"/>
@@ -572,11 +573,10 @@
                                                             <constraint firstItem="mes-L0-2pj" firstAttribute="top" secondItem="wKv-Ux-vEd" secondAttribute="bottom" constant="20" id="Rjd-cz-FLp"/>
                                                             <constraint firstItem="8zU-gW-lCj" firstAttribute="leading" secondItem="SMu-8U-9zx" secondAttribute="leading" id="Rmw-IT-UUM"/>
                                                             <constraint firstItem="8zU-gW-lCj" firstAttribute="leading" secondItem="rSB-1d-Nsx" secondAttribute="leading" id="T1g-D2-6zu"/>
-                                                            <constraint firstItem="kaQ-BT-Eak" firstAttribute="top" secondItem="9UQ-1D-1Yb" secondAttribute="bottom" constant="26" id="UgS-i7-1qf"/>
                                                             <constraint firstItem="mGw-B8-Wg2" firstAttribute="baseline" secondItem="wKv-Ux-vEd" secondAttribute="baseline" id="UvB-i5-GCP"/>
                                                             <constraint firstItem="mes-L0-2pj" firstAttribute="leading" secondItem="sCu-xB-Mee" secondAttribute="leading" constant="16" id="b0p-qh-IBH"/>
-                                                            <constraint firstItem="9UQ-1D-1Yb" firstAttribute="leading" secondItem="YWq-Al-zYM" secondAttribute="leading" id="bBR-xa-cZF"/>
                                                             <constraint firstItem="mes-L0-2pj" firstAttribute="top" secondItem="rSB-1d-Nsx" secondAttribute="bottom" constant="15" id="dRk-OD-ovo"/>
+                                                            <constraint firstItem="9UQ-1D-1Yb" firstAttribute="leading" secondItem="sCu-xB-Mee" secondAttribute="leading" constant="20" id="gMc-xd-qCL"/>
                                                             <constraint firstAttribute="bottom" secondItem="kaQ-BT-Eak" secondAttribute="bottom" constant="46" id="hJR-0M-98h"/>
                                                             <constraint firstItem="8zU-gW-lCj" firstAttribute="centerX" secondItem="sCu-xB-Mee" secondAttribute="centerX" id="hPt-gD-H1L"/>
                                                             <constraint firstItem="YWq-Al-zYM" firstAttribute="top" secondItem="8Hx-Xc-2Cm" secondAttribute="bottom" constant="24" id="jsS-vp-PAB"/>
@@ -584,7 +584,6 @@
                                                             <constraint firstItem="YWq-Al-zYM" firstAttribute="leading" secondItem="8zU-gW-lCj" secondAttribute="leading" id="qCA-LC-ikg"/>
                                                             <constraint firstAttribute="height" constant="893" id="qrQ-PR-oEc"/>
                                                             <constraint firstItem="YWq-Al-zYM" firstAttribute="width" secondItem="8zU-gW-lCj" secondAttribute="width" id="r9a-o3-aLu"/>
-                                                            <constraint firstItem="kaQ-BT-Eak" firstAttribute="trailing" secondItem="9UQ-1D-1Yb" secondAttribute="trailing" id="rjE-3H-6ED"/>
                                                             <constraint firstItem="8zU-gW-lCj" firstAttribute="top" secondItem="sCu-xB-Mee" secondAttribute="top" constant="20" id="rjJ-9B-XCP"/>
                                                             <constraint firstItem="wKv-Ux-vEd" firstAttribute="leading" secondItem="rSB-1d-Nsx" secondAttribute="trailing" constant="37" id="vE6-cm-SvB"/>
                                                         </constraints>

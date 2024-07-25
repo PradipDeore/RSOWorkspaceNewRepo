@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PlanInfoTableViewCell" rowHeight="141" id="KGk-i7-Jjw" customClass="PlanInfoTableViewCell" customModule="RSOWorkspace" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="141"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="141"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OCD-0m-LIF" userLabel="title View">
+                        <rect key="frame" x="0.0" y="10" width="320" height="50"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="green-check" translatesAutoresizingMaskIntoConstraints="NO" id="0AG-wW-Iwu">
+                                <rect key="frame" x="10" y="10" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="9LA-JV-75N"/>
+                                    <constraint firstAttribute="height" constant="30" id="ttQ-cs-2IB"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="One day access to open desk spaces" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cli-XM-DmT">
+                                <rect key="frame" x="60" y="0.0" width="240" height="50"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="0AG-wW-Iwu" firstAttribute="centerY" secondItem="OCD-0m-LIF" secondAttribute="centerY" id="AWv-Ua-zwU"/>
+                            <constraint firstAttribute="height" constant="50" id="G7m-zK-BXN"/>
+                            <constraint firstAttribute="bottom" secondItem="cli-XM-DmT" secondAttribute="bottom" id="Iu0-et-cN1"/>
+                            <constraint firstItem="cli-XM-DmT" firstAttribute="leading" secondItem="0AG-wW-Iwu" secondAttribute="trailing" constant="20" id="K5P-cO-2fg"/>
+                            <constraint firstItem="0AG-wW-Iwu" firstAttribute="leading" secondItem="OCD-0m-LIF" secondAttribute="leading" constant="10" id="UkI-Da-g9V"/>
+                            <constraint firstItem="cli-XM-DmT" firstAttribute="leading" secondItem="0AG-wW-Iwu" secondAttribute="trailing" constant="20" id="Y9K-oD-g0Z"/>
+                            <constraint firstAttribute="trailing" secondItem="cli-XM-DmT" secondAttribute="trailing" constant="20" id="fKA-Ut-Hxo"/>
+                            <constraint firstItem="cli-XM-DmT" firstAttribute="top" secondItem="OCD-0m-LIF" secondAttribute="top" id="z1e-r3-IrX"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="K5P-cO-2fg"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WMX-I4-zb7" userLabel="line View">
+                        <rect key="frame" x="20" y="65" width="280" height="0.6666666666666714"/>
+                        <color key="backgroundColor" name="E3E3E3"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="0.5" id="yTA-H8-dyF"/>
+                        </constraints>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q1R-Pa-JFI" userLabel="title View">
+                        <rect key="frame" x="0.0" y="70.666666666666671" width="320" height="50"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="green-check" translatesAutoresizingMaskIntoConstraints="NO" id="HGp-9k-UDC">
+                                <rect key="frame" x="10" y="10" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="ZqW-hi-wJZ"/>
+                                    <constraint firstAttribute="width" constant="30" id="eK2-Vj-SDL"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Secure WiFi, unlimited premium coffee &amp; beverages" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aJG-ej-IZR">
+                                <rect key="frame" x="60" y="0.0" width="240" height="50"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="HGp-9k-UDC" firstAttribute="leading" secondItem="q1R-Pa-JFI" secondAttribute="leading" constant="10" id="0Zu-J1-F3b"/>
+                            <constraint firstAttribute="trailing" secondItem="aJG-ej-IZR" secondAttribute="trailing" constant="20" id="4cI-ZH-xUm"/>
+                            <constraint firstAttribute="bottom" secondItem="aJG-ej-IZR" secondAttribute="bottom" id="HFH-KB-RHY"/>
+                            <constraint firstItem="aJG-ej-IZR" firstAttribute="leading" secondItem="HGp-9k-UDC" secondAttribute="trailing" constant="20" id="UVz-4S-mtL"/>
+                            <constraint firstItem="aJG-ej-IZR" firstAttribute="top" secondItem="q1R-Pa-JFI" secondAttribute="top" id="aFt-t9-QSx"/>
+                            <constraint firstAttribute="height" constant="50" id="leS-6H-Yni"/>
+                            <constraint firstItem="HGp-9k-UDC" firstAttribute="centerY" secondItem="q1R-Pa-JFI" secondAttribute="centerY" id="v6v-DN-YnW"/>
+                            <constraint firstItem="aJG-ej-IZR" firstAttribute="leading" secondItem="HGp-9k-UDC" secondAttribute="trailing" constant="20" id="ytY-MU-gue"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="UVz-4S-mtL"/>
+                            </mask>
+                        </variation>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="q1R-Pa-JFI" firstAttribute="top" secondItem="WMX-I4-zb7" secondAttribute="bottom" constant="5" id="CRY-Fi-27o"/>
+                    <constraint firstItem="WMX-I4-zb7" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="Oev-bd-HZt"/>
+                    <constraint firstAttribute="trailing" secondItem="OCD-0m-LIF" secondAttribute="trailing" id="RBm-QB-bTz"/>
+                    <constraint firstItem="OCD-0m-LIF" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="T0y-h9-k6V"/>
+                    <constraint firstItem="WMX-I4-zb7" firstAttribute="top" secondItem="OCD-0m-LIF" secondAttribute="bottom" constant="5" id="igh-lI-Uh5"/>
+                    <constraint firstAttribute="trailing" secondItem="q1R-Pa-JFI" secondAttribute="trailing" id="jcV-Hr-8CJ"/>
+                    <constraint firstItem="q1R-Pa-JFI" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="p2c-eL-K1x"/>
+                    <constraint firstItem="OCD-0m-LIF" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="sK3-dN-nxs"/>
+                    <constraint firstAttribute="trailing" secondItem="WMX-I4-zb7" secondAttribute="trailing" constant="20" id="wIK-tp-CVE"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <point key="canvasLocation" x="-29.007633587786259" y="53.87323943661972"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="green-check" width="64" height="64"/>
+        <namedColor name="E3E3E3">
+            <color red="0.88999998569488525" green="0.88999998569488525" blue="0.88999998569488525" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

@@ -78,15 +78,14 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
         case changePassword
         case membershipPlan
         case paymentMethod
-        case rewardPoints
-        
+       
         var cellIdentifier: String {
             switch self {
             case .profileDetails: return "ProfileDetailsTableViewCell"
             case .changePassword: return "ChangePasswordTableViewCell"
             case .membershipPlan: return "MembershipPlanTableViewCell"
             case .paymentMethod: return "AddPaymentMethodTableViewCell"
-            case .rewardPoints: return "RewardPointsTableViewCell"
+            
 
             }
         }
@@ -97,7 +96,7 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
             case .changePassword: return 50
             case .membershipPlan: return 189
             case .paymentMethod: return 50
-            case .rewardPoints: return UserHelper.shared.isGuest() ? 0 : 131
+            
             }
         }
     }
@@ -151,21 +150,8 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
             }
         case .paymentMethod:
             if let paymentMethodCell = cell as? AddPaymentMethodTableViewCell {
-                    return paymentMethodCell
+                return paymentMethodCell
                 
-            }
-        case .rewardPoints:
-            if let rewardPointsCell = cell as? RewardPointsTableViewCell {
-                
-                if let rewardPoints = myProfileResponse {
-                    rewardPointsCell.setData(item: rewardPoints)
-                      } else {
-                          // Handle the case where myProfileResponse is nil
-                          // For example, you could set some default data or show an error message
-                          print("Error: myProfileResponse is nil")
-                      }
-
-                return rewardPointsCell
             }
         default:
             break

@@ -26,8 +26,8 @@ class BookRoomDetailsViewController: UIViewController {
     var requestModel: BookMeetingRoomRequestModel!
     var displayBookingDetails = DisplayBookingDetailsModel()
     
-    var guestEmailArray:[String] = [""]
-    var teamMembersArray:[String] = [""]
+    var guestEmailArray:[GuestList] = [GuestList(emailId: "")]
+    var teamMembersArray:[TeamList] = [TeamList(id: 0)]
     var dateOfBooking : String?
     var bookingTime :String?
     var seatingConfigueId: Int?
@@ -189,11 +189,11 @@ extension BookRoomDetailsViewController: UITableViewDataSource, UITableViewDeleg
             return cell
         case 8:
             let cell = tableView.dequeueReusableCell(withIdentifier: "InviteTeamMembersTableViewCell", for: indexPath) as! InviteTeamMembersTableViewCell
-            cell.lblteammemberName.text = teamMembersArray[indexPath.row]
+            cell.lblteammemberName.text = "\(String(describing: teamMembersArray[indexPath.row].id))"
             cell.btnAdd.isHidden = !(indexPath.row == 0)
             cell.teamMemberView.isHidden = false
             if indexPath.row == 0 {
-                if teamMembersArray.first == ""{
+                if teamMembersArray.first?.id == 0 {
                     cell.teamMemberView.isHidden = true
                 }
             }
@@ -206,11 +206,11 @@ extension BookRoomDetailsViewController: UITableViewDataSource, UITableViewDeleg
             return cell
         case 10:
             let cell = tableView.dequeueReusableCell(withIdentifier: "InviteGuestsTableViewCell", for: indexPath) as! InviteGuestsTableViewCell
-            cell.lblGuestName.text = guestEmailArray[indexPath.row]
+            cell.lblGuestName.text = guestEmailArray[indexPath.row].emailId
             cell.btnAdd.isHidden = !(indexPath.row == 0)
             cell.guestEmailView.isHidden = false
             if indexPath.row == 0 {
-                if guestEmailArray.first == ""{
+                if guestEmailArray.first?.emailId == ""{
                     cell.guestEmailView.isHidden = true
                 }
             }
@@ -286,7 +286,7 @@ extension BookRoomDetailsViewController:InviteTeamMembersTableViewCellDelegate{
     func btnDeleteTeamMember(buttonTag: Int) {
         teamMembersArray.remove(at:buttonTag)
         if teamMembersArray.isEmpty{
-            teamMembersArray.append("")
+            teamMembersArray.append(TeamList(id: 0))
         }
         tableView.reloadData()
     }
@@ -294,11 +294,11 @@ extension BookRoomDetailsViewController:InviteTeamMembersTableViewCellDelegate{
 extension BookRoomDetailsViewController:sendteamMemberNameDelegate{
     
     func sendteamMemberName(name: String) {
-        if teamMembersArray.count == 1 && teamMembersArray.first == ""{
+        if teamMembersArray.count == 1 && teamMembersArray.first?.id == 0{
             teamMembersArray.remove(at: 0)
         }
-        teamMembersArray.append(name)
-        self.confirmBookingDetails.teamMembers = teamMembersArray
+        teamMembersArray.append(TeamList(id: 2))
+        // self.confirmBookingDetails.teamMembers = teamMembersArray
         tableView.reloadData()
     }
 }
@@ -314,7 +314,7 @@ extension BookRoomDetailsViewController:InviteGuestsTableViewCellDelegate{
     func btnDeleteGuest(buttonTag: Int) {
         guestEmailArray.remove(at:buttonTag)
         if guestEmailArray.isEmpty{
-            guestEmailArray.append("")
+            guestEmailArray.append(GuestList(emailId: ""))
         }
         tableView.reloadData()
     }
@@ -322,11 +322,11 @@ extension BookRoomDetailsViewController:InviteGuestsTableViewCellDelegate{
 extension BookRoomDetailsViewController:sendGuestEmailDelegate{
     
     func sendGuestEmail(email: String) {
-        if guestEmailArray.count == 1 && guestEmailArray.first == ""{
+        if guestEmailArray.count == 1 && guestEmailArray.first?.emailId == ""{
             guestEmailArray.remove(at: 0)
         }
-        guestEmailArray.append(email)
-        self.confirmBookingDetails.guest = guestEmailArray
+        guestEmailArray.append(GuestList(emailId: email))
+        // self.confirmBookingDetails.guest = guestEmailArray
         tableView.reloadData()
     }
 }
@@ -336,10 +336,10 @@ extension BookRoomDetailsViewController:ButtonBookingConfirmTableViewCellDelegat
         let bookingConfirmVC = UIViewController.createController(storyBoard: .Booking, ofType: BookingConfirmedViewController.self)
         bookingConfirmVC.bookingConfirmDetails = self.confirmBookingDetails
         bookingConfirmVC.coordinator = self.coordinator
-        bookingConfirmVC.guestEmailArray = self.guestEmailArray.filter { $0 != "" }
+        bookingConfirmVC.guestEmailArray = self.guestEmailArray.filter { $0.emailId != "" }
         bookingConfirmVC.roomId = self.confirmBookingDetails.meetingId
         bookingConfirmVC.seatingConfigueId = self.seatingConfigueId ?? 0
-        bookingConfirmVC.teamMembersArray = self.teamMembersArray.filter { $0 != "" }
+        bookingConfirmVC.teamMembersArray = self.teamMembersArray.filter { $0.id != 0 }
         bookingConfirmVC.locationName = self.confirmBookingDetails.location
         bookingConfirmVC.locationId = self.locationId
         bookingConfirmVC.amenitiesArray = [] //amenityNames.filter { $0 != "" }

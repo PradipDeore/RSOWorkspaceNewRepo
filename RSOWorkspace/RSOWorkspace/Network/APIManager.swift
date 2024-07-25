@@ -58,8 +58,16 @@ final class APIManager {
             }
         } else {
             if let parameters = type.body {
-                request.httpBody = try? JSONEncoder().encode(parameters)
+                do {
+                    let jsonData = try JSONEncoder().encode(parameters)
+                    let jsonString = String(data: jsonData, encoding: .utf8)
+                    print("JSON Body: \(jsonString ?? "nil")")
+                    request.httpBody = jsonData
+                } catch {
+                    print("Error encoding parameters: \(error)")
+                }
             }
+
         }
         
         request.allHTTPHeaderFields = type.headers

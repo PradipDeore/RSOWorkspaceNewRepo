@@ -15,15 +15,12 @@ class BookingViewController: UIViewController, RSOTabCoordinated {
     enum BookingSection: Int, CaseIterable {
         case desk = 0
         case meetingRoom
-        case otherBookings
         case office
         
         var height: CGFloat {
             switch self {
             case .desk, .meetingRoom:
                 return 100
-            case .otherBookings:
-                return UserHelper.shared.isGuest() ? 0 : 125
             case .office:
                 return 200
             }
@@ -35,8 +32,6 @@ class BookingViewController: UIViewController, RSOTabCoordinated {
                 return "BookDeskTableViewCell"
             case .meetingRoom:
                 return "BookMeetingRoomTableViewCell"
-            case .otherBookings:
-                return "OtherBookingsTableViewCell"
             case .office:
                 return "BookOfficeTableViewCell"
             }
@@ -97,8 +92,7 @@ extension BookingViewController: UITableViewDataSource, UITableViewDelegate {
             break
         case .meetingRoom:
             break
-        case .otherBookings:
-            break
+       
 
         }
         let cell = tableView.dequeueReusableCell(withIdentifier: section.cellIdentifier, for: indexPath)
@@ -119,9 +113,7 @@ extension BookingViewController: UITableViewDataSource, UITableViewDelegate {
             let bookMeetingRoomVC = UIViewController.createController(storyBoard: .Booking, ofType: BookMeetingRoomViewController.self)
             bookMeetingRoomVC.coordinator = self.coordinator
             self.navigationController?.pushViewController(bookMeetingRoomVC, animated: true)
-        case .otherBookings:
-            // Handle selection if needed
-            break
+       
         case .office:
            break
          

@@ -24,6 +24,7 @@ enum SBName: String {
     case Notifications
     case OfficeBooking
     
+    case Membership
 }
 
 extension UIViewController {

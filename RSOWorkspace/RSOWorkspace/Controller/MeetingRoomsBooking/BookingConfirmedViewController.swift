@@ -39,9 +39,9 @@ class BookingConfirmedViewController: UIViewController{
     var roomPrice = ""
     var amenityName = ""
     var amenityPrice = ""
-    var guestEmailArray:[String] = [""]
-    var teamMembersArray:[String] = [""]
-    var amenitiesArray:[String] = [""]
+    var guestEmailArray:[GuestList] = [GuestList(emailId: "")]
+    var teamMembersArray:[TeamList] = [TeamList(id: 0)]
+    var amenitiesArray:[StoreRoomBookingAmenity] = []
     var locationName :String = ""
     var locationId: Int = 0
     var seatingConfigueId: Int = 0
@@ -205,8 +205,9 @@ extension BookingConfirmedViewController: UITableViewDataSource, UITableViewDele
             
             cell.selectionStyle = .none
             let teamMember = bookingConfirmDetails.teamMembers[indexPath.row]
-            cell.lblName.text = teamMember
-            teamMembersArray.append(teamMember)
+            //cell.lblName.text = teamMember
+            let teamMemberObj = TeamList(id: 2)
+            teamMembersArray.append(teamMemberObj)
             cell.selectionStyle = .none
             
             return cell
@@ -215,7 +216,7 @@ extension BookingConfirmedViewController: UITableViewDataSource, UITableViewDele
             let cell = tableView.dequeueReusableCell(withIdentifier: cellType.rawValue, for: indexPath) as! BookingConfirmedGuestsTableViewCell
             cell.selectionStyle = .none
             let guest = guestEmailArray[indexPath.row]
-            cell.lblEmail.text = guest
+            cell.lblEmail.text = guest.emailId
             return cell
             
         case .confirmAndProceedToPayment:
@@ -283,9 +284,9 @@ extension BookingConfirmedViewController:ConfirmAndProceedToPayementTableViewCel
         let endTime = self.bookingConfirmDetails.endTime
         let BookingTime = "\(startTime ?? "00:00") - \(endTime ?? "00:00")"
         let locationId = String(locationId)
-        let location = StoreRoomLocation(id: locationId, name: locationName)
+        let location = StoreRoomBookingLocation(id: locationId, name: locationName)
         
-        let requestModel = StoreRoomBookingRequest(amenities: amenitiesArray, configurations_id: seatingConfigueId, date: dateOfBooking, guestList: guestEmailArray, location: location, memberList: teamMembersArray, roomId: roomId, time: BookingTime)
+        let requestModel = StoreRoomBookingRequest(amenities: amenitiesArray, configurationsID: seatingConfigueId, date: dateOfBooking, guestList: guestEmailArray, location: location, memberList: teamMembersArray, roomId: roomId, time: BookingTime)
         print("parameters",requestModel)
         storeRoomBookingAPI(requestModel: requestModel)
         

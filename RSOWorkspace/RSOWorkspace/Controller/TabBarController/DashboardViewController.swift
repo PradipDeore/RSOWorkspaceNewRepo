@@ -199,21 +199,26 @@ extension DashboardViewController: BookButtonActionDelegate {
 }
 extension DashboardViewController: DashboardDeskTypeTableViewCellDelegate {
   func buttonTapped(type: String) {
-    switch type {
-    case "Meetings":
-      if let meetingRoomsCell = tableView.visibleCells.compactMap({ $0 as? DashboardMeetingRoomsTableViewCell }).first {
-        meetingRoomsCell.fetchRooms()
-      } else {
-        print("DashboardMeetingRoomsTableViewCell not found")
+    DispatchQueue.main.async {
+      switch type {
+      case "Meetings":
+        if let meetingRoomsCell = self.tableView.visibleCells.compactMap({ $0 as? DashboardMeetingRoomsTableViewCell }).first {
+          meetingRoomsCell.fetchRooms()
+        } else {
+          print("DashboardMeetingRoomsTableViewCell not found")
+        }
+      case "Workspace":
+        if let meetingRoomsCell = self.tableView.visibleCells.compactMap({ $0 as? DashboardMeetingRoomsTableViewCell }).first {
+            meetingRoomsCell.fetchOfficeDesk(id: nil, requestModel: nil)
+        } else {
+          print("DashboardMeetingRoomsTableViewCell not found")
+        }
+      case "Membership":
+        let membershipViewController = UIViewController.createController(storyBoard: .Membership, ofType: MembershipViewController.self)
+        self.navigationController?.pushViewController(membershipViewController, animated: true)
+      default:
+        break
       }
-    case "Workspace":
-      if let meetingRoomsCell = tableView.visibleCells.compactMap({ $0 as? DashboardMeetingRoomsTableViewCell }).first {
-          meetingRoomsCell.fetchOfficeDesk(id: nil, requestModel: nil)
-      } else {
-        print("DashboardMeetingRoomsTableViewCell not found")
-      }
-    default:
-      break
     }
   }
 }
