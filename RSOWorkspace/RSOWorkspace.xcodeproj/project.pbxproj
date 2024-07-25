@@ -402,6 +402,22 @@
 		58F88E402BA8230200771268 /* ReportAnIssueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F88E3F2BA8230200771268 /* ReportAnIssueViewController.swift */; };
 		58F96E242C479DFA009C4DC5 /* subServicesRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F96E232C479DFA009C4DC5 /* subServicesRequestModel.swift */; };
 		EEA44D812C4805530081EE0D /* RSOToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA44D802C4805530081EE0D /* RSOToastView.swift */; };
+		EEAB97A02C522ADC00BD5E0D /* MembershipViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEAB979F2C522ADC00BD5E0D /* MembershipViewController.swift */; };
+		EEAB97A22C5233A800BD5E0D /* MembershipTabItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEAB97A12C5233A800BD5E0D /* MembershipTabItem.swift */; };
+		EEAB97A42C52379400BD5E0D /* PlanTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEAB97A32C52379400BD5E0D /* PlanTypeViewController.swift */; };
+		EEAB97A62C5237B500BD5E0D /* AgreementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEAB97A52C5237B500BD5E0D /* AgreementViewController.swift */; };
+		EEAB97A82C5237D400BD5E0D /* YourDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEAB97A72C5237D400BD5E0D /* YourDetailsViewController.swift */; };
+		EEAB97AA2C5237E800BD5E0D /* PaymentDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEAB97A92C5237E800BD5E0D /* PaymentDetailsViewController.swift */; };
+		EEAB97AC2C52382900BD5E0D /* Membership.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EEAB97AB2C52382900BD5E0D /* Membership.storyboard */; };
+		EEAB97B12C523AC800BD5E0D /* MembershipButtonCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEAB97AF2C523AC800BD5E0D /* MembershipButtonCollectionViewCell.swift */; };
+		EEAB97B22C523AC800BD5E0D /* MembershipButtonCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EEAB97B02C523AC800BD5E0D /* MembershipButtonCollectionViewCell.xib */; };
+		EEAB97B52C52493000BD5E0D /* PlanTypeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEAB97B32C52493000BD5E0D /* PlanTypeCollectionViewCell.swift */; };
+		EEAB97B62C52493000BD5E0D /* PlanTypeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EEAB97B42C52493000BD5E0D /* PlanTypeCollectionViewCell.xib */; };
+		EEAB97B82C5249A800BD5E0D /* PlanOptionList.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEAB97B72C5249A800BD5E0D /* PlanOptionList.swift */; };
+		EEAB97BB2C524AB300BD5E0D /* PlanPriceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEAB97B92C524AB300BD5E0D /* PlanPriceTableViewCell.swift */; };
+		EEAB97BC2C524AB300BD5E0D /* PlanPriceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EEAB97BA2C524AB300BD5E0D /* PlanPriceTableViewCell.xib */; };
+		EEAED9432C52504C00A1F56A /* PlanInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEAED9412C52504C00A1F56A /* PlanInfoTableViewCell.swift */; };
+		EEAED9442C52504C00A1F56A /* PlanInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EEAED9422C52504C00A1F56A /* PlanInfoTableViewCell.xib */; };
 		EEE105B52C49256B007ECE4D /* RSOLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE105B42C49256B007ECE4D /* RSOLoader.swift */; };
 /* End PBXBuildFile section */
 
@@ -805,6 +821,22 @@
 		679B083A745FEFA843A18302 /* Pods-RSOWorkspace.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RSOWorkspace.release.xcconfig"; path = "Target Support Files/Pods-RSOWorkspace/Pods-RSOWorkspace.release.xcconfig"; sourceTree = "<group>"; };
 		7AB224176F3C3ECB7C30B655 /* Pods-RSOWorkspace.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RSOWorkspace.debug.xcconfig"; path = "Target Support Files/Pods-RSOWorkspace/Pods-RSOWorkspace.debug.xcconfig"; sourceTree = "<group>"; };
 		EEA44D802C4805530081EE0D /* RSOToastView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSOToastView.swift; sourceTree = "<group>"; };
+		EEAB979F2C522ADC00BD5E0D /* MembershipViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MembershipViewController.swift; sourceTree = "<group>"; };
+		EEAB97A12C5233A800BD5E0D /* MembershipTabItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MembershipTabItem.swift; sourceTree = "<group>"; };
+		EEAB97A32C52379400BD5E0D /* PlanTypeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanTypeViewController.swift; sourceTree = "<group>"; };
+		EEAB97A52C5237B500BD5E0D /* AgreementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgreementViewController.swift; sourceTree = "<group>"; };
+		EEAB97A72C5237D400BD5E0D /* YourDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YourDetailsViewController.swift; sourceTree = "<group>"; };
+		EEAB97A92C5237E800BD5E0D /* PaymentDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentDetailsViewController.swift; sourceTree = "<group>"; };
+		EEAB97AB2C52382900BD5E0D /* Membership.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Membership.storyboard; sourceTree = "<group>"; };
+		EEAB97AF2C523AC800BD5E0D /* MembershipButtonCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MembershipButtonCollectionViewCell.swift; sourceTree = "<group>"; };
+		EEAB97B02C523AC800BD5E0D /* MembershipButtonCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MembershipButtonCollectionViewCell.xib; sourceTree = "<group>"; };
+		EEAB97B32C52493000BD5E0D /* PlanTypeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanTypeCollectionViewCell.swift; sourceTree = "<group>"; };
+		EEAB97B42C52493000BD5E0D /* PlanTypeCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlanTypeCollectionViewCell.xib; sourceTree = "<group>"; };
+		EEAB97B72C5249A800BD5E0D /* PlanOptionList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanOptionList.swift; sourceTree = "<group>"; };
+		EEAB97B92C524AB300BD5E0D /* PlanPriceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanPriceTableViewCell.swift; sourceTree = "<group>"; };
+		EEAB97BA2C524AB300BD5E0D /* PlanPriceTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlanPriceTableViewCell.xib; sourceTree = "<group>"; };
+		EEAED9412C52504C00A1F56A /* PlanInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanInfoTableViewCell.swift; sourceTree = "<group>"; };
+		EEAED9422C52504C00A1F56A /* PlanInfoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlanInfoTableViewCell.xib; sourceTree = "<group>"; };
 		EEE105B42C49256B007ECE4D /* RSOLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSOLoader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -1309,6 +1341,7 @@
 				58F261BB2BBD91D300A5D633 /* VisitorManagement.storyboard */,
 				58B4060D2BCD4BD30045DD4C /* Dashboard.storyboard */,
 				5804181B2BD13A51008EA858 /* Notifications.storyboard */,
+				EEAB97AB2C52382900BD5E0D /* Membership.storyboard */,
 			);
 			path = StoryBoard;
 			sourceTree = "<group>";
@@ -1378,6 +1411,21 @@
 				5834039E2B99C99C00318BB8 /* ChooseAdditionalServicesViewController.swift */,
 				58BCBC1A2C491F1B00465381 /* SideMenuPaymentsViewController.swift */,
 				58AE87B82C513591004A99D6 /* PaymentNetworkManager.swift */,
+				EEAB979F2C522ADC00BD5E0D /* MembershipViewController.swift */,
+				EEAB97A12C5233A800BD5E0D /* MembershipTabItem.swift */,
+				EEAB97A32C52379400BD5E0D /* PlanTypeViewController.swift */,
+				EEAB97A52C5237B500BD5E0D /* AgreementViewController.swift */,
+				EEAB97A72C5237D400BD5E0D /* YourDetailsViewController.swift */,
+				EEAB97A92C5237E800BD5E0D /* PaymentDetailsViewController.swift */,
+				EEAB97AF2C523AC800BD5E0D /* MembershipButtonCollectionViewCell.swift */,
+				EEAB97B02C523AC800BD5E0D /* MembershipButtonCollectionViewCell.xib */,
+				EEAB97B32C52493000BD5E0D /* PlanTypeCollectionViewCell.swift */,
+				EEAB97B42C52493000BD5E0D /* PlanTypeCollectionViewCell.xib */,
+				EEAB97B72C5249A800BD5E0D /* PlanOptionList.swift */,
+				EEAB97B92C524AB300BD5E0D /* PlanPriceTableViewCell.swift */,
+				EEAB97BA2C524AB300BD5E0D /* PlanPriceTableViewCell.xib */,
+				EEAED9412C52504C00A1F56A /* PlanInfoTableViewCell.swift */,
+				EEAED9422C52504C00A1F56A /* PlanInfoTableViewCell.xib */,
 			);
 			path = Payment;
 			sourceTree = "<group>";
@@ -1833,6 +1881,7 @@
 				58BCBC242C49283200465381 /* PaymentDetailsTableViewCell.xib in Resources */,
 				588333962B7E08E6008334A0 /* Inter-SemiBold.ttf in Resources */,
 				5864882C2BBAD2890024CBA2 /* Feedback.storyboard in Resources */,
+				EEAED9442C52504C00A1F56A /* PlanInfoTableViewCell.xib in Resources */,
 				580418192BD12589008EA858 /* ConfirmSelectedDeskTableViewCell.xib in Resources */,
 				58713EB72BC94AA20012DD4E /* InviteTeamMembersCollectionViewCell.xib in Resources */,
 				58D584982B96F34100D17D0A /* BookingConfirmedMeetingRoomTableViewCell.xib in Resources */,
@@ -1865,6 +1914,7 @@
 				586FA70E2BBC354E00EA2772 /* GalleryTableViewCell.xib in Resources */,
 				58374A3B2B84B8B100CA34C5 /* Products.storyboard in Resources */,
 				5804181C2BD13A51008EA858 /* Notifications.storyboard in Resources */,
+				EEAB97B22C523AC800BD5E0D /* MembershipButtonCollectionViewCell.xib in Resources */,
 				58F261C42BBD96B500A5D633 /* ReasonForVisitTableViewCells.xib in Resources */,
 				588333912B7E08E6008334A0 /* Inter-Bold.ttf in Resources */,
 				58C9AC0B2B8DC43A00C719D1 /* BookOfficeTableViewCell.xib in Resources */,
@@ -1929,13 +1979,16 @@
 				587EA9D82B959099002BD4D1 /* SelectSeatingConfigTableViewCell.xib in Resources */,
 				58374A462B84BC2100CA34C5 /* DeskCollectionViewCell.xib in Resources */,
 				589FB6AF2B7644A90067255E /* Poppins-MediumItalic.ttf in Resources */,
+				EEAB97AC2C52382900BD5E0D /* Membership.storyboard in Resources */,
 				58BB6B0B2B986BB5001E1F3D /* MeetingRoomPriceTableViewCell.xib in Resources */,
 				58BB6B032B98693C001E1F3D /* Payment.storyboard in Resources */,
 				589FB6A52B7644A90067255E /* Poppins-ExtraBold.ttf in Resources */,
 				583D9E042B90B0300073AAC3 /* SelectDateTableViewCell.xib in Resources */,
 				58F261BC2BBD91D300A5D633 /* VisitorManagement.storyboard in Resources */,
 				58F263562BAC12FB00AEDEC9 /* CompaniesListTableViewCell.xib in Resources */,
+				EEAB97BC2C524AB300BD5E0D /* PlanPriceTableViewCell.xib in Resources */,
 				58BB6B132B986C65001E1F3D /* DiscountCodeTableViewCell.xib in Resources */,
+				EEAB97B62C52493000BD5E0D /* PlanTypeCollectionViewCell.xib in Resources */,
 				58F261CC2BBD9EAA00A5D633 /* ButtonCancelAndSaveTableViewCell.xib in Resources */,
 				58F4583A2B91982400CF8AFA /* SelectTimeTableViewCell.xib in Resources */,
 				58E6E9652B89D9BB00EB3600 /* DashboardDeskTypeTableViewCell.xib in Resources */,
@@ -2008,6 +2061,7 @@
 				58B405FD2BCCEC460045DD4C /* StoreRoomBookingResponse.swift in Sources */,
 				5843D7702BC7007900D5C8DD /* MyVisitorResponse.swift in Sources */,
 				58EB0E442BB6D62600DC2827 /* SideMenuSubViewController.swift in Sources */,
+				EEAB97AA2C5237E800BD5E0D /* PaymentDetailsViewController.swift in Sources */,
 				58A7FBD62BA0B89A00B48DFF /* RoomDetailResponse.swift in Sources */,
 				587DA92E2BA43F1B00D27769 /* OnDemandServicesTableViewCell.swift in Sources */,
 				58BE90C32B9F0551001FCE54 /* RSOCollectionItem.swift in Sources */,
@@ -2036,6 +2090,7 @@
 				580418102BD0FF05008EA858 /* BookingConfirmedTeamMembersTableViewCell.swift in Sources */,
 				58C7C50C2BAAA2CA00CF6578 /* CompaniesTableViewCell.swift in Sources */,
 				58E6E9392B88714D00EB3600 /* RSOTabBarCordinator.swift in Sources */,
+				EEAB97A22C5233A800BD5E0D /* MembershipTabItem.swift in Sources */,
 				58BEF2792C4815B700C78CF4 /* NotificationEndPoint.swift in Sources */,
 				589BBAA52BBBF64C00DCEF70 /* FAQResponse.swift in Sources */,
 				588D8A762B627A6B00545748 /* ViewController.swift in Sources */,
@@ -2071,6 +2126,7 @@
 				58713EB92BC976820012DD4E /* SectionHeaderView.swift in Sources */,
 				581F30B12BBFBDC30083A400 /* VisitorsDateTableViewCell.swift in Sources */,
 				581F30BD2BBFBE240083A400 /* ReasonForVisitTableViewCell.swift in Sources */,
+				EEAB97A82C5237D400BD5E0D /* YourDetailsViewController.swift in Sources */,
 				587EA9D72B959099002BD4D1 /* SelectSeatingConfigTableViewCell.swift in Sources */,
 				586488282BBAB2560024CBA2 /* MyProfile.swift in Sources */,
 				5804181F2BD13BF5008EA858 /* NotificationsViewController.swift in Sources */,
@@ -2090,6 +2146,7 @@
 				58E6E95C2B88C7A600EB3600 /* MarketPlaceItem.swift in Sources */,
 				58C4812F2BB3E2ED0084CD6B /* rsvpResponse.swift in Sources */,
 				583403A02B99C99C00318BB8 /* ChooseAdditionalServicesViewController.swift in Sources */,
+				EEAB97A02C522ADC00BD5E0D /* MembershipViewController.swift in Sources */,
 				58BEF2612C47DDC500C78CF4 /* String.swift in Sources */,
 				583DBEBF2BB1447700C3F93B /* CommuneEndPoint.swift in Sources */,
 				58BB6B012B983BCB001E1F3D /* TagFlowLayout.swift in Sources */,
@@ -2104,6 +2161,7 @@
 				584B4B4F2B9216B800C6F5B2 /* DateTableViewCell.swift in Sources */,
 				58BF55972BCF8E9C00524828 /* DeskListingItem.swift in Sources */,
 				584FA0F82BC7BD4B00A36CE7 /* UpdateProfileResponse.swift in Sources */,
+				EEAB97B52C52493000BD5E0D /* PlanTypeCollectionViewCell.swift in Sources */,
 				5805931E2C4FC6DC00FE18B2 /* StoreDeskBookingRequest.swift in Sources */,
 				584B4B532B922DFE00C6F5B2 /* TimeTableViewCell.swift in Sources */,
 				58E6F7132BA8268A009D4E21 /* ProvideDetailsOfIssueTableViewCell.swift in Sources */,
@@ -2123,6 +2181,7 @@
 				58399EA92C4E41E700B7B565 /* PaymentResponseModel.swift in Sources */,
 				58C7C5072BAAA2A800CF6578 /* FindMembersTableViewCell.swift in Sources */,
 				581F30C42BC020F90083A400 /* InviteVisitorsTableViewCell.swift in Sources */,
+				EEAB97BB2C524AB300BD5E0D /* PlanPriceTableViewCell.swift in Sources */,
 				58E2D0D32BBA70590016DEB6 /* ProfileDetailsTableViewCell.swift in Sources */,
 				58D5AFF82BB5BDD3001FF067 /* ReportAnIssueResponse.swift in Sources */,
 				58F261CB2BBD9EAA00A5D633 /* ButtonCancelAndSaveTableViewCell.swift in Sources */,
@@ -2137,6 +2196,7 @@
 				58F458392B91982400CF8AFA /* SelectTimeTableViewCell.swift in Sources */,
 				58D584AB2B96F43000D17D0A /* ConfirmAndProceedToPayementTableViewCell.swift in Sources */,
 				58E997D32BBE87160051BEF3 /* VisitorsEndPoint.swift in Sources */,
+				EEAB97B82C5249A800BD5E0D /* PlanOptionList.swift in Sources */,
 				58127A8B2BAC32D1001693D6 /* ComapaniesSearchMembersTableViewCell.swift in Sources */,
 				58E6E9602B89D99B00EB3600 /* DashboardMarketPlaceTableViewCell.swift in Sources */,
 				5804180B2BD0F438008EA858 /* ConfirmDeskBookingDetailsModel.swift in Sources */,
@@ -2188,8 +2248,10 @@
 				5862D9252BC0374400214AE2 /* LabelVisitorsTableViewCell.swift in Sources */,
 				586FA7122BBC362C00EA2772 /* GalleryCollectionViewCell.swift in Sources */,
 				58BEF27B2C48164400C78CF4 /* NotificationResponseModel.swift in Sources */,
+				EEAB97A42C52379400BD5E0D /* PlanTypeViewController.swift in Sources */,
 				58F263512BAC101D00AEDEC9 /* CompaniesListViewController.swift in Sources */,
 				58D584A72B96F40100D17D0A /* BookingConfirmedGuestsTableViewCell.swift in Sources */,
+				EEAB97B12C523AC800BD5E0D /* MembershipButtonCollectionViewCell.swift in Sources */,
 				58E6E9472B88769C00EB3600 /* MoreViewController.swift in Sources */,
 				5843D76D2BC6F4FD00D5C8DD /* VisitorDetailsTableViewCell.swift in Sources */,
 				58E6E9562B88BE6A00EB3600 /* MarketPlaceViewController.swift in Sources */,
@@ -2225,6 +2287,7 @@
 				58F458512B91FD5C00CF8AFA /* BookRoomDetailsViewController.swift in Sources */,
 				5883339E2B7E349E008334A0 /* VerifyViewController.swift in Sources */,
 				581F30B52BBFBDDC0083A400 /* VisitorsTimeTableViewCell.swift in Sources */,
+				EEAED9432C52504C00A1F56A /* PlanInfoTableViewCell.swift in Sources */,
 				58B406052BCD46360045DD4C /* SideMenuDashboardViewController.swift in Sources */,
 				58BCBC2B2C49298100465381 /* PayNowButtonTableViewCell.swift in Sources */,
 				58E6F70B2BA82552009D4E21 /* SelectAnAreaTableViewCell.swift in Sources */,
@@ -2246,6 +2309,7 @@
 				586FA7042BBC28DA00EA2772 /* aboutRSOTableViewCell.swift in Sources */,
 				58ED2D232B8F50CE004D06C8 /* BookingResponse.swift in Sources */,
 				58E05E222B8610FB00189E99 /* EndPointType.swift in Sources */,
+				EEAB97A62C5237B500BD5E0D /* AgreementViewController.swift in Sources */,
 				583403942B998E8E00318BB8 /* TotalTableViewCell.swift in Sources */,
 				58E6E9532B88A5DF00EB3600 /* MyBookingOpenTableViewCell.swift in Sources */,
 				581F30AC2BBFBB580083A400 /* ScheduledVisitorDetatailsViewController.swift in Sources */,
