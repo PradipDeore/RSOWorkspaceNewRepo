@@ -30,12 +30,13 @@ struct BookingDeskDetailsResponseModel: Codable {
 
 // MARK: - BookingData
 struct BookingData: Codable {
-    let id, memberId, companyId, deskTypeId: Int
-    let startTime, endTime, date: String
-    let intervalId: Int
-    let vatAmount, totalPrice: String
-    let totalMembers, totalHrs: Int
-    let status, createdAt, updatedAt: String
+    let id:Int
+    let memberId, companyId, deskTypeId: Int?
+    let startTime, endTime, date: String?
+    let intervalId: Int?
+    let vatAmount, totalPrice: String?
+    let totalMembers, totalHrs: Int?
+    let status, createdAt, updatedAt: String?
 
     enum CodingKeys: String, CodingKey {
         case id
@@ -59,8 +60,8 @@ struct BookingData: Codable {
 // MARK: - Member
 struct BookingDeskDetailsMember: Codable {
     let id: Int
-    let firstName, lastName: String
-    let photo: String
+    let firstName, lastName: String?
+    let photo: String?
 
     enum CodingKeys: String, CodingKey {
         case id
@@ -73,18 +74,18 @@ struct BookingDeskDetailsMember: Codable {
 // MARK: - Company
 struct BookingDeskDetailsCompany: Codable {
     let id: Int
-    let accountType, name: String
+    let accountType, name: String?
     let logo: String?
-    let locationId: Int
-    let adminFname, adminLname, email: String
-    let countryId: Int
-    let phone, description: String
-    let members, seats, floorId: Int
+    let locationId: Int?
+    let adminFname, adminLname, email: String?
+    let countryId: Int?
+    let phone, description: String?
+    let members, seats, floorId: Int?
     let officeId, membershipTypeId: Int?
-    let rewardPoints: Int
-    let subscriptionStartDate, subscriptionEndDate, billingDate: String
-    let isDeleted: Int
-    let createdAt, updatedAt: String
+    let rewardPoints: Int?
+    let subscriptionStartDate, subscriptionEndDate, billingDate: String?
+    let isDeleted: Int?
+    let createdAt, updatedAt: String?
 
     enum CodingKeys: String, CodingKey {
         case id
@@ -112,9 +113,9 @@ struct BookingDeskDetailsCompany: Codable {
 // MARK: - Interval
 struct Interval: Codable {
     let id: Int
-    let name: String
-    let isDeleted: Int
-    let createdAt, updatedAt: String
+    let name: String?
+    let isDeleted: Int?
+    let createdAt, updatedAt: String?
 
     enum CodingKeys: String, CodingKey {
         case id, name
@@ -143,9 +144,9 @@ struct DeskType: Codable {
 // MARK: - Amenity
 struct BookingDeskDetailsAmenity: Codable {
     let id: Int
-    let name: String
-    let isDeleted: Int
-    let createdAt, updatedAt: String
+    let name: String?
+    let isDeleted: Int?
+    let createdAt, updatedAt: String?
     let amenitiesPrice: String?
 
     enum CodingKeys: String, CodingKey {
@@ -160,8 +161,8 @@ struct BookingDeskDetailsAmenity: Codable {
 // MARK: - RoomConfiguration
 struct RoomConfiguration: Codable {
     let roomId: Int
-    let roomName, roomConfigurationName, roomConfigurationImage: String
-    let roomConfigurationId: Int
+    let roomName, roomConfigurationName, roomConfigurationImage: String?
+    let roomConfigurationId: Int?
 
     enum CodingKeys: String, CodingKey {
         case roomId = "room_id"

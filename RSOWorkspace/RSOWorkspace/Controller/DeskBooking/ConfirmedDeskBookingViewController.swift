@@ -20,7 +20,7 @@ class ConfirmedDeskBookingViewController: UIViewController{
   
   private let cellIdentifiersConfirmDesk: [CellTypeConfirmDesk] = [ .confirmedLocation, .confirmedSelectedDesks, .confirmedTime, .confirmedDate,  .confirmedTeamMembers,  .confirmAndProceedToPayment, .buttonEdit]
   
-  private let cellHeights: [CGFloat] = [ 70, 70, 70, 70, 60, 40, 40]
+  private let cellHeights: [CGFloat] = [ 70, 85, 70, 70, 60, 40, 40]
   
   // var bookingConfirmDetails : ConfirmBookingRequestModel?
   var confirmdeskBookingResponse: ConfirmDeskBookingDetailsModel?
@@ -156,6 +156,7 @@ extension ConfirmedDeskBookingViewController: UITableViewDataSource, UITableView
       
     case .confirmedSelectedDesks:
       let cell = tableView.dequeueReusableCell(withIdentifier: cellType.rawValue, for: indexPath) as! SelectDesksTableViewCell
+      cell.btnViewFloorPlan.isHidden = true
       cell.deskList = deskList
       cell.collectionView.reloadData()
       cell.collectionView.isUserInteractionEnabled = false
@@ -234,8 +235,7 @@ extension ConfirmedDeskBookingViewController {
 }
 extension ConfirmedDeskBookingViewController:ButtonEditTableViewCellDelegate{
   func navigateToBookingDetails() {
-    self.dismiss(animated:true)
-    
+      self.navigationController?.popViewController(animated: true)
   }
 }
 extension ConfirmedDeskBookingViewController:ConfirmAndProceedToPayementTableViewCellDelegate{

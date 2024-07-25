@@ -2857,9 +2857,9 @@
             filePath = "RSOWorkspace/Controller/DeskBooking/DeskBookingViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "374"
-            endingLineNumber = "374"
-            landmarkName = "getMeetingRooms()"
+            startingLineNumber = "383"
+            endingLineNumber = "383"
+            landmarkName = "sendteamMemberName(name:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2875,7 +2875,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "358"
             endingLineNumber = "358"
-            landmarkName = "showBookMeetingRoomsVC()"
+            landmarkName = "showBookRoomDetailsVC(meetingRoomId:)"
             landmarkType = "7">
             <Locations>
                <Location
@@ -3198,10 +3198,10 @@
             filePath = "RSOWorkspace/Controller/MeetingRoomsBooking/BookingConfirmedViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "257"
-            endingLineNumber = "257"
-            landmarkName = "navigateToBookingDetails()"
-            landmarkType = "7">
+            startingLineNumber = "269"
+            endingLineNumber = "269"
+            landmarkName = "BookingConfirmedViewController"
+            landmarkType = "21">
             <Locations>
                <Location
                   uuid = "85344187-9215-40AD-A439-6721613ECCFA - ee4a3cc075d48748"
@@ -3337,8 +3337,8 @@
             filePath = "RSOWorkspace/Controller/DeskBooking/DeskBookingViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "186"
-            endingLineNumber = "186"
+            startingLineNumber = "195"
+            endingLineNumber = "195"
             landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
             <Locations>
@@ -3616,10 +3616,10 @@
             filePath = "RSOWorkspace/Controller/DeskBooking/ConfirmedDeskBookingViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "231"
-            endingLineNumber = "231"
-            landmarkName = "navigateToBookingDetails()"
-            landmarkType = "7">
+            startingLineNumber = "232"
+            endingLineNumber = "232"
+            landmarkName = "CellTypeConfirmDesk"
+            landmarkType = "13">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -4733,10 +4733,10 @@
             filePath = "RSOWorkspace/Controller/DeskBooking/DeskBookingViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "370"
-            endingLineNumber = "370"
-            landmarkName = "getMeetingRooms()"
-            landmarkType = "7">
+            startingLineNumber = "379"
+            endingLineNumber = "379"
+            landmarkName = "DeskBookingViewController"
+            landmarkType = "21">
             <Locations>
                <Location
                   uuid = "3B5BB5CF-F258-47B1-BD89-9BFA3B237F23 - ace0e24391605551"
@@ -5091,9 +5091,9 @@
             filePath = "RSOWorkspace/Controller/DeskBooking/DeskBookingViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "310"
-            endingLineNumber = "310"
-            landmarkName = "didSelectEndTime(_:)"
+            startingLineNumber = "319"
+            endingLineNumber = "319"
+            landmarkName = "presentAlertController(alertController:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

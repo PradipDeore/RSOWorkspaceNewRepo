@@ -16,6 +16,7 @@ class PaymentNetworkManager: CardPaymentDelegate ,ApplePayDelegate{
     var apiResponseData:PaymentRoomBookingResponse?
     var requestParameters : ConfirmBookingRequestModel?
     var currentViewController : UIViewController?
+    var currentNavigationController: UINavigationController?
     var isDeskPayment = false
     func paymentRoomBookingAPI(additionalrequirements :[String], bookingid:Int, requirementdetails:String,totalprice:Double,vatamount:Double) {
         DispatchQueue.main.async {
@@ -44,9 +45,7 @@ class PaymentNetworkManager: CardPaymentDelegate ,ApplePayDelegate{
                                 self.makePayment(requestModel: requestModel)
                             } else {
                                 RSOToastView.shared.show(response.message, duration: 2.0, position: .center)
-                                /*DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-                                 self.navigationController?.popToRootViewController(animated: true)
-                                 }*/
+                                 self.currentNavigationController?.popToRootViewController(animated: true)
                             }
                             self.eventHandler?(.dataLoaded)
                         }
@@ -80,9 +79,7 @@ class PaymentNetworkManager: CardPaymentDelegate ,ApplePayDelegate{
                           if self.isDeskPayment {
                             RSOToastView.shared.show(response.msg, duration: 2.0, position: .center)
                           }
-                            /*DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-                             self.navigationController?.popToRootViewController(animated: true)
-                             }*/
+                            self.currentNavigationController?.popToRootViewController(animated: true)
                             self.eventHandler?(.dataLoaded)
                         }
                     case .failure(let error):

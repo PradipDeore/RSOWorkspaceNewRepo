@@ -74,6 +74,7 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
+                <outlet property="btnViewFloorPlan" destination="IWk-hj-8om" id="fUZ-Ta-78t"/>
                 <outlet property="collectionView" destination="Ba5-MA-IDc" id="Kn0-Kh-uYF"/>
             </connections>
             <point key="canvasLocation" x="204.58015267175571" y="-9.5070422535211279"/>
