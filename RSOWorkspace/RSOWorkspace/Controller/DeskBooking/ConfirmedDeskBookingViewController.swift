@@ -125,7 +125,7 @@ extension ConfirmedDeskBookingViewController: UITableViewDataSource, UITableView
       return 30
     }
     if section == 4 {
-      return 20
+      return UserHelper.shared.isGuest() ? 0: 20
     }
     return 0
   }

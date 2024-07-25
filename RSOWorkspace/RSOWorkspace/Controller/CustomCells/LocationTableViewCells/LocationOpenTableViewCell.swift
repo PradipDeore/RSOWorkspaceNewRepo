@@ -14,9 +14,12 @@ class LocationOpenTableViewCell: UITableViewCell {
     @IBOutlet weak var btnLocationArrow: UIButton!
     var cornerRadius: CGFloat = 10.0
     
+    @IBOutlet weak var btnCall: RSOButton!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         customizeCell()
+        btnCall.setCornerRadiusToButton()
     }
 
     func customizeCell(){

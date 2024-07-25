@@ -12,7 +12,7 @@ class RSOTabBarViewController: UIViewController {
     
   @IBOutlet var topbarHeightConstraint: NSLayoutConstraint!
   @IBOutlet weak var backButtonWidthConstraint: NSLayoutConstraint!
-    @IBOutlet weak var lblGreeting: UILabel!
+  @IBOutlet weak var lblGreeting: UILabel!
     
     @IBOutlet weak var topBarView: UIView!
     @IBOutlet weak var btnNotification: UIButton!
@@ -81,15 +81,15 @@ class RSOTabBarViewController: UIViewController {
         // Create and configure the tab buttons\
         let screenWidth = UIScreen.main.bounds.width
         var itemCount = RSOTabItem.allCases.count
-        if UserHelper.shared.isGuest() {
-          itemCount = itemCount - 1
-        }
+//        if UserHelper.shared.isGuest() {
+//          itemCount = itemCount - 1
+//        }
         for (index, item) in RSOTabItem.allCases.enumerated() {
           print("index=", index)
           print("item=", item)
-          if index == 3 && UserHelper.shared.isGuest() {
-              continue // Skip adding the report tab if it's set to false
-          }
+//          if index == 3 && UserHelper.shared.isGuest() {
+//              continue // Skip adding the report tab if it's set to false
+//          }
           let itemWidth = Int(screenWidth) / itemCount
           print("itemWidth=", itemWidth)
           print("itemCount=", itemCount)
@@ -110,6 +110,12 @@ class RSOTabBarViewController: UIViewController {
             let screenWidth = UIScreen.main.bounds.width
           let originX = (tabButtons.count - 1 ) * itemWidth
             button.leadingAnchor.constraint(equalTo: tabBarView.leadingAnchor, constant: CGFloat(originX)).isActive = true
+            
+            if (index == 2 || index == 3) && UserHelper.shared.isGuest(){
+                button.isUserInteractionEnabled = false
+                button.alpha = 0.5
+            }
+                
         }
     }
     @objc  func tabButtonTapped(_ sender: UIButton?) {

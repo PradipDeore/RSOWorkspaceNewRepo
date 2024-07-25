@@ -150,6 +150,7 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
+                <outlet property="btnCall" destination="h6O-de-oL4" id="7mM-TI-Ve1"/>
                 <outlet property="btnLocationArrow" destination="Bef-pp-LCe" id="4zm-e2-xk7"/>
                 <outlet property="containerView" destination="Wh2-ok-3Tn" id="YEx-95-bbp"/>
                 <outlet property="lblLocation" destination="65c-q8-CNY" id="xvR-dW-7Si"/>

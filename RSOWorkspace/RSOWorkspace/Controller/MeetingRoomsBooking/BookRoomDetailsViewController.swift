@@ -87,7 +87,12 @@ class BookRoomDetailsViewController: UIViewController {
                     // set time to calucaulate difference withou am pm from response
                     self.confirmBookingDetails.startTime = item?.datetime.startTime ?? "0.0"
                     self.confirmBookingDetails.endTime = item?.datetime.endTime ?? "0.0"
-                  self.confirmBookingDetails.teamMembers = item?.members!.compactMap({ $0.email }) ?? []
+                    if let members = item?.members {
+                        self.confirmBookingDetails.teamMembers = members.compactMap { $0.email }
+                    } else {
+                        self.confirmBookingDetails.teamMembers = []
+                    }
+                    
                     self.confirmBookingDetails.location = item?.data.locationName  ?? ""
                     
                     self.dateOfBooking = requestModel.date
@@ -128,7 +133,7 @@ extension BookRoomDetailsViewController: UITableViewDataSource, UITableViewDeleg
         if section == 12{
             return item?.amenity.count ?? 0
         }else if section == 10{
-          return UserHelper.shared.isGuest() ? 0 : guestEmailArray.count
+          return guestEmailArray.count
         }else if section == 8{
           return UserHelper.shared.isGuest() ? 0 : teamMembersArray.count
         }

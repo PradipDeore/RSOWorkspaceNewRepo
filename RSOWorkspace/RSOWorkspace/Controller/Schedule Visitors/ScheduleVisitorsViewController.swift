@@ -140,7 +140,7 @@ extension ScheduleVisitorsViewController: UITableViewDataSource, UITableViewDele
             else if indexPath.row == (visitorsDetailArray.count + 1) {
                 let cell =  tableView.dequeueReusableCell(withIdentifier: "VisitorsTableViewCell", for: indexPath) as! VisitorsTableViewCell
                 cell.delegate = self
-                
+                cell.selectionStyle = .none
                 return cell
             }else {
                 
@@ -224,7 +224,6 @@ extension ScheduleVisitorsViewController: SelectTimeTableViewCellDelegate{
   func selectFulldayStatus(_ isFullDay: Bool) {
   
   }
-  
     func didSelectStartTime(_ startTime: Date) {
         // for api request
         let apiStartTime = Date.formatSelectedDate(format: .HHmm, date: startTime)
@@ -249,7 +248,6 @@ extension ScheduleVisitorsViewController:ButtonSaveDelegate{
     
     func btnSaveTappedAction() {
         
-        
         let visitorsDetailsVC = UIViewController.createController(storyBoard: .VisitorManagement, ofType: ScheduledVisitorDetatailsViewController.self)
        //for api
         visitorsDetailsVC.requestModel = self.apiRequestScheduleVisitorsRequest
@@ -263,7 +261,6 @@ extension ScheduleVisitorsViewController:ButtonSaveDelegate{
 }
 
 extension ScheduleVisitorsViewController:VisitorsTableViewCellDelegate{
-   
 
     func addVisitors(email: String, name: String, phone: String) {
         

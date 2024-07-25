@@ -162,7 +162,7 @@ extension DeskBookingViewController: UITableViewDataSource, UITableViewDelegate 
   
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
       if section == 3 {
-        return 20
+        return UserHelper.shared.isGuest() ? 0: 20
       }
       return 0
   }

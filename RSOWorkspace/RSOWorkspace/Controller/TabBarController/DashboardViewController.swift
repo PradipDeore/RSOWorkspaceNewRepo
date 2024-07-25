@@ -148,7 +148,7 @@ extension DashboardViewController: UITableViewDataSource, UITableViewDelegate {
       if let deskTypeCell = cell as? DashboardDeskTypeTableViewCell {
         deskTypeCell.delegate = self
           if UserHelper.shared.isGuest(){
-              deskTypeCell.btnMembership.isHidden = true
+              deskTypeCell.btnMembership.isUserInteractionEnabled = false
           }
       }
     default:

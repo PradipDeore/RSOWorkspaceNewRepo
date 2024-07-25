@@ -101,6 +101,12 @@ extension ScheduledVisitorDetatailsViewController: UITableViewDataSource, UITabl
         return 1
     }
    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if section == 0 {
+            return 30
+        }
+        return 0
+    }
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = SectionHeaderView(reuseIdentifier: "SectionHeaderView")
             if section == 0 {
