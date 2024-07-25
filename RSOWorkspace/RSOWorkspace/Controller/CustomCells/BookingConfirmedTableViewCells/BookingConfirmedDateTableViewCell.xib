@@ -33,10 +33,10 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tuw-uk-8Pc">
-                        <rect key="frame" x="25" y="38" width="194" height="32"/>
+                        <rect key="frame" x="25" y="38" width="200" height="32"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Friday   10 . JAN . 2023   " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2To-m9-qhs">
-                                <rect key="frame" x="0.0" y="0.0" width="194" height="32"/>
+                                <rect key="frame" x="0.0" y="0.0" width="200" height="32"/>
                                 <fontDescription key="fontDescription" name="Inter-Bold" family="Inter" pointSize="14"/>
                                 <color key="textColor" name="2C2C2C"/>
                                 <nil key="highlightedColor"/>
@@ -49,7 +49,7 @@
                             <constraint firstAttribute="trailing" secondItem="2To-m9-qhs" secondAttribute="trailing" id="HRf-zD-yat"/>
                             <constraint firstAttribute="bottom" secondItem="2To-m9-qhs" secondAttribute="bottom" id="KaA-Sx-6DW"/>
                             <constraint firstAttribute="height" constant="32" id="dVv-4X-wPG"/>
-                            <constraint firstAttribute="width" constant="194" id="o73-3h-Nkv"/>
+                            <constraint firstAttribute="width" constant="200" id="o73-3h-Nkv"/>
                         </constraints>
                     </view>
                 </subviews>

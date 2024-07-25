@@ -254,9 +254,9 @@ extension BookRoomDetailsViewController: UITableViewDataSource, UITableViewDeleg
         case 8:
             return UserHelper.shared.isGuest() ? 0 : 60
         case 9:
-            return UserHelper.shared.isGuest() ? 0 : 20
+            return 20
         case 10:
-            return UserHelper.shared.isGuest() ? 0 : 50
+            return 50
         case 11:
             return 20
         case 12:

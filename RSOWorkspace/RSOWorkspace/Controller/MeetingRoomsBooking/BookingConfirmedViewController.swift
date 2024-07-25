@@ -20,7 +20,19 @@ class BookingConfirmedViewController: UIViewController{
   
   private let cellIdentifiers: [CellType] = [ .confirmedLocation, .confirmedMeetingRoom, .confirmedTime, .confirmedDate,  .confirmedTeamMembers, .confirmedGuests, .confirmAndProceedToPayment, .buttonEdit]
   
-  private let cellHeights: [CGFloat] = [ 70, 70, 70, 70, 60, 50, 40, 40]
+    private var cellHeights: [CGFloat] {
+        let isGuest = UserHelper.shared.isGuest()
+        return [
+            70, // confirmedLocation
+            70, // confirmedMeetingRoom
+            70, // confirmedTime
+            70, // confirmedDate
+            isGuest ? 0 : 60, // confirmedTeamMembers (0 for guest, 60 for regular user)
+            50, // confirmedGuests
+            40, // confirmAndProceedToPayment
+            40  // buttonEdit
+        ]
+    }
   
   var bookingConfirmDetails = ConfirmBookingRequestModel()
   var roomId: Int = 0

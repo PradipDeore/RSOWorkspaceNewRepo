@@ -156,6 +156,7 @@ extension ConfirmedDeskBookingViewController: UITableViewDataSource, UITableView
       
     case .confirmedSelectedDesks:
       let cell = tableView.dequeueReusableCell(withIdentifier: cellType.rawValue, for: indexPath) as! SelectDesksTableViewCell
+      cell.btnViewFloorPlan.isHidden = true
       cell.deskList = deskList
       cell.collectionView.reloadData()
       cell.collectionView.isUserInteractionEnabled = false

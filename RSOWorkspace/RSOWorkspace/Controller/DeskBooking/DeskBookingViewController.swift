@@ -153,21 +153,30 @@ extension DeskBookingViewController: UITableViewDataSource, UITableViewDelegate 
     return SectionTypeDeskBooking.allCases.count
   }
   
-  func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-    return 10
-  }
-  
-  func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-    return UIView()
-  }
-  
-  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    if section == 3{
-      return teamMembersArray.count
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+      if section == 3{
+        return teamMembersArray.count
+      }
+      return 1
     }
-    return 1
-  }
   
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+      if section == 3 {
+        return 20
+      }
+      return 0
+  }
+    
+ func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+      let headerView = SectionHeaderView(reuseIdentifier: "SectionHeaderView")
+      if section == 3 {
+        headerView.sectionLabel.text = "Add Team Members"
+        headerView.sectionLabel.font = RSOFont.poppins(size: 16.0, type: .Medium)
+      }  else {
+        return nil
+      }
+      return headerView
+    }
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     guard let section = SectionTypeDeskBooking(rawValue: indexPath.section) else { return UITableViewCell() }
     
