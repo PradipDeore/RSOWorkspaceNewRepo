@@ -840,11 +840,72 @@
             </objects>
             <point key="canvasLocation" x="1180.9160305343512" y="467.6056338028169"/>
         </scene>
+        <!--DisplayQR Code View Controller-->
+        <scene sceneID="s38-3N-osb">
+            <objects>
+                <viewController storyboardIdentifier="DisplayQRCodeViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="TOZ-G9-l5Y" customClass="DisplayQRCodeViewController" customModule="RSOWorkspace" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="otO-Dd-LwP">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" alpha="0.60000002384185791" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yp2-o1-kUH">
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                                <color key="backgroundColor" red="0.35294117650000001" green="0.35294117650000001" blue="0.35294117650000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <connections>
+                                    <action selector="btnHideViewTappedAction:" destination="TOZ-G9-l5Y" eventType="touchUpInside" id="aFC-SM-FRf"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yvB-GH-OZp" customClass="ShadowedView" customModule="RSOWorkspace" customModuleProvider="target">
+                                <rect key="frame" x="24.666666666666657" y="239.66666666666663" width="344" height="373"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="LargerKey" translatesAutoresizingMaskIntoConstraints="NO" id="hcw-1u-myl">
+                                        <rect key="frame" x="72" y="24" width="199" height="204"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="This key will automatically activate when you are near (5 ft) the meeting room door." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4DI-33-ouS">
+                                        <rect key="frame" x="27" y="270" width="298" height="76"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" name="E2F0D9"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="344" id="4Kf-QQ-ht3"/>
+                                    <constraint firstAttribute="height" constant="373" id="Edy-vU-2CX"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="jf6-Dd-dXY"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="yvB-GH-OZp" firstAttribute="centerX" secondItem="otO-Dd-LwP" secondAttribute="centerX" id="5EC-S9-YXa"/>
+                            <constraint firstItem="yvB-GH-OZp" firstAttribute="centerY" secondItem="otO-Dd-LwP" secondAttribute="centerY" id="Gye-Xg-Zdl"/>
+                            <constraint firstAttribute="bottom" secondItem="Yp2-o1-kUH" secondAttribute="bottom" id="Ud6-yh-GMc"/>
+                            <constraint firstItem="Yp2-o1-kUH" firstAttribute="top" secondItem="otO-Dd-LwP" secondAttribute="top" id="gmF-gx-eiG"/>
+                            <constraint firstItem="Yp2-o1-kUH" firstAttribute="leading" secondItem="jf6-Dd-dXY" secondAttribute="leading" id="m9s-yB-zSw"/>
+                            <constraint firstItem="Yp2-o1-kUH" firstAttribute="trailing" secondItem="jf6-Dd-dXY" secondAttribute="trailing" id="p9H-qH-Ef1"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="QRCodeView" destination="yvB-GH-OZp" id="lvW-bF-4Y8"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kGk-sh-TZW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1991.6030534351144" y="467.6056338028169"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="LargerKey" width="68" height="126"/>
         <image name="chatbot" width="130" height="59"/>
         <namedColor name="828282">
             <color red="0.50999999046325684" green="0.50999999046325684" blue="0.50999999046325684" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="E2F0D9">
+            <color red="0.88599997758865356" green="0.94099998474121094" blue="0.85100001096725464" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="F2F2F2">
             <color red="0.94900000095367432" green="0.94900000095367432" blue="0.94900000095367432" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

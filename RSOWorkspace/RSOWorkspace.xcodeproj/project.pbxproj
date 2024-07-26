@@ -298,6 +298,7 @@
 		58CF207F2C53C99F0070538A /* ShortTermOfficeBookingEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58CF207E2C53C99F0070538A /* ShortTermOfficeBookingEndPoint.swift */; };
 		58CF20812C53CBF50070538A /* LongTermOfficeBookingRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58CF20802C53CBF50070538A /* LongTermOfficeBookingRequestModel.swift */; };
 		58CF20832C53CC380070538A /* LongTermOfficeBookingResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58CF20822C53CC380070538A /* LongTermOfficeBookingResponse.swift */; };
+		58CF20872C53E4E50070538A /* DisplayQRCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58CF20862C53E4E50070538A /* DisplayQRCodeViewController.swift */; };
 		58D0088C2BB28B4100D48556 /* MemberListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D0088B2BB28B4100D48556 /* MemberListResponse.swift */; };
 		58D0088E2BB2923200D48556 /* CompanyListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D0088D2BB2923200D48556 /* CompanyListResponse.swift */; };
 		58D513342BCA4C2C00B87739 /* PaymentRoomBookingRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D513332BCA4C2C00B87739 /* PaymentRoomBookingRequest.swift */; };
@@ -715,6 +716,7 @@
 		58CF207E2C53C99F0070538A /* ShortTermOfficeBookingEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortTermOfficeBookingEndPoint.swift; sourceTree = "<group>"; };
 		58CF20802C53CBF50070538A /* LongTermOfficeBookingRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LongTermOfficeBookingRequestModel.swift; sourceTree = "<group>"; };
 		58CF20822C53CC380070538A /* LongTermOfficeBookingResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LongTermOfficeBookingResponse.swift; sourceTree = "<group>"; };
+		58CF20862C53E4E50070538A /* DisplayQRCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayQRCodeViewController.swift; sourceTree = "<group>"; };
 		58D0088B2BB28B4100D48556 /* MemberListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberListResponse.swift; sourceTree = "<group>"; };
 		58D0088D2BB2923200D48556 /* CompanyListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyListResponse.swift; sourceTree = "<group>"; };
 		58D513332BCA4C2C00B87739 /* PaymentRoomBookingRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentRoomBookingRequest.swift; sourceTree = "<group>"; };
@@ -1382,6 +1384,7 @@
 		58BAEB202B6CC83D000B140C /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				58CF20852C53E4B10070538A /* My Booking */,
 				58E6E93D2B88760B00EB3600 /* TabBarController */,
 				5804181D2BD13BD2008EA858 /* Notifications */,
 				58B406062BCD46430045DD4C /* Dashboard */,
@@ -1601,6 +1604,15 @@
 			path = CommuneCollectionViewCells;
 			sourceTree = "<group>";
 		};
+		58CF20852C53E4B10070538A /* My Booking */ = {
+			isa = PBXGroup;
+			children = (
+				58ED2D1C2B8F38B8004D06C8 /* MyBookingViewController.swift */,
+				58CF20862C53E4E50070538A /* DisplayQRCodeViewController.swift */,
+			);
+			path = "My Booking";
+			sourceTree = "<group>";
+		};
 		58D584902B96F1FE00D17D0A /* BookingConfirmedTableViewCells */ = {
 			isa = PBXGroup;
 			children = (
@@ -1744,7 +1756,6 @@
 		58ED2D1B2B8F3893004D06C8 /* MeetingRoomsBooking */ = {
 			isa = PBXGroup;
 			children = (
-				58ED2D1C2B8F38B8004D06C8 /* MyBookingViewController.swift */,
 				583D9DF22B90831B0073AAC3 /* BookMeetingRoomViewController.swift */,
 				58F458502B91FD5C00CF8AFA /* BookRoomDetailsViewController.swift */,
 				58D5848E2B96EE9800D17D0A /* BookingConfirmedViewController.swift */,
@@ -2280,6 +2291,7 @@
 				EEAB97B12C523AC800BD5E0D /* MembershipButtonCollectionViewCell.swift in Sources */,
 				58E6E9472B88769C00EB3600 /* MoreViewController.swift in Sources */,
 				5843D76D2BC6F4FD00D5C8DD /* VisitorDetailsTableViewCell.swift in Sources */,
+				58CF20872C53E4E50070538A /* DisplayQRCodeViewController.swift in Sources */,
 				58E6E9562B88BE6A00EB3600 /* MarketPlaceViewController.swift in Sources */,
 				58B461542B8096F100C3FF21 /* RSOController.swift in Sources */,
 				58CF119A2BA9502800B95EE9 /* Service.swift in Sources */,

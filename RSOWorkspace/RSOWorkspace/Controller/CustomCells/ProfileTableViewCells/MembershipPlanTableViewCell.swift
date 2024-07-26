@@ -24,25 +24,21 @@ class MembershipPlanTableViewCell: UITableViewCell {
         super.awakeFromNib()
         setupUI()
         
-    
     }
     func setupUI(){
-        
         if UserHelper.shared.isGuest(){
             self.btnRenewPlan.isHidden = true
             self.btnBuyMemberShip.isHidden = false
             self.lblMembershipPlan.isHidden = true
-            self.lblMemberShipDesc.isHidden = true
+            self.lblMemberShipDesc.text = "No Active MemberShip"
         }
         self.btnRenewPlan.setCornerRadiusToButton2()
         self.btnBuyMemberShip.setCornerRadiusToButton2()
         
     }
     func setData(item: MyProfile){
-        
-            self.lblMembershipPlan.text = item.data.membershipName
-            self.lblMemberShipDesc.text = item.data.desc
-        
+            //self.lblMembershipPlan.text = item.data.membershipName
+           // self.lblMemberShipDesc.text = item.data.desc
     }
     
     @IBAction func btnBuyMembershipAction(_ sender: Any) {
