@@ -34,7 +34,6 @@ class NotificationsViewController: UIViewController {
         self.coordinator?.loadHomeScreen()
     }
     
-    
     private func fetchNotifications () {
         APIManager.shared.request(
             modelType: NotificationResponseModel.self, // Assuming your API returns an array of Services

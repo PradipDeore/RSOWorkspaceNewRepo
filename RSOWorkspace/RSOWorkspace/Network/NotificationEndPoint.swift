@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 enum NotificationEndPoint {
     case notifications // Module - GET
 }

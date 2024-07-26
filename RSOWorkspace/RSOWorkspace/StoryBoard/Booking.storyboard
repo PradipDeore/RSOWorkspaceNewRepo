@@ -396,10 +396,10 @@
             </objects>
             <point key="canvasLocation" x="3591.6030534351144" y="-195.07042253521126"/>
         </scene>
-        <!--Book An Office View Controller-->
+        <!--Long Term Office Booking View Controller-->
         <scene sceneID="VG1-O8-yoT">
             <objects>
-                <viewController storyboardIdentifier="BookAnOfficeViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="aQj-kj-1C3" customClass="BookAnOfficeViewController" customModule="RSOWorkspace" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LongTermOfficeBookingViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="aQj-kj-1C3" customClass="LongTermOfficeBookingViewController" customModule="RSOWorkspace" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0lm-kn-1yu">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -407,8 +407,8 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sU9-2T-5Zm">
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2U8-4w-DfI">
-                                        <rect key="frame" x="0.0" y="0.0" width="393" height="913"/>
+                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2U8-4w-DfI">
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="860"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="mXg-JU-0K5">
                                                 <rect key="frame" x="10" y="10" width="373" height="893"/>
@@ -447,7 +447,7 @@
                                                                 </constraints>
                                                                 <color key="textColor" name="828282"/>
                                                                 <fontDescription key="fontDescription" name="Inter-Medium" family="Inter" pointSize="16"/>
-                                                                <textInputTraits key="textInputTraits"/>
+                                                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                             </textField>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YWq-Al-zYM">
                                                                 <rect key="frame" x="19.666666666666657" y="211" width="334" height="41"/>
@@ -526,10 +526,10 @@
                                                                 </connections>
                                                             </button>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mes-L0-2pj">
-                                                                <rect key="frame" x="16" y="363" width="334" height="200"/>
+                                                                <rect key="frame" x="16" y="363" width="334" height="150"/>
                                                                 <subviews>
                                                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="sgD-RD-Jft">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="334" height="200"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="334" height="150"/>
                                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <color key="textColor" name="828282"/>
                                                                         <fontDescription key="fontDescription" name="Inter-Medium" family="Inter" pointSize="16"/>
@@ -538,7 +538,7 @@
                                                                 </subviews>
                                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                                 <constraints>
-                                                                    <constraint firstAttribute="height" constant="200" id="2Kc-AD-5BC"/>
+                                                                    <constraint firstAttribute="height" constant="150" id="2Kc-AD-5BC"/>
                                                                     <constraint firstAttribute="width" constant="334" id="Awx-Fh-aOY"/>
                                                                     <constraint firstAttribute="trailing" secondItem="sgD-RD-Jft" secondAttribute="trailing" id="caa-K7-xve"/>
                                                                     <constraint firstItem="sgD-RD-Jft" firstAttribute="top" secondItem="mes-L0-2pj" secondAttribute="top" id="gDs-ln-lHA"/>
@@ -546,7 +546,7 @@
                                                                     <constraint firstAttribute="bottom" secondItem="sgD-RD-Jft" secondAttribute="bottom" id="ygv-7B-lav"/>
                                                                 </constraints>
                                                             </view>
-                                                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kaQ-BT-Eak">
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kaQ-BT-Eak">
                                                                 <rect key="frame" x="222.66666666666663" y="788" width="130" height="59"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="59" id="583-ir-zVJ"/>
@@ -556,7 +556,7 @@
                                                                 <state key="normal" image="chatbot"/>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9UQ-1D-1Yb" customClass="RSOButton" customModule="RSOWorkspace" customModuleProvider="target">
-                                                                <rect key="frame" x="20" y="645" width="333" height="46"/>
+                                                                <rect key="frame" x="20" y="543" width="333" height="46"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="333" id="O2l-0L-MbM"/>
                                                                     <constraint firstAttribute="height" constant="46" id="woe-cI-Orw"/>
@@ -574,7 +574,7 @@
                                                             <constraint firstItem="8zU-gW-lCj" firstAttribute="leading" secondItem="8Hx-Xc-2Cm" secondAttribute="leading" id="1Rj-on-3AD"/>
                                                             <constraint firstItem="mes-L0-2pj" firstAttribute="top" secondItem="gWo-hn-9un" secondAttribute="bottom" constant="21" id="1j1-8P-cWg"/>
                                                             <constraint firstItem="gWo-hn-9un" firstAttribute="leading" secondItem="wKv-Ux-vEd" secondAttribute="trailing" constant="20" id="55d-7x-Qzv"/>
-                                                            <constraint firstItem="9UQ-1D-1Yb" firstAttribute="top" secondItem="mes-L0-2pj" secondAttribute="bottom" constant="82" id="5XF-Gc-WwP"/>
+                                                            <constraint firstItem="9UQ-1D-1Yb" firstAttribute="top" secondItem="mes-L0-2pj" secondAttribute="bottom" constant="30" id="5XF-Gc-WwP"/>
                                                             <constraint firstItem="rSB-1d-Nsx" firstAttribute="top" secondItem="YWq-Al-zYM" secondAttribute="bottom" constant="34" id="8ZW-Dm-98X"/>
                                                             <constraint firstItem="mGw-B8-Wg2" firstAttribute="leading" secondItem="gWo-hn-9un" secondAttribute="trailing" constant="20" id="El0-GF-Gch"/>
                                                             <constraint firstItem="YWq-Al-zYM" firstAttribute="height" secondItem="8zU-gW-lCj" secondAttribute="height" id="GgN-Vi-wt7"/>
@@ -584,6 +584,7 @@
                                                             <constraint firstItem="8zU-gW-lCj" firstAttribute="leading" secondItem="rSB-1d-Nsx" secondAttribute="leading" id="T1g-D2-6zu"/>
                                                             <constraint firstItem="mGw-B8-Wg2" firstAttribute="baseline" secondItem="wKv-Ux-vEd" secondAttribute="baseline" id="UvB-i5-GCP"/>
                                                             <constraint firstItem="mes-L0-2pj" firstAttribute="leading" secondItem="sCu-xB-Mee" secondAttribute="leading" constant="16" id="b0p-qh-IBH"/>
+                                                            <constraint firstAttribute="trailing" secondItem="kaQ-BT-Eak" secondAttribute="trailing" constant="20.333333333333371" id="cQw-ko-knQ"/>
                                                             <constraint firstItem="mes-L0-2pj" firstAttribute="top" secondItem="rSB-1d-Nsx" secondAttribute="bottom" constant="15" id="dRk-OD-ovo"/>
                                                             <constraint firstItem="9UQ-1D-1Yb" firstAttribute="leading" secondItem="sCu-xB-Mee" secondAttribute="leading" constant="20" id="gMc-xd-qCL"/>
                                                             <constraint firstAttribute="bottom" secondItem="kaQ-BT-Eak" secondAttribute="bottom" constant="46" id="hJR-0M-98h"/>

@@ -135,7 +135,7 @@ extension BookingViewController:BookOfficeTableViewCellDelegate{
     }
     
     func NavigateToLongTermOfficeBooking() {
-        let bookOfficeVC = UIViewController.createController(storyBoard: .Booking, ofType: BookAnOfficeViewController.self)
+        let bookOfficeVC = UIViewController.createController(storyBoard: .Booking, ofType: LongTermOfficeBookingViewController.self)
         bookOfficeVC.coordinator = self.coordinator
         self.navigationController?.pushViewController(bookOfficeVC, animated: true)
     }
