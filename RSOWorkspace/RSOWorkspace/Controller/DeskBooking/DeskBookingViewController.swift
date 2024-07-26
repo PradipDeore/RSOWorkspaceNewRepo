@@ -115,6 +115,7 @@ class DeskBookingViewController: UIViewController{
               //  Unsuccessful
               RSOToastView.shared.show("\(errorMessage)", duration: 2.0, position: .center)
             } else {
+                self.viewFloorPlanSeatingConfig = responseData.roomConfiguration ?? []
               if let deskList = responseData.deskTypes {
                 let listItems: [RSOCollectionItem] = deskList.map { RSOCollectionItem(deskType: $0) }
                 print("fetchDesk list",listItems)
@@ -139,6 +140,7 @@ class DeskBookingViewController: UIViewController{
     self.displayBookingDetailsNextScreen.selected_desk_no = []
     self.selectedDeskList = []
     self.deskbookingConfirmDetails.desk_id = []
+    self.viewFloorPlanSeatingConfig = []
     let indexpath1 = IndexPath(row: 0, section: SectionTypeDeskBooking.selectDesks.rawValue)
     let indexpath2 = IndexPath(row: 0, section: SectionTypeDeskBooking.buttonbookingConfirm.rawValue)
     self.tableView.reloadRows(at: [indexpath1,indexpath2], with: .automatic)
@@ -239,6 +241,12 @@ extension DeskBookingViewController: UITableViewDataSource, UITableViewDelegate 
     case .selectDesks:
       let cell =  tableView.dequeueReusableCell(withIdentifier: CellIdentifierDeskBooking.selectDesks.rawValue, for: indexPath) as! SelectDesksTableViewCell
       cell.deskList = self.deskList
+        cell.btnViewFloorPlan.isUserInteractionEnabled = true
+        cell.btnViewFloorPlan.alpha = 1.0
+        if viewFloorPlanSeatingConfig.isEmpty {
+            cell.btnViewFloorPlan.isUserInteractionEnabled = false
+            cell.btnViewFloorPlan.alpha = 0.5
+        }
       cell.collectionView.reloadData()
       cell.delegate = self
       cell.selectionStyle = .none

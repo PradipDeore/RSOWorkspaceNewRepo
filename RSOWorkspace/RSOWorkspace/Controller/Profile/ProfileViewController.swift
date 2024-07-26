@@ -85,11 +85,9 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
             case .changePassword: return "ChangePasswordTableViewCell"
             case .membershipPlan: return "MembershipPlanTableViewCell"
             case .paymentMethod: return "AddPaymentMethodTableViewCell"
-            
-
             }
         }
-        
+
         var heightForRow: CGFloat {
             switch self {
             case .profileDetails: return 202
@@ -145,7 +143,7 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
                           // For example, you could set some default data or show an error message
                           print("Error: myProfileResponse is nil")
                       }
-                
+                membershipPlanCell.delegate = self
                 return membershipPlanCell
             }
         case .paymentMethod:
@@ -202,6 +200,12 @@ extension ProfileViewController: SubViewDismissalProtocol {
     }
 }
 
+extension ProfileViewController: MembershipPlanDelegate {
+    func navigateToDisplayMembershipPlans() {
+        let membershipViewController = UIViewController.createController(storyBoard: .Membership, ofType: MembershipViewController.self)
+        self.navigationController?.pushViewController(membershipViewController, animated: true)
+    }
+}
     
     
     

@@ -37,10 +37,10 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KGD-lY-fOa">
-                                <rect key="frame" x="25" y="59" width="330" height="35"/>
+                                <rect key="frame" x="25" y="59" width="355" height="35"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="0nD-zj-i4u">
-                                        <rect key="frame" x="0.0" y="4" width="330" height="27"/>
+                                        <rect key="frame" x="0.0" y="4" width="355" height="27"/>
                                         <subviews>
                                             <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ytp-AP-lNU" customClass="RSOButton" customModule="RSOWorkspace" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.6666666666666643" width="100" height="26"/>
@@ -56,27 +56,27 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MP5-dc-Psj" customClass="RSOButton" customModule="RSOWorkspace" customModuleProvider="target">
-                                                <rect key="frame" x="120" y="0.6666666666666643" width="117" height="26"/>
+                                                <rect key="frame" x="120" y="0.6666666666666643" width="109" height="26"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="117" id="2bW-Tj-lss"/>
                                                     <constraint firstAttribute="height" constant="26" id="git-u9-kKx"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="Inter-SemiBold" family="Inter" pointSize="14"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                <state key="normal" title="Meetings"/>
+                                                <state key="normal" title="Meeting  Rooms"/>
                                                 <connections>
                                                     <action selector="buttonTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="hEz-2r-0cw"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y8O-ve-jb1" customClass="RSOButton" customModule="RSOWorkspace" customModuleProvider="target">
-                                                <rect key="frame" x="257" y="0.6666666666666643" width="73" height="26"/>
+                                                <rect key="frame" x="249" y="0.6666666666666643" width="106" height="26"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="106" id="aLw-am-6lS"/>
                                                     <constraint firstAttribute="height" constant="26" id="aXf-wX-MaI"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="Inter-SemiBold" family="Inter" pointSize="14"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                <state key="normal" title="Work Desk"/>
+                                                <state key="normal" title="Workspace"/>
                                                 <connections>
                                                     <action selector="buttonTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="BrW-zB-U70"/>
                                                 </connections>
@@ -777,7 +777,7 @@
                                         <rect key="frame" x="16" y="521" width="312" height="28"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZCy-na-2FW" customClass="RSOButton" customModule="RSOWorkspace" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="166.33333333333334" height="28"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="154.33333333333334" height="28"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="28" id="1JY-XP-6fH"/>
                                                 </constraints>
@@ -789,7 +789,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wBo-GW-uPA" customClass="RSOButton" customModule="RSOWorkspace" customModuleProvider="target">
-                                                <rect key="frame" x="176.33333333333337" y="0.0" width="135.66666666666663" height="28"/>
+                                                <rect key="frame" x="164.33333333333337" y="0.0" width="147.66666666666663" height="28"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="28" id="EBB-Xs-pmM"/>
                                                 </constraints>

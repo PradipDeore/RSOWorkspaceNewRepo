@@ -138,6 +138,11 @@ class RSOTabBarViewController: UIViewController {
                 return
             }
         }
+        for viewController in viewControllers {
+            if let navVC = viewController as? UINavigationController {
+                navVC.popToRootViewController(animated: false)
+            }
+        }
         // Remove the current child view controller
         let currentViewController = viewControllers[lastSelectedTabIndex]
         coordinator?.hideChildViewController(currentViewController)

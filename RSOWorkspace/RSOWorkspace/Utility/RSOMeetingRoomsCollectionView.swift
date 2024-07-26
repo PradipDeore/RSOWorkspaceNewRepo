@@ -92,7 +92,7 @@ extension RSOMeetingRoomsCollectionView: UICollectionViewDataSource {
             return cell
         case "office":
             let cell = dequeueReusableCell(withReuseIdentifier: "DeskCollectionViewCell", for: indexPath) as! DeskCollectionViewCell
-            //cell.backActionDelegate = backActionDelegate
+           // cell.backActionDelegate = backActionDelegate
             cell.setData(item: item)
             if item.isItemSelected ?? false {
               cell.containerView.backgroundColor = UIColor(named: "E3E3E3")

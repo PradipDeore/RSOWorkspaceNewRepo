@@ -189,7 +189,7 @@ extension BookRoomDetailsViewController: UITableViewDataSource, UITableViewDeleg
             return cell
         case 8:
             let cell = tableView.dequeueReusableCell(withIdentifier: "InviteTeamMembersTableViewCell", for: indexPath) as! InviteTeamMembersTableViewCell
-            cell.lblteammemberName.text = "\(String(describing: teamMembersArray[indexPath.row].id))"
+            cell.lblteammemberName.text = "\(String(describing: teamMembersArray[indexPath.row].name))"
             cell.btnAdd.isHidden = !(indexPath.row == 0)
             cell.teamMemberView.isHidden = false
             if indexPath.row == 0 {

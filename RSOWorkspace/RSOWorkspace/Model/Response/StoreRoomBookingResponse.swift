@@ -20,7 +20,7 @@ struct StoreRoomBookingResponse: Codable {
 
 struct RoomDetails: Codable {
     let name: String?
-    let price: Int?
+    let price: Float?
     let interval: String?
     let total_price: TotalPriceType?
     

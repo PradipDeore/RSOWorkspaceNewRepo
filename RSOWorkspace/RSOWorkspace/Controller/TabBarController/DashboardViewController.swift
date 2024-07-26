@@ -103,7 +103,7 @@ extension DashboardViewController: UITableViewDataSource, UITableViewDelegate {
     var heightForRow: CGFloat {
       switch self {
       case .myBookingClose: return 45
-      case .marketPlace:  return UserHelper.shared.isGuest() ? 0 : 209
+      case .marketPlace:  return 209
       case .meetingRooms: return 209
       case .deskType: return 35
       }
@@ -147,9 +147,6 @@ extension DashboardViewController: UITableViewDataSource, UITableViewDelegate {
     case .deskType:
       if let deskTypeCell = cell as? DashboardDeskTypeTableViewCell {
         deskTypeCell.delegate = self
-          if UserHelper.shared.isGuest(){
-              deskTypeCell.btnMembership.isUserInteractionEnabled = false
-          }
       }
     default:
       break
@@ -167,7 +164,6 @@ extension DashboardViewController: UITableViewDataSource, UITableViewDelegate {
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     selectedIndexPath = indexPath
   }
-  
 }
 
 extension DashboardViewController {

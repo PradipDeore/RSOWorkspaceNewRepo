@@ -30,16 +30,16 @@
                         <rect key="frame" x="25" y="10" width="311" height="165"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Membership Plan " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M57-16-bc5">
-                                <rect key="frame" x="10" y="53" width="280" height="25"/>
+                                <rect key="frame" x="10" y="42" width="280" height="22"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="25" id="kfW-3Y-fZf"/>
+                                    <constraint firstAttribute="height" constant="22" id="kfW-3Y-fZf"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Inter-SemiBold" family="Inter" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u2p-Oo-1zu">
-                                <rect key="frame" x="10" y="85" width="280" height="17"/>
+                                <rect key="frame" x="10" y="71" width="280" height="34"/>
                                 <fontDescription key="fontDescription" name="Inter-SemiBold" family="Inter" pointSize="14"/>
                                 <color key="textColor" name="595959"/>
                                 <nil key="highlightedColor"/>
@@ -53,30 +53,52 @@
                                 <color key="textColor" name="000000"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Ya-d4-z2J" customClass="RSOButton" customModule="RSOWorkspace" customModuleProvider="target">
-                                <rect key="frame" x="195" y="118" width="100" height="24"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="100" id="3Ru-rd-Gg2"/>
-                                    <constraint firstAttribute="height" constant="24" id="zIO-8m-q5L"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="12"/>
-                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" title="Renew Plan"/>
-                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="JJc-eo-xGr">
+                                <rect key="frame" x="37" y="121" width="258" height="24"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pQa-7o-PTK" customClass="RSOButton" customModule="RSOWorkspace" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="150" height="24"/>
+                                        <color key="backgroundColor" name="000000"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="150" id="SwC-qZ-Pcw"/>
+                                            <constraint firstAttribute="height" constant="24" id="k0H-dQ-HVs"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="12"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="Buy Membership"/>
+                                        <connections>
+                                            <action selector="btnBuyMembershipAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="7Xx-kZ-0TW"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Ya-d4-z2J">
+                                        <rect key="frame" x="158" y="0.0" width="100" height="24"/>
+                                        <color key="backgroundColor" name="000000"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="100" id="Lby-Bc-eVi"/>
+                                            <constraint firstAttribute="height" constant="24" id="QBQ-jY-VRp"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="12"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="Renew Plan"/>
+                                        <connections>
+                                            <action selector="btnRenewMemberShipPlan:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="wHZ-90-kWF"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstAttribute="bottom" secondItem="JJc-eo-xGr" secondAttribute="bottom" constant="20" id="0QG-F6-fna"/>
                             <constraint firstItem="M57-16-bc5" firstAttribute="leading" secondItem="1CZ-6D-Uja" secondAttribute="leading" id="1PF-AO-Xpo"/>
-                            <constraint firstItem="4Ya-d4-z2J" firstAttribute="top" secondItem="M57-16-bc5" secondAttribute="bottom" constant="40" id="3mU-1L-XdK"/>
                             <constraint firstAttribute="trailing" secondItem="1CZ-6D-Uja" secondAttribute="trailing" constant="21" id="FUn-vE-kpS"/>
-                            <constraint firstItem="M57-16-bc5" firstAttribute="top" secondItem="1CZ-6D-Uja" secondAttribute="bottom" constant="21" id="IwZ-ig-Glk"/>
+                            <constraint firstItem="M57-16-bc5" firstAttribute="top" secondItem="1CZ-6D-Uja" secondAttribute="bottom" constant="10" id="IwZ-ig-Glk"/>
                             <constraint firstItem="1CZ-6D-Uja" firstAttribute="leading" secondItem="aP7-iP-IHM" secondAttribute="leading" constant="10" id="QZE-Wc-ThX"/>
                             <constraint firstItem="u2p-Oo-1zu" firstAttribute="top" secondItem="M57-16-bc5" secondAttribute="bottom" constant="7" id="RPy-kt-e7x"/>
                             <constraint firstItem="u2p-Oo-1zu" firstAttribute="trailing" secondItem="M57-16-bc5" secondAttribute="trailing" id="Rrk-tN-DUV"/>
-                            <constraint firstAttribute="bottom" secondItem="4Ya-d4-z2J" secondAttribute="bottom" constant="23" id="WCv-tj-prB"/>
-                            <constraint firstAttribute="trailing" secondItem="4Ya-d4-z2J" secondAttribute="trailing" constant="16" id="lK7-4Z-tly"/>
+                            <constraint firstItem="JJc-eo-xGr" firstAttribute="top" secondItem="u2p-Oo-1zu" secondAttribute="bottom" constant="16" id="WnT-XU-1m4"/>
+                            <constraint firstAttribute="trailing" secondItem="JJc-eo-xGr" secondAttribute="trailing" constant="16" id="lTJ-ON-cvV"/>
                             <constraint firstItem="u2p-Oo-1zu" firstAttribute="leading" secondItem="M57-16-bc5" secondAttribute="leading" id="o9X-CO-r5E"/>
-                            <constraint firstItem="4Ya-d4-z2J" firstAttribute="top" secondItem="u2p-Oo-1zu" secondAttribute="bottom" constant="16" id="ouh-JT-K2i"/>
                             <constraint firstItem="M57-16-bc5" firstAttribute="trailing" secondItem="1CZ-6D-Uja" secondAttribute="trailing" id="v9B-bd-4yw"/>
                         </constraints>
                     </view>
@@ -92,12 +114,13 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
+                <outlet property="btnBuyMemberShip" destination="pQa-7o-PTK" id="i3F-Bx-EOR"/>
                 <outlet property="btnRenewPlan" destination="4Ya-d4-z2J" id="dMM-V1-zQc"/>
                 <outlet property="containerView" destination="aP7-iP-IHM" id="GJU-TW-P9P"/>
                 <outlet property="lblMemberShipDesc" destination="u2p-Oo-1zu" id="jkX-fz-Oab"/>
                 <outlet property="lblMembershipPlan" destination="M57-16-bc5" id="TT6-S0-cMg"/>
             </connections>
-            <point key="canvasLocation" x="87.786259541984734" y="36.971830985915496"/>
+            <point key="canvasLocation" x="-59" y="-24"/>
         </tableViewCell>
     </objects>
     <resources>

@@ -48,6 +48,7 @@ struct GuestList :Codable{
 // MARK: - GuestList
 struct TeamList :Codable{
     let id: Int?
+    let name : String = "john"
 }
 
 // MARK: - StoreRoomBookingLocation

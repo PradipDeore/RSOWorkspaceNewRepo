@@ -8,10 +8,10 @@
 import UIKit
 import Toast_Swift
 class LogInViewController: UIViewController {
+  
     @IBOutlet weak var txtEmail: RSOTextField!
     @IBOutlet weak var txtPassword: RSOTextField!
     @IBOutlet weak var btnLogIn: RSOButton!
-    
     var eventHandler: ((_ event: Event) -> Void)? // Data Binding Closure
     
     override func viewDidLoad() {
@@ -65,7 +65,6 @@ class LogInViewController: UIViewController {
       }
   }
     @IBAction func btnForgotPassTappedAction(_ sender: Any) {
-        
         let forgotPassVC = UIViewController.createController(storyBoard: .GetStarted, ofType: ForgotPasswordViewController.self)
         self.navigationController?.pushViewController(forgotPassVC, animated: true)
     }

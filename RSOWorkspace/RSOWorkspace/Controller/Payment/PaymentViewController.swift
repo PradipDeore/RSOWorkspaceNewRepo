@@ -194,13 +194,13 @@ extension PaymentViewController: UITableViewDataSource, UITableViewDelegate {
             return cell
         case .paymentMethods:
             let cell = tableView.dequeueReusableCell(withIdentifier: cellType.rawValue, for: indexPath) as! PaymentMethodTableViewCell
+            cell.selectionStyle = .none
             return cell
-//        case .paywithrewardPoints:
-//            let cell = tableView.dequeueReusableCell(withIdentifier: cellType.rawValue, for: indexPath) as! PayWithRewardPointsTableViewCell
-           // return cell
+
         case .buttonPayNow:
             let buttonPayNowCell = tableView.dequeueReusableCell(withIdentifier: cellType.rawValue, for: indexPath) as! ButtonPayNowTableViewCell
             buttonPayNowCell.delegate = self
+            buttonPayNowCell.selectionStyle = .none
             return buttonPayNowCell
         }
         
@@ -210,6 +210,7 @@ extension PaymentViewController: UITableViewDataSource, UITableViewDelegate {
         if let labelCell = cell as? SelectMeetingRoomLabelTableViewCell {
             labelCell.lblMeetingRoom.text = "Payment"
             labelCell.lblMeetingRoom.font = UIFont(name: "Poppins-SemiBold", size: 20.0)
+            labelCell.selectionStyle = .none
             return labelCell
         }
         return cell
@@ -234,7 +235,6 @@ extension PaymentViewController {
         case amenityPrice = "AmenityPriceTableViewCell"
         case totalCell = "TotalTableViewCell"
         case discount = "DiscountCodeTableViewCell"
-       // case paywithrewardPoints = "PayWithRewardPointsTableViewCell"
         case paymentMethods = "PaymentMethodTableViewCell"
         case buttonPayNow = "ButtonPayNowTableViewCell"
         
