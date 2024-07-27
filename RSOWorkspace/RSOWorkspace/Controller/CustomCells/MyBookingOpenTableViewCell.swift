@@ -6,9 +6,13 @@
 //
 
 import UIKit
+protocol MyBookingOpenTableViewCellDelegate:AnyObject{
+    func displayBookingQRCode()
+}
 
 class MyBookingOpenTableViewCell: UITableViewCell {
     
+    weak var delegate: MyBookingOpenTableViewCellDelegate?
     @IBOutlet weak var btnBooking: UIButton!
     @IBOutlet weak var containerView: UIView!
     var cornerRadius: CGFloat = 10.0
@@ -22,6 +26,7 @@ class MyBookingOpenTableViewCell: UITableViewCell {
     @IBOutlet weak var lblRoomName: UILabel!
     @IBOutlet weak var lblStatus: UILabel!
     
+    @IBOutlet weak var btnBokingKey: UIButton!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -56,4 +61,9 @@ class MyBookingOpenTableViewCell: UITableViewCell {
         self.lblStatus.text = item.status
       
     }
+    
+    @IBAction func btnBookingKeyAction(_ sender: Any) {
+        delegate?.displayBookingQRCode()
+    }
+    
 }

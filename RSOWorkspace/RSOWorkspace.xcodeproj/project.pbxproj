@@ -288,9 +288,17 @@
 		58C9AC072B8DC42900C719D1 /* OtherBookingsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58C9AC052B8DC42900C719D1 /* OtherBookingsTableViewCell.xib */; };
 		58C9AC0A2B8DC43A00C719D1 /* BookOfficeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C9AC082B8DC43A00C719D1 /* BookOfficeTableViewCell.swift */; };
 		58C9AC0B2B8DC43A00C719D1 /* BookOfficeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58C9AC092B8DC43A00C719D1 /* BookOfficeTableViewCell.xib */; };
+		58CE5FF82C5243B000278890 /* ShortTermBookAnOfficeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58CE5FF72C5243B000278890 /* ShortTermBookAnOfficeViewController.swift */; };
+		58CE5FFC2C52448200278890 /* OfficeBooking.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58CE5FFB2C52448200278890 /* OfficeBooking.storyboard */; };
 		58CF11982BA94F2E00B95EE9 /* ServicesEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58CF11972BA94F2E00B95EE9 /* ServicesEndPoint.swift */; };
 		58CF119A2BA9502800B95EE9 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58CF11992BA9502800B95EE9 /* Service.swift */; };
 		58CF119C2BA95EA700B95EE9 /* subServicesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58CF119B2BA95EA700B95EE9 /* subServicesViewController.swift */; };
+		58CF207B2C53C3EF0070538A /* LongTermOfficeBookingReasonsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58CF207A2C53C3EE0070538A /* LongTermOfficeBookingReasonsResponse.swift */; };
+		58CF207D2C53C4760070538A /* LongTermOfficeBookingEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58CF207C2C53C4760070538A /* LongTermOfficeBookingEndPoint.swift */; };
+		58CF207F2C53C99F0070538A /* ShortTermOfficeBookingEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58CF207E2C53C99F0070538A /* ShortTermOfficeBookingEndPoint.swift */; };
+		58CF20812C53CBF50070538A /* LongTermOfficeBookingRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58CF20802C53CBF50070538A /* LongTermOfficeBookingRequestModel.swift */; };
+		58CF20832C53CC380070538A /* LongTermOfficeBookingResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58CF20822C53CC380070538A /* LongTermOfficeBookingResponse.swift */; };
+		58CF20872C53E4E50070538A /* DisplayQRCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58CF20862C53E4E50070538A /* DisplayQRCodeViewController.swift */; };
 		58D0088C2BB28B4100D48556 /* MemberListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D0088B2BB28B4100D48556 /* MemberListResponse.swift */; };
 		58D0088E2BB2923200D48556 /* CompanyListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D0088D2BB2923200D48556 /* CompanyListResponse.swift */; };
 		58D513342BCA4C2C00B87739 /* PaymentRoomBookingRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D513332BCA4C2C00B87739 /* PaymentRoomBookingRequest.swift */; };
@@ -363,7 +371,7 @@
 		58E6F7182BA826B6009D4E21 /* RequestButtonTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58E6F7162BA826B6009D4E21 /* RequestButtonTableViewCell.xib */; };
 		58E997D32BBE87160051BEF3 /* VisitorsEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E997D22BBE87160051BEF3 /* VisitorsEndPoint.swift */; };
 		58E997D52BBE87A00051BEF3 /* ReasonForVisit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E997D42BBE87A00051BEF3 /* ReasonForVisit.swift */; };
-		58EB0E142BB695DB00DC2827 /* BookAnOfficeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58EB0E132BB695DB00DC2827 /* BookAnOfficeViewController.swift */; };
+		58EB0E142BB695DB00DC2827 /* LongTermOfficeBookingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58EB0E132BB695DB00DC2827 /* LongTermOfficeBookingViewController.swift */; };
 		58EB0E3B2BB6D61D00DC2827 /* SideMenuModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58EB0E3A2BB6D61D00DC2827 /* SideMenuModel.swift */; };
 		58EB0E442BB6D62600DC2827 /* SideMenuSubViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58EB0E3D2BB6D62600DC2827 /* SideMenuSubViewController.swift */; };
 		58EB0E452BB6D62600DC2827 /* SideMenuMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58EB0E3E2BB6D62600DC2827 /* SideMenuMainViewController.swift */; };
@@ -698,9 +706,17 @@
 		58C9AC052B8DC42900C719D1 /* OtherBookingsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OtherBookingsTableViewCell.xib; sourceTree = "<group>"; };
 		58C9AC082B8DC43A00C719D1 /* BookOfficeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookOfficeTableViewCell.swift; sourceTree = "<group>"; };
 		58C9AC092B8DC43A00C719D1 /* BookOfficeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BookOfficeTableViewCell.xib; sourceTree = "<group>"; };
+		58CE5FF72C5243B000278890 /* ShortTermBookAnOfficeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortTermBookAnOfficeViewController.swift; sourceTree = "<group>"; };
+		58CE5FFB2C52448200278890 /* OfficeBooking.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = OfficeBooking.storyboard; sourceTree = "<group>"; };
 		58CF11972BA94F2E00B95EE9 /* ServicesEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesEndPoint.swift; sourceTree = "<group>"; };
 		58CF11992BA9502800B95EE9 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		58CF119B2BA95EA700B95EE9 /* subServicesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = subServicesViewController.swift; sourceTree = "<group>"; };
+		58CF207A2C53C3EE0070538A /* LongTermOfficeBookingReasonsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LongTermOfficeBookingReasonsResponse.swift; sourceTree = "<group>"; };
+		58CF207C2C53C4760070538A /* LongTermOfficeBookingEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LongTermOfficeBookingEndPoint.swift; sourceTree = "<group>"; };
+		58CF207E2C53C99F0070538A /* ShortTermOfficeBookingEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortTermOfficeBookingEndPoint.swift; sourceTree = "<group>"; };
+		58CF20802C53CBF50070538A /* LongTermOfficeBookingRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LongTermOfficeBookingRequestModel.swift; sourceTree = "<group>"; };
+		58CF20822C53CC380070538A /* LongTermOfficeBookingResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LongTermOfficeBookingResponse.swift; sourceTree = "<group>"; };
+		58CF20862C53E4E50070538A /* DisplayQRCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayQRCodeViewController.swift; sourceTree = "<group>"; };
 		58D0088B2BB28B4100D48556 /* MemberListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberListResponse.swift; sourceTree = "<group>"; };
 		58D0088D2BB2923200D48556 /* CompanyListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyListResponse.swift; sourceTree = "<group>"; };
 		58D513332BCA4C2C00B87739 /* PaymentRoomBookingRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentRoomBookingRequest.swift; sourceTree = "<group>"; };
@@ -778,7 +794,7 @@
 		58E6F7162BA826B6009D4E21 /* RequestButtonTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RequestButtonTableViewCell.xib; sourceTree = "<group>"; };
 		58E997D22BBE87160051BEF3 /* VisitorsEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitorsEndPoint.swift; sourceTree = "<group>"; };
 		58E997D42BBE87A00051BEF3 /* ReasonForVisit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "\U0010ReasonForVisit.swift"; sourceTree = "<group>"; };
-		58EB0E132BB695DB00DC2827 /* BookAnOfficeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookAnOfficeViewController.swift; sourceTree = "<group>"; };
+		58EB0E132BB695DB00DC2827 /* LongTermOfficeBookingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LongTermOfficeBookingViewController.swift; sourceTree = "<group>"; };
 		58EB0E3A2BB6D61D00DC2827 /* SideMenuModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideMenuModel.swift; sourceTree = "<group>"; };
 		58EB0E3D2BB6D62600DC2827 /* SideMenuSubViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideMenuSubViewController.swift; sourceTree = "<group>"; };
 		58EB0E3E2BB6D62600DC2827 /* SideMenuMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideMenuMainViewController.swift; sourceTree = "<group>"; };
@@ -946,6 +962,8 @@
 				58D513372BCA4CDD00B87739 /* PaymentRoomBookingEndPoint.swift */,
 				58B405FE2BCCF9810045DD4C /* DeskBookingEndPoint.swift */,
 				58BEF2782C4815B700C78CF4 /* NotificationEndPoint.swift */,
+				58CF207C2C53C4760070538A /* LongTermOfficeBookingEndPoint.swift */,
+				58CF207E2C53C99F0070538A /* ShortTermOfficeBookingEndPoint.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -1341,6 +1359,7 @@
 				58F261BB2BBD91D300A5D633 /* VisitorManagement.storyboard */,
 				58B4060D2BCD4BD30045DD4C /* Dashboard.storyboard */,
 				5804181B2BD13A51008EA858 /* Notifications.storyboard */,
+				58CE5FFB2C52448200278890 /* OfficeBooking.storyboard */,
 				EEAB97AB2C52382900BD5E0D /* Membership.storyboard */,
 			);
 			path = StoryBoard;
@@ -1365,6 +1384,7 @@
 		58BAEB202B6CC83D000B140C /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				58CF20852C53E4B10070538A /* My Booking */,
 				58E6E93D2B88760B00EB3600 /* TabBarController */,
 				5804181D2BD13BD2008EA858 /* Notifications */,
 				58B406062BCD46430045DD4C /* Dashboard */,
@@ -1513,6 +1533,8 @@
 				58399EA82C4E41E700B7B565 /* PaymentResponseModel.swift */,
 				5805931F2C4FC83400FE18B2 /* StoreDeskBookingResponseModel.swift */,
 				58AE87B62C50FF6D004A99D6 /* CouponDetailsResponseModel.swift */,
+				58CF207A2C53C3EE0070538A /* LongTermOfficeBookingReasonsResponse.swift */,
+				58CF20822C53CC380070538A /* LongTermOfficeBookingResponse.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -1541,6 +1563,7 @@
 				58F96E232C479DFA009C4DC5 /* subServicesRequestModel.swift */,
 				58BEF2742C48047600C78CF4 /* BookOfficeRequestModel.swift */,
 				580593262C4FE56500FE18B2 /* ConfirmDeskBookingRequestModel.swift */,
+				58CF20802C53CBF50070538A /* LongTermOfficeBookingRequestModel.swift */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -1579,6 +1602,15 @@
 				58C7C5142BAABFB900CF6578 /* EventCollectionViewCell.xib */,
 			);
 			path = CommuneCollectionViewCells;
+			sourceTree = "<group>";
+		};
+		58CF20852C53E4B10070538A /* My Booking */ = {
+			isa = PBXGroup;
+			children = (
+				58ED2D1C2B8F38B8004D06C8 /* MyBookingViewController.swift */,
+				58CF20862C53E4E50070538A /* DisplayQRCodeViewController.swift */,
+			);
+			path = "My Booking";
 			sourceTree = "<group>";
 		};
 		58D584902B96F1FE00D17D0A /* BookingConfirmedTableViewCells */ = {
@@ -1670,7 +1702,8 @@
 		58EB0E122BB695BB00DC2827 /* Office Booking */ = {
 			isa = PBXGroup;
 			children = (
-				58EB0E132BB695DB00DC2827 /* BookAnOfficeViewController.swift */,
+				58EB0E132BB695DB00DC2827 /* LongTermOfficeBookingViewController.swift */,
+				58CE5FF72C5243B000278890 /* ShortTermBookAnOfficeViewController.swift */,
 			);
 			path = "Office Booking";
 			sourceTree = "<group>";
@@ -1723,7 +1756,6 @@
 		58ED2D1B2B8F3893004D06C8 /* MeetingRoomsBooking */ = {
 			isa = PBXGroup;
 			children = (
-				58ED2D1C2B8F38B8004D06C8 /* MyBookingViewController.swift */,
 				583D9DF22B90831B0073AAC3 /* BookMeetingRoomViewController.swift */,
 				58F458502B91FD5C00CF8AFA /* BookRoomDetailsViewController.swift */,
 				58D5848E2B96EE9800D17D0A /* BookingConfirmedViewController.swift */,
@@ -1896,6 +1928,7 @@
 				589FB6A42B7644A90067255E /* Poppins-ExtraBoldItalic.ttf in Resources */,
 				5883338D2B7E08E6008334A0 /* Inter-VariableFont_slnt,wght.ttf in Resources */,
 				58E6F70C2BA82552009D4E21 /* SelectAnAreaTableViewCell.xib in Resources */,
+				58CE5FFC2C52448200278890 /* OfficeBooking.storyboard in Resources */,
 				588333932B7E08E6008334A0 /* Inter-ExtraBold.ttf in Resources */,
 				589FB6A32B7644A90067255E /* Poppins-SemiBoldItalic.ttf in Resources */,
 				58E6F7182BA826B6009D4E21 /* RequestButtonTableViewCell.xib in Resources */,
@@ -2069,6 +2102,7 @@
 				58E6E96C2B89E0E500EB3600 /* RSOMarketPlaceCollectionView.swift in Sources */,
 				586FA70D2BBC354E00EA2772 /* GalleryTableViewCell.swift in Sources */,
 				582591042BBEE0700011ECDA /* MyBookingDateHeaderView.swift in Sources */,
+				58CF20832C53CC380070538A /* LongTermOfficeBookingResponse.swift in Sources */,
 				58374A422B84BBF400CA34C5 /* RoomListingViewController.swift in Sources */,
 				584FA0F62BC7BBE900A36CE7 /* UpdateProfileRequestModel.swift in Sources */,
 				58E6E9452B88768500EB3600 /* CommuneViewController.swift in Sources */,
@@ -2137,8 +2171,9 @@
 				589FB6872B763EBA0067255E /* GetStartedViewController.swift in Sources */,
 				583D9E032B90B0300073AAC3 /* SelectDateTableViewCell.swift in Sources */,
 				58C9AC0A2B8DC43A00C719D1 /* BookOfficeTableViewCell.swift in Sources */,
+				58CF207B2C53C3EF0070538A /* LongTermOfficeBookingReasonsResponse.swift in Sources */,
 				58BB6B0A2B986BB5001E1F3D /* MeetingRoomPriceTableViewCell.swift in Sources */,
-				58EB0E142BB695DB00DC2827 /* BookAnOfficeViewController.swift in Sources */,
+				58EB0E142BB695DB00DC2827 /* LongTermOfficeBookingViewController.swift in Sources */,
 				58D513362BCA4C8600B87739 /* PaymentRoomBookingResponse.swift in Sources */,
 				58E6E9412B88765800EB3600 /* BookingViewController.swift in Sources */,
 				584FA0F42BC7AD8500A36CE7 /* UpdateProfileViewController.swift in Sources */,
@@ -2149,6 +2184,7 @@
 				EEAB97A02C522ADC00BD5E0D /* MembershipViewController.swift in Sources */,
 				58BEF2612C47DDC500C78CF4 /* String.swift in Sources */,
 				583DBEBF2BB1447700C3F93B /* CommuneEndPoint.swift in Sources */,
+				58CE5FF82C5243B000278890 /* ShortTermBookAnOfficeViewController.swift in Sources */,
 				58BB6B012B983BCB001E1F3D /* TagFlowLayout.swift in Sources */,
 				584318D02BB2AEC50094F50C /* MemberSearchRequest.swift in Sources */,
 				58D584AF2B96F49700D17D0A /* ButtonEditTableViewCell.swift in Sources */,
@@ -2180,6 +2216,7 @@
 				580418092BD0F004008EA858 /* ConfirmedDeskBookingViewController.swift in Sources */,
 				58399EA92C4E41E700B7B565 /* PaymentResponseModel.swift in Sources */,
 				58C7C5072BAAA2A800CF6578 /* FindMembersTableViewCell.swift in Sources */,
+				58CF20812C53CBF50070538A /* LongTermOfficeBookingRequestModel.swift in Sources */,
 				581F30C42BC020F90083A400 /* InviteVisitorsTableViewCell.swift in Sources */,
 				EEAB97BB2C524AB300BD5E0D /* PlanPriceTableViewCell.swift in Sources */,
 				58E2D0D32BBA70590016DEB6 /* ProfileDetailsTableViewCell.swift in Sources */,
@@ -2254,6 +2291,7 @@
 				EEAB97B12C523AC800BD5E0D /* MembershipButtonCollectionViewCell.swift in Sources */,
 				58E6E9472B88769C00EB3600 /* MoreViewController.swift in Sources */,
 				5843D76D2BC6F4FD00D5C8DD /* VisitorDetailsTableViewCell.swift in Sources */,
+				58CF20872C53E4E50070538A /* DisplayQRCodeViewController.swift in Sources */,
 				58E6E9562B88BE6A00EB3600 /* MarketPlaceViewController.swift in Sources */,
 				58B461542B8096F100C3FF21 /* RSOController.swift in Sources */,
 				58CF119A2BA9502800B95EE9 /* Service.swift in Sources */,
@@ -2267,6 +2305,7 @@
 				58F4583D2B91A1D300CF8AFA /* SelectMeetingRoomLabelTableViewCell.swift in Sources */,
 				58F458412B91A36000CF8AFA /* SelectMeetingRoomTableViewCell.swift in Sources */,
 				58CF119C2BA95EA700B95EE9 /* subServicesViewController.swift in Sources */,
+				58CF207D2C53C4760070538A /* LongTermOfficeBookingEndPoint.swift in Sources */,
 				589BBA9C2BBBEE7C00DCEF70 /* FAQViewController.swift in Sources */,
 				58BEF2602C47DDC500C78CF4 /* Date.swift in Sources */,
 				58A16CD02BBC767F0003DD50 /* LocationViewController.swift in Sources */,
@@ -2281,6 +2320,7 @@
 				58C7C5152BAABFB900CF6578 /* EventCollectionViewCell.swift in Sources */,
 				58127A912BAC42DB001693D6 /* FindMembersSearchListTableViewCell.swift in Sources */,
 				58C9ABFE2B8DC3FE00C719D1 /* BookDeskTableViewCell.swift in Sources */,
+				58CF207F2C53C99F0070538A /* ShortTermOfficeBookingEndPoint.swift in Sources */,
 				5843D7592BC6747E00D5C8DD /* DisplayScheduleVisitorsDetailModel.swift in Sources */,
 				58E05E282B861FC200189E99 /* LogInResponse.swift in Sources */,
 				58AE87B92C513591004A99D6 /* PaymentNetworkManager.swift in Sources */,

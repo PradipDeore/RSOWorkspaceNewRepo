@@ -24,46 +24,61 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uDc-NI-FLc" userLabel="buttonsView">
-                        <rect key="frame" x="25" y="0.0" width="363" height="34"/>
+                        <rect key="frame" x="25" y="0.0" width="369" height="34"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleAspectFit" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="qfu-6o-ezT">
-                                <rect key="frame" x="0.0" y="4" width="363" height="26"/>
+                            <stackView opaque="NO" contentMode="scaleAspectFit" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="qfu-6o-ezT">
+                                <rect key="frame" x="0.0" y="4" width="369" height="26"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aNI-iN-pFu" customClass="RSOButton" customModule="RSOWorkspace" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="100" height="26"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="119.66666666666667" height="26"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="26" id="Bt2-e5-2ZL"/>
-                                            <constraint firstAttribute="width" constant="100" id="v5q-1v-oYF"/>
+                                            <constraint firstAttribute="width" constant="120" id="v5q-1v-oYF"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Inter-Medium" family="Inter" pointSize="14"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <state key="normal" title="Meetings"/>
+                                        <state key="normal" title="Meeting Rooms"/>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="v5q-1v-oYF"/>
+                                            </mask>
+                                        </variation>
                                         <connections>
                                             <action selector="buttonTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Fg3-Zf-7p4"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rVr-6i-orK" customClass="RSOButton" customModule="RSOWorkspace" customModuleProvider="target">
-                                        <rect key="frame" x="120" y="0.0" width="117" height="26"/>
+                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rVr-6i-orK" customClass="RSOButton" customModule="RSOWorkspace" customModuleProvider="target">
+                                        <rect key="frame" x="124.66666666666666" y="0.0" width="119.66666666666666" height="26"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="117" id="0aE-zT-NCJ"/>
+                                            <constraint firstAttribute="width" constant="120" id="0aE-zT-NCJ"/>
                                             <constraint firstAttribute="height" constant="26" id="AYY-VT-fDP"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Inter-Medium" family="Inter" pointSize="14"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" title="Workspace"/>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="0aE-zT-NCJ"/>
+                                            </mask>
+                                        </variation>
                                         <connections>
                                             <action selector="buttonTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="219-A8-dHO"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rln-0f-et6" customClass="RSOButton" customModule="RSOWorkspace" customModuleProvider="target">
-                                        <rect key="frame" x="257" y="0.0" width="106" height="26"/>
+                                        <rect key="frame" x="249.33333333333329" y="0.0" width="119.66666666666666" height="26"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="106" id="KHz-Pu-4pT"/>
+                                            <constraint firstAttribute="width" constant="120" id="KHz-Pu-4pT"/>
                                             <constraint firstAttribute="height" constant="26" id="qiA-Jj-TDT"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="Inter-Medium" family="Inter" pointSize="14"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" title="Membership"/>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="KHz-Pu-4pT"/>
+                                            </mask>
+                                        </variation>
                                         <connections>
                                             <action selector="buttonTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="ACX-j4-ZgA"/>
                                         </connections>
@@ -95,7 +110,7 @@
                 <outlet property="btnMembership" destination="rln-0f-et6" id="KPG-7y-YD3"/>
                 <outlet property="btnWorkspace" destination="rVr-6i-orK" id="SQH-pn-ta4"/>
             </connections>
-            <point key="canvasLocation" x="-121.37404580152672" y="-51.760563380281695"/>
+            <point key="canvasLocation" x="-602" y="-50"/>
         </tableViewCell>
     </objects>
     <resources>

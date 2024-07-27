@@ -92,8 +92,13 @@ extension RSOMeetingRoomsCollectionView: UICollectionViewDataSource {
             return cell
         case "office":
             let cell = dequeueReusableCell(withReuseIdentifier: "DeskCollectionViewCell", for: indexPath) as! DeskCollectionViewCell
-            //cell.backActionDelegate = backActionDelegate
+           // cell.backActionDelegate = backActionDelegate
             cell.setData(item: item)
+            if item.isItemSelected ?? false {
+              cell.containerView.backgroundColor = UIColor(named: "E3E3E3")
+            } else {
+              cell.containerView.backgroundColor = .white
+            }
             return cell
         default:
             fatalError("Unsupported item type: \(item.type ?? "nil")")
@@ -102,7 +107,7 @@ extension RSOMeetingRoomsCollectionView: UICollectionViewDataSource {
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     let item = listItems[indexPath.row]
    
-    guard let itemType = item.type,  item.type == "desk" else {
+    guard let itemType = item.type,  item.type == "desk" || itemType == "office" else {
            return
        }
     for i in 0..<listItems.count {
@@ -125,7 +130,6 @@ extension RSOMeetingRoomsCollectionView: UICollectionViewDelegateFlowLayout {
             return CGSize(width: bounds.width - 50, height: 225)
         }
     }
-    
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 20.0

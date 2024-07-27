@@ -174,6 +174,7 @@ extension MyBookingViewController: UITableViewDataSource, UITableViewDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MyBookingOpenTableViewCell", for: indexPath) as! MyBookingOpenTableViewCell
         let booking = filteredSections[indexPath.section].filteredBookings[indexPath.row]
         cell.setData(item: booking)
+        cell.delegate = self
         return cell
     }
 
@@ -185,7 +186,14 @@ extension MyBookingViewController: UITableViewDataSource, UITableViewDelegate {
         // Handle cell selection if needed
     }
 }
-
+extension MyBookingViewController:MyBookingOpenTableViewCellDelegate {
+    func displayBookingQRCode() {
+        let displayQRVC = UIViewController.createController(storyBoard: .Booking, ofType: DisplayQRCodeViewController.self)
+        displayQRVC.modalTransitionStyle = .crossDissolve
+        displayQRVC.modalPresentationStyle = .overCurrentContext
+        self.present(displayQRVC, animated: true)
+    }
+}
 extension MyBookingViewController {
     enum Event {
         case dataLoaded

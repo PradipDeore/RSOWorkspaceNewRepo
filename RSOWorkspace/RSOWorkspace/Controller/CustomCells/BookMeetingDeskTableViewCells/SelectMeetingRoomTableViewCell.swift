@@ -31,7 +31,8 @@ class SelectMeetingRoomTableViewCell: UITableViewCell {
   }
   
   var eventHandler: ((EventHandler, _ listItems: [RSOCollectionItem]? ) -> Void)?
-  override func awakeFromNib() {
+ 
+    override func awakeFromNib() {
     super.awakeFromNib()
     // Initialization code
     collectionView.scrollDirection = .horizontal
@@ -68,9 +69,8 @@ class SelectMeetingRoomTableViewCell: UITableViewCell {
     APIManager.shared.request(
       modelType: DeskListingResponse.self,
       type: DeskBookingEndPoint.getDesksLisiting(id: id, requestModel: requestModel)) { [weak self] response in
-        
+          DispatchQueue.main.async {
         guard let self = self else { return }
-        
         switch response {
         case .success(let responseData):
           // Handle successful response with bookings
@@ -78,17 +78,43 @@ class SelectMeetingRoomTableViewCell: UITableViewCell {
           let listItems: [RSOCollectionItem] = deskList.map { RSOCollectionItem(deskLisitngItem: $0) }
           self.collectionView.listItems = listItems
           print("count of collection view list",self.collectionView.listItems.count)
-          DispatchQueue.main.async {
             self.collectionView.reloadData()
-          }
           self.eventHandler?(.dataLoaded, listItems)
         case .failure(let error):
           self.eventHandler?(.error(error), nil)
-          DispatchQueue.main.async {
             RSOToastView.shared.show("\(error.localizedDescription)", duration: 2.0, position: .center)
           }
         }
       }
   }
+    
+    func fetchOfficeDesk(id: Int, requestModel: BookOfficeRequestModel) {
+      DispatchQueue.main.async {
+        RSOLoader.showLoader()
+      }
+        APIManager.shared.request(
+            modelType: OfficeItemsResponse.self,
+            type: DeskBookingEndPoint.offices(id: id, requestModel: requestModel)) { response in
+              DispatchQueue.main.async {
+                RSOLoader.removeLoader()
+              }
+                switch response {
+                case .success(let response):
+                  if let officeList = response.data {
+                    let listItems: [RSOCollectionItem] = officeList.map { RSOCollectionItem(deskItem: $0) }
+                    self.collectionView.listItems = listItems
+                      DispatchQueue.main.async {
+                        self.collectionView.reloadData()
+                      }
+                      self.eventHandler?(.dataLoaded, listItems)
+                  }
+                case .failure(let error):
+                    self.eventHandler?(.error(error), nil)
+                    DispatchQueue.main.async {
+                      RSOToastView.shared.show("\(error.localizedDescription)", duration: 2.0, position: .center)
+                    }
+                }
+            }
+    }
   
 }

@@ -131,9 +131,11 @@ extension ChooseAdditionalServicesViewController: UITableViewDataSource, UITable
       
     case . provideRequirementDet:
       let cell = tableView.dequeueReusableCell(withIdentifier: cellType.rawValue, for: indexPath) as! ProvideRequirementDetailsTableViewCell
+        cell.selectionStyle = .none
       return cell
     case .cancelAndRequestButton:
       let cell = tableView.dequeueReusableCell(withIdentifier: cellType.rawValue, for: indexPath) as! CancelAndRequestButtonTableViewCell
+        cell.selectionStyle = .none
       cell.delegate = self
       return cell
     }
@@ -168,10 +170,8 @@ extension ChooseAdditionalServicesViewController:ChooseAdditionalServicesCellDel
     if let index = selectedServices.firstIndex(of: service) {
       selectedServices.remove(at: index)
       print("selected services array when removed",selectedServices)
-      
     }
   }
-  
 }
 extension ChooseAdditionalServicesViewController:CancelAndRequestButtonTableViewCellDelegate{
   

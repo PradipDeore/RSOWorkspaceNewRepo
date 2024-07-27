@@ -7,14 +7,42 @@
 
 import UIKit
 
-class BookingViewController: UIViewController,RSOTabCoordinated {
+class BookingViewController: UIViewController, RSOTabCoordinated {
     
     var coordinator: RSOTabBarCordinator?
     @IBOutlet weak var tableView: UITableView!
+    
+    enum BookingSection: Int, CaseIterable {
+        case desk = 0
+        case meetingRoom
+        case office
+        
+        var height: CGFloat {
+            switch self {
+            case .desk, .meetingRoom:
+                return 100
+            case .office:
+                return 200
+            }
+        }
+        
+        var cellIdentifier: String {
+            switch self {
+            case .desk:
+                return "BookDeskTableViewCell"
+            case .meetingRoom:
+                return "BookMeetingRoomTableViewCell"
+            case .office:
+                return "BookOfficeTableViewCell"
+            }
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.coordinator?.hideTopViewForHome(isHidden: false)
@@ -22,91 +50,95 @@ class BookingViewController: UIViewController,RSOTabCoordinated {
         coordinator?.setTitle(title: "Booking")
         coordinator?.updateButtonSelection(1)
     }
+    
     private func setupTableView() {
-        tableView.register(UINib(nibName: "BookDeskTableViewCell", bundle: nil), forCellReuseIdentifier: "BookDeskTableViewCell")
-        tableView.register(UINib(nibName: "BookMeetingRoomTableViewCell", bundle: nil), forCellReuseIdentifier: "BookMeetingRoomTableViewCell")
-        tableView.register(UINib(nibName: "OtherBookingsTableViewCell", bundle: nil), forCellReuseIdentifier: "OtherBookingsTableViewCell")
-        tableView.register(UINib(nibName: "BookOfficeTableViewCell", bundle: nil), forCellReuseIdentifier: "BookOfficeTableViewCell")
-    
-       navigationController?.navigationBar.isHidden = true
+        BookingSection.allCases.forEach { section in
+            tableView.register(UINib(nibName: section.cellIdentifier, bundle: nil), forCellReuseIdentifier: section.cellIdentifier)
+        }
+        navigationController?.navigationBar.isHidden = true
     }
-    
 }
 
 extension BookingViewController: UITableViewDataSource, UITableViewDelegate {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 4
+        return BookingSection.allCases.count
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-            return 20 // Adjust the height of the header between sections
-        }
+        return 20 // Adjust the height of the header between sections
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
+    
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-            return UIView() // Return an empty view for the header between sections
-        }
+        return UIView() // Return an empty view for the header between sections
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        switch indexPath.section {
-        case 0:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "BookDeskTableViewCell", for: indexPath) as! BookDeskTableViewCell
-            cell.selectionStyle = .none
-            return cell
-        case 1:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "BookMeetingRoomTableViewCell", for: indexPath) as! BookMeetingRoomTableViewCell
-            cell.selectionStyle = .none
-            return cell
-        case 2:
-            let cell =  tableView.dequeueReusableCell(withIdentifier: "OtherBookingsTableViewCell", for: indexPath) as! OtherBookingsTableViewCell
-            cell.selectionStyle = .none
-            return cell
-
-        case 3:
-            let cell =  tableView.dequeueReusableCell(withIdentifier: "BookOfficeTableViewCell", for: indexPath) as! BookOfficeTableViewCell
-            cell.selectionStyle = .none
-            return cell
-        default:
+        guard let section = BookingSection(rawValue: indexPath.section) else {
             return UITableViewCell()
         }
+        switch section
+        {
+        case .office:
+            let cell =  tableView.dequeueReusableCell(withIdentifier: "BookOfficeTableViewCell", for: indexPath) as! BookOfficeTableViewCell
+            cell.delegate = self
+            cell.selectionStyle = .none
+            return cell
+        case .desk:
+            break
+        case .meetingRoom:
+            break
+       
+
+        }
+        let cell = tableView.dequeueReusableCell(withIdentifier: section.cellIdentifier, for: indexPath)
+        cell.selectionStyle = .none
+        return cell
     }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        switch indexPath.section{
-        case 0:
+        guard let section = BookingSection(rawValue: indexPath.section) else {
+            return
+        }
+        switch section {
+        case .desk:
             let bookDeskVC = UIViewController.createController(storyBoard: .Booking, ofType: DeskBookingViewController.self)
-            //bookDeskVC.meetingId = meetingRoomId
-            //bookDeskVC.requestModel = apiRequestModelRoomListing
-           // bookDeskVC.displayBookingDetails = displayBookingDetailsNextScreen
             bookDeskVC.coordinator = self.coordinator
             self.navigationController?.pushViewController(bookDeskVC, animated: true)
-        case 1:
+        case .meetingRoom:
             let bookMeetingRoomVC = UIViewController.createController(storyBoard: .Booking, ofType: BookMeetingRoomViewController.self)
             bookMeetingRoomVC.coordinator = self.coordinator
             self.navigationController?.pushViewController(bookMeetingRoomVC, animated: true)
-        case 3:
-            let bookAnOfiiceVC = UIViewController.createController(storyBoard: .Booking, ofType: BookAnOfficeViewController.self)
-            bookAnOfiiceVC.coordinator = self.coordinator
-            self.navigationController?.pushViewController(bookAnOfiiceVC, animated: true)
-            
-        default:
-            break
-        }
-    }
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        switch indexPath.section {
-        case 0 ,1:
-            return 100
-        case 2:
-            return 125
-        case 3:
-            return 200
-        default:
-            return 100
+       
+        case .office:
+           break
+         
         }
     }
     
-
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        guard let section = BookingSection(rawValue: indexPath.section) else {
+            return 100
+        }
+        return section.height
+    }
 }
-
+extension BookingViewController:BookOfficeTableViewCellDelegate{
+    func NavigateToShortTermOfficeBooking() {
+        let bookOfficeVC = UIViewController.createController(storyBoard: .OfficeBooking, ofType: ShortTermBookAnOfficeViewController.self)
+        bookOfficeVC.coordinator = self.coordinator
+        self.navigationController?.pushViewController(bookOfficeVC, animated: true)
+    }
+    
+    func NavigateToLongTermOfficeBooking() {
+        let bookOfficeVC = UIViewController.createController(storyBoard: .Booking, ofType: LongTermOfficeBookingViewController.self)
+        bookOfficeVC.coordinator = self.coordinator
+        self.navigationController?.pushViewController(bookOfficeVC, animated: true)
+    }
+    
+    
+}

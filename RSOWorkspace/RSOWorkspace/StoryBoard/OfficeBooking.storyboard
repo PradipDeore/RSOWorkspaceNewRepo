@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Short Term Book An Office View Controller-->
+        <scene sceneID="ivm-mL-aXn">
+            <objects>
+                <viewController storyboardIdentifier="ShortTermBookAnOfficeViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="dtR-Jp-id6" customClass="ShortTermBookAnOfficeViewController" customModule="RSOWorkspace" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="iha-M0-UE4">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="9lW-IK-Chw">
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="dtR-Jp-id6" id="Gt0-G4-n3m"/>
+                                    <outlet property="delegate" destination="dtR-Jp-id6" id="HDw-qw-f80"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="9Hs-1e-VIc"/>
+                        <color key="backgroundColor" name="F2F2F2"/>
+                        <constraints>
+                            <constraint firstItem="9lW-IK-Chw" firstAttribute="trailing" secondItem="9Hs-1e-VIc" secondAttribute="trailing" id="bwe-mH-lOQ"/>
+                            <constraint firstItem="9lW-IK-Chw" firstAttribute="top" secondItem="iha-M0-UE4" secondAttribute="top" id="d9X-SB-wgK"/>
+                            <constraint firstAttribute="bottom" secondItem="9lW-IK-Chw" secondAttribute="bottom" id="kkd-lO-M6b"/>
+                            <constraint firstItem="9lW-IK-Chw" firstAttribute="leading" secondItem="9Hs-1e-VIc" secondAttribute="leading" id="w5E-TE-pnR"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="9lW-IK-Chw" id="Ch6-tM-5AG"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qQL-Ea-Kpi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="45" y="-222"/>
+        </scene>
+    </scenes>
+    <resources>
+        <namedColor name="F2F2F2">
+            <color red="0.94900000095367432" green="0.94900000095367432" blue="0.94900000095367432" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

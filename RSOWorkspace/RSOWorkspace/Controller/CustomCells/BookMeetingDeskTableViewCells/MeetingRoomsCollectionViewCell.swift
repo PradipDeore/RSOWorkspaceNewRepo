@@ -16,7 +16,6 @@ protocol BookButtonActionDelegate:AnyObject{
 }
 extension BookButtonActionDelegate {
   func didSelect(selectedId: Int) {
-    
   }
 }
 class MeetingRoomsCollectionViewCell: UICollectionViewCell {
@@ -100,7 +99,6 @@ class MeetingRoomsCollectionViewCell: UICollectionViewCell {
                 backActionDelegate?.showBookRoomDetailsVC(meetingRoomId: selectedMeetingRoom!)
             }else{
                 backActionDelegate?.showBookMeetingRoomsVC()
-
             }
         }else {
             backActionDelegate?.showLogInVC()

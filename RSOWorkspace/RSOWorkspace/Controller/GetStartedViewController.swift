@@ -14,7 +14,6 @@ class GetStartedViewController: UIViewController {
         super.viewDidLoad()
         // Hide the back button
            navigationItem.hidesBackButton = true
-        
     }
     
     @IBAction func btnLogInTappedAction(_ sender: Any) {
@@ -30,18 +29,13 @@ class GetStartedViewController: UIViewController {
         self.navigationController?.pushViewController(signUpVC, animated: true)
     }
     
-   
-    
     @IBAction func btnExploreTappedAction(_ sender: Any) {
-        let deskListingVC = UIViewController.createController(storyBoard: .Products, ofType: RoomListingViewController.self)
-        self.navigationController?.pushViewController(deskListingVC, animated: true)
-    }
-    
-    
-    @IBAction func btnGuestLoginTappedAction(_ sender: Any) {
+//        let deskListingVC = UIViewController.createController(storyBoard: .Products, ofType: RoomListingViewController.self)
+//        self.navigationController?.pushViewController(deskListingVC, animated: true)
         RSOTabBarViewController.presentAsRootController()
-
     }
+    
+    
     class func presentAsRootController() {
         // Create your RSOTabBarVC instance
        // let rsoTabBarVC = UIViewController.createController(storyBoard: .TabBar, ofType: RSOTabBarViewController.self)
