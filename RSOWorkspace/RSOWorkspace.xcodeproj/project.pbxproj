@@ -409,6 +409,7 @@
 		58F458512B91FD5C00CF8AFA /* BookRoomDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F458502B91FD5C00CF8AFA /* BookRoomDetailsViewController.swift */; };
 		58F88E402BA8230200771268 /* ReportAnIssueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F88E3F2BA8230200771268 /* ReportAnIssueViewController.swift */; };
 		58F96E242C479DFA009C4DC5 /* subServicesRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F96E232C479DFA009C4DC5 /* subServicesRequestModel.swift */; };
+		EE3B78222C54B54600706F16 /* MembershipResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3B78212C54B54600706F16 /* MembershipResponse.swift */; };
 		EEA44D812C4805530081EE0D /* RSOToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA44D802C4805530081EE0D /* RSOToastView.swift */; };
 		EEAB97A02C522ADC00BD5E0D /* MembershipViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEAB979F2C522ADC00BD5E0D /* MembershipViewController.swift */; };
 		EEAB97A22C5233A800BD5E0D /* MembershipTabItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEAB97A12C5233A800BD5E0D /* MembershipTabItem.swift */; };
@@ -836,6 +837,7 @@
 		58F96E232C479DFA009C4DC5 /* subServicesRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = subServicesRequestModel.swift; sourceTree = "<group>"; };
 		679B083A745FEFA843A18302 /* Pods-RSOWorkspace.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RSOWorkspace.release.xcconfig"; path = "Target Support Files/Pods-RSOWorkspace/Pods-RSOWorkspace.release.xcconfig"; sourceTree = "<group>"; };
 		7AB224176F3C3ECB7C30B655 /* Pods-RSOWorkspace.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RSOWorkspace.debug.xcconfig"; path = "Target Support Files/Pods-RSOWorkspace/Pods-RSOWorkspace.debug.xcconfig"; sourceTree = "<group>"; };
+		EE3B78212C54B54600706F16 /* MembershipResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MembershipResponse.swift; sourceTree = "<group>"; };
 		EEA44D802C4805530081EE0D /* RSOToastView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSOToastView.swift; sourceTree = "<group>"; };
 		EEAB979F2C522ADC00BD5E0D /* MembershipViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MembershipViewController.swift; sourceTree = "<group>"; };
 		EEAB97A12C5233A800BD5E0D /* MembershipTabItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MembershipTabItem.swift; sourceTree = "<group>"; };
@@ -1535,6 +1537,7 @@
 				58AE87B62C50FF6D004A99D6 /* CouponDetailsResponseModel.swift */,
 				58CF207A2C53C3EE0070538A /* LongTermOfficeBookingReasonsResponse.swift */,
 				58CF20822C53CC380070538A /* LongTermOfficeBookingResponse.swift */,
+				EE3B78212C54B54600706F16 /* MembershipResponse.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -2109,6 +2112,7 @@
 				583403A42B99CB2500318BB8 /* ChooseAdditionalServicesTableViewCell.swift in Sources */,
 				580418232BD13DC7008EA858 /* NotificationTableViewCell.swift in Sources */,
 				587EA9EF2B960396002BD4D1 /* ChooseAmenitiesTableViewCell.swift in Sources */,
+				EE3B78222C54B54600706F16 /* MembershipResponse.swift in Sources */,
 				58D513382BCA4CDD00B87739 /* PaymentRoomBookingEndPoint.swift in Sources */,
 				58C7C5102BAAA2D900CF6578 /* EventTableViewCell.swift in Sources */,
 				58F458482B91D79200CF8AFA /* MeetingRoomListingResponse.swift in Sources */,
