@@ -18,9 +18,6 @@ extension ShortTermOfficeBookingEndPoint: EndPointType {
             return "store-officebooking"
         }
     }
-    var baseURL: String {
-        return "https://finance.ardemos.co.in/rso/api/"
-    }
     
     var url: URL? {
         return URL(string: "\(baseURL)\(path)")

@@ -410,6 +410,7 @@
 		58F88E402BA8230200771268 /* ReportAnIssueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F88E3F2BA8230200771268 /* ReportAnIssueViewController.swift */; };
 		58F96E242C479DFA009C4DC5 /* subServicesRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F96E232C479DFA009C4DC5 /* subServicesRequestModel.swift */; };
 		EE3B78222C54B54600706F16 /* MembershipResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3B78212C54B54600706F16 /* MembershipResponse.swift */; };
+		EE3B78242C54BB0E00706F16 /* MembershipEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3B78232C54BB0E00706F16 /* MembershipEndPoint.swift */; };
 		EEA44D812C4805530081EE0D /* RSOToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA44D802C4805530081EE0D /* RSOToastView.swift */; };
 		EEAB97A02C522ADC00BD5E0D /* MembershipViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEAB979F2C522ADC00BD5E0D /* MembershipViewController.swift */; };
 		EEAB97A22C5233A800BD5E0D /* MembershipTabItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEAB97A12C5233A800BD5E0D /* MembershipTabItem.swift */; };
@@ -838,6 +839,7 @@
 		679B083A745FEFA843A18302 /* Pods-RSOWorkspace.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RSOWorkspace.release.xcconfig"; path = "Target Support Files/Pods-RSOWorkspace/Pods-RSOWorkspace.release.xcconfig"; sourceTree = "<group>"; };
 		7AB224176F3C3ECB7C30B655 /* Pods-RSOWorkspace.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RSOWorkspace.debug.xcconfig"; path = "Target Support Files/Pods-RSOWorkspace/Pods-RSOWorkspace.debug.xcconfig"; sourceTree = "<group>"; };
 		EE3B78212C54B54600706F16 /* MembershipResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MembershipResponse.swift; sourceTree = "<group>"; };
+		EE3B78232C54BB0E00706F16 /* MembershipEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MembershipEndPoint.swift; sourceTree = "<group>"; };
 		EEA44D802C4805530081EE0D /* RSOToastView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSOToastView.swift; sourceTree = "<group>"; };
 		EEAB979F2C522ADC00BD5E0D /* MembershipViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MembershipViewController.swift; sourceTree = "<group>"; };
 		EEAB97A12C5233A800BD5E0D /* MembershipTabItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MembershipTabItem.swift; sourceTree = "<group>"; };
@@ -966,6 +968,7 @@
 				58BEF2782C4815B700C78CF4 /* NotificationEndPoint.swift */,
 				58CF207C2C53C4760070538A /* LongTermOfficeBookingEndPoint.swift */,
 				58CF207E2C53C99F0070538A /* ShortTermOfficeBookingEndPoint.swift */,
+				EE3B78232C54BB0E00706F16 /* MembershipEndPoint.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -2317,6 +2320,7 @@
 				58BF55992BCFEC8D00524828 /* DeskListingViewController.swift in Sources */,
 				58BCBC1B2C491F1B00465381 /* SideMenuPaymentsViewController.swift in Sources */,
 				589BBAA32BBBF54C00DCEF70 /* FAQEndPoint.swift in Sources */,
+				EE3B78242C54BB0E00706F16 /* MembershipEndPoint.swift in Sources */,
 				589BBAA02BBBEF3D00DCEF70 /* FAQTitleTableViewCell.swift in Sources */,
 				58BF85232B875D5B009FF06C /* SignUpRequestModel.swift in Sources */,
 				58B461562B80A91200C3FF21 /* RSOSocialButton.swift in Sources */,
