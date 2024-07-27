@@ -30,6 +30,10 @@ class DashboardDeskTypeTableViewCell: UITableViewCell {
         super.awakeFromNib()
         customizeCell()
         setButtonAppearance(button: btnMeetings, backgroundColor: selectedButtonColor, textColor: .black)
+        let customFont = UIFont(name: "Poppins-Bold", size: 14.0)
+        btnMeetings.titleLabel?.font = customFont
+        btnWorkspace.titleLabel?.font = customFont
+        btnMembership.titleLabel?.font = customFont
     }
     
     // MARK: - Customization
@@ -37,11 +41,13 @@ class DashboardDeskTypeTableViewCell: UITableViewCell {
         btnMeetings.layer.cornerRadius = btnMeetings.bounds.height / 2
         btnWorkspace.layer.cornerRadius = btnWorkspace.bounds.height / 2
         btnMembership.layer.cornerRadius = btnMembership.bounds.height / 2
+        
     }
     func buttonSetUp(){
         setButtonAppearance(button: btnMeetings, backgroundColor: defaultButtonColor, textColor: .white)
         setButtonAppearance(button: btnWorkspace, backgroundColor: defaultButtonColor, textColor: .white)
         setButtonAppearance(button: btnMembership, backgroundColor: defaultButtonColor, textColor: .white)
+
     }
     
     // MARK: - Button Actions

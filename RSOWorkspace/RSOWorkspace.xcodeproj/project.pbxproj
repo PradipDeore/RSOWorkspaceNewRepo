@@ -301,6 +301,9 @@
 		58CF20872C53E4E50070538A /* DisplayQRCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58CF20862C53E4E50070538A /* DisplayQRCodeViewController.swift */; };
 		58D0088C2BB28B4100D48556 /* MemberListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D0088B2BB28B4100D48556 /* MemberListResponse.swift */; };
 		58D0088E2BB2923200D48556 /* CompanyListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D0088D2BB2923200D48556 /* CompanyListResponse.swift */; };
+		58D2D1CD2C54BF57008425DA /* ConfirmShortTermBookingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D2D1CC2C54BF57008425DA /* ConfirmShortTermBookingViewController.swift */; };
+		58D2D1D12C54C446008425DA /* NoOfSeatsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D2D1CF2C54C446008425DA /* NoOfSeatsTableViewCell.swift */; };
+		58D2D1D22C54C446008425DA /* NoOfSeatsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58D2D1D02C54C446008425DA /* NoOfSeatsTableViewCell.xib */; };
 		58D513342BCA4C2C00B87739 /* PaymentRoomBookingRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D513332BCA4C2C00B87739 /* PaymentRoomBookingRequest.swift */; };
 		58D513362BCA4C8600B87739 /* PaymentRoomBookingResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D513352BCA4C8600B87739 /* PaymentRoomBookingResponse.swift */; };
 		58D513382BCA4CDD00B87739 /* PaymentRoomBookingEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D513372BCA4CDD00B87739 /* PaymentRoomBookingEndPoint.swift */; };
@@ -719,6 +722,9 @@
 		58CF20862C53E4E50070538A /* DisplayQRCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayQRCodeViewController.swift; sourceTree = "<group>"; };
 		58D0088B2BB28B4100D48556 /* MemberListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberListResponse.swift; sourceTree = "<group>"; };
 		58D0088D2BB2923200D48556 /* CompanyListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyListResponse.swift; sourceTree = "<group>"; };
+		58D2D1CC2C54BF57008425DA /* ConfirmShortTermBookingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmShortTermBookingViewController.swift; sourceTree = "<group>"; };
+		58D2D1CF2C54C446008425DA /* NoOfSeatsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoOfSeatsTableViewCell.swift; sourceTree = "<group>"; };
+		58D2D1D02C54C446008425DA /* NoOfSeatsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoOfSeatsTableViewCell.xib; sourceTree = "<group>"; };
 		58D513332BCA4C2C00B87739 /* PaymentRoomBookingRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentRoomBookingRequest.swift; sourceTree = "<group>"; };
 		58D513352BCA4C8600B87739 /* PaymentRoomBookingResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentRoomBookingResponse.swift; sourceTree = "<group>"; };
 		58D513372BCA4CDD00B87739 /* PaymentRoomBookingEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentRoomBookingEndPoint.swift; sourceTree = "<group>"; };
@@ -984,6 +990,7 @@
 		58374A3C2B84B9F600CA34C5 /* CustomCells */ = {
 			isa = PBXGroup;
 			children = (
+				58D2D1CE2C54C40E008425DA /* ShortTermConfirmBookingTableCells */,
 				580593212C4FD96000FE18B2 /* BookDeskCollectionViewCell */,
 				58BCBC1C2C4927DA00465381 /* SideMenuPaymentTableViewCells */,
 				580418112BD107ED008EA858 /* NotificationsTablvewCells */,
@@ -1613,6 +1620,15 @@
 			path = "My Booking";
 			sourceTree = "<group>";
 		};
+		58D2D1CE2C54C40E008425DA /* ShortTermConfirmBookingTableCells */ = {
+			isa = PBXGroup;
+			children = (
+				58D2D1CF2C54C446008425DA /* NoOfSeatsTableViewCell.swift */,
+				58D2D1D02C54C446008425DA /* NoOfSeatsTableViewCell.xib */,
+			);
+			path = ShortTermConfirmBookingTableCells;
+			sourceTree = "<group>";
+		};
 		58D584902B96F1FE00D17D0A /* BookingConfirmedTableViewCells */ = {
 			isa = PBXGroup;
 			children = (
@@ -1702,8 +1718,9 @@
 		58EB0E122BB695BB00DC2827 /* Office Booking */ = {
 			isa = PBXGroup;
 			children = (
-				58EB0E132BB695DB00DC2827 /* LongTermOfficeBookingViewController.swift */,
 				58CE5FF72C5243B000278890 /* ShortTermBookAnOfficeViewController.swift */,
+				58D2D1CC2C54BF57008425DA /* ConfirmShortTermBookingViewController.swift */,
+				58EB0E132BB695DB00DC2827 /* LongTermOfficeBookingViewController.swift */,
 			);
 			path = "Office Booking";
 			sourceTree = "<group>";
@@ -1975,6 +1992,7 @@
 				5843D76E2BC6F4FD00D5C8DD /* VisitorDetailsTableViewCell.xib in Resources */,
 				587EA9E02B95B216002BD4D1 /* InviteTeamMembersTableViewCell.xib in Resources */,
 				58C9AC072B8DC42900C719D1 /* OtherBookingsTableViewCell.xib in Resources */,
+				58D2D1D22C54C446008425DA /* NoOfSeatsTableViewCell.xib in Resources */,
 				588D8A7E2B627A6D00545748 /* LaunchScreen.storyboard in Resources */,
 				58E6F7102BA82567009D4E21 /* AddPicsTableViewCell.xib in Resources */,
 				589FB69E2B7644A90067255E /* Poppins-ThinItalic.ttf in Resources */,
@@ -2166,6 +2184,7 @@
 				5804181F2BD13BF5008EA858 /* NotificationsViewController.swift in Sources */,
 				587EA9DF2B95B216002BD4D1 /* InviteTeamMembersTableViewCell.swift in Sources */,
 				5843D7692BC6F3E300D5C8DD /* MyVisitorsViewController.swift in Sources */,
+				58D2D1CD2C54BF57008425DA /* ConfirmShortTermBookingViewController.swift in Sources */,
 				58374A452B84BC2100CA34C5 /* DeskCollectionViewCell.swift in Sources */,
 				583403982B99A13E00318BB8 /* PayWithRewardPointsTableViewCell.swift in Sources */,
 				589FB6872B763EBA0067255E /* GetStartedViewController.swift in Sources */,
@@ -2331,6 +2350,7 @@
 				58B406052BCD46360045DD4C /* SideMenuDashboardViewController.swift in Sources */,
 				58BCBC2B2C49298100465381 /* PayNowButtonTableViewCell.swift in Sources */,
 				58E6F70B2BA82552009D4E21 /* SelectAnAreaTableViewCell.swift in Sources */,
+				58D2D1D12C54C446008425DA /* NoOfSeatsTableViewCell.swift in Sources */,
 				581F30C12BC00D8B0083A400 /* InviteVisitorsViewController.swift in Sources */,
 				583DBEC12BB1465300C3F93B /* EventResponse.swift in Sources */,
 				58BF43A22B7B4F1200CD68EA /* RSOTextField.swift in Sources */,

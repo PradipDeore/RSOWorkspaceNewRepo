@@ -85,7 +85,7 @@ class DeskBookingViewController: UIViewController{
                             self.selectedDeskId = selectedOption.id
                             self.apiRequestModelDeskListing.locationid = selectedOption.id
                             self.displayBookingDetailsNextScreen.location = selectedOption.name
-                            self.fetchDesks()
+                            self.fetchDesksList()
                             self.tableView.reloadData()
                             self.eventHandler?(.dataLoaded)
                         }
@@ -95,7 +95,7 @@ class DeskBookingViewController: UIViewController{
                 }
             }
     }
-    private func fetchDesks() {
+    private func fetchDesksList() {
         if selectedDeskId > 0{
             self.tableView.reloadData()
         }
@@ -331,7 +331,7 @@ extension DeskBookingViewController: SelectLocationTableViewCellDelegate {
         selectedDeskId = selectedOption.id
         apiRequestModelDeskListing.locationid = selectedOption.id
         displayBookingDetailsNextScreen.location = selectedOption.name
-        fetchDesks()
+        fetchDesksList()
     }
     
     func presentAlertController(alertController: UIAlertController) {
@@ -348,7 +348,7 @@ extension DeskBookingViewController: SelectDateTableViewCellDelegate {
         let displayDate = Date.formatSelectedDate(format: .EEEEddMMMMyyyy, date: actualFormatOfDate)
         displayBookingDetailsNextScreen.date = displayDate
         self.deskbookingConfirmDetails.date = apiDate
-        fetchDesks()
+        fetchDesksList()
         
     }
 }
@@ -365,7 +365,7 @@ extension DeskBookingViewController: SelectTimeTableViewCellDelegate{
         let displayStartTime = Date.formatSelectedDate(format: .hhmma, date: startTime)
         displayBookingDetailsNextScreen.startTime = displayStartTime
         self.deskbookingConfirmDetails.start_time = apiStartTime
-        fetchDesks()
+        fetchDesksList()
         
     }
     
@@ -377,7 +377,7 @@ extension DeskBookingViewController: SelectTimeTableViewCellDelegate{
         let displayEndTime = Date.formatSelectedDate(format: .hhmma, date: endTime)
         displayBookingDetailsNextScreen.endTime = displayEndTime
         self.deskbookingConfirmDetails.end_time = apiEndTime
-        fetchDesks()
+        fetchDesksList()
         
         
     }
