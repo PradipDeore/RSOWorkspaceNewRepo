@@ -11,7 +11,7 @@ class PlanTypeViewController: UIViewController {
   @IBOutlet var collectionView: UICollectionView!
   let cellIdentifier = "PlanTypeCollectionViewCell"
   var planSelectedIndex = 0
-
+  var membershipNavigationDelegate: MembershipNavigationDelegate?
   var list: [MembershipData] = []
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,6 +43,7 @@ class PlanTypeViewController: UIViewController {
       SelectedMembershipData.shared.id = planSelected.id ?? 0
       SelectedMembershipData.shared.monthlyCost = priceSelected?.price ?? ""
       SelectedMembershipData.shared.planType = priceSelected?.duration ?? ""
+      membershipNavigationDelegate?.navigateToNextVC()
     }
 
   }

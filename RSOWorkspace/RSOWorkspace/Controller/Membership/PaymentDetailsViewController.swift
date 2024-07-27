@@ -8,6 +8,7 @@
 import UIKit
 
 class PaymentDetailsViewController: UIViewController {
+  var membershipNavigationDelegate: MembershipNavigationDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -413,6 +413,8 @@
 		EE3B78242C54BB0E00706F16 /* MembershipEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3B78232C54BB0E00706F16 /* MembershipEndPoint.swift */; };
 		EE3B78272C550C6B00706F16 /* SelectedMembershipData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3B78262C550C6B00706F16 /* SelectedMembershipData.swift */; };
 		EE3B782C2C551B5600706F16 /* CenteredCollectionView in Frameworks */ = {isa = PBXBuildFile; productRef = EE3B782B2C551B5600706F16 /* CenteredCollectionView */; };
+		EE3B782F2C552BE800706F16 /* AgreementCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3B782D2C552BE800706F16 /* AgreementCollectionViewCell.swift */; };
+		EE3B78302C552BE800706F16 /* AgreementCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EE3B782E2C552BE800706F16 /* AgreementCollectionViewCell.xib */; };
 		EEA44D812C4805530081EE0D /* RSOToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA44D802C4805530081EE0D /* RSOToastView.swift */; };
 		EEAB97A02C522ADC00BD5E0D /* MembershipViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEAB979F2C522ADC00BD5E0D /* MembershipViewController.swift */; };
 		EEAB97A22C5233A800BD5E0D /* MembershipTabItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEAB97A12C5233A800BD5E0D /* MembershipTabItem.swift */; };
@@ -842,6 +844,8 @@
 		EE3B78212C54B54600706F16 /* MembershipResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MembershipResponse.swift; sourceTree = "<group>"; };
 		EE3B78232C54BB0E00706F16 /* MembershipEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MembershipEndPoint.swift; sourceTree = "<group>"; };
 		EE3B78262C550C6B00706F16 /* SelectedMembershipData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedMembershipData.swift; sourceTree = "<group>"; };
+		EE3B782D2C552BE800706F16 /* AgreementCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgreementCollectionViewCell.swift; sourceTree = "<group>"; };
+		EE3B782E2C552BE800706F16 /* AgreementCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AgreementCollectionViewCell.xib; sourceTree = "<group>"; };
 		EEA44D802C4805530081EE0D /* RSOToastView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSOToastView.swift; sourceTree = "<group>"; };
 		EEAB979F2C522ADC00BD5E0D /* MembershipViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MembershipViewController.swift; sourceTree = "<group>"; };
 		EEAB97A12C5233A800BD5E0D /* MembershipTabItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MembershipTabItem.swift; sourceTree = "<group>"; };
@@ -1839,6 +1843,8 @@
 				EEAED9412C52504C00A1F56A /* PlanInfoTableViewCell.swift */,
 				EEAED9422C52504C00A1F56A /* PlanInfoTableViewCell.xib */,
 				EE3B78262C550C6B00706F16 /* SelectedMembershipData.swift */,
+				EE3B782D2C552BE800706F16 /* AgreementCollectionViewCell.swift */,
+				EE3B782E2C552BE800706F16 /* AgreementCollectionViewCell.xib */,
 			);
 			path = Membership;
 			sourceTree = "<group>";
@@ -1963,6 +1969,7 @@
 				589FB69D2B7644A90067255E /* Poppins-ExtraLight.ttf in Resources */,
 				58E2D0DE2BBA7E110016DEB6 /* MembershipPlanTableViewCell.xib in Resources */,
 				589FB6A12B7644A90067255E /* Poppins-Light.ttf in Resources */,
+				EE3B78302C552BE800706F16 /* AgreementCollectionViewCell.xib in Resources */,
 				58D584A42B96F39D00D17D0A /* BookingConfirmedTeamMembersTableViewCell.xib in Resources */,
 				589FB69F2B7644A90067255E /* Poppins-ExtraLightItalic.ttf in Resources */,
 				58E2D0DA2BBA7B0E0016DEB6 /* ChangePasswordTableViewCell.xib in Resources */,
@@ -2338,6 +2345,7 @@
 				EE3B78242C54BB0E00706F16 /* MembershipEndPoint.swift in Sources */,
 				589BBAA02BBBEF3D00DCEF70 /* FAQTitleTableViewCell.swift in Sources */,
 				58BF85232B875D5B009FF06C /* SignUpRequestModel.swift in Sources */,
+				EE3B782F2C552BE800706F16 /* AgreementCollectionViewCell.swift in Sources */,
 				58B461562B80A91200C3FF21 /* RSOSocialButton.swift in Sources */,
 				58E2D0CF2BBA6ABD0016DEB6 /* ProfileViewController.swift in Sources */,
 				58C7C5152BAABFB900CF6578 /* EventCollectionViewCell.swift in Sources */,

@@ -17,13 +17,13 @@ enum MembershipTabItem: Int, CaseIterable {
   func getButtonTitle() -> String {
     switch self {
     case .planType:
-      return "1. Plan Type"
+      return "Plan Type"
     case .agreementType:
-      return "2. Agreement Type"
+      return "Agreement Type"
     case .yourDetails:
-      return "3. Your Details"
+      return "Your Details"
     case .paymentDetails:
-      return "4. Payment Details"
+      return "Payment Details"
     }
   }
   func getScreenTitle() -> String {
@@ -31,11 +31,11 @@ enum MembershipTabItem: Int, CaseIterable {
     case .planType:
       return "Choose Your Membership Plan"
     case .agreementType:
-      return "Choose Agreement Type"
+      return "Choose a plan | Save more with longe"
     case .yourDetails:
-      return "Create your RSO Account"
+      return ""
     case .paymentDetails:
-      return "Payment Details"
+      return ""
     }
     
   }

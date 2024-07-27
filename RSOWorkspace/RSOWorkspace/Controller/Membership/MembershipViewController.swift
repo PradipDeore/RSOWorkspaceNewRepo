@@ -7,6 +7,13 @@
 
 import UIKit
 
+protocol MembershipNavigable: AnyObject {
+    var membershipNavigationDelegate: MembershipNavigationDelegate? { get set }
+}
+protocol MembershipNavigationDelegate : AnyObject {
+  func navigateToNextVC()
+}
+
 class MembershipViewController: UIViewController {
   
   @IBOutlet var topbarHeightConstraint: NSLayoutConstraint!
@@ -17,15 +24,23 @@ class MembershipViewController: UIViewController {
   @IBOutlet var screenNameLabel: UILabel!
   let cellIdentifier = "MembershipButtonCollectionViewCell"
   var viewControllers = [UIViewController]()
-  var list: [MembershipTabItem] = [.planType, .agreementType, .yourDetails, .paymentDetails]
+  var list: [MembershipTabItem] = []
   var selectedIndex = 0
   var currentNavigationVC: UINavigationController?
   override func viewDidLoad() {
     super.viewDidLoad()
     collectionView.register(UINib(nibName: cellIdentifier, bundle: nil), forCellWithReuseIdentifier: cellIdentifier)
+    if UserHelper.shared.isGuest() {
+      list = [.planType, .agreementType, .yourDetails, .paymentDetails]
+    } else {
+      list = [.planType, .agreementType, .paymentDetails]
+    }
 
     for item in list {
       let viewController = item.createTabChildController()
+      if let membershipVCChild = viewController as? MembershipNavigable {
+        membershipVCChild.membershipNavigationDelegate = self
+      }
       viewControllers.append(viewController)
     }
     if let firstVC = viewControllers.first {
@@ -53,7 +68,8 @@ extension MembershipViewController: UICollectionViewDelegate, UICollectionViewDa
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as! MembershipButtonCollectionViewCell
     let pageName = list[indexPath.item]
     cell.btnType.tag = indexPath.row
-    cell.btnType.setTitle(pageName.getButtonTitle(), for: .normal)
+    let tabName = "\(indexPath.row + 1). \(pageName.getButtonTitle())"
+    cell.btnType.setTitle(tabName, for: .normal)
     cell.selectButton(selcted: false)
     cell.btnType.addTarget(self, action: #selector(buttonClicked(_:)), for: .touchUpInside)
     if indexPath.row == selectedIndex {
@@ -80,6 +96,13 @@ extension MembershipViewController: UICollectionViewDelegate, UICollectionViewDa
   func moveToNextScreen() {
     if self.selectedIndex >= 0 && self.selectedIndex < list.count {
       showScreen(index: self.selectedIndex + 1)
+    }
+  }
+}
+extension MembershipViewController: MembershipNavigationDelegate {
+  func navigateToNextVC() {
+    DispatchQueue.main.async {
+      self.moveToNextScreen()
     }
   }
 }
