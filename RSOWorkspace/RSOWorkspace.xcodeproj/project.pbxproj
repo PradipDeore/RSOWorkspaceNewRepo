@@ -423,7 +423,6 @@
 		EEAB97B22C523AC800BD5E0D /* MembershipButtonCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EEAB97B02C523AC800BD5E0D /* MembershipButtonCollectionViewCell.xib */; };
 		EEAB97B52C52493000BD5E0D /* PlanTypeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEAB97B32C52493000BD5E0D /* PlanTypeCollectionViewCell.swift */; };
 		EEAB97B62C52493000BD5E0D /* PlanTypeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EEAB97B42C52493000BD5E0D /* PlanTypeCollectionViewCell.xib */; };
-		EEAB97B82C5249A800BD5E0D /* PlanOptionList.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEAB97B72C5249A800BD5E0D /* PlanOptionList.swift */; };
 		EEAB97BB2C524AB300BD5E0D /* PlanPriceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEAB97B92C524AB300BD5E0D /* PlanPriceTableViewCell.swift */; };
 		EEAB97BC2C524AB300BD5E0D /* PlanPriceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EEAB97BA2C524AB300BD5E0D /* PlanPriceTableViewCell.xib */; };
 		EEAED9432C52504C00A1F56A /* PlanInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEAED9412C52504C00A1F56A /* PlanInfoTableViewCell.swift */; };
@@ -852,7 +851,6 @@
 		EEAB97B02C523AC800BD5E0D /* MembershipButtonCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MembershipButtonCollectionViewCell.xib; sourceTree = "<group>"; };
 		EEAB97B32C52493000BD5E0D /* PlanTypeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanTypeCollectionViewCell.swift; sourceTree = "<group>"; };
 		EEAB97B42C52493000BD5E0D /* PlanTypeCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlanTypeCollectionViewCell.xib; sourceTree = "<group>"; };
-		EEAB97B72C5249A800BD5E0D /* PlanOptionList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanOptionList.swift; sourceTree = "<group>"; };
 		EEAB97B92C524AB300BD5E0D /* PlanPriceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanPriceTableViewCell.swift; sourceTree = "<group>"; };
 		EEAB97BA2C524AB300BD5E0D /* PlanPriceTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlanPriceTableViewCell.xib; sourceTree = "<group>"; };
 		EEAED9412C52504C00A1F56A /* PlanInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanInfoTableViewCell.swift; sourceTree = "<group>"; };
@@ -1406,6 +1404,7 @@
 				58C7C5032BAAA26700CF6578 /* Commune */,
 				587DA9342BA44DB700D27769 /* Concierge */,
 				58BB6B042B986976001E1F3D /* Payment */,
+				EE3B78252C55091800706F16 /* Membership */,
 				5858015D2B79F9E000AD5C2C /* LaunchViewController.swift */,
 				589FB6862B763EBA0067255E /* GetStartedViewController.swift */,
 				58BCFBB32B7A215F00342275 /* LogInViewController.swift */,
@@ -1436,21 +1435,6 @@
 				5834039E2B99C99C00318BB8 /* ChooseAdditionalServicesViewController.swift */,
 				58BCBC1A2C491F1B00465381 /* SideMenuPaymentsViewController.swift */,
 				58AE87B82C513591004A99D6 /* PaymentNetworkManager.swift */,
-				EEAB979F2C522ADC00BD5E0D /* MembershipViewController.swift */,
-				EEAB97A12C5233A800BD5E0D /* MembershipTabItem.swift */,
-				EEAB97A32C52379400BD5E0D /* PlanTypeViewController.swift */,
-				EEAB97A52C5237B500BD5E0D /* AgreementViewController.swift */,
-				EEAB97A72C5237D400BD5E0D /* YourDetailsViewController.swift */,
-				EEAB97A92C5237E800BD5E0D /* PaymentDetailsViewController.swift */,
-				EEAB97AF2C523AC800BD5E0D /* MembershipButtonCollectionViewCell.swift */,
-				EEAB97B02C523AC800BD5E0D /* MembershipButtonCollectionViewCell.xib */,
-				EEAB97B32C52493000BD5E0D /* PlanTypeCollectionViewCell.swift */,
-				EEAB97B42C52493000BD5E0D /* PlanTypeCollectionViewCell.xib */,
-				EEAB97B72C5249A800BD5E0D /* PlanOptionList.swift */,
-				EEAB97B92C524AB300BD5E0D /* PlanPriceTableViewCell.swift */,
-				EEAB97BA2C524AB300BD5E0D /* PlanPriceTableViewCell.xib */,
-				EEAED9412C52504C00A1F56A /* PlanInfoTableViewCell.swift */,
-				EEAED9422C52504C00A1F56A /* PlanInfoTableViewCell.xib */,
 			);
 			path = Payment;
 			sourceTree = "<group>";
@@ -1831,6 +1815,27 @@
 				58E6F7162BA826B6009D4E21 /* RequestButtonTableViewCell.xib */,
 			);
 			path = ReportAnIssueTableViewCells;
+			sourceTree = "<group>";
+		};
+		EE3B78252C55091800706F16 /* Membership */ = {
+			isa = PBXGroup;
+			children = (
+				EEAB979F2C522ADC00BD5E0D /* MembershipViewController.swift */,
+				EEAB97A12C5233A800BD5E0D /* MembershipTabItem.swift */,
+				EEAB97A32C52379400BD5E0D /* PlanTypeViewController.swift */,
+				EEAB97A52C5237B500BD5E0D /* AgreementViewController.swift */,
+				EEAB97A72C5237D400BD5E0D /* YourDetailsViewController.swift */,
+				EEAB97A92C5237E800BD5E0D /* PaymentDetailsViewController.swift */,
+				EEAB97AF2C523AC800BD5E0D /* MembershipButtonCollectionViewCell.swift */,
+				EEAB97B02C523AC800BD5E0D /* MembershipButtonCollectionViewCell.xib */,
+				EEAB97B32C52493000BD5E0D /* PlanTypeCollectionViewCell.swift */,
+				EEAB97B42C52493000BD5E0D /* PlanTypeCollectionViewCell.xib */,
+				EEAB97B92C524AB300BD5E0D /* PlanPriceTableViewCell.swift */,
+				EEAB97BA2C524AB300BD5E0D /* PlanPriceTableViewCell.xib */,
+				EEAED9412C52504C00A1F56A /* PlanInfoTableViewCell.swift */,
+				EEAED9422C52504C00A1F56A /* PlanInfoTableViewCell.xib */,
+			);
+			path = Membership;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -2240,7 +2245,6 @@
 				58F458392B91982400CF8AFA /* SelectTimeTableViewCell.swift in Sources */,
 				58D584AB2B96F43000D17D0A /* ConfirmAndProceedToPayementTableViewCell.swift in Sources */,
 				58E997D32BBE87160051BEF3 /* VisitorsEndPoint.swift in Sources */,
-				EEAB97B82C5249A800BD5E0D /* PlanOptionList.swift in Sources */,
 				58127A8B2BAC32D1001693D6 /* ComapaniesSearchMembersTableViewCell.swift in Sources */,
 				58E6E9602B89D99B00EB3600 /* DashboardMarketPlaceTableViewCell.swift in Sources */,
 				5804180B2BD0F438008EA858 /* ConfirmDeskBookingDetailsModel.swift in Sources */,
