@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol PlanSelectDelegate: AnyObject {
+  func didSelectPlan(index: Int)
+}
+
 class PlanTypeCollectionViewCell: UICollectionViewCell {
   @IBOutlet weak var mainTitleLabel: UILabel!
   @IBOutlet weak var continueButton: UIButton!
@@ -16,6 +20,7 @@ class PlanTypeCollectionViewCell: UICollectionViewCell {
   let planInfoIdentifier = "PlanInfoTableViewCell"
   var selectedIndex = -1
   var priceOptions: [PlanPrice] = []
+  weak var planDelegate: PlanSelectDelegate?
   var services: [String] = []
   override func awakeFromNib() {
     super.awakeFromNib()
@@ -25,8 +30,6 @@ class PlanTypeCollectionViewCell: UICollectionViewCell {
     self.continueButton.alpha = 0.5
   }
   
-  @IBAction func continuePlanSelectAction(_ sender: Any) {
-  }
   func setData(titleString: String?, priceList:[PlanPrice]?, serviceList: [String]?) {
     self.mainTitleLabel.text = titleString
     self.priceOptions = priceList ?? []
@@ -77,6 +80,7 @@ extension PlanTypeCollectionViewCell: UITableViewDelegate, UITableViewDataSource
       self.continueButton.isUserInteractionEnabled = true
       self.continueButton.alpha = 1.0
       self.tableView.reloadData()
+      self.planDelegate?.didSelectPlan(index: selectedIndex)
     }
   }
 }

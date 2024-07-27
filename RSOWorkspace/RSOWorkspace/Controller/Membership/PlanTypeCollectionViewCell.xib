@@ -56,9 +56,6 @@
                                         <fontDescription key="fontDescription" name="Inter-SemiBold" family="Inter" pointSize="14"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" title="Continue"/>
-                                        <connections>
-                                            <action selector="continuePlanSelectAction:" destination="gTV-IL-0wX" eventType="touchUpInside" id="nic-Gc-nhX"/>
-                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>

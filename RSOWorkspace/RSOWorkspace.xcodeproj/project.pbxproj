@@ -411,6 +411,8 @@
 		58F96E242C479DFA009C4DC5 /* subServicesRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F96E232C479DFA009C4DC5 /* subServicesRequestModel.swift */; };
 		EE3B78222C54B54600706F16 /* MembershipResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3B78212C54B54600706F16 /* MembershipResponse.swift */; };
 		EE3B78242C54BB0E00706F16 /* MembershipEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3B78232C54BB0E00706F16 /* MembershipEndPoint.swift */; };
+		EE3B78272C550C6B00706F16 /* SelectedMembershipData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3B78262C550C6B00706F16 /* SelectedMembershipData.swift */; };
+		EE3B782C2C551B5600706F16 /* CenteredCollectionView in Frameworks */ = {isa = PBXBuildFile; productRef = EE3B782B2C551B5600706F16 /* CenteredCollectionView */; };
 		EEA44D812C4805530081EE0D /* RSOToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA44D802C4805530081EE0D /* RSOToastView.swift */; };
 		EEAB97A02C522ADC00BD5E0D /* MembershipViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEAB979F2C522ADC00BD5E0D /* MembershipViewController.swift */; };
 		EEAB97A22C5233A800BD5E0D /* MembershipTabItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEAB97A12C5233A800BD5E0D /* MembershipTabItem.swift */; };
@@ -839,6 +841,7 @@
 		7AB224176F3C3ECB7C30B655 /* Pods-RSOWorkspace.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RSOWorkspace.debug.xcconfig"; path = "Target Support Files/Pods-RSOWorkspace/Pods-RSOWorkspace.debug.xcconfig"; sourceTree = "<group>"; };
 		EE3B78212C54B54600706F16 /* MembershipResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MembershipResponse.swift; sourceTree = "<group>"; };
 		EE3B78232C54BB0E00706F16 /* MembershipEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MembershipEndPoint.swift; sourceTree = "<group>"; };
+		EE3B78262C550C6B00706F16 /* SelectedMembershipData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedMembershipData.swift; sourceTree = "<group>"; };
 		EEA44D802C4805530081EE0D /* RSOToastView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSOToastView.swift; sourceTree = "<group>"; };
 		EEAB979F2C522ADC00BD5E0D /* MembershipViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MembershipViewController.swift; sourceTree = "<group>"; };
 		EEAB97A12C5233A800BD5E0D /* MembershipTabItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MembershipTabItem.swift; sourceTree = "<group>"; };
@@ -864,6 +867,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5626B401B87B81EF061046D2 /* Pods_RSOWorkspace.framework in Frameworks */,
+				EE3B782C2C551B5600706F16 /* CenteredCollectionView in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1834,6 +1838,7 @@
 				EEAB97BA2C524AB300BD5E0D /* PlanPriceTableViewCell.xib */,
 				EEAED9412C52504C00A1F56A /* PlanInfoTableViewCell.swift */,
 				EEAED9422C52504C00A1F56A /* PlanInfoTableViewCell.xib */,
+				EE3B78262C550C6B00706F16 /* SelectedMembershipData.swift */,
 			);
 			path = Membership;
 			sourceTree = "<group>";
@@ -1856,6 +1861,9 @@
 			dependencies = (
 			);
 			name = RSOWorkspace;
+			packageProductDependencies = (
+				EE3B782B2C551B5600706F16 /* CenteredCollectionView */,
+			);
 			productName = RSOWorkspace;
 			productReference = 588D8A6E2B627A6B00545748 /* RSOWorkspace.app */;
 			productType = "com.apple.product-type.application";
@@ -1884,6 +1892,9 @@
 				Base,
 			);
 			mainGroup = 588D8A652B627A6B00545748;
+			packageReferences = (
+				EE3B782A2C551B5600706F16 /* XCRemoteSwiftPackageReference "CenteredCollectionView" */,
+			);
 			productRefGroup = 588D8A6F2B627A6B00545748 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -2353,6 +2364,7 @@
 				58BA515C2B9AE057000E0EF6 /* BookMeetingRoomRequestModel.swift in Sources */,
 				5804180D2BD0FEE6008EA858 /* BookingConfirmedMeetingRoomTableViewCell.swift in Sources */,
 				58ACDB3B2B78D10A0041B755 /* Constants.swift in Sources */,
+				EE3B78272C550C6B00706F16 /* SelectedMembershipData.swift in Sources */,
 				58B6A7CA2BCE5412008A2286 /* StatusTypeEnum.swift in Sources */,
 				58BE5E682B8C6FBF002244F5 /* RSOMeetingRoomsCollectionView.swift in Sources */,
 				58BCBC182C48F27000465381 /* FAQDescriptionTableViewCell.swift in Sources */,
@@ -2606,6 +2618,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		EE3B782A2C551B5600706F16 /* XCRemoteSwiftPackageReference "CenteredCollectionView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/BenEmdon/CenteredCollectionView";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.2.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		EE3B782B2C551B5600706F16 /* CenteredCollectionView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EE3B782A2C551B5600706F16 /* XCRemoteSwiftPackageReference "CenteredCollectionView" */;
+			productName = CenteredCollectionView;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 588D8A662B627A6B00545748 /* Project object */;
 }
