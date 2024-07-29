@@ -44,8 +44,8 @@ class UserHelper {
   func isGuest() -> Bool {
     return userDefaults.bool(forKey: userIsGuestKey)
   }
-  func isUserLoggedIn() -> Bool {
-    return userDefaults.bool(forKey: userIsGuestKey)
+  func isUserExplorer() -> Bool {
+    return !userDefaults.bool(forKey: userIsLoggedIn)
   }
 
   

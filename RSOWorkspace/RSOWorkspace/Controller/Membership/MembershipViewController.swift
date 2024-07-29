@@ -31,7 +31,7 @@ class MembershipViewController: UIViewController, RSOTabCoordinated {
   override func viewDidLoad() {
     super.viewDidLoad()
     collectionView.register(UINib(nibName: cellIdentifier, bundle: nil), forCellWithReuseIdentifier: cellIdentifier)
-    if !UserHelper.shared.isUserLoggedIn() {
+    if UserHelper.shared.isUserExplorer() {
       list = [.planType, .agreementType, .yourDetails, .paymentDetails]
     } else {
       list = [.planType, .agreementType, .paymentDetails]

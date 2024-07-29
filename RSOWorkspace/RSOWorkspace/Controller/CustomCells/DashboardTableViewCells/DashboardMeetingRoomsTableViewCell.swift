@@ -41,28 +41,7 @@ class DashboardMeetingRoomsTableViewCell: UITableViewCell {
                 }
             }
     }
-//    func fetchOfficeDesk() {
-//      DispatchQueue.main.async {
-//        RSOLoader.showLoader()
-//      }
-//        APIManager.shared.request(
-//            modelType: OfficeItemsResponse.self,
-//            type: DeskBookingEndPoint.offices) { response in
-//              DispatchQueue.main.async {
-//                RSOLoader.removeLoader()
-//              }
-//                switch response {
-//                case .success(let response):
-//                  if let deskList = response.data {
-//                    let listItems: [RSOCollectionItem] = deskList.map { RSOCollectionItem(deskItem: $0) }
-//                    self.collectionView.listItems = listItems
-//                    self.collectionView.eventHandler?(.dataLoaded)
-//                  }
-//                case .failure(let error):
-//                    self.collectionView.eventHandler?(.error(error))
-//                }
-//            }
-//    }
+
     func fetchOfficeDesk(id: Int?, requestModel: BookOfficeRequestModel?) {
       DispatchQueue.main.async {
         RSOLoader.showLoader()

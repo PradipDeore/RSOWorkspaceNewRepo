@@ -13,8 +13,8 @@ protocol DeskBookButtonActionDelegate:AnyObject{
     func showLogInVC()
 }
 class DeskCollectionViewCell: UICollectionViewCell {
-    
-    weak var backActionDelegate: DeskBookButtonActionDelegate?
+    //BookButtonActionDelegate
+    weak var backActionDelegate: BookButtonActionDelegate?
     
     @IBOutlet weak var btnBook: RSOButton!
     @IBOutlet weak var containerView: UIView!
@@ -75,7 +75,7 @@ class DeskCollectionViewCell: UICollectionViewCell {
             if self.tag == 1{
                 backActionDelegate?.showBookRoomDetailsVC(meetingRoomId: selectedMeetingRoom)
             }else{
-                backActionDelegate?.showDeskBookingVC()
+                backActionDelegate?.showBookMeetingRoomsVC()
                 
             }
         }else {

@@ -12,7 +12,7 @@ class DashboardViewController: UIViewController, RSOTabCoordinated {
   
   var coordinator: RSOTabBarCordinator?
   var selectedIndexPath: IndexPath?
-  
+  var selectedButtonType = ""
   @IBOutlet weak var tableView: UITableView!
   var myBookingResponseData: MyBookingResponse?
   var eventHandler: ((_ event: Event) -> Void)?
@@ -176,12 +176,33 @@ extension DashboardViewController {
 extension DashboardViewController: BookButtonActionDelegate {
   func showBookRoomDetailsVC(meetingRoomId: Int) {
     // Implement your logic here
+    DispatchQueue.main.async {
+      if UserHelper.shared.isUserExplorer() {
+        GetStartedViewController.presentAsRootController()
+        return
+      }
+    }
   }
-  
+  // not used
+  func showDeskBookingVC() {
+  }
   func showBookMeetingRoomsVC() {
-    let bookMeetingRoomVC = UIViewController.createController(storyBoard: .Booking, ofType: BookMeetingRoomViewController.self)
-    bookMeetingRoomVC.coordinator = self.coordinator
-    navigationController?.pushViewController(bookMeetingRoomVC, animated: true)
+    DispatchQueue.main.async {
+      if UserHelper.shared.isUserExplorer() {
+        GetStartedViewController.presentAsRootController()
+        return
+      }
+      
+      if self.selectedButtonType == "Meeting Rooms" {
+        let bookMeetingRoomVC = UIViewController.createController(storyBoard: .Booking, ofType: BookMeetingRoomViewController.self)
+        bookMeetingRoomVC.coordinator = self.coordinator
+        self.navigationController?.pushViewController(bookMeetingRoomVC, animated: true)
+      } else {
+        let bookOfficeVC = UIViewController.createController(storyBoard: .OfficeBooking, ofType: ShortTermBookAnOfficeViewController.self)
+        bookOfficeVC.coordinator = self.coordinator
+        self.navigationController?.pushViewController(bookOfficeVC, animated: true)
+      }
+    }
   }
   
   func showLogInVC() {
@@ -195,9 +216,9 @@ extension DashboardViewController: BookButtonActionDelegate {
 }
 extension DashboardViewController: DashboardDeskTypeTableViewCellDelegate {
   func buttonTapped(type: String) {
-    DispatchQueue.main.async {
+    self.selectedButtonType = type
       switch type {
-      case "Meetings":
+      case "Meeting Rooms":
         if let meetingRoomsCell = self.tableView.visibleCells.compactMap({ $0 as? DashboardMeetingRoomsTableViewCell }).first {
           meetingRoomsCell.fetchRooms()
         } else {
@@ -218,4 +239,3 @@ extension DashboardViewController: DashboardDeskTypeTableViewCellDelegate {
       }
     }
   }
-}
