@@ -24,7 +24,8 @@ class UserHelper {
   private let userDesignationKey = "userDesignation"
   private let userStatusKey = "userStatus"
   private let userIsGuestKey = "userIsGuest"
-
+  private let userIsLoggedIn = "userIsLoggedIn"
+  
   func saveUser(_ user: UserData) {
     userDefaults.set(user.id, forKey: customerIdKey)
     userDefaults.set(user.firstName, forKey: firstNameKey)
@@ -33,6 +34,7 @@ class UserHelper {
     userDefaults.set(user.companyID, forKey: userCompanyIDKey)
     userDefaults.set(user.designation, forKey: userDesignationKey)
     userDefaults.set(user.status, forKey: userStatusKey)
+    userDefaults.set(true, forKey: userIsLoggedIn)
   }
   func saveUserIsGuest(_ isGuest: Bool) {
     userDefaults.set(isGuest, forKey: userIsGuestKey)
@@ -41,6 +43,10 @@ class UserHelper {
   func isGuest() -> Bool {
     return userDefaults.bool(forKey: userIsGuestKey)
   }
+  func isUserLoggedIn() -> Bool {
+    return userDefaults.bool(forKey: userIsGuestKey)
+  }
+
   
 func getUserId() -> Int? {
       return userDefaults.integer(forKey: customerIdKey)
@@ -100,6 +106,7 @@ func getUserId() -> Int? {
     userDefaults.removeObject(forKey: userDesignationKey)
     userDefaults.removeObject(forKey: userStatusKey)
     userDefaults.removeObject(forKey: userIsGuestKey)
+    userDefaults.removeObject(forKey: userIsLoggedIn)
     userDefaults.synchronize()
   }
 }

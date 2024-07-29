@@ -31,7 +31,7 @@ class MembershipViewController: UIViewController, RSOTabCoordinated {
   override func viewDidLoad() {
     super.viewDidLoad()
     collectionView.register(UINib(nibName: cellIdentifier, bundle: nil), forCellWithReuseIdentifier: cellIdentifier)
-    if UserHelper.shared.isGuest() {
+    if !UserHelper.shared.isUserLoggedIn() {
       list = [.planType, .agreementType, .yourDetails, .paymentDetails]
     } else {
       list = [.planType, .agreementType, .paymentDetails]
@@ -79,6 +79,7 @@ extension MembershipViewController: UICollectionViewDelegate, UICollectionViewDa
     cell.btnType.setTitle(tabName, for: .normal)
     cell.selectButton(selcted: false)
     cell.btnType.addTarget(self, action: #selector(buttonClicked(_:)), for: .touchUpInside)
+    cell.btnType.isUserInteractionEnabled = false
     if indexPath.row == selectedIndex {
       cell.selectButton(selcted: true)
     }
