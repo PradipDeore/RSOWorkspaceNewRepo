@@ -24,10 +24,11 @@ class AgreementViewController: UIViewController, MembershipNavigable {
     self.continueButton.isUserInteractionEnabled = false
     self.continueButton.alpha = 0.5
     collectionView.register(UINib(nibName: cellIdentifier, bundle: nil), forCellWithReuseIdentifier: cellIdentifier)
-
+    selectedDate = Date.formatSelectedDate(format: .yyyyMMdd, date: Date())
+    SelectedMembershipData.shared.startDate = selectedDate
     }
   @IBAction func continueAction(_ sender: Any) {
-    SelectedMembershipData.shared.startDate = selectedDate
+    SelectedMembershipData.shared.startDate = selectedDate + " 19:11:00"
     membershipNavigationDelegate?.navigateToNextVC()
   }
   @IBAction func selectDate(_ sender: UIDatePicker) {

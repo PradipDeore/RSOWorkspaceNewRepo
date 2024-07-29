@@ -55,7 +55,7 @@ class DashboardDeskTypeTableViewCell: UITableViewCell {
     @IBAction func buttonTapped(_ sender: UIButton) {
         
         buttonSetUp()
-        let buttonType = sender.titleLabel?.text ?? ""
+      let buttonType = sender.titleLabel?.text?.trimmingCharacters(in: .whitespaces) ?? ""
         delegate?.buttonTapped(type: buttonType)        //selectedButtonTag = sender.tag
         //reloadData()
         //myBookingListingAPI()
