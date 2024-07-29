@@ -83,6 +83,7 @@ extension RSOMeetingRoomsCollectionView: UICollectionViewDataSource {
             let cell = dequeueReusableCell(withReuseIdentifier: "DeskCollectionViewCell", for: indexPath) as! DeskCollectionViewCell
             //cell.backActionDelegate = backActionDelegate
             cell.setData(item: item)
+            
             cell.btnBook.isHidden = true
           if item.isItemSelected ?? false {
             cell.containerView.backgroundColor = UIColor(named: "E3E3E3")
@@ -94,6 +95,8 @@ extension RSOMeetingRoomsCollectionView: UICollectionViewDataSource {
             let cell = dequeueReusableCell(withReuseIdentifier: "DeskCollectionViewCell", for: indexPath) as! DeskCollectionViewCell
            // cell.backActionDelegate = backActionDelegate
             cell.setData(item: item)
+            cell.tag = self.tag
+            cell.btnBook.isHidden = hideBookButton
             if item.isItemSelected ?? false {
               cell.containerView.backgroundColor = UIColor(named: "E3E3E3")
             } else {

@@ -8,13 +8,13 @@
 import Foundation
 
 enum ShortTermOfficeBookingEndPoint {
-    case officeBooking(requestModel: BookOfficeRequestModel)
+    case storeOfficeBooking(requestModel: StoreOfficeBookingRequest)
 }
 extension ShortTermOfficeBookingEndPoint: EndPointType {
     
     var path: String {
         switch self {
-        case .officeBooking:
+        case .storeOfficeBooking(requestModel: let requestModel):
             return "store-officebooking"
         }
     }
@@ -24,14 +24,13 @@ extension ShortTermOfficeBookingEndPoint: EndPointType {
     }
     var method: HTTPMethods {
         switch self {
-        case .officeBooking:
-            return .post
-            
+        case .storeOfficeBooking(requestModel: let requestModel):
+             .post
         }
     }
     var body: Encodable? {
         switch self {
-        case .officeBooking(requestModel: let requestModel):
+        case .storeOfficeBooking(requestModel: let requestModel):
             return requestModel
         }
     }

@@ -7,6 +7,21 @@
 
 import UIKit
 
+//
+//  PaymentViewController.swift
+//  RSOWorkspace
+//
+//  Created by Sumit Aquil on 06/03/24.
+//
+
+import UIKit
+
+enum bookingType{
+    case meetingRoom
+    case desk
+    case office
+}
+
 class PaymentViewController: UIViewController {
     
     var coordinator: RSOTabBarCordinator?
@@ -18,6 +33,8 @@ class PaymentViewController: UIViewController {
     var intHours = 0
     var totalPrice:Double = 0.0
     var vatAmount:Double = 0.0
+    var officeName = ""
+    var bookingtype: bookingType = .meetingRoom
     var couponData : [CouponDetails] = []
     private let cellIdentifiers: [(CellType,CGFloat)] = [(.selectMeetingRoomLabel,20.0),(.meetingTime,80),(.meetingRoomPrice,40),(.amenityPrice,50),(.totalCell,191),(.discount,60),(.paymentMethods,97),(.buttonPayNow,40)]
     

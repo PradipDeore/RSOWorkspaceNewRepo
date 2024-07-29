@@ -64,6 +64,10 @@ class DeskCollectionViewCell: UICollectionViewCell {
             let url = URL(string: imageBasePath + imageUrl)
             self.imgRoomImage.kf.setImage(with: url)
         }
+        if self.tag == 1 {
+            self.btnBook.isHidden = false
+
+        }
         
     }
     @IBAction func btnBookTappedAction(_ sender: Any) {

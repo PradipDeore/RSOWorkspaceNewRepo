@@ -106,6 +106,7 @@ class BookingConfirmedViewController: UIViewController{
                             let paymentVC = UIViewController.createController(storyBoard: .Payment, ofType: PaymentViewController.self)
                             paymentVC.requestParameters = self.bookingConfirmDetails
                             paymentVC.coordinator = self.coordinator
+                            paymentVC.bookingtype = .meetingRoom
                             paymentVC.bookingId = response.booking_id ?? 0
                             self.navigationController?.pushViewController(paymentVC, animated: true)
                         }

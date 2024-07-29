@@ -31,7 +31,13 @@ class MembershipPlanTableViewCell: UITableViewCell {
             self.btnBuyMemberShip.isHidden = false
             self.lblMembershipPlan.isHidden = true
             self.lblMemberShipDesc.text = "No Active MemberShip"
+        }else{
+            self.btnBuyMemberShip.isHidden = true
+            self.lblMembershipPlan.isHidden = true
+            self.lblMemberShipDesc.isHidden = true
+            self.btnRenewPlan.isHidden = false
         }
+        
         self.btnRenewPlan.setCornerRadiusToButton2()
         self.btnBuyMemberShip.setCornerRadiusToButton2()
         

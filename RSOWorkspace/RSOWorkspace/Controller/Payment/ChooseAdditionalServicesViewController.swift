@@ -17,13 +17,14 @@ enum PaymentType: String {
   case unknown = "Unknown"
 }
 class ChooseAdditionalServicesViewController: UIViewController {
-  var bookingId: Int = 0
+ 
   var selectedServices: [String] = []
   var coordinator: RSOTabBarCordinator?
   var apiResponseData:PaymentRoomBookingResponse?
   @IBOutlet weak var tableView: UITableView!
   @IBOutlet weak var containerView: UIView!
   
+  var bookingId: Int = 0
   var totalPrice:Double = 0.0
   var vatAmount:Double = 0.0
   var provideRequirementDet = ""

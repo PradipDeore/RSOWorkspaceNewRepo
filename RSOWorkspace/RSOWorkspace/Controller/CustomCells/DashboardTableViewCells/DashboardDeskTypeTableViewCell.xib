@@ -24,20 +24,21 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uDc-NI-FLc" userLabel="buttonsView">
-                        <rect key="frame" x="25" y="0.0" width="369" height="34"/>
+                        <rect key="frame" x="10" y="0.0" width="399" height="34"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleAspectFit" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="qfu-6o-ezT">
-                                <rect key="frame" x="0.0" y="4" width="369" height="26"/>
+                            <stackView opaque="NO" contentMode="scaleAspectFit" distribution="fillProportionally" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="qfu-6o-ezT">
+                                <rect key="frame" x="0.0" y="4" width="399" height="26"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aNI-iN-pFu" customClass="RSOButton" customModule="RSOWorkspace" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="119.66666666666667" height="26"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="148.66666666666666" height="26"/>
+                                        <color key="backgroundColor" name="000000"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="26" id="Bt2-e5-2ZL"/>
                                             <constraint firstAttribute="width" constant="120" id="v5q-1v-oYF"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="Inter-Medium" family="Inter" pointSize="14"/>
+                                        <fontDescription key="fontDescription" name="Inter-Medium" family="Inter" pointSize="12"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <state key="normal" title="Meeting Rooms"/>
+                                        <state key="normal" title="  Meeting Rooms  "/>
                                         <variation key="default">
                                             <mask key="constraints">
                                                 <exclude reference="v5q-1v-oYF"/>
@@ -48,14 +49,15 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rVr-6i-orK" customClass="RSOButton" customModule="RSOWorkspace" customModuleProvider="target">
-                                        <rect key="frame" x="124.66666666666666" y="0.0" width="119.66666666666666" height="26"/>
+                                        <rect key="frame" x="153.66666666666666" y="0.0" width="111.99999999999997" height="26"/>
+                                        <color key="backgroundColor" name="000000"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="120" id="0aE-zT-NCJ"/>
                                             <constraint firstAttribute="height" constant="26" id="AYY-VT-fDP"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="Inter-Medium" family="Inter" pointSize="14"/>
+                                        <fontDescription key="fontDescription" name="Inter-Medium" family="Inter" pointSize="12"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <state key="normal" title="Workspace"/>
+                                        <state key="normal" title="  Workspace  "/>
                                         <variation key="default">
                                             <mask key="constraints">
                                                 <exclude reference="0aE-zT-NCJ"/>
@@ -66,14 +68,15 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rln-0f-et6" customClass="RSOButton" customModule="RSOWorkspace" customModuleProvider="target">
-                                        <rect key="frame" x="249.33333333333329" y="0.0" width="119.66666666666666" height="26"/>
+                                        <rect key="frame" x="270.66666666666669" y="0.0" width="128.33333333333331" height="26"/>
+                                        <color key="backgroundColor" name="000000"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="120" id="KHz-Pu-4pT"/>
                                             <constraint firstAttribute="height" constant="26" id="qiA-Jj-TDT"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="Inter-Medium" family="Inter" pointSize="14"/>
+                                        <fontDescription key="fontDescription" name="Inter-Medium" family="Inter" pointSize="12"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <state key="normal" title="Membership"/>
+                                        <state key="normal" title="  Membership  "/>
                                         <variation key="default">
                                             <mask key="constraints">
                                                 <exclude reference="KHz-Pu-4pT"/>
@@ -98,10 +101,10 @@
                 </subviews>
                 <color key="backgroundColor" name="F2F2F2"/>
                 <constraints>
-                    <constraint firstItem="uDc-NI-FLc" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="25" id="HL9-a9-zTX"/>
+                    <constraint firstItem="uDc-NI-FLc" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="HL9-a9-zTX"/>
                     <constraint firstAttribute="bottom" secondItem="uDc-NI-FLc" secondAttribute="bottom" id="X7r-Ic-Y7F"/>
                     <constraint firstItem="uDc-NI-FLc" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="uk6-fe-0tS"/>
-                    <constraint firstAttribute="trailing" secondItem="uDc-NI-FLc" secondAttribute="trailing" constant="25" id="yY3-aY-pMS"/>
+                    <constraint firstAttribute="trailing" secondItem="uDc-NI-FLc" secondAttribute="trailing" constant="10" id="yY3-aY-pMS"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
@@ -114,6 +117,9 @@
         </tableViewCell>
     </objects>
     <resources>
+        <namedColor name="000000">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="F2F2F2">
             <color red="0.94900000095367432" green="0.94900000095367432" blue="0.94900000095367432" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

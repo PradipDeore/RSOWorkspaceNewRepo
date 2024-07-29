@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FBSDKLoginKit
 
 class SignUpViewController: UIViewController {
   
@@ -23,7 +24,50 @@ class SignUpViewController: UIViewController {
     super.viewDidLoad()
     self.addEventHandler()
     self.customizeUI()
+      btnSocialFacebook.addTarget(self, action: #selector(facebookLoginAction), for: .touchUpInside)
+
+      
   }
+    @objc func facebookLoginAction() {
+        let loginManager = LoginManager()
+        loginManager.logIn(permissions: ["public_profile", "email"], from: self) { (result, error) in
+            if let error = error {
+                print("Failed to login: \(error.localizedDescription)")
+                return
+            }
+            
+            guard let result = result, !result.isCancelled else {
+                print("User cancelled login")
+                return
+            }
+            
+            self.fetchFacebookUserProfile()
+        }
+    }
+
+    func fetchFacebookUserProfile() {
+        let request = GraphRequest(graphPath: "me", parameters: ["fields": "id, name, email"])
+        request.start { _, result, error in
+            if let error = error {
+                print("Failed to fetch user profile: \(error.localizedDescription)")
+                return
+            }
+            
+            if let result = result as? [String: Any] {
+                print("User profile: \(result)")
+                if let email = result["email"] as? String, let name = result["name"] as? String {
+                    self.handleFacebookLoginSuccess(email: email, name: name)
+                }
+            }
+        }
+    }
+
+    func handleFacebookLoginSuccess(email: String, name: String) {
+        // Handle the Facebook login success, e.g., navigate to another screen or call your signup API
+        print("Successfully logged in with email: \(email), name: \(name)")
+        // You can call your signUpAPI method here or handle user navigation
+    }
+
   func addEventHandler() {
     self.eventHandler = { [weak self] (event, message) in
       guard let self = self else { return }
