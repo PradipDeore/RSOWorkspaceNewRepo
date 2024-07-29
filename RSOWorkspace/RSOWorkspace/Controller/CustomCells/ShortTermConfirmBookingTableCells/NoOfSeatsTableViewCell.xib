@@ -25,8 +25,8 @@
                 <rect key="frame" x="0.0" y="0.0" width="277" height="82"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Workspace Type - 01" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9NI-BZ-TTe">
-                        <rect key="frame" x="16" y="48" width="245" height="31"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9NI-BZ-TTe">
+                        <rect key="frame" x="25" y="48" width="236" height="31"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="31" id="ZPb-oa-ZEz"/>
                             <constraint firstAttribute="width" constant="218" id="vJv-SE-JlM"/>
@@ -40,8 +40,8 @@
                             </mask>
                         </variation>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Office Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xEY-bu-2qQ">
-                        <rect key="frame" x="16" y="5" width="245" height="38"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Of Seats" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xEY-bu-2qQ">
+                        <rect key="frame" x="25" y="5" width="236" height="38"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="38" id="tat-IF-pRA"/>
                         </constraints>
@@ -51,17 +51,18 @@
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="9NI-BZ-TTe" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="0NK-yd-1D3"/>
+                    <constraint firstItem="9NI-BZ-TTe" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="25" id="0NK-yd-1D3"/>
                     <constraint firstItem="xEY-bu-2qQ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="AHf-Gu-bnW"/>
+                    <constraint firstAttribute="bottom" secondItem="9NI-BZ-TTe" secondAttribute="bottom" constant="3" id="Ig9-hc-Ii5"/>
                     <constraint firstAttribute="trailing" secondItem="9NI-BZ-TTe" secondAttribute="trailing" constant="16" id="YBc-CH-rW5"/>
-                    <constraint firstItem="xEY-bu-2qQ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="cKi-tv-lAw"/>
+                    <constraint firstItem="xEY-bu-2qQ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="25" id="cKi-tv-lAw"/>
                     <constraint firstAttribute="trailing" secondItem="xEY-bu-2qQ" secondAttribute="trailing" constant="16" id="emQ-wQ-h1h"/>
                     <constraint firstItem="9NI-BZ-TTe" firstAttribute="top" secondItem="xEY-bu-2qQ" secondAttribute="bottom" constant="5" id="wzT-SZ-LFT"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="lblofficeType" destination="9NI-BZ-TTe" id="jQ3-IU-EvT"/>
+                <outlet property="lblNoOfSeats" destination="9NI-BZ-TTe" id="hHf-7s-LNN"/>
             </connections>
             <point key="canvasLocation" x="136.64122137404578" y="-5.6338028169014089"/>
         </tableViewCell>

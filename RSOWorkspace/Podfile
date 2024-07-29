@@ -10,6 +10,8 @@ target 'RSOWorkspace' do
  pod 'Kingfisher'
  pod 'NISdk'
  pod 'ProgressHUD'
+ pod 'FBSDKCoreKit'
+ pod 'FBSDKLoginKit'
   # Pods for RSOWorkspace
 
 end

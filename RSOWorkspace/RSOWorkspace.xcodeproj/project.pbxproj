@@ -304,6 +304,11 @@
 		58D2D1CD2C54BF57008425DA /* ConfirmShortTermBookingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D2D1CC2C54BF57008425DA /* ConfirmShortTermBookingViewController.swift */; };
 		58D2D1D12C54C446008425DA /* NoOfSeatsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D2D1CF2C54C446008425DA /* NoOfSeatsTableViewCell.swift */; };
 		58D2D1D22C54C446008425DA /* NoOfSeatsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58D2D1D02C54C446008425DA /* NoOfSeatsTableViewCell.xib */; };
+		58D2D1D42C54F6E4008425DA /* ConfirmOfficeBookingDetailsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D2D1D32C54F6E4008425DA /* ConfirmOfficeBookingDetailsModel.swift */; };
+		58D2D1D72C54FCF7008425DA /* SelectNoOfSeatsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D2D1D52C54FCF7008425DA /* SelectNoOfSeatsTableViewCell.swift */; };
+		58D2D1D82C54FCF7008425DA /* SelectNoOfSeatsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58D2D1D62C54FCF7008425DA /* SelectNoOfSeatsTableViewCell.xib */; };
+		58D2D1DA2C5518E5008425DA /* StoreOfficeBookingRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D2D1D92C5518E5008425DA /* StoreOfficeBookingRequest.swift */; };
+		58D2D1DC2C551BD6008425DA /* StoreofficeBookingResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D2D1DB2C551BD6008425DA /* StoreofficeBookingResponse.swift */; };
 		58D513342BCA4C2C00B87739 /* PaymentRoomBookingRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D513332BCA4C2C00B87739 /* PaymentRoomBookingRequest.swift */; };
 		58D513362BCA4C8600B87739 /* PaymentRoomBookingResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D513352BCA4C8600B87739 /* PaymentRoomBookingResponse.swift */; };
 		58D513382BCA4CDD00B87739 /* PaymentRoomBookingEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D513372BCA4CDD00B87739 /* PaymentRoomBookingEndPoint.swift */; };
@@ -725,6 +730,11 @@
 		58D2D1CC2C54BF57008425DA /* ConfirmShortTermBookingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmShortTermBookingViewController.swift; sourceTree = "<group>"; };
 		58D2D1CF2C54C446008425DA /* NoOfSeatsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoOfSeatsTableViewCell.swift; sourceTree = "<group>"; };
 		58D2D1D02C54C446008425DA /* NoOfSeatsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NoOfSeatsTableViewCell.xib; sourceTree = "<group>"; };
+		58D2D1D32C54F6E4008425DA /* ConfirmOfficeBookingDetailsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmOfficeBookingDetailsModel.swift; sourceTree = "<group>"; };
+		58D2D1D52C54FCF7008425DA /* SelectNoOfSeatsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectNoOfSeatsTableViewCell.swift; sourceTree = "<group>"; };
+		58D2D1D62C54FCF7008425DA /* SelectNoOfSeatsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectNoOfSeatsTableViewCell.xib; sourceTree = "<group>"; };
+		58D2D1D92C5518E5008425DA /* StoreOfficeBookingRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreOfficeBookingRequest.swift; sourceTree = "<group>"; };
+		58D2D1DB2C551BD6008425DA /* StoreofficeBookingResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreofficeBookingResponse.swift; sourceTree = "<group>"; };
 		58D513332BCA4C2C00B87739 /* PaymentRoomBookingRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentRoomBookingRequest.swift; sourceTree = "<group>"; };
 		58D513352BCA4C8600B87739 /* PaymentRoomBookingResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentRoomBookingResponse.swift; sourceTree = "<group>"; };
 		58D513372BCA4CDD00B87739 /* PaymentRoomBookingEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentRoomBookingEndPoint.swift; sourceTree = "<group>"; };
@@ -1384,6 +1394,7 @@
 				58BEF2762C4805BF00C78CF4 /* OfficeBookingResponseModel.swift */,
 				58BEF27A2C48164400C78CF4 /* NotificationResponseModel.swift */,
 				5805931B2C4F98AE00FE18B2 /* BookingDeskDetailsResponseModel.swift */,
+				58D2D1D32C54F6E4008425DA /* ConfirmOfficeBookingDetailsModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1397,8 +1408,8 @@
 				58B406062BCD46430045DD4C /* Dashboard */,
 				58ED2D1B2B8F3893004D06C8 /* MeetingRoomsBooking */,
 				58713EA42BC90A490012DD4E /* DeskBooking */,
-				58A16CCE2BBC76580003DD50 /* Location */,
 				58EB0E122BB695BB00DC2827 /* Office Booking */,
+				58A16CCE2BBC76580003DD50 /* Location */,
 				58F261BD2BBD92C800A5D633 /* Schedule Visitors */,
 				58BB6AFF2B983B7B001E1F3D /* TagView */,
 				586FA7062BBC349900EA2772 /* Amenities */,
@@ -1542,6 +1553,7 @@
 				58AE87B62C50FF6D004A99D6 /* CouponDetailsResponseModel.swift */,
 				58CF207A2C53C3EE0070538A /* LongTermOfficeBookingReasonsResponse.swift */,
 				58CF20822C53CC380070538A /* LongTermOfficeBookingResponse.swift */,
+				58D2D1DB2C551BD6008425DA /* StoreofficeBookingResponse.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -1571,6 +1583,7 @@
 				58BEF2742C48047600C78CF4 /* BookOfficeRequestModel.swift */,
 				580593262C4FE56500FE18B2 /* ConfirmDeskBookingRequestModel.swift */,
 				58CF20802C53CBF50070538A /* LongTermOfficeBookingRequestModel.swift */,
+				58D2D1D92C5518E5008425DA /* StoreOfficeBookingRequest.swift */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -1625,6 +1638,8 @@
 			children = (
 				58D2D1CF2C54C446008425DA /* NoOfSeatsTableViewCell.swift */,
 				58D2D1D02C54C446008425DA /* NoOfSeatsTableViewCell.xib */,
+				58D2D1D52C54FCF7008425DA /* SelectNoOfSeatsTableViewCell.swift */,
+				58D2D1D62C54FCF7008425DA /* SelectNoOfSeatsTableViewCell.xib */,
 			);
 			path = ShortTermConfirmBookingTableCells;
 			sourceTree = "<group>";
@@ -1979,6 +1994,7 @@
 				58C7C50D2BAAA2CA00CF6578 /* CompaniesTableViewCell.xib in Resources */,
 				586FA7132BBC362C00EA2772 /* GalleryCollectionViewCell.xib in Resources */,
 				58F458422B91A36000CF8AFA /* SelectMeetingRoomTableViewCell.xib in Resources */,
+				58D2D1D82C54FCF7008425DA /* SelectNoOfSeatsTableViewCell.xib in Resources */,
 				588333982B7E08E6008334A0 /* README.txt in Resources */,
 				587EA9DC2B9591B1002BD4D1 /* SelectSeatingConfigCollectionViewCell.xib in Resources */,
 				584B4B4C2B9207AA00C6F5B2 /* LocationTableViewCell.xib in Resources */,
@@ -2250,13 +2266,16 @@
 				58BEF2662C47DE7600C78CF4 /* UITextView.swift in Sources */,
 				581D97DA2BA3391B00EDDC3B /* AmenityPriceTableViewCell.swift in Sources */,
 				58F458392B91982400CF8AFA /* SelectTimeTableViewCell.swift in Sources */,
+				58D2D1D42C54F6E4008425DA /* ConfirmOfficeBookingDetailsModel.swift in Sources */,
 				58D584AB2B96F43000D17D0A /* ConfirmAndProceedToPayementTableViewCell.swift in Sources */,
+				58D2D1DA2C5518E5008425DA /* StoreOfficeBookingRequest.swift in Sources */,
 				58E997D32BBE87160051BEF3 /* VisitorsEndPoint.swift in Sources */,
 				EEAB97B82C5249A800BD5E0D /* PlanOptionList.swift in Sources */,
 				58127A8B2BAC32D1001693D6 /* ComapaniesSearchMembersTableViewCell.swift in Sources */,
 				58E6E9602B89D99B00EB3600 /* DashboardMarketPlaceTableViewCell.swift in Sources */,
 				5804180B2BD0F438008EA858 /* ConfirmDeskBookingDetailsModel.swift in Sources */,
 				58A16CCC2BBC5DE30003DD50 /* GalleryResponseModel.swift in Sources */,
+				58D2D1D72C54FCF7008425DA /* SelectNoOfSeatsTableViewCell.swift in Sources */,
 				581F30B92BBFBE0E0083A400 /* VisitorsListableViewCell.swift in Sources */,
 				586FA7002BBC268300EA2772 /* AboutRSOModel.swift in Sources */,
 				58F96E242C479DFA009C4DC5 /* subServicesRequestModel.swift in Sources */,
@@ -2273,6 +2292,7 @@
 				58BF851D2B873609009FF06C /* LoginRequestModel.swift in Sources */,
 				58F261BF2BBD92FA00A5D633 /* ScheduleVisitorsViewController.swift in Sources */,
 				58E997D52BBE87A00051BEF3 /* ReasonForVisit.swift in Sources */,
+				58D2D1DC2C551BD6008425DA /* StoreofficeBookingResponse.swift in Sources */,
 				58BCBC2E2C4944B100465381 /* subServiceResponseModel.swift in Sources */,
 				583D9E002B90A2FD0073AAC3 /* Location.swift in Sources */,
 				583D9E062B90C4730073AAC3 /* RSOCustomCalendarView.swift in Sources */,
@@ -2528,6 +2548,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -2562,6 +2583,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;

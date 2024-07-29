@@ -1,4 +1,12 @@
 PODS:
+  - FBAEMKit (17.0.2):
+    - FBSDKCoreKit_Basics (= 17.0.2)
+  - FBSDKCoreKit (17.0.2):
+    - FBAEMKit (= 17.0.2)
+    - FBSDKCoreKit_Basics (= 17.0.2)
+  - FBSDKCoreKit_Basics (17.0.2)
+  - FBSDKLoginKit (17.0.2):
+    - FBSDKCoreKit (= 17.0.2)
   - IQKeyboardManagerSwift (7.1.1)
   - Kingfisher (7.12.0)
   - NISdk (5.1.7)
@@ -6,6 +14,8 @@ PODS:
   - Toast-Swift (5.1.1)
 
 DEPENDENCIES:
+  - FBSDKCoreKit
+  - FBSDKLoginKit
   - IQKeyboardManagerSwift
   - Kingfisher
   - NISdk
@@ -14,6 +24,10 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
+    - FBAEMKit
+    - FBSDKCoreKit
+    - FBSDKCoreKit_Basics
+    - FBSDKLoginKit
     - IQKeyboardManagerSwift
     - Kingfisher
     - NISdk
@@ -21,12 +35,16 @@ SPEC REPOS:
     - Toast-Swift
 
 SPEC CHECKSUMS:
+  FBAEMKit: 619f96ea65427e8afca240d5b0f4703738dfdf5c
+  FBSDKCoreKit: a5f384db2e9ee84e98494fed8f983d2bd79accff
+  FBSDKCoreKit_Basics: d35c775aaf243a2d731dfae7be3a74b1987285ab
+  FBSDKLoginKit: f8ca5f7ab7c4e5b93e729d94975b0db7fcc511ed
   IQKeyboardManagerSwift: d7f3d3a562c237a0e7335e657cd598c452f57f1b
   Kingfisher: 53a10ea35051a436b5fb626ca2dd8f3144d755e9
   NISdk: b0ca021999cc777257f9381f2f897f12ad16fb16
   ProgressHUD: abb9136ae23c85204236828562cb9a8ec98efb44
   Toast-Swift: 7a03a532afe3a560d4044bc7c237e2864d295173
 
-PODFILE CHECKSUM: 1a8d36025e0496fcac09fd4f25fca937480eaa3e
+PODFILE CHECKSUM: 76a4fdd9e4c13fc8e03f5a53be87a73c93ccb527
 
 COCOAPODS: 1.15.0

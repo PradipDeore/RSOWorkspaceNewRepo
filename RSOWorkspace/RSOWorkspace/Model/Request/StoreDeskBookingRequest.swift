@@ -10,7 +10,7 @@ import Foundation
 struct StoreDeskBookingRequest: Codable {
     var start_time:String?
     var end_time:String?
-    var date: String?
+    var date =  Date.formatSelectedDate(format: .yyyyMMdd, date: nil)
     var is_fullday: String?
     var desktype: Int?
     var desk_id: [Int] = []

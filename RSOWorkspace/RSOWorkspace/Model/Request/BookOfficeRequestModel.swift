@@ -12,6 +12,4 @@ struct BookOfficeRequestModel: Codable {
     var endTime: String?
     var date: String?
     var isFullDay : String?
-    var office_id  : Int?
-    var seats : Int?
 }

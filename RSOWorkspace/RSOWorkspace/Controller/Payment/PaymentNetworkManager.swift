@@ -18,6 +18,7 @@ class PaymentNetworkManager: CardPaymentDelegate ,ApplePayDelegate{
     var currentViewController : UIViewController?
     var currentNavigationController: UINavigationController?
     var isDeskPayment = false
+   
     func paymentRoomBookingAPI(additionalrequirements :[String], bookingid:Int, requirementdetails:String,totalprice:Double,vatamount:Double) {
         DispatchQueue.main.async {
             RSOLoader.showLoader()
@@ -76,10 +77,20 @@ class PaymentNetworkManager: CardPaymentDelegate ,ApplePayDelegate{
                              self.navigationController?.popToRootViewController(animated: true)
                              }*/
                         } else {
-                          if self.isDeskPayment {
-                            RSOToastView.shared.show(response.msg, duration: 2.0, position: .center)
-                          }
-                            self.currentNavigationController?.popToRootViewController(animated: true)
+//                          if self.isDeskPayment {
+//                            RSOToastView.shared.show(response.msg, duration: 2.0, position: .center)
+//                          }
+//                            self.currentNavigationController?.popToRootViewController(animated: true)
+                            
+                            if UserHelper.shared.isGuest() {
+                                var requestModel = NiPaymentRequestModel()
+                                requestModel.total = Int(totalprice)
+                                requestModel.email = UserHelper.shared.getUserEmail()
+                                self.makePayment(requestModel: requestModel)
+                            } else {
+                                RSOToastView.shared.show(response.msg, duration: 2.0, position: .center)
+                                 self.currentNavigationController?.popToRootViewController(animated: true)
+                            }
                             self.eventHandler?(.dataLoaded)
                         }
                     case .failure(let error):
@@ -118,13 +129,13 @@ class PaymentNetworkManager: CardPaymentDelegate ,ApplePayDelegate{
         if(status == .PaymentSuccess) {
             // Payment was successful
             DispatchQueue.main.async {
-              if self.isDeskPayment {
-                if let bookingId = self.requestParameters?.meetingId, let totalPrice = self.requestParameters?.deskSubTotal, let vatAmount = self.requestParameters?.deskVatTotal {
-                  self.paymentDeskBookingAPI(bookingid: bookingId, totalprice: Double(totalPrice), vatamount: Double(vatAmount))
-                }
-              } else {
+             // if self.isDeskPayment {
+//                if let bookingId = self.requestParameters?.meetingId, let totalPrice = self.requestParameters?.deskSubTotal, let vatAmount = self.requestParameters?.deskVatTotal {
+//                  self.paymentDeskBookingAPI(bookingid: bookingId, totalprice: Double(totalPrice), vatamount: Double(vatAmount))
+//                }
+//              } else {
                 RSOToastView.shared.show(self.apiResponseData?.message ?? "Payment Successful", duration: 2.0, position: .center)
-              }
+              //}
             }
         } else if(status == .PaymentFailed) {
             // Payment failed

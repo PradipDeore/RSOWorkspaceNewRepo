@@ -21,6 +21,7 @@ struct ConfirmBookingRequestModel{
   var guest: [String] = []
   var amenityArray: [Amenity] = []
   var deskList: [Desk] = []
+    var noOfSeats :Int = 0
     
   //computed property
   var floatPrice : Float {
@@ -100,6 +101,33 @@ struct ConfirmBookingRequestModel{
     total = deskSubTotal + deskVatTotal
     return total
   }
+    
+    //computed property
+    var floatPriceOffice : Float {
+      let price =  Float(self.roomprice) ?? 0.0
+      return price
+    }
+    
+    var officeSubTotal: Float {
+      var subTotalOffice: Float = 0.0
+        let officePrice = self.floatPriceOffice
+        let officePriceFloat = Float(officePrice) ?? 0.0
+        let totalOfficePrice = officePriceFloat * timeDifferece
+        subTotalOffice = subTotalOffice + totalOfficePrice
+      return subTotalOffice
+    }
+
+    var officeVatTotal: Float {
+      var vatTotalOffice: Float = 0.0
+        vatTotalOffice = officeSubTotal * 5 / 100
+      return vatTotalOffice
+    }
+    
+    var officeFinalTotal: Float {
+      var totalFinalOffice: Float = 0.0
+        totalFinalOffice = officeSubTotal + officeVatTotal
+      return totalFinalOffice
+    }
   mutating func setValues(model: RoomDetailResponse){
     self.meetingId = model.data.id
     self.meetingRoom = model.data.name
@@ -138,5 +166,33 @@ struct ConfirmBookingRequestModel{
     self.meetingId = response.data?.deskTypeID ?? 0
     self.deskList = response.desks ?? []
       
+      
   }
+    mutating func setValues(response: StoreofficeBookingResponse){
+      let startTimeString = response.data?.startTime ?? ""
+      if let regularStartTime = Date.convertTo(startTimeString, givenFormat: .HHmmss, newFormat: .HHmm) {
+        self.startTime = regularStartTime
+      }
+      if let displayStartTime = Date.convertTo(startTimeString, givenFormat: .HHmmss, newFormat: .hhmma) {
+        self.displayStartTime = displayStartTime
+      }
+      // End time
+      let endTimeString = response.data?.endTime ?? ""
+      if let regularEndTime = Date.convertTo(endTimeString, givenFormat: .HHmmss, newFormat: .HHmm) {
+        self.endTime = regularEndTime
+      }
+      
+      if let displayEndTime = Date.convertTo(endTimeString, givenFormat: .HHmmss, newFormat: .hhmma) {
+        self.displayendTime = displayEndTime
+        
+      }
+      // Display date
+      let bookingdate = response.data?.date ?? ""
+      self.date = bookingdate
+      self.roomprice = "\(response.data?.price ?? "0" )"
+      self.meetingId = response.data?.officeID ?? 0
+      self.meetingRoom = response.data?.name ?? ""
+        self.noOfSeats = response.data?.seats ?? 0
+        
+    }
 }

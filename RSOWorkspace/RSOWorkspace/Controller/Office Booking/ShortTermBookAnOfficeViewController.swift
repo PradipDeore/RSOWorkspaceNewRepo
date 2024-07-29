@@ -14,6 +14,7 @@ enum CellIdentifierOfficeBooking: String {
   case selectTime = "SelectTimeTableViewCell"
   case selectMeetingRoomLabel = "SelectMeetingRoomLabelTableViewCell"
   case selectOfficeType = "SelectMeetingRoomTableViewCell"
+  case selectNoOfSeats = "SelectNoOfSeatsTableViewCell"
   case buttonbookingConfirm = "ButtonBookingConfirmTableViewCell"
 }
 
@@ -23,6 +24,7 @@ enum SectionTypeOfficeBooking: Int, CaseIterable {
   case selectTime
   case selectMeetingRoomLabel
   case selectOfficeType
+  case selectNoOfSeats
   case buttonbookingConfirm
 }
 
@@ -37,17 +39,20 @@ class ShortTermBookAnOfficeViewController: UIViewController{
   var dropdownOptions: [Location] = []
   var eventHandler: ((_ event: Event) -> Void)?
   var apiRequestModelOfficeListing = BookOfficeRequestModel()
-  var displayBookingDetailsNextScreen = ConfirmDeskBookingDetailsModel()
+  var displayBookingDetailsNextScreen = ConfirmOfficeBookingDetailsModel()
   var officeList:[RSOCollectionItem] = []
   var selectedOfficeList:[RSOCollectionItem] = []
   var viewFloorPlanSeatingConfig:[RoomConfiguration] = []
-  var deskbookingConfirmDetails = StoreDeskBookingRequest()
+  var officebookingConfirmDetails = StoreOfficeBookingRequest()
   var selectedOfficeId = 0
   var locationId = 0
   var selectedLocation = ""
   var selectedDeskNo = ""
   var selectedOfficeTypeId = 0
-  // var selectedMeetingRoomDate = ""
+  var noOfSeats: Int = 0
+  var officeName = ""
+  
+    // var selectedMeetingRoomDate = ""
   override func viewDidLoad() {
     super.viewDidLoad()
     self.coordinator?.hideBackButton(isHidden: false)
@@ -60,7 +65,7 @@ class ShortTermBookAnOfficeViewController: UIViewController{
   private func setupTableView() {
     tableView.dataSource = self
     tableView.delegate = self
-    tableView.registerCellsDeskBooking()
+    tableView.registerCellsOfficeBooking()
   }
   
   private func fetchLocations() {
@@ -173,6 +178,12 @@ extension ShortTermBookAnOfficeViewController: UITableViewDataSource, UITableVie
       cell.selectionStyle = .none
       return cell
 
+    case .selectNoOfSeats:
+      let cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifierOfficeBooking.selectNoOfSeats.rawValue, for: indexPath) as! SelectNoOfSeatsTableViewCell
+        cell.delegate = self
+      cell.selectionStyle = .none
+      return cell
+   
     case .buttonbookingConfirm:
       let cell =  tableView.dequeueReusableCell(withIdentifier: CellIdentifierOfficeBooking.buttonbookingConfirm.rawValue, for: indexPath) as! ButtonBookingConfirmTableViewCell
       cell.delegate = self
@@ -199,6 +210,8 @@ extension ShortTermBookAnOfficeViewController: UITableViewDataSource, UITableVie
       return 20
     case .selectOfficeType:
       return 209
+    case .selectNoOfSeats:
+      return 80
     case .buttonbookingConfirm:
       return 50
     }
@@ -207,12 +220,21 @@ extension ShortTermBookAnOfficeViewController: UITableViewDataSource, UITableVie
 // MARK: - UITableView Extension
 
 extension UITableView {
-  func registerCellsOfficeBooking() {
-    let cellIdentifiers: [CellIdentifierOfficeBooking] = [.selectLocation, .selectDate, .selectTime,.selectMeetingRoomLabel, .selectOfficeType,.buttonbookingConfirm]
-    cellIdentifiers.forEach { reuseIdentifier in
-      register(UINib(nibName: reuseIdentifier.rawValue, bundle: nil), forCellReuseIdentifier: reuseIdentifier.rawValue)
+    func registerCellsOfficeBooking() {
+        let cellIdentifiers: [CellIdentifierOfficeBooking] = [
+            .selectLocation,
+            .selectOfficeType,
+            .selectDate,
+            .selectTime,
+            .selectMeetingRoomLabel,
+            .selectNoOfSeats,
+            .buttonbookingConfirm
+        ]
+        
+        cellIdentifiers.forEach { reuseIdentifier in
+            register(UINib(nibName: reuseIdentifier.rawValue, bundle: nil), forCellReuseIdentifier: reuseIdentifier.rawValue)
+        }
     }
-  }
 }
 // MARK: - SelectLocationTableViewCellDelegate
 extension ShortTermBookAnOfficeViewController:ButtonBookingConfirmTableViewCellDelegate{
@@ -220,9 +242,10 @@ extension ShortTermBookAnOfficeViewController:ButtonBookingConfirmTableViewCellD
     let confirmOfficeBookingDetailsVC = UIViewController.createController(storyBoard: .Booking, ofType: ConfirmShortTermBookingViewController.self)
     // confirmDeskBookingDetailsVC.meetingId = meetingRoomId
     //confirmDeskBookingDetailsVC.requestModel = apiRequestModelDeskListing
-      confirmOfficeBookingDetailsVC.deskList = selectedOfficeList
-      confirmOfficeBookingDetailsVC.confirmdeskBookingResponse = displayBookingDetailsNextScreen
-      confirmOfficeBookingDetailsVC.deskbookingConfirmDetails = self.deskbookingConfirmDetails
+      confirmOfficeBookingDetailsVC.officeList = selectedOfficeList
+      confirmOfficeBookingDetailsVC.confirmOfficeBookingResponse = displayBookingDetailsNextScreen
+      confirmOfficeBookingDetailsVC.officebookingConfirmDetails = self.officebookingConfirmDetails
+      confirmOfficeBookingDetailsVC.officeName = self.officeName
     //self.present(confirmDeskBookingDetailsVC,animated: true)
     self.navigationController?.pushViewController(confirmOfficeBookingDetailsVC, animated: true)
     
@@ -253,13 +276,14 @@ extension ShortTermBookAnOfficeViewController: SelectDateTableViewCellDelegate {
     // save formated date to show in next screen
     let displayDate = Date.formatSelectedDate(format: .EEEEddMMMMyyyy, date: actualFormatOfDate)
     displayBookingDetailsNextScreen.date = displayDate
-    self.deskbookingConfirmDetails.date = apiDate
-      self.fetchOfficeList()
+    self.officebookingConfirmDetails.date = apiDate
+    self.fetchOfficeList()
   }
 }
 extension ShortTermBookAnOfficeViewController: SelectTimeTableViewCellDelegate{
   func selectFulldayStatus(_ isFullDay: Bool) {
     apiRequestModelOfficeListing.isFullDay =  isFullDay ? "Yes" : "No"
+    self.officebookingConfirmDetails.is_fullday = isFullDay ? "Yes" : "No"
   }
   
   func didSelectStartTime(_ startTime: Date) {
@@ -269,7 +293,7 @@ extension ShortTermBookAnOfficeViewController: SelectTimeTableViewCellDelegate{
     //display in next vc
     let displayStartTime = Date.formatSelectedDate(format: .hhmma, date: startTime)
     displayBookingDetailsNextScreen.startTime = displayStartTime
-    self.deskbookingConfirmDetails.start_time = apiStartTime
+    self.officebookingConfirmDetails.start_time = apiStartTime
       self.fetchOfficeList()
     
   }
@@ -281,7 +305,7 @@ extension ShortTermBookAnOfficeViewController: SelectTimeTableViewCellDelegate{
     //display in next vc
     let displayEndTime = Date.formatSelectedDate(format: .hhmma, date: endTime)
     displayBookingDetailsNextScreen.endTime = displayEndTime
-    self.deskbookingConfirmDetails.end_time = apiEndTime
+    self.officebookingConfirmDetails.end_time = apiEndTime
       self.fetchOfficeList()
   }
 }
@@ -296,13 +320,13 @@ extension ShortTermBookAnOfficeViewController {
 
 extension ShortTermBookAnOfficeViewController: BookButtonActionDelegate{
   func showBookRoomDetailsVC(meetingRoomId: Int) {
-      let confirmDeskBookingDetailsVC = UIViewController.createController(storyBoard: .Booking, ofType: ConfirmedDeskBookingViewController.self)
+      let confirmOfficeBookingDetailsVC = UIViewController.createController(storyBoard: .Booking, ofType: ConfirmShortTermBookingViewController.self)
       // confirmDeskBookingDetailsVC.meetingId = meetingRoomId
       //confirmDeskBookingDetailsVC.requestModel = apiRequestModelDeskListing
-      confirmDeskBookingDetailsVC.deskList = self.officeList
-      confirmDeskBookingDetailsVC.confirmdeskBookingResponse = displayBookingDetailsNextScreen
-      confirmDeskBookingDetailsVC.coordinator = self.coordinator
-      self.navigationController?.pushViewController(confirmDeskBookingDetailsVC, animated: true)
+      confirmOfficeBookingDetailsVC.officeList = self.officeList
+      //confirmDeskBookingDetailsVC.confirmdeskBookingResponse = displayBookingDetailsNextScreen
+      confirmOfficeBookingDetailsVC.coordinator = self.coordinator
+      self.navigationController?.pushViewController(confirmOfficeBookingDetailsVC, animated: true)
     
   }
   func showBookMeetingRoomsVC() {
@@ -319,12 +343,24 @@ extension ShortTermBookAnOfficeViewController: BookButtonActionDelegate{
   
   func didSelect(selectedId: Int) {
       DispatchQueue.main.async{
+          
+          if let officeTypeName = self.listItems.filter( {$0.id == selectedId }).first?.roomName {
+              self.officeName = officeTypeName
+          }
           self.selectedOfficeTypeId = selectedId
-          print("selected office type:", selectedId)
-          self.displayBookingDetailsNextScreen.deskId = selectedId
-          self.deskbookingConfirmDetails.desktype = selectedId
+          print("selected office type id:", selectedId)
+          self.displayBookingDetailsNextScreen.officeId = selectedId
+          self.displayBookingDetailsNextScreen.officeName = self.officeName
+          self.officebookingConfirmDetails.office_id = selectedId
           let indexpath = IndexPath(row: 0, section: SectionTypeOfficeBooking.buttonbookingConfirm.rawValue)
           self.tableView.reloadRows(at: [indexpath], with: .automatic)
       }
   }
+}
+extension ShortTermBookAnOfficeViewController: SelectNoOfSeatsTableViewCellDelegate {
+    func didUpdateNumberOfSeats(_ numberOfSeats: Int) {
+        self.noOfSeats = numberOfSeats
+        self.displayBookingDetailsNextScreen.nofOfSeats = numberOfSeats
+        self.officebookingConfirmDetails.seats = numberOfSeats
+    }
 }
