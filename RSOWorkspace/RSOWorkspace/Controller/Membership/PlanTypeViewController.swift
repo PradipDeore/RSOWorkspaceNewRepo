@@ -40,7 +40,9 @@ class PlanTypeViewController: UIViewController, MembershipNavigable {
     @objc func selectPlanAction(_ sender: UIButton) {
       let planSelected = list[sender.tag]
       SelectedMembershipData.shared.packageName = planSelected.name ?? ""
+      SelectedPlanPriceList.shared.list = planSelected.price ?? []
       let priceSelected = planSelected.price?[planSelectedIndex]
+      SelectedPlanPriceList.shared.selectedIndex = planSelectedIndex
       SelectedMembershipData.shared.id = planSelected.id ?? 0
       SelectedMembershipData.shared.monthlyCost = priceSelected?.price ?? ""
       SelectedMembershipData.shared.planType = priceSelected?.duration ?? ""
