@@ -14,10 +14,11 @@ protocol MembershipNavigationDelegate : AnyObject {
   func navigateToNextVC()
 }
 
-class MembershipViewController: UIViewController {
+class MembershipViewController: UIViewController, RSOTabCoordinated {
   
   @IBOutlet var topbarHeightConstraint: NSLayoutConstraint!
-  
+  var coordinator: RSOTabBarCordinator?
+
   @IBOutlet weak var topBarView: UIView!
   @IBOutlet var containerView: UIView!
   @IBOutlet var collectionView: UICollectionView!
@@ -35,7 +36,7 @@ class MembershipViewController: UIViewController {
     } else {
       list = [.planType, .agreementType, .paymentDetails]
     }
-
+    
     for item in list {
       let viewController = item.createTabChildController()
       if let membershipVCChild = viewController as? MembershipNavigable {
@@ -59,6 +60,11 @@ class MembershipViewController: UIViewController {
       viewController.willMove(toParent: nil)
       viewController.view.removeFromSuperview()
       viewController.removeFromParent()
+  }
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    self.coordinator?.hideBackButton(isHidden: false)
+    self.coordinator?.setTitle(title: "Membership")
   }
 }
 extension MembershipViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
