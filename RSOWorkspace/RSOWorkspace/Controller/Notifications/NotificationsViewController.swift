@@ -72,7 +72,6 @@ extension NotificationsViewController: UITableViewDelegate, UITableViewDataSourc
 }
 extension NotificationsViewController {
     enum Event {
-        
         case dataLoaded
         case error(Error?)
     }
