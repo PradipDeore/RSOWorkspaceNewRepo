@@ -53,7 +53,7 @@ enum MembershipTabItem: Int, CaseIterable {
       let yourDetailsVC = UIViewController.createController(storyBoard: .Membership, ofType: YourDetailsViewController.self)
       return yourDetailsVC
     case .paymentDetails:
-      let paymentDetailsVC = UIViewController.createController(storyBoard: .Membership, ofType: PaymentDetailsViewController.self)
+      let paymentDetailsVC = UIViewController.createController(storyBoard: .Membership, ofType: MembershipPaymentDetailsViewController.self)
       return paymentDetailsVC
       
     }

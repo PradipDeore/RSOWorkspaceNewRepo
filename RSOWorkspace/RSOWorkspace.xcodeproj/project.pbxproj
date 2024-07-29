@@ -421,7 +421,7 @@
 		EEAB97A42C52379400BD5E0D /* PlanTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEAB97A32C52379400BD5E0D /* PlanTypeViewController.swift */; };
 		EEAB97A62C5237B500BD5E0D /* AgreementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEAB97A52C5237B500BD5E0D /* AgreementViewController.swift */; };
 		EEAB97A82C5237D400BD5E0D /* YourDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEAB97A72C5237D400BD5E0D /* YourDetailsViewController.swift */; };
-		EEAB97AA2C5237E800BD5E0D /* PaymentDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEAB97A92C5237E800BD5E0D /* PaymentDetailsViewController.swift */; };
+		EEAB97AA2C5237E800BD5E0D /* MembershipPaymentDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEAB97A92C5237E800BD5E0D /* MembershipPaymentDetailsViewController.swift */; };
 		EEAB97AC2C52382900BD5E0D /* Membership.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EEAB97AB2C52382900BD5E0D /* Membership.storyboard */; };
 		EEAB97B12C523AC800BD5E0D /* MembershipButtonCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEAB97AF2C523AC800BD5E0D /* MembershipButtonCollectionViewCell.swift */; };
 		EEAB97B22C523AC800BD5E0D /* MembershipButtonCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EEAB97B02C523AC800BD5E0D /* MembershipButtonCollectionViewCell.xib */; };
@@ -854,7 +854,7 @@
 		EEAB97A32C52379400BD5E0D /* PlanTypeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanTypeViewController.swift; sourceTree = "<group>"; };
 		EEAB97A52C5237B500BD5E0D /* AgreementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgreementViewController.swift; sourceTree = "<group>"; };
 		EEAB97A72C5237D400BD5E0D /* YourDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YourDetailsViewController.swift; sourceTree = "<group>"; };
-		EEAB97A92C5237E800BD5E0D /* PaymentDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentDetailsViewController.swift; sourceTree = "<group>"; };
+		EEAB97A92C5237E800BD5E0D /* MembershipPaymentDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MembershipPaymentDetailsViewController.swift; sourceTree = "<group>"; };
 		EEAB97AB2C52382900BD5E0D /* Membership.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Membership.storyboard; sourceTree = "<group>"; };
 		EEAB97AF2C523AC800BD5E0D /* MembershipButtonCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MembershipButtonCollectionViewCell.swift; sourceTree = "<group>"; };
 		EEAB97B02C523AC800BD5E0D /* MembershipButtonCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MembershipButtonCollectionViewCell.xib; sourceTree = "<group>"; };
@@ -1837,7 +1837,7 @@
 				EEAB97A32C52379400BD5E0D /* PlanTypeViewController.swift */,
 				EEAB97A52C5237B500BD5E0D /* AgreementViewController.swift */,
 				EEAB97A72C5237D400BD5E0D /* YourDetailsViewController.swift */,
-				EEAB97A92C5237E800BD5E0D /* PaymentDetailsViewController.swift */,
+				EEAB97A92C5237E800BD5E0D /* MembershipPaymentDetailsViewController.swift */,
 				EEAB97AF2C523AC800BD5E0D /* MembershipButtonCollectionViewCell.swift */,
 				EEAB97B02C523AC800BD5E0D /* MembershipButtonCollectionViewCell.xib */,
 				EEAB97B32C52493000BD5E0D /* PlanTypeCollectionViewCell.swift */,
@@ -2130,7 +2130,7 @@
 				58B405FD2BCCEC460045DD4C /* StoreRoomBookingResponse.swift in Sources */,
 				5843D7702BC7007900D5C8DD /* MyVisitorResponse.swift in Sources */,
 				58EB0E442BB6D62600DC2827 /* SideMenuSubViewController.swift in Sources */,
-				EEAB97AA2C5237E800BD5E0D /* PaymentDetailsViewController.swift in Sources */,
+				EEAB97AA2C5237E800BD5E0D /* MembershipPaymentDetailsViewController.swift in Sources */,
 				58A7FBD62BA0B89A00B48DFF /* RoomDetailResponse.swift in Sources */,
 				587DA92E2BA43F1B00D27769 /* OnDemandServicesTableViewCell.swift in Sources */,
 				58BE90C32B9F0551001FCE54 /* RSOCollectionItem.swift in Sources */,

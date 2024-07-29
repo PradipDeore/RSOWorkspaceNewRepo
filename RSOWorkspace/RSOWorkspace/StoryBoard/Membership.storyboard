@@ -11,11 +11,11 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="Inter-Regular.ttf">
-            <string>Inter-Regular</string>
-        </array>
         <array key="Inter-SemiBold.ttf">
             <string>Inter-SemiBold</string>
+        </array>
+        <array key="Inter-VariableFont_slnt,wght.ttf">
+            <string>Inter-Regular</string>
         </array>
     </customFonts>
     <scenes>
@@ -411,10 +411,10 @@
             </objects>
             <point key="canvasLocation" x="3419" y="-735"/>
         </scene>
-        <!--Payment Details View Controller-->
+        <!--Membership Payment Details View Controller-->
         <scene sceneID="INk-cj-lpk">
             <objects>
-                <viewController storyboardIdentifier="PaymentDetailsViewController" id="Jh0-7Q-1DP" customClass="PaymentDetailsViewController" customModule="RSOWorkspace" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MembershipPaymentDetailsViewController" id="Jh0-7Q-1DP" customClass="MembershipPaymentDetailsViewController" customModule="RSOWorkspace" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jZe-L1-x3z">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

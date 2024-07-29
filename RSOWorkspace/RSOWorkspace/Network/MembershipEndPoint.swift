@@ -9,6 +9,8 @@ import Foundation
 
 enum MembershipEndPoint {
   case getPlans
+  case recurringPay(requestModel: SelectedMembershipData)
+  case recurringCallback(requestModel: RecurringCallbackRequestModel)
 }
 extension MembershipEndPoint: EndPointType {
   
@@ -16,6 +18,10 @@ extension MembershipEndPoint: EndPointType {
     switch self {
     case .getPlans:
       return "packages"
+    case .recurringPay:
+      return "recurring-pay"
+    case .recurringCallback:
+      return "recurring-callback"
     }
   }
   var url: URL? {
@@ -25,13 +31,20 @@ extension MembershipEndPoint: EndPointType {
     switch self {
     case .getPlans:
       return .get
-      
+    case .recurringPay:
+      return .post
+    case .recurringCallback:
+      return .post
     }
   }
   var body: Encodable? {
     switch self {
     case .getPlans:
       return nil
+    case .recurringPay(let requestModel):
+      return requestModel
+    case .recurringCallback(let requestModel):
+      return requestModel
     }
   }
   var headers: [String : String]? {

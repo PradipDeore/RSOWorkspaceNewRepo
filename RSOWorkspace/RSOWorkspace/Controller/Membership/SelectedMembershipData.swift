@@ -7,7 +7,7 @@
 
 import Foundation
 
-class SelectedMembershipData {
+class SelectedMembershipData: Codable {
     static let shared = SelectedMembershipData() // Singleton instance
     private init() {
       self.id = 0
@@ -23,4 +23,7 @@ class SelectedMembershipData {
     var agreementLength: Int
     var planType: String
     var monthlyCost: String
+}
+struct RecurringCallbackRequestModel: Codable {
+  let ref:String
 }

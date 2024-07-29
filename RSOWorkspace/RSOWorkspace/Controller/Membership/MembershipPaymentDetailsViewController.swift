@@ -7,7 +7,7 @@
 
 import UIKit
 
-class PaymentDetailsViewController: UIViewController, MembershipNavigable {
+class MembershipPaymentDetailsViewController: UIViewController, MembershipNavigable {
   @IBOutlet var continueButton: UIButton!
   @IBOutlet var tableView: UITableView!
   let identifier = "PaymentSummaryTableViewCell"
@@ -24,10 +24,34 @@ class PaymentDetailsViewController: UIViewController, MembershipNavigable {
     self.tableView.reloadData()
   }
   @IBAction func continueAction(_ sender: Any) {
-    
+    submitPlan()
+  }
+  func submitPlan() {
+    RSOLoader.showLoader()
+    let requestModel = SelectedMembershipData.shared
+    APIManager.shared.request(
+        modelType: MembershipResponse.self,
+        type: MembershipEndPoint.recurringPay(requestModel: requestModel)) { [weak self] response in
+          DispatchQueue.main.async {
+            RSOLoader.removeLoader()
+            guard let self = self else { return }
+            switch response {
+            case .success(let response):
+              var PaymentRequestModel = NiPaymentRequestModel()
+              PaymentRequestModel.total = Int(requestModel.monthlyCost)
+              PaymentRequestModel.email = UserHelper.shared.getUserEmail()
+              PaymentNetworkManager.shared.currentViewController = self
+              PaymentNetworkManager.shared.currentNavigationController = self.navigationController
+              PaymentNetworkManager.shared.makePayment(requestModel: PaymentRequestModel)
+            case .failure(let error):
+              //  Unsuccessful
+              RSOToastView.shared.show("\(error.localizedDescription)", duration: 2.0, position: .center)
+            }
+          }
+        }
   }
 }
-extension PaymentDetailsViewController: UITableViewDataSource, UITableViewDelegate {
+extension MembershipPaymentDetailsViewController: UITableViewDataSource, UITableViewDelegate {
   
   func numberOfSections(in tableView: UITableView) -> Int {
     return 1
