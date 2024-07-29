@@ -145,7 +145,6 @@ extension SideMenuDashboardViewController: UITableViewDataSource, UITableViewDel
 
 extension SideMenuDashboardViewController {
     enum Event {
-        
         case dataLoaded
         case error(Error?)
     }

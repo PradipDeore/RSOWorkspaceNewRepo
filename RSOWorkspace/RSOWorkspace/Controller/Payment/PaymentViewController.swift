@@ -268,7 +268,7 @@ extension PaymentViewController:ButtonPayNowTableViewCellDelegate{
                 requestModel.email = UserHelper.shared.getUserEmail()
                 paymentServiceManager.currentViewController = self
                 paymentServiceManager.currentNavigationController = self.navigationController
-                paymentServiceManager.isDeskPayment = true
+                paymentServiceManager.paymentTypeEntity = .desk
                 paymentServiceManager.makePayment(requestModel: requestModel)
               return
             }

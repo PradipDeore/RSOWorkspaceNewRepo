@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol PlanSelectDelegate: AnyObject {
+  func didSelectPlan(index: Int)
+}
+
 class PlanTypeCollectionViewCell: UICollectionViewCell {
   @IBOutlet weak var mainTitleLabel: UILabel!
   @IBOutlet weak var continueButton: UIButton!
@@ -15,18 +19,22 @@ class PlanTypeCollectionViewCell: UICollectionViewCell {
   let planPriceIdentifier = "PlanPriceTableViewCell"
   let planInfoIdentifier = "PlanInfoTableViewCell"
   var selectedIndex = -1
-  var priceOptions: [String]? {
-          didSet {
-              tableView.reloadData()
-          }
-      }
-    override func awakeFromNib() {
-        super.awakeFromNib()
-      tableView.register(UINib(nibName: planPriceIdentifier, bundle: nil), forCellReuseIdentifier: planPriceIdentifier)
-      tableView.register(UINib(nibName: planInfoIdentifier, bundle: nil), forCellReuseIdentifier: planInfoIdentifier)
-    }
-
-  @IBAction func continuePlanSelectAction(_ sender: Any) {
+  var priceOptions: [PlanPrice] = []
+  weak var planDelegate: PlanSelectDelegate?
+  var services: [String] = []
+  override func awakeFromNib() {
+    super.awakeFromNib()
+    tableView.register(UINib(nibName: planPriceIdentifier, bundle: nil), forCellReuseIdentifier: planPriceIdentifier)
+    tableView.register(UINib(nibName: planInfoIdentifier, bundle: nil), forCellReuseIdentifier: planInfoIdentifier)
+    self.continueButton.isUserInteractionEnabled = false
+    self.continueButton.alpha = 0.5
+  }
+  
+  func setData(titleString: String?, priceList:[PlanPrice]?, serviceList: [String]?) {
+    self.mainTitleLabel.text = titleString
+    self.priceOptions = priceList ?? []
+    self.services = serviceList ?? []
+    self.tableView.reloadData()
   }
 }
 extension PlanTypeCollectionViewCell: UITableViewDelegate, UITableViewDataSource {
@@ -35,28 +43,29 @@ extension PlanTypeCollectionViewCell: UITableViewDelegate, UITableViewDataSource
   }
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     if section == 0 {
-      return 1
+      return services.count
     }
-    return priceOptions?.count ?? 0
+    return priceOptions.count
   }
   
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
     if indexPath.section == 0 {
-      return 140
+      return 70
     }
-    return 80
+    return 60
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     if indexPath.section == 0 {
       let cell = tableView.dequeueReusableCell(withIdentifier: planInfoIdentifier, for: indexPath) as! PlanInfoTableViewCell
+      cell.messageLabel.text = services[indexPath.row]
       cell.selectionStyle = .none
       return cell
     } else {
       let cell = tableView.dequeueReusableCell(withIdentifier: planPriceIdentifier, for: indexPath) as! PlanPriceTableViewCell
-      if let list = priceOptions {
-        cell.setTextMessage(msg: list[indexPath.row])
-      }
+      let planPrice = priceOptions[indexPath.row]
+      let planInfo = "From AED \(planPrice.price ?? ""), \(planPrice.duration ?? "")"
+      cell.setTextMessage(msg: planInfo)
       cell.setRadioImage(selcted: false)
       if selectedIndex >= 0 && indexPath.row == selectedIndex {
         cell.setRadioImage(selcted: true)
@@ -68,7 +77,10 @@ extension PlanTypeCollectionViewCell: UITableViewDelegate, UITableViewDataSource
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     if indexPath.section == 1 {
       selectedIndex = indexPath.row
+      self.continueButton.isUserInteractionEnabled = true
+      self.continueButton.alpha = 1.0
       self.tableView.reloadData()
+      self.planDelegate?.didSelectPlan(index: selectedIndex)
     }
   }
 }

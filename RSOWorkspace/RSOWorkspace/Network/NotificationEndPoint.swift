@@ -18,11 +18,7 @@ extension NotificationEndPoint: EndPointType {
             return "notification"
         }
     }
-    
-    var baseURL: String {
-        return "https://finance.ardemos.co.in/rso/api/"
-    }
-    
+
     var url: URL? {
         return URL(string: "\(baseURL)\(path)")
     }

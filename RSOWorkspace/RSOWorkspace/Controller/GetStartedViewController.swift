@@ -17,8 +17,7 @@ class GetStartedViewController: UIViewController {
     }
     
     @IBAction func btnLogInTappedAction(_ sender: Any) {
-//        RSOToastView.shared.show("This is a piece of toast")
-//return
+
         let logInVC = UIViewController.createController(storyBoard: .GetStarted, ofType: LogInViewController.self)
         self.navigationController?.pushViewController(logInVC, animated: true)
         
@@ -30,17 +29,14 @@ class GetStartedViewController: UIViewController {
     }
     
     @IBAction func btnExploreTappedAction(_ sender: Any) {
-//        let deskListingVC = UIViewController.createController(storyBoard: .Products, ofType: RoomListingViewController.self)
-//        self.navigationController?.pushViewController(deskListingVC, animated: true)
+
         RSOTabBarViewController.presentAsRootController()
     }
     
     
     class func presentAsRootController() {
         // Create your RSOTabBarVC instance
-       // let rsoTabBarVC = UIViewController.createController(storyBoard: .TabBar, ofType: RSOTabBarViewController.self)
        let getStartedVC = UIViewController.createController(storyBoard: .GetStarted, ofType:  GetStartedViewController.self)
-
         // Set the navigation controller as the root view controller of the window
         AppDelegate.setWindowRoot(viewController: getStartedVC)
 

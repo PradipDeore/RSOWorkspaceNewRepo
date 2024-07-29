@@ -8,6 +8,7 @@
 import UIKit
 
 class PlanInfoTableViewCell: UITableViewCell {
+  @IBOutlet weak var messageLabel: UILabel!
 
     override func awakeFromNib() {
         super.awakeFromNib()

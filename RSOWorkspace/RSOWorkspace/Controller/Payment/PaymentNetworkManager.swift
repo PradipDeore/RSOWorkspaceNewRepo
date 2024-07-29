@@ -8,6 +8,13 @@
 import Foundation
 import NISdk
 
+enum PaymentTypeEntity {
+  case desk
+  case room
+  case office
+  case membership
+}
+
 class PaymentNetworkManager: CardPaymentDelegate ,ApplePayDelegate{
     
     static let shared = PaymentNetworkManager()
@@ -17,8 +24,7 @@ class PaymentNetworkManager: CardPaymentDelegate ,ApplePayDelegate{
     var requestParameters : ConfirmBookingRequestModel?
     var currentViewController : UIViewController?
     var currentNavigationController: UINavigationController?
-    var isDeskPayment = false
-   
+    var paymentTypeEntity:PaymentTypeEntity = .room
     func paymentRoomBookingAPI(additionalrequirements :[String], bookingid:Int, requirementdetails:String,totalprice:Double,vatamount:Double) {
         DispatchQueue.main.async {
             RSOLoader.showLoader()
@@ -34,9 +40,6 @@ class PaymentNetworkManager: CardPaymentDelegate ,ApplePayDelegate{
                     case .success(let response):
                         if response.status.isError {
                             RSOToastView.shared.show(response.message, duration: 2.0, position: .center)
-                            /*DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-                             self.navigationController?.popToRootViewController(animated: true)
-                             }*/
                         } else {
                             self.apiResponseData = response
                             if UserHelper.shared.isGuest() {
@@ -73,24 +76,9 @@ class PaymentNetworkManager: CardPaymentDelegate ,ApplePayDelegate{
                     case .success(let response):
                         if response.status.isError {
                             RSOToastView.shared.show(response.msg, duration: 2.0, position: .center)
-                            /*DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-                             self.navigationController?.popToRootViewController(animated: true)
-                             }*/
                         } else {
-//                          if self.isDeskPayment {
-//                            RSOToastView.shared.show(response.msg, duration: 2.0, position: .center)
-//                          }
-//                            self.currentNavigationController?.popToRootViewController(animated: true)
-                            
-                            if UserHelper.shared.isGuest() {
-                                var requestModel = NiPaymentRequestModel()
-                                requestModel.total = Int(totalprice)
-                                requestModel.email = UserHelper.shared.getUserEmail()
-                                self.makePayment(requestModel: requestModel)
-                            } else {
-                                RSOToastView.shared.show(response.msg, duration: 2.0, position: .center)
-                                 self.currentNavigationController?.popToRootViewController(animated: true)
-                            }
+                            RSOToastView.shared.show(response.msg, duration: 2.0, position: .center)
+                            self.currentNavigationController?.popToRootViewController(animated: true)
                             self.eventHandler?(.dataLoaded)
                         }
                     case .failure(let error):
@@ -123,20 +111,46 @@ class PaymentNetworkManager: CardPaymentDelegate ,ApplePayDelegate{
             }
         }
     }
-    
-    
+  func submitMembershipPayment() {
+    RSOLoader.showLoader()
+    let inputModel = RecurringCallbackRequestModel(ref: "")
+    let requestModel = SelectedMembershipData.shared
+    APIManager.shared.request(
+        modelType: MembershipResponse.self,
+        type: MembershipEndPoint.recurringCallback(requestModel: inputModel)) { [weak self] response in
+          DispatchQueue.main.async {
+            RSOLoader.removeLoader()
+            guard let self = self else { return }
+            switch response {
+            case .success(let response):
+              RSOToastView.shared.show("Membership purchased successfully", duration: 2.0, position: .center)
+              self.currentNavigationController?.popToRootViewController(animated: true)
+              self.eventHandler?(.dataLoaded)
+            case .failure(let error):
+              //  Unsuccessful
+              RSOToastView.shared.show("\(error.localizedDescription)", duration: 2.0, position: .center)
+            }
+          }
+        }
+  }
+  func paymentCompletionNavigation() {
+    DispatchQueue.main.async {
+      switch self.paymentTypeEntity {
+      case .desk:
+        if let bookingId = self.requestParameters?.meetingId, let totalPrice = self.requestParameters?.deskSubTotal, let vatAmount = self.requestParameters?.deskVatTotal {
+          self.paymentDeskBookingAPI(bookingid: bookingId, totalprice: Double(totalPrice), vatamount: Double(vatAmount))
+        }
+      case .membership:
+        self.submitMembershipPayment()
+      default:
+        RSOToastView.shared.show(self.apiResponseData?.message ?? "Payment Successful", duration: 2.0, position: .center)
+
+        }
+      }
+  }
     func paymentDidComplete(with status: PaymentStatus) {
         if(status == .PaymentSuccess) {
-            // Payment was successful
-            DispatchQueue.main.async {
-             // if self.isDeskPayment {
-//                if let bookingId = self.requestParameters?.meetingId, let totalPrice = self.requestParameters?.deskSubTotal, let vatAmount = self.requestParameters?.deskVatTotal {
-//                  self.paymentDeskBookingAPI(bookingid: bookingId, totalprice: Double(totalPrice), vatamount: Double(vatAmount))
-//                }
-//              } else {
-                RSOToastView.shared.show(self.apiResponseData?.message ?? "Payment Successful", duration: 2.0, position: .center)
-              //}
-            }
+          self.paymentCompletionNavigation()
         } else if(status == .PaymentFailed) {
             // Payment failed
             DispatchQueue.main.async {

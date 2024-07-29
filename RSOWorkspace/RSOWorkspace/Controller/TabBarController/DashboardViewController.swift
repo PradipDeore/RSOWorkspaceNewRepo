@@ -211,6 +211,7 @@ extension DashboardViewController: DashboardDeskTypeTableViewCellDelegate {
         }
       case "Membership":
         let membershipViewController = UIViewController.createController(storyBoard: .Membership, ofType: MembershipViewController.self)
+        membershipViewController.coordinator = self.coordinator
         self.navigationController?.pushViewController(membershipViewController, animated: true)
       default:
         break
