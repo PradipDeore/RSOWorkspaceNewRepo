@@ -309,7 +309,9 @@ extension PaymentViewController: ButtonPayNowTableViewCellDelegate {
                 paymentServiceManager.currentViewController = self
                 paymentServiceManager.currentNavigationController = self.navigationController
                 paymentServiceManager.paymentTypeEntity = .desk
-                paymentServiceManager.makePayment(requestModel: requestModel)
+                if UserHelper.shared.isGuest() {
+                  paymentServiceManager.makePayment(requestModel: requestModel)
+                }
             }
         case .meetingRoom:
             let additionalServicesVC = UIViewController.createController(storyBoard: .Payment, ofType: ChooseAdditionalServicesViewController.self)
@@ -322,6 +324,12 @@ extension PaymentViewController: ButtonPayNowTableViewCellDelegate {
             paymentServiceManager.currentViewController = self
             paymentServiceManager.currentNavigationController = self.navigationController
             paymentServiceManager.paymentTypeEntity = .office
+            var requestModel = NiPaymentRequestModel()
+            requestModel.total = Int(totalPriceOffice)
+            requestModel.email = UserHelper.shared.getUserEmail()
+            if UserHelper.shared.isGuest() {
+              paymentServiceManager.makePayment(requestModel: requestModel)
+            }
         }
     }
 }

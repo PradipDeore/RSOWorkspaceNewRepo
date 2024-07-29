@@ -60,31 +60,6 @@ class ChooseAdditionalServicesViewController: UIViewController {
   @IBAction func btnHideViewTappedAction(_ sender: Any) {
     dismiss(animated: true, completion: nil)
   }
-  func checkoutNavigation() {
-    /* let type =  paymentTypes[selectedPaymentTypeIndex]
-     switch type {
-     case .applePay:
-     print("applePay")
-     case .debitCreditCard:
-     print("debitCreditCard")
-     var requestModel = PaymentRequestModel()
-     requestModel.customerID = UserSessionHelper.shared.getCustomerId()
-     requestModel.total = Int(cartServiceManager.getTotal())
-     requestModel.email = UserSessionHelper.shared.getUserEmail()
-     self.checkoutServiceManager.createOrder(requestModel: requestModel)
-     case .tabby:
-     print("tabby")
-     case .cashOnDelivery:
-     GPToastView.shared.show(self.checkoutServiceManager.checkoutReponse?.message ?? "")
-     let delayInSeconds = 2.0
-     DispatchQueue.main.asyncAfter(deadline: .now() + delayInSeconds) {
-     let myOrderVC = UIViewController.createController(storyBoard: .Profile, ofType: MyOrdersViewController.self)
-     self.navigationController?.pushViewController(myOrderVC, animated: true)
-     }
-     case .unknown:
-     print("unknown")
-     }*/
-  }
   
 }
 extension ChooseAdditionalServicesViewController: UITableViewDataSource, UITableViewDelegate {
@@ -179,7 +154,7 @@ extension ChooseAdditionalServicesViewController:CancelAndRequestButtonTableView
   func btnRequestTappedAction() {
     let details = "RSO booking"
     //print("details=", details)
-      paymentServiceManager.paymentTypeEntity = .desk
+      paymentServiceManager.paymentTypeEntity = .room
       paymentServiceManager.currentViewController = self
       paymentServiceManager.currentNavigationController = self.navigationController
       paymentServiceManager.paymentRoomBookingAPI(additionalrequirements: selectedServices, bookingid: self.bookingId, requirementdetails: details, totalprice: totalPrice, vatamount: vatAmount)
