@@ -10,12 +10,14 @@ class RSOToken {
   static var shared = RSOToken()
   private let userDefaults = UserDefaults.standard
   private let tokenKey = "Token"
-  
+  private let exploreCommonUserTokenKey = "commonUserToken"
+
   private init() {
   }
   func save(token:String){
     userDefaults.setValue(token, forKey: tokenKey)
   }
+    
   func getToken()-> String?{
     let token = userDefaults.string(forKey: tokenKey)
     print("token is \(String(describing: token))")
@@ -28,4 +30,5 @@ class RSOToken {
   func clearAll() {
     userDefaults.removeObject(forKey: tokenKey)
   }
+
 }

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+
 struct exploreResponse:Codable{
     let status:String?
     let token:String?
