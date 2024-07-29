@@ -36,6 +36,7 @@ class UserHelper {
     userDefaults.set(user.status, forKey: userStatusKey)
     userDefaults.set(true, forKey: userIsLoggedIn)
   }
+   
   func saveUserIsGuest(_ isGuest: Bool) {
     userDefaults.set(isGuest, forKey: userIsGuestKey)
   }
