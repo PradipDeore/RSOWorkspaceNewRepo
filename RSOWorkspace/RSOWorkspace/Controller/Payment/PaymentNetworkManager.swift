@@ -28,7 +28,9 @@ class PaymentNetworkManager: CardPaymentDelegate ,ApplePayDelegate{
   var paymentTypeEntity:PaymentTypeEntity = .room
   var orderResponse: OrderResponse?
   var paymentRoomBookingRequestModel: PaymentRoomBookingRequest?
-  
+  var bookingId: Int = 0
+  var totalPriceOffice: Double = 0.0
+  var vatAmountOffice: Double = 0.0
   func paymentRoomBookingAPI(additionalrequirements :[String], bookingid:Int, requirementdetails:String,totalprice:Double,vatamount:Double) {
     self.paymentRoomBookingRequestModel = PaymentRoomBookingRequest(additional_requirements: additionalrequirements, booking_id: bookingid, requirement_details: requirementdetails, total_price: totalprice, vatamount: vatamount)
 
@@ -118,15 +120,8 @@ class PaymentNetworkManager: CardPaymentDelegate ,ApplePayDelegate{
               RSOToastView.shared.show(response.msg, duration: 2.0, position: .center)
             } else {
               self.apiOfficeResponseData = response
-              if UserHelper.shared.isGuest() {
-                var requestModel = NiPaymentRequestModel()
-                requestModel.total = Int(totalprice)
-                requestModel.email = UserHelper.shared.getUserEmail()
-                self.makePayment(requestModel: requestModel)
-              } else {
-                RSOToastView.shared.show(response.msg, duration: 2.0, position: .center)
-                self.currentNavigationController?.popToRootViewController(animated: true)
-              }
+              RSOToastView.shared.show(response.msg, duration: 2.0, position: .center)
+              self.currentNavigationController?.popToRootViewController(animated: true)
               self.eventHandler?(.dataLoaded)
             }
           case .failure(let error):
@@ -195,10 +190,10 @@ class PaymentNetworkManager: CardPaymentDelegate ,ApplePayDelegate{
       case .room:
         self.submitRoomBooking()
       case .office:
-        
-      default:
-        RSOToastView.shared.show(self.apiResponseData?.message ?? "Payment Successful", duration: 2.0, position: .center)
-        
+        let bookingId = self.bookingId
+        let totalPrice = self.totalPriceOffice
+        let vatAmount = self.vatAmountOffice
+        self.paymentOfficeBookingAPI(id: bookingId, totalprice:totalPrice, vatamount: vatAmount)
       }
     }
   }

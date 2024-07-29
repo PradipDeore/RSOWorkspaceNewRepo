@@ -20,7 +20,7 @@ class GetStartedViewController: UIViewController {
       RSOLoader.showLoader()
       let requestModel = exploreRequest(email: email)
       APIManager.shared.request(
-        modelType: exploreResponse.self,
+        modelType: ExploreResponse.self,
         type: ExploreButtonEndPoint.exploreLogin(requestModel: requestModel)) { response in
           switch response {
           case .success(let response):

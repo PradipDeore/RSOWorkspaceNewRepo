@@ -311,6 +311,8 @@ extension PaymentViewController: ButtonPayNowTableViewCellDelegate {
                 paymentServiceManager.paymentTypeEntity = .desk
                 if UserHelper.shared.isGuest() {
                   paymentServiceManager.makePayment(requestModel: requestModel)
+                } else {
+                  
                 }
             }
         case .meetingRoom:
@@ -324,11 +326,16 @@ extension PaymentViewController: ButtonPayNowTableViewCellDelegate {
             paymentServiceManager.currentViewController = self
             paymentServiceManager.currentNavigationController = self.navigationController
             paymentServiceManager.paymentTypeEntity = .office
+            paymentServiceManager.bookingId = bookingId
+            paymentServiceManager.totalPriceOffice = totalPriceOffice
+            paymentServiceManager.vatAmountOffice = vatAmountOffice
             var requestModel = NiPaymentRequestModel()
             requestModel.total = Int(totalPriceOffice)
             requestModel.email = UserHelper.shared.getUserEmail()
             if UserHelper.shared.isGuest() {
               paymentServiceManager.makePayment(requestModel: requestModel)
+            } else {
+              paymentServiceManager.paymentOfficeBookingAPI(id: bookingId, totalprice: totalPriceOffice, vatamount:  vatAmountOffice)
             }
         }
     }

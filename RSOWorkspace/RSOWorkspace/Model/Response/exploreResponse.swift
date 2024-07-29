@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct exploreResponse:Codable{
-    let status:String?
+struct ExploreResponse:Codable{
+    let status:StatusType?
     let token:String?
 }
