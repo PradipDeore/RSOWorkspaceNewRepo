@@ -29,8 +29,8 @@ class PaymentNetworkManager: CardPaymentDelegate ,ApplePayDelegate{
   var orderResponse: OrderResponse?
   var paymentRoomBookingRequestModel: PaymentRoomBookingRequest?
   var bookingId: Int = 0
-  var totalPriceOffice: Double = 0.0
-  var vatAmountOffice: Double = 0.0
+  var totalPrice: Double = 0.0
+  var vatAmount: Double = 0.0
   func paymentRoomBookingAPI(additionalrequirements :[String], bookingid:Int, requirementdetails:String,totalprice:Double,vatamount:Double) {
     self.paymentRoomBookingRequestModel = PaymentRoomBookingRequest(additional_requirements: additionalrequirements, booking_id: bookingid, requirement_details: requirementdetails, total_price: totalprice, vatamount: vatamount)
 
@@ -182,17 +182,18 @@ class PaymentNetworkManager: CardPaymentDelegate ,ApplePayDelegate{
     DispatchQueue.main.async {
       switch self.paymentTypeEntity {
       case .desk:
-        if let bookingId = self.requestParameters?.meetingId, let totalPrice = self.requestParameters?.deskSubTotal, let vatAmount = self.requestParameters?.deskVatTotal {
-          self.paymentDeskBookingAPI(bookingid: bookingId, totalprice: Double(totalPrice), vatamount: Double(vatAmount))
-        }
+        let bookingId = self.bookingId
+        let totalPrice = self.totalPrice
+        let vatAmount = self.vatAmount
+          self.paymentDeskBookingAPI(bookingid: bookingId, totalprice: totalPrice, vatamount: vatAmount)
       case .membership:
         self.submitMembershipPayment()
       case .room:
         self.submitRoomBooking()
       case .office:
         let bookingId = self.bookingId
-        let totalPrice = self.totalPriceOffice
-        let vatAmount = self.vatAmountOffice
+        let totalPrice = self.totalPrice
+        let vatAmount = self.vatAmount
         self.paymentOfficeBookingAPI(id: bookingId, totalprice:totalPrice, vatamount: vatAmount)
       }
     }

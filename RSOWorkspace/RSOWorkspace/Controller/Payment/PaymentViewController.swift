@@ -309,10 +309,13 @@ extension PaymentViewController: ButtonPayNowTableViewCellDelegate {
                 paymentServiceManager.currentViewController = self
                 paymentServiceManager.currentNavigationController = self.navigationController
                 paymentServiceManager.paymentTypeEntity = .desk
+                paymentServiceManager.bookingId = bookingId
+                paymentServiceManager.totalPrice = totalPriceDesk
+                paymentServiceManager.vatAmount = vatAmountDesk
                 if UserHelper.shared.isGuest() {
                   paymentServiceManager.makePayment(requestModel: requestModel)
                 } else {
-                  
+                  paymentServiceManager.paymentDeskBookingAPI(bookingid: bookingId, totalprice: totalPriceDesk, vatamount: vatAmountDesk)
                 }
             }
         case .meetingRoom:
@@ -327,8 +330,8 @@ extension PaymentViewController: ButtonPayNowTableViewCellDelegate {
             paymentServiceManager.currentNavigationController = self.navigationController
             paymentServiceManager.paymentTypeEntity = .office
             paymentServiceManager.bookingId = bookingId
-            paymentServiceManager.totalPriceOffice = totalPriceOffice
-            paymentServiceManager.vatAmountOffice = vatAmountOffice
+            paymentServiceManager.totalPrice = totalPriceOffice
+            paymentServiceManager.vatAmount = vatAmountOffice
             var requestModel = NiPaymentRequestModel()
             requestModel.total = Int(totalPriceOffice)
             requestModel.email = UserHelper.shared.getUserEmail()
