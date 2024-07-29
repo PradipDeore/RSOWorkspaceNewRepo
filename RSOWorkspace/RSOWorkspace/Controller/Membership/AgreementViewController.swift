@@ -16,27 +16,31 @@ class AgreementViewController: UIViewController, MembershipNavigable {
   var membershipNavigationDelegate: MembershipNavigationDelegate?
 
   var selectedDate = ""
-  var list:[PlanPrice] = [PlanPrice(price: "3000", duration: "6 month", length: 1), PlanPrice(price: "6000", duration: "12 month", length: 5)]
+  var list:[PlanPrice] = []
   var selectedIndex = -1
   override func viewDidLoad() {
         super.viewDidLoad()
     datePicker.minimumDate = Date()
-    self.continueButton.isUserInteractionEnabled = false
-    self.continueButton.alpha = 0.5
     collectionView.register(UINib(nibName: cellIdentifier, bundle: nil), forCellWithReuseIdentifier: cellIdentifier)
-
-    }
-  @IBAction func continueAction(_ sender: Any) {
+    selectedDate = Date.formatSelectedDate(format: .yyyyMMdd, date: Date())
     SelectedMembershipData.shared.startDate = selectedDate
+    }
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    list = SelectedPlanPriceList.shared.list
+    selectedIndex = SelectedPlanPriceList.shared.selectedIndex
+    let indexPath = IndexPath(row: selectedIndex, section: 0)
+    collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+
+    collectionView.reloadData()
+  }
+  @IBAction func continueAction(_ sender: Any) {
+    SelectedMembershipData.shared.startDate = selectedDate + " 00:00:00"
     membershipNavigationDelegate?.navigateToNextVC()
   }
   @IBAction func selectDate(_ sender: UIDatePicker) {
     let actualselectedDate = sender.date // Date
     selectedDate = Date.formatSelectedDate(format: .yyyyMMdd, date: actualselectedDate)
-    if selectedIndex >= 0 {
-      self.continueButton.isUserInteractionEnabled = true
-      self.continueButton.alpha = 1.0
-    }
   }
 }
 extension AgreementViewController: UICollectionViewDelegate, UICollectionViewDataSource {
@@ -55,10 +59,11 @@ extension AgreementViewController: UICollectionViewDelegate, UICollectionViewDat
   }
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     selectedIndex = indexPath.row
+    SelectedPlanPriceList.shared.selectedIndex = selectedIndex
+    let priceSelected = list[selectedIndex]
+    SelectedMembershipData.shared.monthlyCost = priceSelected.price ?? ""
+    SelectedMembershipData.shared.planType = priceSelected.duration ?? ""
+    SelectedMembershipData.shared.agreementLength = priceSelected.length ?? 0
     collectionView.reloadData()
-    if selectedDate.isEmpty == false {
-      self.continueButton.isUserInteractionEnabled = true
-      self.continueButton.alpha = 1.0
-    }
   }
 }

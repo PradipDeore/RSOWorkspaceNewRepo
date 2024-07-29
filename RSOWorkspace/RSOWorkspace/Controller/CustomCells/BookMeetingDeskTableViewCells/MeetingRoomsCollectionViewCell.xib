@@ -38,6 +38,7 @@
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Meeting" translatesAutoresizingMaskIntoConstraints="NO" id="VHB-4g-lQX">
                                 <rect key="frame" x="0.0" y="0.0" width="301" height="131"/>
+                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="131" id="O9A-8f-cla"/>
                                     <constraint firstAttribute="height" constant="131" id="T9Y-Gb-sKd"/>

@@ -38,7 +38,8 @@ class MembershipPaymentDetailsViewController: UIViewController, MembershipNaviga
             switch response {
             case .success(let response):
               var PaymentRequestModel = NiPaymentRequestModel()
-              PaymentRequestModel.total = Int(requestModel.monthlyCost)
+              let floatValue = Float(requestModel.monthlyCost) ?? 0.0
+              PaymentRequestModel.total = Int(floatValue)
               PaymentRequestModel.email = UserHelper.shared.getUserEmail()
               PaymentNetworkManager.shared.currentViewController = self
               PaymentNetworkManager.shared.currentNavigationController = self.navigationController
@@ -77,7 +78,8 @@ extension MembershipPaymentDetailsViewController: UITableViewDataSource, UITable
       cell.summaryValueLabel.text = "\(SelectedMembershipData.shared.agreementLength) months"
     case 3:
       cell.summaryTitleLabel.text = "Start Date"
-      cell.summaryValueLabel.text = SelectedMembershipData.shared.startDate
+      let date = Date.convertTo(SelectedMembershipData.shared.startDate, givenFormat: .yyyyMMdd, newFormat: .ddMMyyyy)
+      cell.summaryValueLabel.text = date
     case 4:
       cell.summaryTitleLabel.text = "Monthly Cost"
       cell.summaryValueLabel.text = SelectedMembershipData.shared.monthlyCost

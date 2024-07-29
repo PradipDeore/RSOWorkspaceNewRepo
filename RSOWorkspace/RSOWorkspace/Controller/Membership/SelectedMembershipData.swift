@@ -27,3 +27,12 @@ class SelectedMembershipData: Codable {
 struct RecurringCallbackRequestModel: Codable {
   let ref:String
 }
+
+class SelectedPlanPriceList {
+  static let shared = SelectedPlanPriceList()
+  private init () {
+    
+  }
+  var selectedIndex = 0
+  var list: [PlanPrice] = []
+}

@@ -26,7 +26,7 @@ class PaymentNetworkManager: CardPaymentDelegate ,ApplePayDelegate{
     var currentViewController : UIViewController?
     var currentNavigationController: UINavigationController?
     var paymentTypeEntity:PaymentTypeEntity = .room
-   
+    var orderResponse: OrderResponse?
     func paymentRoomBookingAPI(additionalrequirements :[String], bookingid:Int, requirementdetails:String,totalprice:Double,vatamount:Double) {
         DispatchQueue.main.async {
             RSOLoader.showLoader()
@@ -141,6 +141,7 @@ class PaymentNetworkManager: CardPaymentDelegate ,ApplePayDelegate{
                 switch response {
                 case .success(let response):
                     let orderResponse = response.data
+                    self.orderResponse = orderResponse
                     self.showCardPaymentUI(orderResponse: orderResponse)
                 case .failure(let error):
                     //  Unsuccessful
@@ -150,8 +151,9 @@ class PaymentNetworkManager: CardPaymentDelegate ,ApplePayDelegate{
         }
     }
   func submitMembershipPayment() {
+    guard let ref = self.orderResponse?.embeddedData?.payment?.first?.orderReference else { return }
     RSOLoader.showLoader()
-    let inputModel = RecurringCallbackRequestModel(ref: "")
+    let inputModel = RecurringCallbackRequestModel(ref: ref)
     let requestModel = SelectedMembershipData.shared
     APIManager.shared.request(
         modelType: MembershipResponse.self,

@@ -40,10 +40,13 @@ class PlanTypeViewController: UIViewController, MembershipNavigable {
     @objc func selectPlanAction(_ sender: UIButton) {
       let planSelected = list[sender.tag]
       SelectedMembershipData.shared.packageName = planSelected.name ?? ""
+      SelectedPlanPriceList.shared.list = planSelected.price ?? []
       let priceSelected = planSelected.price?[planSelectedIndex]
+      SelectedPlanPriceList.shared.selectedIndex = planSelectedIndex
       SelectedMembershipData.shared.id = planSelected.id ?? 0
       SelectedMembershipData.shared.monthlyCost = priceSelected?.price ?? ""
       SelectedMembershipData.shared.planType = priceSelected?.duration ?? ""
+      SelectedMembershipData.shared.agreementLength = priceSelected?.length ?? 0
       membershipNavigationDelegate?.navigateToNextVC()
     }
 
@@ -55,6 +58,7 @@ class PlanTypeViewController: UIViewController, MembershipNavigable {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
       let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as! PlanTypeCollectionViewCell
       let option = list[indexPath.item]
+      cell.planDelegate = self
       cell.continueButton.tag = indexPath.item
       cell.setData(titleString: option.name, priceList: option.price, serviceList: option.services)
       cell.continueButton.addTarget(self, action: #selector(selectPlanAction(_:)), for: .touchUpInside)

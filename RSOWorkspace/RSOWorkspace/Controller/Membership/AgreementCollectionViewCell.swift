@@ -19,16 +19,18 @@ class AgreementCollectionViewCell: UICollectionViewCell {
     self.selectCell(isSelected: false)
     }
   func setData(planPrice:PlanPrice) {
-    self.durationLabel.text = planPrice.duration
+    self.durationLabel.text = "per month"
     self.priceLabel.text = planPrice.price
-    self.typeNameLabel.text = "Monthly"
+    self.typeNameLabel.text = "\(planPrice.length ?? 0) month"
   }
   
   func selectCell(isSelected: Bool) {
     if isSelected {
+      self.containerView.backgroundColor = UIColor(named: "E3E3E3")
       self.containerView.layer.borderColor = UIColor.gray.cgColor
       self.containerView.layer.borderWidth = 1.0
     } else {
+      self.containerView.backgroundColor = .white
       self.containerView.layer.borderColor = UIColor.lightGray.cgColor
       self.containerView.layer.borderWidth = 0.5
     }

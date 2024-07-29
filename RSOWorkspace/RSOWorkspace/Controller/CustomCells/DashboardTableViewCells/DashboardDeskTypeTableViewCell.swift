@@ -55,31 +55,11 @@ class DashboardDeskTypeTableViewCell: UITableViewCell {
     @IBAction func buttonTapped(_ sender: UIButton) {
         
         buttonSetUp()
-        let buttonType = sender.titleLabel?.text ?? ""
+      let buttonType = sender.titleLabel?.text?.trimmingCharacters(in: .whitespaces) ?? ""
         delegate?.buttonTapped(type: buttonType)        //selectedButtonTag = sender.tag
-        //reloadData()
-        //myBookingListingAPI()
-        
         sender.backgroundColor = selectedButtonColor
         sender.setTitleColor(.black, for: .normal)
-        //selectedSection = nil
-        //self.tableView.reloadData()
     }
-    // MARK: - Helper Methods
-    
-    //    func reloadData(){
-    //        switch selectedButtonTag {
-    //        case 1:
-    //            reloadTable(dataArray: myBookingResponseData?.mergedBookings)
-    //        case 2:
-    //            reloadTable(dataArray: myBookingResponseData?.bookMeetings)
-    //        case 3:
-    //            reloadTable(dataArray: myBookingResponseData?.bookDesks)
-    //        default:
-    //            break
-    //        }
-    //
-    //    }
     func setButtonAppearance(button: UIButton, backgroundColor: UIColor, textColor: UIColor) {
         button.backgroundColor = backgroundColor
         button.setTitleColor(textColor, for: .normal)
