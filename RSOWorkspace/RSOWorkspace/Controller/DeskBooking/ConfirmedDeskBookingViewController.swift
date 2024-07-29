@@ -93,7 +93,7 @@ class ConfirmedDeskBookingViewController: UIViewController{
                             let paymentVC = UIViewController.createController(storyBoard: .Payment, ofType: PaymentViewController.self)
                             paymentVC.requestParameters = self.bookingConfirmDetails
                             paymentVC.coordinator = self.coordinator
-                            paymentVC.bookingtype = .desk
+                            paymentVC.bookingType = .desk
                             paymentVC.bookingId = response.data?.deskTypeID ?? 0
                             self.navigationController?.pushViewController(paymentVC, animated: true)
                         }
@@ -200,6 +200,9 @@ extension ConfirmedDeskBookingViewController: UITableViewDataSource, UITableView
         case .confirmAndProceedToPayment:
             let cell = tableView.dequeueReusableCell(withIdentifier: cellType.rawValue, for: indexPath) as! ConfirmAndProceedToPayementTableViewCell
             cell.delegate = self
+            if !UserHelper.shared.isGuest(){
+                cell.btnConfirmAndProceed.setTitle("Confirm", for: .normal)
+            }
             cell.selectionStyle = .none
             return cell
             

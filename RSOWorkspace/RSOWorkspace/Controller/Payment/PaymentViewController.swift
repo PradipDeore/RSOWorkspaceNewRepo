@@ -16,12 +16,11 @@ import UIKit
 
 import UIKit
 
-enum bookingType{
+enum BookingType {
     case meetingRoom
     case desk
     case office
 }
-
 class PaymentViewController: UIViewController {
     
     var coordinator: RSOTabBarCordinator?
@@ -29,26 +28,49 @@ class PaymentViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     var eventHandler: ((_ event: Event) -> Void)?
     var paymentServiceManager = PaymentNetworkManager.shared
-    var requestParameters : ConfirmBookingRequestModel?
-    var intHours = 0
-    var totalPrice:Double = 0.0
-    var vatAmount:Double = 0.0
+    var requestParameters: ConfirmBookingRequestModel?
+    var intHoursMeetingRoom = 0
+    var totalPriceMeetingRoom: Double = 0.0
+    var vatAmountMeetingRoom: Double = 0.0
+    var intHoursDesk = 0
+    var totalPriceDesk: Double = 0.0
+    var vatAmountDesk: Double = 0.0
+    var intHoursOffice = 0
+    var totalPriceOffice: Double = 0.0
+    var vatAmountOffice: Double = 0.0
+    
     var officeName = ""
-    var bookingtype: bookingType = .meetingRoom
-    var couponData : [CouponDetails] = []
-    private let cellIdentifiers: [(CellType,CGFloat)] = [(.selectMeetingRoomLabel,20.0),(.meetingTime,80),(.meetingRoomPrice,40),(.amenityPrice,50),(.totalCell,191),(.discount,60),(.paymentMethods,97),(.buttonPayNow,40)]
+    var bookingType: BookingType = .meetingRoom
+    var couponData: [CouponDetails] = []
+    private var cellIdentifiers: [(CellType, CGFloat)] = [
+        (.selectMeetingRoomLabel, 20.0),
+        (.meetingTime, 80),
+        (.amenityPrice, 50),
+        (.totalCell, 191),
+        (.discount, 60),
+        (.paymentMethods, 97),
+        (.buttonPayNow, 40)
+    ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupCellIdentifiers()
         setupTableView()
         coordinator?.hideBackButton(isHidden: false)
-        
     }
-  
-  override func viewWillAppear(_ animated: Bool) {
-    super.viewWillAppear(animated)
-    self.tableView.reloadData()
-  }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tableView.reloadData()
+    }
+    private func setupCellIdentifiers() {
+        switch bookingType {
+        case .office:
+            cellIdentifiers.insert((.officePriceDetails, 185), at: 2)
+        case .desk, .meetingRoom:
+            cellIdentifiers.insert((.meetingRoomPrice, 40), at: 2)
+        }
+    }
     private func setupTableView() {
         tableView.dataSource = self
         tableView.delegate = self
@@ -60,6 +82,7 @@ class PaymentViewController: UIViewController {
             tableView.register(UINib(nibName: type.rawValue, bundle: nil), forCellReuseIdentifier: type.rawValue)
         }
     }
+    
     private func applyCouponAPI(couponCode: String) {
         APIManager.shared.request(
             modelType: CouponDetailsResponseModel.self,
@@ -77,6 +100,7 @@ class PaymentViewController: UIViewController {
             }
     }
 }
+
 extension PaymentViewController: UITableViewDataSource, UITableViewDelegate {
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -85,112 +109,131 @@ extension PaymentViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let cellType = cellIdentifiers[section].0
-        switch cellType{
+        switch cellType {
         case .amenityPrice:
             return self.requestParameters?.amenityArray.count ?? 0
         case .discount:
             return couponData.isEmpty ? 1 : couponData.count
-          
         case .meetingRoomPrice:
-          let deskCount = self.requestParameters?.deskList.count ?? 0
-          if deskCount > 0 {
-            return deskCount
-          }
-          return 1
+            if bookingType == .desk {
+                return self.requestParameters?.deskList.count ?? 0
+            }else if  bookingType == .meetingRoom{
+                return 1
+            }
+            return 0
+        case .officePriceDetails:
+            if bookingType == .office {
+                return 1
+            }
+            return 0
+        case .paymentMethods:
+                return !UserHelper.shared.isGuest() ? 0 : 1
         default:
             return 1
         }
     }
+    
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 0
     }
-
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         let cellType = cellIdentifiers[indexPath.section].0
         
-        switch cellType{
-        case .selectMeetingRoomLabel: break
+        switch cellType {
+        case .selectMeetingRoomLabel:
+            let cell = tableView.dequeueReusableCell(withIdentifier: cellType.rawValue, for: indexPath)
+            if let labelCell = cell as? SelectMeetingRoomLabelTableViewCell {
+                labelCell.lblMeetingRoom.text = "Payment"
+                labelCell.lblMeetingRoom.font = UIFont(name: "Poppins-SemiBold", size: 20.0)
+            }
+            return cell
             
         case .meetingTime:
             let cell = tableView.dequeueReusableCell(withIdentifier: cellType.rawValue, for: indexPath) as! MeetingTimeTableViewCell
-            var timeRange = ""
             if let startTime = self.requestParameters?.displayStartTime, let endTime = self.requestParameters?.displayendTime {
-                timeRange = "\(startTime) - \(endTime)"
-                cell.txtTime.text = timeRange
-                
+                cell.txtTime.text = "\(startTime) - \(endTime)"
             } else {
                 cell.txtTime.text = "Unavailable"
             }
-            if let floathours = self.requestParameters?.timeDifferece{
-                intHours = Int(floathours)
+            if let floathours = self.requestParameters?.timeDifferece {
+                intHoursMeetingRoom = Int(floathours)
             }
-            cell.lblHours.text = "\(intHours)"
+            cell.lblHours.text = "\(intHoursMeetingRoom)"
             return cell
             
         case .meetingRoomPrice:
             let cell = tableView.dequeueReusableCell(withIdentifier: cellType.rawValue, for: indexPath) as! MeetingRoomPriceTableViewCell
-            
             if let obj = self.requestParameters {
-              let deskCount = self.requestParameters?.deskList.count ?? 0
-              if deskCount > 0 {
-                let desk = self.requestParameters?.deskList[indexPath.row]
-                let roomPrice = desk?.price ?? "0.0"
-                //print("roomPrice",roomPrice)
-                let roomPriceFloat = Float(roomPrice) ?? 0.0
-                cell.lblmeetingRoomprice.text = "\(roomPrice)"
-                cell.lblHours.text = "\(Int(obj.timeDifferece))" // endtime - starttime
-                let totalRoomPrice = roomPriceFloat * obj.timeDifferece
-                cell.lbltotalPrice.text = "\(totalRoomPrice)"
-                
-              } else {
-                let roomPrice = obj.roomprice.integerValue ?? 0
-                //print("roomPrice",roomPrice)
-                cell.lblmeetingRoomprice.text = "\(roomPrice)"
-                cell.lblHours.text = "\(Int(obj.timeDifferece))" // endtime - starttime
-                cell.lbltotalPrice.text = "\(obj.totalOfMeetingRoom)"
-              }
+                if bookingType == .desk{
+                    let desk = obj.deskList[indexPath.row]
+                    cell.lblMeetingRoomName.text = desk.name
+                    let price = Float(desk.price )
+                    cell.lblmeetingRoomprice.text = "\(price ?? 00) "
+                    cell.lblHours.text = "\(Int(obj.timeDifferece))"
+                    cell.lbltotalPrice.text = "\((price ?? 0.0) * obj.timeDifferece)"
+                    
+                } else {
+                    let meetingRoomName = obj.meetingRoom
+                    cell.lblMeetingRoomName.text = meetingRoomName
+                    let roomPrice = obj.roomprice.integerValue ?? 0
+                    cell.lblmeetingRoomprice.text = "\(roomPrice)"
+                    cell.lblHours.text = "\(Int(obj.timeDifferece))"
+                    cell.lbltotalPrice.text = "\(obj.totalOfMeetingRoom)"
+                }
             }
             return cell
+        case .officePriceDetails:
+            let cell = tableView.dequeueReusableCell(withIdentifier: cellType.rawValue, for: indexPath) as! OfficeTypeTableViewCell
+            if let obj = self.requestParameters {
+                if bookingType == .office{
+                    cell.lblOfficeName.text = obj.meetingRoom
+                    cell.lblNoOfSeats.text = "\(obj.noOfSeats)"
+                    let officePrice = obj.roomprice.integerValue ?? 0
+                    cell.lblOfficePrice.text = "\(officePrice)"
+                    cell.lblofficeHours.text = "\(obj.totalHrs)"
+                    cell.lbltotalPrice.text = "\((officePrice) * obj.totalHrs)"
+                }
+            }
+            return cell
+            
         case .amenityPrice:
             let cell = tableView.dequeueReusableCell(withIdentifier: cellType.rawValue, for: indexPath) as! AmenityPriceTableViewCell
-            
-            if let obj = self.requestParameters {
-                let amenity = obj.amenityArray[indexPath.row]
+            if let amenity = self.requestParameters?.amenityArray[indexPath.row] {
                 cell.lblAmenityName.text = amenity.name
-                
-                let amenityPriceInt =  amenity.price?.integerValue ?? 0
-                //print("amenityPriceInt",amenityPriceInt)
+                let amenityPriceInt = amenity.price?.integerValue ?? 0
                 cell.lblAmenityPrice.text = "\(amenityPriceInt)"
-                
-                cell.lblHours.text = "\(Int(obj.timeDifferece))" // endtime - starttime
-                
-                cell.lblTotal.text = "\(obj.totalOfAmenity)"
+                cell.lblHours.text = "\(Int(self.requestParameters?.timeDifferece ?? 0))"
+                cell.lblTotal.text = "\(self.requestParameters?.totalOfAmenity ?? 0)"
             }
             return cell
             
         case .totalCell:
             let cell = tableView.dequeueReusableCell(withIdentifier: cellType.rawValue, for: indexPath) as! TotalTableViewCell
-            if let obj = self.requestParameters{
-              let deskCount = self.requestParameters?.deskList.count ?? 0
-              if deskCount > 0 {
-                if let deskList = self.requestParameters?.deskList {
-                  cell.lblSubTotal.text = "\(obj.deskSubTotal)"
-                  cell.lblVat.text = "\(obj.deskVatTotal)"
-                  vatAmount = Double(obj.deskVatTotal)
-                  cell.lblTotalPrice.text = "\(obj.deskFinalTotal)" // subttotal + vat
-                  totalPrice = Double(obj.deskFinalTotal)
+            if let obj = self.requestParameters {
+                switch bookingType {
+                case .desk:
+                    cell.lblSubTotal.text = "\(obj.deskSubTotal)"
+                    cell.lblVat.text = "\(obj.deskVatTotal)"
+                    vatAmountDesk = Double(obj.deskVatTotal)
+                    cell.lblTotalPrice.text = "\(obj.deskFinalTotal)"
+                    totalPriceDesk = Double(obj.deskFinalTotal)
+                case .office:
+                    cell.lblSubTotal.text = "\(obj.officeSubTotal)"
+                    cell.lblVat.text = "\(obj.officeVatTotal)"
+                    vatAmountOffice = Double(obj.officeVatTotal)
+                    cell.lblTotalPrice.text = "\(obj.officeFinalTotal)"
+                    totalPriceOffice = Double(obj.officeFinalTotal)
+                default:
+                    cell.lblSubTotal.text = "\(obj.subTotal)"
+                    cell.lblVat.text = "\(obj.calculatedVat)"
+                    vatAmountMeetingRoom = Double(obj.calculatedVat)
+                    cell.lblTotalPrice.text = "\(obj.finalTotal)"
+                    totalPriceMeetingRoom = Double(obj.finalTotal)
                 }
-              } else {
-                cell.lblSubTotal.text = "\(obj.subTotal)"
-                cell.lblVat.text = "\(obj.calculatedVat)"
-                vatAmount = Double(obj.calculatedVat)
-                cell.lblTotalPrice.text = "\(obj.finalTotal)" // subttotal + vat
-                totalPrice = Double(obj.finalTotal)
-              }
-                
             }
             return cell
+            
         case .discount:
             let cell = tableView.dequeueReusableCell(withIdentifier: cellType.rawValue, for: indexPath) as! DiscountCodeTableViewCell
             if !couponData.isEmpty {
@@ -209,28 +252,23 @@ extension PaymentViewController: UITableViewDataSource, UITableViewDelegate {
                 }
             }
             return cell
+            
         case .paymentMethods:
             let cell = tableView.dequeueReusableCell(withIdentifier: cellType.rawValue, for: indexPath) as! PaymentMethodTableViewCell
             cell.selectionStyle = .none
             return cell
-
+            
         case .buttonPayNow:
-            let buttonPayNowCell = tableView.dequeueReusableCell(withIdentifier: cellType.rawValue, for: indexPath) as! ButtonPayNowTableViewCell
-            buttonPayNowCell.delegate = self
-            buttonPayNowCell.selectionStyle = .none
-            return buttonPayNowCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: cellType.rawValue, for: indexPath) as! ButtonPayNowTableViewCell
+            cell.delegate = self
+            if !UserHelper.shared.isGuest(){
+                cell.btnPayNow.setTitle("Generate Invoice", for: .normal)
+            }else{
+                cell.btnPayNow.setTitle("Pay Now", for: .normal)
+            }
+            cell.selectionStyle = .none
+            return cell
         }
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellType.rawValue, for: indexPath)
-        cell.selectionStyle = .none
-        
-        if let labelCell = cell as? SelectMeetingRoomLabelTableViewCell {
-            labelCell.lblMeetingRoom.text = "Payment"
-            labelCell.lblMeetingRoom.font = UIFont(name: "Poppins-SemiBold", size: 20.0)
-            labelCell.selectionStyle = .none
-            return labelCell
-        }
-        return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -240,7 +278,6 @@ extension PaymentViewController: UITableViewDataSource, UITableViewDelegate {
 
 extension PaymentViewController {
     enum Event {
-        
         case dataLoaded
         case error(Error?)
     }
@@ -249,37 +286,42 @@ extension PaymentViewController {
         case selectMeetingRoomLabel = "SelectMeetingRoomLabelTableViewCell"
         case meetingTime = "MeetingTimeTableViewCell"
         case meetingRoomPrice = "MeetingRoomPriceTableViewCell"
+        case officePriceDetails = "OfficeTypeTableViewCell"
         case amenityPrice = "AmenityPriceTableViewCell"
         case totalCell = "TotalTableViewCell"
         case discount = "DiscountCodeTableViewCell"
         case paymentMethods = "PaymentMethodTableViewCell"
         case buttonPayNow = "ButtonPayNowTableViewCell"
-        
     }
 }
-extension PaymentViewController:ButtonPayNowTableViewCellDelegate{
-    
+
+extension PaymentViewController: ButtonPayNowTableViewCellDelegate {
     func btnPayNowTappedAction() {
-        if let obj = self.requestParameters {
-            let deskCount = self.requestParameters?.deskList.count ?? 0
+        guard let obj = self.requestParameters else { return }
+        
+        switch bookingType {
+        case .desk:
+            let deskCount = obj.deskList.count
             if deskCount > 0 {
                 var requestModel = NiPaymentRequestModel()
-                requestModel.total = Int(totalPrice)
+                requestModel.total = Int(totalPriceDesk)
                 requestModel.email = UserHelper.shared.getUserEmail()
                 paymentServiceManager.currentViewController = self
                 paymentServiceManager.currentNavigationController = self.navigationController
                 paymentServiceManager.paymentTypeEntity = .desk
                 paymentServiceManager.makePayment(requestModel: requestModel)
-              return
             }
+        case .meetingRoom:
+            let additionalServicesVC = UIViewController.createController(storyBoard: .Payment, ofType: ChooseAdditionalServicesViewController.self)
+            additionalServicesVC.vatAmount = self.vatAmountMeetingRoom
+            additionalServicesVC.totalPrice = self.totalPriceMeetingRoom
+            additionalServicesVC.bookingId = self.bookingId
+            self.navigationController?.pushViewController(additionalServicesVC, animated: true)
+            
+        case .office:
+            paymentServiceManager.currentViewController = self
+            paymentServiceManager.currentNavigationController = self.navigationController
+            paymentServiceManager.paymentTypeEntity = .office
         }
-        
-        let additionalServicesVC = UIViewController.createController(storyBoard: .Payment, ofType: ChooseAdditionalServicesViewController.self)
-        additionalServicesVC.vatAmount = self.vatAmount
-        additionalServicesVC.totalPrice = self.totalPrice
-        additionalServicesVC.bookingId = self.bookingId
-        self.navigationController?.pushViewController(additionalServicesVC, animated: true)
-        
     }
-    
 }

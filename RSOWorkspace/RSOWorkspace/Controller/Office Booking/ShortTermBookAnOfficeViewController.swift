@@ -343,7 +343,6 @@ extension ShortTermBookAnOfficeViewController: BookButtonActionDelegate{
   
   func didSelect(selectedId: Int) {
       DispatchQueue.main.async{
-          
           if let officeTypeName = self.listItems.filter( {$0.id == selectedId }).first?.roomName {
               self.officeName = officeTypeName
           }

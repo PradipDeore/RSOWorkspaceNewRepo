@@ -21,10 +21,12 @@ class PaymentNetworkManager: CardPaymentDelegate ,ApplePayDelegate{
     private init() {}
     var eventHandler: ((_ event: Event) -> Void)?
     var apiResponseData:PaymentRoomBookingResponse?
+    var apiOfficeResponseData:PaymentOfficeBookingResponse?
     var requestParameters : ConfirmBookingRequestModel?
     var currentViewController : UIViewController?
     var currentNavigationController: UINavigationController?
     var paymentTypeEntity:PaymentTypeEntity = .room
+   
     func paymentRoomBookingAPI(additionalrequirements :[String], bookingid:Int, requirementdetails:String,totalprice:Double,vatamount:Double) {
         DispatchQueue.main.async {
             RSOLoader.showLoader()
@@ -79,6 +81,42 @@ class PaymentNetworkManager: CardPaymentDelegate ,ApplePayDelegate{
                         } else {
                             RSOToastView.shared.show(response.msg, duration: 2.0, position: .center)
                             self.currentNavigationController?.popToRootViewController(animated: true)
+                            self.eventHandler?(.dataLoaded)
+                        }
+                    case .failure(let error):
+                        self.eventHandler?(.error(error))
+                        //  Unsuccessful
+                        RSOToastView.shared.show("\(error.localizedDescription)", duration: 2.0, position: .center)
+                    }
+                }
+            }
+    }
+    func paymentOfficeBookingAPI(id:Int,totalprice:Double,vatamount:Double) {
+        DispatchQueue.main.async {
+            RSOLoader.showLoader()
+        }
+        let requestModel = ShortTermPaymentOfficeBookingRequestModel(id: id, total_price: totalprice, vat_amount: vatamount)
+        print("requestModel",requestModel)
+        APIManager.shared.request(
+            modelType: PaymentOfficeBookingResponse.self,
+            type: PaymentRoomBookingEndPoint.paymentOfficebooking(requestModel: requestModel)) { response in
+                DispatchQueue.main.async {
+                    RSOLoader.removeLoader()
+                    switch response {
+                    case .success(let response):
+                        if response.status.isError {
+                            RSOToastView.shared.show(response.msg, duration: 2.0, position: .center)
+                        } else {
+                            self.apiOfficeResponseData = response
+                            if UserHelper.shared.isGuest() {
+                                var requestModel = NiPaymentRequestModel()
+                                requestModel.total = Int(totalprice)
+                                requestModel.email = UserHelper.shared.getUserEmail()
+                                self.makePayment(requestModel: requestModel)
+                            } else {
+                                RSOToastView.shared.show(response.msg, duration: 2.0, position: .center)
+                                 self.currentNavigationController?.popToRootViewController(animated: true)
+                            }
                             self.eventHandler?(.dataLoaded)
                         }
                     case .failure(let error):

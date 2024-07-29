@@ -106,7 +106,7 @@ class BookingConfirmedViewController: UIViewController{
                             let paymentVC = UIViewController.createController(storyBoard: .Payment, ofType: PaymentViewController.self)
                             paymentVC.requestParameters = self.bookingConfirmDetails
                             paymentVC.coordinator = self.coordinator
-                            paymentVC.bookingtype = .meetingRoom
+                            paymentVC.bookingType = .meetingRoom
                             paymentVC.bookingId = response.booking_id ?? 0
                             self.navigationController?.pushViewController(paymentVC, animated: true)
                         }
@@ -223,6 +223,9 @@ extension BookingConfirmedViewController: UITableViewDataSource, UITableViewDele
         case .confirmAndProceedToPayment:
             let cell = tableView.dequeueReusableCell(withIdentifier: cellType.rawValue, for: indexPath) as! ConfirmAndProceedToPayementTableViewCell
             cell.btnConfirmAndProceed.isEnabled = true
+            if !UserHelper.shared.isGuest(){
+                cell.btnConfirmAndProceed.setTitle("Confirm", for: .normal)
+            }
             cell.delegate = self
             cell.selectionStyle = .none
             
