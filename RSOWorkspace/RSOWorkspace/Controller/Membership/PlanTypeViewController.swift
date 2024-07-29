@@ -7,7 +7,7 @@
 
 import UIKit
 
-class PlanTypeViewController: UIViewController {
+class PlanTypeViewController: UIViewController, MembershipNavigable {
   @IBOutlet var collectionView: UICollectionView!
   let cellIdentifier = "PlanTypeCollectionViewCell"
   var planSelectedIndex = 0
@@ -39,6 +39,7 @@ class PlanTypeViewController: UIViewController {
     }
     @objc func selectPlanAction(_ sender: UIButton) {
       let planSelected = list[sender.tag]
+      SelectedMembershipData.shared.packageName = planSelected.name ?? ""
       let priceSelected = planSelected.price?[planSelectedIndex]
       SelectedMembershipData.shared.id = planSelected.id ?? 0
       SelectedMembershipData.shared.monthlyCost = priceSelected?.price ?? ""

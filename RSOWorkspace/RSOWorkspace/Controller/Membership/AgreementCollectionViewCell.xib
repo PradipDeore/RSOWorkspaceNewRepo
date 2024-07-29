@@ -19,14 +19,14 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="AgreementCollectionViewCell" id="gTV-IL-0wX" customClass="AgreementCollectionViewCell" customModule="RSOWorkspace" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="142" height="171"/>
+            <rect key="frame" x="0.0" y="0.0" width="137" height="151"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="142" height="171"/>
+                <rect key="frame" x="0.0" y="0.0" width="137" height="151"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="t8N-ev-dSN">
-                        <rect key="frame" x="5" y="5" width="132" height="161"/>
+                        <rect key="frame" x="5" y="5" width="127" height="141"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="calendar" translatesAutoresizingMaskIntoConstraints="NO" id="dBB-0d-wvi">
                                 <rect key="frame" x="10" y="10" width="20" height="20"/>
@@ -36,36 +36,36 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Monthly" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lru-lR-kBu">
-                                <rect key="frame" x="10" y="40" width="112" height="21"/>
+                                <rect key="frame" x="10" y="40" width="107" height="20"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="qjx-LC-7SL"/>
+                                    <constraint firstAttribute="height" constant="20" id="ej7-pC-BPJ"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AED" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nNj-f4-bPh">
-                                <rect key="frame" x="10" y="81" width="112" height="21"/>
+                                <rect key="frame" x="10" y="72" width="107" height="20"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="uKi-Pl-V0h"/>
+                                    <constraint firstAttribute="height" constant="20" id="Okm-mB-aMg"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="17"/>
+                                <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="3000.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mQ2-ux-9mI">
-                                <rect key="frame" x="10" y="107" width="112" height="25"/>
+                                <rect key="frame" x="10" y="97" width="107" height="20"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="25" id="fiQ-Mf-OWL"/>
+                                    <constraint firstAttribute="height" constant="20" id="yrp-Yt-Z3f"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Inter-SemiBold" family="Inter" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="per month" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Y7-EH-gEG">
-                                <rect key="frame" x="10" y="132" width="112" height="20"/>
+                                <rect key="frame" x="10" y="122" width="107" height="15"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="20" id="uqK-qD-xZL"/>
+                                    <constraint firstAttribute="height" constant="15" id="Oug-nt-rRd"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="14"/>
                                 <nil key="textColor"/>
@@ -74,28 +74,23 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="mQ2-ux-9mI" secondAttribute="trailing" constant="10" id="ATy-FW-x28"/>
-                            <constraint firstAttribute="trailing" secondItem="nNj-f4-bPh" secondAttribute="trailing" constant="10" id="E0U-J9-mYo"/>
-                            <constraint firstAttribute="trailing" secondItem="Lru-lR-kBu" secondAttribute="trailing" constant="10" id="KlU-Uh-EgS"/>
+                            <constraint firstAttribute="trailing" secondItem="nNj-f4-bPh" secondAttribute="trailing" constant="10" id="05s-BY-Oa9"/>
+                            <constraint firstItem="Lru-lR-kBu" firstAttribute="top" secondItem="dBB-0d-wvi" secondAttribute="bottom" constant="10" id="0mb-Ee-wxf"/>
+                            <constraint firstItem="mQ2-ux-9mI" firstAttribute="leading" secondItem="t8N-ev-dSN" secondAttribute="leading" constant="10" id="1wG-ya-aY5"/>
+                            <constraint firstAttribute="trailing" secondItem="0Y7-EH-gEG" secondAttribute="trailing" constant="10" id="8bY-h6-ctv"/>
+                            <constraint firstAttribute="width" constant="127" id="HUk-pu-gmn"/>
+                            <constraint firstAttribute="height" constant="141" id="IbV-h2-sVI"/>
                             <constraint firstItem="dBB-0d-wvi" firstAttribute="leading" secondItem="t8N-ev-dSN" secondAttribute="leading" constant="10" id="M3h-Uq-ZMw"/>
                             <constraint firstItem="dBB-0d-wvi" firstAttribute="top" secondItem="t8N-ev-dSN" secondAttribute="top" constant="10" id="QSE-bb-4ox"/>
-                            <constraint firstAttribute="bottom" secondItem="0Y7-EH-gEG" secondAttribute="bottom" constant="10" id="Zxn-xE-QiP"/>
-                            <constraint firstItem="mQ2-ux-9mI" firstAttribute="top" secondItem="nNj-f4-bPh" secondAttribute="bottom" constant="5" id="ciR-ZP-2UY"/>
-                            <constraint firstItem="mQ2-ux-9mI" firstAttribute="leading" secondItem="t8N-ev-dSN" secondAttribute="leading" constant="10" id="dlO-7y-UNQ"/>
-                            <constraint firstItem="0Y7-EH-gEG" firstAttribute="leading" secondItem="t8N-ev-dSN" secondAttribute="leading" constant="10" id="jJe-om-xSF"/>
-                            <constraint firstItem="0Y7-EH-gEG" firstAttribute="top" secondItem="mQ2-ux-9mI" secondAttribute="bottom" id="juB-ky-nQo"/>
-                            <constraint firstItem="Lru-lR-kBu" firstAttribute="leading" secondItem="t8N-ev-dSN" secondAttribute="leading" constant="10" id="mBK-3R-aoc"/>
-                            <constraint firstAttribute="trailing" secondItem="0Y7-EH-gEG" secondAttribute="trailing" constant="10" id="oTB-RV-oW2"/>
-                            <constraint firstItem="Lru-lR-kBu" firstAttribute="top" secondItem="dBB-0d-wvi" secondAttribute="bottom" constant="10" id="oXm-od-5fz"/>
-                            <constraint firstItem="nNj-f4-bPh" firstAttribute="leading" secondItem="t8N-ev-dSN" secondAttribute="leading" constant="10" id="qDA-R0-xZz"/>
-                            <constraint firstAttribute="bottom" secondItem="0Y7-EH-gEG" secondAttribute="bottom" constant="9" id="rVB-To-6yj"/>
-                            <constraint firstItem="nNj-f4-bPh" firstAttribute="top" secondItem="Lru-lR-kBu" secondAttribute="bottom" constant="20" id="unE-1i-sZJ"/>
+                            <constraint firstItem="0Y7-EH-gEG" firstAttribute="leading" secondItem="t8N-ev-dSN" secondAttribute="leading" constant="10" id="Uzi-9d-9r0"/>
+                            <constraint firstAttribute="trailing" secondItem="mQ2-ux-9mI" secondAttribute="trailing" constant="10" id="XWk-ku-9nu"/>
+                            <constraint firstAttribute="trailing" secondItem="Lru-lR-kBu" secondAttribute="trailing" constant="10" id="eHk-75-XSQ"/>
+                            <constraint firstItem="0Y7-EH-gEG" firstAttribute="top" secondItem="mQ2-ux-9mI" secondAttribute="bottom" constant="5" id="iJo-tD-gRb"/>
+                            <constraint firstItem="mQ2-ux-9mI" firstAttribute="top" secondItem="nNj-f4-bPh" secondAttribute="bottom" constant="5" id="ihK-e5-QOS"/>
+                            <constraint firstItem="nNj-f4-bPh" firstAttribute="leading" secondItem="t8N-ev-dSN" secondAttribute="leading" constant="10" id="qe3-09-xUa"/>
+                            <constraint firstItem="Lru-lR-kBu" firstAttribute="leading" secondItem="t8N-ev-dSN" secondAttribute="leading" constant="10" id="urM-pv-2Pj"/>
+                            <constraint firstItem="nNj-f4-bPh" firstAttribute="top" secondItem="Lru-lR-kBu" secondAttribute="bottom" constant="12" id="z2K-Wd-Rxg"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="Zxn-xE-QiP"/>
-                            </mask>
-                        </variation>
                     </view>
                 </subviews>
             </view>
@@ -106,14 +101,14 @@
                 <constraint firstAttribute="trailing" secondItem="t8N-ev-dSN" secondAttribute="trailing" constant="5" id="AVj-9w-wSj"/>
                 <constraint firstAttribute="bottom" secondItem="t8N-ev-dSN" secondAttribute="bottom" constant="5" id="ul7-lA-IU5"/>
             </constraints>
-            <size key="customSize" width="142" height="171"/>
+            <size key="customSize" width="137" height="151"/>
             <connections>
                 <outlet property="containerView" destination="t8N-ev-dSN" id="ZhH-8a-vq6"/>
                 <outlet property="durationLabel" destination="0Y7-EH-gEG" id="4es-g8-7s6"/>
                 <outlet property="priceLabel" destination="mQ2-ux-9mI" id="M1k-ib-2fx"/>
                 <outlet property="typeNameLabel" destination="Lru-lR-kBu" id="uTn-gl-RtM"/>
             </connections>
-            <point key="canvasLocation" x="209.16030534351145" y="62.323943661971832"/>
+            <point key="canvasLocation" x="205.34351145038167" y="55.281690140845072"/>
         </collectionViewCell>
     </objects>
     <resources>

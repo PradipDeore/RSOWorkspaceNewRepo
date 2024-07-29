@@ -431,6 +431,8 @@
 		EEAB97BC2C524AB300BD5E0D /* PlanPriceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EEAB97BA2C524AB300BD5E0D /* PlanPriceTableViewCell.xib */; };
 		EEAED9432C52504C00A1F56A /* PlanInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEAED9412C52504C00A1F56A /* PlanInfoTableViewCell.swift */; };
 		EEAED9442C52504C00A1F56A /* PlanInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EEAED9422C52504C00A1F56A /* PlanInfoTableViewCell.xib */; };
+		EEDA3A542C56585B0092BC2D /* PaymentSummaryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDA3A522C56585B0092BC2D /* PaymentSummaryTableViewCell.swift */; };
+		EEDA3A552C56585B0092BC2D /* PaymentSummaryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EEDA3A532C56585B0092BC2D /* PaymentSummaryTableViewCell.xib */; };
 		EEE105B52C49256B007ECE4D /* RSOLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE105B42C49256B007ECE4D /* RSOLoader.swift */; };
 /* End PBXBuildFile section */
 
@@ -862,6 +864,8 @@
 		EEAB97BA2C524AB300BD5E0D /* PlanPriceTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlanPriceTableViewCell.xib; sourceTree = "<group>"; };
 		EEAED9412C52504C00A1F56A /* PlanInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanInfoTableViewCell.swift; sourceTree = "<group>"; };
 		EEAED9422C52504C00A1F56A /* PlanInfoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlanInfoTableViewCell.xib; sourceTree = "<group>"; };
+		EEDA3A522C56585B0092BC2D /* PaymentSummaryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentSummaryTableViewCell.swift; sourceTree = "<group>"; };
+		EEDA3A532C56585B0092BC2D /* PaymentSummaryTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PaymentSummaryTableViewCell.xib; sourceTree = "<group>"; };
 		EEE105B42C49256B007ECE4D /* RSOLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSOLoader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -1845,6 +1849,8 @@
 				EE3B78262C550C6B00706F16 /* SelectedMembershipData.swift */,
 				EE3B782D2C552BE800706F16 /* AgreementCollectionViewCell.swift */,
 				EE3B782E2C552BE800706F16 /* AgreementCollectionViewCell.xib */,
+				EEDA3A522C56585B0092BC2D /* PaymentSummaryTableViewCell.swift */,
+				EEDA3A532C56585B0092BC2D /* PaymentSummaryTableViewCell.xib */,
 			);
 			path = Membership;
 			sourceTree = "<group>";
@@ -1923,6 +1929,7 @@
 				58D584A02B96F37400D17D0A /* BookingConfirmedDateTableViewCell.xib in Resources */,
 				589464102BA57CA500DC6472 /* ConciergeStoryboard.storyboard in Resources */,
 				58C7C5082BAAA2A800CF6578 /* FindMembersTableViewCell.xib in Resources */,
+				EEDA3A552C56585B0092BC2D /* PaymentSummaryTableViewCell.xib in Resources */,
 				58D584B02B96F49700D17D0A /* ButtonEditTableViewCell.xib in Resources */,
 				589FB6A92B7644A90067255E /* Poppins-LightItalic.ttf in Resources */,
 				587DA9332BA43F3C00D27769 /* ReportAnIssueTableViewCell.xib in Resources */,
@@ -2340,6 +2347,7 @@
 				58A16CD02BBC767F0003DD50 /* LocationViewController.swift in Sources */,
 				5843D7662BC6C7F600D5C8DD /* ConfirmAndProceedTableViewCell.swift in Sources */,
 				58BF55992BCFEC8D00524828 /* DeskListingViewController.swift in Sources */,
+				EEDA3A542C56585B0092BC2D /* PaymentSummaryTableViewCell.swift in Sources */,
 				58BCBC1B2C491F1B00465381 /* SideMenuPaymentsViewController.swift in Sources */,
 				589BBAA32BBBF54C00DCEF70 /* FAQEndPoint.swift in Sources */,
 				EE3B78242C54BB0E00706F16 /* MembershipEndPoint.swift in Sources */,

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class YourDetailsViewController: UIViewController {
+class YourDetailsViewController: UIViewController, MembershipNavigable {
   var membershipNavigationDelegate: MembershipNavigationDelegate?
 
     override func viewDidLoad() {

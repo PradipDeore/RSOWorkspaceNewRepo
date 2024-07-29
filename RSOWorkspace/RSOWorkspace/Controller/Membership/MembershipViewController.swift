@@ -45,6 +45,7 @@ class MembershipViewController: UIViewController {
     }
     if let firstVC = viewControllers.first {
       currentNavigationVC = UINavigationController(rootViewController: firstVC)
+      currentNavigationVC?.isNavigationBarHidden = true
       showChildViewController(currentNavigationVC!)
     }
   }

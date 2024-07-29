@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AgreementViewController: UIViewController {
+class AgreementViewController: UIViewController, MembershipNavigable {
 
   @IBOutlet var continueButton: UIButton!
   @IBOutlet var datePicker: UIDatePicker!

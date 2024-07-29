@@ -35,7 +35,7 @@ enum MembershipTabItem: Int, CaseIterable {
     case .yourDetails:
       return ""
     case .paymentDetails:
-      return ""
+      return "Summary"
     }
     
   }
