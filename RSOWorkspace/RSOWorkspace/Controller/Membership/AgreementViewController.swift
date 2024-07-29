@@ -28,7 +28,7 @@ class AgreementViewController: UIViewController, MembershipNavigable {
     SelectedMembershipData.shared.startDate = selectedDate
     }
   @IBAction func continueAction(_ sender: Any) {
-    SelectedMembershipData.shared.startDate = selectedDate + " 19:11:00"
+    SelectedMembershipData.shared.startDate = selectedDate + " 00:00:00"
     membershipNavigationDelegate?.navigateToNextVC()
   }
   @IBAction func selectDate(_ sender: UIDatePicker) {
