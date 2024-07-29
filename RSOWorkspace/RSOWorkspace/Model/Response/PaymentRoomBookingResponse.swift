@@ -53,3 +53,9 @@ struct PaymentDeskBookingResponse: Codable {
     let msg: String
 }
 
+struct PaymentOfficeBookingResponse: Codable {
+    let status: Status
+    let msg: String
+}
+
+

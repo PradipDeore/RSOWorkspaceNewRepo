@@ -13,7 +13,7 @@ enum PaymentRoomBookingEndPoint {
     case payment(requestModel: NiPaymentRequestModel)
     case applyCoupon
     case paymentDeskbooking(requestModel: PaymentDeskBookingRequest)
-    case paymentOfficebooking(requestModel: PaymentDeskBookingRequest)
+    case paymentOfficebooking(requestModel: ShortTermPaymentOfficeBookingRequestModel)
 }
 extension PaymentRoomBookingEndPoint: EndPointType {
 

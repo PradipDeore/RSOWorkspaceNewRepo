@@ -92,7 +92,7 @@ class ConfirmShortTermBookingViewController: UIViewController {
                             paymentVC.requestParameters = self.bookingConfirmDetails
                             paymentVC.coordinator = self.coordinator
                             paymentVC.officeName = self.officeName
-                            paymentVC.bookingtype = .office
+                            paymentVC.bookingType = .office
                             paymentVC.bookingId = response.data?.officeID ?? 0
                             self.navigationController?.pushViewController(paymentVC, animated: true)
                         }
@@ -236,7 +236,7 @@ extension ConfirmShortTermBookingViewController:ConfirmAndProceedToPayementTable
         let date = self.officebookingConfirmDetails?.date ?? ""
         let isFullDay = self.officebookingConfirmDetails?.is_fullday ?? "No"
         let officeID = self.officebookingConfirmDetails?.office_id
-        let noOfSeats = self.officebookingConfirmDetails?.seats
+        guard let noOfSeats = self.officebookingConfirmDetails?.seats else { return  }
         
         let requestModel = StoreOfficeBookingRequest(
             start_time: startTime,
