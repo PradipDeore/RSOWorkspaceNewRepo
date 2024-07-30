@@ -79,7 +79,7 @@ class PaymentNetworkManager: CardPaymentDelegate ,ApplePayDelegate{
     DispatchQueue.main.async {
       RSOLoader.showLoader()
     }
-    let requestModel = PaymentDeskBookingRequest( booking_id: bookingid,  total_price: totalprice, vatamount: vatamount)
+      let requestModel = PaymentDeskBookingRequest( bookingid: bookingid,  total_amount: totalprice, vat_amount: vatamount)
     print("requestModel",requestModel)
     APIManager.shared.request(
       modelType: PaymentDeskBookingResponse.self,

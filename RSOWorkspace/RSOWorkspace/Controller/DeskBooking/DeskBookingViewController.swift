@@ -446,7 +446,6 @@ extension DeskBookingViewController {
     }
 }
 
-
 extension DeskBookingViewController: BookButtonActionDelegate{
     func showBookRoomDetailsVC(meetingRoomId: Int) {
         let confirmDeskBookingDetailsVC = UIViewController.createController(storyBoard: .Booking, ofType: ConfirmedDeskBookingViewController.self)
