@@ -29,10 +29,15 @@ class AgreementViewController: UIViewController, MembershipNavigable {
     super.viewWillAppear(animated)
     list = SelectedPlanPriceList.shared.list
     selectedIndex = SelectedPlanPriceList.shared.selectedIndex
-    let indexPath = IndexPath(row: selectedIndex, section: 0)
-    collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
-
+    if selectedIndex >= 0 {
+      let numberOfItemsInSection = collectionView.numberOfItems(inSection: 0)
+      let indexPath = IndexPath(row: selectedIndex, section: 0)
+      if indexPath.item < numberOfItemsInSection {
+        collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+      }
+    }
     collectionView.reloadData()
+
   }
   @IBAction func continueAction(_ sender: Any) {
     SelectedMembershipData.shared.startDate = selectedDate + " 00:00:00"
