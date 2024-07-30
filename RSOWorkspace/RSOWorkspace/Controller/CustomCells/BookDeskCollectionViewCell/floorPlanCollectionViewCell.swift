@@ -15,7 +15,14 @@ class floorPlanCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var containerView: UIView!
     override func awakeFromNib() {
         super.awakeFromNib()
-       
+        containerView.layer.cornerRadius = 10.0
     }
-
+    
+       func setSelectedState(_ isSelected: Bool) {
+           if isSelected{
+               self.backgroundColor = .lightGray
+           }else{
+               self.backgroundColor = .white
+           }
+       }
 }

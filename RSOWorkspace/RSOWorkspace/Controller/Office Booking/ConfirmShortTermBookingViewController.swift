@@ -243,7 +243,7 @@ extension ConfirmShortTermBookingViewController:ConfirmAndProceedToPayementTable
             end_time: endTime,
             date: date,
             is_fullday: isFullDay,
-            office_id: officeID,
+            office_id: 24,
             seats: noOfSeats
         )
         

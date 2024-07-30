@@ -112,9 +112,10 @@ class LongTermOfficeBookingViewController: UIViewController {
                         if let status = responseData.status {
                             if status {
                                 RSOToastView.shared.show(responseData.msg, duration: 2.0, position: .center)
+                                self.clearFormFields()
                             } else {
                                 RSOToastView.shared.show("Request failed: \(String(describing: responseData.msg))", duration: 2.0, position: .center)
-                                self.clearFormFields()  // Clear the form fields
+                                self.clearFormFields()
                             }
                         } else {
                             RSOToastView.shared.show("Status is missing in the response.", duration: 2.0, position: .center)
@@ -136,7 +137,7 @@ class LongTermOfficeBookingViewController: UIViewController {
         txtInterestedIn.text = ""
         txtNoOfSeats.text = "0"
         txtprovideDetails.text = ""
-        intrestedInId = 0  // Reset the interestedInId
+        intrestedInId = 0
     }
     @IBAction func btnSubmitTappedAction(_ sender: Any) {
        
