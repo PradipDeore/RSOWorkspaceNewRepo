@@ -11,11 +11,11 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="Inter-Regular.ttf">
-            <string>Inter-Regular</string>
-        </array>
         <array key="Inter-SemiBold.ttf">
             <string>Inter-SemiBold</string>
+        </array>
+        <array key="Inter-VariableFont_slnt,wght.ttf">
+            <string>Inter-Regular</string>
         </array>
     </customFonts>
     <scenes>
@@ -431,7 +431,7 @@
                                 </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rsp-CN-2lZ">
-                                <rect key="frame" x="20" y="425" width="290" height="40"/>
+                                <rect key="frame" x="51.666666666666657" y="425" width="290" height="40"/>
                                 <color key="backgroundColor" name="405629"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="0ta-6c-H8j"/>
@@ -451,6 +451,7 @@
                             <constraint firstItem="Rsp-CN-2lZ" firstAttribute="leading" secondItem="N5r-WC-zBq" secondAttribute="leading" constant="20" id="1gk-yz-4uO"/>
                             <constraint firstItem="g0a-YP-0Mf" firstAttribute="top" secondItem="jZe-L1-x3z" secondAttribute="top" id="44E-Br-BAK"/>
                             <constraint firstItem="Rsp-CN-2lZ" firstAttribute="top" secondItem="g0a-YP-0Mf" secondAttribute="bottom" constant="25" id="DnC-sK-cTc"/>
+                            <constraint firstItem="Rsp-CN-2lZ" firstAttribute="centerX" secondItem="jZe-L1-x3z" secondAttribute="centerX" id="Iyx-Aw-3Ea"/>
                             <constraint firstItem="N5r-WC-zBq" firstAttribute="trailing" secondItem="g0a-YP-0Mf" secondAttribute="trailing" id="KJh-5v-OjX"/>
                             <constraint firstAttribute="bottom" secondItem="g0a-YP-0Mf" secondAttribute="bottom" id="hLA-VF-g9t"/>
                             <constraint firstItem="g0a-YP-0Mf" firstAttribute="leading" secondItem="N5r-WC-zBq" secondAttribute="leading" id="yh9-nv-EPr"/>
@@ -458,6 +459,7 @@
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="hLA-VF-g9t"/>
+                                <exclude reference="1gk-yz-4uO"/>
                             </mask>
                         </variation>
                     </view>

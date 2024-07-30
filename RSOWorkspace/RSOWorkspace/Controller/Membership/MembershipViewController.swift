@@ -79,7 +79,7 @@ extension MembershipViewController: UICollectionViewDelegate, UICollectionViewDa
     cell.btnType.setTitle(tabName, for: .normal)
     cell.selectButton(selcted: false)
     cell.btnType.addTarget(self, action: #selector(buttonClicked(_:)), for: .touchUpInside)
-    cell.btnType.isUserInteractionEnabled = false
+    // cell.btnType.isUserInteractionEnabled = false
     if indexPath.row == selectedIndex {
       cell.selectButton(selcted: true)
     }
