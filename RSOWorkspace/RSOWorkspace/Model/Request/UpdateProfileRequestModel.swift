@@ -18,8 +18,10 @@ import Foundation
         case designation = "designation"
     }
 }*/
+
 struct UpdateProfileRequestModel: Codable{
     var first_name: String?
     var last_name:String?
     var designation:String?
+    var photo :String?
 }

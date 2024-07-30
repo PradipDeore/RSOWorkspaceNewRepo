@@ -123,8 +123,9 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
         case .profileDetails:
             if let profileDetailsCell = cell as? ProfileDetailsTableViewCell {
                 profileDetailsCell.delegate = self
-                //only one object in response for member
-                profileDetailsCell.setData()
+                if let myProfileDetails = myProfileResponse?.data{
+                    profileDetailsCell.setData(myProfileDetails:  myProfileDetails)
+                }
                 return profileDetailsCell
             }
         case .changePassword:
@@ -192,7 +193,8 @@ extension ProfileViewController:editProfileDelegate{
         let firstName = myProfileResponse?.data.firstName ?? ""
         let lastName = myProfileResponse?.data.lastName ?? ""
         let designation = myProfileResponse?.data.designation ?? ""
-        
+        let photo =  myProfileResponse?.data.photo ?? ""
+
         print("Sending details to UpdateProfileViewController")
         print("firstName:", firstName)
         print("lastName:", lastName)
@@ -202,6 +204,7 @@ extension ProfileViewController:editProfileDelegate{
         editProfileVC.firstName = firstName
         editProfileVC.lastName = lastName
         editProfileVC.designation = designation
+        editProfileVC.imgphotoUrl = photo
         editProfileVC.dismissDelegate = self
         editProfileVC.modalPresentationStyle = .overFullScreen
         editProfileVC.modalTransitionStyle = .crossDissolve
@@ -213,6 +216,7 @@ extension ProfileViewController: SubViewDismissalProtocol {
     func subviewDismmised() {
         fetchMyProfiles()
     }
+   
 }
 
 extension ProfileViewController: MembershipPlanDelegate {

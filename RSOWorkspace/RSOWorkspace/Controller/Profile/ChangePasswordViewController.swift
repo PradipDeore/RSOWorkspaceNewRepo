@@ -21,9 +21,12 @@ class ChangePasswordViewController: UIViewController {
         txtNewpassword.addPasswordToggle()
         txtConfirmPassword.addPasswordToggle()
         containerView.setCornerRadiusForView()
-       
     }
     
+    
+    @IBAction func btnDismissView(_ sender: Any) {
+        self.dismiss(animated: true)
+    }
     func chagnePasswordAPI(id :Int, new_password:String, confirm_password:String) {
       RSOLoader.showLoader()
         let requestModel = ChangePasswordRequestModel(id: id, confirm_password: confirm_password, new_password: new_password)

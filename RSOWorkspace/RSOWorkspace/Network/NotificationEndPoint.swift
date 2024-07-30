@@ -9,6 +9,7 @@ import Foundation
 
 enum NotificationEndPoint {
     case notifications // Module - GET
+    case feedback(requestModel: FeedbackRequestModel)
 }
 extension NotificationEndPoint: EndPointType {
     
@@ -16,6 +17,8 @@ extension NotificationEndPoint: EndPointType {
         switch self {
         case .notifications:
             return "notification"
+        case .feedback:
+            return "feedback-store"
         }
     }
 
@@ -26,12 +29,16 @@ extension NotificationEndPoint: EndPointType {
         switch self {
         case .notifications:
             return .get
+        case .feedback:
+            return .post
         }
     }
     var body: Encodable? {
         switch self {
         case .notifications:
             return nil
+        case .feedback(let requestModel):
+            return requestModel
         }
     }
         var headers: [String : String]? {

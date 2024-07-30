@@ -2287,8 +2287,8 @@
             filePath = "RSOWorkspace/Controller/Profile/ProfileViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "204"
-            endingLineNumber = "204"
+            startingLineNumber = "206"
+            endingLineNumber = "206"
             landmarkName = "sendDetails()"
             landmarkType = "7">
             <Locations>
@@ -2350,8 +2350,8 @@
             filePath = "RSOWorkspace/Controller/Profile/ProfileViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "213"
-            endingLineNumber = "213"
+            startingLineNumber = "216"
+            endingLineNumber = "216"
             landmarkName = "subviewDismmised()"
             landmarkType = "7">
             <Locations>
@@ -2416,22 +2416,6 @@
             startingLineNumber = "34"
             endingLineNumber = "34"
             landmarkName = "viewWillAppear(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "1793A199-B7C0-4D6A-A52D-81326A03007A"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "RSOWorkspace/Controller/Profile/UpdateProfileViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "78"
-            endingLineNumber = "78"
-            landmarkName = "updateProfileAPI(fname:lname:designation:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
