@@ -17,7 +17,7 @@ class AgreementViewController: UIViewController, MembershipNavigable {
 
   var selectedDate = ""
   var list:[PlanPrice] = []
-  var selectedIndex = -1
+  var selectedIndex = 0
   override func viewDidLoad() {
         super.viewDidLoad()
     datePicker.minimumDate = Date()
@@ -28,19 +28,15 @@ class AgreementViewController: UIViewController, MembershipNavigable {
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     list = SelectedPlanPriceList.shared.list
-    selectedIndex = SelectedPlanPriceList.shared.selectedIndex
-    if selectedIndex >= 0 {
-      let numberOfItemsInSection = collectionView.numberOfItems(inSection: 0)
-      let indexPath = IndexPath(row: selectedIndex, section: 0)
-      if indexPath.item < numberOfItemsInSection {
-        collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
-      }
-    }
     collectionView.reloadData()
 
   }
   @IBAction func continueAction(_ sender: Any) {
     SelectedMembershipData.shared.startDate = selectedDate + " 00:00:00"
+    let priceSelected = list[selectedIndex]
+    SelectedMembershipData.shared.monthlyCost = priceSelected.price ?? ""
+    SelectedMembershipData.shared.planType = priceSelected.duration ?? ""
+    SelectedMembershipData.shared.agreementLength = priceSelected.length ?? 0
     membershipNavigationDelegate?.navigateToNextVC()
   }
   @IBAction func selectDate(_ sender: UIDatePicker) {
@@ -65,10 +61,8 @@ extension AgreementViewController: UICollectionViewDelegate, UICollectionViewDat
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     selectedIndex = indexPath.row
     SelectedPlanPriceList.shared.selectedIndex = selectedIndex
-    let priceSelected = list[selectedIndex]
-    SelectedMembershipData.shared.monthlyCost = priceSelected.price ?? ""
-    SelectedMembershipData.shared.planType = priceSelected.duration ?? ""
-    SelectedMembershipData.shared.agreementLength = priceSelected.length ?? 0
+    
+
     collectionView.reloadData()
   }
 }

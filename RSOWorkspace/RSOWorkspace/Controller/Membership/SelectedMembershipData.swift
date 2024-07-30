@@ -33,6 +33,7 @@ class SelectedPlanPriceList {
   private init () {
     
   }
-  var selectedIndex = -1
+  var selectedDuration = ""
+  var selectedIndex = 0
   var list: [PlanPrice] = []
 }

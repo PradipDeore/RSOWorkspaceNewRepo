@@ -27,6 +27,28 @@ struct MembershipData: Codable {
     }
 }
 
+extension MembershipData {
+    // Function to get a list of distinct PlanPrice based on duration
+    func getDistinctPlanPriceList() -> [PlanPrice] {
+        // Use a Set to track unique durations and a higher-order function to filter distinct prices
+        var seenDurations = Set<String>()
+        return price?.filter { planPrice in
+            guard let duration = planPrice.duration else { return false }
+            if seenDurations.contains(duration) {
+                return false
+            } else {
+                seenDurations.insert(duration)
+                return true
+            }
+        } ?? []
+    }
+    
+    // Function to get PlanPrice list matching a specific duration
+    func matchingPlanPriceList(for duration: String) -> [PlanPrice] {
+        return price?.filter { $0.duration == duration } ?? []
+    }
+}
+
 // MARK: - Price
 struct PlanPrice: Codable {
     let price: String?
