@@ -28,7 +28,16 @@ class AgreementViewController: UIViewController, MembershipNavigable {
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     list = SelectedPlanPriceList.shared.list
+    selectedIndex = list.count - 1
     collectionView.reloadData()
+    
+    if selectedIndex >= 0 {
+      let numberOfItemsInSection = collectionView.numberOfItems(inSection: 0)
+      let indexPath = IndexPath(row: selectedIndex, section: 0)
+      if indexPath.item < numberOfItemsInSection {
+        collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+      }
+    }
 
   }
   @IBAction func continueAction(_ sender: Any) {

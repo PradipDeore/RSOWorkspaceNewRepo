@@ -32,7 +32,7 @@ extension MembershipData {
     func getDistinctPlanPriceList() -> [PlanPrice] {
         // Use a Set to track unique durations and a higher-order function to filter distinct prices
         var seenDurations = Set<String>()
-        return price?.filter { planPrice in
+      let distinctPlanPrices = price?.filter { planPrice in
             guard let duration = planPrice.duration else { return false }
             if seenDurations.contains(duration) {
                 return false
@@ -41,11 +41,15 @@ extension MembershipData {
                 return true
             }
         } ?? []
+      return distinctPlanPrices
     }
     
     // Function to get PlanPrice list matching a specific duration
     func matchingPlanPriceList(for duration: String) -> [PlanPrice] {
-        return price?.filter { $0.duration == duration } ?? []
+      let matchingPlans = price?.filter { $0.duration == duration } ?? []
+      let sortedPlanPrices = matchingPlans.sorted(by: { ($0.length ?? 0) < ($1.length ?? 0) })
+      return sortedPlanPrices
+
     }
 }
 

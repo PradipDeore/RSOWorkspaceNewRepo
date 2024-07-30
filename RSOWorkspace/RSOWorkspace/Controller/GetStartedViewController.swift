@@ -34,6 +34,7 @@ class GetStartedViewController: UIViewController {
               DispatchQueue.main.async {
                 RSOLoader.removeLoader()
                 // Login successful
+                CurrentLoginType.shared.isExplorerLogin = true
                 RSOTabBarViewController.presentAsRootController()
               }
               self.eventHandler?(.dataLoaded)
