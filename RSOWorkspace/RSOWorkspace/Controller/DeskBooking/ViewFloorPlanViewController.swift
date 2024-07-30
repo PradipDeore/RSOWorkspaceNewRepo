@@ -7,8 +7,12 @@
 
 import UIKit
 
+protocol ViewFloorPlanDelegate: AnyObject {
+    func didSelectConfiguration(_ configuration: RoomConfiguration)
+}
 class ViewFloorPlanViewController: UIViewController {
-
+    
+    weak var delegate: ViewFloorPlanDelegate?
     @IBOutlet weak var floorPlanView: UIView!
     @IBOutlet weak var btnSelect: RSOButton!
     @IBOutlet weak var btnClose: RSOButton!
@@ -18,12 +22,13 @@ class ViewFloorPlanViewController: UIViewController {
     //var sittingConfigurations: [ConfigurationDetails] = []
     var floorPlansSeatingConfig:[RoomConfiguration] = []
     var seatingConfigueId: Int = 0
+    var selectedConfigurationIndex: Int? // Track selected index
     override func viewDidLoad() {
         super.viewDidLoad()
         floorPlanView.setCornerRadiusForView()
         btnSelect.setCornerRadiusToButton()
         btnClose.setCornerRadiusToButton()
-    ()
+        ()
         btnClose.backgroundColor = ._768_D_70
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
@@ -37,7 +42,11 @@ class ViewFloorPlanViewController: UIViewController {
     }
     
     @IBAction func btnSelectAction(_ sender: Any) {
-        
+        if let selectedIndex = selectedConfigurationIndex {
+            let selectedConfiguration = floorPlansSeatingConfig[selectedIndex]
+            delegate?.didSelectConfiguration(selectedConfiguration)
+            self.navigationController?.popViewController(animated: true)
+        }
         
     }
     func setData(sittingConfigurations: [RoomConfiguration]){
@@ -62,13 +71,19 @@ extension ViewFloorPlanViewController:UICollectionViewDelegate,UICollectionViewD
         if let configurationImageURL = URL(string: configurationImageURLString) {
             cell.seatingConfigImage.kf.setImage(with: configurationImageURL)
         }
+        // Set selection state
+        let isSelected = indexPath.item == selectedConfigurationIndex
+        cell.setSelectedState(isSelected)
+        
         return cell
     }
     
     // MARK: - UICollectionViewDelegate
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        // Handle item selection
+        selectedConfigurationIndex = indexPath.item
+        collectionView.reloadData()
+        
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: collectionView.bounds.width / 2 - 20, height: 97)

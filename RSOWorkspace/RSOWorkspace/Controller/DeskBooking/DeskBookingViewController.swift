@@ -416,7 +416,6 @@ extension DeskBookingViewController:SelectedDeskTableViewCellDelegate{
     func viewFloorPlan() {
         let viewFloorPlanVC = UIViewController.createController(storyBoard: .Booking, ofType: ViewFloorPlanViewController.self)
         viewFloorPlanVC.floorPlansSeatingConfig = self.viewFloorPlanSeatingConfig
-        
         self.navigationController?.pushViewController(viewFloorPlanVC, animated: true)
     }
     
@@ -434,6 +433,12 @@ extension DeskBookingViewController:SelectedDeskTableViewCellDelegate{
     
 }
 
+extension DeskBookingViewController:ViewFloorPlanDelegate {
+    
+       func didSelectConfiguration(_ configuration: RoomConfiguration) {
+           print("Selected Configuration: \(configuration)")
+       }
+}
 extension DeskBookingViewController {
     enum Event {
         case dataLoaded

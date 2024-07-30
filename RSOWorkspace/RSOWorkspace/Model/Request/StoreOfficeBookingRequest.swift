@@ -13,5 +13,5 @@ struct StoreOfficeBookingRequest: Codable {
     var date = Date.formatSelectedDate(format: .yyyyMMdd, date: nil)
     var is_fullday:String?
     var office_id:Int?
-    var seats:Int = 5
+    var seats:Int = 1
 }
