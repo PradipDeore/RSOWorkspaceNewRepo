@@ -129,8 +129,7 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
             }
         case .changePassword:
             if let changePasswordCell = cell as? ChangePasswordTableViewCell {
-               
-                    return changePasswordCell
+            return changePasswordCell
                 
             }
         case .membershipPlan:
@@ -155,6 +154,22 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
             break
         }
         return cell
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let section = SectionType(rawValue: indexPath.section) else {
+            return
+        }
+        
+        switch section {
+        case .changePassword:
+            let changePasswordVC = UIViewController.createController(storyBoard: .Profile, ofType: ChangePasswordViewController.self)
+            //self.navigationController?.pushViewController(changePasswordVC, animated: true)
+            changePasswordVC.modalPresentationStyle = .overFullScreen
+            changePasswordVC.modalTransitionStyle = .crossDissolve
+            self.present(changePasswordVC,animated: true)
+        default:
+            break
+        }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -206,7 +221,7 @@ extension ProfileViewController: MembershipPlanDelegate {
         self.navigationController?.pushViewController(membershipViewController, animated: true)
     }
 }
-    
+
     
     
     

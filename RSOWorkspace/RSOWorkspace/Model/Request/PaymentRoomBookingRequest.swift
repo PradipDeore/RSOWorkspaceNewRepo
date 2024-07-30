@@ -16,7 +16,7 @@ struct PaymentRoomBookingRequest: Codable {
 }
 
 struct PaymentDeskBookingRequest: Codable {
-    let booking_id: Int
-    let total_price: Double
-    let vatamount: Double
+    let bookingid: Int
+    let total_amount: Double
+    let vat_amount: Double
 }

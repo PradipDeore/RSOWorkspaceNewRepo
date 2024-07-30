@@ -23,6 +23,7 @@ struct ConfirmBookingRequestModel{
   var deskList: [Desk] = []
     var noOfSeats :Int = 0
     var totalHrs:Int = 0
+    var officeBookingId: Int = 0
     
   //computed property
   var floatPrice : Float {
@@ -194,6 +195,7 @@ struct ConfirmBookingRequestModel{
       self.meetingRoom = response.data?.name ?? ""
       self.noOfSeats = response.data?.seats ?? 0
         self.totalHrs = response.data?.totalHrs ?? 0
+        self.officeBookingId = response.data?.id ?? 0
         
     }
 }

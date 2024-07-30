@@ -10,6 +10,7 @@ import Foundation
 enum MyProfileEndPoint {
     case myProfile // Module - GET
     case updateProfile(requestModel: UpdateProfileRequestModel)
+    case changePassword(requestModel: ChangePasswordRequestModel)
 }
 extension MyProfileEndPoint: EndPointType {
     
@@ -19,6 +20,8 @@ extension MyProfileEndPoint: EndPointType {
             return "my-profile"
         case .updateProfile:
             return "my-profile-update"
+        case .changePassword:
+            return "change-password"
         }
     }
     var url: URL? {
@@ -31,6 +34,8 @@ extension MyProfileEndPoint: EndPointType {
             return .get
         case .updateProfile:
             return .post
+        case .changePassword(requestModel: let requestModel):
+            return .post
         }
     }
    
@@ -39,6 +44,8 @@ extension MyProfileEndPoint: EndPointType {
         case .myProfile:
             return nil
         case .updateProfile(let requestModel):
+            return requestModel
+        case .changePassword(requestModel: let requestModel):
             return requestModel
         }
     }
