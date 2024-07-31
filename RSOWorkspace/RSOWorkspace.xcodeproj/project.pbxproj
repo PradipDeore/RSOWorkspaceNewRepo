@@ -25,6 +25,8 @@
 		58049D982C59056300314E7A /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58049D972C59056300314E7A /* ChangePasswordViewController.swift */; };
 		58049D9A2C59085800314E7A /* ChangePasswordRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58049D992C59085800314E7A /* ChangePasswordRequestModel.swift */; };
 		58049D9C2C5908CD00314E7A /* changePasswordResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58049D9B2C5908CD00314E7A /* changePasswordResponseModel.swift */; };
+		58049D9E2C591BCF00314E7A /* FeedbackRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58049D9D2C591BCF00314E7A /* FeedbackRequestModel.swift */; };
+		58049DA02C591BE000314E7A /* FeedbackResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58049D9F2C591BE000314E7A /* FeedbackResponseModel.swift */; };
 		5805931A2C4F92DE00FE18B2 /* ViewFloorPlanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580593192C4F92DE00FE18B2 /* ViewFloorPlanViewController.swift */; };
 		5805931C2C4F98AE00FE18B2 /* BookingDeskDetailsResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5805931B2C4F98AE00FE18B2 /* BookingDeskDetailsResponseModel.swift */; };
 		5805931E2C4FC6DC00FE18B2 /* StoreDeskBookingRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5805931D2C4FC6DC00FE18B2 /* StoreDeskBookingRequest.swift */; };
@@ -212,6 +214,23 @@
 		58ACDB3B2B78D10A0041B755 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58ACDB3A2B78D10A0041B755 /* Constants.swift */; };
 		58AE87B72C50FF6D004A99D6 /* CouponDetailsResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AE87B62C50FF6D004A99D6 /* CouponDetailsResponseModel.swift */; };
 		58AE87B92C513591004A99D6 /* PaymentNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AE87B82C513591004A99D6 /* PaymentNetworkManager.swift */; };
+		58B33B7B2C5A051200DBEA34 /* SocialLoginRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B33B7A2C5A051200DBEA34 /* SocialLoginRequestModel.swift */; };
+		58B33B7D2C5A05AD00DBEA34 /* SocialLoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B33B7C2C5A05AD00DBEA34 /* SocialLoginResponse.swift */; };
+		58B33B7F2C5A067100DBEA34 /* SocialLoginEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B33B7E2C5A067100DBEA34 /* SocialLoginEndPoint.swift */; };
+		58B33B812C5A128300DBEA34 /* AddPaymentMethodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B33B802C5A128300DBEA34 /* AddPaymentMethodViewController.swift */; };
+		58B33B832C5A16D800DBEA34 /* PaymentMethodRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B33B822C5A16D800DBEA34 /* PaymentMethodRequestModel.swift */; };
+		58B33B852C5A16F600DBEA34 /* PaymentMethodResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B33B842C5A16F600DBEA34 /* PaymentMethodResponseModel.swift */; };
+		58B33B872C5A190900DBEA34 /* PaymentMethodEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B33B862C5A190900DBEA34 /* PaymentMethodEndPoint.swift */; };
+		58B33B892C5A234300DBEA34 /* GalleryEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B33B882C5A234300DBEA34 /* GalleryEndPoint.swift */; };
+		58B33B8B2C5A319500DBEA34 /* LocationGalleryResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B33B8A2C5A319500DBEA34 /* LocationGalleryResponseModel.swift */; };
+		58B33B8E2C5A624E00DBEA34 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 58B33B8D2C5A624E00DBEA34 /* FirebaseAnalytics */; };
+		58B33B902C5A624E00DBEA34 /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = 58B33B8F2C5A624E00DBEA34 /* FirebaseAnalyticsOnDeviceConversion */; };
+		58B33B922C5A624E00DBEA34 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = 58B33B912C5A624E00DBEA34 /* FirebaseAnalyticsWithoutAdIdSupport */; };
+		58B33B942C5A624E00DBEA34 /* FirebaseAppCheck in Frameworks */ = {isa = PBXBuildFile; productRef = 58B33B932C5A624E00DBEA34 /* FirebaseAppCheck */; };
+		58B33B962C5A624E00DBEA34 /* FirebaseAppDistribution-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = 58B33B952C5A624E00DBEA34 /* FirebaseAppDistribution-Beta */; };
+		58B33B982C5A652500DBEA34 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 58B33B972C5A652500DBEA34 /* GoogleService-Info.plist */; };
+		58B33B9B2C5A660D00DBEA34 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 58B33B9A2C5A660D00DBEA34 /* GoogleSignIn */; };
+		58B33B9D2C5A660D00DBEA34 /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 58B33B9C2C5A660D00DBEA34 /* GoogleSignInSwift */; };
 		58B405FB2BCCEABC0045DD4C /* StoreRoomBookingRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B405FA2BCCEABC0045DD4C /* StoreRoomBookingRequest.swift */; };
 		58B405FD2BCCEC460045DD4C /* StoreRoomBookingResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B405FC2BCCEC460045DD4C /* StoreRoomBookingResponse.swift */; };
 		58B405FF2BCCF9810045DD4C /* DeskBookingEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B405FE2BCCF9810045DD4C /* DeskBookingEndPoint.swift */; };
@@ -273,6 +292,7 @@
 		58BF85212B87518F009FF06C /* ForgotPasswordResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58BF85202B87518E009FF06C /* ForgotPasswordResponse.swift */; };
 		58BF85232B875D5B009FF06C /* SignUpRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58BF85222B875D5B009FF06C /* SignUpRequestModel.swift */; };
 		58BF85252B875E4D009FF06C /* SignUpResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58BF85242B875E4D009FF06C /* SignUpResponse.swift */; };
+		58C0D3842C5A6C5B000BE3AF /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 58C0D3832C5A6C5B000BE3AF /* FirebaseAuth */; };
 		58C4812D2BB3E2310084CD6B /* rsvpRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C4812C2BB3E2310084CD6B /* rsvpRequestModel.swift */; };
 		58C4812F2BB3E2ED0084CD6B /* rsvpResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C4812E2BB3E2ED0084CD6B /* rsvpResponse.swift */; };
 		58C7C5072BAAA2A800CF6578 /* FindMembersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58C7C5052BAAA2A800CF6578 /* FindMembersTableViewCell.swift */; };
@@ -467,6 +487,9 @@
 		58049D972C59056300314E7A /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
 		58049D992C59085800314E7A /* ChangePasswordRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordRequestModel.swift; sourceTree = "<group>"; };
 		58049D9B2C5908CD00314E7A /* changePasswordResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = changePasswordResponseModel.swift; sourceTree = "<group>"; };
+		58049D9D2C591BCF00314E7A /* FeedbackRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackRequestModel.swift; sourceTree = "<group>"; };
+		58049D9F2C591BE000314E7A /* FeedbackResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackResponseModel.swift; sourceTree = "<group>"; };
+		58049DA12C596C3300314E7A /* RSOWorkspace.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RSOWorkspace.entitlements; sourceTree = "<group>"; };
 		580593192C4F92DE00FE18B2 /* ViewFloorPlanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewFloorPlanViewController.swift; sourceTree = "<group>"; };
 		5805931B2C4F98AE00FE18B2 /* BookingDeskDetailsResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingDeskDetailsResponseModel.swift; sourceTree = "<group>"; };
 		5805931D2C4FC6DC00FE18B2 /* StoreDeskBookingRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreDeskBookingRequest.swift; sourceTree = "<group>"; };
@@ -655,6 +678,16 @@
 		58ACDB3A2B78D10A0041B755 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		58AE87B62C50FF6D004A99D6 /* CouponDetailsResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponDetailsResponseModel.swift; sourceTree = "<group>"; };
 		58AE87B82C513591004A99D6 /* PaymentNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentNetworkManager.swift; sourceTree = "<group>"; };
+		58B33B7A2C5A051200DBEA34 /* SocialLoginRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialLoginRequestModel.swift; sourceTree = "<group>"; };
+		58B33B7C2C5A05AD00DBEA34 /* SocialLoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialLoginResponse.swift; sourceTree = "<group>"; };
+		58B33B7E2C5A067100DBEA34 /* SocialLoginEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialLoginEndPoint.swift; sourceTree = "<group>"; };
+		58B33B802C5A128300DBEA34 /* AddPaymentMethodViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPaymentMethodViewController.swift; sourceTree = "<group>"; };
+		58B33B822C5A16D800DBEA34 /* PaymentMethodRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentMethodRequestModel.swift; sourceTree = "<group>"; };
+		58B33B842C5A16F600DBEA34 /* PaymentMethodResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentMethodResponseModel.swift; sourceTree = "<group>"; };
+		58B33B862C5A190900DBEA34 /* PaymentMethodEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentMethodEndPoint.swift; sourceTree = "<group>"; };
+		58B33B882C5A234300DBEA34 /* GalleryEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryEndPoint.swift; sourceTree = "<group>"; };
+		58B33B8A2C5A319500DBEA34 /* LocationGalleryResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationGalleryResponseModel.swift; sourceTree = "<group>"; };
+		58B33B972C5A652500DBEA34 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		58B405FA2BCCEABC0045DD4C /* StoreRoomBookingRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreRoomBookingRequest.swift; sourceTree = "<group>"; };
 		58B405FC2BCCEC460045DD4C /* StoreRoomBookingResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreRoomBookingResponse.swift; sourceTree = "<group>"; };
 		58B405FE2BCCF9810045DD4C /* DeskBookingEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeskBookingEndPoint.swift; sourceTree = "<group>"; };
@@ -908,8 +941,16 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				58B33B9D2C5A660D00DBEA34 /* GoogleSignInSwift in Frameworks */,
+				58C0D3842C5A6C5B000BE3AF /* FirebaseAuth in Frameworks */,
+				58B33B962C5A624E00DBEA34 /* FirebaseAppDistribution-Beta in Frameworks */,
+				58B33B9B2C5A660D00DBEA34 /* GoogleSignIn in Frameworks */,
 				5626B401B87B81EF061046D2 /* Pods_RSOWorkspace.framework in Frameworks */,
+				58B33B922C5A624E00DBEA34 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */,
 				EE3B782C2C551B5600706F16 /* CenteredCollectionView in Frameworks */,
+				58B33B8E2C5A624E00DBEA34 /* FirebaseAnalytics in Frameworks */,
+				58B33B942C5A624E00DBEA34 /* FirebaseAppCheck in Frameworks */,
+				58B33B902C5A624E00DBEA34 /* FirebaseAnalyticsOnDeviceConversion in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1014,6 +1055,9 @@
 				58CF207E2C53C99F0070538A /* ShortTermOfficeBookingEndPoint.swift */,
 				EE3B78232C54BB0E00706F16 /* MembershipEndPoint.swift */,
 				58F573A22C57CE58006F6594 /* ExploreButtonEndPoint.swift */,
+				58B33B7E2C5A067100DBEA34 /* SocialLoginEndPoint.swift */,
+				58B33B862C5A190900DBEA34 /* PaymentMethodEndPoint.swift */,
+				58B33B882C5A234300DBEA34 /* GalleryEndPoint.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -1270,6 +1314,7 @@
 		588D8A702B627A6B00545748 /* RSOWorkspace */ = {
 			isa = PBXGroup;
 			children = (
+				58049DA12C596C3300314E7A /* RSOWorkspace.entitlements */,
 				58BAEB202B6CC83D000B140C /* Controller */,
 				58BAEB1E2B6CC82A000B140C /* StoryBoard */,
 				58BAEB1F2B6CC836000B140C /* Model */,
@@ -1302,6 +1347,7 @@
 		589FB6882B7644900067255E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				58B33B972C5A652500DBEA34 /* GoogleService-Info.plist */,
 				5883337F2B7E08E6008334A0 /* Inter */,
 				589FB6892B7644A90067255E /* Poppins */,
 			);
@@ -1579,6 +1625,10 @@
 				EE3B78212C54B54600706F16 /* MembershipResponse.swift */,
 				58F573A62C57D129006F6594 /* exploreResponse.swift */,
 				58049D9B2C5908CD00314E7A /* changePasswordResponseModel.swift */,
+				58049D9F2C591BE000314E7A /* FeedbackResponseModel.swift */,
+				58B33B7C2C5A05AD00DBEA34 /* SocialLoginResponse.swift */,
+				58B33B842C5A16F600DBEA34 /* PaymentMethodResponseModel.swift */,
+				58B33B8A2C5A319500DBEA34 /* LocationGalleryResponseModel.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -1612,6 +1662,9 @@
 				58F573A02C57BD5C006F6594 /* ShortTermPaymentOfficeBookingRequestModel.swift */,
 				58F573A42C57D0B6006F6594 /* exploreRequest.swift */,
 				58049D992C59085800314E7A /* ChangePasswordRequestModel.swift */,
+				58049D9D2C591BCF00314E7A /* FeedbackRequestModel.swift */,
+				58B33B7A2C5A051200DBEA34 /* SocialLoginRequestModel.swift */,
+				58B33B822C5A16D800DBEA34 /* PaymentMethodRequestModel.swift */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -1701,6 +1754,7 @@
 				58E2D0CE2BBA6ABD0016DEB6 /* ProfileViewController.swift */,
 				584FA0F32BC7AD8500A36CE7 /* UpdateProfileViewController.swift */,
 				58049D972C59056300314E7A /* ChangePasswordViewController.swift */,
+				58B33B802C5A128300DBEA34 /* AddPaymentMethodViewController.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -1934,6 +1988,14 @@
 			name = RSOWorkspace;
 			packageProductDependencies = (
 				EE3B782B2C551B5600706F16 /* CenteredCollectionView */,
+				58B33B8D2C5A624E00DBEA34 /* FirebaseAnalytics */,
+				58B33B8F2C5A624E00DBEA34 /* FirebaseAnalyticsOnDeviceConversion */,
+				58B33B912C5A624E00DBEA34 /* FirebaseAnalyticsWithoutAdIdSupport */,
+				58B33B932C5A624E00DBEA34 /* FirebaseAppCheck */,
+				58B33B952C5A624E00DBEA34 /* FirebaseAppDistribution-Beta */,
+				58B33B9A2C5A660D00DBEA34 /* GoogleSignIn */,
+				58B33B9C2C5A660D00DBEA34 /* GoogleSignInSwift */,
+				58C0D3832C5A6C5B000BE3AF /* FirebaseAuth */,
 			);
 			productName = RSOWorkspace;
 			productReference = 588D8A6E2B627A6B00545748 /* RSOWorkspace.app */;
@@ -1965,6 +2027,8 @@
 			mainGroup = 588D8A652B627A6B00545748;
 			packageReferences = (
 				EE3B782A2C551B5600706F16 /* XCRemoteSwiftPackageReference "CenteredCollectionView" */,
+				58B33B8C2C5A624E00DBEA34 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				58B33B992C5A660D00DBEA34 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
 			);
 			productRefGroup = 588D8A6F2B627A6B00545748 /* Products */;
 			projectDirPath = "";
@@ -2009,6 +2073,7 @@
 				5864882C2BBAD2890024CBA2 /* Feedback.storyboard in Resources */,
 				EEAED9442C52504C00A1F56A /* PlanInfoTableViewCell.xib in Resources */,
 				580418192BD12589008EA858 /* ConfirmSelectedDeskTableViewCell.xib in Resources */,
+				58B33B982C5A652500DBEA34 /* GoogleService-Info.plist in Resources */,
 				58713EB72BC94AA20012DD4E /* InviteTeamMembersCollectionViewCell.xib in Resources */,
 				58D584982B96F34100D17D0A /* BookingConfirmedMeetingRoomTableViewCell.xib in Resources */,
 				58E2D0CC2BBA6A610016DEB6 /* Profile.storyboard in Resources */,
@@ -2196,10 +2261,12 @@
 				58A7FBD62BA0B89A00B48DFF /* RoomDetailResponse.swift in Sources */,
 				587DA92E2BA43F1B00D27769 /* OnDemandServicesTableViewCell.swift in Sources */,
 				58BE90C32B9F0551001FCE54 /* RSOCollectionItem.swift in Sources */,
+				58B33B7B2C5A051200DBEA34 /* SocialLoginRequestModel.swift in Sources */,
 				582A272F2C462E7A00CD5729 /* AddPaymentMethodTableViewCell.swift in Sources */,
 				58E6E96C2B89E0E500EB3600 /* RSOMarketPlaceCollectionView.swift in Sources */,
 				586FA70D2BBC354E00EA2772 /* GalleryTableViewCell.swift in Sources */,
 				582591042BBEE0700011ECDA /* MyBookingDateHeaderView.swift in Sources */,
+				58B33B892C5A234300DBEA34 /* GalleryEndPoint.swift in Sources */,
 				58CF20832C53CC380070538A /* LongTermOfficeBookingResponse.swift in Sources */,
 				58374A422B84BBF400CA34C5 /* RoomListingViewController.swift in Sources */,
 				584FA0F62BC7BBE900A36CE7 /* UpdateProfileRequestModel.swift in Sources */,
@@ -2215,6 +2282,7 @@
 				58C9AC062B8DC42900C719D1 /* OtherBookingsTableViewCell.swift in Sources */,
 				583403AD2B99EFC100318BB8 /* CancelAndRequestButtonTableViewCell.swift in Sources */,
 				58AE87B72C50FF6D004A99D6 /* CouponDetailsResponseModel.swift in Sources */,
+				58049DA02C591BE000314E7A /* FeedbackResponseModel.swift in Sources */,
 				5883339C2B7E27A2008334A0 /* SignUpViewController.swift in Sources */,
 				58E6E9432B88766F00EB3600 /* ConciergeViewController.swift in Sources */,
 				58F573A72C57D129006F6594 /* exploreResponse.swift in Sources */,
@@ -2242,6 +2310,7 @@
 				58B405FF2BCCF9810045DD4C /* DeskBookingEndPoint.swift in Sources */,
 				58E05E242B86154000189E99 /* APIManager.swift in Sources */,
 				58713EB62BC94AA20012DD4E /* InviteTeamMembersCollectionViewCell.swift in Sources */,
+				58049D9E2C591BCF00314E7A /* FeedbackRequestModel.swift in Sources */,
 				5804180F2BD0FEFC008EA858 /* BookingConfirmedTimeTableViewCell.swift in Sources */,
 				588D8A722B627A6B00545748 /* AppDelegate.swift in Sources */,
 				581D97D72BA2D3AD00EDDC3B /* PaymentRequestModel.swift in Sources */,
@@ -2253,6 +2322,7 @@
 				580255DE2C4A7B22000FF860 /* UserSessionHelper.swift in Sources */,
 				58E6F7172BA826B6009D4E21 /* RequestButtonTableViewCell.swift in Sources */,
 				58BEF2632C47DDC500C78CF4 /* UILabel.swift in Sources */,
+				58B33B852C5A16F600DBEA34 /* PaymentMethodResponseModel.swift in Sources */,
 				58F263552BAC12FB00AEDEC9 /* CompaniesListTableViewCell.swift in Sources */,
 				58B406032BCCFF690045DD4C /* OfficeItemsResponse.swift in Sources */,
 				58713EAE2BC932330012DD4E /* SelectDeskCollectionViewCell.swift in Sources */,
@@ -2270,6 +2340,7 @@
 				58D2D1CD2C54BF57008425DA /* ConfirmShortTermBookingViewController.swift in Sources */,
 				58374A452B84BC2100CA34C5 /* DeskCollectionViewCell.swift in Sources */,
 				583403982B99A13E00318BB8 /* PayWithRewardPointsTableViewCell.swift in Sources */,
+				58B33B7D2C5A05AD00DBEA34 /* SocialLoginResponse.swift in Sources */,
 				58F573A32C57CE58006F6594 /* ExploreButtonEndPoint.swift in Sources */,
 				589FB6872B763EBA0067255E /* GetStartedViewController.swift in Sources */,
 				583D9E032B90B0300073AAC3 /* SelectDateTableViewCell.swift in Sources */,
@@ -2386,6 +2457,7 @@
 				58374A482B84D53400CA34C5 /* RSOView.swift in Sources */,
 				58B405FB2BCCEABC0045DD4C /* StoreRoomBookingRequest.swift in Sources */,
 				58E6E93F2B88763700EB3600 /* DashboardViewController.swift in Sources */,
+				58B33B812C5A128300DBEA34 /* AddPaymentMethodViewController.swift in Sources */,
 				58BF851F2B874FA4009FF06C /* ForgotPasswordRequestModel.swift in Sources */,
 				58049D982C59056300314E7A /* ChangePasswordViewController.swift in Sources */,
 				58696B0D2BAD833800937A4F /* RSVPButtonViewController.swift in Sources */,
@@ -2431,6 +2503,7 @@
 				58C7C5152BAABFB900CF6578 /* EventCollectionViewCell.swift in Sources */,
 				58127A912BAC42DB001693D6 /* FindMembersSearchListTableViewCell.swift in Sources */,
 				58C9ABFE2B8DC3FE00C719D1 /* BookDeskTableViewCell.swift in Sources */,
+				58B33B832C5A16D800DBEA34 /* PaymentMethodRequestModel.swift in Sources */,
 				58CF207F2C53C99F0070538A /* ShortTermOfficeBookingEndPoint.swift in Sources */,
 				5843D7592BC6747E00D5C8DD /* DisplayScheduleVisitorsDetailModel.swift in Sources */,
 				58E05E282B861FC200189E99 /* LogInResponse.swift in Sources */,
@@ -2453,14 +2526,17 @@
 				58E6E94C2B88A1CA00EB3600 /* RSOGreetings.swift in Sources */,
 				58BA515C2B9AE057000E0EF6 /* BookMeetingRoomRequestModel.swift in Sources */,
 				5804180D2BD0FEE6008EA858 /* BookingConfirmedMeetingRoomTableViewCell.swift in Sources */,
+				58B33B8B2C5A319500DBEA34 /* LocationGalleryResponseModel.swift in Sources */,
 				58F573A12C57BD5C006F6594 /* ShortTermPaymentOfficeBookingRequestModel.swift in Sources */,
 				58ACDB3B2B78D10A0041B755 /* Constants.swift in Sources */,
 				EE3B78272C550C6B00706F16 /* SelectedMembershipData.swift in Sources */,
 				58B6A7CA2BCE5412008A2286 /* StatusTypeEnum.swift in Sources */,
 				58BE5E682B8C6FBF002244F5 /* RSOMeetingRoomsCollectionView.swift in Sources */,
 				58BCBC182C48F27000465381 /* FAQDescriptionTableViewCell.swift in Sources */,
+				58B33B7F2C5A067100DBEA34 /* SocialLoginEndPoint.swift in Sources */,
 				58F5739E2C578A47006F6594 /* OfficeTypeTableViewCell.swift in Sources */,
 				58ED2D1F2B8F4C1D004D06C8 /* MyBookingEndPoint.swift in Sources */,
+				58B33B872C5A190900DBEA34 /* PaymentMethodEndPoint.swift in Sources */,
 				EEE105B52C49256B007ECE4D /* RSOLoader.swift in Sources */,
 				586FA7042BBC28DA00EA2772 /* aboutRSOTableViewCell.swift in Sources */,
 				58ED2D232B8F50CE004D06C8 /* BookingResponse.swift in Sources */,
@@ -2625,6 +2701,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
+				CODE_SIGN_ENTITLEMENTS = RSOWorkspace/RSOWorkspace.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -2660,6 +2737,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
+				CODE_SIGN_ENTITLEMENTS = RSOWorkspace/RSOWorkspace.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Manual;
@@ -2714,6 +2792,22 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		58B33B8C2C5A624E00DBEA34 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 11.0.0;
+			};
+		};
+		58B33B992C5A660D00DBEA34 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/google/GoogleSignIn-iOS";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.1.0;
+			};
+		};
 		EE3B782A2C551B5600706F16 /* XCRemoteSwiftPackageReference "CenteredCollectionView" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/BenEmdon/CenteredCollectionView";
@@ -2725,6 +2819,46 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		58B33B8D2C5A624E00DBEA34 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 58B33B8C2C5A624E00DBEA34 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		58B33B8F2C5A624E00DBEA34 /* FirebaseAnalyticsOnDeviceConversion */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 58B33B8C2C5A624E00DBEA34 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalyticsOnDeviceConversion;
+		};
+		58B33B912C5A624E00DBEA34 /* FirebaseAnalyticsWithoutAdIdSupport */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 58B33B8C2C5A624E00DBEA34 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalyticsWithoutAdIdSupport;
+		};
+		58B33B932C5A624E00DBEA34 /* FirebaseAppCheck */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 58B33B8C2C5A624E00DBEA34 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAppCheck;
+		};
+		58B33B952C5A624E00DBEA34 /* FirebaseAppDistribution-Beta */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 58B33B8C2C5A624E00DBEA34 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = "FirebaseAppDistribution-Beta";
+		};
+		58B33B9A2C5A660D00DBEA34 /* GoogleSignIn */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 58B33B992C5A660D00DBEA34 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignIn;
+		};
+		58B33B9C2C5A660D00DBEA34 /* GoogleSignInSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 58B33B992C5A660D00DBEA34 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignInSwift;
+		};
+		58C0D3832C5A6C5B000BE3AF /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 58B33B8C2C5A624E00DBEA34 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
 		EE3B782B2C551B5600706F16 /* CenteredCollectionView */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = EE3B782A2C551B5600706F16 /* XCRemoteSwiftPackageReference "CenteredCollectionView" */;

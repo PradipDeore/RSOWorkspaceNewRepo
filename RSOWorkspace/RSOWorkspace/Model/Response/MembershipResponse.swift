@@ -8,8 +8,10 @@ import Foundation
 
 // MARK: - Welcome
 struct MembershipResponse: Codable {
-    let status: Bool?
+    let error: String?
+    let status: StatusType?
     let data: [MembershipData]?
+    let message:String?
 }
 
 // MARK: - Datum

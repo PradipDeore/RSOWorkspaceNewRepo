@@ -30,5 +30,12 @@ class SelectSeatingConfigCollectionViewCell: UICollectionViewCell {
         self.layer.masksToBounds = false
         self.layer.shadowPath = UIBezierPath(roundedRect:  CGRect(x: 0, y: self.bounds.height - 4, width: self.bounds.width, height: 4), cornerRadius: self.containerView.layer.cornerRadius).cgPath
     }
+    func setSelected(_ selected: Bool) {
+            if selected {
+                self.containerView.backgroundColor = UIColor.lightGray
+            } else {
+                self.containerView.backgroundColor = UIColor.white
+            }
+        }
     
 }

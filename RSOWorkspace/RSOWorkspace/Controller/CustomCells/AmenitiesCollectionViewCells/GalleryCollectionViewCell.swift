@@ -15,9 +15,14 @@ class GalleryCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
         // Initialization code
     }
-    func setData(item : GalleryResponseModel){
-        self.lblgallerytitle.text = item.title
-        self.imgGalleryImage.image = UIImage(named: item.galleryimageName)
+    func setData(item : Gallery){
+        self.lblgallerytitle.text = item.name
+       
+        if let imageUrl = item.img, !imageUrl.isEmpty {
+            if let url = URL(string: imageBasePath + imageUrl) {
+                self.imgGalleryImage.kf.setImage(with: url)
+            }
+        }
         
     }
 

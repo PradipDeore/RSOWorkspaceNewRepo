@@ -20,6 +20,7 @@ class UserHelper {
   private let firstNameKey = "userFirstName"
   private let lastNameKey = "userLastName"
   private let userEmailKey = "userEmail"
+  private let userPhotoKey = "userPhoto"
   private let userCompanyIDKey = "userCompanyID"
   private let userDesignationKey = "userDesignation"
   private let userStatusKey = "userStatus"
@@ -36,6 +37,12 @@ class UserHelper {
     userDefaults.set(user.status, forKey: userStatusKey)
     userDefaults.set(true, forKey: userIsLoggedIn)
   }
+
+    func saveSocialuser(name:String, email:String){
+        userDefaults.set(email, forKey: userEmailKey)
+        userDefaults.set(name, forKey: firstNameKey)
+        userDefaults.set(true, forKey: userIsLoggedIn)
+    }
    
   func saveUserIsGuest(_ isGuest: Bool) {
     userDefaults.set(isGuest, forKey: userIsGuestKey)
@@ -81,10 +88,15 @@ func getUserId() -> Int? {
   func saveUserLastName(lastName: String?) {
     return userDefaults.setValue(lastName, forKey: lastNameKey)
   }
+//    func saveUserPhoto(userphoto: String) -> String?{
+//        return userDefaults.setValue(userphoto, forKey: userPhotoKey)
+//    }
 
   func getUserEmail() -> String? {
     return userDefaults.string(forKey: userEmailKey)
   }
+    
+   
   
   func getUserCompanyID() -> String? {
     return userDefaults.string(forKey: userCompanyIDKey)
@@ -100,6 +112,9 @@ func getUserId() -> Int? {
   func getUserStatus() -> String? {
     return userDefaults.string(forKey: userStatusKey)
   }
+    func getUserPhoto() -> String? {
+      return userDefaults.string(forKey: userPhotoKey)
+    }
   
   func clearUser() {
     userDefaults.removeObject(forKey: customerIdKey)

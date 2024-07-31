@@ -37,17 +37,29 @@ class ProfileDetailsTableViewCell: UITableViewCell {
     self.btnEdit.setCornerRadiusToButton2()
     
   }
-  func setData(){
-    let user = UserHelper.shared
-    if let desg = user.getUserDesignation() {
-      self.designation = desg
+//  func setData(){
+//    let user = UserHelper.shared
+//    if let desg = user.getUserDesignation() {
+//      self.designation = desg
+//    }
+//    self.lblName.text = user.getFullname()
+//    self.lblCompanyName.text = user.getUserCompanyID()
+//    self.lblEmail.text = user.getUserEmail()
+//    self.lblDesignation.text = self.designation
+//    self.lblPhoneNo.text = ""
+//  }
+    func setData(myProfileDetails : ProfileData){
+        self.lblName.text = "\(myProfileDetails.firstName ?? "") \(myProfileDetails.lastName ?? "")"
+        self.lblCompanyName.text = myProfileDetails.companyName
+        self.lblEmail.text = myProfileDetails.email
+        self.lblDesignation.text = myProfileDetails.designation
+        self.lblPhoneNo.text = myProfileDetails.phone
+        
+        if let photoURLString = myProfileDetails.photo, !photoURLString.isEmpty {
+            let url = URL(string: imageBasePath + photoURLString)
+            self.imgProfile.kf.setImage(with: url)
+        }
     }
-    self.lblName.text = user.getFullname()
-    self.lblCompanyName.text = user.getUserCompanyID()
-    self.lblEmail.text = user.getUserEmail()
-    self.lblDesignation.text = self.designation
-    self.lblPhoneNo.text = ""
-  }
   
   @IBAction func btnEditAction(_ sender: Any) {
     delegate?.sendDetails()

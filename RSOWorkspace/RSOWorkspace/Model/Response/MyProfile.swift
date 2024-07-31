@@ -16,6 +16,7 @@ struct ProfileData: Codable {
     let lastName: String?
     let email: String?
     let phone: String?
+    var photo :String?
     let designation: String?
     let rewardPoints: Int?
     let membershipName: String?
@@ -27,6 +28,7 @@ struct ProfileData: Codable {
         case lastName = "last_name"
         case email
         case phone
+        case photo
         case designation
         case rewardPoints = "reward_points"
         case membershipName = "membership_name"

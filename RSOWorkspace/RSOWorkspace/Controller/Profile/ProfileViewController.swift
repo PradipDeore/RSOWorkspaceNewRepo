@@ -123,8 +123,9 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
         case .profileDetails:
             if let profileDetailsCell = cell as? ProfileDetailsTableViewCell {
                 profileDetailsCell.delegate = self
-                //only one object in response for member
-                profileDetailsCell.setData()
+                if let myProfileDetails = myProfileResponse?.data{
+                    profileDetailsCell.setData(myProfileDetails:  myProfileDetails)
+                }
                 return profileDetailsCell
             }
         case .changePassword:
@@ -163,10 +164,14 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
         switch section {
         case .changePassword:
             let changePasswordVC = UIViewController.createController(storyBoard: .Profile, ofType: ChangePasswordViewController.self)
-            //self.navigationController?.pushViewController(changePasswordVC, animated: true)
             changePasswordVC.modalPresentationStyle = .overFullScreen
             changePasswordVC.modalTransitionStyle = .crossDissolve
             self.present(changePasswordVC,animated: true)
+        case .paymentMethod:
+            let paymentMethodVC = UIViewController.createController(storyBoard: .Profile, ofType: AddPaymentMethodViewController.self)
+            paymentMethodVC.modalPresentationStyle = .overFullScreen
+            paymentMethodVC.modalTransitionStyle = .crossDissolve
+            self.present(paymentMethodVC,animated: true)
         default:
             break
         }
@@ -192,7 +197,8 @@ extension ProfileViewController:editProfileDelegate{
         let firstName = myProfileResponse?.data.firstName ?? ""
         let lastName = myProfileResponse?.data.lastName ?? ""
         let designation = myProfileResponse?.data.designation ?? ""
-        
+        let photo =  myProfileResponse?.data.photo ?? ""
+
         print("Sending details to UpdateProfileViewController")
         print("firstName:", firstName)
         print("lastName:", lastName)
@@ -202,6 +208,7 @@ extension ProfileViewController:editProfileDelegate{
         editProfileVC.firstName = firstName
         editProfileVC.lastName = lastName
         editProfileVC.designation = designation
+        editProfileVC.imgphotoUrl = photo
         editProfileVC.dismissDelegate = self
         editProfileVC.modalPresentationStyle = .overFullScreen
         editProfileVC.modalTransitionStyle = .crossDissolve

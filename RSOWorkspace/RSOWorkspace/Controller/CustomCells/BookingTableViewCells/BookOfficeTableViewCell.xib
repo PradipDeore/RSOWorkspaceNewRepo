@@ -33,7 +33,7 @@
                         <rect key="frame" x="25" y="0.0" width="270" height="200"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Book an Office" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3YU-jk-Ev8">
-                                <rect key="frame" x="25" y="10" width="182" height="28"/>
+                                <rect key="frame" x="25" y="12" width="182" height="28"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="182" id="VIM-9d-EGj"/>
                                     <constraint firstAttribute="height" constant="28" id="giq-1d-4wy"/>
@@ -50,7 +50,7 @@
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ads-id-7tl" customClass="RSOButton" customModule="RSOWorkspace" customModuleProvider="target">
-                                <rect key="frame" x="25" y="98" width="180" height="22"/>
+                                <rect key="frame" x="25" y="80" width="180" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="22" id="5H7-cw-raj"/>
                                     <constraint firstAttribute="width" constant="180" id="pbY-l7-SXp"/>
@@ -65,7 +65,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pwn-Qj-sPG" customClass="RSOButton" customModule="RSOWorkspace" customModuleProvider="target">
-                                <rect key="frame" x="25" y="145" width="180" height="22"/>
+                                <rect key="frame" x="25" y="127" width="180" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="22" id="YIj-au-Q0W"/>
                                     <constraint firstAttribute="width" constant="180" id="dlb-sM-TjY"/>
@@ -86,10 +86,10 @@
                             <constraint firstAttribute="trailing" secondItem="ZNz-eX-Yju" secondAttribute="trailing" constant="20" id="TQS-01-UVo"/>
                             <constraint firstItem="Pwn-Qj-sPG" firstAttribute="top" secondItem="ads-id-7tl" secondAttribute="bottom" constant="25" id="ZdS-zV-ZhL"/>
                             <constraint firstItem="Pwn-Qj-sPG" firstAttribute="leading" secondItem="wGk-Tr-05d" secondAttribute="leading" constant="25" id="ZrA-yr-oGs"/>
-                            <constraint firstItem="3YU-jk-Ev8" firstAttribute="top" secondItem="wGk-Tr-05d" secondAttribute="top" constant="10" id="aGb-xt-1JK"/>
+                            <constraint firstItem="3YU-jk-Ev8" firstAttribute="top" secondItem="wGk-Tr-05d" secondAttribute="top" constant="12" id="aGb-xt-1JK"/>
                             <constraint firstItem="3YU-jk-Ev8" firstAttribute="leading" secondItem="wGk-Tr-05d" secondAttribute="leading" constant="25" id="iu8-My-Fa1"/>
                             <constraint firstItem="ZNz-eX-Yju" firstAttribute="top" secondItem="wGk-Tr-05d" secondAttribute="top" constant="10" id="l9a-lK-FUb"/>
-                            <constraint firstItem="ads-id-7tl" firstAttribute="top" secondItem="3YU-jk-Ev8" secondAttribute="bottom" constant="60" id="vBf-Cb-DyM"/>
+                            <constraint firstItem="ads-id-7tl" firstAttribute="top" secondItem="3YU-jk-Ev8" secondAttribute="bottom" constant="40" id="vBf-Cb-DyM"/>
                             <constraint firstAttribute="bottom" secondItem="Pwn-Qj-sPG" secondAttribute="bottom" constant="20" id="yLg-5C-vQQ"/>
                         </constraints>
                         <variation key="default">

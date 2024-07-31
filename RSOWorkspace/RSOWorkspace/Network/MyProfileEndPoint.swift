@@ -19,7 +19,7 @@ extension MyProfileEndPoint: EndPointType {
         case .myProfile:
             return "my-profile"
         case .updateProfile:
-            return "my-profile-update"
+            return "update-profile"
         case .changePassword:
             return "change-password"
         }

@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import FirebaseCore
+import FirebaseAuth
 
 class SideMenuMainViewController: UIViewController,RSOTabCoordinated {
     
@@ -99,6 +101,7 @@ class SideMenuMainViewController: UIViewController,RSOTabCoordinated {
     }
     
     func showMenu() {
+ 
         //sideMenuShadowView.isHidden = false
         UIView.animate(withDuration: 0.5, animations: {
             self.sideMenuShadowView.alpha = 0.4
@@ -113,6 +116,9 @@ class SideMenuMainViewController: UIViewController,RSOTabCoordinated {
             self.view.layoutIfNeeded()
         }) { [self] _ in
             self.isExpanded = true
+            DispatchQueue.main.async {
+                self.sideMenuViewController.refreshMenuList()
+            }
         }
     }
     
@@ -147,12 +153,11 @@ extension SideMenuMainViewController: SideMenuViewControllerDelegate {
       self.coordinator?.hideTopViewForHome(isHidden: true)
         switch title {
             
-        case "My Profile": // My Profile
+        case "My Profile":
             let profileVC = UIViewController.createController(storyBoard: .Profile, ofType: ProfileViewController.self)
           menuNavVC?.pushViewController(profileVC, animated: true)
-        case "Dashboard": // My Profile
-            let dashboardVC = UIViewController.createController(storyBoard: .Dashboard, ofType: SideMenuDashboardViewController.self)
-          menuNavVC?.pushViewController(dashboardVC, animated: true)
+        case "Dashboard":
+            RSOTabBarViewController.presentAsRootController()
         case "Schedule Visitors": // Scheduled Visitors
             let scheduleVisitorsVC = UIViewController.createController(storyBoard: .VisitorManagement, ofType: ScheduleVisitorsViewController.self)
           menuNavVC?.pushViewController(scheduleVisitorsVC, animated: true)
@@ -186,7 +191,28 @@ extension SideMenuMainViewController: SideMenuViewControllerDelegate {
           menuNavVC?.pushViewController(aboutUsVC, animated: true)
            // Logout
         case "Logout":
-            self.logout()
+            // Get the current user
+                if let user = Auth.auth().currentUser {
+                    let isGoogleUser = user.providerData.contains { provider in
+                        return provider.providerID == "google.com"
+                    }
+
+                    if isGoogleUser {
+                        let firebaseAuth = Auth.auth()
+                        do {
+                            try firebaseAuth.signOut()
+                            self.logout()
+                        } catch let signOutError as NSError {
+                            print("Error signing out from Google: %@", signOutError)
+                        }
+                    } else {
+                        // Normal logout for other types of login
+                        self.logout()
+                    }
+                } else {
+                    // Handle case where no user is logged in (if necessary)
+                    print("No user is currently logged in.")
+                }
         default:
             break
         }

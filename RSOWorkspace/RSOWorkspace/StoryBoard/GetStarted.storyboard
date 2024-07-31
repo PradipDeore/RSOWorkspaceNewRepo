@@ -62,10 +62,10 @@
                                 </constraints>
                             </view>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="eTN-Iv-kyO">
-                                <rect key="frame" x="40" y="79" width="132" height="21"/>
+                                <rect key="frame" x="40" y="79" width="120" height="40"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="132" id="8rs-oo-ocV"/>
-                                    <constraint firstAttribute="height" constant="21" id="xng-2E-wUG"/>
+                                    <constraint firstAttribute="width" constant="120" id="8rs-oo-ocV"/>
+                                    <constraint firstAttribute="height" constant="40" id="xng-2E-wUG"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your flexible workspace" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="chD-4l-e9G">
@@ -233,10 +233,10 @@
                                 </constraints>
                             </view>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="TqX-1J-jbo">
-                                <rect key="frame" x="40" y="79" width="132" height="21"/>
+                                <rect key="frame" x="40" y="79" width="120" height="40"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="13w-VU-PL8"/>
-                                    <constraint firstAttribute="width" constant="132" id="mId-KJ-zHg"/>
+                                    <constraint firstAttribute="height" constant="40" id="13w-VU-PL8"/>
+                                    <constraint firstAttribute="width" constant="120" id="mId-KJ-zHg"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your flexible workspace" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BIC-ro-YbJ" userLabel="Your flexible workspace">
@@ -427,10 +427,10 @@
                                 </constraints>
                             </view>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="Azq-eZ-4vM">
-                                <rect key="frame" x="40" y="89" width="132" height="21"/>
+                                <rect key="frame" x="40" y="89" width="120" height="40"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="132" id="isT-Ew-yfp"/>
-                                    <constraint firstAttribute="height" constant="21" id="yVn-Qz-x3U"/>
+                                    <constraint firstAttribute="width" constant="120" id="isT-Ew-yfp"/>
+                                    <constraint firstAttribute="height" constant="40" id="yVn-Qz-x3U"/>
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gqd-9D-lm6">
@@ -825,10 +825,10 @@
                                                 </constraints>
                                             </view>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="Mqj-oy-rlU">
-                                                <rect key="frame" x="40" y="50" width="132" height="21"/>
+                                                <rect key="frame" x="40" y="50" width="120" height="40"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="132" id="gb9-hJ-xD4"/>
-                                                    <constraint firstAttribute="height" constant="21" id="sR8-cK-uxc"/>
+                                                    <constraint firstAttribute="width" constant="120" id="gb9-hJ-xD4"/>
+                                                    <constraint firstAttribute="height" constant="40" id="sR8-cK-uxc"/>
                                                 </constraints>
                                             </imageView>
                                         </subviews>
@@ -911,11 +911,11 @@
                                     <constraint firstItem="Jii-UX-H1J" firstAttribute="top" secondItem="SIk-z0-7t0" secondAttribute="top" constant="160" id="VNr-Qb-h5m"/>
                                 </constraints>
                             </view>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="sZv-t8-lz6">
-                                <rect key="frame" x="40" y="89" width="132" height="21"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="sZv-t8-lz6">
+                                <rect key="frame" x="40" y="89" width="120" height="40"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="132" id="Q2u-u8-gLk"/>
-                                    <constraint firstAttribute="height" constant="21" id="S3m-WE-MQ2"/>
+                                    <constraint firstAttribute="width" constant="120" id="Q2u-u8-gLk"/>
+                                    <constraint firstAttribute="height" constant="40" id="S3m-WE-MQ2"/>
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="15S-zH-Jxs">
@@ -1084,7 +1084,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Logo" width="316" height="50"/>
+        <image name="Logo" width="100" height="40"/>
         <image name="backArrow" width="27" height="24"/>
         <image name="circle1" width="228" height="386"/>
         <image name="circle2" width="412" height="628"/>

@@ -48,7 +48,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Excellent" translatesAutoresizingMaskIntoConstraints="NO" id="QIG-1f-t82">
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Excellent" translatesAutoresizingMaskIntoConstraints="NO" id="QIG-1f-t82">
                                 <rect key="frame" x="25" y="192" width="60" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="60" id="bDh-BR-rx6"/>
@@ -61,7 +61,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="250" id="gbq-Mb-oze"/>
                                 </constraints>
-                                <color key="textColor" red="0.72941176470588232" green="0.72941176470588232" blue="0.72941176470588232" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" name="000000"/>
                                 <fontDescription key="fontDescription" name="Inter-Medium" family="Inter" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
@@ -88,14 +88,14 @@
                                 <color key="textColor" red="0.1019607843" green="0.1019607843" blue="0.1019607843" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Good" translatesAutoresizingMaskIntoConstraints="NO" id="StD-ul-Hyu">
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Good" translatesAutoresizingMaskIntoConstraints="NO" id="StD-ul-Hyu">
                                 <rect key="frame" x="93" y="192" width="60" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="60" id="ECf-Vq-frS"/>
                                     <constraint firstAttribute="height" constant="60" id="vd5-3J-YcF"/>
                                 </constraints>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Average" translatesAutoresizingMaskIntoConstraints="NO" id="8Aq-YT-JaF">
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Average" translatesAutoresizingMaskIntoConstraints="NO" id="8Aq-YT-JaF">
                                 <rect key="frame" x="161" y="192" width="60" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="P2P-sx-Ln8"/>
@@ -112,7 +112,7 @@
                                 <color key="textColor" red="0.1019607843" green="0.1019607843" blue="0.1019607843" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Poor" translatesAutoresizingMaskIntoConstraints="NO" id="aQf-ka-aNI">
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Poor" translatesAutoresizingMaskIntoConstraints="NO" id="aQf-ka-aNI">
                                 <rect key="frame" x="229" y="192" width="60" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="BJd-bD-fSJ"/>
@@ -129,7 +129,7 @@
                                 <color key="textColor" red="0.1019607843" green="0.1019607843" blue="0.1019607843" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="verypoor" translatesAutoresizingMaskIntoConstraints="NO" id="h3F-g5-XRz">
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="verypoor" translatesAutoresizingMaskIntoConstraints="NO" id="h3F-g5-XRz">
                                 <rect key="frame" x="297" y="192" width="60" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="2he-N6-a8T"/>
@@ -272,7 +272,11 @@
                         </variation>
                     </view>
                     <connections>
-                        <outlet property="imgEmojies" destination="QIG-1f-t82" id="lfU-LG-89J"/>
+                        <outlet property="imgAverage" destination="8Aq-YT-JaF" id="fxt-aL-1ix"/>
+                        <outlet property="imgExcellent" destination="QIG-1f-t82" id="lfU-LG-89J"/>
+                        <outlet property="imgGood" destination="StD-ul-Hyu" id="wFj-LC-5Pf"/>
+                        <outlet property="imgPoor" destination="aQf-ka-aNI" id="onW-CC-1Sa"/>
+                        <outlet property="imgVeryPoor" destination="h3F-g5-XRz" id="jWf-F3-7m5"/>
                         <outlet property="provideDetailsTextView" destination="Agg-j5-rwf" id="5Vf-MW-nXI"/>
                     </connections>
                 </viewController>

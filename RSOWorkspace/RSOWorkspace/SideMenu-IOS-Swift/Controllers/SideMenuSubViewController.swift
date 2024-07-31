@@ -30,6 +30,7 @@ class SideMenuSubViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        headerImageView.setRounded()
         roundedView.layer.cornerRadius = 35
         // TableView
         self.sideMenuTableView.delegate = self
@@ -57,9 +58,23 @@ class SideMenuSubViewController: UIViewController {
         fetchMyProfiles()
         
     }
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+
+    func refreshMenuList(){
+        fetchMyProfiles()
+        menu = createMenu()
+        self.sideMenuTableView.backgroundColor = .BFBFBF
+        self.sideMenuTableView.separatorStyle = .none
         
+        // Set Highlighted Cell
+        DispatchQueue.main.async {
+            let defaultRow = IndexPath(row: self.defaultHighlightedCell, section: 0)
+            self.sideMenuTableView.selectRow(at: defaultRow, animated: false, scrollPosition: .none)
+        }
+        
+        // Footer
+        self.footerLabel.textColor = ._2_C_2_C_2_C
+        self.footerLabel.font = RSOFont.poppins(size: 16, type: .SemiBold)
+        self.sideMenuTableView.reloadData()
     }
     func createMenu() -> [SideMenuModel] {
         var menu: [SideMenuModel] = [
@@ -71,7 +86,9 @@ class SideMenuSubViewController: UIViewController {
         menu.append(SideMenuModel(title: "My Visitors"))
         menu.append(SideMenuModel(title: ""))
         menu.append(SideMenuModel(title: "Amenities"))
-        menu.append(SideMenuModel(title: "Payments"))
+        if !UserHelper.shared.isUserExplorer(){
+            menu.append(SideMenuModel(title: "Payments"))
+        }
         menu.append(SideMenuModel(title: ""))
         menu.append(SideMenuModel(title: "Feedback"))
         menu.append(SideMenuModel(title: "FAQs"))
@@ -79,7 +96,9 @@ class SideMenuSubViewController: UIViewController {
         menu.append(SideMenuModel(title: "Locations"))
         menu.append(SideMenuModel(title: "About Us"))
         menu.append(SideMenuModel(title: ""))
-        menu.append(SideMenuModel(title: "Logout"))
+        if !UserHelper.shared.isUserExplorer(){
+            menu.append(SideMenuModel(title: "Logout"))
+        }
         
         return menu
     }
@@ -103,6 +122,10 @@ class SideMenuSubViewController: UIViewController {
                         let companyName = self.myProfileResponse?.data.companyName
                         if let companyName = companyName{
                             self.lblCompanyName.text = "\(companyName)"
+                        }
+                        if let imageUrl = self.myProfileResponse?.data.photo, !imageUrl.isEmpty{
+                            let url = URL(string: imageBasePath + imageUrl)
+                            self.headerImageView.kf.setImage(with: url)
                         }
                     }
                     self.eventHandler?(.dataLoaded)
@@ -138,18 +161,9 @@ extension SideMenuSubViewController: UITableViewDataSource {
         cell.titleLabel.text = self.menu[indexPath.row].title
         // Add horizontal line after every 2 rows
         if self.menu[indexPath.row].title.isEmpty {
-            let lineView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.width, height: 2))
-            lineView.backgroundColor = .white
-            cell.contentView.addSubview(lineView)
-            
-            // Set constraints for the line view
-            lineView.translatesAutoresizingMaskIntoConstraints = false
-            NSLayoutConstraint.activate([
-                lineView.leadingAnchor.constraint(equalTo: cell.contentView.leadingAnchor,constant: 60),
-                lineView.trailingAnchor.constraint(equalTo: cell.contentView.trailingAnchor, constant: -40),
-                lineView.centerYAnchor.constraint(equalTo: cell.contentView.centerYAnchor),
-                lineView.heightAnchor.constraint(equalToConstant: 2)
-            ])
+            cell.horizontalLineView.isHidden = false
+        }else{
+            cell.horizontalLineView.isHidden = true
         }
         return cell
     }

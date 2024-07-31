@@ -35,15 +35,20 @@ class MembershipPaymentDetailsViewController: UIViewController, MembershipNaviga
           DispatchQueue.main.async {
             RSOLoader.removeLoader()
             guard let self = self else { return }
+              
             switch response {
-            case .success(let response):
-              var PaymentRequestModel = NiPaymentRequestModel()
-              let floatValue = Float(requestModel.monthlyCost) ?? 0.0
-              PaymentRequestModel.total = Int(floatValue)
-              PaymentRequestModel.email = UserHelper.shared.getUserEmail()
-              PaymentNetworkManager.shared.currentViewController = self
-              PaymentNetworkManager.shared.currentNavigationController = self.navigationController
-              PaymentNetworkManager.shared.makePayment(requestModel: PaymentRequestModel)
+            case .success(let responseObj):
+                if let errormsg = responseObj.error, !errormsg.isEmpty  {
+                    RSOToastView.shared.show("\(responseObj.message ?? "something bad happened")", duration: 2.0, position: .center)
+                }else{
+                    var PaymentRequestModel = NiPaymentRequestModel()
+                    let floatValue = Float(requestModel.monthlyCost) ?? 0.0
+                    PaymentRequestModel.total = Int(floatValue)
+                    PaymentRequestModel.email = UserHelper.shared.getUserEmail()
+                    PaymentNetworkManager.shared.currentViewController = self
+                    PaymentNetworkManager.shared.currentNavigationController = self.navigationController
+                    PaymentNetworkManager.shared.makePayment(requestModel: PaymentRequestModel)
+                }
             case .failure(let error):
               //  Unsuccessful
               RSOToastView.shared.show("\(error.localizedDescription)", duration: 2.0, position: .center)
