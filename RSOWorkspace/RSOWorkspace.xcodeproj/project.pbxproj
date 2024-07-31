@@ -214,6 +214,9 @@
 		58ACDB3B2B78D10A0041B755 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58ACDB3A2B78D10A0041B755 /* Constants.swift */; };
 		58AE87B72C50FF6D004A99D6 /* CouponDetailsResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AE87B62C50FF6D004A99D6 /* CouponDetailsResponseModel.swift */; };
 		58AE87B92C513591004A99D6 /* PaymentNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AE87B82C513591004A99D6 /* PaymentNetworkManager.swift */; };
+		58B33B7B2C5A051200DBEA34 /* SocialLoginRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B33B7A2C5A051200DBEA34 /* SocialLoginRequestModel.swift */; };
+		58B33B7D2C5A05AD00DBEA34 /* SocialLoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B33B7C2C5A05AD00DBEA34 /* SocialLoginResponse.swift */; };
+		58B33B7F2C5A067100DBEA34 /* SocialLoginEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B33B7E2C5A067100DBEA34 /* SocialLoginEndPoint.swift */; };
 		58B405FB2BCCEABC0045DD4C /* StoreRoomBookingRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B405FA2BCCEABC0045DD4C /* StoreRoomBookingRequest.swift */; };
 		58B405FD2BCCEC460045DD4C /* StoreRoomBookingResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B405FC2BCCEC460045DD4C /* StoreRoomBookingResponse.swift */; };
 		58B405FF2BCCF9810045DD4C /* DeskBookingEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B405FE2BCCF9810045DD4C /* DeskBookingEndPoint.swift */; };
@@ -660,6 +663,9 @@
 		58ACDB3A2B78D10A0041B755 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		58AE87B62C50FF6D004A99D6 /* CouponDetailsResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponDetailsResponseModel.swift; sourceTree = "<group>"; };
 		58AE87B82C513591004A99D6 /* PaymentNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentNetworkManager.swift; sourceTree = "<group>"; };
+		58B33B7A2C5A051200DBEA34 /* SocialLoginRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialLoginRequestModel.swift; sourceTree = "<group>"; };
+		58B33B7C2C5A05AD00DBEA34 /* SocialLoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialLoginResponse.swift; sourceTree = "<group>"; };
+		58B33B7E2C5A067100DBEA34 /* SocialLoginEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialLoginEndPoint.swift; sourceTree = "<group>"; };
 		58B405FA2BCCEABC0045DD4C /* StoreRoomBookingRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreRoomBookingRequest.swift; sourceTree = "<group>"; };
 		58B405FC2BCCEC460045DD4C /* StoreRoomBookingResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreRoomBookingResponse.swift; sourceTree = "<group>"; };
 		58B405FE2BCCF9810045DD4C /* DeskBookingEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeskBookingEndPoint.swift; sourceTree = "<group>"; };
@@ -1019,6 +1025,7 @@
 				58CF207E2C53C99F0070538A /* ShortTermOfficeBookingEndPoint.swift */,
 				EE3B78232C54BB0E00706F16 /* MembershipEndPoint.swift */,
 				58F573A22C57CE58006F6594 /* ExploreButtonEndPoint.swift */,
+				58B33B7E2C5A067100DBEA34 /* SocialLoginEndPoint.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -1586,6 +1593,7 @@
 				58F573A62C57D129006F6594 /* exploreResponse.swift */,
 				58049D9B2C5908CD00314E7A /* changePasswordResponseModel.swift */,
 				58049D9F2C591BE000314E7A /* FeedbackResponseModel.swift */,
+				58B33B7C2C5A05AD00DBEA34 /* SocialLoginResponse.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -1620,6 +1628,7 @@
 				58F573A42C57D0B6006F6594 /* exploreRequest.swift */,
 				58049D992C59085800314E7A /* ChangePasswordRequestModel.swift */,
 				58049D9D2C591BCF00314E7A /* FeedbackRequestModel.swift */,
+				58B33B7A2C5A051200DBEA34 /* SocialLoginRequestModel.swift */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -2204,6 +2213,7 @@
 				58A7FBD62BA0B89A00B48DFF /* RoomDetailResponse.swift in Sources */,
 				587DA92E2BA43F1B00D27769 /* OnDemandServicesTableViewCell.swift in Sources */,
 				58BE90C32B9F0551001FCE54 /* RSOCollectionItem.swift in Sources */,
+				58B33B7B2C5A051200DBEA34 /* SocialLoginRequestModel.swift in Sources */,
 				582A272F2C462E7A00CD5729 /* AddPaymentMethodTableViewCell.swift in Sources */,
 				58E6E96C2B89E0E500EB3600 /* RSOMarketPlaceCollectionView.swift in Sources */,
 				586FA70D2BBC354E00EA2772 /* GalleryTableViewCell.swift in Sources */,
@@ -2280,6 +2290,7 @@
 				58D2D1CD2C54BF57008425DA /* ConfirmShortTermBookingViewController.swift in Sources */,
 				58374A452B84BC2100CA34C5 /* DeskCollectionViewCell.swift in Sources */,
 				583403982B99A13E00318BB8 /* PayWithRewardPointsTableViewCell.swift in Sources */,
+				58B33B7D2C5A05AD00DBEA34 /* SocialLoginResponse.swift in Sources */,
 				58F573A32C57CE58006F6594 /* ExploreButtonEndPoint.swift in Sources */,
 				589FB6872B763EBA0067255E /* GetStartedViewController.swift in Sources */,
 				583D9E032B90B0300073AAC3 /* SelectDateTableViewCell.swift in Sources */,
@@ -2469,6 +2480,7 @@
 				58B6A7CA2BCE5412008A2286 /* StatusTypeEnum.swift in Sources */,
 				58BE5E682B8C6FBF002244F5 /* RSOMeetingRoomsCollectionView.swift in Sources */,
 				58BCBC182C48F27000465381 /* FAQDescriptionTableViewCell.swift in Sources */,
+				58B33B7F2C5A067100DBEA34 /* SocialLoginEndPoint.swift in Sources */,
 				58F5739E2C578A47006F6594 /* OfficeTypeTableViewCell.swift in Sources */,
 				58ED2D1F2B8F4C1D004D06C8 /* MyBookingEndPoint.swift in Sources */,
 				EEE105B52C49256B007ECE4D /* RSOLoader.swift in Sources */,

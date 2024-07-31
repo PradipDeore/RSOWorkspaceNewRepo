@@ -37,7 +37,12 @@ class UserHelper {
     userDefaults.set(user.status, forKey: userStatusKey)
     userDefaults.set(true, forKey: userIsLoggedIn)
   }
-    
+
+    func saveSocialuser(name:String, email:String){
+        userDefaults.set(email, forKey: userEmailKey)
+        userDefaults.set(name, forKey: firstNameKey)
+        userDefaults.set(true, forKey: userIsLoggedIn)
+    }
    
   func saveUserIsGuest(_ isGuest: Bool) {
     userDefaults.set(isGuest, forKey: userIsGuestKey)

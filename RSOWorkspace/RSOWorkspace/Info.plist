@@ -41,5 +41,24 @@
     <string>304176592378745</string>
     <key>FacebookDisplayName</key>
     <string>social login rso</string>
+    <key>LSApplicationQueriesSchemes</key>
+        <array>
+            <string>fbapi</string>
+            <string>fbapi20130214</string>
+            <string>fbapi20130410</string>
+            <string>fbapi20130702</string>
+            <string>fbapi20131010</string>
+            <string>fbapi20131219</string>
+            <string>fbapi20140410</string>
+            <string>fbapi20140116</string>
+            <string>fbapi20150313</string>
+            <string>fbapi20150629</string>
+            <string>fbauth</string>
+            <string>fbauth2</string>
+            <string>fb-messenger-share-api</string>
+            <string>fbshareextension</string>
+        </array>
+        <key>FacebookClientToken</key>
+        <string>4550608060f01c09db8a4ece4372b423</string>
 </dict>
 </plist>

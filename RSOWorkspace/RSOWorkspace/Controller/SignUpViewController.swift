@@ -30,43 +30,45 @@ class SignUpViewController: UIViewController {
   }
     @objc func facebookLoginAction() {
         let loginManager = LoginManager()
-        loginManager.logIn(permissions: ["public_profile", "email"], from: self) { (result, error) in
-            if let error = error {
-                print("Failed to login: \(error.localizedDescription)")
-                return
+            loginManager.logIn(permissions: ["public_profile", "email"], from: self) { [weak self] (result, error) in
+                guard let self = self else { return }
+                
+                if let error = error {
+                    print("Failed to login: \(error.localizedDescription)")
+                    return
+                }
+                
+                guard let result = result, !result.isCancelled else {
+                    print("User cancelled login")
+                    return
+                }
+                
+                self.fetchFacebookUserProfile()
             }
-            
-            guard let result = result, !result.isCancelled else {
-                print("User cancelled login")
-                return
-            }
-            
-            self.fetchFacebookUserProfile()
         }
-    }
 
-    func fetchFacebookUserProfile() {
-        let request = GraphRequest(graphPath: "me", parameters: ["fields": "id, name, email"])
-        request.start { _, result, error in
-            if let error = error {
-                print("Failed to fetch user profile: \(error.localizedDescription)")
-                return
-            }
-            
-            if let result = result as? [String: Any] {
-                print("User profile: \(result)")
-                if let email = result["email"] as? String, let name = result["name"] as? String {
-                    self.handleFacebookLoginSuccess(email: email, name: name)
+        func fetchFacebookUserProfile() {
+            let request = GraphRequest(graphPath: "me", parameters: ["fields": "id, name, email"])
+            request.start { _, result, error in
+                if let error = error {
+                    print("Failed to fetch user profile: \(error.localizedDescription)")
+                    return
+                }
+                
+                if let result = result as? [String: Any] {
+                    print("User profile: \(result)")
+                    if let id = result["id"] as? String, let email = result["email"] as? String, let name = result["name"] as? String {
+                        UserHelper.shared.saveSocialuser(name: name, email: email)
+                        self.handleFacebookLoginSuccess(facebookId: id, email: email, name: name)
+                    }
                 }
             }
         }
-    }
 
-    func handleFacebookLoginSuccess(email: String, name: String) {
-        // Handle the Facebook login success, e.g., navigate to another screen or call your signup API
-        print("Successfully logged in with email: \(email), name: \(name)")
-        // You can call your signUpAPI method here or handle user navigation
-    }
+        func handleFacebookLoginSuccess(facebookId: String, email: String, name: String) {
+               let requestModel = SocailLoginRequestModel(auth_type: "facebook", auth_id: facebookId)
+               self.socialloginAPI(requestModel: requestModel)
+        }
 
   func addEventHandler() {
     self.eventHandler = { [weak self] (event, message) in
@@ -114,6 +116,44 @@ class SignUpViewController: UIViewController {
         }
       }
   }
+    func socialloginAPI(requestModel:SocailLoginRequestModel) {
+      RSOLoader.showLoader()
+       // let requestModel = SocailLoginRequestModel(requestModel: requestModel)
+      APIManager.shared.request(
+        modelType: SocialLoginResponse.self,
+        type: SocialLoginEndPoint.socialLogin(requestModel: requestModel)) { response in
+          switch response {
+          case .success(let response):
+            //save token in user defaults
+              if let token = response.token {
+              // Save data to user default
+              // -------------------  -------------------
+              RSOToken.shared.save(token: token)
+              //UserHelper.shared.saveUser(user)
+              // -------------------  -------------------
+              DispatchQueue.main.async {
+                RSOLoader.removeLoader()
+                // Login successful
+                RSOToastView.shared.show("Login successful!", duration: 2.0, position: .center)
+              }
+                  self.eventHandler?(.dataLoaded, "data loaded" )
+            }else{
+              DispatchQueue.main.async {
+                RSOLoader.removeLoader()
+                // Login successful
+                RSOToastView.shared.show(response.message ?? "LogIn Failed!", duration: 2.0, position: .center)
+              }
+            }
+          case .failure(let error):
+              self.eventHandler?(.error(error), error.localizedDescription)
+            DispatchQueue.main.async {
+              RSOLoader.removeLoader()
+              // Login successful
+              RSOToastView.shared.show("Login failed!", duration: 2.0, position: .center)
+            }
+          }
+        }
+    }
   @IBAction func btnSubmitTappedAction(_ sender: Any) {
     
     guard let email = txtEmail.text, !email.isEmpty else {
