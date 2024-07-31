@@ -7,8 +7,20 @@
 
 import UIKit
 import Toast_Swift
+
+protocol LoginScreenActionDelegate: AnyObject {
+  func loginScreenDismissed()
+}
+class CurrentLoginType {
+  static let shared = CurrentLoginType()
+  private init() {
+    self.isExplorerLogin = false
+  }
+  var isExplorerLogin: Bool
+  var explorerNavigationController: UINavigationController?
+  weak var loginScreenDelegate:LoginScreenActionDelegate?
+}
 class LogInViewController: UIViewController {
-  
     @IBOutlet weak var txtEmail: RSOTextField!
     @IBOutlet weak var txtPassword: RSOTextField!
     @IBOutlet weak var btnLogIn: RSOButton!
@@ -44,7 +56,12 @@ class LogInViewController: UIViewController {
               RSOLoader.removeLoader()
               // Login successful
               RSOToastView.shared.show("Login successful!", duration: 2.0, position: .center)
-              RSOTabBarViewController.presentAsRootController()
+              if CurrentLoginType.shared.isExplorerLogin {
+                CurrentLoginType.shared.loginScreenDelegate?.loginScreenDismissed()
+                CurrentLoginType.shared.explorerNavigationController?.dismiss(animated: true)
+              } else {
+                RSOTabBarViewController.presentAsRootController()
+              }
             }
             self.eventHandler?(.dataLoaded)
           }else{
@@ -100,7 +117,13 @@ class LogInViewController: UIViewController {
         let signUpVC = UIViewController.createController(storyBoard: .GetStarted, ofType: SignUpViewController.self)
         self.navigationController?.pushViewController(signUpVC, animated: true)
     }
-  
+  class func showLoginViewController() {
+    CurrentLoginType.shared.isExplorerLogin = true
+      // Create your RSOTabBarVC instance
+     let logInViewController = UIViewController.createController(storyBoard: .GetStarted, ofType:  LogInViewController.self)
+    CurrentLoginType.shared.explorerNavigationController = UINavigationController(rootViewController: logInViewController)
+    UIApplication.shared.topViewController?.present(CurrentLoginType.shared.explorerNavigationController!, animated: true)
+  }
 }
 extension LogInViewController {
     enum Event {

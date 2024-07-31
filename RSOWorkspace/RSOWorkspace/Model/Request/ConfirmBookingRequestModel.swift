@@ -31,29 +31,27 @@ struct ConfirmBookingRequestModel{
     return price
   }
   
-  //computed property
-  var timeDifferece : Float{
-    get {
-      let formatter = DateFormatter()
-      formatter.dateFormat = "HH:mm"
-      
-      if let startTimeDate = formatter.date(from: self.startTime),
-         let endTimeDate = formatter.date(from: self.endTime) {
-        print("startTimeDate",startTimeDate)
-        print("endTimeDate",endTimeDate)
-        let calendar = Calendar.current
-        let components = calendar.dateComponents([.hour], from: startTimeDate, to: endTimeDate)
-        
-        if let differenceInHours = components.hour {
-          return Float(differenceInHours)
-        }
+  var timeDifferece: Float {
+      get {
+          let formatter = DateFormatter()
+          formatter.dateFormat = "HH:mm"
+          if let startTimeDate = formatter.date(from: self.startTime),
+             let endTimeDate = formatter.date(from: self.endTime) {
+              let calendar = Calendar.current
+              let components = calendar.dateComponents([.hour], from: startTimeDate, to: endTimeDate)
+              
+              if let differenceInHours = components.hour {
+                  // Ensure the difference is at least 1 hour or more
+                  return max(Float(differenceInHours), 1.0)
+              }
+          }
+          return 1.0 // Default to 1 if there's an issue
       }
-      return 0.0
-    }
-    set{
-      
-    }
+      set {
+          // The setter is not used in this example. You can implement it if needed.
+      }
   }
+
   
   var totalOfAmenity: Float {
     var totalAmenityPrice: Float = 0.0

@@ -175,24 +175,12 @@ extension DashboardViewController {
 
 extension DashboardViewController: BookButtonActionDelegate {
   func showBookRoomDetailsVC(meetingRoomId: Int) {
-    // Implement your logic here
-    DispatchQueue.main.async {
-      if UserHelper.shared.isUserExplorer() {
-        GetStartedViewController.presentAsRootController()
-        return
-      }
-    }
   }
   // not used
   func showDeskBookingVC() {
   }
   func showBookMeetingRoomsVC() {
-    DispatchQueue.main.async {
-      if UserHelper.shared.isUserExplorer() {
-        GetStartedViewController.presentAsRootController()
-        return
-      }
-      
+ 
       if self.selectedButtonType == "Meeting Rooms" {
         let bookMeetingRoomVC = UIViewController.createController(storyBoard: .Booking, ofType: BookMeetingRoomViewController.self)
         bookMeetingRoomVC.coordinator = self.coordinator
@@ -203,7 +191,6 @@ extension DashboardViewController: BookButtonActionDelegate {
         self.navigationController?.pushViewController(bookOfficeVC, animated: true)
       }
     }
-  }
   
   func showLogInVC() {
     guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,

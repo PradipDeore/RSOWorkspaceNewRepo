@@ -107,10 +107,6 @@ extension BookingViewController: UITableViewDataSource, UITableViewDelegate {
     guard let section = BookingSection(rawValue: indexPath.section) else {
       return
     }
-    if UserHelper.shared.isUserExplorer() {
-      showLogInScreen()
-      return
-    }
     switch section {
     case .desk:
       let bookDeskVC = UIViewController.createController(storyBoard: .Booking, ofType: DeskBookingViewController.self)
@@ -136,20 +132,12 @@ extension BookingViewController: UITableViewDataSource, UITableViewDelegate {
 }
 extension BookingViewController:BookOfficeTableViewCellDelegate{
   func NavigateToShortTermOfficeBooking() {
-    if UserHelper.shared.isUserExplorer() {
-      showLogInScreen()
-      return
-    }
     let bookOfficeVC = UIViewController.createController(storyBoard: .OfficeBooking, ofType: ShortTermBookAnOfficeViewController.self)
     bookOfficeVC.coordinator = self.coordinator
     self.navigationController?.pushViewController(bookOfficeVC, animated: true)
   }
   
   func NavigateToLongTermOfficeBooking() {
-    if UserHelper.shared.isUserExplorer() {
-      showLogInScreen()
-      return
-    }
     let bookOfficeVC = UIViewController.createController(storyBoard: .Booking, ofType: LongTermOfficeBookingViewController.self)
     bookOfficeVC.coordinator = self.coordinator
     self.navigationController?.pushViewController(bookOfficeVC, animated: true)

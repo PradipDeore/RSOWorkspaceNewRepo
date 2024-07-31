@@ -297,6 +297,14 @@ extension PaymentViewController {
 
 extension PaymentViewController: ButtonPayNowTableViewCellDelegate {
     func btnPayNowTappedAction() {
+      
+      if bookingType != .meetingRoom {
+         if UserHelper.shared.isUserExplorer() {
+          CurrentLoginType.shared.loginScreenDelegate = self
+          LogInViewController.showLoginViewController()
+          return
+        }
+      }
         guard let obj = self.requestParameters else { return }
         
         switch bookingType {
@@ -342,4 +350,11 @@ extension PaymentViewController: ButtonPayNowTableViewCellDelegate {
             }
         }
     }
+}
+extension PaymentViewController: LoginScreenActionDelegate {
+  func loginScreenDismissed() {
+    DispatchQueue.main.async {
+      self.btnPayNowTappedAction()
+    }
+  }
 }

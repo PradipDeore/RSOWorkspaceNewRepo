@@ -152,6 +152,12 @@ extension ChooseAdditionalServicesViewController:ChooseAdditionalServicesCellDel
 extension ChooseAdditionalServicesViewController:CancelAndRequestButtonTableViewCellDelegate{
   
   func btnRequestTappedAction() {
+    
+    if UserHelper.shared.isUserExplorer() {
+      CurrentLoginType.shared.loginScreenDelegate = self
+      LogInViewController.showLoginViewController()
+      return
+    }
     let details = "RSO booking"
     //print("details=", details)
       paymentServiceManager.paymentTypeEntity = .room
@@ -166,3 +172,10 @@ extension ChooseAdditionalServicesViewController:CancelAndRequestButtonTableView
   
 }
 
+extension ChooseAdditionalServicesViewController: LoginScreenActionDelegate {
+  func loginScreenDismissed() {
+    DispatchQueue.main.async {
+      self.btnRequestTappedAction()
+    }
+  }
+}

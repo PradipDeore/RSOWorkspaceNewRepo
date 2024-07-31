@@ -12,6 +12,7 @@ class LaunchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
       if RSOToken.shared.isLoggedIn() {
+          
             RSOTabBarViewController.presentAsRootController()
         }else{
             GetStartedViewController.presentAsRootController()
