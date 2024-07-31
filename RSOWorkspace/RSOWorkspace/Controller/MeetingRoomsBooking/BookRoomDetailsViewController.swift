@@ -35,6 +35,7 @@ class BookRoomDetailsViewController: UIViewController {
     var locationId:Int = 0
     var locationName:String = ""
     var confirmBookingDetails = ConfirmBookingRequestModel()
+    var selectedConfigurationId: Int?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,7 +43,10 @@ class BookRoomDetailsViewController: UIViewController {
         coordinator?.hideBackButton(isHidden: false)
         coordinator?.setTitle(title: "Book a Meeting Room")
     }
-    
+    func didSelectConfiguration(withId id: Int) {
+            selectedConfigurationId = id
+            // Handle the selection, e.g., update UI or save data
+        }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         fetchRoomDetails(id: meetingId, requestModel: requestModel)
