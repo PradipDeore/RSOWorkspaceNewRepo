@@ -1842,22 +1842,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "3927F2CC-BDF1-4404-B83E-EFF82743BE9A"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "RSOWorkspace/Controller/Amenities/AmenitiesViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "168"
-            endingLineNumber = "168"
-            landmarkName = "tableView(_:cellForRowAt:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "589C07BE-9014-435F-BF20-193BAA5477EE"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
@@ -1865,8 +1849,8 @@
             filePath = "RSOWorkspace/Controller/Amenities/AmenitiesViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "220"
-            endingLineNumber = "220"
+            startingLineNumber = "227"
+            endingLineNumber = "227"
             landmarkName = "dropdownButtonTapped(selectedOption:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -1881,8 +1865,8 @@
             filePath = "RSOWorkspace/Controller/Amenities/AmenitiesViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "216"
-            endingLineNumber = "216"
+            startingLineNumber = "223"
+            endingLineNumber = "223"
             landmarkName = "dropdownButtonTapped(selectedOption:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -3698,8 +3682,8 @@
             filePath = "RSOWorkspace/Controller/Amenities/AmenitiesViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "283"
-            endingLineNumber = "283"
+            startingLineNumber = "290"
+            endingLineNumber = "290"
             landmarkName = "showLogInVC()"
             landmarkType = "7">
          </BreakpointContent>
@@ -3714,10 +3698,10 @@
             filePath = "RSOWorkspace/Controller/Amenities/AmenitiesViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "282"
-            endingLineNumber = "282"
-            landmarkName = "showLogInVC()"
-            landmarkType = "7">
+            startingLineNumber = "289"
+            endingLineNumber = "289"
+            landmarkName = "AmenitiesViewController"
+            landmarkType = "21">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -4107,8 +4091,8 @@
             filePath = "RSOWorkspace/SideMenu-IOS-Swift/Controllers/SideMenuSubViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "135"
-            endingLineNumber = "135"
+            startingLineNumber = "139"
+            endingLineNumber = "139"
             landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
             <Locations>

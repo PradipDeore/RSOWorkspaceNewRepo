@@ -147,12 +147,11 @@ extension SideMenuMainViewController: SideMenuViewControllerDelegate {
       self.coordinator?.hideTopViewForHome(isHidden: true)
         switch title {
             
-        case "My Profile": // My Profile
+        case "My Profile":
             let profileVC = UIViewController.createController(storyBoard: .Profile, ofType: ProfileViewController.self)
           menuNavVC?.pushViewController(profileVC, animated: true)
-        case "Dashboard": // My Profile
-            let dashboardVC = UIViewController.createController(storyBoard: .Dashboard, ofType: SideMenuDashboardViewController.self)
-          menuNavVC?.pushViewController(dashboardVC, animated: true)
+        case "Dashboard":
+            RSOTabBarViewController.presentAsRootController()
         case "Schedule Visitors": // Scheduled Visitors
             let scheduleVisitorsVC = UIViewController.createController(storyBoard: .VisitorManagement, ofType: ScheduleVisitorsViewController.self)
           menuNavVC?.pushViewController(scheduleVisitorsVC, animated: true)

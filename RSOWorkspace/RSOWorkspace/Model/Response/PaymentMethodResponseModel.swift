@@ -8,6 +8,5 @@
 import Foundation
 
 struct PaymentMethodResponseModel: Codable {
-    let status: Bool?
-    let message:String?
+    let success: String?
 }

@@ -14,6 +14,8 @@ class AddPaymentMethodViewController: UIViewController {
     @IBOutlet weak var txtCardNumber: RSOTextField!
     @IBOutlet weak var txtCardExpiryDate: RSOTextField!
     @IBOutlet weak var txtCardHolderName: RSOTextField!
+    @IBOutlet weak var txtCardtype: RSOTextField!
+   
     var eventHandler: ((_ event: Event) -> Void)?
     var addPaymentmethodData: PaymentMethodResponseModel?
     override func viewDidLoad() {
@@ -24,9 +26,9 @@ class AddPaymentMethodViewController: UIViewController {
     @IBAction func btnDismissView(_ sender: Any) {
         self.dismiss(animated: true)
     }
-    func cardStoreAPI(card_number:String, card_expiry:String) {
+    func cardStoreAPI(number:Int, expiry:String,card_holder_name:String,card_type:String,id:Int) {
         RSOLoader.showLoader()
-        let requestModel = PaymentMethodRequestModel(card_number: card_number, card_expiry: card_expiry)
+        let requestModel = PaymentMethodRequestModel(number: number, expiry: expiry, card_holder_name: card_holder_name, card_type: card_type, id: id)
         print("requestModel",requestModel)
         APIManager.shared.request(
             modelType: PaymentMethodResponseModel.self,
@@ -37,9 +39,10 @@ class AddPaymentMethodViewController: UIViewController {
                     //record Updated successfully
                     DispatchQueue.main.async {
                         RSOLoader.removeLoader()
-                        RSOToastView.shared.show("\(response.message ?? "")", duration: 2.0, position: .center)
+                        RSOToastView.shared.show("\(response.success ?? "")", duration: 2.0, position: .center)
+                        self.clearFields()
                     }
-                    self.clearFields()
+                  
                     DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
                         self.dismiss(animated: true, completion: nil)
                     }
@@ -55,16 +58,21 @@ class AddPaymentMethodViewController: UIViewController {
             }
     }
     @IBAction func btnSaveCardDetailsAction(_ sender: Any) {
-        guard let cardNumber = txtCardNumber.text, !cardNumber.isEmpty else {
+        
+        guard let cardNumberText = txtCardNumber.text, !cardNumberText.isEmpty else {
             RSOToastView.shared.show("Card Number cannot be empty", duration: 2.0, position: .center)
             return
         }
         
-        guard RSOValidator.isValidCardNumber(cardNumber) else {
+        guard RSOValidator.isValidCardNumber(cardNumberText) else {
                 RSOToastView.shared.show("Invalid Card Number", duration: 2.0, position: .center)
                 return
             }
-     
+        // Attempt to convert the valid card number text to an integer, if necessary
+        guard let cardNumber = Int(cardNumberText) else {
+            RSOToastView.shared.show("Invalid Card Number format", duration: 2.0, position: .center)
+            return
+        }
         guard let cardExpiryDate = txtCardExpiryDate.text, !cardExpiryDate.isEmpty else {
             RSOToastView.shared.show("Card Expiry Date cannot be empty", duration: 2.0, position: .center)
             return
@@ -73,15 +81,24 @@ class AddPaymentMethodViewController: UIViewController {
                 RSOToastView.shared.show("Invalid Expiry Date", duration: 2.0, position: .center)
                 return
             }
-        
+        guard let cardHolderName = txtCardHolderName.text, !cardHolderName.isEmpty else {
+            RSOToastView.shared.show("Card Expiry Date cannot be empty", duration: 2.0, position: .center)
+            return
+        }
+        guard let cardtype = txtCardtype.text, !cardtype.isEmpty else {
+            RSOToastView.shared.show("Card Expiry Date cannot be empty", duration: 2.0, position: .center)
+            return
+        }
         guard let userId = UserHelper.shared.getUserId() else {
             return
         }
-        self.cardStoreAPI(card_number: cardNumber, card_expiry: cardExpiryDate)
+        self.cardStoreAPI(number: cardNumber, expiry: cardExpiryDate, card_holder_name: cardHolderName, card_type: cardtype, id: userId)
     }
     private func clearFields() {
         txtCardNumber.text = ""
         txtCardExpiryDate.text = ""
+        txtCardHolderName.text = ""
+        txtCardtype.text = ""
     }
     
 }

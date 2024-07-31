@@ -465,10 +465,10 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C1P-0J-k7P" userLabel="containerView" customClass="PaymentMethod">
-                                <rect key="frame" x="25" y="243.66666666666663" width="346.66666666666669" height="400"/>
+                                <rect key="frame" x="25" y="143.66666666666663" width="346.66666666666669" height="500"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Add Payment Method" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8OH-Iz-6uw">
-                                        <rect key="frame" x="20" y="27.000000000000028" width="306.66666666666669" height="17"/>
+                                        <rect key="frame" x="20" y="27" width="306.66666666666669" height="17"/>
                                         <constraints>
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="17" id="C65-M6-T7J"/>
                                             <constraint firstAttribute="height" constant="17" id="puW-lu-cAr"/>
@@ -478,7 +478,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e1W-Pi-4TB" customClass="RSOButton" customModule="RSOWorkspace" customModuleProvider="target">
-                                        <rect key="frame" x="26" y="334" width="298" height="46"/>
+                                        <rect key="frame" x="26" y="434" width="298" height="46"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="46" id="KI2-Fn-ghQ"/>
                                             <constraint firstAttribute="width" constant="298" id="WND-aH-bZ8"/>
@@ -491,7 +491,7 @@
                                         </connections>
                                     </button>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="37" translatesAutoresizingMaskIntoConstraints="NO" id="nea-lV-TUM">
-                                        <rect key="frame" x="25" y="84.000000000000028" width="309.66666666666669" height="199.99999999999997"/>
+                                        <rect key="frame" x="25" y="84" width="309.66666666666669" height="279"/>
                                         <subviews>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Card Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="24O-WI-eNE" customClass="RSOTextField" customModule="RSOWorkspace" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="309.66666666666669" height="42"/>
@@ -510,14 +510,21 @@
                                                 </variation>
                                             </textField>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Card Expiry Date" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KKp-fW-f07" customClass="RSOTextField" customModule="RSOWorkspace" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="79" width="309.66666666666669" height="42"/>
+                                                <rect key="frame" x="0.0" y="79.000000000000028" width="309.66666666666669" height="42"/>
                                                 <color key="backgroundColor" name="F0F0F0"/>
                                                 <color key="textColor" name="828282"/>
                                                 <fontDescription key="fontDescription" name="Inter-Medium" family="Inter" pointSize="16"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Card Holder Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="t1X-WF-RW7" customClass="RSOTextField" customModule="RSOWorkspace" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="158" width="309.66666666666669" height="42"/>
+                                                <rect key="frame" x="0.0" y="158.00000000000003" width="309.66666666666669" height="42"/>
+                                                <color key="backgroundColor" name="F0F0F0"/>
+                                                <color key="textColor" name="828282"/>
+                                                <fontDescription key="fontDescription" name="Inter-Medium" family="Inter" pointSize="16"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Card Type" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="t49-4N-28I" customClass="RSOTextField" customModule="RSOWorkspace" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="237" width="309.66666666666669" height="42"/>
                                                 <color key="backgroundColor" name="F0F0F0"/>
                                                 <color key="textColor" name="828282"/>
                                                 <fontDescription key="fontDescription" name="Inter-Medium" family="Inter" pointSize="16"/>
@@ -528,6 +535,7 @@
                                             <constraint firstItem="KKp-fW-f07" firstAttribute="height" secondItem="24O-WI-eNE" secondAttribute="height" id="7HQ-Cs-igc"/>
                                             <constraint firstItem="t1X-WF-RW7" firstAttribute="height" secondItem="KKp-fW-f07" secondAttribute="height" id="PZB-L9-mdr"/>
                                             <constraint firstItem="KKp-fW-f07" firstAttribute="width" secondItem="24O-WI-eNE" secondAttribute="width" id="Ws2-i8-2FT"/>
+                                            <constraint firstItem="t49-4N-28I" firstAttribute="height" secondItem="24O-WI-eNE" secondAttribute="height" id="qUa-bg-qPm"/>
                                         </constraints>
                                         <variation key="default">
                                             <mask key="constraints">
@@ -547,7 +555,7 @@
                                     <constraint firstAttribute="trailing" secondItem="nea-lV-TUM" secondAttribute="trailing" constant="12" id="iUl-F7-B43"/>
                                     <constraint firstAttribute="bottom" secondItem="e1W-Pi-4TB" secondAttribute="bottom" constant="20" id="j1H-42-vhg"/>
                                     <constraint firstItem="nea-lV-TUM" firstAttribute="top" secondItem="8OH-Iz-6uw" secondAttribute="bottom" constant="25" id="xyp-8j-vvp"/>
-                                    <constraint firstAttribute="height" constant="400" id="zdM-aT-qNL"/>
+                                    <constraint firstAttribute="height" constant="500" id="zdM-aT-qNL"/>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
@@ -573,6 +581,7 @@
                         <outlet property="txtCardExpiryDate" destination="KKp-fW-f07" id="axI-D2-tLT"/>
                         <outlet property="txtCardHolderName" destination="t1X-WF-RW7" id="rz7-w2-21H"/>
                         <outlet property="txtCardNumber" destination="24O-WI-eNE" id="KBn-7B-be6"/>
+                        <outlet property="txtCardtype" destination="t49-4N-28I" id="c4X-Oh-v3c"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X9r-Bk-4RZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

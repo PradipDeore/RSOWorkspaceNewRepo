@@ -71,7 +71,9 @@ class SideMenuSubViewController: UIViewController {
         menu.append(SideMenuModel(title: "My Visitors"))
         menu.append(SideMenuModel(title: ""))
         menu.append(SideMenuModel(title: "Amenities"))
-        menu.append(SideMenuModel(title: "Payments"))
+        if !UserHelper.shared.isUserExplorer(){
+            menu.append(SideMenuModel(title: "Payments"))
+        }
         menu.append(SideMenuModel(title: ""))
         menu.append(SideMenuModel(title: "Feedback"))
         menu.append(SideMenuModel(title: "FAQs"))
@@ -79,7 +81,9 @@ class SideMenuSubViewController: UIViewController {
         menu.append(SideMenuModel(title: "Locations"))
         menu.append(SideMenuModel(title: "About Us"))
         menu.append(SideMenuModel(title: ""))
-        menu.append(SideMenuModel(title: "Logout"))
+        if !UserHelper.shared.isUserExplorer(){
+            menu.append(SideMenuModel(title: "Logout"))
+        }
         
         return menu
     }

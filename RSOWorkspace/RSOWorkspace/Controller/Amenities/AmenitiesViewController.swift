@@ -147,6 +147,7 @@ extension AmenitiesViewController: UITableViewDataSource, UITableViewDelegate {
             let cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifierAmenities.selectLocation.rawValue, for: indexPath) as! SelectLocationTableViewCell
             cell.delegate = self
             cell.dropdownOptions = dropdownOptions
+            cell.selectionStyle = .none
             cell.txtLocation.text = selectedLocation
             return cell
         
@@ -154,10 +155,13 @@ extension AmenitiesViewController: UITableViewDataSource, UITableViewDelegate {
             let cell =  tableView.dequeueReusableCell(withIdentifier: CellIdentifierAmenities.btnMeetingsWorkspace.rawValue, for: indexPath) as! DashboardDeskTypeTableViewCell
             cell.btnMembership.isHidden = true
             cell.delegate = self
+            cell.selectionStyle = .none
+
             return cell
         case .galleryLabel:
             let cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifierAmenities.galleryLabel.rawValue, for: indexPath)as! SelectMeetingRoomLabelTableViewCell
             cell.lblMeetingRoom.text = "Gallery"
+            cell.selectionStyle = .none
             cell.lblMeetingRoom.font = RSOFont.poppins(size: 16, type: .SemiBold)
             return cell
             
@@ -165,15 +169,17 @@ extension AmenitiesViewController: UITableViewDataSource, UITableViewDelegate {
             if shouldUseDashboardCell { // Add your condition here
                         let cell = tableView.dequeueReusableCell(withIdentifier: "DashboardMeetingRoomsTableViewCell", for: indexPath) as! DashboardMeetingRoomsTableViewCell
                         cell.collectionView.tag = 1
+                        cell.selectionStyle = .none
                         cell.collectionView.backActionDelegate = self
                         if selectedMeetingRoomId > 0 {
                             cell.fetchRooms()
                         }
                         return cell
-                    } else {
+            } else {
                         let cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifierAmenities.selectMeetingRoom.rawValue, for: indexPath) as! SelectMeetingRoomTableViewCell
                         cell.collectionView.tag = 1
                         cell.collectionView.backActionDelegate = self
+                        cell.selectionStyle = .none
                         if selectedMeetingRoomId > 0 {
                             cell.fetchmeetingRooms(id: selectedMeetingRoomId, requestModel: apiRequestModelRoomListing)
                         }
@@ -182,6 +188,7 @@ extension AmenitiesViewController: UITableViewDataSource, UITableViewDelegate {
         case .gallery:
             let cell =  tableView.dequeueReusableCell(withIdentifier: CellIdentifierAmenities.gallery.rawValue, for: indexPath)as! GalleryTableViewCell
             cell.setLocationID(locationId)
+            cell.selectionStyle = .none
             return cell
         }
     }
