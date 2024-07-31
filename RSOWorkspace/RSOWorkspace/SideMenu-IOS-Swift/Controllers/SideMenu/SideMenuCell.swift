@@ -12,6 +12,8 @@ class SideMenuCell: UITableViewCell {
         class var nib: UINib { return UINib(nibName: identifier, bundle: nil) }
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var iconImageView: UIImageView!
+    @IBOutlet weak var horizontalLineView: UIView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
