@@ -30,6 +30,7 @@ class SideMenuSubViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        headerImageView.setRounded()
         roundedView.layer.cornerRadius = 35
         // TableView
         self.sideMenuTableView.delegate = self
