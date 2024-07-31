@@ -164,10 +164,14 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
         switch section {
         case .changePassword:
             let changePasswordVC = UIViewController.createController(storyBoard: .Profile, ofType: ChangePasswordViewController.self)
-            //self.navigationController?.pushViewController(changePasswordVC, animated: true)
             changePasswordVC.modalPresentationStyle = .overFullScreen
             changePasswordVC.modalTransitionStyle = .crossDissolve
             self.present(changePasswordVC,animated: true)
+        case .paymentMethod:
+            let paymentMethodVC = UIViewController.createController(storyBoard: .Profile, ofType: AddPaymentMethodViewController.self)
+            paymentMethodVC.modalPresentationStyle = .overFullScreen
+            paymentMethodVC.modalTransitionStyle = .crossDissolve
+            self.present(paymentMethodVC,animated: true)
         default:
             break
         }
@@ -216,7 +220,6 @@ extension ProfileViewController: SubViewDismissalProtocol {
     func subviewDismmised() {
         fetchMyProfiles()
     }
-   
 }
 
 extension ProfileViewController: MembershipPlanDelegate {

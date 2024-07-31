@@ -29,25 +29,28 @@ class LocationViewController: UIViewController {
     var roomList: [MeetingRoomListing] = []
     var selectedMeetingRoomId = 0
     var selectedLocation = ""
+    var locationId = 0
     var expandedIndexPath: IndexPath?
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
         fetchLocations()
+        // Set initial gallery data for the default location
+        updateGalleryForLocation(locationId: locationId)
     }
-
+    
     @IBAction func btnBackAction(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
-
+    
     private func setupTableView() {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.registertableCellsLocation()
         navigationController?.navigationBar.isHidden = true
     }
-
+    
     private func fetchLocations() {
         APIManager.shared.request(
             modelType: ApiResponse.self,
@@ -55,6 +58,11 @@ class LocationViewController: UIViewController {
                 switch response {
                 case .success(let response):
                     self.dropdownOptions = response.data
+                    if let firstLocation = self.dropdownOptions.first {
+                        self.selectedLocation = firstLocation.name
+                        self.locationId = firstLocation.id
+                        self.updateGalleryForLocation(locationId: self.locationId)
+                    }
                     DispatchQueue.main.async {
                         self.tableView.reloadData()
                     }
@@ -64,23 +72,33 @@ class LocationViewController: UIViewController {
                 }
             }
     }
+    // Method to update gallery based on selected location ID
+    func updateGalleryForLocation(locationId: Int) {
+        DispatchQueue.main.async {
+            guard let galleryCell = self.tableView.cellForRow(at: IndexPath(row: 0, section: SectionTypeLocation.gallery.rawValue)) as? GalleryTableViewCell else {
+                return
+            }
+            galleryCell.setLocationID(locationId)
+        }
+        
+    }
 }
 
 // MARK: - UITableViewDataSource, UITableViewDelegate
 extension LocationViewController: UITableViewDataSource, UITableViewDelegate {
-
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return SectionTypeLocation.allCases.count
     }
-
+    
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 10
     }
-
+    
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         return UIView()
     }
-
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let sectionType = SectionTypeLocation(rawValue: section)!
         switch sectionType {
@@ -90,7 +108,7 @@ extension LocationViewController: UITableViewDataSource, UITableViewDelegate {
             return 1
         }
     }
-
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let sectionType = SectionTypeLocation(rawValue: indexPath.section)!
         
@@ -130,11 +148,12 @@ extension LocationViewController: UITableViewDataSource, UITableViewDelegate {
             return cell
         case .gallery:
             let cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifierLocation.gallery.rawValue, for: indexPath) as! GalleryTableViewCell
+            cell.setLocationID(locationId)
             cell.selectionStyle = .none
             return cell
         }
     }
-
+    
     @objc func toggleLocationCell(_ sender: UIButton) {
         let section = SectionTypeLocation.locationClose.rawValue
         let indexPath = IndexPath(row: sender.tag, section: section)
@@ -142,16 +161,17 @@ extension LocationViewController: UITableViewDataSource, UITableViewDelegate {
         if expandedIndexPath == indexPath {
             expandedIndexPath = nil
         } else {
+            self.updateGalleryForLocation(locationId: self.locationId)
             expandedIndexPath = indexPath
         }
         
         tableView.reloadSections(IndexSet(integer: section), with: .automatic)
     }
-
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // Handle cell selection if needed
     }
-
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let sectionType = SectionTypeLocation(rawValue: indexPath.section)!
         switch sectionType {
@@ -175,9 +195,12 @@ extension LocationViewController: SelectLocationTableViewCellDelegate {
         // Implement what you want to do with the selected option
         print("Selected option: \(selectedOption.name),\(selectedOption.id)")
         selectedMeetingRoomId = selectedOption.id
+        self.locationId = selectedOption.id
         tableView.reloadData()
+        updateGalleryForLocation(locationId: selectedOption.id)
+        
     }
-
+    
     func presentAlertController(alertController: UIAlertController) {
         present(alertController, animated: true, completion: nil)
     }
@@ -224,11 +247,11 @@ extension LocationViewController: BookButtonActionDelegate {
         bookRoomDetailsVC.displayBookingDetails = displayBookingDetailsNextScreen
         self.navigationController?.pushViewController(bookRoomDetailsVC, animated: true)
     }
-
+    
     func showBookMeetingRoomsVC() {
         // Implement as needed
     }
-
+    
     func showLogInVC() {
         guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
               let sceneDelegate = windowScene.delegate as? SceneDelegate else {

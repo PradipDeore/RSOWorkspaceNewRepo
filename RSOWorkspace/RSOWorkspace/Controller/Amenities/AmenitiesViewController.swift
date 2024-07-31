@@ -32,8 +32,10 @@ class AmenitiesViewController: UIViewController{
   var apiRequestModelRoomListing = BookMeetingRoomRequestModel()
   var displayBookingDetailsNextScreen = DisplayBookingDetailsModel()
   var roomList : [MeetingRoomListing] = []
+
   var selectedMeetingRoomId = 0
   var selectedLocation = ""
+ var locationId = 0
   
   // var selectedMeetingRoomDate = ""
   override func viewDidLoad() {
@@ -61,7 +63,14 @@ class AmenitiesViewController: UIViewController{
         switch response {
         case .success(let response):
           self.dropdownOptions = response.data
+            
           DispatchQueue.main.async {
+            if let selectedOption = self.dropdownOptions.last {
+                  self.locationId = selectedOption.id
+                 self.selectedLocation = selectedOption.name
+                  self.selectedMeetingRoomId = selectedOption.id
+                  self.fetchGallery()
+              }
             self.tableView.reloadData()
           }
           self.eventHandler?(.dataLoaded)
@@ -70,6 +79,11 @@ class AmenitiesViewController: UIViewController{
         }
       }
   }
+    private func fetchGallery() {
+        if locationId > 0 {
+            self.tableView.reloadData()
+        }
+    }
   //to display meeting rooms on load also not working
   private func fetchMeetingRoomsAndReloadTable() {
     RSOLoader.showLoader()
@@ -100,6 +114,8 @@ class AmenitiesViewController: UIViewController{
         }
       }
   }
+    
+    
   
 }
 
@@ -131,6 +147,7 @@ extension AmenitiesViewController: UITableViewDataSource, UITableViewDelegate {
             let cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifierAmenities.selectLocation.rawValue, for: indexPath) as! SelectLocationTableViewCell
             cell.delegate = self
             cell.dropdownOptions = dropdownOptions
+            cell.txtLocation.text = selectedLocation
             return cell
         
         case .btnMeetingsWorkspace:
@@ -164,6 +181,7 @@ extension AmenitiesViewController: UITableViewDataSource, UITableViewDelegate {
                     }
         case .gallery:
             let cell =  tableView.dequeueReusableCell(withIdentifier: CellIdentifierAmenities.gallery.rawValue, for: indexPath)as! GalleryTableViewCell
+            cell.setLocationID(locationId)
             return cell
         }
     }
@@ -196,10 +214,11 @@ extension AmenitiesViewController: SelectLocationTableViewCellDelegate {
     func dropdownButtonTapped(selectedOption: Location) {
         // Implement what you want to do with the selected option, for example:
         print("Selected option: \(selectedOption.name),\(selectedOption.id)")
+        self.selectedLocation = selectedOption.name
         selectedMeetingRoomId = selectedOption.id
-        //displayBookingDetailsNextScreen.location = selectedOption.name
+        self.locationId = selectedOption.id
         // Reload the table view to update meeting room listing
-                tableView.reloadData()
+        tableView.reloadData()
     }
     
     func presentAlertController(alertController: UIAlertController) {

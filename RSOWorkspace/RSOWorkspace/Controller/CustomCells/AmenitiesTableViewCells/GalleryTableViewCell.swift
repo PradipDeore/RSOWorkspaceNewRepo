@@ -10,7 +10,11 @@ import UIKit
 class GalleryTableViewCell: UITableViewCell, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
     @IBOutlet weak var collectionView: UICollectionView!
-    var galleryData :  [GalleryResponseModel] = []
+   
+    var galleryData : [Gallery] = []
+    var eventHandler: ((_ event: Event) -> Void)?
+    private var locationID: Int?
+    
     override func awakeFromNib() {
             super.awakeFromNib()
             
@@ -24,19 +28,32 @@ class GalleryTableViewCell: UITableViewCell, UICollectionViewDataSource, UIColle
                 layout.minimumInteritemSpacing = 5
                 layout.scrollDirection = .horizontal
             }
-        
-        
-        // Prepare gallery data
-               galleryData = [
-                   GalleryResponseModel(title: "Cafeteria", galleryimageName: "gallery1"),
-                   GalleryResponseModel(title: "Open floor", galleryimageName: "gallery2"),
-                   GalleryResponseModel(title: "Cafeteria", galleryimageName: "gallery1"),
-                   GalleryResponseModel(title: "Open floor", galleryimageName: "gallery2")
-               ]
+        }
+     func setLocationID(_ id: Int) {
+            self.locationID = id
+            fetchGallery(locationID: id)
         }
         
-        // MARK: - UICollectionViewDataSource methods
-        
+     func fetchGallery(locationID:Int) {
+         DispatchQueue.main.async {
+             RSOLoader.showLoader()
+         }
+        APIManager.shared.request(
+            modelType: LocationGalleryResponseModel.self,
+            type: GalleryEndPoint.locationGallery(locationID: locationID)) { response in
+                switch response {
+                case .success(let response):
+                    self.galleryData = response.data ?? []
+                    DispatchQueue.main.async {
+                        self.collectionView.reloadData()
+                    }
+                    RSOLoader.removeLoader()
+                    self.eventHandler?(.dataLoaded)
+                case .failure(let error):
+                    self.eventHandler?(.error(error))
+                }
+            }
+    }
         func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
             return galleryData.count
         }
@@ -64,6 +81,12 @@ class GalleryTableViewCell: UITableViewCell, UICollectionViewDataSource, UIColle
 
             return CGSize(width: itemWidth, height: itemHeight)
     }
-               
+}
 
+extension GalleryTableViewCell {
+    enum Event {
+        case dataLoaded
+        case error(Error?)
+    }
+   
 }

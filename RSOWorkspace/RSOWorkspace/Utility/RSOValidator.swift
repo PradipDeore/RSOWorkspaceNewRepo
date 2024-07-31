@@ -42,4 +42,30 @@ class RSOValidator{
         // If there is at least one match, the phone number is valid
         return !matches.isEmpty
     }
+    
+    class func isValidCardNumber(_ number: String) -> Bool {
+        // Remove spaces and dashes
+        let cleanNumber = number.replacingOccurrences(of: "[^0-9]", with: "", options: .regularExpression)
+        
+        // Check length
+        if cleanNumber.count < 13 || cleanNumber.count > 19 {
+            return false
+        }
+        
+        // Optional: Implement Luhn algorithm here if needed
+        return true
+    }
+
+    class func isValidExpiryDate(_ date: String) -> Bool {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM/yy"
+        dateFormatter.isLenient = false
+        
+        guard let expiryDate = dateFormatter.date(from: date) else {
+            return false
+        }
+        
+        // Check if the expiry date is in the future
+        return expiryDate > Date()
+    }
 }
