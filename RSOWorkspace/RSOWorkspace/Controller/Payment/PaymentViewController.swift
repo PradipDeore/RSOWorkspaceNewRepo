@@ -26,6 +26,7 @@ class PaymentViewController: UIViewController {
     var coordinator: RSOTabBarCordinator?
     var bookingId: Int = 0
     @IBOutlet weak var tableView: UITableView!
+    var getCardDetailsResponseData: [GetCardDetails] = []
     var eventHandler: ((_ event: Event) -> Void)?
     var paymentServiceManager = PaymentNetworkManager.shared
     var requestParameters: ConfirmBookingRequestModel?
@@ -57,6 +58,7 @@ class PaymentViewController: UIViewController {
         setupCellIdentifiers()
         setupTableView()
         coordinator?.hideBackButton(isHidden: false)
+        getCardDetails()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -96,6 +98,30 @@ class PaymentViewController: UIViewController {
                     self.eventHandler?(.dataLoaded)
                 case .failure(let error):
                     self.eventHandler?(.error(error))
+                }
+            }
+    }
+    private func getCardDetails() {
+      DispatchQueue.main.async {
+        RSOLoader.showLoader()
+      }
+        APIManager.shared.request(
+            modelType: GetCardDetailsResponseModel.self,
+            type: PaymentMethodEndPoint.getCardDetail) { response in
+                switch response {
+                case .success(let response):
+                    self.getCardDetailsResponseData = response.data ?? []
+                    print ("getCardDetailsResponseData",self.getCardDetailsResponseData)
+                    DispatchQueue.main.async {
+                      RSOLoader.removeLoader()
+                        self.tableView.reloadData()
+                    }
+                    self.eventHandler?(.dataLoaded)
+                case .failure(let error):
+                    self.eventHandler?(.error(error))
+                  DispatchQueue.main.async {
+                    RSOLoader.removeLoader()
+                  }
                 }
             }
     }
@@ -256,6 +282,7 @@ extension PaymentViewController: UITableViewDataSource, UITableViewDelegate {
         case .paymentMethods:
             let cell = tableView.dequeueReusableCell(withIdentifier: cellType.rawValue, for: indexPath) as! PaymentMethodTableViewCell
             cell.selectionStyle = .none
+            cell.cardDetails = getCardDetailsResponseData // Pass the fetched card details
             return cell
             
         case .buttonPayNow:

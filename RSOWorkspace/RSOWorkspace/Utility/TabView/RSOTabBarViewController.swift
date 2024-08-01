@@ -34,6 +34,12 @@ class RSOTabBarViewController: UIViewController {
         super.viewDidLoad()
         
         lblnotificationCount.makeCircular()
+        if let count = UserHelper.shared.getNotificationCount() {
+            lblnotificationCount.text = String(count)
+        } else {
+            lblnotificationCount.text = "0" // or handle the nil case as needed
+        }
+
         showGreetingMessage()
         lastSelectedTabIndex = 0
         coordinator = RSOTabBarCordinator(tabBarController: self)

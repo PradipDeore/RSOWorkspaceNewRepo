@@ -40,7 +40,7 @@ class BookingConfirmedViewController: UIViewController{
     var amenityName = ""
     var amenityPrice = ""
     var guestEmailArray:[GuestList] = [GuestList(emailId: "")]
-    var teamMembersArray:[TeamList] = [TeamList(id: 0)]
+    var teamMembersArray:[TeamMembersList] = []
     var amenitiesArray:[StoreRoomBookingAmenity] = []
     var locationName :String = ""
     var locationId: Int = 0
@@ -206,9 +206,7 @@ extension BookingConfirmedViewController: UITableViewDataSource, UITableViewDele
             
             cell.selectionStyle = .none
             let teamMember = bookingConfirmDetails.teamMembers[indexPath.row]
-            //cell.lblName.text = teamMember
-            let teamMemberObj = TeamList(id: 2)
-            teamMembersArray.append(teamMemberObj)
+            cell.lblName.text = teamMember.fullName
             cell.selectionStyle = .none
             
             return cell
@@ -289,11 +287,15 @@ extension BookingConfirmedViewController:ConfirmAndProceedToPayementTableViewCel
         let BookingTime = "\(startTime ?? "00:00") - \(endTime ?? "00:00")"
         let locationId = String(locationId)
         let location = StoreRoomBookingLocation(id: locationId, name: locationName)
-        
-        let requestModel = StoreRoomBookingRequest(amenities: amenitiesArray, configurationsID: seatingConfigueId, date: dateOfBooking, guestList: guestEmailArray, location: location, memberList: teamMembersArray, roomId: roomId, time: BookingTime)
+        let teamlist = convertToTeamList(from: teamMembersArray)
+        let requestModel = StoreRoomBookingRequest(amenities: amenitiesArray, configurationsID: seatingConfigueId, date: dateOfBooking, guestList: guestEmailArray, location: location, memberList: teamlist, roomId: roomId, time: BookingTime)
         print("parameters",requestModel)
         storeRoomBookingAPI(requestModel: requestModel)
         
     }
-    
+    func convertToTeamList(from teamMembers: [TeamMembersList]) -> [TeamList] {
+        return teamMembers.map { member in
+            return TeamList(id: member.id, name:member.fullName)
+        }
+    }
 }

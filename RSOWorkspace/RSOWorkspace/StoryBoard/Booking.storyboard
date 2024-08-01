@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -271,7 +270,7 @@
                     <connections>
                         <outlet property="btnAdd" destination="FdP-Ar-sUB" id="Epg-tZ-pKv"/>
                         <outlet property="searchView" destination="gQg-UD-maB" id="y2y-py-U4d"/>
-                        <outlet property="txtSearch" destination="9ek-fA-l8u" id="mhY-Jf-Kyu"/>
+                        <outlet property="txtSearchTeamMember" destination="9ek-fA-l8u" id="mhY-Jf-Kyu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S4J-Am-AUl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -790,7 +789,7 @@
                                         <rect key="frame" x="16" y="521" width="312" height="28"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZCy-na-2FW" customClass="RSOButton" customModule="RSOWorkspace" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="154.33333333333334" height="28"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="166.33333333333334" height="28"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="28" id="1JY-XP-6fH"/>
                                                 </constraints>
@@ -802,7 +801,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wBo-GW-uPA" customClass="RSOButton" customModule="RSOWorkspace" customModuleProvider="target">
-                                                <rect key="frame" x="164.33333333333337" y="0.0" width="147.66666666666663" height="28"/>
+                                                <rect key="frame" x="176.33333333333337" y="0.0" width="135.66666666666663" height="28"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="28" id="EBB-Xs-pmM"/>
                                                 </constraints>

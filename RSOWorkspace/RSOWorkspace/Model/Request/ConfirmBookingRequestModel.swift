@@ -17,7 +17,7 @@ struct ConfirmBookingRequestModel{
   var displayendTime: String = ""
   var startTime:String = ""
   var endTime: String = ""
-  var teamMembers: [String] = []
+  var teamMembers: [TeamMembersList] = []
   var guest: [String] = []
   var amenityArray: [Amenity] = []
   var deskList: [Desk] = []
@@ -137,7 +137,7 @@ struct ConfirmBookingRequestModel{
     self.date = model.datetime.date
     self.startTime = model.datetime.startTime
     self.endTime = model.datetime.endTime
-    //self.teamMembers = model.members ?? []
+    self.teamMembers = model.members ?? []
     self.amenityArray = model.amenity
   }
   mutating func setValues(response: StoreDeskBookingResponseModel){

@@ -27,7 +27,7 @@ class BookRoomDetailsViewController: UIViewController {
     var displayBookingDetails = DisplayBookingDetailsModel()
     
     var guestEmailArray:[GuestList] = [GuestList(emailId: "")]
-    var teamMembersArray:[TeamList] = [TeamList(id: 0)]
+    var teamMembersArray:[TeamMembersList] = []
     var dateOfBooking : String?
     var bookingTime :String?
     var seatingConfigueId: Int?
@@ -92,7 +92,7 @@ class BookRoomDetailsViewController: UIViewController {
                     self.confirmBookingDetails.startTime = item?.datetime.startTime ?? "0.0"
                     self.confirmBookingDetails.endTime = item?.datetime.endTime ?? "0.0"
                     if let members = item?.members {
-                        self.confirmBookingDetails.teamMembers = members.compactMap { $0.email }
+                        self.confirmBookingDetails.teamMembers = members
                     } else {
                         self.confirmBookingDetails.teamMembers = []
                     }
@@ -117,7 +117,11 @@ class BookRoomDetailsViewController: UIViewController {
                 }
             }
     }
-    
+    func convertToTeamList(from teamMembers: [TeamMembersList]) -> [TeamList] {
+        return teamMembers.map { member in
+            return TeamList(id: member.id, name:member.fullName)
+        }
+    }
 }
 extension BookRoomDetailsViewController: UITableViewDataSource, UITableViewDelegate {
     
@@ -139,7 +143,13 @@ extension BookRoomDetailsViewController: UITableViewDataSource, UITableViewDeleg
         }else if section == 10{
           return guestEmailArray.count
         }else if section == 8{
-          return UserHelper.shared.isGuest() ? 0 : teamMembersArray.count
+            if UserHelper.shared.isGuest() {
+                return 0
+            }
+            if teamMembersArray.isEmpty {
+                return 1
+            }
+            return teamMembersArray.count
         }
         return 1
     }
@@ -193,15 +203,32 @@ extension BookRoomDetailsViewController: UITableViewDataSource, UITableViewDeleg
             return cell
         case 8:
             let cell = tableView.dequeueReusableCell(withIdentifier: "InviteTeamMembersTableViewCell", for: indexPath) as! InviteTeamMembersTableViewCell
-            cell.lblteammemberName.text = "\(String(describing: teamMembersArray[indexPath.row].name))"
-            cell.btnAdd.isHidden = !(indexPath.row == 0)
-            cell.teamMemberView.isHidden = false
-            if indexPath.row == 0 {
-                if teamMembersArray.first?.id == 0 {
-                    cell.teamMemberView.isHidden = true
-                }
-            }
-            cell.delegate = self
+               if teamMembersArray.isEmpty {
+                   // Show a default cell with the Add button if the array is empty
+                   cell.lblteammemberName.text = ""
+                   cell.teamMemberView.isHidden = true
+                   cell.containerView.isHidden = true
+               } else {
+                   // Configure the cell with team member data
+                   let teamMember = teamMembersArray[indexPath.row]
+                   let firstName = teamMember.first_name ?? ""
+                   let lastName = teamMember.last_name ?? ""
+                   cell.lblteammemberName.text = "\(firstName) \(lastName)"
+                   if let photoUrlString = teamMember.photo,
+                      let photoUrl = URL(string: imageBasePath + photoUrlString){
+                       print("photoUrl is",photoUrl)
+                       cell.teammemberImage.kf.setImage(with: photoUrl)
+                   }else{
+                           cell.teammemberImage.image = UIImage(named: "teamMemberphoto")
+                   }
+                   cell.teamMemberView.isHidden = false
+               }
+               
+               // Show the Add button only on the first cell
+               cell.btnAdd.isHidden = indexPath.row != 0
+
+               // Set the delegate if needed
+               cell.delegate = self
             return cell
         case 9:
             let cell = tableView.dequeueReusableCell(withIdentifier: "SelectMeetingRoomLabelTableViewCell", for: indexPath) as! SelectMeetingRoomLabelTableViewCell
@@ -285,24 +312,22 @@ extension BookRoomDetailsViewController:InviteTeamMembersTableViewCellDelegate{
         addTeamMemberVC.modalTransitionStyle = .crossDissolve
         addTeamMemberVC.view.backgroundColor = UIColor.clear
         addTeamMemberVC.teamMemberNameDelegate = self
+        // Filter out the members already present in teamMembersArray
+        let existingTeamMemberIDs = Set(teamMembersArray.map { $0.id })
+        let availableTeamMembers = confirmBookingDetails.teamMembers.filter { !existingTeamMemberIDs.contains($0.id) }
+
+        addTeamMemberVC.allTeamMembers = availableTeamMembers
         self.present(addTeamMemberVC, animated: true)
     }
     func btnDeleteTeamMember(buttonTag: Int) {
         teamMembersArray.remove(at:buttonTag)
-        if teamMembersArray.isEmpty{
-            teamMembersArray.append(TeamList(id: 0))
-        }
         tableView.reloadData()
     }
 }
 extension BookRoomDetailsViewController:sendteamMemberNameDelegate{
     
-    func sendteamMemberName(name: String) {
-        if teamMembersArray.count == 1 && teamMembersArray.first?.id == 0{
-            teamMembersArray.remove(at: 0)
-        }
-        teamMembersArray.append(TeamList(id: 2))
-        // self.confirmBookingDetails.teamMembers = teamMembersArray
+    func sendteamMemberName(member: TeamMembersList){
+        teamMembersArray.append(member)
         tableView.reloadData()
     }
 }
@@ -343,7 +368,7 @@ extension BookRoomDetailsViewController:ButtonBookingConfirmTableViewCellDelegat
         bookingConfirmVC.guestEmailArray = self.guestEmailArray.filter { $0.emailId != "" }
         bookingConfirmVC.roomId = self.confirmBookingDetails.meetingId
         bookingConfirmVC.seatingConfigueId = self.seatingConfigueId ?? 0
-        bookingConfirmVC.teamMembersArray = self.teamMembersArray.filter { $0.id != 0 }
+        bookingConfirmVC.teamMembersArray = teamMembersArray
         bookingConfirmVC.locationName = self.confirmBookingDetails.location
         bookingConfirmVC.locationId = self.locationId
         bookingConfirmVC.amenitiesArray = [] //amenityNames.filter { $0 != "" }

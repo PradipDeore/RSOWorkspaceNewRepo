@@ -70,7 +70,7 @@ class SignUpViewController: UIViewController {
     }
     
     func handleFacebookLoginSuccess(facebookId: String, email: String, name: String) {
-        let requestModel = SocailLoginRequestModel(auth_type: "facebook", auth_id: facebookId)
+        let requestModel = SocailLoginRequestModel(auth_type: "facebook", auth_id: facebookId, email: email, name: name)
         self.socialloginAPI(requestModel: requestModel)
     }
     @objc func googleLoginAction() {
@@ -103,7 +103,7 @@ class SignUpViewController: UIViewController {
             
             
             // Pass the idToken as auth_id
-            let requestModel = SocailLoginRequestModel(auth_type: "google", auth_id: idToken)
+            let requestModel = SocailLoginRequestModel(auth_type: "google", auth_id: idToken, email: email, name: name)
             self.socialloginAPI(requestModel: requestModel)
             
             // Sign in to Firebase with the Google credential
@@ -181,12 +181,14 @@ class SignUpViewController: UIViewController {
                         // Save data to user default
                         // -------------------  -------------------
                         RSOToken.shared.save(token: token)
-                        //UserHelper.shared.saveUser(user)
+                        UserHelper.shared.saveSocialuser(name: requestModel.name, email: requestModel.email)
                         // -------------------  -------------------
                         DispatchQueue.main.async {
                             RSOLoader.removeLoader()
                             // Login successful
+                            
                             RSOToastView.shared.show("Login successful!", duration: 2.0, position: .center)
+                            RSOTabBarViewController.presentAsRootController()
                         }
                         self.eventHandler?(.dataLoaded, "data loaded" )
                     }else{

@@ -45,10 +45,10 @@ struct StoreRoomBookingAmenity :Codable{
 struct GuestList :Codable{
     let emailId: String?
 }
-// MARK: - GuestList
+// MARK: - TeamList
 struct TeamList :Codable{
     let id: Int?
-    let name : String = "john"
+    let name : String?
 }
 
 // MARK: - StoreRoomBookingLocation

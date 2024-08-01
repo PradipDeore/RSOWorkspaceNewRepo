@@ -13,7 +13,7 @@ class NotificationsViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     var notificationList:[Notifications] = []
     var eventHandler: ((_ event: Event) -> Void)?
-
+    let notificationCount = 0
     override func viewDidLoad() {
         super.viewDidLoad()
        
@@ -41,6 +41,8 @@ class NotificationsViewController: UIViewController {
                 switch response {
                 case .success(let response):
                     self.notificationList = response.data
+                    let notificationCount  = self.notificationList.count
+                    UserHelper.shared.saveNotificationCount(notificationCount: notificationCount)
                     DispatchQueue.main.async {
                         self.tableView.reloadData()
                     }
@@ -64,6 +66,7 @@ extension NotificationsViewController: UITableViewDelegate, UITableViewDataSourc
         let cell = tableView.dequeueReusableCell(withIdentifier: "NotificationTableViewCell", for: indexPath) as! NotificationTableViewCell
         let item = notificationList[indexPath.row]
         cell.setNotifications(item: item)
+        cell.selectionStyle = .none
         return cell
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

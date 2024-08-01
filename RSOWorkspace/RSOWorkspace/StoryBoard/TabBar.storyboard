@@ -85,13 +85,13 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nhn-1Q-SE8">
-                                        <rect key="frame" x="362" y="14" width="12" height="12"/>
+                                        <rect key="frame" x="360" y="14" width="14" height="14"/>
                                         <color key="backgroundColor" name="000000"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="12" id="XCR-iu-Sav"/>
-                                            <constraint firstAttribute="height" constant="12" id="Ypk-w8-njL"/>
+                                            <constraint firstAttribute="width" constant="14" id="XCR-iu-Sav"/>
+                                            <constraint firstAttribute="height" constant="14" id="Ypk-w8-njL"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="12"/>
+                                        <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="12"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
