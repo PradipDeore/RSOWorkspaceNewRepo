@@ -13,7 +13,7 @@ class RSOTabBarViewController: UIViewController {
   @IBOutlet var topbarHeightConstraint: NSLayoutConstraint!
   @IBOutlet weak var backButtonWidthConstraint: NSLayoutConstraint!
   @IBOutlet weak var lblGreeting: UILabel!
-    
+    @IBOutlet weak var lblnotificationCount: UILabel!
     @IBOutlet weak var topBarView: UIView!
     @IBOutlet weak var btnNotification: UIButton!
     @IBOutlet weak var titleLabelLeadingConstaint: NSLayoutConstraint!
@@ -32,6 +32,8 @@ class RSOTabBarViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        lblnotificationCount.makeCircular()
         showGreetingMessage()
         lastSelectedTabIndex = 0
         coordinator = RSOTabBarCordinator(tabBarController: self)
