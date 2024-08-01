@@ -169,6 +169,7 @@
 		5883339A2B7E1C0B008334A0 /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 588333992B7E1C0B008334A0 /* ForgotPasswordViewController.swift */; };
 		5883339C2B7E27A2008334A0 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5883339B2B7E27A2008334A0 /* SignUpViewController.swift */; };
 		5883339E2B7E349E008334A0 /* VerifyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5883339D2B7E349E008334A0 /* VerifyViewController.swift */; };
+		5883E7002C5BCAF900299927 /* GetCardDetailsResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5883E6FF2C5BCAF900299927 /* GetCardDetailsResponseModel.swift */; };
 		588D8A722B627A6B00545748 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 588D8A712B627A6B00545748 /* AppDelegate.swift */; };
 		588D8A742B627A6B00545748 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 588D8A732B627A6B00545748 /* SceneDelegate.swift */; };
 		588D8A762B627A6B00545748 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 588D8A752B627A6B00545748 /* ViewController.swift */; };
@@ -634,6 +635,7 @@
 		588333992B7E1C0B008334A0 /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
 		5883339B2B7E27A2008334A0 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		5883339D2B7E349E008334A0 /* VerifyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyViewController.swift; sourceTree = "<group>"; };
+		5883E6FF2C5BCAF900299927 /* GetCardDetailsResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCardDetailsResponseModel.swift; sourceTree = "<group>"; };
 		588D8A6E2B627A6B00545748 /* RSOWorkspace.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RSOWorkspace.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		588D8A712B627A6B00545748 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		588D8A732B627A6B00545748 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -1635,6 +1637,7 @@
 				58B33B7C2C5A05AD00DBEA34 /* SocialLoginResponse.swift */,
 				58B33B842C5A16F600DBEA34 /* PaymentMethodResponseModel.swift */,
 				58B33B8A2C5A319500DBEA34 /* LocationGalleryResponseModel.swift */,
+				5883E6FF2C5BCAF900299927 /* GetCardDetailsResponseModel.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -2343,6 +2346,7 @@
 				581F30BD2BBFBE240083A400 /* ReasonForVisitTableViewCell.swift in Sources */,
 				EEAB97A82C5237D400BD5E0D /* YourDetailsViewController.swift in Sources */,
 				587EA9D72B959099002BD4D1 /* SelectSeatingConfigTableViewCell.swift in Sources */,
+				5883E7002C5BCAF900299927 /* GetCardDetailsResponseModel.swift in Sources */,
 				586488282BBAB2560024CBA2 /* MyProfile.swift in Sources */,
 				5804181F2BD13BF5008EA858 /* NotificationsViewController.swift in Sources */,
 				587EA9DF2B95B216002BD4D1 /* InviteTeamMembersTableViewCell.swift in Sources */,

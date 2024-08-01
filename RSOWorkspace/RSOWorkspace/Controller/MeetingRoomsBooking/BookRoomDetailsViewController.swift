@@ -214,6 +214,13 @@ extension BookRoomDetailsViewController: UITableViewDataSource, UITableViewDeleg
                    let firstName = teamMember.first_name ?? ""
                    let lastName = teamMember.last_name ?? ""
                    cell.lblteammemberName.text = "\(firstName) \(lastName)"
+                   if let photoUrlString = teamMember.photo,
+                      let photoUrl = URL(string: imageBasePath + photoUrlString){
+                       print("photoUrl is",photoUrl)
+                       cell.teammemberImage.kf.setImage(with: photoUrl)
+                   }else{
+                           cell.teammemberImage.image = UIImage(named: "teamMemberphoto")
+                   }
                    cell.teamMemberView.isHidden = false
                }
                

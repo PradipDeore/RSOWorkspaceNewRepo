@@ -32,7 +32,7 @@ class AddPaymentMethodViewController: UIViewController {
         print("requestModel",requestModel)
         APIManager.shared.request(
             modelType: PaymentMethodResponseModel.self,
-            type: PaymentMethodEndPoint.getCardDetails(requestModel: requestModel)) { response in
+            type: PaymentMethodEndPoint.storeCardDetails(requestModel: requestModel)) { response in
                 switch response {
                 case .success(let response):
                     self.addPaymentmethodData = response

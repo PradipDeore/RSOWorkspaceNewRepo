@@ -28,6 +28,7 @@ class PaymentNetworkManager: CardPaymentDelegate ,ApplePayDelegate{
   var paymentTypeEntity:PaymentTypeEntity = .room
   var orderResponse: OrderResponse?
   var paymentRoomBookingRequestModel: PaymentRoomBookingRequest?
+
   var bookingId: Int = 0
   var totalPrice: Double = 0.0
   var vatAmount: Double = 0.0
@@ -239,6 +240,8 @@ class PaymentNetworkManager: CardPaymentDelegate ,ApplePayDelegate{
   func presentApplePay(orderResponse: OrderResponse) {
     
   }
+    
+    
   
 }
 
