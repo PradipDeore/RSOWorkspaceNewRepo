@@ -146,52 +146,51 @@ class SideMenuMainViewController: UIViewController,RSOTabCoordinated {
 
 extension SideMenuMainViewController: SideMenuViewControllerDelegate {
     
-    func selectedCell(_ row: Int,menuTitle title:String) {
-        DispatchQueue.main.async { self.sideMenuState(expanded: false) }
+  func selectedCell(_ row: Int, menuTitle: SideMenuOption) {        DispatchQueue.main.async { self.sideMenuState(expanded: false) }
       let menuNavVC = self.coordinator?.getInnerNavigationVC() ?? self.navigationController
-      self.coordinator?.hideBackButton(isHidden: true)
-      self.coordinator?.hideTopViewForHome(isHidden: true)
-        switch title {
+    self.coordinator?.setTitle(title: menuTitle.rawValue)
+      self.coordinator?.hideBackButton(isHidden: false)
+      self.coordinator?.hideTopViewForHome(isHidden: false)
+        switch menuTitle {
             
-        case "My Profile":
+        case .myProfile:
             let profileVC = UIViewController.createController(storyBoard: .Profile, ofType: ProfileViewController.self)
           menuNavVC?.pushViewController(profileVC, animated: true)
-        case "Dashboard":
+        case .dashboard:
             RSOTabBarViewController.presentAsRootController()
-        case "Schedule Visitors": // Scheduled Visitors
+        case .scheduleVisitors:
             let scheduleVisitorsVC = UIViewController.createController(storyBoard: .VisitorManagement, ofType: ScheduleVisitorsViewController.self)
           menuNavVC?.pushViewController(scheduleVisitorsVC, animated: true)
        
-        case "My Visitors":
+        case .myVisitors:
             let myvisitorsDetailsVC = UIViewController.createController(storyBoard: .VisitorManagement, ofType: MyVisitorsViewController.self)
           menuNavVC?.pushViewController(myvisitorsDetailsVC, animated: true)
        
-        case "Payments":
+        case .payments:
             let paymentsVC = UIViewController.createController(storyBoard: .Payment, ofType: SideMenuPaymentsViewController.self)
           menuNavVC?.pushViewController(paymentsVC, animated: true)
        
-        case "Amenities":
+        case .amenities:
             let amenitiesVC = UIViewController.createController(storyBoard: .Feedback, ofType: AmenitiesViewController.self)
           menuNavVC?.pushViewController(amenitiesVC, animated: true)
        
-        case "Feedback":
+        case .feedback:
             let feedbackVC = UIViewController.createController(storyBoard: .Feedback, ofType: FeedbackViewController.self)
           menuNavVC?.pushViewController(feedbackVC, animated: true)
        
-        case "FAQs":
+        case .faqs:
             let faqVC = UIViewController.createController(storyBoard: .Feedback, ofType: FAQViewController.self)
           menuNavVC?.pushViewController(faqVC, animated: true)
         
-        case "Locations":
+        case .locations:
             let locationVC = UIViewController.createController(storyBoard: .Feedback, ofType: LocationViewController.self)
           menuNavVC?.pushViewController(locationVC, animated: true)
        
-        case "About Us":
+        case .aboutUs:
             let aboutUsVC = UIViewController.createController(storyBoard: .Feedback, ofType: RSOWorkspaceViewController.self)
           menuNavVC?.pushViewController(aboutUsVC, animated: true)
            // Logout
-        case "Logout":
-            // Get the current user
+        case .logout:
                 if let user = Auth.auth().currentUser {
                     let isGoogleUser = user.providerData.contains { provider in
                         return provider.providerID == "google.com"
