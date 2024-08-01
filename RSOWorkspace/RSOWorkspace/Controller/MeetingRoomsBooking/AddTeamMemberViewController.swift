@@ -8,7 +8,7 @@
 import UIKit
 
 protocol sendteamMemberNameDelegate:AnyObject{
-    func sendteamMemberName(name:String)
+    func sendteamMemberName(member: TeamMembersList)
 }
 class AddTeamMemberViewController: UIViewController {
     
@@ -21,11 +21,10 @@ class AddTeamMemberViewController: UIViewController {
     @IBOutlet weak var searchView: UIView!
     var meetingroomName = ""
     var teamMemberName = ""
-    
+    var selectedFilteredTeamMembersIndex = -1
     var suggestionsTableView: UITableView!
-   // var allTeamMembers = ["John Doe", "Jane Smith", "Jack Johnson", "Jill Taylor", "Jerry Lee", "Jordan White"] // Example team member names
-        var filteredTeamMembers = [TeamMembersList]()
-        var isDropdownVisible = false
+    var filteredTeamMembers = [TeamMembersList]()
+    var isDropdownVisible = false
         
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +32,11 @@ class AddTeamMemberViewController: UIViewController {
         setupSuggestionsTableView()
         txtSearchTeamMember.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
 
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        btnAdd.alpha = 0.5
+        btnAdd.isUserInteractionEnabled = false
     }
     func setupUI() {
            btnAdd.layer.cornerRadius = btnAdd.bounds.height / 2
@@ -92,6 +96,8 @@ class AddTeamMemberViewController: UIViewController {
             suggestionsTableView.reloadData()
             return
         }
+        btnAdd.alpha = 1.0
+        btnAdd.isUserInteractionEnabled = true
 
         filteredTeamMembers = allTeamMembers.filter { $0.first_name?.lowercased().contains(query.lowercased()) ?? false }
         isDropdownVisible = !filteredTeamMembers.isEmpty
@@ -104,19 +110,19 @@ class AddTeamMemberViewController: UIViewController {
        
     }
     @IBAction func btnAddTeamMemberTappedAction(_ sender: Any) {
-        if let txtTeamMemberName = txtSearchTeamMember.text, !txtTeamMemberName.isEmpty {
-                    teamMemberName = txtTeamMemberName
-                    teamMemberNameDelegate?.sendteamMemberName(name: teamMemberName)
-                    dismiss(animated: true)
-                } else {
-                    // Handle the case where no name is entered
-                    // For example, show an alert
-                    let alert = UIAlertController(title: "No Team Member Selected", message: "Please select a team member from the list.", preferredStyle: .alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-                    present(alert, animated: true, completion: nil)
-                }
+        if selectedFilteredTeamMembersIndex < filteredTeamMembers.count {
+            let teamMember = filteredTeamMembers[selectedFilteredTeamMembersIndex]
+                teamMemberNameDelegate?.sendteamMemberName(member: teamMember)
+                dismiss(animated: true)
+            } else {
+                // Handle the case where no name is entered
+                // For example, show an alert
+                let alert = UIAlertController(title: "No Team Member Selected", message: "Please select a team member from the list.", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                present(alert, animated: true, completion: nil)
+            }
             
-    }
+        }
 }
 
 // MARK: - UITextFieldDelegate
@@ -144,15 +150,14 @@ extension AddTeamMemberViewController: UITableViewDelegate, UITableViewDataSourc
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
         let teamMember = filteredTeamMembers[indexPath.row]
-        let firstName = teamMember.first_name ?? ""
-        let lastName = teamMember.last_name ?? ""
-        cell.textLabel?.text = "\(firstName) \(lastName)"
+        cell.textLabel?.text = teamMember.fullName
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let teamMember = filteredTeamMembers[indexPath.row]
-        txtSearchTeamMember.text = teamMember.first_name
+        selectedFilteredTeamMembersIndex = indexPath.row
+        txtSearchTeamMember.text = teamMember.fullName
         isDropdownVisible = false
         suggestionsTableView.isHidden = true
     }

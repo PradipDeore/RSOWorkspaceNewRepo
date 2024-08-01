@@ -400,6 +400,10 @@ extension DeskBookingViewController:InviteTeamMembersTableViewCellDelegate{
     }
 }
 extension DeskBookingViewController:sendteamMemberNameDelegate{
+    func sendteamMemberName(member: TeamMembersList) {
+        sendteamMemberName(name: member.fullName)
+    }
+    
     
     func sendteamMemberName(name: String) {
         if teamMembersArray.count == 1 && teamMembersArray.first == ""{
