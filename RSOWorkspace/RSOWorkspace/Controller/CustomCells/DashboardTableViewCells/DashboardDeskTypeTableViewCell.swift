@@ -8,7 +8,7 @@
 import UIKit
 
 protocol DashboardDeskTypeTableViewCellDelegate: AnyObject {
-    func buttonTapped(type: String)
+  func buttonTapped(type: DashboardOption)
 }
 class DashboardDeskTypeTableViewCell: UITableViewCell {
     
@@ -56,9 +56,11 @@ class DashboardDeskTypeTableViewCell: UITableViewCell {
         
         buttonSetUp()
       let buttonType = sender.titleLabel?.text?.trimmingCharacters(in: .whitespaces) ?? ""
-        delegate?.buttonTapped(type: buttonType)        //selectedButtonTag = sender.tag
+      if let option = DashboardOption(rawValue: buttonType) {
+        delegate?.buttonTapped(type: option)        //selectedButtonTag = sender.tag
         sender.backgroundColor = selectedButtonColor
         sender.setTitleColor(.black, for: .normal)
+      }
     }
     func setButtonAppearance(button: UIButton, backgroundColor: UIColor, textColor: UIColor) {
         button.backgroundColor = backgroundColor

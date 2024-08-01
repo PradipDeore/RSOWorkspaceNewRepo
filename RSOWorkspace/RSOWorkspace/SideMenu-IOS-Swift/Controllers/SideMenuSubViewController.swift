@@ -8,7 +8,7 @@
 import UIKit
 
 protocol SideMenuViewControllerDelegate {
-    func selectedCell(_ row: Int, menuTitle: String)
+    func selectedCell(_ row: Int, menuTitle: SideMenuOption)
 }
 class SideMenuSubViewController: UIViewController {
     
@@ -76,32 +76,30 @@ class SideMenuSubViewController: UIViewController {
         self.footerLabel.font = RSOFont.poppins(size: 16, type: .SemiBold)
         self.sideMenuTableView.reloadData()
     }
-    func createMenu() -> [SideMenuModel] {
-        var menu: [SideMenuModel] = [
-            SideMenuModel(title: "My Profile"),
-            SideMenuModel(title: "Dashboard"),
-            SideMenuModel(title: "")
-        ]
-        menu.append(SideMenuModel(title: "Schedule Visitors"))
-        menu.append(SideMenuModel(title: "My Visitors"))
-        menu.append(SideMenuModel(title: ""))
-        menu.append(SideMenuModel(title: "Amenities"))
-        if !UserHelper.shared.isUserExplorer(){
-            menu.append(SideMenuModel(title: "Payments"))
-        }
-        menu.append(SideMenuModel(title: ""))
-        menu.append(SideMenuModel(title: "Feedback"))
-        menu.append(SideMenuModel(title: "FAQs"))
-        menu.append(SideMenuModel(title: ""))
-        menu.append(SideMenuModel(title: "Locations"))
-        menu.append(SideMenuModel(title: "About Us"))
-        menu.append(SideMenuModel(title: ""))
-        if !UserHelper.shared.isUserExplorer(){
-            menu.append(SideMenuModel(title: "Logout"))
-        }
-        
-        return menu
+  func createMenu() -> [SideMenuModel] {
+    var menu: [SideMenuModel] = []
+    menu.append(SideMenuModel(title: .myProfile))
+    menu.append(SideMenuModel(title: .dashboard))
+    menu.append(SideMenuModel(title: .empty))
+    menu.append(SideMenuModel(title: .scheduleVisitors))
+    menu.append(SideMenuModel(title: .myVisitors))
+    menu.append(SideMenuModel(title: .empty))
+    menu.append(SideMenuModel(title: .amenities))
+    if !UserHelper.shared.isUserExplorer() {
+      menu.append(SideMenuModel(title: .payments))
     }
+    menu.append(SideMenuModel(title: .empty))
+    menu.append(SideMenuModel(title: .feedback))
+    menu.append(SideMenuModel(title: .faqs))
+    menu.append(SideMenuModel(title: .empty))
+    menu.append(SideMenuModel(title: .locations))
+    menu.append(SideMenuModel(title: .aboutUs))
+    menu.append(SideMenuModel(title: .empty))
+    if !UserHelper.shared.isUserExplorer() {
+      menu.append(SideMenuModel(title: .logout))
+    }
+    return menu
+  }
     private func fetchMyProfiles() {
         self.eventHandler?(.loading)
         APIManager.shared.request(
@@ -140,7 +138,7 @@ class SideMenuSubViewController: UIViewController {
 
 extension SideMenuSubViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if self.menu[indexPath.row].title.isEmpty{
+      if self.menu[indexPath.row].title == .empty{
             return 40
         }
         return 25
@@ -158,9 +156,9 @@ extension SideMenuSubViewController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: SideMenuCell.identifier, for: indexPath) as? SideMenuCell else { fatalError("xib doesn't exist") }
         
         cell.selectionStyle = .none
-        cell.titleLabel.text = self.menu[indexPath.row].title
+      cell.titleLabel.text = self.menu[indexPath.row].title.rawValue
         // Add horizontal line after every 2 rows
-        if self.menu[indexPath.row].title.isEmpty {
+      if self.menu[indexPath.row].title == .empty {
             cell.horizontalLineView.isHidden = false
         }else{
             cell.horizontalLineView.isHidden = true
@@ -172,7 +170,7 @@ extension SideMenuSubViewController: UITableViewDataSource {
     {
         
         let title = self.menu[indexPath.row].title
-        if title.isEmpty == false{
+      if title != .empty {
             self.delegate?.selectedCell(indexPath.row, menuTitle: title)
         }
     }

@@ -24,7 +24,7 @@ class AddTeamMemberViewController: UIViewController {
     
     var suggestionsTableView: UITableView!
    // var allTeamMembers = ["John Doe", "Jane Smith", "Jack Johnson", "Jill Taylor", "Jerry Lee", "Jordan White"] // Example team member names
-        var filteredTeamMembers = [String]()
+        var filteredTeamMembers = [TeamMembersList]()
         var isDropdownVisible = false
         
     override func viewDidLoad() {
@@ -84,20 +84,21 @@ class AddTeamMemberViewController: UIViewController {
            searchView.layer.shadowPath = UIBezierPath(roundedRect:  CGRect(x: 0, y: searchView.bounds.height - 4, width: searchView.bounds.width, height: 4), cornerRadius: searchView.layer.cornerRadius).cgPath
        }
       
-       @objc func textFieldDidChange() {
-           guard let query = txtSearchTeamMember.text, !query.isEmpty else {
-                  filteredTeamMembers.removeAll()
-                  isDropdownVisible = false
-                  suggestionsTableView.isHidden = true
-                  suggestionsTableView.reloadData()
-                  return
-              }
-              
-              filteredTeamMembers = allTeamMembers.filter { $0.lowercased().contains(query.lowercased()) }
-              isDropdownVisible = !filteredTeamMembers.isEmpty
-              suggestionsTableView.isHidden = !isDropdownVisible
-              suggestionsTableView.reloadData()
-       }
+    @objc func textFieldDidChange() {
+        guard let query = txtSearchTeamMember.text, !query.isEmpty else {
+            filteredTeamMembers.removeAll()
+            isDropdownVisible = false
+            suggestionsTableView.isHidden = true
+            suggestionsTableView.reloadData()
+            return
+        }
+
+        filteredTeamMembers = allTeamMembers.filter { $0.first_name?.lowercased().contains(query.lowercased()) ?? false }
+        isDropdownVisible = !filteredTeamMembers.isEmpty
+        suggestionsTableView.isHidden = !isDropdownVisible
+        suggestionsTableView.reloadData()
+    }
+
     @IBAction func btnHideViewTappedAction(_ sender: Any) {
        dismiss(animated: true)
        
@@ -142,13 +143,16 @@ extension AddTeamMemberViewController: UITableViewDelegate, UITableViewDataSourc
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
-        cell.textLabel?.text = filteredTeamMembers[indexPath.row]
+        let teamMember = filteredTeamMembers[indexPath.row]
+        let firstName = teamMember.first_name ?? ""
+        let lastName = teamMember.last_name ?? ""
+        cell.textLabel?.text = "\(firstName) \(lastName)"
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let selectedText = filteredTeamMembers[indexPath.row]
-        txtSearchTeamMember.text = selectedText
+        let teamMember = filteredTeamMembers[indexPath.row]
+        txtSearchTeamMember.text = teamMember.first_name
         isDropdownVisible = false
         suggestionsTableView.isHidden = true
     }

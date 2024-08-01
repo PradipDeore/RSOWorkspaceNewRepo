@@ -51,7 +51,6 @@ class SideMenuDashboardViewController: UIViewController {
                 switch response {
                 case .success(let response):
                     self.myProfileResponse = response
-                   // print ("myProfileResponseCount",self.myProfileResponse)
                     DispatchQueue.main.async {
                         self.tableView.reloadData()
                     }

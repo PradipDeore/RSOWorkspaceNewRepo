@@ -7,12 +7,16 @@
 
 import UIKit
 import Toast_Swift
+enum DashboardOption: String {
+    case meetingRooms = "Meeting Rooms"
+    case workspace = "Workspace"
+    case membership = "Membership"
+}
 
 class DashboardViewController: UIViewController, RSOTabCoordinated {
-  
+  var membershipViewController: MembershipViewController?
   var coordinator: RSOTabBarCordinator?
-  var selectedIndexPath: IndexPath?
-  var selectedButtonType = ""
+  var selectedButtonType: DashboardOption = .meetingRooms
   @IBOutlet weak var tableView: UITableView!
   var myBookingResponseData: MyBookingResponse?
   var eventHandler: ((_ event: Event) -> Void)?
@@ -20,6 +24,8 @@ class DashboardViewController: UIViewController, RSOTabCoordinated {
   override func viewDidLoad() {
     super.viewDidLoad()
     setupTableView()
+    membershipViewController = UIViewController.createController(storyBoard: .Membership, ofType: MembershipViewController.self)
+
   }
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
@@ -37,7 +43,7 @@ class DashboardViewController: UIViewController, RSOTabCoordinated {
   }
   
   private func registerTableCells() {
-    let cellIdentifiers = ["MyBookingCloseTableViewCell", "DashboardMarketPlaceTableViewCell", "DashboardDeskTypeTableViewCell", "DashboardMeetingRoomsTableViewCell"]
+    let cellIdentifiers = ["MyBookingCloseTableViewCell", "DashboardMarketPlaceTableViewCell", "DashboardDeskTypeTableViewCell", "DashboardMeetingRoomsTableViewCell", "MembershipTableViewCell"]
     
     for identifier in cellIdentifiers {
       tableView.register(UINib(nibName: identifier, bundle: nil), forCellReuseIdentifier: identifier)
@@ -104,8 +110,8 @@ extension DashboardViewController: UITableViewDataSource, UITableViewDelegate {
       switch self {
       case .myBookingClose: return 45
       case .marketPlace:  return 209
-      case .meetingRooms: return 209
       case .deskType: return 35
+      case .meetingRooms: return 209
       }
     }
   }
@@ -127,22 +133,30 @@ extension DashboardViewController: UITableViewDataSource, UITableViewDelegate {
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    guard let section = SectionType(rawValue: indexPath.section) else {
+    guard let sectionType = SectionType(rawValue: indexPath.section) else {
       return UITableViewCell()
     }
-    
-    let cell = tableView.dequeueReusableCell(withIdentifier: section.cellIdentifier, for: indexPath)
+    if sectionType == .meetingRooms && selectedButtonType == .membership {
+      if let cell = tableView.dequeueReusableCell(withIdentifier: "MembershipTableViewCell", for: indexPath) as? MembershipTableViewCell, let memberVC = membershipViewController {
+        cell.selectionStyle = .none
+        // Create and configure the MembershipViewController
+        memberVC.view.frame = cell.containerView.bounds
+        cell.configure(with: memberVC)
+        return cell
+      }
+    }
+    let cell = tableView.dequeueReusableCell(withIdentifier: sectionType.cellIdentifier, for: indexPath)
     cell.selectionStyle = .none
-    switch section {
+    switch sectionType {
     case .myBookingClose:
       if let myBookingCell = cell as? MyBookingCloseTableViewCell {
         myBookingCell.btnBooking.addTarget(self, action: #selector(btnBookingTappedAction), for: .touchUpInside)
       }
     case .meetingRooms:
+
       if let meetingRoomsCell = cell as? DashboardMeetingRoomsTableViewCell {
         meetingRoomsCell.collectionView.tag = 0
         meetingRoomsCell.collectionView.backActionDelegate = self
-        
       }
     case .deskType:
       if let deskTypeCell = cell as? DashboardDeskTypeTableViewCell {
@@ -156,13 +170,16 @@ extension DashboardViewController: UITableViewDataSource, UITableViewDelegate {
   }
   
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-    guard let section = SectionType(rawValue: indexPath.section) else {
+    guard let sectionType = SectionType(rawValue: indexPath.section) else {
       return 100
     }
-    return section.heightForRow
+    
+    if sectionType == .meetingRooms && selectedButtonType == .membership  {
+      return self.view.frame.height
+    }
+    return sectionType.heightForRow
   }
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    selectedIndexPath = indexPath
   }
 }
 
@@ -180,8 +197,9 @@ extension DashboardViewController: BookButtonActionDelegate {
   func showDeskBookingVC() {
   }
   func showBookMeetingRoomsVC() {
+    
  
-      if self.selectedButtonType == "Meeting Rooms" {
+    if self.selectedButtonType == .meetingRooms {
         let bookMeetingRoomVC = UIViewController.createController(storyBoard: .Booking, ofType: BookMeetingRoomViewController.self)
         bookMeetingRoomVC.coordinator = self.coordinator
         self.navigationController?.pushViewController(bookMeetingRoomVC, animated: true)
@@ -202,27 +220,26 @@ extension DashboardViewController: BookButtonActionDelegate {
   }
 }
 extension DashboardViewController: DashboardDeskTypeTableViewCellDelegate {
-  func buttonTapped(type: String) {
-    self.selectedButtonType = type
+  func buttonTapped(type: DashboardOption) {
+    DispatchQueue.main.async {
+      self.selectedButtonType = type
+        self.tableView.reloadSections(IndexSet(integer: 3), with: .automatic)
+
       switch type {
-      case "Meeting Rooms":
+      case .meetingRooms:
         if let meetingRoomsCell = self.tableView.visibleCells.compactMap({ $0 as? DashboardMeetingRoomsTableViewCell }).first {
           meetingRoomsCell.fetchRooms()
         } else {
           print("DashboardMeetingRoomsTableViewCell not found")
         }
-      case "Workspace":
+      case .workspace:
         if let meetingRoomsCell = self.tableView.visibleCells.compactMap({ $0 as? DashboardMeetingRoomsTableViewCell }).first {
-            meetingRoomsCell.fetchOfficeDesk(id: nil, requestModel: nil)
+          meetingRoomsCell.fetchOfficeDesk(id: nil, requestModel: nil)
         } else {
           print("DashboardMeetingRoomsTableViewCell not found")
         }
-      case "Membership":
-        let membershipViewController = UIViewController.createController(storyBoard: .Membership, ofType: MembershipViewController.self)
-        membershipViewController.coordinator = self.coordinator
-        self.navigationController?.pushViewController(membershipViewController, animated: true)
-      default:
-        break
+      case .membership: break
       }
     }
   }
+}

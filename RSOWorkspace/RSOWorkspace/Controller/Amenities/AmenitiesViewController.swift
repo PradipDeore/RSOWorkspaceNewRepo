@@ -235,15 +235,15 @@ extension AmenitiesViewController: SelectLocationTableViewCellDelegate {
 }
 
 extension AmenitiesViewController: DashboardDeskTypeTableViewCellDelegate {
-    func buttonTapped(type: String) {
+    func buttonTapped(type: DashboardOption) {
            switch type {
-           case "Meetings":
+           case .meetingRooms:
                if let meetingRoomsCell = tableView.visibleCells.compactMap({ $0 as? DashboardMeetingRoomsTableViewCell }).first {
                    meetingRoomsCell.fetchRooms()
                } else {
                    print("DashboardMeetingRoomsTableViewCell not found")
                }
-           case "Workspace":
+           case .workspace:
                if let meetingRoomsCell = tableView.visibleCells.compactMap({ $0 as? DashboardMeetingRoomsTableViewCell }).first {
                    meetingRoomsCell.fetchOfficeDesk(id: nil, requestModel: nil)
                } else {
