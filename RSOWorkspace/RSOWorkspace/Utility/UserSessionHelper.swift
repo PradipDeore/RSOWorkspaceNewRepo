@@ -26,6 +26,7 @@ class UserHelper {
   private let userStatusKey = "userStatus"
   private let userIsGuestKey = "userIsGuest"
   private let userIsLoggedIn = "userIsLoggedIn"
+  private let notificationCountKey = "notifficationCount"
   
   func saveUser(_ user: UserData) {
     userDefaults.set(user.id, forKey: customerIdKey)
@@ -39,8 +40,15 @@ class UserHelper {
   }
 
     func saveSocialuser(name:String, email:String){
+        
+        let namelist = name.components(separatedBy: " ")
+        if namelist.count > 1 {
+            userDefaults.set(namelist[0], forKey: firstNameKey)
+            userDefaults.set(namelist[1], forKey: lastNameKey)
+        }else{
+            userDefaults.set(name, forKey: firstNameKey)
+        }
         userDefaults.set(email, forKey: userEmailKey)
-        userDefaults.set(name, forKey: firstNameKey)
         userDefaults.set(true, forKey: userIsLoggedIn)
     }
    
@@ -96,9 +104,7 @@ func getUserId() -> Int? {
     return userDefaults.string(forKey: userEmailKey)
   }
     
-   
-  
-  func getUserCompanyID() -> String? {
+     func getUserCompanyID() -> String? {
     return userDefaults.string(forKey: userCompanyIDKey)
   }
   
@@ -115,6 +121,26 @@ func getUserId() -> Int? {
     func getUserPhoto() -> String? {
       return userDefaults.string(forKey: userPhotoKey)
     }
+   
+    func saveNotificationCount(notificationCount: Int?) {
+            guard let count = notificationCount else {
+                print("Notification count is nil, not saving.")
+                return
+            }
+            print("Saving notification count: \(count)")
+            userDefaults.set(count, forKey: notificationCountKey)
+        }
+
+        func getNotificationCount() -> Int? {
+            let count = userDefaults.integer(forKey: notificationCountKey)
+            // If the count is 0, it's possible that nothing was stored or the stored value is actually 0
+            if count == 0 && userDefaults.object(forKey: notificationCountKey) == nil {
+                // Nothing was stored for this key
+                return nil
+            }
+            return count
+        }
+    
   
   func clearUser() {
     userDefaults.removeObject(forKey: customerIdKey)

@@ -191,28 +191,9 @@ extension SideMenuMainViewController: SideMenuViewControllerDelegate {
           menuNavVC?.pushViewController(aboutUsVC, animated: true)
            // Logout
         case "Logout":
-            // Get the current user
-                if let user = Auth.auth().currentUser {
-                    let isGoogleUser = user.providerData.contains { provider in
-                        return provider.providerID == "google.com"
-                    }
-
-                    if isGoogleUser {
-                        let firebaseAuth = Auth.auth()
-                        do {
-                            try firebaseAuth.signOut()
-                            self.logout()
-                        } catch let signOutError as NSError {
-                            print("Error signing out from Google: %@", signOutError)
-                        }
-                    } else {
-                        // Normal logout for other types of login
-                        self.logout()
-                    }
-                } else {
-                    // Handle case where no user is logged in (if necessary)
-                    print("No user is currently logged in.")
-                }
+            // Normal logout for other types of login
+            self.logout()
+            
         default:
             break
         }
@@ -227,9 +208,28 @@ extension SideMenuMainViewController: SideMenuViewControllerDelegate {
             RSOToken.shared.clearAll()
             UserHelper.shared.clearUser()
             GetStartedViewController.presentAsRootController()
+            self.googleLogout()
         }
         alertController.addAction(logoutAction)
         self.present(alertController, animated: true, completion: nil)
+    }
+    func googleLogout(){
+        if let user = Auth.auth().currentUser {
+            let isGoogleUser = user.providerData.contains { provider in
+                return provider.providerID == "google.com"
+            }
+            
+            if isGoogleUser {
+                let firebaseAuth = Auth.auth()
+                do {
+                    try firebaseAuth.signOut()
+                } catch let signOutError as NSError {
+                    print("Error signing out from Google: %@", signOutError)
+                }
+            } else {
+                
+            }
+        }
     }
 }
 

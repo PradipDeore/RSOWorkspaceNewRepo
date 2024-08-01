@@ -11,7 +11,7 @@ struct RoomDetailResponse: Codable {
     let status: Bool
     let data: RoomData
     let amenity: [Amenity]
-    let members: [Member]? // Assuming it's an array of strings or null
+    let members: [TeamMembersList]? // Assuming it's an array of strings or null
     let datetime: Datetime
 }
 
@@ -69,6 +69,12 @@ struct Amenity: Codable {
     let description: String?
     let pricing: String?
     let price: String?
+}
+struct TeamMembersList: Codable {
+    let id: Int
+    let first_name: String?
+    let last_name: String?
+    let photo: String?
 }
 
 struct Datetime: Codable {

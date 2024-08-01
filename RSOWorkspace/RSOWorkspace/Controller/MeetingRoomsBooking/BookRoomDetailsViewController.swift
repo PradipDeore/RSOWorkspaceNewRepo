@@ -92,7 +92,7 @@ class BookRoomDetailsViewController: UIViewController {
                     self.confirmBookingDetails.startTime = item?.datetime.startTime ?? "0.0"
                     self.confirmBookingDetails.endTime = item?.datetime.endTime ?? "0.0"
                     if let members = item?.members {
-                        self.confirmBookingDetails.teamMembers = members.compactMap { $0.email }
+                        self.confirmBookingDetails.teamMembers = members
                     } else {
                         self.confirmBookingDetails.teamMembers = []
                     }

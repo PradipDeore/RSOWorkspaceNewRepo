@@ -11,4 +11,6 @@ import Foundation
 struct SocailLoginRequestModel: Codable {
     let auth_type: String
     let auth_id:String
+    let email:String
+    let name:String
 }
