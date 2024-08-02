@@ -140,6 +140,7 @@ extension ScheduleVisitorsViewController: UITableViewDataSource, UITableViewDele
             else if indexPath.row == (visitorsDetailArray.count + 1) {
                 let cell =  tableView.dequeueReusableCell(withIdentifier: "VisitorsTableViewCell", for: indexPath) as! VisitorsTableViewCell
                 cell.delegate = self
+              cell.resetTextFields()
                 cell.selectionStyle = .none
                 return cell
             }else {
@@ -163,6 +164,14 @@ extension ScheduleVisitorsViewController: UITableViewDataSource, UITableViewDele
         case .btnCancelAndSave:
             let cell =  tableView.dequeueReusableCell(withIdentifier: CellIdentifierScheduleVisitors.btnCancelAndSave.rawValue, for: indexPath)as! ButtonCancelAndSaveTableViewCell
             cell.delegate = self
+          let list = self.apiRequestScheduleVisitorsRequest.visitorDetails ?? []
+          if list.isEmpty {
+            cell.btnSave.alpha = 0.5
+            cell.btnSave.isUserInteractionEnabled = false
+          } else {
+            cell.btnSave.alpha = 1.0
+            cell.btnSave.isUserInteractionEnabled = true
+          }
             cell.selectionStyle = .none
             return cell
         }
@@ -190,7 +199,7 @@ extension ScheduleVisitorsViewController: UITableViewDataSource, UITableViewDele
                 return 53
             }
         case .btnCancelAndSave:
-            return 46
+            return 55
         }
     }
 }
@@ -264,6 +273,19 @@ extension ScheduleVisitorsViewController:VisitorsTableViewCellDelegate{
 
     func addVisitors(email: String, name: String, phone: String) {
         
+      // Check if email is valid
+      if !RSOValidator.isValidEmail(email) {
+          RSOToastView.shared.show("Invalid email", duration: 2.0, position: .center)
+          return
+      }
+      if name.isEmpty {
+          RSOToastView.shared.show("Please enter visitor name", duration: 2.0, position: .center)
+          return
+      }
+      if !RSOValidator.validatePhoneNumber(phone) {
+          RSOToastView.shared.show("Invalid phone", duration: 2.0, position: .center)
+          return
+      }
         let obj = VisitorDetails(visitorName: name, visitorEmail: email, visitorPhone: phone)
         
         // Remove the empty visitor detail if it exists

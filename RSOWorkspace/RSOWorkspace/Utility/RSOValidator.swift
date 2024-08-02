@@ -26,22 +26,6 @@ class RSOValidator{
         let passwordPredicate = NSPredicate(format: "SELF MATCHES %@", passwordRegex)
         return passwordPredicate.evaluate(with: password)
     }
-   
-    class func validatePhoneNumber(_ phoneNumber: String) -> Bool {
-        // Define a regular expression pattern for a valid phone number
-        let phoneNumberPattern = "^[0-9]{10}$" // This pattern assumes a 10-digit phone number
-        
-        // Create a regular expression object using the pattern
-        guard let regex = try? NSRegularExpression(pattern: phoneNumberPattern) else {
-            return false // Return false if the regular expression pattern is invalid
-        }
-        
-        // Perform matching using the regular expression
-        let matches = regex.matches(in: phoneNumber, range: NSRange(location: 0, length: phoneNumber.utf16.count))
-        
-        // If there is at least one match, the phone number is valid
-        return !matches.isEmpty
-    }
     
     class func isValidCardNumber(_ number: String) -> Bool {
         // Remove spaces and dashes
@@ -68,4 +52,15 @@ class RSOValidator{
         // Check if the expiry date is in the future
         return expiryDate > Date()
     }
+  class func validatePhoneNumber(_ phoneNumber: String) -> Bool {
+          // Define regular expression patterns for valid phone numbers
+          let indianPhoneNumberPattern = "^[6-9]\\d{9}$" // Indian numbers start with 6-9 and are 10 digits long
+          let dubaiPhoneNumberPattern = "^(?:\\+971|971)?[5-9]\\d{8}$" // Dubai numbers can start with +971 or 971 and are 9 digits long
+
+          // Check if the phone number matches either pattern
+          let isIndianNumber = NSPredicate(format: "SELF MATCHES %@", indianPhoneNumberPattern).evaluate(with: phoneNumber)
+          let isDubaiNumber = NSPredicate(format: "SELF MATCHES %@", dubaiPhoneNumberPattern).evaluate(with: phoneNumber)
+
+          return isIndianNumber || isDubaiNumber
+      }
 }
