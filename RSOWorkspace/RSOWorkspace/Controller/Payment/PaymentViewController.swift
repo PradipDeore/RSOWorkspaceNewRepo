@@ -58,11 +58,11 @@ class PaymentViewController: UIViewController {
         setupCellIdentifiers()
         setupTableView()
         coordinator?.hideBackButton(isHidden: false)
-        getCardDetails()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        // getCardDetails()
         self.tableView.reloadData()
     }
     private func setupCellIdentifiers() {
@@ -101,30 +101,7 @@ class PaymentViewController: UIViewController {
                 }
             }
     }
-    private func getCardDetails() {
-      DispatchQueue.main.async {
-        RSOLoader.showLoader()
-      }
-        APIManager.shared.request(
-            modelType: GetCardDetailsResponseModel.self,
-            type: PaymentMethodEndPoint.getCardDetail) { response in
-                switch response {
-                case .success(let response):
-                    self.getCardDetailsResponseData = response.data ?? []
-                    print ("getCardDetailsResponseData",self.getCardDetailsResponseData)
-                    DispatchQueue.main.async {
-                      RSOLoader.removeLoader()
-                        self.tableView.reloadData()
-                    }
-                    self.eventHandler?(.dataLoaded)
-                case .failure(let error):
-                    self.eventHandler?(.error(error))
-                  DispatchQueue.main.async {
-                    RSOLoader.removeLoader()
-                  }
-                }
-            }
-    }
+
 }
 
 extension PaymentViewController: UITableViewDataSource, UITableViewDelegate {
@@ -230,7 +207,9 @@ extension PaymentViewController: UITableViewDataSource, UITableViewDelegate {
                 let amenityPriceInt = amenity.price?.integerValue ?? 0
                 cell.lblAmenityPrice.text = "\(amenityPriceInt)"
                 cell.lblHours.text = "\(Int(self.requestParameters?.timeDifferece ?? 0))"
-                cell.lblTotal.text = "\(self.requestParameters?.totalOfAmenity ?? 0)"
+                let amenityPrice = Float(amenity.price ?? "0.0") ?? 0.0
+                let totalAmenityPrice = (amenityPrice * (self.requestParameters?.timeDifferece ?? 0))
+                cell.lblTotal.text = "\(totalAmenityPrice)"
             }
             return cell
             

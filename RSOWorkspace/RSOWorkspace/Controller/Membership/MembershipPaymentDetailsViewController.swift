@@ -112,7 +112,7 @@ extension MembershipPaymentDetailsViewController: UITableViewDataSource, UITable
   
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
       if indexPath.section == 0 {
-          return 230
+          return 190
       }
     return 80 // Default row height
   }

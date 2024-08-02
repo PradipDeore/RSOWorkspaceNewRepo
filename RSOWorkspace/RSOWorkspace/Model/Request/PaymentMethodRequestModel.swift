@@ -12,6 +12,4 @@ struct PaymentMethodRequestModel: Codable {
     let expiry:String
     let card_holder_name:String
     let card_type:String
-    let id :Int
-    
 }

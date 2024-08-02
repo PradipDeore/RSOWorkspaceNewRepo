@@ -90,6 +90,12 @@ class FindMembersSearchListTableViewCell: UITableViewCell {
 //    }
 
     @IBAction func btnCallTappedAction(_ sender: Any) {
+        guard let phoneNumber = lblMemberPhone.text, !phoneNumber.isEmpty else {
+            print("Phone number is not available")
+            return
+        }
+        // Use the utility method to make a phone call
+        PhoneCallUtility.makePhoneCall(to: phoneNumber)
     }
     
 }

@@ -448,6 +448,9 @@
                                                 <exclude reference="cDu-3Y-aup"/>
                                             </mask>
                                         </variation>
+                                        <connections>
+                                            <action selector="btnCallTappedAction:" destination="HfH-84-cdS" eventType="touchUpInside" id="Lzl-C6-c1e"/>
+                                        </connections>
                                     </button>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="p4u-Je-DTx">
                                         <rect key="frame" x="10.333333333333329" y="8" width="227.66666666666669" height="40"/>

@@ -114,6 +114,7 @@ class SideMenuSubViewController: UIViewController {
                     let lastName =  self.myProfileResponse?.data.lastName
                     
                     DispatchQueue.main.async {
+                      
                         if let firstName = firstName, let lastName = lastName {
                             self.lblName.text = "\(firstName) \(lastName)"
                         }

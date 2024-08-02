@@ -17,8 +17,8 @@ enum PaymentMethodEndPoint {
 extension PaymentMethodEndPoint: EndPointType {
     var path: String {
         switch self {
-        case .storeCardDetails(let requestModel):
-            return "card-store?auth_type=\(requestModel.number)&\(requestModel.expiry)&\(requestModel.card_holder_name)&\(requestModel.card_type)&\(requestModel.id)"
+        case .storeCardDetails:
+            return "card-store"
         case .getCardDetail:
             return "get-card"
         }

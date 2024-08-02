@@ -25,7 +25,7 @@ class DashboardViewController: UIViewController, RSOTabCoordinated {
     super.viewDidLoad()
     setupTableView()
     membershipViewController = UIViewController.createController(storyBoard: .Membership, ofType: MembershipViewController.self)
-
+      CardListManager.shared.getCardDetails()
   }
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)

@@ -110,6 +110,9 @@ class AddTeamMemberViewController: UIViewController {
        
     }
     @IBAction func btnAddTeamMemberTappedAction(_ sender: Any) {
+        if selectedFilteredTeamMembersIndex == -1 {
+            return
+        }
         if selectedFilteredTeamMembersIndex < filteredTeamMembers.count {
             let teamMember = filteredTeamMembers[selectedFilteredTeamMembersIndex]
                 teamMemberNameDelegate?.sendteamMemberName(member: teamMember)
