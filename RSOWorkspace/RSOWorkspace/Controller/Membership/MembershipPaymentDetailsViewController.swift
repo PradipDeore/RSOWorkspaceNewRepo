@@ -11,12 +11,14 @@ class MembershipPaymentDetailsViewController: UIViewController, MembershipNaviga
   @IBOutlet var continueButton: UIButton!
   @IBOutlet var tableView: UITableView!
   let identifier = "PaymentSummaryTableViewCell"
+    let headerIdentifier =  "PaymentSummaryHeaderTableViewCell"
   var membershipNavigationDelegate: MembershipNavigationDelegate?
   
   override func viewDidLoad() {
     super.viewDidLoad()
     tableView.register(UINib(nibName: identifier, bundle: nil), forCellReuseIdentifier: identifier)
-    
+      tableView.register(UINib(nibName: headerIdentifier, bundle: nil), forCellReuseIdentifier: headerIdentifier)
+
     // Do any additional setup after loading the view.
   }
   override func viewWillAppear(_ animated: Bool) {
@@ -60,14 +62,23 @@ class MembershipPaymentDetailsViewController: UIViewController, MembershipNaviga
 extension MembershipPaymentDetailsViewController: UITableViewDataSource, UITableViewDelegate {
   
   func numberOfSections(in tableView: UITableView) -> Int {
-    return 1
+    return 2
   }
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+      if section == 0 {
+          return 1
+      }
     return 5
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+      if indexPath.section == 0 {
+          let cell = tableView.dequeueReusableCell(withIdentifier: headerIdentifier, for: indexPath) as! PaymentSummaryHeaderTableViewCell
+          cell.selectionStyle = .none
+          return cell
+      }
+      
     let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as! PaymentSummaryTableViewCell
     cell.selectionStyle = .none
     
@@ -100,6 +111,9 @@ extension MembershipPaymentDetailsViewController: UITableViewDataSource, UITable
   }
   
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+      if indexPath.section == 0 {
+          return 190
+      }
     return 80 // Default row height
   }
 }

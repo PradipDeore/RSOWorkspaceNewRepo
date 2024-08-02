@@ -182,14 +182,16 @@
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E7c-kU-DvS">
-                                        <rect key="frame" x="194" y="123.00000000000003" width="20" height="22"/>
+                                        <rect key="frame" x="195" y="124.00000000000003" width="24" height="22"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="20" id="6Wi-vb-jrH"/>
+                                            <constraint firstAttribute="width" constant="24" id="6Wi-vb-jrH"/>
                                             <constraint firstAttribute="height" constant="22" id="gFg-kB-B6X"/>
                                         </constraints>
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="tintColor" name="C9C9C9"/>
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <state key="normal" image="pencil.circle.fill" catalog="system"/>
+                                        <state key="normal" image="pencil.circle.fill" catalog="system">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
                                         <connections>
                                             <action selector="btnEditProfile:" destination="xrv-TV-gvR" eventType="touchUpInside" id="qWL-D9-Siu"/>
                                         </connections>
@@ -199,7 +201,7 @@
                                 <constraints>
                                     <constraint firstItem="Ky2-qI-Md6" firstAttribute="top" secondItem="iZC-Gp-tQk" secondAttribute="bottom" constant="25" id="2RP-NW-egK"/>
                                     <constraint firstItem="iZC-Gp-tQk" firstAttribute="top" secondItem="vGb-aZ-8cX" secondAttribute="top" constant="27" id="4nm-ZM-c5O"/>
-                                    <constraint firstItem="E7c-kU-DvS" firstAttribute="leading" secondItem="vGb-aZ-8cX" secondAttribute="leading" constant="194" id="6Gy-Mg-q4t"/>
+                                    <constraint firstItem="E7c-kU-DvS" firstAttribute="leading" secondItem="vGb-aZ-8cX" secondAttribute="leading" constant="195" id="6Gy-Mg-q4t"/>
                                     <constraint firstAttribute="height" constant="500" id="8ms-j2-6x2"/>
                                     <constraint firstItem="PWD-o3-IP4" firstAttribute="top" secondItem="iZC-Gp-tQk" secondAttribute="bottom" constant="11.999999999999972" id="95X-9F-baK"/>
                                     <constraint firstItem="iZC-Gp-tQk" firstAttribute="leading" secondItem="vGb-aZ-8cX" secondAttribute="leading" constant="20" id="Jzj-j7-TvM"/>
@@ -210,7 +212,7 @@
                                     <constraint firstAttribute="trailing" secondItem="iZC-Gp-tQk" secondAttribute="trailing" constant="20" id="XTM-Eh-Cfh"/>
                                     <constraint firstItem="QyT-9g-X1B" firstAttribute="leading" secondItem="vGb-aZ-8cX" secondAttribute="leading" constant="26" id="e25-Z7-AKY"/>
                                     <constraint firstAttribute="trailing" secondItem="Ky2-qI-Md6" secondAttribute="trailing" constant="12" id="mat-k3-Qvi"/>
-                                    <constraint firstItem="E7c-kU-DvS" firstAttribute="top" secondItem="iZC-Gp-tQk" secondAttribute="bottom" constant="79" id="qQ1-rq-2ab"/>
+                                    <constraint firstItem="E7c-kU-DvS" firstAttribute="top" secondItem="iZC-Gp-tQk" secondAttribute="bottom" constant="80" id="qQ1-rq-2ab"/>
                                     <constraint firstAttribute="bottom" secondItem="QyT-9g-X1B" secondAttribute="bottom" constant="20" id="ySY-aA-LtG"/>
                                 </constraints>
                                 <variation key="default">
@@ -515,6 +517,9 @@
         <image name="profileIcon" width="39" height="39"/>
         <namedColor name="828282">
             <color red="0.50999999046325684" green="0.50999999046325684" blue="0.50999999046325684" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="C9C9C9">
+            <color red="0.78799998760223389" green="0.78799998760223389" blue="0.78799998760223389" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="F0F0F0">
             <color red="0.94099998474121094" green="0.94099998474121094" blue="0.94099998474121094" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

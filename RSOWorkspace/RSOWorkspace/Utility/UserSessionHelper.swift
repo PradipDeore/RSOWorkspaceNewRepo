@@ -123,23 +123,22 @@ func getUserId() -> Int? {
     }
    
     func saveNotificationCount(notificationCount: Int?) {
-            guard let count = notificationCount else {
-                print("Notification count is nil, not saving.")
-                return
-            }
-            print("Saving notification count: \(count)")
-            userDefaults.set(count, forKey: notificationCountKey)
+        guard let count = notificationCount else {
+            print("Notification count is nil, not saving.")
+            return
         }
+        print("Saving notification count: \(count)")
+        userDefaults.set(count, forKey: notificationCountKey)
+    }
 
-        func getNotificationCount() -> Int? {
-            let count = userDefaults.integer(forKey: notificationCountKey)
-            // If the count is 0, it's possible that nothing was stored or the stored value is actually 0
-            if count == 0 && userDefaults.object(forKey: notificationCountKey) == nil {
-                // Nothing was stored for this key
-                return nil
-            }
-            return count
+    func getNotificationCount() -> Int? {
+        // Check if the key exists in UserDefaults
+        if userDefaults.object(forKey: notificationCountKey) == nil {
+            return nil
         }
+        // Retrieve the stored integer value
+        return userDefaults.integer(forKey: notificationCountKey)
+    }
     
   
   func clearUser() {

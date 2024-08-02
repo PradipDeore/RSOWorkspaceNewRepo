@@ -207,6 +207,7 @@ extension SideMenuMainViewController: SideMenuViewControllerDelegate {
         let logoutAction = UIAlertAction(title: "Logout", style: .destructive) { _ in
             RSOToken.shared.clearAll()
             UserHelper.shared.clearUser()
+            CurrentLoginType.shared.isExplorerLogin = false
             GetStartedViewController.presentAsRootController()
             self.googleLogout()
         }

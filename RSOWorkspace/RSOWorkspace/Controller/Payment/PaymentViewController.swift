@@ -42,13 +42,13 @@ class PaymentViewController: UIViewController {
     
     var officeName = ""
     var bookingType: BookingType = .meetingRoom
-    var couponData: [CouponDetails] = []
+    //var couponData: CouponDetailsResponseModel?
     private var cellIdentifiers: [(CellType, CGFloat)] = [
         (.selectMeetingRoomLabel, 20.0),
         (.meetingTime, 80),
         (.amenityPrice, 50),
         (.totalCell, 191),
-        (.discount, 60),
+        //(.discount, 60),
         (.paymentMethods, 97),
         (.buttonPayNow, 40)
     ]
@@ -58,11 +58,11 @@ class PaymentViewController: UIViewController {
         setupCellIdentifiers()
         setupTableView()
         coordinator?.hideBackButton(isHidden: false)
-        getCardDetails()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        // getCardDetails()
         self.tableView.reloadData()
     }
     private func setupCellIdentifiers() {
@@ -85,46 +85,24 @@ class PaymentViewController: UIViewController {
         }
     }
     
-    private func applyCouponAPI(couponCode: String) {
-        APIManager.shared.request(
-            modelType: CouponDetailsResponseModel.self,
-            type: PaymentRoomBookingEndPoint.applyCoupon) { response in
-                switch response {
-                case .success(let response):
-                    self.couponData = response.data
-                    DispatchQueue.main.async {
-                        self.tableView.reloadData()
-                    }
-                    self.eventHandler?(.dataLoaded)
-                case .failure(let error):
-                    self.eventHandler?(.error(error))
-                }
-            }
-    }
-    private func getCardDetails() {
-      DispatchQueue.main.async {
-        RSOLoader.showLoader()
-      }
-        APIManager.shared.request(
-            modelType: GetCardDetailsResponseModel.self,
-            type: PaymentMethodEndPoint.getCardDetail) { response in
-                switch response {
-                case .success(let response):
-                    self.getCardDetailsResponseData = response.data ?? []
-                    print ("getCardDetailsResponseData",self.getCardDetailsResponseData)
-                    DispatchQueue.main.async {
-                      RSOLoader.removeLoader()
-                        self.tableView.reloadData()
-                    }
-                    self.eventHandler?(.dataLoaded)
-                case .failure(let error):
-                    self.eventHandler?(.error(error))
-                  DispatchQueue.main.async {
-                    RSOLoader.removeLoader()
-                  }
-                }
-            }
-    }
+//    private func applyCouponAPI(code: Int, amount:Int) {
+//        let requestModel = couponRequestModel(code: code, amount: amount)
+//        APIManager.shared.request(
+//            modelType: CouponDetailsResponseModel.self,
+//            type: PaymentRoomBookingEndPoint.applyCoupon(requestModel: requestModel)) { response in
+//                switch response {
+//                case .success(let response):
+//                    self.couponData = response
+//                    DispatchQueue.main.async {
+//                        self.tableView.reloadData()
+//                    }
+//                    self.eventHandler?(.dataLoaded)
+//                case .failure(let error):
+//                    self.eventHandler?(.error(error))
+//                }
+//            }
+//    }
+
 }
 
 extension PaymentViewController: UITableViewDataSource, UITableViewDelegate {
@@ -138,8 +116,7 @@ extension PaymentViewController: UITableViewDataSource, UITableViewDelegate {
         switch cellType {
         case .amenityPrice:
             return self.requestParameters?.amenityArray.count ?? 0
-        case .discount:
-            return couponData.isEmpty ? 1 : couponData.count
+        
         case .meetingRoomPrice:
             if bookingType == .desk {
                 return self.requestParameters?.deskList.count ?? 0
@@ -230,7 +207,9 @@ extension PaymentViewController: UITableViewDataSource, UITableViewDelegate {
                 let amenityPriceInt = amenity.price?.integerValue ?? 0
                 cell.lblAmenityPrice.text = "\(amenityPriceInt)"
                 cell.lblHours.text = "\(Int(self.requestParameters?.timeDifferece ?? 0))"
-                cell.lblTotal.text = "\(self.requestParameters?.totalOfAmenity ?? 0)"
+                let amenityPrice = Float(amenity.price ?? "0.0") ?? 0.0
+                let totalAmenityPrice = (amenityPrice * (self.requestParameters?.timeDifferece ?? 0))
+                cell.lblTotal.text = "\(totalAmenityPrice)"
             }
             return cell
             
@@ -260,24 +239,24 @@ extension PaymentViewController: UITableViewDataSource, UITableViewDelegate {
             }
             return cell
             
-        case .discount:
-            let cell = tableView.dequeueReusableCell(withIdentifier: cellType.rawValue, for: indexPath) as! DiscountCodeTableViewCell
-            if !couponData.isEmpty {
-                let coupon = couponData[indexPath.row]
-                cell.setData(item: coupon)
-                cell.applyCouponAction = {
-                    self.applyCouponAPI(couponCode: coupon.couponCode)
-                }
-            } else {
-                cell.applyCouponAction = {
-                    guard let couponCode = cell.txtDiscount.text, !couponCode.isEmpty else {
-                        // Handle empty text field
-                        return
-                    }
-                    self.applyCouponAPI(couponCode: couponCode)
-                }
-            }
-            return cell
+//        case .discount:
+//            let cell = tableView.dequeueReusableCell(withIdentifier: cellType.rawValue, for: indexPath) as! DiscountCodeTableViewCell
+//            if !couponData.isEmpty {
+//                let coupon = couponData[indexPath.row]
+//                cell.setData(item: coupon)
+//                cell.applyCouponAction = {
+//                    self.applyCouponAPI(code: coupon., amount: <#T##Int#>)
+//                }
+//            } else {
+//                cell.applyCouponAction = {
+//                    guard let couponCode = cell.txtDiscount.text, !couponCode.isEmpty else {
+//                        // Handle empty text field
+//                        return
+//                    }
+//                    self.applyCouponAPI(couponCode: couponCode)
+//                }
+//            }
+//            return cell
             
         case .paymentMethods:
             let cell = tableView.dequeueReusableCell(withIdentifier: cellType.rawValue, for: indexPath) as! PaymentMethodTableViewCell
@@ -316,7 +295,7 @@ extension PaymentViewController {
         case officePriceDetails = "OfficeTypeTableViewCell"
         case amenityPrice = "AmenityPriceTableViewCell"
         case totalCell = "TotalTableViewCell"
-        case discount = "DiscountCodeTableViewCell"
+        //case discount = "DiscountCodeTableViewCell"
         case paymentMethods = "PaymentMethodTableViewCell"
         case buttonPayNow = "ButtonPayNowTableViewCell"
     }

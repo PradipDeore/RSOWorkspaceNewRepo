@@ -46,7 +46,7 @@ class UpdateProfileViewController: UIViewController, UIImagePickerControllerDele
         if let editedImage = info[.editedImage] as? UIImage {
             imgProfile.image = editedImage
             selectedImageData = editedImage.jpegData(compressionQuality: 0.5) // Adjust compression if needed
-           
+            
         }
         dismiss(animated: true, completion: nil)
     }
@@ -76,41 +76,41 @@ class UpdateProfileViewController: UIViewController, UIImagePickerControllerDele
         
     }
     
-//    func updateProfileAPI(fname: String?, lname: String?, designation: String?, photo: Data?) {
-//           RSOLoader.showLoader()
-//           let photoBase64 = photo?.base64EncodedString() // Convert image data to base64 string
-//           let requestModel = UpdateProfileRequestModel(first_name: fname, last_name: lname, designation: designation, photo: photoBase64)
-//           print("requestModel", requestModel)
-//           APIManager.shared.request(
-//               modelType: UpdateProfileResponse.self,
-//               type: MyProfileEndPoint.updateProfile(requestModel: requestModel)) { response in
-//                   
-//                   switch response {
-//                   case .success(let response):
-//                       self.updateProfileResponseData = response
-//                       UserHelper.shared.saveUserFirstName(firstName: fname)
-//                       UserHelper.shared.saveUserLastName(lastName: lname)
-//                       UserHelper.shared.saveUserDesignation(designation: designation)
-//                       DispatchQueue.main.async {
-//                           RSOLoader.removeLoader()
-//                           self.dismissDelegate?.subviewDismmised()
-//                           RSOToastView.shared.show("\(response.message)", duration: 2.0, position: .center)
-//                       }
-//                       DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-//                           self.dismiss(animated: true, completion: nil)
-//                       }
-//                       self.eventHandler?(.dataLoaded)
-//                   case .failure(let error):
-//                       self.eventHandler?(.error(error))
-//                       DispatchQueue.main.async {
-//                           RSOLoader.removeLoader()
-//                           RSOToastView.shared.show("\(error.localizedDescription)", duration: 2.0, position: .center)
-//                       }
-//                   }
-//               }
-//       }
-
-    func updateProfileAPI(fname: String?, lname: String?, designation: String?, photo: Data?) {
+    //    func updateProfileAPI(fname: String?, lname: String?, designation: String?, photo: Data?) {
+    //           RSOLoader.showLoader()
+    //           let photoBase64 = photo?.base64EncodedString() // Convert image data to base64 string
+    //           let requestModel = UpdateProfileRequestModel(first_name: fname, last_name: lname, designation: designation, photo: photoBase64)
+    //           print("requestModel", requestModel)
+    //           APIManager.shared.request(
+    //               modelType: UpdateProfileResponse.self,
+    //               type: MyProfileEndPoint.updateProfile(requestModel: requestModel)) { response in
+    //
+    //                   switch response {
+    //                   case .success(let response):
+    //                       self.updateProfileResponseData = response
+    //                       UserHelper.shared.saveUserFirstName(firstName: fname)
+    //                       UserHelper.shared.saveUserLastName(lastName: lname)
+    //                       UserHelper.shared.saveUserDesignation(designation: designation)
+    //                       DispatchQueue.main.async {
+    //                           RSOLoader.removeLoader()
+    //                           self.dismissDelegate?.subviewDismmised()
+    //                           RSOToastView.shared.show("\(response.message)", duration: 2.0, position: .center)
+    //                       }
+    //                       DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+    //                           self.dismiss(animated: true, completion: nil)
+    //                       }
+    //                       self.eventHandler?(.dataLoaded)
+    //                   case .failure(let error):
+    //                       self.eventHandler?(.error(error))
+    //                       DispatchQueue.main.async {
+    //                           RSOLoader.removeLoader()
+    //                           RSOToastView.shared.show("\(error.localizedDescription)", duration: 2.0, position: .center)
+    //                       }
+    //                   }
+    //               }
+    //       }
+    
+    func updateProfileAPI(fname: String, lname: String, designationName: String, photo: Data?) {
         // URL of the API endpoint
         let url = URL(string: "https://finance.ardemos.co.in/rso/api/update-profile")!
         let token = RSOToken.shared.getToken() ?? ""
@@ -131,25 +131,29 @@ class UpdateProfileViewController: UIViewController, UIImagePickerControllerDele
         // Append first name
         body.append("--\(boundary)\r\n".data(using: .utf8)!)
         body.append("Content-Disposition: form-data; name=\"first_name\"\r\n\r\n".data(using: .utf8)!)
-        body.append("\(firstName)\r\n".data(using: .utf8)!)
+        body.append("\(fname)\r\n".data(using: .utf8)!)
         
         // Append last name
         body.append("--\(boundary)\r\n".data(using: .utf8)!)
         body.append("Content-Disposition: form-data; name=\"last_name\"\r\n\r\n".data(using: .utf8)!)
-        body.append("\(lastName)\r\n".data(using: .utf8)!)
+        body.append("\(lname)\r\n".data(using: .utf8)!)
         
         // Append designation
         body.append("--\(boundary)\r\n".data(using: .utf8)!)
         body.append("Content-Disposition: form-data; name=\"designation\"\r\n\r\n".data(using: .utf8)!)
-        body.append("\(designation ?? "")\r\n".data(using: .utf8)!)
+        body.append("\(designationName)\r\n".data(using: .utf8)!)
         
         // Append photo
-        let photoData = photo!
-        body.append("--\(boundary)\r\n".data(using: .utf8)!)
-        body.append("Content-Disposition: form-data; name=\"photo\"; filename=\"test.png\"\r\n".data(using: .utf8)!)
-        body.append("Content-Type: image/png\r\n\r\n".data(using: .utf8)!)
-        body.append(photoData)
-        body.append("\r\n".data(using: .utf8)!)
+        if let photoData = photo {
+            // Convert photo data to image if necessary
+            if UIImage(data: photoData) != nil {
+                body.append("--\(boundary)\r\n".data(using: .utf8)!)
+                body.append("Content-Disposition: form-data; name=\"photo\"; filename=\"profile_photo.png\"\r\n".data(using: .utf8)!)
+                body.append("Content-Type: image/png\r\n\r\n".data(using: .utf8)!)
+                body.append(photoData)
+                body.append("\r\n".data(using: .utf8)!)
+            }
+        }
         
         // Append the final boundary
         body.append("--\(boundary)--\r\n".data(using: .utf8)!)
@@ -157,56 +161,83 @@ class UpdateProfileViewController: UIViewController, UIImagePickerControllerDele
         // Set the request body
         request.httpBody = body
         
+        printRequestDetails(request)
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
-               if let error = error {
-                   DispatchQueue.main.async {
-                       RSOLoader.removeLoader()
-                       RSOToastView.shared.show("Error: \(error.localizedDescription)", duration: 2.0, position: .center)
-                   }
-                   return
-               }
-               
-               guard let httpResponse = response as? HTTPURLResponse, (200...299).contains(httpResponse.statusCode) else {
-                   DispatchQueue.main.async {
-                       RSOLoader.removeLoader()
-                       RSOToastView.shared.show("Server error", duration: 2.0, position: .center)
-                   }
-                   return
-               }
-               
-               if let data = data {
-                   do {
-                       // Decode the response data into UpdateProfileResponse
-                       let decoder = JSONDecoder()
-                       let responseObject = try decoder.decode(UpdateProfileResponse.self, from: data)
-                       
-                       DispatchQueue.main.async {
-                           self.updateProfileResponseData = responseObject
-                           UserHelper.shared.saveUserFirstName(firstName: fname)
-                           UserHelper.shared.saveUserLastName(lastName: lname)
-                           UserHelper.shared.saveUserDesignation(designation: designation)
-                           RSOLoader.removeLoader()
-                           self.dismissDelegate?.subviewDismmised()
-                           RSOToastView.shared.show("\(responseObject.message)", duration: 2.0, position: .center)
-                           
-                           DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-                               self.dismiss(animated: true, completion: nil)
-                           }
-                           self.eventHandler?(.dataLoaded)
-                       }
-                   } catch {
-                       DispatchQueue.main.async {
-                           RSOLoader.removeLoader()
-                           RSOToastView.shared.show("Decoding error: \(error.localizedDescription)", duration: 2.0, position: .center)
-                       }
-                   }
-               }
-           }
-           
-           task.resume()
+            if let error = error {
+                DispatchQueue.main.async {
+                    RSOLoader.removeLoader()
+                    RSOToastView.shared.show("Error: \(error.localizedDescription)", duration: 2.0, position: .center)
+                }
+                return
+            }
+            
+            guard let httpResponse = response as? HTTPURLResponse, (200...299).contains(httpResponse.statusCode) else {
+                DispatchQueue.main.async {
+                    RSOLoader.removeLoader()
+                    RSOToastView.shared.show("Server error", duration: 2.0, position: .center)
+                }
+                return
+            }
+            
+            if let data = data {
+                do {
+                    // Decode the response data into UpdateProfileResponse
+                    let decoder = JSONDecoder()
+                    let responseObject = try decoder.decode(UpdateProfileResponse.self, from: data)
+                    
+                    DispatchQueue.main.async {
+                        self.updateProfileResponseData = responseObject
+                        UserHelper.shared.saveUserFirstName(firstName: fname)
+                        UserHelper.shared.saveUserLastName(lastName: lname)
+                        UserHelper.shared.saveUserDesignation(designation: self.designation)
+                        RSOLoader.removeLoader()
+                        self.dismissDelegate?.subviewDismmised()
+                        RSOToastView.shared.show("\(responseObject.message)", duration: 2.0, position: .center)
+                        
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                            self.dismiss(animated: true, completion: nil)
+                        }
+                        self.eventHandler?(.dataLoaded)
+                    }
+                } catch {
+                    DispatchQueue.main.async {
+                        RSOLoader.removeLoader()
+                        RSOToastView.shared.show("Decoding error: \(error.localizedDescription)", duration: 2.0, position: .center)
+                    }
+                }
+            }
+        }
+        
+        task.resume()
     }
-
     
+    func printRequestDetails(_ request: URLRequest) {
+        // Print the URL
+        if let url = request.url {
+            print("URL: \(url.absoluteString)")
+        }
+        
+        // Print the HTTP method
+        if let method = request.httpMethod {
+            print("HTTP Method: \(method)")
+        }
+        
+        // Print the headers
+        if let headers = request.allHTTPHeaderFields {
+            print("Headers: \(headers)")
+        }
+        
+        // Print the body data as a string (if available)
+        if let body = request.httpBody {
+            if let bodyString = String(data: body, encoding: .utf8) {
+                print("Body: \(bodyString)")
+            } else {
+                print("Body: \(body.count) bytes")
+            }
+        } else {
+            print("No body data")
+        }
+    }
     func customizeCell(){
         self.containerView.layer.cornerRadius = cornerRadius
         self.containerView.layer.masksToBounds = true
@@ -226,17 +257,17 @@ class UpdateProfileViewController: UIViewController, UIImagePickerControllerDele
     }
     
     @IBAction func btnUpdateAction(_ sender: Any) {
-        let fname = txtFirstName.text
-        let lname = txtLastname.text
-        let designation = txtDesignation.text
-        updateProfileAPI(fname: fname, lname: lname, designation: designation, photo: selectedImageData)
+        let fname = txtFirstName.text ?? ""
+        let lname = txtLastname.text ?? ""
+        let designation = txtDesignation.text ?? ""
+        updateProfileAPI(fname: fname, lname: lname, designationName: designation, photo: selectedImageData)
         
     }
 }
-    extension UpdateProfileViewController {
-        enum Event {
-            case dataLoaded
-            case error(Error?)
-        }
+extension UpdateProfileViewController {
+    enum Event {
+        case dataLoaded
+        case error(Error?)
     }
+}
 

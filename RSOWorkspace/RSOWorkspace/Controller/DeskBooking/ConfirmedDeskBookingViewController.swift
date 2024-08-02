@@ -20,7 +20,7 @@ class ConfirmedDeskBookingViewController: UIViewController{
     
     private let cellIdentifiersConfirmDesk: [CellTypeConfirmDesk] = [ .confirmedLocation, .confirmedSelectedDesks, .confirmedTime, .confirmedDate,  .confirmedTeamMembers,  .confirmAndProceedToPayment, .buttonEdit]
     
-    private let cellHeights: [CGFloat] = [ 70, 85, 70, 70, 60, 40, 40]
+    private let cellHeights: [CGFloat] = [ 70, 85, 70, 70, 0, 40, 40]
     
     // var bookingConfirmDetails : ConfirmBookingRequestModel?
     var confirmdeskBookingResponse: ConfirmDeskBookingDetailsModel?
@@ -126,7 +126,7 @@ extension ConfirmedDeskBookingViewController: UITableViewDataSource, UITableView
             return 30
         }
         if section == 4 {
-            return UserHelper.shared.isGuest() ? 0: 20
+            return UserHelper.shared.isGuest() ? 0: 0
         }
         return 0
     }

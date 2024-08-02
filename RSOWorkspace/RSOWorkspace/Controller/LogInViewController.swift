@@ -51,12 +51,15 @@ class LogInViewController: UIViewController {
             RSOToken.shared.save(token: token)
             UserHelper.shared.saveUser(user)
             UserHelper.shared.saveUserIsGuest(response.isGuest ?? false)
+            CardListManager.shared.getCardDetails()
+              
             // -------------------  -------------------
             DispatchQueue.main.async {
               RSOLoader.removeLoader()
               // Login successful
               RSOToastView.shared.show("Login successful!", duration: 2.0, position: .center)
               if CurrentLoginType.shared.isExplorerLogin {
+                  CurrentLoginType.shared.isExplorerLogin = false
                 CurrentLoginType.shared.loginScreenDelegate?.loginScreenDismissed()
                 CurrentLoginType.shared.explorerNavigationController?.dismiss(animated: true)
               } else {
@@ -124,6 +127,7 @@ class LogInViewController: UIViewController {
     CurrentLoginType.shared.explorerNavigationController = UINavigationController(rootViewController: logInViewController)
     UIApplication.shared.topViewController?.present(CurrentLoginType.shared.explorerNavigationController!, animated: true)
   }
+
 }
 extension LogInViewController {
     enum Event {
