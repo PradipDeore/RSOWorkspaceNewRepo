@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CenteredCollectionView
 
 class PlanTypeViewController: UIViewController, MembershipNavigable {
   @IBOutlet var collectionView: UICollectionView!
@@ -13,10 +14,32 @@ class PlanTypeViewController: UIViewController, MembershipNavigable {
   var planSelectedIndex = 0
   var membershipNavigationDelegate: MembershipNavigationDelegate?
   var list: [MembershipData] = []
+  var centeredCollectionViewFlowLayout: CenteredCollectionViewFlowLayout!
+  let cellPercentWidth: CGFloat = 0.8
   override func viewDidLoad() {
     super.viewDidLoad()
     self.fetchMembershipPlan()
     collectionView.register(UINib(nibName: cellIdentifier, bundle: nil), forCellWithReuseIdentifier: cellIdentifier)
+    
+    // Get the reference to the `CenteredCollectionViewFlowLayout` (REQUIRED STEP)
+    centeredCollectionViewFlowLayout = collectionView.collectionViewLayout as! CenteredCollectionViewFlowLayout
+    
+    // Modify the collectionView's decelerationRate (REQUIRED STEP)
+    collectionView.decelerationRate = .fast
+    
+    // Assign delegate and data source
+    collectionView.delegate = self
+    collectionView.dataSource = self
+
+    // Configure the required item size (REQUIRED STEP)
+    centeredCollectionViewFlowLayout.itemSize = CGSize(
+      width: collectionView.frame.size.width-40,
+      height: collectionView.frame.size.height * 0.7
+    )
+    
+    // Configure the optional inter item spacing (OPTIONAL STEP)
+    centeredCollectionViewFlowLayout.minimumLineSpacing = 0
+  
   }
   func fetchMembershipPlan() {
     RSOLoader.showLoader()
@@ -101,14 +124,7 @@ extension PlanTypeViewController: PlanSelectDelegate {
     self.planSelectedIndex = index
   }
 }
-extension PlanTypeViewController: UICollectionViewDelegateFlowLayout {
-  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-    return CGSize(width: collectionView.frame.size.width-20, height: collectionView.frame.size.height)
-  }
-  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-    return UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
-  }
-}
+
 extension PlanTypeViewController {
   func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
     updateCellSelection()
