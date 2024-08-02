@@ -81,7 +81,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="AED 11000" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5kb-bt-KPI">
-                        <rect key="frame" x="300" y="119" width="73" height="20"/>
+                        <rect key="frame" x="276" y="119" width="94" height="20"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="20" id="wh0-0v-kfV"/>
                         </constraints>
@@ -90,7 +90,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="AED 11000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WEE-DU-1wu">
-                        <rect key="frame" x="300" y="146" width="74" height="20"/>
+                        <rect key="frame" x="295" y="146" width="79" height="20"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="20" id="2tP-Vq-LHx"/>
                         </constraints>
@@ -101,10 +101,10 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="WEE-DU-1wu" firstAttribute="top" secondItem="F2S-uJ-5mL" secondAttribute="top" id="6A4-eR-xbe"/>
-                    <constraint firstAttribute="trailing" secondItem="5kb-bt-KPI" secondAttribute="trailing" constant="17" id="7jR-x3-TVF"/>
-                    <constraint firstItem="5kb-bt-KPI" firstAttribute="leading" secondItem="chF-bU-VTX" secondAttribute="trailing" constant="144" id="95j-gR-RKq"/>
+                    <constraint firstAttribute="trailing" secondItem="5kb-bt-KPI" secondAttribute="trailing" constant="20" id="7jR-x3-TVF"/>
+                    <constraint firstItem="5kb-bt-KPI" firstAttribute="leading" secondItem="chF-bU-VTX" secondAttribute="trailing" constant="120" id="95j-gR-RKq"/>
                     <constraint firstItem="pxS-Wm-JNi" firstAttribute="top" secondItem="nZk-f7-oJi" secondAttribute="bottom" constant="11" id="Biu-WO-KXQ"/>
-                    <constraint firstItem="WEE-DU-1wu" firstAttribute="leading" secondItem="F2S-uJ-5mL" secondAttribute="trailing" constant="85" id="Dzb-1R-mSJ"/>
+                    <constraint firstItem="WEE-DU-1wu" firstAttribute="leading" secondItem="F2S-uJ-5mL" secondAttribute="trailing" constant="80" id="Dzb-1R-mSJ"/>
                     <constraint firstItem="F2S-uJ-5mL" firstAttribute="top" secondItem="chF-bU-VTX" secondAttribute="bottom" constant="11" id="HYf-2t-edg"/>
                     <constraint firstItem="nZk-f7-oJi" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="PzX-hV-30E"/>
                     <constraint firstItem="ark-Bb-faz" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="Q4N-d8-lUc"/>

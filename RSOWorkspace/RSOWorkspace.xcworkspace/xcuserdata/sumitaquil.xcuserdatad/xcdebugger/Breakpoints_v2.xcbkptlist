@@ -368,7 +368,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "83"
             endingLineNumber = "83"
-            landmarkName = "deskSubTotal"
+            landmarkName = "finalTotal"
             landmarkType = "24">
          </BreakpointContent>
       </BreakpointProxy>
@@ -2475,7 +2475,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "392"
             endingLineNumber = "392"
-            landmarkName = "showBookMeetingRoomsVC()"
+            landmarkName = "showBookRoomDetailsVC(meetingRoomId:)"
             landmarkType = "7">
             <Locations>
                <Location

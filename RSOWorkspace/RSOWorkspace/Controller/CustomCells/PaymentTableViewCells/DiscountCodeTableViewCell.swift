@@ -20,9 +20,9 @@ class DiscountCodeTableViewCell: UITableViewCell {
         btnApply.setCornerRadiusToButton()
         txtDiscount.placeholderColor = ._454545
     }
-    func setData(item : CouponDetails){
-        self.txtDiscount.text = item.couponCode
-    }
+//    func setData(item : CouponDetails){
+//        self.txtDiscount.text = item.couponCode
+//    }
    
     @IBAction func btnApplyCouponCodeAction(_ sender: Any) {
         applyCouponAction?()

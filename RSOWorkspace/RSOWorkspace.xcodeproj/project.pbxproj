@@ -432,6 +432,8 @@
 		58F2635C2BAC211A00AEDEC9 /* BrowseMembersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F2635B2BAC211A00AEDEC9 /* BrowseMembersViewController.swift */; };
 		58F2C6E72C5C975A0028538C /* PhoneCallUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F2C6E62C5C975A0028538C /* PhoneCallUtility.swift */; };
 		58F2C6E92C5CCA3B0028538C /* SavedCards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F2C6E82C5CCA3B0028538C /* SavedCards.swift */; };
+		58F2C6EB2C5CF5990028538C /* couponRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F2C6EA2C5CF5990028538C /* couponRequestModel.swift */; };
+		58F2C6ED2C5CF5DD0028538C /* CouponResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F2C6EC2C5CF5DD0028538C /* CouponResponseModel.swift */; };
 		58F458392B91982400CF8AFA /* SelectTimeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F458372B91982400CF8AFA /* SelectTimeTableViewCell.swift */; };
 		58F4583A2B91982400CF8AFA /* SelectTimeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58F458382B91982400CF8AFA /* SelectTimeTableViewCell.xib */; };
 		58F4583D2B91A1D300CF8AFA /* SelectMeetingRoomLabelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F4583B2B91A1D300CF8AFA /* SelectMeetingRoomLabelTableViewCell.swift */; };
@@ -903,6 +905,8 @@
 		58F2635B2BAC211A00AEDEC9 /* BrowseMembersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseMembersViewController.swift; sourceTree = "<group>"; };
 		58F2C6E62C5C975A0028538C /* PhoneCallUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneCallUtility.swift; sourceTree = "<group>"; };
 		58F2C6E82C5CCA3B0028538C /* SavedCards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedCards.swift; sourceTree = "<group>"; };
+		58F2C6EA2C5CF5990028538C /* couponRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = couponRequestModel.swift; sourceTree = "<group>"; };
+		58F2C6EC2C5CF5DD0028538C /* CouponResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponResponseModel.swift; sourceTree = "<group>"; };
 		58F458372B91982400CF8AFA /* SelectTimeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectTimeTableViewCell.swift; sourceTree = "<group>"; };
 		58F458382B91982400CF8AFA /* SelectTimeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectTimeTableViewCell.xib; sourceTree = "<group>"; };
 		58F4583B2B91A1D300CF8AFA /* SelectMeetingRoomLabelTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectMeetingRoomLabelTableViewCell.swift; sourceTree = "<group>"; };
@@ -1653,6 +1657,7 @@
 				58B33B842C5A16F600DBEA34 /* PaymentMethodResponseModel.swift */,
 				58B33B8A2C5A319500DBEA34 /* LocationGalleryResponseModel.swift */,
 				5883E6FF2C5BCAF900299927 /* GetCardDetailsResponseModel.swift */,
+				58F2C6EC2C5CF5DD0028538C /* CouponResponseModel.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -1689,6 +1694,7 @@
 				58049D9D2C591BCF00314E7A /* FeedbackRequestModel.swift */,
 				58B33B7A2C5A051200DBEA34 /* SocialLoginRequestModel.swift */,
 				58B33B822C5A16D800DBEA34 /* PaymentMethodRequestModel.swift */,
+				58F2C6EA2C5CF5990028538C /* couponRequestModel.swift */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -2295,6 +2301,7 @@
 				58F2C6E92C5CCA3B0028538C /* SavedCards.swift in Sources */,
 				58BE90C32B9F0551001FCE54 /* RSOCollectionItem.swift in Sources */,
 				58B33B7B2C5A051200DBEA34 /* SocialLoginRequestModel.swift in Sources */,
+				58F2C6ED2C5CF5DD0028538C /* CouponResponseModel.swift in Sources */,
 				582A272F2C462E7A00CD5729 /* AddPaymentMethodTableViewCell.swift in Sources */,
 				58E6E96C2B89E0E500EB3600 /* RSOMarketPlaceCollectionView.swift in Sources */,
 				586FA70D2BBC354E00EA2772 /* GalleryTableViewCell.swift in Sources */,
@@ -2492,6 +2499,7 @@
 				58713EB42BC94AA20012DD4E /* InviteGuestsCollectionViewCell.swift in Sources */,
 				58374A482B84D53400CA34C5 /* RSOView.swift in Sources */,
 				58B405FB2BCCEABC0045DD4C /* StoreRoomBookingRequest.swift in Sources */,
+				58F2C6EB2C5CF5990028538C /* couponRequestModel.swift in Sources */,
 				58E6E93F2B88763700EB3600 /* DashboardViewController.swift in Sources */,
 				58B33B812C5A128300DBEA34 /* AddPaymentMethodViewController.swift in Sources */,
 				58BF851F2B874FA4009FF06C /* ForgotPasswordRequestModel.swift in Sources */,

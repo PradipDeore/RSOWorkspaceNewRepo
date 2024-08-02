@@ -11,7 +11,7 @@ enum PaymentRoomBookingEndPoint {
     case paymentRoombooking(requestModel: PaymentRoomBookingRequest)
     case getStoreRoomBooking(requestModel: StoreRoomBookingRequest)
     case payment(requestModel: NiPaymentRequestModel)
-    case applyCoupon
+    case applyCoupon(requestModel: couponRequestModel)
     case paymentDeskbooking(requestModel: PaymentDeskBookingRequest)
     case paymentOfficebooking(requestModel: ShortTermPaymentOfficeBookingRequestModel)
 }
@@ -60,8 +60,8 @@ extension PaymentRoomBookingEndPoint: EndPointType {
             return requestModel
         case .payment(let requestModel):
             return requestModel
-        case .applyCoupon:
-            return nil
+        case .applyCoupon(let requestModel):
+            return requestModel
         case .paymentDeskbooking(let requestModel):
             return requestModel
         case .paymentOfficebooking(requestModel: let requestModel):

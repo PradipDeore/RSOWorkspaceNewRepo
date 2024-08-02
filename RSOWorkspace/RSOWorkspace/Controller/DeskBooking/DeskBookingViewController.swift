@@ -168,7 +168,7 @@ extension DeskBookingViewController: UITableViewDataSource, UITableViewDelegate 
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if section == 3 {
-            return UserHelper.shared.isGuest() ? 0: 20
+            return UserHelper.shared.isGuest() ? 0: 0
         }
         return 0
     }
@@ -286,7 +286,7 @@ extension DeskBookingViewController: UITableViewDataSource, UITableViewDelegate 
         case .selectTime:
             return 80
         case .addTeamMembers:
-            return UserHelper.shared.isGuest() ? 0: 60
+            return UserHelper.shared.isGuest() ? 0: 0
         case .selectMeetingRoomLabel:
             return 20
         case .selectDesksType:
@@ -403,7 +403,6 @@ extension DeskBookingViewController:sendteamMemberNameDelegate{
     func sendteamMemberName(member: TeamMembersList) {
         sendteamMemberName(name: member.fullName)
     }
-    
     
     func sendteamMemberName(name: String) {
         if teamMembersArray.count == 1 && teamMembersArray.first == ""{
