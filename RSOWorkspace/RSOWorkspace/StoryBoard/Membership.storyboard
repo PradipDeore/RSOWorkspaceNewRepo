@@ -465,18 +465,23 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="g0a-YP-0Mf">
-                                <rect key="frame" x="0.0" y="0.0" width="393" height="400"/>
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="733"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="400" id="5zt-Xv-4GN"/>
                                 </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="5zt-Xv-4GN"/>
+                                    </mask>
+                                </variation>
                                 <connections>
                                     <outlet property="dataSource" destination="Jh0-7Q-1DP" id="zJT-IP-8AO"/>
                                     <outlet property="delegate" destination="Jh0-7Q-1DP" id="cBT-5n-SAg"/>
                                 </connections>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rsp-CN-2lZ">
-                                <rect key="frame" x="51.666666666666657" y="425" width="290" height="40"/>
+                                <rect key="frame" x="51.666666666666657" y="758" width="290" height="40"/>
                                 <color key="backgroundColor" name="405629"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="0ta-6c-H8j"/>
@@ -498,6 +503,7 @@
                             <constraint firstItem="Rsp-CN-2lZ" firstAttribute="top" secondItem="g0a-YP-0Mf" secondAttribute="bottom" constant="25" id="DnC-sK-cTc"/>
                             <constraint firstItem="Rsp-CN-2lZ" firstAttribute="centerX" secondItem="jZe-L1-x3z" secondAttribute="centerX" id="Iyx-Aw-3Ea"/>
                             <constraint firstItem="N5r-WC-zBq" firstAttribute="trailing" secondItem="g0a-YP-0Mf" secondAttribute="trailing" id="KJh-5v-OjX"/>
+                            <constraint firstItem="N5r-WC-zBq" firstAttribute="bottom" secondItem="Rsp-CN-2lZ" secondAttribute="bottom" constant="20" id="UGx-c5-B3i"/>
                             <constraint firstAttribute="bottom" secondItem="g0a-YP-0Mf" secondAttribute="bottom" id="hLA-VF-g9t"/>
                             <constraint firstItem="g0a-YP-0Mf" firstAttribute="leading" secondItem="N5r-WC-zBq" secondAttribute="leading" id="yh9-nv-EPr"/>
                         </constraints>

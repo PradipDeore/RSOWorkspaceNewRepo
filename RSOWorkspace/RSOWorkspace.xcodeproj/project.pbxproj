@@ -170,6 +170,8 @@
 		5883339C2B7E27A2008334A0 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5883339B2B7E27A2008334A0 /* SignUpViewController.swift */; };
 		5883339E2B7E349E008334A0 /* VerifyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5883339D2B7E349E008334A0 /* VerifyViewController.swift */; };
 		5883E7002C5BCAF900299927 /* GetCardDetailsResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5883E6FF2C5BCAF900299927 /* GetCardDetailsResponseModel.swift */; };
+		5883E7032C5BE57400299927 /* PaymentSummaryHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5883E7012C5BE57400299927 /* PaymentSummaryHeaderTableViewCell.swift */; };
+		5883E7042C5BE57400299927 /* PaymentSummaryHeaderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5883E7022C5BE57400299927 /* PaymentSummaryHeaderTableViewCell.xib */; };
 		588D8A722B627A6B00545748 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 588D8A712B627A6B00545748 /* AppDelegate.swift */; };
 		588D8A742B627A6B00545748 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 588D8A732B627A6B00545748 /* SceneDelegate.swift */; };
 		588D8A762B627A6B00545748 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 588D8A752B627A6B00545748 /* ViewController.swift */; };
@@ -636,6 +638,8 @@
 		5883339B2B7E27A2008334A0 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		5883339D2B7E349E008334A0 /* VerifyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyViewController.swift; sourceTree = "<group>"; };
 		5883E6FF2C5BCAF900299927 /* GetCardDetailsResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetCardDetailsResponseModel.swift; sourceTree = "<group>"; };
+		5883E7012C5BE57400299927 /* PaymentSummaryHeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentSummaryHeaderTableViewCell.swift; sourceTree = "<group>"; };
+		5883E7022C5BE57400299927 /* PaymentSummaryHeaderTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PaymentSummaryHeaderTableViewCell.xib; sourceTree = "<group>"; };
 		588D8A6E2B627A6B00545748 /* RSOWorkspace.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RSOWorkspace.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		588D8A712B627A6B00545748 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		588D8A732B627A6B00545748 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -1976,6 +1980,8 @@
 				EEDA3A532C56585B0092BC2D /* PaymentSummaryTableViewCell.xib */,
 				EE3DCE9C2C5B4E8D00B884BC /* MembershipTableViewCell.swift */,
 				EE3DCE9D2C5B4E8D00B884BC /* MembershipTableViewCell.xib */,
+				5883E7012C5BE57400299927 /* PaymentSummaryHeaderTableViewCell.swift */,
+				5883E7022C5BE57400299927 /* PaymentSummaryHeaderTableViewCell.xib */,
 			);
 			path = Membership;
 			sourceTree = "<group>";
@@ -2116,6 +2122,7 @@
 				58D584A42B96F39D00D17D0A /* BookingConfirmedTeamMembersTableViewCell.xib in Resources */,
 				589FB69F2B7644A90067255E /* Poppins-ExtraLightItalic.ttf in Resources */,
 				58E2D0DA2BBA7B0E0016DEB6 /* ChangePasswordTableViewCell.xib in Resources */,
+				5883E7042C5BE57400299927 /* PaymentSummaryHeaderTableViewCell.xib in Resources */,
 				586FA70E2BBC354E00EA2772 /* GalleryTableViewCell.xib in Resources */,
 				58374A3B2B84B8B100CA34C5 /* Products.storyboard in Resources */,
 				58F5739F2C578A47006F6594 /* OfficeTypeTableViewCell.xib in Resources */,
@@ -2458,6 +2465,7 @@
 				58D584B32B96FE6100D17D0A /* ButtonBookingConfirmTableViewCell.swift in Sources */,
 				58C4812D2BB3E2310084CD6B /* rsvpRequestModel.swift in Sources */,
 				58CF11982BA94F2E00B95EE9 /* ServicesEndPoint.swift in Sources */,
+				5883E7032C5BE57400299927 /* PaymentSummaryHeaderTableViewCell.swift in Sources */,
 				58E6E93A2B88714D00EB3600 /* RSOTabBarViewController.swift in Sources */,
 				586FA6FE2BBC1A2B00EA2772 /* RSOWorkspaceViewController.swift in Sources */,
 				58EB0E3B2BB6D61D00DC2827 /* SideMenuModel.swift in Sources */,
