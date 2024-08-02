@@ -474,6 +474,7 @@
 		EEAED9442C52504C00A1F56A /* PlanInfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EEAED9422C52504C00A1F56A /* PlanInfoTableViewCell.xib */; };
 		EEDA3A542C56585B0092BC2D /* PaymentSummaryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDA3A522C56585B0092BC2D /* PaymentSummaryTableViewCell.swift */; };
 		EEDA3A552C56585B0092BC2D /* PaymentSummaryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EEDA3A532C56585B0092BC2D /* PaymentSummaryTableViewCell.xib */; };
+		EEDF1C842C5C8DB700CBCCF5 /* CustomHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEDF1C832C5C8DB700CBCCF5 /* CustomHeaderView.swift */; };
 		EEE105B52C49256B007ECE4D /* RSOLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEE105B42C49256B007ECE4D /* RSOLoader.swift */; };
 /* End PBXBuildFile section */
 
@@ -941,6 +942,7 @@
 		EEAED9422C52504C00A1F56A /* PlanInfoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlanInfoTableViewCell.xib; sourceTree = "<group>"; };
 		EEDA3A522C56585B0092BC2D /* PaymentSummaryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentSummaryTableViewCell.swift; sourceTree = "<group>"; };
 		EEDA3A532C56585B0092BC2D /* PaymentSummaryTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PaymentSummaryTableViewCell.xib; sourceTree = "<group>"; };
+		EEDF1C832C5C8DB700CBCCF5 /* CustomHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomHeaderView.swift; sourceTree = "<group>"; };
 		EEE105B42C49256B007ECE4D /* RSOLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSOLoader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -1701,6 +1703,7 @@
 				58C7C50F2BAAA2D900CF6578 /* EventTableViewCell.xib */,
 				58F263532BAC12FB00AEDEC9 /* CompaniesListTableViewCell.swift */,
 				58F263542BAC12FB00AEDEC9 /* CompaniesListTableViewCell.xib */,
+				EEDF1C832C5C8DB700CBCCF5 /* CustomHeaderView.swift */,
 			);
 			path = CommuneTableViewCells;
 			sourceTree = "<group>";
@@ -2552,6 +2555,7 @@
 				58B33B7F2C5A067100DBEA34 /* SocialLoginEndPoint.swift in Sources */,
 				58F5739E2C578A47006F6594 /* OfficeTypeTableViewCell.swift in Sources */,
 				58ED2D1F2B8F4C1D004D06C8 /* MyBookingEndPoint.swift in Sources */,
+				EEDF1C842C5C8DB700CBCCF5 /* CustomHeaderView.swift in Sources */,
 				58B33B872C5A190900DBEA34 /* PaymentMethodEndPoint.swift in Sources */,
 				EEE105B52C49256B007ECE4D /* RSOLoader.swift in Sources */,
 				586FA7042BBC28DA00EA2772 /* aboutRSOTableViewCell.swift in Sources */,
