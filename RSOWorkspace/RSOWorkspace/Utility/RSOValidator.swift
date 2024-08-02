@@ -48,7 +48,7 @@ class RSOValidator{
         let cleanNumber = number.replacingOccurrences(of: "[^0-9]", with: "", options: .regularExpression)
         
         // Check length
-        if cleanNumber.count < 13 || cleanNumber.count > 19 {
+        if cleanNumber.count < 16 || cleanNumber.count > 19 {
             return false
         }
         
