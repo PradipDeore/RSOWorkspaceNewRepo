@@ -12,4 +12,8 @@ extension UIImageView {
         self.layer.cornerRadius = self.frame.height / 2
         self.layer.masksToBounds = true
     }
+    func setCornerRadiusforImage(){
+        self.layer.cornerRadius = 10
+        self.clipsToBounds = true
+    }
 }

@@ -23,14 +23,14 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PaymentSummaryHeaderTableViewCell" rowHeight="178" id="KGk-i7-Jjw" customClass="PaymentSummaryHeaderTableViewCell" customModule="RSOWorkspace" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="390" height="178"/>
+            <rect key="frame" x="0.0" y="0.0" width="385" height="178"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="390" height="178"/>
+                <rect key="frame" x="0.0" y="0.0" width="385" height="178"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Review your Payment details" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nZk-f7-oJi">
-                        <rect key="frame" x="16" y="13" width="358" height="20"/>
+                        <rect key="frame" x="16" y="13" width="353" height="20"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="20" id="bwK-AE-Q4f"/>
                         </constraints>
@@ -39,7 +39,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pxS-Wm-JNi">
-                        <rect key="frame" x="16" y="44" width="358" height="17"/>
+                        <rect key="frame" x="16" y="44" width="353" height="17"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="17" id="aRv-TD-dW3"/>
                         </constraints>
@@ -51,7 +51,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Payment details" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ark-Bb-faz">
-                        <rect key="frame" x="16" y="84" width="358" height="20"/>
+                        <rect key="frame" x="16" y="84" width="353" height="20"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="20" id="uOy-Fk-RST"/>
                         </constraints>
@@ -81,18 +81,20 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="AED 11000" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5kb-bt-KPI">
-                        <rect key="frame" x="276" y="119" width="94" height="20"/>
+                        <rect key="frame" x="215" y="119" width="150" height="20"/>
                         <constraints>
+                            <constraint firstAttribute="width" constant="150" id="eTX-Ta-6SR"/>
                             <constraint firstAttribute="height" constant="20" id="wh0-0v-kfV"/>
                         </constraints>
                         <fontDescription key="fontDescription" name="Inter-SemiBold" family="Inter" pointSize="14"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="AED 11000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WEE-DU-1wu">
-                        <rect key="frame" x="295" y="146" width="79" height="20"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="AED 11000" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WEE-DU-1wu">
+                        <rect key="frame" x="245" y="146" width="120" height="20"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="20" id="2tP-Vq-LHx"/>
+                            <constraint firstAttribute="width" constant="120" id="4g2-A6-XVP"/>
                         </constraints>
                         <fontDescription key="fontDescription" name="Inter-SemiBold" family="Inter" pointSize="14"/>
                         <nil key="textColor"/>
@@ -108,7 +110,7 @@
                     <constraint firstItem="F2S-uJ-5mL" firstAttribute="top" secondItem="chF-bU-VTX" secondAttribute="bottom" constant="11" id="HYf-2t-edg"/>
                     <constraint firstItem="nZk-f7-oJi" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="PzX-hV-30E"/>
                     <constraint firstItem="ark-Bb-faz" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="Q4N-d8-lUc"/>
-                    <constraint firstAttribute="trailing" secondItem="WEE-DU-1wu" secondAttribute="trailing" constant="16" id="Qfv-iK-pCv"/>
+                    <constraint firstAttribute="trailing" secondItem="WEE-DU-1wu" secondAttribute="trailing" constant="20" id="Qfv-iK-pCv"/>
                     <constraint firstAttribute="trailing" secondItem="pxS-Wm-JNi" secondAttribute="trailing" constant="16" id="RkS-mK-gTU"/>
                     <constraint firstItem="ark-Bb-faz" firstAttribute="top" secondItem="pxS-Wm-JNi" secondAttribute="bottom" constant="23" id="Sww-21-8SC"/>
                     <constraint firstItem="nZk-f7-oJi" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="13" id="UZp-CD-tm4"/>
@@ -120,9 +122,15 @@
                     <constraint firstItem="pxS-Wm-JNi" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="tph-Rh-tGo"/>
                     <constraint firstItem="F2S-uJ-5mL" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="yWx-5a-DWm"/>
                 </constraints>
+                <variation key="default">
+                    <mask key="constraints">
+                        <exclude reference="95j-gR-RKq"/>
+                        <exclude reference="Dzb-1R-mSJ"/>
+                    </mask>
+                </variation>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
-            <point key="canvasLocation" x="-181.67938931297709" y="6.3380281690140849"/>
+            <point key="canvasLocation" x="-185.49618320610685" y="6.3380281690140849"/>
         </tableViewCell>
     </objects>
     <resources>

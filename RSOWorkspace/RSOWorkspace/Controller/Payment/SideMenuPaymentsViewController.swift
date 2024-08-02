@@ -131,6 +131,6 @@ extension SideMenuPaymentsViewController: UITableViewDataSource, UITableViewDele
         }else if indexPath.section == 2 {
             return 96
         }
-        return 44 // Default row height
+        return 60 // Default row height
     }
 }

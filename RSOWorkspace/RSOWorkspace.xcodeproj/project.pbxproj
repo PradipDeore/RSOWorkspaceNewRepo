@@ -434,6 +434,8 @@
 		58F2C6E92C5CCA3B0028538C /* SavedCards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F2C6E82C5CCA3B0028538C /* SavedCards.swift */; };
 		58F2C6EB2C5CF5990028538C /* couponRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F2C6EA2C5CF5990028538C /* couponRequestModel.swift */; };
 		58F2C6ED2C5CF5DD0028538C /* CouponResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F2C6EC2C5CF5DD0028538C /* CouponResponseModel.swift */; };
+		58F2C6EF2C5D277F0028538C /* UpdateVisitorsDetailsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F2C6EE2C5D277F0028538C /* UpdateVisitorsDetailsResponse.swift */; };
+		58F2C6F12C5D281D0028538C /* UpdateVisitorsRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F2C6F02C5D281D0028538C /* UpdateVisitorsRequestModel.swift */; };
 		58F458392B91982400CF8AFA /* SelectTimeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F458372B91982400CF8AFA /* SelectTimeTableViewCell.swift */; };
 		58F4583A2B91982400CF8AFA /* SelectTimeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58F458382B91982400CF8AFA /* SelectTimeTableViewCell.xib */; };
 		58F4583D2B91A1D300CF8AFA /* SelectMeetingRoomLabelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F4583B2B91A1D300CF8AFA /* SelectMeetingRoomLabelTableViewCell.swift */; };
@@ -907,6 +909,8 @@
 		58F2C6E82C5CCA3B0028538C /* SavedCards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedCards.swift; sourceTree = "<group>"; };
 		58F2C6EA2C5CF5990028538C /* couponRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = couponRequestModel.swift; sourceTree = "<group>"; };
 		58F2C6EC2C5CF5DD0028538C /* CouponResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponResponseModel.swift; sourceTree = "<group>"; };
+		58F2C6EE2C5D277F0028538C /* UpdateVisitorsDetailsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateVisitorsDetailsResponse.swift; sourceTree = "<group>"; };
+		58F2C6F02C5D281D0028538C /* UpdateVisitorsRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateVisitorsRequestModel.swift; sourceTree = "<group>"; };
 		58F458372B91982400CF8AFA /* SelectTimeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectTimeTableViewCell.swift; sourceTree = "<group>"; };
 		58F458382B91982400CF8AFA /* SelectTimeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectTimeTableViewCell.xib; sourceTree = "<group>"; };
 		58F4583B2B91A1D300CF8AFA /* SelectMeetingRoomLabelTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectMeetingRoomLabelTableViewCell.swift; sourceTree = "<group>"; };
@@ -1658,6 +1662,7 @@
 				58B33B8A2C5A319500DBEA34 /* LocationGalleryResponseModel.swift */,
 				5883E6FF2C5BCAF900299927 /* GetCardDetailsResponseModel.swift */,
 				58F2C6EC2C5CF5DD0028538C /* CouponResponseModel.swift */,
+				58F2C6EE2C5D277F0028538C /* UpdateVisitorsDetailsResponse.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -1695,6 +1700,7 @@
 				58B33B7A2C5A051200DBEA34 /* SocialLoginRequestModel.swift */,
 				58B33B822C5A16D800DBEA34 /* PaymentMethodRequestModel.swift */,
 				58F2C6EA2C5CF5990028538C /* couponRequestModel.swift */,
+				58F2C6F02C5D281D0028538C /* UpdateVisitorsRequestModel.swift */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -2296,6 +2302,7 @@
 				5843D7702BC7007900D5C8DD /* MyVisitorResponse.swift in Sources */,
 				58EB0E442BB6D62600DC2827 /* SideMenuSubViewController.swift in Sources */,
 				EEAB97AA2C5237E800BD5E0D /* MembershipPaymentDetailsViewController.swift in Sources */,
+				58F2C6EF2C5D277F0028538C /* UpdateVisitorsDetailsResponse.swift in Sources */,
 				58A7FBD62BA0B89A00B48DFF /* RoomDetailResponse.swift in Sources */,
 				587DA92E2BA43F1B00D27769 /* OnDemandServicesTableViewCell.swift in Sources */,
 				58F2C6E92C5CCA3B0028538C /* SavedCards.swift in Sources */,
@@ -2556,6 +2563,7 @@
 				58AE87B92C513591004A99D6 /* PaymentNetworkManager.swift in Sources */,
 				58F458512B91FD5C00CF8AFA /* BookRoomDetailsViewController.swift in Sources */,
 				5883339E2B7E349E008334A0 /* VerifyViewController.swift in Sources */,
+				58F2C6F12C5D281D0028538C /* UpdateVisitorsRequestModel.swift in Sources */,
 				58F573A52C57D0B6006F6594 /* exploreRequest.swift in Sources */,
 				581F30B52BBFBDDC0083A400 /* VisitorsTimeTableViewCell.swift in Sources */,
 				EEAED9432C52504C00A1F56A /* PlanInfoTableViewCell.swift in Sources */,

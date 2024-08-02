@@ -108,7 +108,11 @@ class ReportAnIssueViewController: UIViewController {
         if let cell = tableView.cellForRow(at: IndexPath(row: 0, section: Section.addPics.rawValue)) as? AddPicsTableViewCell {
             cell.resetImages()
         }
-        
+        // Reset the description text field in ProvideDetailsOfIssueTableViewCell
+            if let provideDetailsCell = tableView.cellForRow(at: IndexPath(row: 0, section: Section.provideDetails.rawValue)) as? ProvideDetailsOfIssueTableViewCell {
+                provideDetailsCell.textFieldView.text = ""
+                provideDetailsCell.descriptionText = "" // This will also call the delegate method to reset descriptionOfIssue
+            }
         tableView.reloadData()
     }
 }

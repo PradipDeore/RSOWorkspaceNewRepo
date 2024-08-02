@@ -3835,8 +3835,8 @@
             filePath = "RSOWorkspace/Controller/Schedule Visitors/MyVisitorsViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "151"
-            endingLineNumber = "151"
+            startingLineNumber = "186"
+            endingLineNumber = "186"
             landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
             <Locations>
@@ -3976,8 +3976,8 @@
             filePath = "RSOWorkspace/Controller/Schedule Visitors/MyVisitorsViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "187"
-            endingLineNumber = "187"
+            startingLineNumber = "222"
+            endingLineNumber = "222"
             landmarkName = "showeditVisitorDetailsScreen(for:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -3992,8 +3992,8 @@
             filePath = "RSOWorkspace/Controller/Schedule Visitors/MyVisitorsViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "188"
-            endingLineNumber = "188"
+            startingLineNumber = "223"
+            endingLineNumber = "223"
             landmarkName = "showeditVisitorDetailsScreen(for:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -4008,10 +4008,10 @@
             filePath = "RSOWorkspace/Controller/Schedule Visitors/MyVisitorsViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "189"
-            endingLineNumber = "189"
-            landmarkName = "showeditVisitorDetailsScreen(for:)"
-            landmarkType = "7">
+            startingLineNumber = "224"
+            endingLineNumber = "224"
+            landmarkName = "MyVisitorsViewController"
+            landmarkType = "21">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -5723,7 +5723,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "8FD7F6AD-E94C-4B39-B07F-6900F42D87F5"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RSOWorkspace/SideMenu-IOS-Swift/Controllers/SideMenuMainViewController.swift"
@@ -6160,6 +6160,38 @@
             endingLineNumber = "203"
             landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "2F0F28EA-75BE-4EB8-A38B-DAF1BA8E8D5E - cb8fd63f7a2d0df0"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RSOWorkspace.PaymentViewController.tableView(_: __C.UITableView, cellForRowAt: Foundation.IndexPath) -&gt; __C.UITableViewCell"
+                  moduleName = "RSOWorkspace"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sumitaquil/Desktop/Projects_Aquil/RSOWorkspaceNewRepo/RSOWorkspace/RSOWorkspace/Controller/Payment/PaymentViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "204"
+                  endingLineNumber = "204"
+                  offsetFromSymbolStart = "11180">
+               </Location>
+               <Location
+                  uuid = "2F0F28EA-75BE-4EB8-A38B-DAF1BA8E8D5E - cb8fd63f7a2d0df0"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RSOWorkspace.PaymentViewController.tableView(_: __C.UITableView, cellForRowAt: Foundation.IndexPath) -&gt; __C.UITableViewCell"
+                  moduleName = "RSOWorkspace"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sumitaquil/Desktop/Projects_Aquil/RSOWorkspaceNewRepo/RSOWorkspace/RSOWorkspace/Controller/Payment/PaymentViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "204"
+                  endingLineNumber = "204"
+                  offsetFromSymbolStart = "11160">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -6175,6 +6207,70 @@
             startingLineNumber = "212"
             endingLineNumber = "212"
             landmarkName = "tableView(_:cellForRowAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B8A9E391-B813-45D0-8CC1-FDE3418693FB"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RSOWorkspace/Controller/Office Booking/LongTermOfficeBookingViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "143"
+            endingLineNumber = "143"
+            landmarkName = "btnSubmitTappedAction(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "B8A9E391-B813-45D0-8CC1-FDE3418693FB - 75093712f2ab7b1e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RSOWorkspace.LongTermOfficeBookingViewController.btnSubmitTappedAction(Any) -&gt; ()"
+                  moduleName = "RSOWorkspace"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sumitaquil/Desktop/Projects_Aquil/RSOWorkspaceNewRepo/RSOWorkspace/RSOWorkspace/Controller/Office%20Booking/LongTermOfficeBookingViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "144"
+                  endingLineNumber = "144"
+                  offsetFromSymbolStart = "140">
+               </Location>
+               <Location
+                  uuid = "B8A9E391-B813-45D0-8CC1-FDE3418693FB - 75093712f2ab7b1e"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RSOWorkspace.LongTermOfficeBookingViewController.btnSubmitTappedAction(Any) -&gt; ()"
+                  moduleName = "RSOWorkspace"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sumitaquil/Desktop/Projects_Aquil/RSOWorkspaceNewRepo/RSOWorkspace/RSOWorkspace/Controller/Office%20Booking/LongTermOfficeBookingViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "144"
+                  endingLineNumber = "144"
+                  offsetFromSymbolStart = "504">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "133CB2E7-FE06-4ADC-AC59-A22D588BC619"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RSOWorkspace/Controller/Office Booking/LongTermOfficeBookingViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "142"
+            endingLineNumber = "142"
+            landmarkName = "btnSubmitTappedAction(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

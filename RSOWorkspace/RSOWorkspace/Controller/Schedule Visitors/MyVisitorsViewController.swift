@@ -77,6 +77,41 @@ class MyVisitorsViewController: UIViewController{
                 }
             }
     }
+    func updateVisitorsAPI(requestModel: UpdateVisitorsRequestModel) {
+        APIManager.shared.request(
+            modelType: UpdateVisitorsDetailsResponse.self,
+            type: VisitorsEndPoint.updateVisitors(requestModel: requestModel)) { [weak self] response in
+                
+                guard let self = self else { return }
+                switch response {
+                case .success(let responseData):
+                    DispatchQueue.main.async {
+                        if responseData.status {
+                            // Status is true, display success message
+                            if let message = responseData.message {
+                                RSOToastView.shared.show(message, duration: 2.0, position: .center)
+                            } else {
+                                RSOToastView.shared.show("Update successful", duration: 2.0, position: .center)
+                            }
+                        } else {
+                            // Status is false, display error message
+                            if let error = responseData.error {
+                                RSOToastView.shared.show("Request failed: \(error)", duration: 2.0, position: .center)
+                            } else {
+                                RSOToastView.shared.show("Request failed, ", duration: 2.0, position: .center)
+                            }
+                        }
+                    }
+                    self.eventHandler?(.dataLoaded)
+                case .failure(let error):
+                    self.eventHandler?(.error(error))
+                    DispatchQueue.main.async {
+                        RSOToastView.shared.show("\(error.localizedDescription)", duration: 2.0, position: .center)
+                    }
+                }
+            }
+    }
+
     
 }
 
