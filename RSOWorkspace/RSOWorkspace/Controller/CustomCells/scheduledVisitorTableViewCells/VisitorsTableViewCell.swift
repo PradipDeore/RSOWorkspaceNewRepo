@@ -76,17 +76,11 @@ class VisitorsTableViewCell: UITableViewCell {
     }
     
     @IBAction func btnAddTappedAction(_ sender: Any) {
-        
-        if let email = txtEmail.text , !email.isEmpty,
-           let name = txtName.text, !name.isEmpty,
-           let phone = txtPhone.text, !phone.isEmpty{
-            delegate?.addVisitors(email: email, name: name, phone: phone)
-        }
-//        else{
-//            delegate?.showToastForValidation()
-//        }
-        resetTextFields()
-        
+        let email = txtEmail.text ?? ""
+        let name = txtName.text ?? ""
+        let phone = txtPhone.text ?? ""
+      delegate?.addVisitors(email: email, name: name, phone: phone)
+
     }
     func resetTextFields(){
         txtEmail.text = ""

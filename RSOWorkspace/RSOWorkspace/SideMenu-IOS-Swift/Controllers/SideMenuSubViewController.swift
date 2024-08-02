@@ -95,9 +95,7 @@ class SideMenuSubViewController: UIViewController {
     menu.append(SideMenuModel(title: .locations))
     menu.append(SideMenuModel(title: .aboutUs))
     menu.append(SideMenuModel(title: .empty))
-    if !UserHelper.shared.isUserExplorer() {
-      menu.append(SideMenuModel(title: .logout))
-    }
+    menu.append(SideMenuModel(title: .logout))
     return menu
   }
     private func fetchMyProfiles() {

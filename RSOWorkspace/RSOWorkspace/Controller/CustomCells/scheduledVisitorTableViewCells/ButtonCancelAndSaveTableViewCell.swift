@@ -19,20 +19,11 @@ class ButtonCancelAndSaveTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        btnCancel.backgroundColor = ._768_D_70
     }
 
-  
-    @IBAction func btnCancelTappedAction(_ sender: Any) {
-        
-        
-    }
     
     @IBAction func btnSaveTappedAction(_ sender: Any) {
-        
         delegate?.btnSaveTappedAction()
-        
-        
     }
     
 }

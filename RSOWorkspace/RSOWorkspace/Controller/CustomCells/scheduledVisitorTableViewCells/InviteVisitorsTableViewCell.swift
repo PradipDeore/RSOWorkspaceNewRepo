@@ -24,7 +24,7 @@ class InviteVisitorsTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         //customizeCell()
-
+/*
         visitorEmailView.setCornerRadiusForView()
         // Create a UIBezierPath for the rounded corners
         let maskPath = UIBezierPath(roundedRect: containerView.bounds,
@@ -37,6 +37,7 @@ class InviteVisitorsTableViewCell: UITableViewCell {
 
         // Apply the mask to the containerView's layer
         containerView.layer.mask = maskLayer
+ */
     }
 
     func customizeCell(){
