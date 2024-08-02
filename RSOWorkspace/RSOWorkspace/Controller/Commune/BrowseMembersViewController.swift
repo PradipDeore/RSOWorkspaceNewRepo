@@ -8,6 +8,7 @@
 import UIKit
 import IQKeyboardManagerSwift
 
+
 class BrowseMembersViewController: UIViewController {
     
     var coordinator : RSOTabBarCordinator?
@@ -35,6 +36,8 @@ class BrowseMembersViewController: UIViewController {
 
         }
         setupTableView()
+        tableView.register(CustomHeaderView.self, forHeaderFooterViewReuseIdentifier: "CustomHeaderView")
+
         setsearchTextField()
         txtSearch.delegate = self
    
@@ -170,25 +173,24 @@ extension BrowseMembersViewController: UITableViewDataSource, UITableViewDelegat
         }
     }
     
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 50))
-        
-        let label = UILabel(frame: CGRect(x: 25, y: 0, width: tableView.frame.width - 30, height: 40))
-       
-        if let selectedCompanyId = selectedCompanyId {
-            if let selectedCompany = companyList.first(where: { $0.id == selectedCompanyId }) {
-                label.text = selectedCompany.name
-            }
-        } else {
-                label.text = companyList[section].name
-            }
-        
-        label.textColor = .black
-        label.font = RSOFont.inter(size: 18, type: .SemiBold)
-        headerView.addSubview(label)
-        
-        return headerView
-    }
+  func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+      let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "CustomHeaderView") as! CustomHeaderView
+      
+      if let selectedCompanyId = selectedCompanyId {
+          if let selectedCompany = companyList.first(where: { $0.id == selectedCompanyId }) {
+              headerView.titleLabel.text = selectedCompany.name
+          }
+      } else {
+          headerView.titleLabel.text = companyList[section].name
+      }
+      headerView.backgroundColor = .clear
+      headerView.titleLabel.backgroundColor = .clear
+      headerView.titleLabel.textColor = .black
+      headerView.titleLabel.font = RSOFont.inter(size: 18, type: .SemiBold)
+      
+      return headerView
+  }
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ComapaniesSearchMembersTableViewCell", for: indexPath) as! ComapaniesSearchMembersTableViewCell
         cell.selectionStyle = .none

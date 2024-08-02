@@ -117,12 +117,12 @@ class TabBarButton: UIButton {
             backView.leftAnchor.constraint(equalTo: leftAnchor, constant: 0),
             backView.rightAnchor.constraint(equalTo: rightAnchor, constant: 0),
             iconImageView.topAnchor.constraint(equalTo: topAnchor, constant: 10),
-            iconImageView.widthAnchor.constraint(equalToConstant: 45),
-            iconImageView.heightAnchor.constraint(equalToConstant: 25),
+            iconImageView.widthAnchor.constraint(equalToConstant: 35),
+            iconImageView.heightAnchor.constraint(equalToConstant: 20),
             iconImageView.centerXAnchor.constraint(equalTo: backView.centerXAnchor),
             namelabel.topAnchor.constraint(equalTo: iconImageView.bottomAnchor, constant: 2),
             namelabel.centerXAnchor.constraint(equalTo: backView.centerXAnchor),
-            namelabel.heightAnchor.constraint(equalToConstant: 16),
+            namelabel.heightAnchor.constraint(equalToConstant: 20),
             namelabel.widthAnchor.constraint(equalTo: backView.widthAnchor),
         ])
     }

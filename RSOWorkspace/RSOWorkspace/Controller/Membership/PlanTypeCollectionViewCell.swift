@@ -7,6 +7,15 @@
 
 import UIKit
 
+class SelectedIndexData {
+  static let shared = SelectedIndexData()
+  private init () {
+    
+  }
+  var collectionIndex = -1
+  var tableIndex = -1
+}
+
 protocol PlanSelectDelegate: AnyObject {
   func didSelectPlan(index: Int)
 }
@@ -34,6 +43,10 @@ class PlanTypeCollectionViewCell: UICollectionViewCell {
     self.mainTitleLabel.text = titleString
     self.priceOptions = priceList ?? []
     self.services = serviceList ?? []
+    self.tableView.reloadData()
+  }
+  func clearSelection() {
+    self.selectedIndex = -1
     self.tableView.reloadData()
   }
 }
@@ -76,6 +89,10 @@ extension PlanTypeCollectionViewCell: UITableViewDelegate, UITableViewDataSource
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     if indexPath.section == 1 {
+      // logic to handle single selection across collection cells
+      SelectedIndexData.shared.collectionIndex = self.tag
+      SelectedIndexData.shared.tableIndex = indexPath.row
+      //------------------------------------------------
       selectedIndex = indexPath.row
       self.continueButton.isUserInteractionEnabled = true
       self.continueButton.alpha = 1.0
