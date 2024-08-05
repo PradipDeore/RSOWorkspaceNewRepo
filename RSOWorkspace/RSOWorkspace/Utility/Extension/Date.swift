@@ -14,6 +14,7 @@ enum RSODateFormat: String{
   case hhmmss = "hh:mm:ss"
   case HHmmss = "HH:mm:ss"
   case ddMMyyyy = "dd/MM/yyyy"
+    case MMMM = "MMMM" // Full month name
 }
 
 extension Date {
@@ -87,5 +88,21 @@ extension Date {
     components.second = second
     return calendar.date(from: components)
   }
+    // for sidemenu payment screen requst model
+    /// Returns the current month as an integer.
+        static func getCurrentMonth() -> Int {
+            let currentDate = Date()
+            let calendar = Calendar.current
+            let components = calendar.dateComponents([.month], from: currentDate)
+            return components.month ?? 0
+        }
+        
+        /// Returns the current year as an integer.
+        static func getCurrentYear() -> Int {
+            let currentDate = Date()
+            let calendar = Calendar.current
+            let components = calendar.dateComponents([.year], from: currentDate)
+            return components.year ?? 0
+        }
 }
 

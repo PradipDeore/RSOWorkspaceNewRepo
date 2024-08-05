@@ -87,7 +87,7 @@ class AmenitiesViewController: UIViewController{
   //to display meeting rooms on load also not working
   private func fetchMeetingRoomsAndReloadTable() {
     RSOLoader.showLoader()
-    fetchmeetingRooms(id: 1, requestModel: apiRequestModelRoomListing)
+    fetchmeetingRooms(id: selectedMeetingRoomId, requestModel: apiRequestModelRoomListing)
     tableView.reloadData()
   }
   func fetchmeetingRooms(id: Int, requestModel: BookMeetingRoomRequestModel) {
@@ -172,7 +172,7 @@ extension AmenitiesViewController: UITableViewDataSource, UITableViewDelegate {
                         cell.selectionStyle = .none
                         cell.collectionView.backActionDelegate = self
                         if selectedMeetingRoomId > 0 {
-                            cell.fetchRooms()
+                            cell.fetchmeetingRooms(id: selectedMeetingRoomId, requestModel: apiRequestModelRoomListing)
                         }
                         return cell
             } else {
@@ -239,7 +239,7 @@ extension AmenitiesViewController: DashboardDeskTypeTableViewCellDelegate {
            switch type {
            case .meetingRooms:
                if let meetingRoomsCell = tableView.visibleCells.compactMap({ $0 as? DashboardMeetingRoomsTableViewCell }).first {
-                   meetingRoomsCell.fetchRooms()
+                   meetingRoomsCell.fetchmeetingRooms(id: nil, requestModel: nil)
                } else {
                    print("DashboardMeetingRoomsTableViewCell not found")
                }

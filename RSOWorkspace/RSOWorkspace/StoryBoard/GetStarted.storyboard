@@ -658,7 +658,7 @@
                                                             <constraint firstAttribute="height" constant="42" id="Va1-ia-WXj"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits"/>
+                                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                     </textField>
                                                     <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="LogInViewController" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P7m-1x-Ag5" customClass="RSOButton" customModule="RSOWorkspace" customModuleProvider="target">
                                                         <rect key="frame" x="36.666666666666657" y="547" width="320" height="46"/>

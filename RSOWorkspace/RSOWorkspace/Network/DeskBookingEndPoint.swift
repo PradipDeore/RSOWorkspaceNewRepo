@@ -28,6 +28,7 @@ extension DeskBookingEndPoint: EndPointType {
         case .getDesksLisiting(let id ,_):
             return "desk-listing/\(id)"
         case .getDetailsOfMeetingRooms(let id ,_):
+            
             return "room-details/\(id)"
         case .bookingDeskDetails(id: let id):
             return "booking-desk-details/\(id)"

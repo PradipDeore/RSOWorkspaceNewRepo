@@ -9,10 +9,15 @@ import UIKit
 
 class PaymentDateTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var lblCurrentMonthName: UILabel!
+    @IBOutlet weak var lblTotalPrice: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
-
+    func configure(withTotalPrice totalPrice: Double) {
+        lblTotalPrice.text = String(format: "%.2f", totalPrice)
+        lblCurrentMonthName.text = Date.formatSelectedDate(format: .MMMM, date: Date()).uppercased()
+        }
     
 }

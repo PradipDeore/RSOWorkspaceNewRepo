@@ -8,7 +8,7 @@
 import Foundation
 enum MyBookingEndPoint {
     case myBookingListing
-    case getAvailableMeetingRoomListing(id: Int, requestModel: BookMeetingRoomRequestModel)
+    case getAvailableMeetingRoomListing(id: Int?, requestModel: BookMeetingRoomRequestModel?)
     case getDetailsOfMeetingRooms(id: Int, requestModel: BookMeetingRoomRequestModel)
 }
 extension MyBookingEndPoint: EndPointType {
@@ -17,7 +17,12 @@ extension MyBookingEndPoint: EndPointType {
         case .myBookingListing:
             return "my-bookings"
         case .getAvailableMeetingRoomListing(let id ,_):
-            return "meeting-rooms-listing/\(id)"
+            //return "meeting-rooms-listing/\(id)"
+            if let locationId = id {
+              return "meeting-rooms-listing/\(locationId)"
+            } else {
+                return "meeting-rooms-listing/1"
+            }
         case .getDetailsOfMeetingRooms(let id ,_):
             return "room-details/\(id)"
      

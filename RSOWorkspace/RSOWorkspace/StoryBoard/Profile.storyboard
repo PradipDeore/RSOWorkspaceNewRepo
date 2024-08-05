@@ -239,9 +239,9 @@
                         <outlet property="btnUpdate" destination="QyT-9g-X1B" id="fFO-OK-QWJ"/>
                         <outlet property="containerView" destination="vGb-aZ-8cX" id="8Wk-Gg-Jyg"/>
                         <outlet property="imgProfile" destination="1ne-m9-Wtm" id="hAJ-gN-JM5"/>
-                        <outlet property="txtDesignation" destination="meA-0S-PlA" id="GQG-jg-PxH"/>
-                        <outlet property="txtFirstName" destination="5kH-6f-gRP" id="hIf-NQ-uNT"/>
-                        <outlet property="txtLastname" destination="gzQ-Xj-9lt" id="xj0-Pr-zKq"/>
+                        <outlet property="txtDesignation" destination="meA-0S-PlA" id="YOh-Hd-8ka"/>
+                        <outlet property="txtFirstName" destination="5kH-6f-gRP" id="Hme-o4-4mz"/>
+                        <outlet property="txtLastname" destination="gzQ-Xj-9lt" id="h3L-AH-l9S"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zeB-On-whI" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

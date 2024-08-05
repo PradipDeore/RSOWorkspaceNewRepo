@@ -841,7 +841,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yvB-GH-OZp" customClass="ShadowedView" customModule="RSOWorkspace" customModuleProvider="target">
                                 <rect key="frame" x="24.666666666666657" y="239.66666666666663" width="344" height="373"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="LargerKey" translatesAutoresizingMaskIntoConstraints="NO" id="hcw-1u-myl">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="dummyQRCode" translatesAutoresizingMaskIntoConstraints="NO" id="hcw-1u-myl">
                                         <rect key="frame" x="72" y="24" width="199" height="204"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
@@ -940,7 +940,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="LargerKey" width="68" height="126"/>
+        <image name="dummyQRCode" width="8000" height="8000"/>
         <namedColor name="000000">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

@@ -41,10 +41,9 @@ class AddPaymentMethodViewController: UIViewController {
                 switch response {
                 case .success(let response):
                     self.addPaymentmethodData = response
-                    // Record updated successfully
                     DispatchQueue.main.async {
                         RSOLoader.removeLoader()
-                        RSOToastView.shared.show("\(response.success ?? "")", duration: 2.0, position: .center)
+                        RSOToastView.shared.show("\("Payment Method save sussefully")", duration: 2.0, position: .center)
                         self.clearFields()
                     }
                     

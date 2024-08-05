@@ -90,6 +90,10 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="lblCurrentMonthName" destination="qgZ-Er-5t0" id="Ain-Jq-FD0"/>
+                <outlet property="lblTotalPrice" destination="Mvy-Do-XP1" id="D4t-TX-lin"/>
+            </connections>
             <point key="canvasLocation" x="133.58778625954199" y="12.67605633802817"/>
         </tableViewCell>
     </objects>

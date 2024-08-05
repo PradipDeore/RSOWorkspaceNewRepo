@@ -316,6 +316,8 @@
 		58C9AC0B2B8DC43A00C719D1 /* BookOfficeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58C9AC092B8DC43A00C719D1 /* BookOfficeTableViewCell.xib */; };
 		58CE5FF82C5243B000278890 /* ShortTermBookAnOfficeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58CE5FF72C5243B000278890 /* ShortTermBookAnOfficeViewController.swift */; };
 		58CE5FFC2C52448200278890 /* OfficeBooking.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58CE5FFB2C52448200278890 /* OfficeBooking.storyboard */; };
+		58CEEFAF2C60B2FA00890989 /* GetAllBookingsRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58CEEFAE2C60B2FA00890989 /* GetAllBookingsRequestModel.swift */; };
+		58CEEFB12C60B38A00890989 /* GetAllBookingsResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58CEEFB02C60B38A00890989 /* GetAllBookingsResponseModel.swift */; };
 		58CF11982BA94F2E00B95EE9 /* ServicesEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58CF11972BA94F2E00B95EE9 /* ServicesEndPoint.swift */; };
 		58CF119A2BA9502800B95EE9 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58CF11992BA9502800B95EE9 /* Service.swift */; };
 		58CF119C2BA95EA700B95EE9 /* subServicesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58CF119B2BA95EA700B95EE9 /* subServicesViewController.swift */; };
@@ -785,6 +787,8 @@
 		58C9AC092B8DC43A00C719D1 /* BookOfficeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BookOfficeTableViewCell.xib; sourceTree = "<group>"; };
 		58CE5FF72C5243B000278890 /* ShortTermBookAnOfficeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortTermBookAnOfficeViewController.swift; sourceTree = "<group>"; };
 		58CE5FFB2C52448200278890 /* OfficeBooking.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = OfficeBooking.storyboard; sourceTree = "<group>"; };
+		58CEEFAE2C60B2FA00890989 /* GetAllBookingsRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAllBookingsRequestModel.swift; sourceTree = "<group>"; };
+		58CEEFB02C60B38A00890989 /* GetAllBookingsResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAllBookingsResponseModel.swift; sourceTree = "<group>"; };
 		58CF11972BA94F2E00B95EE9 /* ServicesEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesEndPoint.swift; sourceTree = "<group>"; };
 		58CF11992BA9502800B95EE9 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		58CF119B2BA95EA700B95EE9 /* subServicesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = subServicesViewController.swift; sourceTree = "<group>"; };
@@ -1663,6 +1667,7 @@
 				5883E6FF2C5BCAF900299927 /* GetCardDetailsResponseModel.swift */,
 				58F2C6EC2C5CF5DD0028538C /* CouponResponseModel.swift */,
 				58F2C6EE2C5D277F0028538C /* UpdateVisitorsDetailsResponse.swift */,
+				58CEEFB02C60B38A00890989 /* GetAllBookingsResponseModel.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -1701,6 +1706,7 @@
 				58B33B822C5A16D800DBEA34 /* PaymentMethodRequestModel.swift */,
 				58F2C6EA2C5CF5990028538C /* couponRequestModel.swift */,
 				58F2C6F02C5D281D0028538C /* UpdateVisitorsRequestModel.swift */,
+				58CEEFAE2C60B2FA00890989 /* GetAllBookingsRequestModel.swift */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -2456,6 +2462,7 @@
 				58F458392B91982400CF8AFA /* SelectTimeTableViewCell.swift in Sources */,
 				58D2D1D42C54F6E4008425DA /* ConfirmOfficeBookingDetailsModel.swift in Sources */,
 				58D584AB2B96F43000D17D0A /* ConfirmAndProceedToPayementTableViewCell.swift in Sources */,
+				58CEEFB12C60B38A00890989 /* GetAllBookingsResponseModel.swift in Sources */,
 				58D2D1DA2C5518E5008425DA /* StoreOfficeBookingRequest.swift in Sources */,
 				58E997D32BBE87160051BEF3 /* VisitorsEndPoint.swift in Sources */,
 				58127A8B2BAC32D1001693D6 /* ComapaniesSearchMembersTableViewCell.swift in Sources */,
@@ -2533,6 +2540,7 @@
 				58BF85252B875E4D009FF06C /* SignUpResponse.swift in Sources */,
 				EEDF1C862C5CC4DB00CBCCF5 /* ExpirationDatePicker.swift in Sources */,
 				5858015E2B79F9E000AD5C2C /* LaunchViewController.swift in Sources */,
+				58CEEFAF2C60B2FA00890989 /* GetAllBookingsRequestModel.swift in Sources */,
 				587EA9DB2B9591B1002BD4D1 /* SelectSeatingConfigCollectionViewCell.swift in Sources */,
 				58F4583D2B91A1D300CF8AFA /* SelectMeetingRoomLabelTableViewCell.swift in Sources */,
 				58F458412B91A36000CF8AFA /* SelectMeetingRoomTableViewCell.swift in Sources */,

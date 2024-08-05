@@ -50,13 +50,13 @@ class RoomListingViewController: UIViewController {
   func fetchRooms() {
     RSOLoader.showLoader()
     APIManager.shared.request(
-      modelType: ResponseData.self,
-      type: DeskEndPoint.meetingRooms) { response in
+      modelType: MeetingRoomListingResponse.self.self,
+      type: MyBookingEndPoint.getAvailableMeetingRoomListing(id: nil, requestModel: nil)) { response in
         DispatchQueue.main.async {
           switch response {
           case .success(let response):
             let roomList = response.data
-            let listItems: [RSOCollectionItem] = roomList.map { RSOCollectionItem(meetingRoomItem: $0) }
+            let listItems: [RSOCollectionItem] = roomList.map { RSOCollectionItem(meetingRoomList: $0) }
             self.collectionView.listItems = listItems
             self.roomList = listItems
             if !self.searchingText.isEmpty {
