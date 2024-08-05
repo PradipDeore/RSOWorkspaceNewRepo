@@ -15,9 +15,9 @@ class PaymentDateTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
     }
-    func configure(withTotalPrice totalPrice: Double) {
-        lblTotalPrice.text = String(format: "%.2f", totalPrice)
-        lblCurrentMonthName.text = Date.formatSelectedDate(format: .MMMM, date: Date()).uppercased()
+    func configure(withTotalPrice totalPrice: Double, monthName: String) {
+            lblTotalPrice.text = String(format: "%.2f", totalPrice)
+            lblCurrentMonthName.text = monthName.uppercased()
         }
     
 }
