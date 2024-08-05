@@ -22,7 +22,7 @@ class DashboardMeetingRoomsTableViewCell: UITableViewCell {
         collectionView.scrollDirection = .horizontal
         collectionView.isPagingEnabled = true
         collectionView.showsHorizontalScrollIndicator = false // Hide horizontal scroll indicator
-        fetchmeetingRooms(id: nil, requestModel: nil)
+        fetchmeetingRooms(id: 1, requestModel: nil)
     }
 
 //    func fetchRooms() {

@@ -36,8 +36,6 @@ class LocationViewController: UIViewController {
         super.viewDidLoad()
         setupTableView()
         fetchLocations()
-        // Set initial gallery data for the default location
-        updateGalleryForLocation(locationId: locationId)
     }
     
     @IBAction func btnBackAction(_ sender: Any) {
@@ -61,13 +59,16 @@ class LocationViewController: UIViewController {
                     if let firstLocation = self.dropdownOptions.first {
                         self.selectedLocation = firstLocation.name
                         self.locationId = firstLocation.id
+                        self.selectedMeetingRoomId = firstLocation.id
                         self.updateGalleryForLocation(locationId: self.locationId)
                     }
+
                     DispatchQueue.main.async {
                         self.tableView.reloadData()
                     }
                     self.eventHandler?(.dataLoaded)
                 case .failure(let error):
+                    print("fetch location get failed",error.localizedDescription)
                     self.eventHandler?(.error(error))
                 }
             }
