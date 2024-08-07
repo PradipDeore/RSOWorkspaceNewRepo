@@ -51,7 +51,7 @@ class RoomListingViewController: UIViewController {
     RSOLoader.showLoader()
     APIManager.shared.request(
       modelType: ResponseData.self,
-      type: DeskEndPoint.meetingRooms) { response in
+      type:  DeskEndPoint.meetingRooms) { response in
         DispatchQueue.main.async {
           switch response {
           case .success(let response):
@@ -115,11 +115,17 @@ extension RoomListingViewController: UITextFieldDelegate {
     
     func filterMeetingRooms(searchText: String) {
         if !searchText.isEmpty {
-          self.collectionView.listItems = self.collectionView.listItems.filter { $0.roomName.lowercased().contains(searchText.lowercased()) } // Filter based on room name
+            let filteredItems = self.collectionView.listItems.filter { $0.roomName.lowercased().contains(searchText.lowercased()) }
+            if filteredItems.isEmpty {
+                // Show toast if no records are found
+                self.view.makeToast("Record Not found", duration: 3.0, position: .center)
+            }
+            self.collectionView.listItems = filteredItems
         } else {
-          self.collectionView.listItems = self.roomList
+            self.collectionView.listItems = self.roomList
         }
-      self.searchingText = searchText
+        self.searchingText = searchText
         collectionView.reloadData() // Reload collection view to reflect filtered data
     }
+
 }

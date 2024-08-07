@@ -31,8 +31,10 @@ class DashboardViewController: UIViewController, RSOTabCoordinated {
     super.viewWillAppear(animated)
     coordinator?.hideBackButton(isHidden: true)
     coordinator?.hideTopViewForHome(isHidden: false)
+    pagetitle = RSOGreetings.greetingForCurrentTime()
     coordinator?.setTitle(title: pagetitle)
     coordinator?.updateButtonSelection(0)
+    print("dashboard view controller view will appear called")
   }
   
   private func setupTableView() {

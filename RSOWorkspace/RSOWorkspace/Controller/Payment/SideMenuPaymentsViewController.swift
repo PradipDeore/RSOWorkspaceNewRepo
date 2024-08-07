@@ -14,9 +14,26 @@ class SideMenuPaymentsViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+    var eventHandler: ((_ event: Event) -> Void)?
+    var selectedMonth: Int = Date.getCurrentMonth()
+    var selectedYear: Int = Date.getCurrentYear()
+    var selectedMonthName: String = ""
     
+    var getAllBookingResponse : [GetAllBookings] = []
+    var paymentServiceManager = PaymentNetworkManager.shared
+    var totalPrice:Double = 0.0
     override func viewDidLoad() {
         super.viewDidLoad()
+        let currentMonth = Date.getCurrentMonth()
+        let currentYear = Date.getCurrentYear()
+        
+        selectedMonth = currentMonth
+        selectedYear = currentYear
+        selectedMonthName = months[currentMonth - 1] // Set initial month name
+        
+        // Set the default month text in the text field
+        txtMonths.text = selectedMonthName
+       
         txtMonths.setUpTextFieldView(rightImageName: "arrowdown")
         monthNamesView.setCornerRadiusForView()
         
@@ -28,12 +45,14 @@ class SideMenuPaymentsViewController: UIViewController {
         tableView.register(UINib(nibName: "PaymentDetailsTableViewCell", bundle: nil), forCellReuseIdentifier: "PaymentDetailsTableViewCell")
         tableView.register(UINib(nibName: "PaymentMethodTableViewCell", bundle: nil), forCellReuseIdentifier: "PaymentMethodTableViewCell")
         tableView.register(UINib(nibName: "PayNowButtonTableViewCell", bundle: nil), forCellReuseIdentifier: "PayNowButtonTableViewCell")
+        getAllBookingsAPI(month: currentMonth, year: currentYear)
+        
     }
     
     
     @IBAction func btnBackAction(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
-
+        
     }
     @IBAction func btnSelectMonthAction(_ sender: Any) {
         showMonthSelectionActionSheet()
@@ -41,11 +60,36 @@ class SideMenuPaymentsViewController: UIViewController {
     
     private func showMonthSelectionActionSheet() {
         let actionSheet = UIAlertController(title: "Select Month", message: nil, preferredStyle: .actionSheet)
+        let currentMonth = Date.getCurrentMonth()
+        let currentYear = Date.getCurrentYear()
         
-        for month in months {
-            let action = UIAlertAction(title: month, style: .default) { [weak self] action in
-                self?.txtMonths.text = month
+        for (index, month) in months.enumerated() {
+            let monthIndex = index + 1 // 1-based index for months (January = 1, February = 2, etc.)
+            
+            // Determine whether this month should be disabled
+            var isDisabled = false
+            var title = month
+            
+            // Disable future months (including the current month if the year is in the future)
+            if monthIndex > currentMonth || (monthIndex == currentMonth && currentYear > Date.getCurrentYear()) {
+                isDisabled = true
+            } else if monthIndex == currentMonth {
+                title += " (Current Month)"
             }
+            
+            let action = UIAlertAction(title: month, style: isDisabled ? .destructive : .default) { [weak self] action in
+                if !isDisabled {
+                    self?.txtMonths.text = month
+                    self?.selectedMonth = monthIndex // Store the selected month index
+                    self?.selectedMonthName = month // Store the selected month name
+                    if let selectedMonth = self?.selectedMonth {
+                        self?.getAllBookingsAPI(month: selectedMonth, year: self?.selectedYear ?? currentYear)
+                    }
+                    
+                }
+            }
+            
+            action.isEnabled = !isDisabled
             actionSheet.addAction(action)
         }
         
@@ -59,6 +103,48 @@ class SideMenuPaymentsViewController: UIViewController {
         }
         self.present(actionSheet, animated: true, completion: nil)
     }
+    
+    
+    
+    private func getAllBookingsAPI(month: Int, year: Int)
+    {
+        let requestModel = GetAllBookingsRequestModel(month: month, year: year)
+        
+        APIManager.shared.request(
+            modelType: GetAllBookingsResponseModel.self,
+            type: PaymentMethodEndPoint.getAllBookings(requestModel: requestModel)) { response in
+                DispatchQueue.main.async {
+                    switch response {
+                    case .success(let response):
+                        self.getAllBookingResponse = response.data ?? []
+                        print("getAllBookingResponse response is", self.getAllBookingResponse)
+                        
+                        if self.getAllBookingResponse.isEmpty {
+                            self.view.makeToast("No bookings for this month", duration: 3.0, position: .center)
+                        }
+                        self.tableView.reloadData()
+                        self.eventHandler?(.dataLoaded)
+                    case .failure(let error):
+                        self.eventHandler?(.error(error))
+                    }
+                }
+            }
+    }
+    func calculateTotalPrice() -> Double {
+        var total: Double = 0.0
+        
+        for booking in getAllBookingResponse {
+            // Ensure totalPrice is not nil and convert it to Double
+            if let priceString = booking.totalPrice, let totalPrice = Double(priceString) {
+                total += totalPrice
+            }
+        }
+        
+        print("Total Price: \(total)") // Debug print
+        
+        return total
+    }
+
 }
 
 // MARK: - UITableViewDataSource, UITableViewDelegate
@@ -72,7 +158,7 @@ extension SideMenuPaymentsViewController: UITableViewDataSource, UITableViewDele
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 1:
-            return 4
+            return getAllBookingResponse.count
         default:
             return 1
         }
@@ -81,20 +167,24 @@ extension SideMenuPaymentsViewController: UITableViewDataSource, UITableViewDele
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.section {
         case 0:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "PaymentDateTableViewCell", for: indexPath)
+            let cell = tableView.dequeueReusableCell(withIdentifier: "PaymentDateTableViewCell", for: indexPath) as! PaymentDateTableViewCell
             cell.selectionStyle = .none
+            cell.configure(withTotalPrice: calculateTotalPrice(), monthName: selectedMonthName)
             return cell
         case 1:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "PaymentDetailsTableViewCell", for: indexPath)
+            let cell = tableView.dequeueReusableCell(withIdentifier: "PaymentDetailsTableViewCell", for: indexPath) as!  PaymentDetailsTableViewCell
+            let item = getAllBookingResponse[indexPath.row]
+            cell.setData(item: item)
             cell.selectionStyle = .none
             return cell
         case 2:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "PaymentMethodTableViewCell", for: indexPath)
+            let cell = tableView.dequeueReusableCell(withIdentifier: "PaymentMethodTableViewCell", for: indexPath)as! PaymentMethodTableViewCell
             cell.selectionStyle = .none
             return cell
         case 3:
-            let cell = tableView.dequeueReusableCell(withIdentifier: "PayNowButtonTableViewCell", for: indexPath)
+            let cell = tableView.dequeueReusableCell(withIdentifier: "PayNowButtonTableViewCell", for: indexPath) as! PayNowButtonTableViewCell
             cell.selectionStyle = .none
+            cell.delegate = self
             return cell
         default:
             return UITableViewCell()
@@ -103,8 +193,12 @@ extension SideMenuPaymentsViewController: UITableViewDataSource, UITableViewDele
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 3 {
-            // Handle Pay Now button tap
-            print("Pay Now button tapped")
+            var requestModel = NiPaymentRequestModel()
+            requestModel.total = Int(totalPrice)
+            requestModel.email = UserHelper.shared.getUserEmail()
+            if UserHelper.shared.isGuest() {
+                paymentServiceManager.makePayment(requestModel: requestModel)
+            }
         }
     }
     
@@ -127,10 +221,31 @@ extension SideMenuPaymentsViewController: UITableViewDataSource, UITableViewDele
         if indexPath.section == 0 {
             return 112
         }else if indexPath.section == 1{
-            return 61
+            return UITableView.automaticDimension //61
         }else if indexPath.section == 2 {
             return 96
         }
-        return 44 // Default row height
+        return 60 // Default row height
     }
+}
+
+extension SideMenuPaymentsViewController {
+    enum Event {
+        case dataLoaded
+        case error(Error?)
+    }
+}
+
+extension SideMenuPaymentsViewController:PayNowButtonTableViewCellDelegate{
+    func didTapPayNowButton() {
+        paymentServiceManager.currentViewController = self
+        var requestModel = NiPaymentRequestModel()
+        requestModel.total = Int(calculateTotalPrice())
+        requestModel.email = UserHelper.shared.getUserEmail()
+        if UserHelper.shared.isGuest() {
+            paymentServiceManager.makePayment(requestModel: requestModel)
+        }
+    }
+    
+    
 }

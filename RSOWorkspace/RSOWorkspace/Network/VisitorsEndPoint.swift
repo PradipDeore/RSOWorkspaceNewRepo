@@ -11,6 +11,7 @@ enum VisitorsEndPoint {
     case reasonForVisit // Module - GET
     case scheduleVisitors(requestModel : ScheduleVisitorsRequest)
     case myVisitors
+    case updateVisitors(requestModel : UpdateVisitorsRequestModel)
 
 }
 extension VisitorsEndPoint: EndPointType {
@@ -23,6 +24,8 @@ extension VisitorsEndPoint: EndPointType {
             return "visitor-schedule"
         case .myVisitors:
             return "my-visitors"
+        case .updateVisitors:
+            return "visitor-details-update"
         }
     }
   
@@ -38,6 +41,8 @@ extension VisitorsEndPoint: EndPointType {
             return .post
         case .myVisitors:
             return .get
+        case .updateVisitors:
+            return .post
         }
     }
     
@@ -49,6 +54,8 @@ extension VisitorsEndPoint: EndPointType {
             return requestModel
         case .myVisitors:
             return nil
+        case .updateVisitors(let requestModel):
+            return requestModel
         }
     }
     

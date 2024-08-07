@@ -11,13 +11,15 @@ import Toast_Swift
 protocol VisitorsTableViewCellDelegate:AnyObject{
     func InviteMoreVisitors()
     func addVisitors(email:String,name:String,phone:String)
+    func saveVisitorDetails(email: String, name: String, phone: String, indexPath: IndexPath)
+
     
 }
 protocol DisplayVisitorDetailsDelegate:AnyObject{
     func displayVisitorsDetailsCell(for indexPath: IndexPath)
 }
 class VisitorsTableViewCell: UITableViewCell {
-
+    
     weak var delegate : VisitorsTableViewCellDelegate?
     weak var visitorDetailDelegate:DisplayVisitorDetailsDelegate?
     @IBOutlet weak var containerView: UIView!
@@ -42,7 +44,7 @@ class VisitorsTableViewCell: UITableViewCell {
         txtEmail.isUserInteractionEnabled = true
         txtName.isUserInteractionEnabled = true
         txtPhone.isUserInteractionEnabled = true
-
+        
         btnAdd.setCornerRadiusToButton()
         btnSaveUpdatedVisitor.setCornerRadiusToButton()
         btnCancel.setCornerRadiusToButton()
@@ -55,9 +57,9 @@ class VisitorsTableViewCell: UITableViewCell {
         editButtonView.isHidden = true
         
     }
-
+    
     func customizeCell(){
-
+        
         self.containerView.layer.cornerRadius = cornerRadius
         self.containerView.layer.masksToBounds = true
         
@@ -69,7 +71,7 @@ class VisitorsTableViewCell: UITableViewCell {
         self.containerView.layer.masksToBounds = false
         self.containerView.layer.shadowPath = UIBezierPath(roundedRect:  CGRect(x: 0, y: self.containerView.bounds.height - 4, width: self.containerView.bounds.width, height: 4), cornerRadius: self.containerView.layer.cornerRadius).cgPath
     }
-   
+    
     @IBAction func btnInviteMoreVisitorsTappedAction(_ sender: Any) {
         delegate?.InviteMoreVisitors()
         
@@ -79,8 +81,8 @@ class VisitorsTableViewCell: UITableViewCell {
         let email = txtEmail.text ?? ""
         let name = txtName.text ?? ""
         let phone = txtPhone.text ?? ""
-      delegate?.addVisitors(email: email, name: name, phone: phone)
-
+        delegate?.addVisitors(email: email, name: name, phone: phone)
+        
     }
     func resetTextFields(){
         txtEmail.text = ""
@@ -92,5 +94,14 @@ class VisitorsTableViewCell: UITableViewCell {
         if let indexPath = indexPath {
             visitorDetailDelegate?.displayVisitorsDetailsCell(for: indexPath)
         }
+    }
+    
+    @IBAction func btnSaveAction(_ sender: Any) {
+        guard let indexPath = indexPath else { return }
+               let email = txtEmail.text ?? ""
+               let name = txtName.text ?? ""
+               let phone = txtPhone.text ?? ""
+               delegate?.saveVisitorDetails(email: email, name: name, phone: phone, indexPath: indexPath)
+        
     }
 }

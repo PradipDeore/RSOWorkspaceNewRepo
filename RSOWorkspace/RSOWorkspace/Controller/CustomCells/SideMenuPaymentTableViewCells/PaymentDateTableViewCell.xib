@@ -65,7 +65,7 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pay before 10/2/23 to avoid late payment fee" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sar-Py-KFy">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pay before 31/08/2024 to avoid late payment fee" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sar-Py-KFy">
                         <rect key="frame" x="157" y="60" width="157" height="41"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="157" id="ONG-XQ-9PC"/>
@@ -90,6 +90,11 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="lblCurrentMonthName" destination="qgZ-Er-5t0" id="Ain-Jq-FD0"/>
+                <outlet property="lblPayBefore" destination="sar-Py-KFy" id="5fY-2F-7Z1"/>
+                <outlet property="lblTotalPrice" destination="Mvy-Do-XP1" id="D4t-TX-lin"/>
+            </connections>
             <point key="canvasLocation" x="133.58778625954199" y="12.67605633802817"/>
         </tableViewCell>
     </objects>

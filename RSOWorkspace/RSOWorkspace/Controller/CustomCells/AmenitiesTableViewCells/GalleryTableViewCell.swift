@@ -13,8 +13,8 @@ class GalleryTableViewCell: UITableViewCell, UICollectionViewDataSource, UIColle
    
     var galleryData : [Gallery] = []
     var eventHandler: ((_ event: Event) -> Void)?
-    private var locationID: Int?
-    
+    private var locationID: Int = 1 // Default locationID is set to 1
+
     override func awakeFromNib() {
             super.awakeFromNib()
             
@@ -35,6 +35,7 @@ class GalleryTableViewCell: UITableViewCell, UICollectionViewDataSource, UIColle
         }
         
      func fetchGallery(locationID:Int) {
+        
          DispatchQueue.main.async {
              RSOLoader.showLoader()
          }
@@ -70,16 +71,17 @@ class GalleryTableViewCell: UITableViewCell, UICollectionViewDataSource, UIColle
         
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let itemWidth: CGFloat
-            if indexPath.row % 2 == 0 {
-                // For even rows, use item size 146
-                itemWidth = 146
-            } else {
-                // For odd rows, use item size 246
-                itemWidth = 246
-            }
+//            if indexPath.row % 2 == 0 {
+//                // For even rows, use item size 146
+//                itemWidth = 146
+//            }
+        //else {
+//                // For odd rows, use item size 246
+//                itemWidth = 246
+//            }
             let itemHeight: CGFloat = 209 // Set the item height
 
-            return CGSize(width: itemWidth, height: itemHeight)
+            return CGSize(width: 146, height: itemHeight)
     }
 }
 

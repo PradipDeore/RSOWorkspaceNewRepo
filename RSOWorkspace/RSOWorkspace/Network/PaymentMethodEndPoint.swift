@@ -13,6 +13,7 @@ import Foundation
 enum PaymentMethodEndPoint {
     case storeCardDetails(requestModel: PaymentMethodRequestModel)
     case getCardDetail
+    case getAllBookings(requestModel: GetAllBookingsRequestModel)
 }
 extension PaymentMethodEndPoint: EndPointType {
     var path: String {
@@ -21,6 +22,8 @@ extension PaymentMethodEndPoint: EndPointType {
             return "card-store"
         case .getCardDetail:
             return "get-card"
+        case .getAllBookings(requestModel: _):
+            return "get-all-bookings"
         }
     }
     var url: URL? {
@@ -32,6 +35,8 @@ extension PaymentMethodEndPoint: EndPointType {
             return .post
         case .getCardDetail:
             return .get
+        case .getAllBookings(requestModel: _):
+            return .get
         }
     }
     var body: Encodable? {
@@ -40,6 +45,8 @@ extension PaymentMethodEndPoint: EndPointType {
             return requestModel
         case .getCardDetail:
             return nil
+        case .getAllBookings(requestModel: let requestModel):
+            return requestModel
         }
     }
     var headers: [String : String]? {

@@ -132,7 +132,7 @@ extension BookingConfirmedViewController: UITableViewDataSource, UITableViewDele
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 4{
-            return  bookingConfirmDetails.teamMembers.count ?? 0
+            return  self.teamMembersArray.count 
         }else if section == 5{
             return guestEmailArray.count
         }
@@ -205,7 +205,7 @@ extension BookingConfirmedViewController: UITableViewDataSource, UITableViewDele
             let cell = tableView.dequeueReusableCell(withIdentifier: cellType.rawValue, for: indexPath) as! BookingConfirmedTeamMembersTableViewCell
             
             cell.selectionStyle = .none
-            let teamMember = bookingConfirmDetails.teamMembers[indexPath.row]
+            let teamMember = self.teamMembersArray[indexPath.row]
             cell.lblName.text = teamMember.fullName
             cell.selectionStyle = .none
             

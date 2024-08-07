@@ -95,7 +95,7 @@ class FindMembersSearchListTableViewCell: UITableViewCell {
             return
         }
         // Use the utility method to make a phone call
-        PhoneCallUtility.makePhoneCall(to: phoneNumber)
+        PhoneCallUtility.makePhoneCall(phoneNumber: phoneNumber)
     }
     
 }

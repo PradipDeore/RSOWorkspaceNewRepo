@@ -29,7 +29,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="0kT-DM-gO2">
-                                <rect key="frame" x="0.0" y="118" width="393" height="734"/>
+                                <rect key="frame" x="0.0" y="110" width="393" height="742"/>
                                 <color key="backgroundColor" name="F2F2F2"/>
                                 <connections>
                                     <outlet property="dataSource" destination="Y6W-OH-hqX" id="dt8-Gi-TL4"/>
@@ -54,7 +54,7 @@
                         <constraints>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="IO8-ZV-tEZ" secondAttribute="trailing" constant="25" id="0TV-Aa-MIA"/>
                             <constraint firstItem="IO8-ZV-tEZ" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="8Jm-ec-Xcb"/>
-                            <constraint firstItem="0kT-DM-gO2" firstAttribute="top" secondItem="IO8-ZV-tEZ" secondAttribute="bottom" constant="28" id="LOA-yV-hjq"/>
+                            <constraint firstItem="0kT-DM-gO2" firstAttribute="top" secondItem="IO8-ZV-tEZ" secondAttribute="bottom" constant="20" id="LOA-yV-hjq"/>
                             <constraint firstItem="0kT-DM-gO2" firstAttribute="top" relation="greaterThanOrEqual" secondItem="IO8-ZV-tEZ" secondAttribute="bottom" constant="25" id="TZp-QV-mdW"/>
                             <constraint firstItem="vTY-ZS-PXe" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="16" id="W5u-xC-til"/>
                             <constraint firstAttribute="bottom" secondItem="0kT-DM-gO2" secondAttribute="bottom" id="foU-UX-znK"/>
@@ -67,9 +67,9 @@
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="jhX-c8-HfJ"/>
                                 <exclude reference="TZp-QV-mdW"/>
                                 <exclude reference="soN-8u-tA5"/>
-                                <exclude reference="jhX-c8-HfJ"/>
                             </mask>
                         </variation>
                     </view>

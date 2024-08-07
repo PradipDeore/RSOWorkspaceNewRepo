@@ -159,13 +159,19 @@ extension BookRoomDetailsViewController: UITableViewDataSource, UITableViewDeleg
         case 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: "LocationTableViewCell", for: indexPath) as! LocationTableViewCell
             cell.txtLocation.text =  self.confirmBookingDetails.location
+            cell.selectionStyle = .none
+            
             return cell
         case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: "DateTableViewCell", for: indexPath) as! DateTableViewCell
             cell.txtDate.text = self.confirmBookingDetails.date
+            cell.selectionStyle = .none
+
             return cell
         case 2:
             let cell = tableView.dequeueReusableCell(withIdentifier: "TimeTableViewCell", for: indexPath) as! TimeTableViewCell
+            cell.selectionStyle = .none
+
             var timeRange = ""
             let startTime = self.confirmBookingDetails.displayStartTime
             let endTime = self.confirmBookingDetails.displayendTime
@@ -176,11 +182,15 @@ extension BookRoomDetailsViewController: UITableViewDataSource, UITableViewDeleg
             // label Meeting rooms
         case 3:
             let cell = tableView.dequeueReusableCell(withIdentifier: "SelectMeetingRoomLabelTableViewCell", for: indexPath) as! SelectMeetingRoomLabelTableViewCell
+            cell.selectionStyle = .none
+
             cell.lblMeetingRoom.text = "Meeting Room"
             cell.lblMeetingRoom.font = UIFont(name: "Poppins-SemiBold", size: 14.0)
             return cell
         case 4:
             let cell = tableView.dequeueReusableCell(withIdentifier: "SelectMeetingRoomTableViewCell", for: indexPath) as! SelectMeetingRoomTableViewCell
+            cell.selectionStyle = .none
+
             cell.collectionView.tag = 1
             cell.collectionView.hideBookButton = true
             cell.collectionView.backActionDelegate = self
@@ -188,21 +198,29 @@ extension BookRoomDetailsViewController: UITableViewDataSource, UITableViewDeleg
             return cell
         case 5:
             let cell = tableView.dequeueReusableCell(withIdentifier: "SelectMeetingRoomLabelTableViewCell", for: indexPath) as! SelectMeetingRoomLabelTableViewCell
+            cell.selectionStyle = .none
+
             cell.lblMeetingRoom.text = "Select Seating Config"
             cell.lblMeetingRoom.font = UIFont(name: "Poppins-SemiBold", size: 16.0)
             return cell
         case 6:
             let cell = tableView.dequeueReusableCell(withIdentifier: "SelectSeatingConfigTableViewCell", for: indexPath) as! SelectSeatingConfigTableViewCell
+            cell.selectionStyle = .none
+
             cell.setData(sittingConfigurations: self.confirmBookingDetails.sittingConfig)
             cell.seatingConfigueId = self.seatingConfigueId ?? 0
             return cell
         case 7:
             let cell = tableView.dequeueReusableCell(withIdentifier: "SelectMeetingRoomLabelTableViewCell", for: indexPath) as! SelectMeetingRoomLabelTableViewCell
+            cell.selectionStyle = .none
+
             cell.lblMeetingRoom.text = "Invite Team Members"
             cell.lblMeetingRoom.font = UIFont(name: "Poppins-SemiBold", size: 16.0)
             return cell
         case 8:
             let cell = tableView.dequeueReusableCell(withIdentifier: "InviteTeamMembersTableViewCell", for: indexPath) as! InviteTeamMembersTableViewCell
+            cell.selectionStyle = .none
+
                if teamMembersArray.isEmpty {
                    // Show a default cell with the Add button if the array is empty
                    cell.lblteammemberName.text = ""
@@ -232,11 +250,15 @@ extension BookRoomDetailsViewController: UITableViewDataSource, UITableViewDeleg
             return cell
         case 9:
             let cell = tableView.dequeueReusableCell(withIdentifier: "SelectMeetingRoomLabelTableViewCell", for: indexPath) as! SelectMeetingRoomLabelTableViewCell
+            cell.selectionStyle = .none
+
             cell.lblMeetingRoom.text = "Invite Guests"
             cell.lblMeetingRoom.font = UIFont(name: "Poppins-SemiBold", size: 16.0)
             return cell
         case 10:
             let cell = tableView.dequeueReusableCell(withIdentifier: "InviteGuestsTableViewCell", for: indexPath) as! InviteGuestsTableViewCell
+            cell.selectionStyle = .none
+
             cell.lblGuestName.text = guestEmailArray[indexPath.row].emailId
             cell.btnAdd.isHidden = !(indexPath.row == 0)
             cell.guestEmailView.isHidden = false
@@ -249,11 +271,15 @@ extension BookRoomDetailsViewController: UITableViewDataSource, UITableViewDeleg
             return cell
         case 11:
             let cell = tableView.dequeueReusableCell(withIdentifier: "SelectMeetingRoomLabelTableViewCell", for: indexPath) as! SelectMeetingRoomLabelTableViewCell
+            cell.selectionStyle = .none
+
             cell.lblMeetingRoom.text = "Choose Amenities"
             cell.lblMeetingRoom.font = UIFont(name: "Poppins-SemiBold", size: 16.0)
             return cell
         case 12:
             let cell = tableView.dequeueReusableCell(withIdentifier: "ChooseAmenitiesTableViewCell", for: indexPath) as! ChooseAmenitiesTableViewCell
+            cell.selectionStyle = .none
+
             let aminity = self.confirmBookingDetails.amenityArray[indexPath.row]
             cell.lblAminityName.text = aminity.name
             cell.lblPrice.text = "AED " + (aminity.price ?? "0.0")
@@ -261,6 +287,8 @@ extension BookRoomDetailsViewController: UITableViewDataSource, UITableViewDeleg
             
         case 13:
             let cell = tableView.dequeueReusableCell(withIdentifier: "ButtonBookingConfirmTableViewCell", for: indexPath) as! ButtonBookingConfirmTableViewCell
+            cell.selectionStyle = .none
+
             cell.delegate = self
             return cell
             

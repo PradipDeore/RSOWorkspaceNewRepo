@@ -33,3 +33,17 @@ enum StatusType: Codable {
         }
     }
 }
+
+enum CustomError: Error {
+    case dataUnavailable
+    case otherError(String)
+    
+    var localizedDescription: String {
+        switch self {
+        case .dataUnavailable:
+            return "Data is unavailable."
+        case .otherError(let message):
+            return message
+        }
+    }
+}

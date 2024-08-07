@@ -66,13 +66,11 @@ class UpdateProfileViewController: UIViewController, UIImagePickerControllerDele
         txtDesignation.text = designation
         
         txtFirstName.placeholderFont = RSOFont.inter(size: 16, type: .Medium)
-        txtFirstName.customBorderWidth = 0.0
         
         txtLastname.placeholderFont = RSOFont.inter(size: 16, type: .Medium)
-        txtLastname.customBorderWidth = 0.0
-        
+      
         txtDesignation.placeholderFont = RSOFont.inter(size: 16, type: .Medium)
-        txtDesignation.customBorderWidth = 0.0
+       
         
     }
     

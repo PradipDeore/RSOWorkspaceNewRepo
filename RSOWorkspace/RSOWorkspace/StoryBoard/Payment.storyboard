@@ -112,7 +112,27 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xs8-A7-EtN" customClass="ShadowedView" customModule="RSOWorkspace" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dLE-AA-rb3" userLabel="Shadowed View1" customClass="ShadowedView" customModule="RSOWorkspace" customModuleProvider="target">
+                                <rect key="frame" x="20" y="64" width="353" height="637"/>
+                                <subviews>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="71U-HQ-Uvq">
+                                        <rect key="frame" x="0.0" y="10" width="353" height="617"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <connections>
+                                            <outlet property="dataSource" destination="vRR-NW-gh3" id="rxi-LG-LER"/>
+                                            <outlet property="delegate" destination="vRR-NW-gh3" id="9e3-wX-qLt"/>
+                                        </connections>
+                                    </tableView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="71U-HQ-Uvq" firstAttribute="leading" secondItem="dLE-AA-rb3" secondAttribute="leading" id="Csk-mN-qBR"/>
+                                    <constraint firstAttribute="trailing" secondItem="71U-HQ-Uvq" secondAttribute="trailing" id="Z3u-F7-FD6"/>
+                                    <constraint firstAttribute="bottom" secondItem="71U-HQ-Uvq" secondAttribute="bottom" constant="10" id="ZYh-zJ-GPh"/>
+                                    <constraint firstItem="71U-HQ-Uvq" firstAttribute="top" secondItem="dLE-AA-rb3" secondAttribute="top" constant="10" id="bZT-QO-FOG"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xs8-A7-EtN" userLabel="Shadowed View2" customClass="ShadowedView" customModule="RSOWorkspace" customModuleProvider="target">
                                 <rect key="frame" x="20" y="721" width="353" height="87"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="View Past Bills" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cfD-oE-yg1">
@@ -162,26 +182,7 @@
                                     <constraint firstItem="cfD-oE-yg1" firstAttribute="top" secondItem="xs8-A7-EtN" secondAttribute="top" constant="27" id="Fqz-cf-rxS"/>
                                     <constraint firstAttribute="trailing" secondItem="DUh-g9-o8N" secondAttribute="trailing" constant="15" id="PhP-Yj-Uv6"/>
                                     <constraint firstItem="cfD-oE-yg1" firstAttribute="leading" secondItem="xs8-A7-EtN" secondAttribute="leading" constant="8" id="aEr-2s-tXS"/>
-                                </constraints>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dLE-AA-rb3" customClass="ShadowedView" customModule="RSOWorkspace" customModuleProvider="target">
-                                <rect key="frame" x="20" y="64" width="353" height="642"/>
-                                <subviews>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="71U-HQ-Uvq">
-                                        <rect key="frame" x="0.0" y="10" width="353" height="622"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <connections>
-                                            <outlet property="dataSource" destination="vRR-NW-gh3" id="rxi-LG-LER"/>
-                                            <outlet property="delegate" destination="vRR-NW-gh3" id="9e3-wX-qLt"/>
-                                        </connections>
-                                    </tableView>
-                                </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstItem="71U-HQ-Uvq" firstAttribute="leading" secondItem="dLE-AA-rb3" secondAttribute="leading" id="Csk-mN-qBR"/>
-                                    <constraint firstAttribute="trailing" secondItem="71U-HQ-Uvq" secondAttribute="trailing" id="Z3u-F7-FD6"/>
-                                    <constraint firstAttribute="bottom" secondItem="71U-HQ-Uvq" secondAttribute="bottom" constant="10" id="ZYh-zJ-GPh"/>
-                                    <constraint firstItem="71U-HQ-Uvq" firstAttribute="top" secondItem="dLE-AA-rb3" secondAttribute="top" constant="10" id="bZT-QO-FOG"/>
+                                    <constraint firstAttribute="height" constant="87" id="nmt-bk-N6N"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -191,18 +192,21 @@
                             <constraint firstItem="dLE-AA-rb3" firstAttribute="top" secondItem="Ona-Z0-fgd" secondAttribute="top" constant="60" id="1hn-mr-RhO"/>
                             <constraint firstItem="xs8-A7-EtN" firstAttribute="top" secondItem="dLE-AA-rb3" secondAttribute="bottom" constant="15" id="7ZH-bg-2a0"/>
                             <constraint firstItem="dLE-AA-rb3" firstAttribute="leading" secondItem="a1T-or-jAd" secondAttribute="leading" constant="20" id="FcV-JW-Qi2"/>
+                            <constraint firstItem="xs8-A7-EtN" firstAttribute="top" secondItem="dLE-AA-rb3" secondAttribute="bottom" constant="20" id="Kef-NN-5Xe"/>
                             <constraint firstItem="xs8-A7-EtN" firstAttribute="leading" secondItem="a1T-or-jAd" secondAttribute="leading" constant="20" id="PIt-x4-ry5"/>
                             <constraint firstItem="a1T-or-jAd" firstAttribute="trailing" secondItem="dLE-AA-rb3" secondAttribute="trailing" constant="20" id="aYg-4O-W0h"/>
-                            <constraint firstItem="xs8-A7-EtN" firstAttribute="top" secondItem="Ona-Z0-fgd" secondAttribute="top" constant="721" id="dS2-sB-3yq"/>
+                            <constraint firstItem="xs8-A7-EtN" firstAttribute="top" secondItem="dLE-AA-rb3" secondAttribute="bottom" constant="20" id="dS2-sB-3yq"/>
                             <constraint firstItem="a1T-or-jAd" firstAttribute="bottom" secondItem="xs8-A7-EtN" secondAttribute="bottom" constant="10" id="hDo-8l-Abk"/>
                             <constraint firstItem="dLE-AA-rb3" firstAttribute="top" secondItem="a1T-or-jAd" secondAttribute="top" constant="5" id="ssR-yG-HJH"/>
                             <constraint firstItem="a1T-or-jAd" firstAttribute="trailing" secondItem="xs8-A7-EtN" secondAttribute="trailing" constant="20" id="vfW-q7-GOY"/>
-                            <constraint firstItem="xs8-A7-EtN" firstAttribute="top" secondItem="dLE-AA-rb3" secondAttribute="bottom" constant="15" id="yYx-v0-aYu"/>
+                            <constraint firstItem="xs8-A7-EtN" firstAttribute="top" secondItem="dLE-AA-rb3" secondAttribute="bottom" constant="20" id="yYx-v0-aYu"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="1hn-mr-RhO"/>
                                 <exclude reference="7ZH-bg-2a0"/>
+                                <exclude reference="dS2-sB-3yq"/>
+                                <exclude reference="yYx-v0-aYu"/>
                             </mask>
                         </variation>
                     </view>

@@ -16,6 +16,7 @@ extension LocationEndPoint: EndPointType {
         switch self {
         case .locations:
             return "all-locations"
+           
         }
     }
 
@@ -27,6 +28,7 @@ extension LocationEndPoint: EndPointType {
         switch self {
         case .locations:
             return .get
+            
         }
     }
     

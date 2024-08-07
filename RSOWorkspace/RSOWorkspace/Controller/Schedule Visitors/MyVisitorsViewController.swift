@@ -78,6 +78,7 @@ class MyVisitorsViewController: UIViewController{
             }
     }
     
+    
 }
 
 // MARK: - UITableViewDataSource, UITableViewDelegate
@@ -119,6 +120,7 @@ extension MyVisitorsViewController: UITableViewDataSource, UITableViewDelegate {
         case .visitorDetails:
             if isEditingVisitor, editingIndexPath == indexPath {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "VisitorsTableViewCell", for: indexPath) as! VisitorsTableViewCell
+                cell.selectionStyle = .none
                 let item = myVisitorResponse[indexPath.row]
                 cell.addButtonView.isHidden = true
                 cell.editButtonView.isHidden = false
@@ -173,7 +175,7 @@ extension MyVisitorsViewController: SelectDateTableViewCellDelegate {
     func didSelectDate(_ actualFormatOfDate: Date) {
         // on date change save api formatted date for this vc model and next vc model
         let apiDate = Date.formatSelectedDate(format: .yyyyMMdd, date: actualFormatOfDate)
-        apiRequestScheduleVisitorsRequest.arrivalDate = apiDate
+        apiRequestScheduleVisitorsRequest.arrival_date = apiDate
         // save formated date to show in next screen
         let displayDate = Date.formatSelectedDate(format: .EEEEddMMMMyyyy, date: actualFormatOfDate)
         displayscheduleVisitorsDetailsNextScreen.date = displayDate

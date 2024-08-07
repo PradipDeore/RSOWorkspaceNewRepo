@@ -14,6 +14,10 @@ class LocationOpenTableViewCell: UITableViewCell {
     @IBOutlet weak var btnLocationArrow: UIButton!
     var cornerRadius: CGFloat = 10.0
     
+    @IBOutlet weak var lblPhoneNumber: UILabel!
+    @IBOutlet weak var lblAddress1: UILabel!
+   
+    @IBOutlet weak var lblGeoLocation: UILabel!
     @IBOutlet weak var btnCall: RSOButton!
     
     override func awakeFromNib() {
@@ -36,6 +40,13 @@ class LocationOpenTableViewCell: UITableViewCell {
     }
     @IBAction func btnLocationArrowTappedAction(_ sender: Any) {
         
+    }
+    
+    @IBAction func btnCallTappedAction(_ sender: Any) {
+        if let phoneNumber = lblPhoneNumber.text {
+                    PhoneCallUtility.makePhoneCall(phoneNumber: phoneNumber)
+               
+        }
     }
     
     

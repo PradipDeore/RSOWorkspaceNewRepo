@@ -13,7 +13,7 @@ class GalleryCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var imgGalleryImage: UIImageView!
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        imgGalleryImage.setCornerRadiusforImage()
     }
     func setData(item : Gallery){
         self.lblgallerytitle.text = item.name

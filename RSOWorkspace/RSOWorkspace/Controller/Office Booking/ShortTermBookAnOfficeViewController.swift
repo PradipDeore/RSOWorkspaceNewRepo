@@ -35,8 +35,8 @@ class ShortTermBookAnOfficeViewController: UIViewController{
   
   @IBOutlet weak var tableView: UITableView!
   var listItems: [RSOCollectionItem] = []
-  var location: ApiResponse?
-  var dropdownOptions: [Location] = []
+    var location: [LocationDetails] = []
+    var dropdownOptions: [LocationDetails] = []
   var eventHandler: ((_ event: Event) -> Void)?
   var apiRequestModelOfficeListing = BookOfficeRequestModel()
   var displayBookingDetailsNextScreen = ConfirmOfficeBookingDetailsModel()
@@ -73,18 +73,18 @@ class ShortTermBookAnOfficeViewController: UIViewController{
     self.locationId = 0
     self.displayBookingDetailsNextScreen.location = ""
     APIManager.shared.request(
-      modelType: ApiResponse.self, // Assuming your API returns an array of locations
+      modelType: LocationResponse.self, // Assuming your API returns an array of locations
       type: LocationEndPoint.locations) { response in
         DispatchQueue.main.async {
           RSOLoader.removeLoader()
           switch response {
           case .success(let response):
-            self.dropdownOptions = response.data
+              self.dropdownOptions = response.data ?? []
             if let selectedOption = self.dropdownOptions.last {
-              self.locationId = selectedOption.id
-              self.selectedOfficeId = selectedOption.id
+                self.locationId = selectedOption.id ?? 1
+                self.selectedOfficeId = selectedOption.id ?? 1
              // self.apiRequestModelDeskListing.locationid = selectedOption.id
-              self.displayBookingDetailsNextScreen.location = selectedOption.name
+                self.displayBookingDetailsNextScreen.location = selectedOption.name ?? "Reef Tower"
                 self.fetchOfficeList()
               self.tableView.reloadData()
               self.eventHandler?(.dataLoaded)
@@ -254,12 +254,12 @@ extension ShortTermBookAnOfficeViewController:ButtonBookingConfirmTableViewCellD
 }
 extension ShortTermBookAnOfficeViewController: SelectLocationTableViewCellDelegate {
   
-  func dropdownButtonTapped(selectedOption: Location) {
+  func dropdownButtonTapped(selectedOption: LocationDetails) {
     // Implement what you want to do with the selected option, for example:
     print("Selected option: \(selectedOption.name),\(selectedOption.id)")
-    selectedOfficeId = selectedOption.id
+    selectedOfficeId = selectedOption.id ?? 1
     //apiRequestModelDeskListing.locationid = selectedOption.id
-    displayBookingDetailsNextScreen.location = selectedOption.name
+    displayBookingDetailsNextScreen.location = selectedOption.name ?? "Reef Tower"
       self.fetchOfficeList()
   }
   

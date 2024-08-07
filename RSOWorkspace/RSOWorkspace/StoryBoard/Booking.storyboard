@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22504"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -418,220 +419,190 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sU9-2T-5Zm">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sU9-2T-5Zm">
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2U8-4w-DfI">
-                                        <rect key="frame" x="0.0" y="0.0" width="393" height="860"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sCu-xB-Mee">
+                                        <rect key="frame" x="10" y="10" width="373" height="832"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="mXg-JU-0K5">
-                                                <rect key="frame" x="10" y="10" width="373" height="893"/>
+                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Chris James" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8zU-gW-lCj" customClass="RSOTextField" customModule="RSOWorkspace" customModuleProvider="target">
+                                                <rect key="frame" x="19.666666666666657" y="20" width="334" height="41"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="41" id="hLP-82-W8s"/>
+                                                    <constraint firstAttribute="width" constant="334" id="moW-tr-BVx"/>
+                                                </constraints>
+                                                <color key="textColor" name="828282"/>
+                                                <fontDescription key="fontDescription" name="Inter-Medium" family="Inter" pointSize="16"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Chris@feeniks.com" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SMu-8U-9zx" customClass="RSOTextField" customModule="RSOWorkspace" customModuleProvider="target">
+                                                <rect key="frame" x="19.666666666666657" y="84" width="334" height="41"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="41" id="H73-iX-Hmh"/>
+                                                    <constraint firstAttribute="width" constant="334" id="wgq-mI-zCS"/>
+                                                </constraints>
+                                                <color key="textColor" name="828282"/>
+                                                <fontDescription key="fontDescription" name="Inter-Medium" family="Inter" pointSize="16"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Your Phone:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8Hx-Xc-2Cm" customClass="RSOTextField" customModule="RSOWorkspace" customModuleProvider="target">
+                                                <rect key="frame" x="19.666666666666657" y="146" width="334" height="41"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="41" id="9MV-sY-Lkf"/>
+                                                    <constraint firstAttribute="width" constant="334" id="tmJ-Ua-UgB"/>
+                                                </constraints>
+                                                <color key="textColor" name="828282"/>
+                                                <fontDescription key="fontDescription" name="Inter-Medium" family="Inter" pointSize="16"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                            </textField>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YWq-Al-zYM">
+                                                <rect key="frame" x="19.666666666666657" y="211" width="334" height="41"/>
                                                 <subviews>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sCu-xB-Mee">
-                                                        <rect key="frame" x="0.0" y="0.0" width="373" height="893"/>
-                                                        <subviews>
-                                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Chris James" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8zU-gW-lCj" customClass="RSOTextField" customModule="RSOWorkspace" customModuleProvider="target">
-                                                                <rect key="frame" x="19.666666666666657" y="20" width="334" height="41"/>
-                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="height" constant="41" id="hLP-82-W8s"/>
-                                                                    <constraint firstAttribute="width" constant="334" id="moW-tr-BVx"/>
-                                                                </constraints>
-                                                                <color key="textColor" name="828282"/>
-                                                                <fontDescription key="fontDescription" name="Inter-Medium" family="Inter" pointSize="16"/>
-                                                                <textInputTraits key="textInputTraits"/>
-                                                            </textField>
-                                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Chris@feeniks.com" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SMu-8U-9zx" customClass="RSOTextField" customModule="RSOWorkspace" customModuleProvider="target">
-                                                                <rect key="frame" x="19.666666666666657" y="84" width="334" height="41"/>
-                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="height" constant="41" id="H73-iX-Hmh"/>
-                                                                    <constraint firstAttribute="width" constant="334" id="wgq-mI-zCS"/>
-                                                                </constraints>
-                                                                <color key="textColor" name="828282"/>
-                                                                <fontDescription key="fontDescription" name="Inter-Medium" family="Inter" pointSize="16"/>
-                                                                <textInputTraits key="textInputTraits"/>
-                                                            </textField>
-                                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Your Phone:" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8Hx-Xc-2Cm" customClass="RSOTextField" customModule="RSOWorkspace" customModuleProvider="target">
-                                                                <rect key="frame" x="19.666666666666657" y="146" width="334" height="41"/>
-                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="height" constant="41" id="9MV-sY-Lkf"/>
-                                                                    <constraint firstAttribute="width" constant="334" id="tmJ-Ua-UgB"/>
-                                                                </constraints>
-                                                                <color key="textColor" name="828282"/>
-                                                                <fontDescription key="fontDescription" name="Inter-Medium" family="Inter" pointSize="16"/>
-                                                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
-                                                            </textField>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YWq-Al-zYM">
-                                                                <rect key="frame" x="19.666666666666657" y="211" width="334" height="41"/>
-                                                                <subviews>
-                                                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="What are you interested in?" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="b6t-bO-UXr" customClass="RSOTextField" customModule="RSOWorkspace" customModuleProvider="target">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="334" height="41"/>
-                                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                        <color key="textColor" name="828282"/>
-                                                                        <fontDescription key="fontDescription" name="Inter-Medium" family="Inter" pointSize="16"/>
-                                                                        <textInputTraits key="textInputTraits"/>
-                                                                    </textField>
-                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1s7-fa-7M8">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="334" height="41"/>
-                                                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                                        <connections>
-                                                                            <action selector="btnDropDown:" destination="aQj-kj-1C3" eventType="touchUpInside" id="D6F-qj-MwK"/>
-                                                                        </connections>
-                                                                    </button>
-                                                                </subviews>
-                                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                <constraints>
-                                                                    <constraint firstItem="b6t-bO-UXr" firstAttribute="top" secondItem="YWq-Al-zYM" secondAttribute="top" id="557-F4-2Zo"/>
-                                                                    <constraint firstAttribute="bottom" secondItem="b6t-bO-UXr" secondAttribute="bottom" id="6yJ-gs-F2M"/>
-                                                                    <constraint firstItem="b6t-bO-UXr" firstAttribute="leading" secondItem="YWq-Al-zYM" secondAttribute="leading" id="Xmc-zE-ae2"/>
-                                                                    <constraint firstAttribute="trailing" secondItem="1s7-fa-7M8" secondAttribute="trailing" id="YAP-dD-WK5"/>
-                                                                    <constraint firstAttribute="bottom" secondItem="1s7-fa-7M8" secondAttribute="bottom" id="dlI-BK-cG3"/>
-                                                                    <constraint firstItem="1s7-fa-7M8" firstAttribute="top" secondItem="YWq-Al-zYM" secondAttribute="top" id="mBY-xp-cXZ"/>
-                                                                    <constraint firstAttribute="trailing" secondItem="b6t-bO-UXr" secondAttribute="trailing" id="ozQ-zj-c2m"/>
-                                                                    <constraint firstItem="1s7-fa-7M8" firstAttribute="leading" secondItem="YWq-Al-zYM" secondAttribute="leading" id="p6f-hZ-dHj"/>
-                                                                </constraints>
-                                                            </view>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How many seats are you looking for ?" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rSB-1d-Nsx">
-                                                                <rect key="frame" x="19.666666666666671" y="286" width="124.00000000000001" height="62"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="height" constant="62" id="YbW-7i-JKb"/>
-                                                                    <constraint firstAttribute="width" constant="124" id="aor-kz-anq"/>
-                                                                </constraints>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                <color key="textColor" red="0.10196078431372549" green="0.10196078431372549" blue="0.10196078431372549" alpha="1" colorSpace="calibratedRGB"/>
-                                                                <nil key="highlightedColor"/>
-                                                            </label>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wKv-Ux-vEd" customClass="RSOButton" customModule="RSOWorkspace" customModuleProvider="target">
-                                                                <rect key="frame" x="180.66666666666666" y="303" width="40" height="40"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="height" constant="40" id="A2N-RB-1AX"/>
-                                                                    <constraint firstAttribute="width" constant="40" id="Hyn-dL-qKX"/>
-                                                                </constraints>
-                                                                <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="25"/>
-                                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                                <state key="normal" title="-"/>
-                                                                <connections>
-                                                                    <action selector="btnDecrementSeatsCount:" destination="aQj-kj-1C3" eventType="touchUpInside" id="cqz-nD-M5w"/>
-                                                                </connections>
-                                                            </button>
-                                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="05" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gWo-hn-9un">
-                                                                <rect key="frame" x="240.66666666666663" y="308" width="50" height="34"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="width" constant="50" id="Zna-6J-vta"/>
-                                                                    <constraint firstAttribute="height" constant="34" id="voK-QG-hHM"/>
-                                                                </constraints>
-                                                                <color key="textColor" red="0.090196078431372548" green="0.090196078431372548" blue="0.098039215686274508" alpha="1" colorSpace="calibratedRGB"/>
-                                                                <fontDescription key="fontDescription" name="Inter-Medium" family="Inter" pointSize="18"/>
-                                                                <textInputTraits key="textInputTraits"/>
-                                                            </textField>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mGw-B8-Wg2" customClass="RSOButton" customModule="RSOWorkspace" customModuleProvider="target">
-                                                                <rect key="frame" x="310.66666666666669" y="303" width="40" height="40"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="width" constant="40" id="D57-dT-Vrg"/>
-                                                                    <constraint firstAttribute="height" constant="40" id="ZR2-4P-aRM"/>
-                                                                </constraints>
-                                                                <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="25"/>
-                                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                                <state key="normal" title="+"/>
-                                                                <connections>
-                                                                    <action selector="btnIncrementSeatsCount:" destination="aQj-kj-1C3" eventType="touchUpInside" id="Xol-kN-mv1"/>
-                                                                </connections>
-                                                            </button>
-                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mes-L0-2pj">
-                                                                <rect key="frame" x="16" y="363" width="334" height="150"/>
-                                                                <subviews>
-                                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="sgD-RD-Jft">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="334" height="150"/>
-                                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                        <color key="textColor" name="828282"/>
-                                                                        <fontDescription key="fontDescription" name="Inter-Medium" family="Inter" pointSize="16"/>
-                                                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                                                    </textView>
-                                                                </subviews>
-                                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="height" constant="150" id="2Kc-AD-5BC"/>
-                                                                    <constraint firstAttribute="width" constant="334" id="Awx-Fh-aOY"/>
-                                                                    <constraint firstAttribute="trailing" secondItem="sgD-RD-Jft" secondAttribute="trailing" id="caa-K7-xve"/>
-                                                                    <constraint firstItem="sgD-RD-Jft" firstAttribute="top" secondItem="mes-L0-2pj" secondAttribute="top" id="gDs-ln-lHA"/>
-                                                                    <constraint firstItem="sgD-RD-Jft" firstAttribute="leading" secondItem="mes-L0-2pj" secondAttribute="leading" id="pp5-x8-0oq"/>
-                                                                    <constraint firstAttribute="bottom" secondItem="sgD-RD-Jft" secondAttribute="bottom" id="ygv-7B-lav"/>
-                                                                </constraints>
-                                                            </view>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kaQ-BT-Eak">
-                                                                <rect key="frame" x="222.66666666666663" y="788" width="130" height="59"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="height" constant="59" id="583-ir-zVJ"/>
-                                                                    <constraint firstAttribute="width" constant="130" id="bH4-VQ-mSp"/>
-                                                                </constraints>
-                                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                                <state key="normal" image="chatbot"/>
-                                                            </button>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9UQ-1D-1Yb" customClass="RSOButton" customModule="RSOWorkspace" customModuleProvider="target">
-                                                                <rect key="frame" x="20" y="543" width="333" height="46"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="width" constant="333" id="O2l-0L-MbM"/>
-                                                                    <constraint firstAttribute="height" constant="46" id="woe-cI-Orw"/>
-                                                                </constraints>
-                                                                <fontDescription key="fontDescription" name="Poppins-Bold" family="Poppins" pointSize="16"/>
-                                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                                <state key="normal" title="Submit"/>
-                                                                <connections>
-                                                                    <action selector="btnSubmitTappedAction:" destination="aQj-kj-1C3" eventType="touchUpInside" id="g9k-6k-r2v"/>
-                                                                </connections>
-                                                            </button>
-                                                        </subviews>
-                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <constraints>
-                                                            <constraint firstItem="8zU-gW-lCj" firstAttribute="leading" secondItem="8Hx-Xc-2Cm" secondAttribute="leading" id="1Rj-on-3AD"/>
-                                                            <constraint firstItem="mes-L0-2pj" firstAttribute="top" secondItem="gWo-hn-9un" secondAttribute="bottom" constant="21" id="1j1-8P-cWg"/>
-                                                            <constraint firstItem="gWo-hn-9un" firstAttribute="leading" secondItem="wKv-Ux-vEd" secondAttribute="trailing" constant="20" id="55d-7x-Qzv"/>
-                                                            <constraint firstItem="9UQ-1D-1Yb" firstAttribute="top" secondItem="mes-L0-2pj" secondAttribute="bottom" constant="30" id="5XF-Gc-WwP"/>
-                                                            <constraint firstItem="rSB-1d-Nsx" firstAttribute="top" secondItem="YWq-Al-zYM" secondAttribute="bottom" constant="34" id="8ZW-Dm-98X"/>
-                                                            <constraint firstItem="mGw-B8-Wg2" firstAttribute="leading" secondItem="gWo-hn-9un" secondAttribute="trailing" constant="20" id="El0-GF-Gch"/>
-                                                            <constraint firstItem="YWq-Al-zYM" firstAttribute="height" secondItem="8zU-gW-lCj" secondAttribute="height" id="GgN-Vi-wt7"/>
-                                                            <constraint firstItem="8Hx-Xc-2Cm" firstAttribute="top" secondItem="SMu-8U-9zx" secondAttribute="bottom" constant="21" id="KlR-By-afW"/>
-                                                            <constraint firstItem="mes-L0-2pj" firstAttribute="top" secondItem="wKv-Ux-vEd" secondAttribute="bottom" constant="20" id="Rjd-cz-FLp"/>
-                                                            <constraint firstItem="8zU-gW-lCj" firstAttribute="leading" secondItem="SMu-8U-9zx" secondAttribute="leading" id="Rmw-IT-UUM"/>
-                                                            <constraint firstItem="8zU-gW-lCj" firstAttribute="leading" secondItem="rSB-1d-Nsx" secondAttribute="leading" id="T1g-D2-6zu"/>
-                                                            <constraint firstItem="mGw-B8-Wg2" firstAttribute="baseline" secondItem="wKv-Ux-vEd" secondAttribute="baseline" id="UvB-i5-GCP"/>
-                                                            <constraint firstItem="mes-L0-2pj" firstAttribute="leading" secondItem="sCu-xB-Mee" secondAttribute="leading" constant="16" id="b0p-qh-IBH"/>
-                                                            <constraint firstAttribute="trailing" secondItem="kaQ-BT-Eak" secondAttribute="trailing" constant="20.333333333333371" id="cQw-ko-knQ"/>
-                                                            <constraint firstItem="mes-L0-2pj" firstAttribute="top" secondItem="rSB-1d-Nsx" secondAttribute="bottom" constant="15" id="dRk-OD-ovo"/>
-                                                            <constraint firstItem="9UQ-1D-1Yb" firstAttribute="leading" secondItem="sCu-xB-Mee" secondAttribute="leading" constant="20" id="gMc-xd-qCL"/>
-                                                            <constraint firstAttribute="bottom" secondItem="kaQ-BT-Eak" secondAttribute="bottom" constant="46" id="hJR-0M-98h"/>
-                                                            <constraint firstItem="8zU-gW-lCj" firstAttribute="centerX" secondItem="sCu-xB-Mee" secondAttribute="centerX" id="hPt-gD-H1L"/>
-                                                            <constraint firstItem="YWq-Al-zYM" firstAttribute="top" secondItem="8Hx-Xc-2Cm" secondAttribute="bottom" constant="24" id="jsS-vp-PAB"/>
-                                                            <constraint firstItem="SMu-8U-9zx" firstAttribute="top" secondItem="8zU-gW-lCj" secondAttribute="bottom" constant="23" id="odd-pa-5PR"/>
-                                                            <constraint firstItem="YWq-Al-zYM" firstAttribute="leading" secondItem="8zU-gW-lCj" secondAttribute="leading" id="qCA-LC-ikg"/>
-                                                            <constraint firstAttribute="height" constant="893" id="qrQ-PR-oEc"/>
-                                                            <constraint firstItem="YWq-Al-zYM" firstAttribute="width" secondItem="8zU-gW-lCj" secondAttribute="width" id="r9a-o3-aLu"/>
-                                                            <constraint firstItem="8zU-gW-lCj" firstAttribute="top" secondItem="sCu-xB-Mee" secondAttribute="top" constant="20" id="rjJ-9B-XCP"/>
-                                                            <constraint firstItem="wKv-Ux-vEd" firstAttribute="leading" secondItem="rSB-1d-Nsx" secondAttribute="trailing" constant="37" id="vE6-cm-SvB"/>
-                                                        </constraints>
-                                                    </view>
+                                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="What are you interested in?" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="b6t-bO-UXr" customClass="RSOTextField" customModule="RSOWorkspace" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="334" height="41"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <color key="textColor" name="828282"/>
+                                                        <fontDescription key="fontDescription" name="Inter-Medium" family="Inter" pointSize="16"/>
+                                                        <textInputTraits key="textInputTraits"/>
+                                                    </textField>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1s7-fa-7M8">
+                                                        <rect key="frame" x="0.0" y="0.0" width="334" height="41"/>
+                                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                        <connections>
+                                                            <action selector="btnDropDown:" destination="aQj-kj-1C3" eventType="touchUpInside" id="D6F-qj-MwK"/>
+                                                        </connections>
+                                                    </button>
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            </stackView>
+                                                <constraints>
+                                                    <constraint firstItem="b6t-bO-UXr" firstAttribute="top" secondItem="YWq-Al-zYM" secondAttribute="top" id="557-F4-2Zo"/>
+                                                    <constraint firstAttribute="bottom" secondItem="b6t-bO-UXr" secondAttribute="bottom" id="6yJ-gs-F2M"/>
+                                                    <constraint firstItem="b6t-bO-UXr" firstAttribute="leading" secondItem="YWq-Al-zYM" secondAttribute="leading" id="Xmc-zE-ae2"/>
+                                                    <constraint firstAttribute="trailing" secondItem="1s7-fa-7M8" secondAttribute="trailing" id="YAP-dD-WK5"/>
+                                                    <constraint firstAttribute="bottom" secondItem="1s7-fa-7M8" secondAttribute="bottom" id="dlI-BK-cG3"/>
+                                                    <constraint firstItem="1s7-fa-7M8" firstAttribute="top" secondItem="YWq-Al-zYM" secondAttribute="top" id="mBY-xp-cXZ"/>
+                                                    <constraint firstAttribute="trailing" secondItem="b6t-bO-UXr" secondAttribute="trailing" id="ozQ-zj-c2m"/>
+                                                    <constraint firstItem="1s7-fa-7M8" firstAttribute="leading" secondItem="YWq-Al-zYM" secondAttribute="leading" id="p6f-hZ-dHj"/>
+                                                </constraints>
+                                            </view>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How many seats are you looking for ?" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rSB-1d-Nsx">
+                                                <rect key="frame" x="19.666666666666671" y="286" width="124.00000000000001" height="62"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="62" id="YbW-7i-JKb"/>
+                                                    <constraint firstAttribute="width" constant="124" id="aor-kz-anq"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" red="0.10196078431372549" green="0.10196078431372549" blue="0.10196078431372549" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wKv-Ux-vEd" customClass="RSOButton" customModule="RSOWorkspace" customModuleProvider="target">
+                                                <rect key="frame" x="180.66666666666666" y="303" width="40" height="40"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="40" id="A2N-RB-1AX"/>
+                                                    <constraint firstAttribute="width" constant="40" id="Hyn-dL-qKX"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="25"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="-"/>
+                                                <connections>
+                                                    <action selector="btnDecrementSeatsCount:" destination="aQj-kj-1C3" eventType="touchUpInside" id="cqz-nD-M5w"/>
+                                                </connections>
+                                            </button>
+                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="05" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gWo-hn-9un">
+                                                <rect key="frame" x="240.66666666666663" y="308" width="50" height="34"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="50" id="Zna-6J-vta"/>
+                                                    <constraint firstAttribute="height" constant="34" id="voK-QG-hHM"/>
+                                                </constraints>
+                                                <color key="textColor" red="0.090196078431372548" green="0.090196078431372548" blue="0.098039215686274508" alpha="1" colorSpace="calibratedRGB"/>
+                                                <fontDescription key="fontDescription" name="Inter-Medium" family="Inter" pointSize="18"/>
+                                                <textInputTraits key="textInputTraits"/>
+                                            </textField>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mGw-B8-Wg2" customClass="RSOButton" customModule="RSOWorkspace" customModuleProvider="target">
+                                                <rect key="frame" x="310.66666666666669" y="303" width="40" height="40"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="40" id="D57-dT-Vrg"/>
+                                                    <constraint firstAttribute="height" constant="40" id="ZR2-4P-aRM"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="25"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="+"/>
+                                                <connections>
+                                                    <action selector="btnIncrementSeatsCount:" destination="aQj-kj-1C3" eventType="touchUpInside" id="Xol-kN-mv1"/>
+                                                </connections>
+                                            </button>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mes-L0-2pj">
+                                                <rect key="frame" x="16" y="363" width="334" height="150"/>
+                                                <subviews>
+                                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="sgD-RD-Jft">
+                                                        <rect key="frame" x="0.0" y="0.0" width="334" height="150"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <color key="textColor" name="828282"/>
+                                                        <fontDescription key="fontDescription" name="Inter-Medium" family="Inter" pointSize="16"/>
+                                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                    </textView>
+                                                </subviews>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="150" id="2Kc-AD-5BC"/>
+                                                    <constraint firstAttribute="width" constant="334" id="Awx-Fh-aOY"/>
+                                                    <constraint firstAttribute="trailing" secondItem="sgD-RD-Jft" secondAttribute="trailing" id="caa-K7-xve"/>
+                                                    <constraint firstItem="sgD-RD-Jft" firstAttribute="top" secondItem="mes-L0-2pj" secondAttribute="top" id="gDs-ln-lHA"/>
+                                                    <constraint firstItem="sgD-RD-Jft" firstAttribute="leading" secondItem="mes-L0-2pj" secondAttribute="leading" id="pp5-x8-0oq"/>
+                                                    <constraint firstAttribute="bottom" secondItem="sgD-RD-Jft" secondAttribute="bottom" id="ygv-7B-lav"/>
+                                                </constraints>
+                                            </view>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9UQ-1D-1Yb" customClass="RSOButton" customModule="RSOWorkspace" customModuleProvider="target">
+                                                <rect key="frame" x="20" y="543" width="333" height="46"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="333" id="O2l-0L-MbM"/>
+                                                    <constraint firstAttribute="height" constant="46" id="woe-cI-Orw"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="Poppins-Bold" family="Poppins" pointSize="16"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="Submit"/>
+                                                <connections>
+                                                    <action selector="btnSubmitTappedAction:" destination="aQj-kj-1C3" eventType="touchUpInside" id="fSY-za-GS1"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstItem="mXg-JU-0K5" firstAttribute="top" secondItem="2U8-4w-DfI" secondAttribute="top" constant="10" id="c6d-0Z-9f4"/>
-                                            <constraint firstItem="mXg-JU-0K5" firstAttribute="leading" secondItem="2U8-4w-DfI" secondAttribute="leading" constant="10" id="iwt-TF-eSm"/>
-                                            <constraint firstAttribute="bottom" secondItem="mXg-JU-0K5" secondAttribute="bottom" constant="10" id="jYd-Qi-Aas"/>
-                                            <constraint firstAttribute="trailing" secondItem="mXg-JU-0K5" secondAttribute="trailing" constant="10" id="rRq-Da-aCm"/>
+                                            <constraint firstItem="8zU-gW-lCj" firstAttribute="leading" secondItem="8Hx-Xc-2Cm" secondAttribute="leading" id="1Rj-on-3AD"/>
+                                            <constraint firstItem="mes-L0-2pj" firstAttribute="top" secondItem="gWo-hn-9un" secondAttribute="bottom" constant="21" id="1j1-8P-cWg"/>
+                                            <constraint firstItem="gWo-hn-9un" firstAttribute="leading" secondItem="wKv-Ux-vEd" secondAttribute="trailing" constant="20" id="55d-7x-Qzv"/>
+                                            <constraint firstItem="9UQ-1D-1Yb" firstAttribute="top" secondItem="mes-L0-2pj" secondAttribute="bottom" constant="30" id="5XF-Gc-WwP"/>
+                                            <constraint firstItem="rSB-1d-Nsx" firstAttribute="top" secondItem="YWq-Al-zYM" secondAttribute="bottom" constant="34" id="8ZW-Dm-98X"/>
+                                            <constraint firstItem="mGw-B8-Wg2" firstAttribute="leading" secondItem="gWo-hn-9un" secondAttribute="trailing" constant="20" id="El0-GF-Gch"/>
+                                            <constraint firstItem="YWq-Al-zYM" firstAttribute="height" secondItem="8zU-gW-lCj" secondAttribute="height" id="GgN-Vi-wt7"/>
+                                            <constraint firstItem="8Hx-Xc-2Cm" firstAttribute="top" secondItem="SMu-8U-9zx" secondAttribute="bottom" constant="21" id="KlR-By-afW"/>
+                                            <constraint firstItem="mes-L0-2pj" firstAttribute="top" secondItem="wKv-Ux-vEd" secondAttribute="bottom" constant="20" id="Rjd-cz-FLp"/>
+                                            <constraint firstItem="8zU-gW-lCj" firstAttribute="leading" secondItem="SMu-8U-9zx" secondAttribute="leading" id="Rmw-IT-UUM"/>
+                                            <constraint firstItem="8zU-gW-lCj" firstAttribute="leading" secondItem="rSB-1d-Nsx" secondAttribute="leading" id="T1g-D2-6zu"/>
+                                            <constraint firstItem="mGw-B8-Wg2" firstAttribute="baseline" secondItem="wKv-Ux-vEd" secondAttribute="baseline" id="UvB-i5-GCP"/>
+                                            <constraint firstItem="mes-L0-2pj" firstAttribute="leading" secondItem="sCu-xB-Mee" secondAttribute="leading" constant="16" id="b0p-qh-IBH"/>
+                                            <constraint firstItem="mes-L0-2pj" firstAttribute="top" secondItem="rSB-1d-Nsx" secondAttribute="bottom" constant="15" id="dRk-OD-ovo"/>
+                                            <constraint firstItem="9UQ-1D-1Yb" firstAttribute="leading" secondItem="sCu-xB-Mee" secondAttribute="leading" constant="20" id="gMc-xd-qCL"/>
+                                            <constraint firstItem="8zU-gW-lCj" firstAttribute="centerX" secondItem="sCu-xB-Mee" secondAttribute="centerX" id="hPt-gD-H1L"/>
+                                            <constraint firstItem="YWq-Al-zYM" firstAttribute="top" secondItem="8Hx-Xc-2Cm" secondAttribute="bottom" constant="24" id="jsS-vp-PAB"/>
+                                            <constraint firstItem="SMu-8U-9zx" firstAttribute="top" secondItem="8zU-gW-lCj" secondAttribute="bottom" constant="23" id="odd-pa-5PR"/>
+                                            <constraint firstItem="YWq-Al-zYM" firstAttribute="leading" secondItem="8zU-gW-lCj" secondAttribute="leading" id="qCA-LC-ikg"/>
+                                            <constraint firstAttribute="height" constant="832" id="qrQ-PR-oEc"/>
+                                            <constraint firstItem="YWq-Al-zYM" firstAttribute="width" secondItem="8zU-gW-lCj" secondAttribute="width" id="r9a-o3-aLu"/>
+                                            <constraint firstItem="8zU-gW-lCj" firstAttribute="top" secondItem="sCu-xB-Mee" secondAttribute="top" constant="20" id="rjJ-9B-XCP"/>
+                                            <constraint firstItem="wKv-Ux-vEd" firstAttribute="leading" secondItem="rSB-1d-Nsx" secondAttribute="trailing" constant="37" id="vE6-cm-SvB"/>
                                         </constraints>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="2U8-4w-DfI" firstAttribute="leading" secondItem="sU9-2T-5Zm" secondAttribute="leading" id="3fd-pP-sgS"/>
-                                    <constraint firstItem="2U8-4w-DfI" firstAttribute="top" secondItem="sU9-2T-5Zm" secondAttribute="top" id="DjQ-Tj-FKo"/>
-                                    <constraint firstItem="2U8-4w-DfI" firstAttribute="width" secondItem="sU9-2T-5Zm" secondAttribute="width" id="FhG-25-bWW"/>
-                                    <constraint firstItem="2U8-4w-DfI" firstAttribute="trailing" secondItem="sU9-2T-5Zm" secondAttribute="trailing" id="bgz-87-6t4"/>
-                                    <constraint firstAttribute="bottom" secondItem="2U8-4w-DfI" secondAttribute="bottom" id="oJA-xT-GjJ"/>
+                                    <constraint firstItem="TNg-K9-cGs" firstAttribute="bottom" secondItem="sCu-xB-Mee" secondAttribute="bottom" constant="10" id="05o-PB-8a0"/>
+                                    <constraint firstItem="sCu-xB-Mee" firstAttribute="top" secondItem="TNg-K9-cGs" secondAttribute="top" constant="10" id="DMW-Ja-Bko"/>
+                                    <constraint firstItem="sCu-xB-Mee" firstAttribute="leading" secondItem="TNg-K9-cGs" secondAttribute="leading" constant="10" id="IpR-ow-7I4"/>
+                                    <constraint firstItem="TNg-K9-cGs" firstAttribute="trailing" secondItem="sCu-xB-Mee" secondAttribute="trailing" constant="10" id="yCA-AE-XYJ"/>
                                 </constraints>
                                 <viewLayoutGuide key="contentLayoutGuide" id="PsP-DA-WwE"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="TNg-K9-cGs"/>
@@ -651,7 +622,7 @@
                         <outlet property="btnInterestedIn" destination="1s7-fa-7M8" id="CDe-Y0-ESf"/>
                         <outlet property="btnMinus" destination="wKv-Ux-vEd" id="8Hg-Hz-bwb"/>
                         <outlet property="btnPlus" destination="mGw-B8-Wg2" id="ZXC-kJ-8B1"/>
-                        <outlet property="btnSubmit" destination="9UQ-1D-1Yb" id="hDS-MJ-U4Y"/>
+                        <outlet property="btnSubmit" destination="9UQ-1D-1Yb" id="BcJ-0A-dQG"/>
                         <outlet property="provideDetailsView" destination="mes-L0-2pj" id="lsn-OI-nGR"/>
                         <outlet property="txtEmail" destination="SMu-8U-9zx" id="QlT-Yi-Vir"/>
                         <outlet property="txtInterestedIn" destination="b6t-bO-UXr" id="Lj5-sE-zCm"/>
@@ -789,7 +760,7 @@
                                         <rect key="frame" x="16" y="521" width="312" height="28"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZCy-na-2FW" customClass="RSOButton" customModule="RSOWorkspace" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="166.33333333333334" height="28"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="154.33333333333334" height="28"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="28" id="1JY-XP-6fH"/>
                                                 </constraints>
@@ -801,7 +772,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wBo-GW-uPA" customClass="RSOButton" customModule="RSOWorkspace" customModuleProvider="target">
-                                                <rect key="frame" x="176.33333333333337" y="0.0" width="135.66666666666663" height="28"/>
+                                                <rect key="frame" x="164.33333333333337" y="0.0" width="147.66666666666663" height="28"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="28" id="EBB-Xs-pmM"/>
                                                 </constraints>
@@ -870,7 +841,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yvB-GH-OZp" customClass="ShadowedView" customModule="RSOWorkspace" customModuleProvider="target">
                                 <rect key="frame" x="24.666666666666657" y="239.66666666666663" width="344" height="373"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="LargerKey" translatesAutoresizingMaskIntoConstraints="NO" id="hcw-1u-myl">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="dummyQRCode" translatesAutoresizingMaskIntoConstraints="NO" id="hcw-1u-myl">
                                         <rect key="frame" x="72" y="24" width="199" height="204"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
@@ -969,8 +940,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="LargerKey" width="68" height="126"/>
-        <image name="chatbot" width="130" height="59"/>
+        <image name="dummyQRCode" width="8000" height="8000"/>
         <namedColor name="000000">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

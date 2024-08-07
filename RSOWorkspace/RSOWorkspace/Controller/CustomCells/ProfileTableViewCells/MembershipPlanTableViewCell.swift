@@ -30,7 +30,7 @@ class MembershipPlanTableViewCell: UITableViewCell {
             self.btnRenewPlan.isHidden = true
             self.btnBuyMemberShip.isHidden = false
             self.lblMembershipPlan.isHidden = true
-            self.lblMemberShipDesc.text = "No Active MemberShip"
+            self.lblMemberShipDesc.text = "No Active Membership"
         }else{
             self.btnBuyMemberShip.isHidden = true
             self.lblMembershipPlan.isHidden = true

@@ -15,7 +15,8 @@ class ReportAnIssueViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     var cornerRadius: CGFloat = 10.0
-    var dropdownOptions: [Location] = []
+    var location: [LocationDetails] = []
+    var dropdownOptions: [LocationDetails] = []
     var eventHandler: ((_ event: Event) -> Void)?
     var reportAnIssueRespnseData: ReportAnIssueResponse?
     var location_id = 0
@@ -55,11 +56,11 @@ class ReportAnIssueViewController: UIViewController {
     }
     private func fetchLocations() {
         APIManager.shared.request(
-            modelType: ApiResponse.self, // Assuming your API returns an array of locations
+            modelType: LocationResponse.self, // Assuming your API returns an array of locations
             type: LocationEndPoint.locations) { response in
                 switch response {
                 case .success(let response):
-                    self.dropdownOptions = response.data
+                    self.dropdownOptions = response.data ?? []
                     DispatchQueue.main.async {
                         self.tableView.reloadData()
                     }
@@ -108,7 +109,11 @@ class ReportAnIssueViewController: UIViewController {
         if let cell = tableView.cellForRow(at: IndexPath(row: 0, section: Section.addPics.rawValue)) as? AddPicsTableViewCell {
             cell.resetImages()
         }
-        
+        // Reset the description text field in ProvideDetailsOfIssueTableViewCell
+            if let provideDetailsCell = tableView.cellForRow(at: IndexPath(row: 0, section: Section.provideDetails.rawValue)) as? ProvideDetailsOfIssueTableViewCell {
+                provideDetailsCell.textFieldView.text = ""
+                provideDetailsCell.descriptionText = "" // This will also call the delegate method to reset descriptionOfIssue
+            }
         tableView.reloadData()
     }
 }
@@ -172,10 +177,10 @@ extension ReportAnIssueViewController: UITableViewDelegate, UITableViewDataSourc
 }
 extension ReportAnIssueViewController: SelectAnAreaTableViewCellDelegate {
     
-    func dropdownButtonTapped(selectedOption: Location) {
+    func dropdownButtonTapped(selectedOption: LocationDetails) {
         // Implement what you want to do with the selected option, for example:
         print("Selected option: \(selectedOption.name),\(selectedOption.id)")
-        location_id = selectedOption.id
+        location_id = selectedOption.id ?? 1
     }
     
     func presentAlertController(alertController: UIAlertController) {

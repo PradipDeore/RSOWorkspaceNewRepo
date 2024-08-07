@@ -7,12 +7,21 @@
 
 import Foundation
 
-struct Location: Codable {
-    let id: Int
-    let name: String
+// MARK: - Location
+struct LocationResponse: Codable {
+    let status: Bool?
+    let data: [LocationDetails]?
 }
 
-struct ApiResponse: Codable {
-    let status: Bool
-    let data: [Location]
+// MARK: - LocationDetails
+struct LocationDetails: Codable {
+    let id: Int?
+    let name, geoLocation, latitude, longitude: String?
+    let address1, address2: String?
+
+    enum CodingKeys: String, CodingKey {
+        case id, name
+        case geoLocation = "geo_location"
+        case latitude, longitude, address1, address2
+    }
 }
