@@ -13,8 +13,8 @@ class GalleryTableViewCell: UITableViewCell, UICollectionViewDataSource, UIColle
    
     var galleryData : [Gallery] = []
     var eventHandler: ((_ event: Event) -> Void)?
-    private var locationID: Int?
-    
+    private var locationID: Int = 1 // Default locationID is set to 1
+
     override func awakeFromNib() {
             super.awakeFromNib()
             
@@ -35,6 +35,7 @@ class GalleryTableViewCell: UITableViewCell, UICollectionViewDataSource, UIColle
         }
         
      func fetchGallery(locationID:Int) {
+        
          DispatchQueue.main.async {
              RSOLoader.showLoader()
          }

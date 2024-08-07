@@ -50,7 +50,7 @@ class FindMembersCardViewController: UIViewController {
             return
         }
         // Use the utility method to make a phone call
-        PhoneCallUtility.makePhoneCall(to: phoneNumber)
+        PhoneCallUtility.makePhoneCall(phoneNumber: phoneNumber)
     }
     @IBAction func btnDismissView(_ sender: Any) {
         self.dismiss(animated: true)

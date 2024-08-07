@@ -25,7 +25,7 @@ class PlanPriceTableViewCell: UITableViewCell {
     }
   }
   
-  func setTextMessage(msg: String) {
-    messageLabel.text = msg
+  func setTextMessage(attributedMsg: NSAttributedString) {
+    messageLabel.attributedText = attributedMsg
   }
 }

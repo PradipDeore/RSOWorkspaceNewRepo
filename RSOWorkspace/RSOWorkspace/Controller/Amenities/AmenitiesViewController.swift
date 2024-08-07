@@ -22,13 +22,19 @@ enum SectionTypeAmenities: Int, CaseIterable {
     case galleryLabel
     case gallery
 }
-class AmenitiesViewController: UIViewController{
+
+
+class AmenitiesViewController: UIViewController,RSOTabCoordinated{
   @IBOutlet weak var tableView: UITableView!
   
   var listItems: [RSOCollectionItem] = []
-  var location: ApiResponse?
-  var dropdownOptions: [Location] = []
+    var location: [LocationDetails] = []
+    var dropdownOptions: [LocationDetails] = []
+    var coordinator: RSOTabBarCordinator?
+
   var eventHandler: ((_ event: Event) -> Void)?
+    var selectedButtonType: DashboardOption = .meetingRooms
+
   var apiRequestModelRoomListing = BookMeetingRoomRequestModel()
   var displayBookingDetailsNextScreen = DisplayBookingDetailsModel()
   var roomList : [MeetingRoomListing] = []
@@ -42,7 +48,6 @@ class AmenitiesViewController: UIViewController{
     super.viewDidLoad()
     setupTableView()
     fetchLocations()
-    fetchMeetingRoomsAndReloadTable()
   }
   @IBAction func btnBackAction(_ sender: Any) {
     self.navigationController?.popViewController(animated: true)
@@ -58,18 +63,18 @@ class AmenitiesViewController: UIViewController{
   
   private func fetchLocations() {
     APIManager.shared.request(
-      modelType: ApiResponse.self, // Assuming your API returns an array of locations
+      modelType: LocationResponse.self, // Assuming your API returns an array of locations
       type: LocationEndPoint.locations) { response in
         switch response {
         case .success(let response):
-          self.dropdownOptions = response.data
+            self.dropdownOptions = response.data ?? []
             
           DispatchQueue.main.async {
             if let selectedOption = self.dropdownOptions.last {
-                  self.locationId = selectedOption.id
-                 self.selectedLocation = selectedOption.name
-                  self.selectedMeetingRoomId = selectedOption.id
-                  self.fetchGallery()
+                  self.locationId = selectedOption.id ?? 1
+                 self.selectedLocation = selectedOption.name ?? "Reef Tower"
+                  self.selectedMeetingRoomId = selectedOption.id ?? 1
+                  //self.fetchGallery()
               }
             self.tableView.reloadData()
           }
@@ -84,39 +89,7 @@ class AmenitiesViewController: UIViewController{
             self.tableView.reloadData()
         }
     }
-  //to display meeting rooms on load also not working
-  private func fetchMeetingRoomsAndReloadTable() {
-    RSOLoader.showLoader()
-    fetchmeetingRooms(id: selectedMeetingRoomId, requestModel: apiRequestModelRoomListing)
-    tableView.reloadData()
-  }
-  func fetchmeetingRooms(id: Int, requestModel: BookMeetingRoomRequestModel) {
-    
-    APIManager.shared.request(
-      modelType: MeetingRoomListingResponse.self,
-      type: MyBookingEndPoint.getAvailableMeetingRoomListing(id: id, requestModel: requestModel)) { [weak self] response in
-        DispatchQueue.main.async {
-          guard let self = self else { return }
-          RSOLoader.removeLoader()
-          switch response {
-          case .success(let responseData):
-            // Handle successful response with bookings
-            self.roomList = responseData.data
-            
-            self.tableView.reloadData()
-            self.eventHandler?(.dataLoaded)
-          case .failure(let error):
-            self.eventHandler?(.error(error))
-            DispatchQueue.main.async {
-              RSOToastView.shared.show("\(error.localizedDescription)", duration: 2.0, position: .center)
-            }
-          }
-        }
-      }
-  }
-    
-    
-  
+      
 }
 
 // MARK: - UITableViewDataSource, UITableViewDelegate
@@ -166,25 +139,11 @@ extension AmenitiesViewController: UITableViewDataSource, UITableViewDelegate {
             return cell
             
         case .selectMeetingRoom:
-            if shouldUseDashboardCell { // Add your condition here
-                        let cell = tableView.dequeueReusableCell(withIdentifier: "DashboardMeetingRoomsTableViewCell", for: indexPath) as! DashboardMeetingRoomsTableViewCell
-                        cell.collectionView.tag = 1
-                        cell.selectionStyle = .none
-                        cell.collectionView.backActionDelegate = self
-                        if selectedMeetingRoomId > 0 {
-                            cell.fetchmeetingRooms(id: selectedMeetingRoomId, requestModel: apiRequestModelRoomListing)
-                        }
-                        return cell
-            } else {
-                        let cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifierAmenities.selectMeetingRoom.rawValue, for: indexPath) as! SelectMeetingRoomTableViewCell
-                        cell.collectionView.tag = 1
-                        cell.collectionView.backActionDelegate = self
-                        cell.selectionStyle = .none
-                        if selectedMeetingRoomId > 0 {
-                            cell.fetchmeetingRooms(id: selectedMeetingRoomId, requestModel: apiRequestModelRoomListing)
-                        }
-                        return cell
-                    }
+            let cell = tableView.dequeueReusableCell(withIdentifier: "DashboardMeetingRoomsTableViewCell", for: indexPath) as! DashboardMeetingRoomsTableViewCell
+                cell.collectionView.tag = 0
+                cell.selectionStyle = .none
+                cell.collectionView.backActionDelegate = self
+                return cell
         case .gallery:
             let cell =  tableView.dequeueReusableCell(withIdentifier: CellIdentifierAmenities.gallery.rawValue, for: indexPath)as! GalleryTableViewCell
             cell.setLocationID(locationId)
@@ -218,13 +177,15 @@ extension AmenitiesViewController: UITableViewDataSource, UITableViewDelegate {
 
 extension AmenitiesViewController: SelectLocationTableViewCellDelegate {
     
-    func dropdownButtonTapped(selectedOption: Location) {
+    func dropdownButtonTapped(selectedOption: LocationDetails) {
         // Implement what you want to do with the selected option, for example:
         print("Selected option: \(selectedOption.name),\(selectedOption.id)")
-        self.selectedLocation = selectedOption.name
-        selectedMeetingRoomId = selectedOption.id
-        self.locationId = selectedOption.id
+        self.selectedLocation = selectedOption.name ?? "Reef Tower"
+        selectedMeetingRoomId = selectedOption.id ?? 1
+        self.locationId = selectedOption.id ?? 1
         // Reload the table view to update meeting room listing
+        // Fetch gallery data with the updated locationId
+           fetchGallery()
         tableView.reloadData()
     }
     
@@ -235,25 +196,46 @@ extension AmenitiesViewController: SelectLocationTableViewCellDelegate {
 }
 
 extension AmenitiesViewController: DashboardDeskTypeTableViewCellDelegate {
+    
     func buttonTapped(type: DashboardOption) {
-           switch type {
-           case .meetingRooms:
-               if let meetingRoomsCell = tableView.visibleCells.compactMap({ $0 as? DashboardMeetingRoomsTableViewCell }).first {
-                   meetingRoomsCell.fetchmeetingRooms(id: nil, requestModel: nil)
-               } else {
-                   print("DashboardMeetingRoomsTableViewCell not found")
-               }
-           case .workspace:
-               if let meetingRoomsCell = tableView.visibleCells.compactMap({ $0 as? DashboardMeetingRoomsTableViewCell }).first {
-                   meetingRoomsCell.fetchOfficeDesk(id: nil, requestModel: nil)
-               } else {
-                   print("DashboardMeetingRoomsTableViewCell not found")
-               }
-           default:
-               break
-           }
-       }
+        DispatchQueue.main.async {
+            // Update the selected button type
+            self.selectedButtonType = type
+            
+            // Define the section index that will be affected
+            let sectionIndex = SectionTypeAmenities.btnMeetingsWorkspace.rawValue
+            
+            // Get the visible cell for the section that needs updating
+            guard let meetingRoomsCell = self.tableView.visibleCells.compactMap({ $0 as? DashboardMeetingRoomsTableViewCell }).first else {
+                print("DashboardMeetingRoomsTableViewCell not found")
+                return
+            }
+            
+            switch type {
+            case .meetingRooms:
+                // Fetch rooms only for meetingRooms
+                meetingRoomsCell.fetchRooms()
+                
+                // Reload the section to update the UI
+                self.tableView.reloadSections(IndexSet(integer: sectionIndex), with: .automatic)
+                
+            case .workspace:
+                // Fetch office desk only for workspace
+                meetingRoomsCell.fetchOfficeDesk(id: nil, requestModel: nil)
+                
+                // Reload the section to update the UI
+                self.tableView.reloadSections(IndexSet(integer: sectionIndex), with: .automatic)
+                
+            case .membership:
+                // Handle membership case if needed
+                break
+            }
+        }
     }
+}
+
+
+
 
 // MARK: - Enums
 
@@ -277,13 +259,23 @@ extension AmenitiesViewController {
 
 extension AmenitiesViewController: BookButtonActionDelegate{
     func showBookRoomDetailsVC(meetingRoomId: Int) {
-        let bookRoomDetailsVC = UIViewController.createController(storyBoard: .Booking, ofType: BookRoomDetailsViewController.self)
-        bookRoomDetailsVC.meetingId = meetingRoomId
-        bookRoomDetailsVC.requestModel = apiRequestModelRoomListing
-        bookRoomDetailsVC.displayBookingDetails = displayBookingDetailsNextScreen
-        self.navigationController?.pushViewController(bookRoomDetailsVC, animated: true)
+
     }
-    func showBookMeetingRoomsVC() {
+    // not used
+    func showDeskBookingVC() {
+    }
+        func showBookMeetingRoomsVC() {
+            print("from amenities")
+                    if self.selectedButtonType == .meetingRooms {
+              let bookMeetingRoomVC = UIViewController.createController(storyBoard: .Booking, ofType: BookMeetingRoomViewController.self)
+              bookMeetingRoomVC.coordinator = self.coordinator
+              self.navigationController?.pushViewController(bookMeetingRoomVC, animated: true)
+            } else {
+              let bookOfficeVC = UIViewController.createController(storyBoard: .OfficeBooking, ofType: ShortTermBookAnOfficeViewController.self)
+              bookOfficeVC.coordinator = self.coordinator
+              self.navigationController?.pushViewController(bookOfficeVC, animated: true)
+            }
+          
     }
     
     func showLogInVC() {

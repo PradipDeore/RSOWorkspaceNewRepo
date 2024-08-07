@@ -99,7 +99,7 @@
                 <outlet property="mainTitleLabel" destination="u5S-1z-BXG" id="VYa-Gu-uDg"/>
                 <outlet property="tableView" destination="VWt-2d-F06" id="fee-dd-Dpi"/>
             </connections>
-            <point key="canvasLocation" x="109.9236641221374" y="110.91549295774648"/>
+            <point key="canvasLocation" x="-200" y="98"/>
         </collectionViewCell>
     </objects>
     <resources>

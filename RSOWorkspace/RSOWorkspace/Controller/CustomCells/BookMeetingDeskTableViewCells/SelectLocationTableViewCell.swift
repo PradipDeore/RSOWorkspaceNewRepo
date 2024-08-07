@@ -8,7 +8,7 @@
 import UIKit
 
 protocol SelectLocationTableViewCellDelegate: AnyObject {
-    func dropdownButtonTapped(selectedOption: Location)
+    func dropdownButtonTapped(selectedOption: LocationDetails)
     func presentAlertController(alertController: UIAlertController)
 }
 
@@ -19,7 +19,7 @@ class SelectLocationTableViewCell: UITableViewCell {
     @IBOutlet weak var dropdownButton: UIButton!
     @IBOutlet weak var containerView: UIView!
     var cornerRadius: CGFloat = 10.0
-    var dropdownOptions: [Location] = [] // Add dropdownOptions property
+    var dropdownOptions: [LocationDetails] = [] // Add dropdownOptions property
     override func awakeFromNib() {
         super.awakeFromNib()
         customizeCell()

@@ -17,12 +17,14 @@ enum SectionTypeLocation: Int, CaseIterable {
     case gallery
 }
 
-class LocationViewController: UIViewController {
+class LocationViewController: UIViewController,RSOTabCoordinated {
     @IBOutlet weak var tableView: UITableView!
-    
+    var coordinator: RSOTabBarCordinator?
+    var selectedButtonType: DashboardOption = .meetingRooms
+
     var listItems: [RSOCollectionItem] = []
-    var location: ApiResponse?
-    var dropdownOptions: [Location] = []
+    var location: [LocationDetails] = []
+    var dropdownOptions: [LocationDetails] = []
     var eventHandler: ((_ event: Event) -> Void)?
     var apiRequestModelRoomListing = BookMeetingRoomRequestModel()
     var displayBookingDetailsNextScreen = DisplayBookingDetailsModel()
@@ -37,7 +39,10 @@ class LocationViewController: UIViewController {
         setupTableView()
         fetchLocations()
     }
-    
+    override func viewWillAppear(_ animated: Bool) {
+      super.viewWillAppear(animated)
+      print("dashboard view controller view will appear called")
+    }
     @IBAction func btnBackAction(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
     }
@@ -51,15 +56,15 @@ class LocationViewController: UIViewController {
     
     private func fetchLocations() {
         APIManager.shared.request(
-            modelType: ApiResponse.self,
+            modelType: LocationResponse.self,
             type: LocationEndPoint.locations) { response in
                 switch response {
                 case .success(let response):
-                    self.dropdownOptions = response.data
+                    self.dropdownOptions = response.data ?? []
                     if let firstLocation = self.dropdownOptions.first {
-                        self.selectedLocation = firstLocation.name
-                        self.locationId = firstLocation.id
-                        self.selectedMeetingRoomId = firstLocation.id
+                        self.selectedLocation = firstLocation.name ?? "Reef Tower"
+                        self.locationId = firstLocation.id ?? 1
+                        self.selectedMeetingRoomId = firstLocation.id ?? 1
                         self.updateGalleryForLocation(locationId: self.locationId)
                     }
 
@@ -119,6 +124,9 @@ extension LocationViewController: UITableViewDataSource, UITableViewDelegate {
             if isExpanded {
                 let cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifierLocation.locationOpen.rawValue, for: indexPath) as! LocationOpenTableViewCell
                 cell.lblLocation.text = dropdownOptions[indexPath.row].name
+                cell.lblAddress1.text = dropdownOptions[indexPath.row].address1
+                cell.lblGeoLocation.text = dropdownOptions[indexPath.row].geoLocation
+                
                 cell.selectionStyle = .none
                 return cell
             } else {
@@ -137,7 +145,7 @@ extension LocationViewController: UITableViewDataSource, UITableViewDelegate {
             return cell
         case .selectMeetingRoom:
             let cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifierLocation.selectMeetingRoom.rawValue, for: indexPath) as! DashboardMeetingRoomsTableViewCell
-            cell.collectionView.tag = 1
+            cell.collectionView.tag = 0
             cell.collectionView.backActionDelegate = self
             cell.selectionStyle = .none
             return cell
@@ -192,13 +200,13 @@ extension LocationViewController: UITableViewDataSource, UITableViewDelegate {
 
 // MARK: - SelectLocationTableViewCellDelegate
 extension LocationViewController: SelectLocationTableViewCellDelegate {
-    func dropdownButtonTapped(selectedOption: Location) {
+    func dropdownButtonTapped(selectedOption: LocationDetails) {
         // Implement what you want to do with the selected option
         print("Selected option: \(selectedOption.name),\(selectedOption.id)")
-        selectedMeetingRoomId = selectedOption.id
-        self.locationId = selectedOption.id
+        selectedMeetingRoomId = selectedOption.id ?? 1
+        self.locationId = selectedOption.id ?? 1
         tableView.reloadData()
-        updateGalleryForLocation(locationId: selectedOption.id)
+        updateGalleryForLocation(locationId: selectedOption.id ?? 1)
         
     }
     
@@ -210,23 +218,30 @@ extension LocationViewController: SelectLocationTableViewCellDelegate {
 // MARK: - DashboardDeskTypeTableViewCellDelegate
 extension LocationViewController: DashboardDeskTypeTableViewCellDelegate {
     func buttonTapped(type: DashboardOption) {
+
+    DispatchQueue.main.async {
+        self.selectedButtonType = DashboardOption(rawValue: type.rawValue) ?? .meetingRooms
+        self.tableView.reloadSections(IndexSet(integer: 2), with: .automatic)
+        
         switch type {
         case .meetingRooms:
-            if let meetingRoomsCell = tableView.visibleCells.compactMap({ $0 as? DashboardMeetingRoomsTableViewCell }).first {
-                meetingRoomsCell.fetchmeetingRooms(id: nil, requestModel: nil)
+            if let meetingRoomsCell = self.tableView.visibleCells.compactMap({ $0 as? DashboardMeetingRoomsTableViewCell }).first {
+                meetingRoomsCell.fetchRooms()
             } else {
                 print("DashboardMeetingRoomsTableViewCell not found")
             }
         case .workspace:
-            if let meetingRoomsCell = tableView.visibleCells.compactMap({ $0 as? DashboardMeetingRoomsTableViewCell }).first {
+            if let meetingRoomsCell = self.tableView.visibleCells.compactMap({ $0 as? DashboardMeetingRoomsTableViewCell }).first {
                 meetingRoomsCell.fetchOfficeDesk(id: nil, requestModel: nil)
             } else {
                 print("DashboardMeetingRoomsTableViewCell not found")
             }
-        default:
+        case .membership:
+            // Handle membership case if needed
             break
         }
     }
+}
 }
 
 // MARK: - UITableView Extension
@@ -242,15 +257,23 @@ extension UITableView {
 // MARK: - BookButtonActionDelegate
 extension LocationViewController: BookButtonActionDelegate {
     func showBookRoomDetailsVC(meetingRoomId: Int) {
-        let bookRoomDetailsVC = UIViewController.createController(storyBoard: .Booking, ofType: BookRoomDetailsViewController.self)
-        bookRoomDetailsVC.meetingId = meetingRoomId
-        bookRoomDetailsVC.requestModel = apiRequestModelRoomListing
-        bookRoomDetailsVC.displayBookingDetails = displayBookingDetailsNextScreen
-        self.navigationController?.pushViewController(bookRoomDetailsVC, animated: true)
+
     }
-    
-    func showBookMeetingRoomsVC() {
-        // Implement as needed
+    // not used
+    func showDeskBookingVC() {
+    }
+        func showBookMeetingRoomsVC() {
+            print("from amenities")
+                    if self.selectedButtonType == .meetingRooms {
+              let bookMeetingRoomVC = UIViewController.createController(storyBoard: .Booking, ofType: BookMeetingRoomViewController.self)
+              bookMeetingRoomVC.coordinator = self.coordinator
+              self.navigationController?.pushViewController(bookMeetingRoomVC, animated: true)
+            } else {
+              let bookOfficeVC = UIViewController.createController(storyBoard: .OfficeBooking, ofType: ShortTermBookAnOfficeViewController.self)
+              bookOfficeVC.coordinator = self.coordinator
+              self.navigationController?.pushViewController(bookOfficeVC, animated: true)
+            }
+          
     }
     
     func showLogInVC() {

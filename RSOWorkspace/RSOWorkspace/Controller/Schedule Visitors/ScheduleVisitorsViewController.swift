@@ -32,6 +32,8 @@ class ScheduleVisitorsViewController: UIViewController{
     var listItems: [RSOCollectionItem] = []
     var visitorEmailDelegate:sendVisitorEmailDelegate?
     var visitorsDetailArray : [VisitorDetails] = []
+    var myVisitorResponse: [MyVisitor] = []
+
     var ddOptions: [Reason] = []
     var eventHandler: ((_ event: Event) -> Void)?
     var apiRequestScheduleVisitorsRequest = ScheduleVisitorsRequest()
@@ -78,6 +80,62 @@ class ScheduleVisitorsViewController: UIViewController{
                 }
             }
     }
+    private func fetchMyVisitors() {
+        APIManager.shared.request(
+            modelType: MyVisitorAPIResponse.self,
+            type: VisitorsEndPoint.myVisitors) { response in
+                switch response {
+                case .success(let response):
+                    self.myVisitorResponse = response.data
+                    print("myVisitorResponse response is",self.myVisitorResponse)
+                    // Optional: Convert visitorDetails JSON string to array for each visitor
+                    self.myVisitorResponse.forEach { visitor in
+                        _ = visitor.visitorDetailsArray // This will parse the visitor details JSON string
+                    }
+                    DispatchQueue.main.async {
+                        self.tableView.reloadData()
+                    }
+                    self.eventHandler?(.dataLoaded)
+                case .failure(let error):
+                    self.eventHandler?(.error(error))
+                }
+            }
+    }
+    func updateVisitorsAPI(requestModel: UpdateVisitorsRequestModel) {
+        APIManager.shared.request(
+            modelType: UpdateVisitorsDetailsResponse.self,
+            type: VisitorsEndPoint.updateVisitors(requestModel: requestModel)) { [weak self] response in
+                
+                guard let self = self else { return }
+                switch response {
+                case .success(let responseData):
+                    DispatchQueue.main.async {
+                        if responseData.status {
+                            // Status is true, display success message
+                            if let message = responseData.message {
+                                RSOToastView.shared.show(message, duration: 2.0, position: .center)
+                            } else {
+                                RSOToastView.shared.show("Update successful", duration: 2.0, position: .center)
+                            }
+                        } else {
+                            // Status is false, display error message
+                            if let error = responseData.error {
+                                RSOToastView.shared.show("Request failed: \(error)", duration: 2.0, position: .center)
+                            } else {
+                                RSOToastView.shared.show("Request failed, ", duration: 2.0, position: .center)
+                            }
+                        }
+                    }
+                    self.eventHandler?(.dataLoaded)
+                case .failure(let error):
+                    self.eventHandler?(.error(error))
+                    DispatchQueue.main.async {
+                        RSOToastView.shared.show("\(error.localizedDescription)", duration: 2.0, position: .center)
+                    }
+                }
+            }
+    }
+
 }
 
 // MARK: - UITableViewDataSource, UITableViewDelegate
@@ -164,7 +222,7 @@ extension ScheduleVisitorsViewController: UITableViewDataSource, UITableViewDele
         case .btnCancelAndSave:
             let cell =  tableView.dequeueReusableCell(withIdentifier: CellIdentifierScheduleVisitors.btnCancelAndSave.rawValue, for: indexPath)as! ButtonCancelAndSaveTableViewCell
             cell.delegate = self
-          let list = self.apiRequestScheduleVisitorsRequest.visitorDetails ?? []
+          let list = self.apiRequestScheduleVisitorsRequest.vistor_details ?? []
           if list.isEmpty {
             cell.btnSave.alpha = 0.5
             cell.btnSave.isUserInteractionEnabled = false
@@ -208,7 +266,7 @@ extension ScheduleVisitorsViewController: ReasonForVisitTableViewCellDelegate {
     func dropdownButtonTapped(selectedOption: Reason) {
         // Implement what you want to do with the selected option, for example:
         print("Selected option: \(selectedOption.reason),\(selectedOption.id)")
-        apiRequestScheduleVisitorsRequest.reasonOfVisit = selectedOption.reason
+        apiRequestScheduleVisitorsRequest.reason_of_visit = selectedOption.reason
         displayscheduleVisitorsDetailsNextScreen.reasonForVisit = selectedOption.reason
     }
     
@@ -222,7 +280,7 @@ extension ScheduleVisitorsViewController: SelectDateTableViewCellDelegate {
     func didSelectDate(_ actualFormatOfDate: Date) {
         // on date change save api formatted date for this vc model and next vc model
         let apiDate = Date.formatSelectedDate(format: .yyyyMMdd, date: actualFormatOfDate)
-        apiRequestScheduleVisitorsRequest.arrivalDate = apiDate
+        apiRequestScheduleVisitorsRequest.arrival_date = apiDate
         // save formated date to show in next screen
         let displayDate = Date.formatSelectedDate(format: .EEEEddMMMMyyyy, date: actualFormatOfDate)
         displayscheduleVisitorsDetailsNextScreen.date = displayDate
@@ -236,7 +294,7 @@ extension ScheduleVisitorsViewController: SelectTimeTableViewCellDelegate{
     func didSelectStartTime(_ startTime: Date) {
         // for api request
         let apiStartTime = Date.formatSelectedDate(format: .HHmm, date: startTime)
-        apiRequestScheduleVisitorsRequest.startTime = apiStartTime
+        apiRequestScheduleVisitorsRequest.start_time = apiStartTime
         //display in next vc
         let displayStartTime = Date.formatSelectedDate(format: .hhmma, date: startTime)
         displayscheduleVisitorsDetailsNextScreen.startTime = displayStartTime
@@ -245,7 +303,7 @@ extension ScheduleVisitorsViewController: SelectTimeTableViewCellDelegate{
     func didSelectEndTime(_ endTime: Date) {
         // for api request
         let apiEndTime = Date.formatSelectedDate(format: .HHmm, date: endTime)
-        apiRequestScheduleVisitorsRequest.endTime = apiEndTime
+        apiRequestScheduleVisitorsRequest.end_time = apiEndTime
         //display in next vc
         let displayEndTime = Date.formatSelectedDate(format: .hhmma, date: endTime)
         displayscheduleVisitorsDetailsNextScreen.endTime = displayEndTime
@@ -270,6 +328,7 @@ extension ScheduleVisitorsViewController:ButtonSaveDelegate{
 }
 
 extension ScheduleVisitorsViewController:VisitorsTableViewCellDelegate{
+    
 
     func addVisitors(email: String, name: String, phone: String) {
         
@@ -295,7 +354,7 @@ extension ScheduleVisitorsViewController:VisitorsTableViewCellDelegate{
         
         // Append the new visitor detail
         visitorsDetailArray.append(obj)
-        self.apiRequestScheduleVisitorsRequest.visitorDetails = visitorsDetailArray
+        self.apiRequestScheduleVisitorsRequest.vistor_details = visitorsDetailArray
         self.displayscheduleVisitorsDetailsNextScreen.visitors = visitorsDetailArray
         tableView.reloadData()
         
@@ -309,6 +368,34 @@ extension ScheduleVisitorsViewController:VisitorsTableViewCellDelegate{
         inviteVisitorsVC.visitorEmailDelegate = self
         self.present(inviteVisitorsVC, animated: true)
     }
+    func saveVisitorDetails(email: String, name: String, phone: String, indexPath: IndexPath) {
+//        guard indexPath.row > 0, indexPath.row <= visitorsDetailArray.count else {
+//            print("Invalid index")
+//            return
+//        }
+//
+//        // Retrieve the visitor ID if available, or handle appropriately
+//        let visitorID = visitorsDetailArray[indexPath.row - 1]
+//        
+//
+//        // Update the local data source
+//        visitorsDetailArray[indexPath.row - 1] = VisitorDetails(visitorName: name, visitorEmail: email, visitorPhone: phone)
+//
+//        // Prepare the request model with correct data types
+//        let updateRequest = UpdateVisitorsRequestModel(
+//            id: visitorID, // Assuming visitorID is an Int
+//            visitor_name: name,
+//            visitor_phone: phone,
+//            visitor_email: email
+//        )
+//
+//        // Call the update API
+//        updateVisitorsAPI(requestModel: updateRequest)
+    }
+
+
+    
+    
     
 }
 extension ScheduleVisitorsViewController:InviteVisitorsTableViewCellDelegate{
@@ -335,7 +422,7 @@ extension ScheduleVisitorsViewController:sendVisitorEmailDelegate{
         
         // Append the new visitor detail
         visitorsDetailArray.append(obj)
-        self.apiRequestScheduleVisitorsRequest.visitorDetails = visitorsDetailArray
+        self.apiRequestScheduleVisitorsRequest.vistor_details = visitorsDetailArray
         self.displayscheduleVisitorsDetailsNextScreen.visitors = visitorsDetailArray
         tableView.reloadData()
         

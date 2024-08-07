@@ -98,6 +98,7 @@ extension PlanTypeViewController: UICollectionViewDelegate, UICollectionViewData
   }
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellIdentifier, for: indexPath) as! PlanTypeCollectionViewCell
+    
     let option = list[indexPath.item]
     cell.planDelegate = self
     cell.tag = indexPath.item

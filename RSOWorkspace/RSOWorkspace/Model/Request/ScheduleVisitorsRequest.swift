@@ -8,19 +8,20 @@
 import Foundation
 
 struct ScheduleVisitorsRequest: Codable {
-    var reasonOfVisit: String?
-    var arrivalDate: String?
-    var startTime: String?
-    var endTime: String?
-    var visitorDetails: [VisitorDetails]?
+    var reason_of_visit: String?
+    var arrival_date: String = Date.formatSelectedDate(format: .yyyyMMdd, date: nil)
+    var start_time: String =  Date.formatSelectedDate(format: .HHmm, date: nil)
+    var end_time: String =  Date.formatSelectedDate(format: .HHmm, date: nil)
+    var vistor_details: [VisitorDetails]?
     
-    enum CodingKeys: String, CodingKey {
-        case reasonOfVisit = "reason_of_visit"
-        case arrivalDate = "arrival_date"
-        case startTime = "start_time"
-        case endTime = "end_time"
-        case visitorDetails = "vistor_details"
-    }
+//    enum CodingKeys: String, CodingKey {
+//        case reasonOfVisit = "reason_of_visit"
+//        case arrivalDate = "arrival_date"
+//        case startTime = "start_time"
+//        case endTime = "end_time"
+//        case visitorDetails = "vistor_details"
+//  }
+    
 }
 
 struct VisitorDetails: Codable {

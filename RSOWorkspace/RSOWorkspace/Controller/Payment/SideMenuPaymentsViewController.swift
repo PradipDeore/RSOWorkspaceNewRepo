@@ -31,6 +31,9 @@ class SideMenuPaymentsViewController: UIViewController {
         selectedYear = currentYear
         selectedMonthName = months[currentMonth - 1] // Set initial month name
         
+        // Set the default month text in the text field
+        txtMonths.text = selectedMonthName
+       
         txtMonths.setUpTextFieldView(rightImageName: "arrowdown")
         monthNamesView.setCornerRadiusForView()
         
@@ -131,17 +134,17 @@ class SideMenuPaymentsViewController: UIViewController {
         var total: Double = 0.0
         
         for booking in getAllBookingResponse {
-            // Use roomPrice if available, otherwise use price
-            let roomPrice = Double(booking.roomPrice ?? "0.0") ?? 0.0
-            let price = Double(booking.price ?? "0.0") ?? 0.0
-            print("Room Price: \(roomPrice), Price: \(price)") // Debug print
-            
-            total += roomPrice + price
+            // Ensure totalPrice is not nil and convert it to Double
+            if let priceString = booking.totalPrice, let totalPrice = Double(priceString) {
+                total += totalPrice
+            }
         }
+        
         print("Total Price: \(total)") // Debug print
         
         return total
     }
+
 }
 
 // MARK: - UITableViewDataSource, UITableViewDelegate

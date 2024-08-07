@@ -30,7 +30,7 @@ class ScheduledVisitorDetatailsViewController: UIViewController {
         containerView.setCornerRadiusForView()
     }
     
-    func scheduleVisitorsAPIDetails( requestModel: ScheduleVisitorsRequest) {
+    func scheduleVisitorsAPIDetails(requestModel: ScheduleVisitorsRequest) {
         
         APIManager.shared.request(
             modelType: ScheduleVisitorResponse.self,
@@ -216,8 +216,7 @@ extension ScheduledVisitorDetatailsViewController:EditButtonTableViewCellDelegat
 extension ScheduledVisitorDetatailsViewController:ConfirmAndProceedTableViewCellDelegate{
     func navigateToMyvisitors() {
         scheduleVisitorsAPIDetails(requestModel: requestModel)
-        self.dismiss(animated:true)
-        RSOToastView.shared.show("Visitor Created Succesfully", duration: 2.0, position: .center)
+        
     }
 }
 extension ScheduledVisitorDetatailsViewController:ConfirmAndProceedToPayementTableViewCellDelegate{

@@ -66,6 +66,9 @@ extension RSOMeetingRoomsCollectionView: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard indexPath.row < listItems.count else {
+              fatalError("Index out of range. List items count: \(listItems.count), IndexPath row: \(indexPath.row)")
+          }
         let item = listItems[indexPath.row]
        
         guard let itemType = item.type else {

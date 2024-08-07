@@ -75,14 +75,20 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jumeirah Lake Towers , Dubai" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1iF-UW-K5T">
                                 <rect key="frame" x="14" y="188" width="277" height="20"/>
                                 <constraints>
+                                    <constraint firstAttribute="width" constant="277" id="Rxe-XC-A22"/>
                                     <constraint firstAttribute="height" constant="20" id="Sd8-uh-MzG"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Inter-SemiBold" family="Inter" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="Rxe-XC-A22"/>
+                                    </mask>
+                                </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+971 4 448 7111" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dfj-EG-aaF">
-                                <rect key="frame" x="14" y="256" width="183" height="20"/>
+                                <rect key="frame" x="14" y="257.33333333333331" width="183" height="18.666666666666686"/>
                                 <fontDescription key="fontDescription" name="Inter-Bold" family="Inter" pointSize="16"/>
                                 <color key="textColor" red="0.19607843137254902" green="0.19607843137254902" blue="0.19607843137254902" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -104,6 +110,9 @@
                                         <exclude reference="zw9-8R-T9m"/>
                                     </mask>
                                 </variation>
+                                <connections>
+                                    <action selector="btnCallTappedAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="GK6-x4-Vca"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uso-Ja-4aR">
                                 <rect key="frame" x="14" y="211" width="277" height="41"/>
@@ -153,7 +162,10 @@
                 <outlet property="btnCall" destination="h6O-de-oL4" id="7mM-TI-Ve1"/>
                 <outlet property="btnLocationArrow" destination="Bef-pp-LCe" id="4zm-e2-xk7"/>
                 <outlet property="containerView" destination="Wh2-ok-3Tn" id="YEx-95-bbp"/>
+                <outlet property="lblAddress1" destination="1iF-UW-K5T" id="L9F-Mh-mqm"/>
+                <outlet property="lblGeoLocation" destination="Uso-Ja-4aR" id="UCN-Hn-L7i"/>
                 <outlet property="lblLocation" destination="65c-q8-CNY" id="xvR-dW-7Si"/>
+                <outlet property="lblPhoneNumber" destination="Dfj-EG-aaF" id="EY1-FQ-skR"/>
             </connections>
             <point key="canvasLocation" x="69.465648854961827" y="-44.718309859154935"/>
         </tableViewCell>

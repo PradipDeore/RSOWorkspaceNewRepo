@@ -146,6 +146,8 @@ extension PaymentViewController: UITableViewDataSource, UITableViewDelegate {
         switch cellType {
         case .selectMeetingRoomLabel:
             let cell = tableView.dequeueReusableCell(withIdentifier: cellType.rawValue, for: indexPath)
+            cell.selectionStyle = .none
+            
             if let labelCell = cell as? SelectMeetingRoomLabelTableViewCell {
                 labelCell.lblMeetingRoom.text = "Payment"
                 labelCell.lblMeetingRoom.font = UIFont(name: "Poppins-SemiBold", size: 20.0)
@@ -154,6 +156,7 @@ extension PaymentViewController: UITableViewDataSource, UITableViewDelegate {
             
         case .meetingTime:
             let cell = tableView.dequeueReusableCell(withIdentifier: cellType.rawValue, for: indexPath) as! MeetingTimeTableViewCell
+            cell.selectionStyle = .none
             if let startTime = self.requestParameters?.displayStartTime, let endTime = self.requestParameters?.displayendTime {
                 cell.txtTime.text = "\(startTime) - \(endTime)"
             } else {
@@ -167,6 +170,7 @@ extension PaymentViewController: UITableViewDataSource, UITableViewDelegate {
             
         case .meetingRoomPrice:
             let cell = tableView.dequeueReusableCell(withIdentifier: cellType.rawValue, for: indexPath) as! MeetingRoomPriceTableViewCell
+            cell.selectionStyle = .none
             if let obj = self.requestParameters {
                 if bookingType == .desk{
                     let desk = obj.deskList[indexPath.row]
@@ -188,6 +192,7 @@ extension PaymentViewController: UITableViewDataSource, UITableViewDelegate {
             return cell
         case .officePriceDetails:
             let cell = tableView.dequeueReusableCell(withIdentifier: cellType.rawValue, for: indexPath) as! OfficeTypeTableViewCell
+            cell.selectionStyle = .none
             if let obj = self.requestParameters {
                 if bookingType == .office{
                     cell.lblOfficeName.text = obj.meetingRoom
@@ -202,6 +207,7 @@ extension PaymentViewController: UITableViewDataSource, UITableViewDelegate {
             
         case .amenityPrice:
             let cell = tableView.dequeueReusableCell(withIdentifier: cellType.rawValue, for: indexPath) as! AmenityPriceTableViewCell
+            cell.selectionStyle = .none
             if let amenity = self.requestParameters?.amenityArray[indexPath.row] {
                 cell.lblAmenityName.text = amenity.name
                 let amenityPriceInt = amenity.price?.integerValue ?? 0
@@ -215,6 +221,7 @@ extension PaymentViewController: UITableViewDataSource, UITableViewDelegate {
             
         case .totalCell:
             let cell = tableView.dequeueReusableCell(withIdentifier: cellType.rawValue, for: indexPath) as! TotalTableViewCell
+            cell.selectionStyle = .none
             if let obj = self.requestParameters {
                 switch bookingType {
                 case .desk:

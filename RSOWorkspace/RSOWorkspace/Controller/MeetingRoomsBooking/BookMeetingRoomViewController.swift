@@ -31,8 +31,8 @@ class BookMeetingRoomViewController: UIViewController{
     
     @IBOutlet weak var tableView: UITableView!
     var listItems: [RSOCollectionItem] = []
-    var location: ApiResponse?
-    var dropdownOptions: [Location] = []
+    var location: [LocationDetails] = []
+    var dropdownOptions: [LocationDetails] = []
     var eventHandler: ((_ event: Event) -> Void)?
     var apiRequestModelRoomListing = BookMeetingRoomRequestModel()
     var displayBookingDetailsNextScreen = DisplayBookingDetailsModel()
@@ -60,17 +60,17 @@ class BookMeetingRoomViewController: UIViewController{
     private func fetchLocations() {
         RSOLoader.showLoader()
         APIManager.shared.request(
-            modelType: ApiResponse.self, // Assuming your API returns an array of locations
+            modelType: LocationResponse.self, // Assuming your API returns an array of locations
             type: LocationEndPoint.locations) { response in
                 switch response {
                 case .success(let response):
-                    self.dropdownOptions = response.data
+                    self.dropdownOptions = response.data ?? []
                     DispatchQueue.main.async {
                         RSOLoader.removeLoader()
                         if let selectedOption = self.dropdownOptions.last {
-                            self.locationId = selectedOption.id
-                            self.selectedMeetingRoomId = selectedOption.id
-                            self.displayBookingDetailsNextScreen.location = selectedOption.name
+                            self.locationId = selectedOption.id ?? 1
+                            self.selectedMeetingRoomId = selectedOption.id ?? 1
+                            self.displayBookingDetailsNextScreen.location = selectedOption.name ?? "ReefTower"
                             self.fetchMeetingRooms()
                         }
                         self.tableView.reloadData()
@@ -184,12 +184,12 @@ extension BookMeetingRoomViewController: UITableViewDataSource, UITableViewDeleg
 
 extension BookMeetingRoomViewController: SelectLocationTableViewCellDelegate {
     
-    func dropdownButtonTapped(selectedOption: Location) {
+    func dropdownButtonTapped(selectedOption: LocationDetails) {
         // Implement what you want to do with the selected option, for example:
         print("Selected option: \(selectedOption.name),\(selectedOption.id)")
-        selectedMeetingRoomId = selectedOption.id
-        locationId = selectedOption.id
-        displayBookingDetailsNextScreen.location = selectedOption.name
+        selectedMeetingRoomId = selectedOption.id ?? 1
+        locationId = selectedOption.id ?? 1
+        displayBookingDetailsNextScreen.location = selectedOption.name ?? "Reef Tower"
         fetchMeetingRooms()
     }
     

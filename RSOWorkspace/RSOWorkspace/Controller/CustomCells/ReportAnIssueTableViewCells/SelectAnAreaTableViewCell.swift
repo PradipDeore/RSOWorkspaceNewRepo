@@ -7,7 +7,7 @@
 
 import UIKit
 protocol SelectAnAreaTableViewCellDelegate: AnyObject {
-    func dropdownButtonTapped(selectedOption: Location)
+    func dropdownButtonTapped(selectedOption: LocationDetails)
     func presentAlertController(alertController: UIAlertController)
 }
 class SelectAnAreaTableViewCell: UITableViewCell {
@@ -16,7 +16,7 @@ class SelectAnAreaTableViewCell: UITableViewCell {
 
     @IBOutlet weak var txtSelectAnArea: UITextField!
     @IBOutlet weak var textFieldView: UIView!
-    var dropdownOptions: [Location] = [] // Add dropdownOptions property
+    var dropdownOptions: [LocationDetails] = [] // Add dropdownOptions property
 
     override func awakeFromNib() {
         super.awakeFromNib()
