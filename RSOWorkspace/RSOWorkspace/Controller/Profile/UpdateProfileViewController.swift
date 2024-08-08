@@ -27,11 +27,19 @@ class UpdateProfileViewController: UIViewController, UIImagePickerControllerDele
     var updateProfileResponseData: UpdateProfileResponse?
     var selectedImageData: Data?
     
+    @IBOutlet weak var btnEditPhoto: RSOButton!
     override func viewDidLoad() {
         super.viewDidLoad()
         setValuesforTextFileds()
         customizeCell()
         imgProfile.setRounded()
+        setCameraButton()
+       
+    }
+    func setCameraButton(){
+        btnEditPhoto.setCornerRadiusToButton()
+        btnEditPhoto.backgroundColor = .B_9_D_0_AA
+        btnEditPhoto.tintColor = .black
     }
     
     @IBAction func btnEditProfile(_ sender: Any) {

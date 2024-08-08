@@ -444,7 +444,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kPu-9b-a4k">
                                 <rect key="frame" x="0.0" y="99" width="320" height="128"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="teamMemberphoto" translatesAutoresizingMaskIntoConstraints="NO" id="nLv-fR-H3w">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="teamMemberphoto" translatesAutoresizingMaskIntoConstraints="NO" id="nLv-fR-H3w">
                                         <rect key="frame" x="230" y="29" width="50" height="51"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -581,7 +581,7 @@
         <image name="chatbot" width="130" height="59"/>
         <image name="search" width="18" height="18"/>
         <image name="sidebar.right" catalog="system" width="128" height="93"/>
-        <image name="teamMemberphoto" width="27" height="27"/>
+        <image name="teamMemberphoto" width="64" height="64"/>
         <namedColor name="000000">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

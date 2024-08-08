@@ -162,9 +162,25 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PWD-o3-IP4">
                                         <rect key="frame" x="126" y="56" width="95" height="95"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profileIcon" translatesAutoresizingMaskIntoConstraints="NO" id="1ne-m9-Wtm">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profileIcon" translatesAutoresizingMaskIntoConstraints="NO" id="1ne-m9-Wtm">
                                                 <rect key="frame" x="0.0" y="0.0" width="95" height="95"/>
                                             </imageView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E7c-kU-DvS" customClass="RSOButton" customModule="RSOWorkspace" customModuleProvider="target">
+                                                <rect key="frame" x="69" y="68.333333333333343" width="24" height="22"/>
+                                                <color key="backgroundColor" name="B9D0AA"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="22" id="5ur-KZ-btJ"/>
+                                                    <constraint firstAttribute="width" constant="24" id="zUu-Ob-IKk"/>
+                                                </constraints>
+                                                <color key="tintColor" name="000000"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" image="camera" catalog="system">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="btnEditProfile:" destination="xrv-TV-gvR" eventType="touchUpInside" id="qWL-D9-Siu"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
@@ -174,34 +190,15 @@
                                             <constraint firstAttribute="bottom" secondItem="1ne-m9-Wtm" secondAttribute="bottom" id="fqd-h4-xNI"/>
                                             <constraint firstItem="1ne-m9-Wtm" firstAttribute="leading" secondItem="PWD-o3-IP4" secondAttribute="leading" id="hZD-dl-Gue"/>
                                             <constraint firstAttribute="trailing" secondItem="1ne-m9-Wtm" secondAttribute="trailing" id="m54-hS-nbe"/>
+                                            <constraint firstAttribute="trailing" secondItem="E7c-kU-DvS" secondAttribute="trailing" constant="2" id="pk3-Pu-ea8"/>
+                                            <constraint firstItem="E7c-kU-DvS" firstAttribute="top" secondItem="PWD-o3-IP4" secondAttribute="top" constant="68.329999999999998" id="w58-eV-icc"/>
                                         </constraints>
                                     </view>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lMx-q4-yTJ">
-                                        <rect key="frame" x="192" y="113" width="22" height="22"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E7c-kU-DvS">
-                                        <rect key="frame" x="195" y="124.00000000000003" width="24" height="22"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="24" id="6Wi-vb-jrH"/>
-                                            <constraint firstAttribute="height" constant="22" id="gFg-kB-B6X"/>
-                                        </constraints>
-                                        <color key="tintColor" name="C9C9C9"/>
-                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <state key="normal" image="pencil.circle.fill" catalog="system">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="btnEditProfile:" destination="xrv-TV-gvR" eventType="touchUpInside" id="qWL-D9-Siu"/>
-                                        </connections>
-                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstItem="Ky2-qI-Md6" firstAttribute="top" secondItem="iZC-Gp-tQk" secondAttribute="bottom" constant="25" id="2RP-NW-egK"/>
                                     <constraint firstItem="iZC-Gp-tQk" firstAttribute="top" secondItem="vGb-aZ-8cX" secondAttribute="top" constant="27" id="4nm-ZM-c5O"/>
-                                    <constraint firstItem="E7c-kU-DvS" firstAttribute="leading" secondItem="vGb-aZ-8cX" secondAttribute="leading" constant="195" id="6Gy-Mg-q4t"/>
                                     <constraint firstAttribute="height" constant="500" id="8ms-j2-6x2"/>
                                     <constraint firstItem="PWD-o3-IP4" firstAttribute="top" secondItem="iZC-Gp-tQk" secondAttribute="bottom" constant="11.999999999999972" id="95X-9F-baK"/>
                                     <constraint firstItem="iZC-Gp-tQk" firstAttribute="leading" secondItem="vGb-aZ-8cX" secondAttribute="leading" constant="20" id="Jzj-j7-TvM"/>
@@ -212,7 +209,6 @@
                                     <constraint firstAttribute="trailing" secondItem="iZC-Gp-tQk" secondAttribute="trailing" constant="20" id="XTM-Eh-Cfh"/>
                                     <constraint firstItem="QyT-9g-X1B" firstAttribute="leading" secondItem="vGb-aZ-8cX" secondAttribute="leading" constant="26" id="e25-Z7-AKY"/>
                                     <constraint firstAttribute="trailing" secondItem="Ky2-qI-Md6" secondAttribute="trailing" constant="12" id="mat-k3-Qvi"/>
-                                    <constraint firstItem="E7c-kU-DvS" firstAttribute="top" secondItem="iZC-Gp-tQk" secondAttribute="bottom" constant="80" id="qQ1-rq-2ab"/>
                                     <constraint firstAttribute="bottom" secondItem="QyT-9g-X1B" secondAttribute="bottom" constant="20" id="ySY-aA-LtG"/>
                                 </constraints>
                                 <variation key="default">
@@ -236,6 +232,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="btnEditPhoto" destination="E7c-kU-DvS" id="BbS-FH-yII"/>
                         <outlet property="btnUpdate" destination="QyT-9g-X1B" id="fFO-OK-QWJ"/>
                         <outlet property="containerView" destination="vGb-aZ-8cX" id="8Wk-Gg-Jyg"/>
                         <outlet property="imgProfile" destination="1ne-m9-Wtm" id="hAJ-gN-JM5"/>
@@ -513,13 +510,16 @@
         </scene>
     </scenes>
     <resources>
-        <image name="pencil.circle.fill" catalog="system" width="128" height="123"/>
+        <image name="camera" catalog="system" width="128" height="93"/>
         <image name="profileIcon" width="39" height="39"/>
+        <namedColor name="000000">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="828282">
             <color red="0.50999999046325684" green="0.50999999046325684" blue="0.50999999046325684" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
-        <namedColor name="C9C9C9">
-            <color red="0.78799998760223389" green="0.78799998760223389" blue="0.78799998760223389" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <namedColor name="B9D0AA">
+            <color red="0.72500002384185791" green="0.81599998474121094" blue="0.66699999570846558" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="F0F0F0">
             <color red="0.94099998474121094" green="0.94099998474121094" blue="0.94099998474121094" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
