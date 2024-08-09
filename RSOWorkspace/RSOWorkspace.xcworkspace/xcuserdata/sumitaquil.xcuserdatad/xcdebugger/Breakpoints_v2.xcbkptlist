@@ -3353,8 +3353,8 @@
             filePath = "RSOWorkspace/Controller/SignUpViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "161"
-            endingLineNumber = "161"
+            startingLineNumber = "202"
+            endingLineNumber = "202"
             landmarkName = "signUpAPI(email:password:phone:)"
             landmarkType = "7">
             <Locations>
@@ -3507,8 +3507,8 @@
             filePath = "RSOWorkspace/Controller/SignUpViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "139"
-            endingLineNumber = "139"
+            startingLineNumber = "141"
+            endingLineNumber = "141"
             landmarkName = "addEventHandler()"
             landmarkType = "7">
             <Locations>
@@ -3585,8 +3585,8 @@
             filePath = "RSOWorkspace/Controller/SignUpViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "141"
-            endingLineNumber = "141"
+            startingLineNumber = "182"
+            endingLineNumber = "182"
             landmarkName = "customizeUI()"
             landmarkType = "7">
             <Locations>
@@ -3693,8 +3693,8 @@
             filePath = "RSOWorkspace/Controller/SignUpViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "144"
-            endingLineNumber = "144"
+            startingLineNumber = "185"
+            endingLineNumber = "185"
             landmarkName = "customizeUI()"
             landmarkType = "7">
             <Locations>
