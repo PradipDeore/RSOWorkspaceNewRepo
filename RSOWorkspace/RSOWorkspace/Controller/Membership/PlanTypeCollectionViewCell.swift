@@ -77,6 +77,7 @@ extension PlanTypeCollectionViewCell: UITableViewDelegate, UITableViewDataSource
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: planPriceIdentifier, for: indexPath) as! PlanPriceTableViewCell
             let planPrice = priceOptions[indexPath.row]
+            cell.selectionStyle = .none
             // let planInfo = "From AED \(planPrice.price ?? ""), \(planPrice.duration ?? "")"
             // cell.setTextMessage(msg: planInfo)
             let priceText = "AED \(planPrice.price ?? "")"

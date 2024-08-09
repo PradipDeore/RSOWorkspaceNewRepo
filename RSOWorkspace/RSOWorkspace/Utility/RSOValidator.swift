@@ -12,13 +12,16 @@ class RSOValidator{
         let nameTest = NSPredicate(format: "SELF MATCHES %@", nameRegex)
         return nameTest.evaluate(with: name)
     }
-    class func isValidEmail(_ email: String) -> Bool {
-        // Regular expression pattern for email validation
-        let emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
-        
-        let emailPredicate = NSPredicate(format: "SELF MATCHES %@", emailRegex)
-        return emailPredicate.evaluate(with: email)
-    }
+        class func isValidEmail(_ email: String) -> Bool {
+            // Trim the email string to remove leading and trailing spaces
+               let trimmedEmail = email.trimmingCharacters(in: .whitespacesAndNewlines)
+               
+               // Regular expression pattern for email validation
+               let emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
+               
+               let emailPredicate = NSPredicate(format: "SELF MATCHES %@", emailRegex)
+               return emailPredicate.evaluate(with: trimmedEmail)
+        }
     
     class func isValidPassword(_ password: String) -> Bool {
         // Password validation rules:

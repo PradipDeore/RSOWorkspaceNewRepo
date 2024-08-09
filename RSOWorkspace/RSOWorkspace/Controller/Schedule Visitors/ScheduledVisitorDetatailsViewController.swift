@@ -11,12 +11,18 @@ class ScheduledVisitorDetatailsViewController: UIViewController {
     
     var displayscheduleVisitorsDetails : DisplayScheduleVisitorsDetailModel!
     var requestModel : ScheduleVisitorsRequest!
+    var updateVisitorRequestModel : UpdateVisitorsRequestModel?
     var coordinator: RSOTabBarCordinator?
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var containerView: UIView!
     var cornerRadius: CGFloat = 10.0
     var eventHandler: ((_ event: Event) -> Void)?
-    
+    var isEditMode: Bool = false
+    var visitorId:Int?
+       var email: String?
+       var phone: String?
+       var name: String?
+           
     private let cellIdentifiers: [CellType] = [.date, .time,  .labelVisitor, .visitors, .reasonForvisit, .buttonEdit, .confirmAndProceed]
     
     private let cellHeights: [CGFloat] = [70, 70, 25, 32, 70, 40, 40]
@@ -28,6 +34,13 @@ class ScheduledVisitorDetatailsViewController: UIViewController {
         setupTableView()
         customizeCell()
         containerView.setCornerRadiusForView()
+        // Use these properties to configure your view
+                if isEditMode {
+                    print("Editing visitor details:")
+                    print("Email: \(email ?? "N/A")")
+                    print("Phone: \(phone ?? "N/A")")
+                    print("Name: \(name ?? "N/A")")
+                }
     }
     
     func scheduleVisitorsAPIDetails(requestModel: ScheduleVisitorsRequest) {
@@ -43,7 +56,13 @@ class ScheduledVisitorDetatailsViewController: UIViewController {
                     if response.status == true{
                         DispatchQueue.main.async {
                             RSOToastView.shared.show("\(response.message)", duration: 2.0, position: .center)
-                            self.tableView.reloadData()
+                            // Wait for 2 seconds (or the duration of the toast) before dismissing the view
+                                   DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                                       self.dismiss(animated: true) {
+                                           // Optionally reload the table view after dismissing
+                                           self.tableView.reloadData()
+                                       }
+                                   }
                         }
                     }
                     self.eventHandler?(.dataLoaded)
@@ -55,7 +74,43 @@ class ScheduledVisitorDetatailsViewController: UIViewController {
                 }
             }
     }
-    
+    func updateVisitorsAPI(requestModel: UpdateVisitorsRequestModel) {
+        APIManager.shared.request(
+            modelType: UpdateVisitorsDetailsResponse.self,
+            type: VisitorsEndPoint.updateVisitors(requestModel: requestModel)) { [weak self] response in
+                
+                guard let self = self else { return }
+                switch response {
+                case .success(let responseData):
+                    DispatchQueue.main.async {
+                        if responseData.status {
+                            // Status is true, display success message
+                            let message = responseData.message ?? "Update successful"
+                            RSOToastView.shared.show(message, duration: 2.0, position: .center)
+                            
+                            // Wait for 2 seconds before dismissing and reloading
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                                self.dismiss(animated: true) {
+                                    // Reload the table view if needed
+                                    self.tableView.reloadData()
+                                }
+                            }
+                        } else {
+                            // Status is false, display error message
+                            let errorMessage = responseData.error ?? "Request failed"
+                            RSOToastView.shared.show("Request failed: \(errorMessage)", duration: 2.0, position: .center)
+                        }
+                    }
+                    self.eventHandler?(.dataLoaded)
+                case .failure(let error):
+                    self.eventHandler?(.error(error))
+                    DispatchQueue.main.async {
+                        RSOToastView.shared.show("\(error.localizedDescription)", duration: 2.0, position: .center)
+                    }
+                }
+            }
+    }
+
     private func customizeCell(){
         containerView.layer.cornerRadius = cornerRadius
         containerView.layer.masksToBounds = true
@@ -215,8 +270,17 @@ extension ScheduledVisitorDetatailsViewController:EditButtonTableViewCellDelegat
 
 extension ScheduledVisitorDetatailsViewController:ConfirmAndProceedTableViewCellDelegate{
     func navigateToMyvisitors() {
-        scheduleVisitorsAPIDetails(requestModel: requestModel)
-        
+            let updateVisitorRequestModel = UpdateVisitorsRequestModel(
+                id: visitorId ?? 0,
+                visitor_name: name ?? "",
+                visitor_phone: phone ?? "",
+                visitor_email:email ?? ""
+            )
+        if isEditMode {
+            updateVisitorsAPI(requestModel: updateVisitorRequestModel)
+        } else {
+            scheduleVisitorsAPIDetails(requestModel: requestModel)
+        }
     }
 }
 extension ScheduledVisitorDetatailsViewController:ConfirmAndProceedToPayementTableViewCellDelegate{
@@ -224,6 +288,7 @@ extension ScheduledVisitorDetatailsViewController:ConfirmAndProceedToPayementTab
         let paymentVC = UIViewController.createController(storyBoard: .Payment, ofType: PaymentViewController.self)
         paymentVC.requestParameters = bookingConfirmDetails
         paymentVC.coordinator = self.coordinator
+
         self.navigationController?.pushViewController(paymentVC, animated: true)
     }
     

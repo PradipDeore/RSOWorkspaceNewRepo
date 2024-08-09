@@ -8,14 +8,13 @@
 import UIKit
 
 protocol EditVisitorDetailsTableViewCellDelegate:AnyObject{
-    func showeditVisitorDetailsScreen(for indexPath: IndexPath)
+    func showeditVisitorDetailsScreen(visitrId:Int,email: String, phone: String, name: String)
 }
 class VisitorDetailsTableViewCell: UITableViewCell {
     
     weak var delegate: EditVisitorDetailsTableViewCellDelegate?
     @IBOutlet weak var btnEdit: RSOButton!
     @IBOutlet weak var ReasonForVisitView: UIView!
-    @IBOutlet weak var btnCancel: RSOButton!
     @IBOutlet weak var containerView: UIView!
     var cornerRadius: CGFloat = 10.0
     var indexPath: IndexPath?
@@ -23,13 +22,13 @@ class VisitorDetailsTableViewCell: UITableViewCell {
     @IBOutlet weak var lblEndtime: UILabel!
     @IBOutlet weak var lblVisitorEmail: UILabel!
     @IBOutlet weak var lblReasonForVisit: UILabel!
-   
+    var visitorId = 0
+    var email = ""
+    var name = ""
+    var phone = ""
     override func awakeFromNib() {
         super.awakeFromNib()
         ReasonForVisitView.setCornerRadiusForView()
-        btnCancel.backgroundColor = ._768_D_70
-        btnCancel.isHidden = true
-        btnCancel.setCornerRadiusToButton2()
         btnEdit.setCornerRadiusToButton2()
         customizeCell()
         
@@ -47,7 +46,7 @@ class VisitorDetailsTableViewCell: UITableViewCell {
         self.containerView.layer.shadowPath = UIBezierPath(roundedRect:  CGRect(x: 0, y: self.containerView.bounds.height - 4, width: self.containerView.bounds.width, height: 4), cornerRadius: self.containerView.layer.cornerRadius).cgPath
     }
     
-    func setData(item : MyVisitor){
+    func setData(item :MyVisitor){
         
         if let startDateString = item.startTime{
             //convert the date string in date format
@@ -60,18 +59,32 @@ class VisitorDetailsTableViewCell: UITableViewCell {
             lblEndtime.text = Date.formatSelectedDate(format: .hhmma, date: endDate)
         }
         self.lblReasonForVisit.text = item.reason
-        
+        // Extract visitor details from the JSON string
+            if let visitorDetailsArray = item.visitorDetailsArray, !visitorDetailsArray.isEmpty {
+                // Assuming you want to use the first visitor's details
+                let firstVisitor = visitorDetailsArray.first!
+                self.visitorId = item.visitorManagementId ?? 0
+                self.email = firstVisitor.visitorEmail ?? ""
+                self.name = firstVisitor.visitorName ?? ""
+                self.phone = firstVisitor.visitorPhone ?? ""
+            } else {
+                // Handle case where visitorDetailsArray is empty or nil
+                self.visitorId = item.visitorManagementId ?? 0
+                self.email = ""
+                self.name = ""
+                self.phone = ""
+            }
         
     }
     func setVisitorDetails(visitor: VisitorDetail) {
-            lblVisitorEmail.text = visitor.visitorEmail
+        lblVisitorEmail.text = visitor.visitorEmail
+        
+        
         }
-    @IBAction func btnCancelAction(_ sender: Any) {
-    }
     
     @IBAction func btnEditAction(_ sender: Any) {
         if let indexPath = indexPath {
-            delegate?.showeditVisitorDetailsScreen(for: indexPath)
+            delegate?.showeditVisitorDetailsScreen(visitrId: visitorId, email: email, phone: phone, name: name)
         }
     }
     

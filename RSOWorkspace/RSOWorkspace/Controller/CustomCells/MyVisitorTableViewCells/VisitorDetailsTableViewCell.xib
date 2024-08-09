@@ -69,15 +69,6 @@
                                 <color key="textColor" name="454545"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="abdul@yahoo.com" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jGQ-es-m1Z">
-                                <rect key="frame" x="145" y="38" width="177" height="15"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="15" id="HeY-RK-hbf"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="Inter-Medium" family="Inter" pointSize="12"/>
-                                <color key="textColor" name="454545"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ipw-xK-Iq2" userLabel="ReasonForVisitView">
                                 <rect key="frame" x="15" y="70" width="300" height="32"/>
                                 <subviews>
@@ -114,20 +105,6 @@
                                     <action selector="btnEditAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="FTN-Uf-dFI"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RWt-4J-hQr" customClass="RSOButton" customModule="RSOWorkspace" customModuleProvider="target">
-                                <rect key="frame" x="199" y="124" width="124" height="25"/>
-                                <color key="backgroundColor" name="768D70"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="124" id="TKR-6q-Gqu"/>
-                                    <constraint firstAttribute="height" constant="25" id="VOf-oZ-fC5"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="12"/>
-                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" title="Cancel"/>
-                                <connections>
-                                    <action selector="btnCancelAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="dQa-db-ssT"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
@@ -135,27 +112,16 @@
                             <constraint firstItem="6fa-YB-qem" firstAttribute="top" secondItem="017-ac-QQt" secondAttribute="top" constant="12" id="Ftl-af-iDL"/>
                             <constraint firstItem="Ipw-xK-Iq2" firstAttribute="top" secondItem="vYu-lQ-Si1" secondAttribute="bottom" constant="13" id="OWO-1Y-oH7"/>
                             <constraint firstItem="a8Z-DS-2UB" firstAttribute="top" secondItem="017-ac-QQt" secondAttribute="top" constant="15" id="RSG-dl-6PA"/>
-                            <constraint firstItem="jGQ-es-m1Z" firstAttribute="leading" secondItem="vYu-lQ-Si1" secondAttribute="trailing" constant="139" id="RyL-VB-YwS"/>
                             <constraint firstItem="lns-EW-6gb" firstAttribute="top" secondItem="Ipw-xK-Iq2" secondAttribute="bottom" constant="22" id="Sk4-PZ-rKI"/>
-                            <constraint firstAttribute="trailing" secondItem="jGQ-es-m1Z" secondAttribute="trailing" constant="10" id="SkX-gt-WEC"/>
                             <constraint firstItem="a8Z-DS-2UB" firstAttribute="leading" secondItem="017-ac-QQt" secondAttribute="leading" constant="14" id="ZGH-qg-Pd1"/>
-                            <constraint firstItem="jGQ-es-m1Z" firstAttribute="top" secondItem="D0F-hg-dtJ" secondAttribute="bottom" constant="8" id="bMW-wB-tSH"/>
                             <constraint firstItem="lns-EW-6gb" firstAttribute="leading" secondItem="Ipw-xK-Iq2" secondAttribute="leading" id="cLq-RO-6CP"/>
                             <constraint firstItem="vYu-lQ-Si1" firstAttribute="top" secondItem="a8Z-DS-2UB" secondAttribute="bottom" constant="2" id="fOz-yt-dcm"/>
                             <constraint firstItem="D0F-hg-dtJ" firstAttribute="top" secondItem="017-ac-QQt" secondAttribute="top" constant="15" id="hdw-vv-z3k"/>
                             <constraint firstItem="D0F-hg-dtJ" firstAttribute="leading" secondItem="6fa-YB-qem" secondAttribute="trailing" constant="8" id="jVC-9p-Kn6"/>
-                            <constraint firstItem="jGQ-es-m1Z" firstAttribute="leading" secondItem="vYu-lQ-Si1" secondAttribute="trailing" constant="32" id="mGB-Bg-qqN"/>
                             <constraint firstAttribute="trailing" secondItem="D0F-hg-dtJ" secondAttribute="trailing" constant="10" id="mQ8-iQ-lig"/>
-                            <constraint firstItem="lns-EW-6gb" firstAttribute="baseline" secondItem="RWt-4J-hQr" secondAttribute="baseline" id="nO1-fB-ggg"/>
-                            <constraint firstItem="RWt-4J-hQr" firstAttribute="leading" secondItem="lns-EW-6gb" secondAttribute="trailing" constant="60" id="qQy-a4-LEv"/>
                             <constraint firstItem="vYu-lQ-Si1" firstAttribute="leading" secondItem="017-ac-QQt" secondAttribute="leading" constant="13" id="vif-IZ-xAp"/>
                             <constraint firstItem="6fa-YB-qem" firstAttribute="leading" secondItem="a8Z-DS-2UB" secondAttribute="trailing" constant="9" id="y1U-z2-Dlo"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="RyL-VB-YwS"/>
-                            </mask>
-                        </variation>
                     </view>
                 </subviews>
                 <constraints>
@@ -175,7 +141,6 @@
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
                 <outlet property="ReasonForVisitView" destination="Ipw-xK-Iq2" id="Pwg-vR-YRs"/>
-                <outlet property="btnCancel" destination="RWt-4J-hQr" id="IWd-Ks-sRE"/>
                 <outlet property="btnEdit" destination="lns-EW-6gb" id="ozW-OO-xFG"/>
                 <outlet property="containerView" destination="017-ac-QQt" id="JS6-nf-Po2"/>
                 <outlet property="lblEndtime" destination="vYu-lQ-Si1" id="vfk-rG-LUw"/>
@@ -189,9 +154,6 @@
     <resources>
         <namedColor name="454545">
             <color red="0.27099999785423279" green="0.27099999785423279" blue="0.27099999785423279" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="768D70">
-            <color red="0.46299999952316284" green="0.55299997329711914" blue="0.43900001049041748" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="EFEFEF">
             <color red="0.93699997663497925" green="0.93699997663497925" blue="0.93699997663497925" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

@@ -10,7 +10,7 @@ import Foundation
 enum VisitorsEndPoint {
     case reasonForVisit // Module - GET
     case scheduleVisitors(requestModel : ScheduleVisitorsRequest)
-    case myVisitors
+    case myVisitors(date:String)
     case updateVisitors(requestModel : UpdateVisitorsRequestModel)
 
 }
@@ -22,8 +22,8 @@ extension VisitorsEndPoint: EndPointType {
             return "visitor-reasons"
         case .scheduleVisitors:
             return "visitor-schedule"
-        case .myVisitors:
-            return "my-visitors"
+        case .myVisitors(let date):
+            return "my-visitors?date=\(date)"
         case .updateVisitors:
             return "visitor-details-update"
         }

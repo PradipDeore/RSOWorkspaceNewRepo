@@ -13,15 +13,6 @@ struct ScheduleVisitorsRequest: Codable {
     var start_time: String =  Date.formatSelectedDate(format: .HHmm, date: nil)
     var end_time: String =  Date.formatSelectedDate(format: .HHmm, date: nil)
     var vistor_details: [VisitorDetails]?
-    
-//    enum CodingKeys: String, CodingKey {
-//        case reasonOfVisit = "reason_of_visit"
-//        case arrivalDate = "arrival_date"
-//        case startTime = "start_time"
-//        case endTime = "end_time"
-//        case visitorDetails = "vistor_details"
-//  }
-    
 }
 
 struct VisitorDetails: Codable {

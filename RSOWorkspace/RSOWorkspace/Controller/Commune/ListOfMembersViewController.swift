@@ -214,6 +214,9 @@ extension ListOfMembersViewController: UITextFieldDelegate {
             if !filteredMembers.isEmpty {
                 memberListSearchArray[companyId] = filteredMembers
             }
+            if memberListSearchArray.flatMap({ $0.value }).isEmpty {
+                self.view.makeToast("No Records found", duration: 2,position: .center)
+                   }
         }
 
         tableView.reloadData()
