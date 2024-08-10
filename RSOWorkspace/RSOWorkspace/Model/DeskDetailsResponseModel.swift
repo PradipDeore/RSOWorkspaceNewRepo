@@ -8,7 +8,7 @@
 import Foundation
 
 // MARK: - BookingDeskDetailsResponseModel
-struct BookingDeskDetailsResponseModel: Codable {
+struct DeskDetailsResponseModel: Codable {
   let status: Bool
   var data: BookingData?
   var members: [BookingDeskDetailsMember]?

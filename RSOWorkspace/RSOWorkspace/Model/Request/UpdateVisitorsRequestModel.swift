@@ -8,8 +8,11 @@
 import Foundation
 
 struct UpdateVisitorsRequestModel: Codable {
-    let id: Int
-    let visitor_name:String
-    let visitor_phone:String
-    let visitor_email:String
+    let visitor_management_id, reason_of_visit: Int?
+    let arrival_date, start_time, end_time: String?
+    let vistor_detail: [MyVisitorDetail]?
+}
+
+struct MyVisitorDetail: Codable {
+    let visitor_name, visitor_email, visitor_phone: String?
 }

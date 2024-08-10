@@ -11,7 +11,7 @@ import Toast_Swift
 protocol VisitorsTableViewCellDelegate:AnyObject{
     func InviteMoreVisitors()
     func addVisitors(email:String,name:String,phone:String)
-    func saveVisitorDetails(email: String, name: String, phone: String, indexPath: IndexPath)
+    func saveVisitorDetails(email: String, name: String, phone: String)
 }
 
 class VisitorsTableViewCell: UITableViewCell {
@@ -29,6 +29,12 @@ class VisitorsTableViewCell: UITableViewCell {
     // Add this property
         var isEditMode: Bool = false
     var indexPath: IndexPath?
+    
+
+    var email = ""
+    var phone = ""
+    var name = ""
+
     override func awakeFromNib() {
         super.awakeFromNib()
         customizeCell()
@@ -66,15 +72,13 @@ class VisitorsTableViewCell: UITableViewCell {
         let email = txtEmail.text ?? ""
         let name = txtName.text ?? ""
         let phone = txtPhone.text ?? ""
-        //delegate?.addVisitors(email: email, name: name, phone: phone)
-        if isEditMode {
-                // Handle save functionality for edit mode
-                delegate?.saveVisitorDetails(email: email, name: name, phone: phone, indexPath: indexPath!)
-            } else {
-                // Handle add functionality for new visitors
-                delegate?.addVisitors(email: email, name: name, phone: phone)
-            }
         
+        self.email = email
+        self.name = name
+        self.phone = phone
+        resetTextFields()
+        delegate?.addVisitors(email: email, name: name, phone: phone)
+            
     }
     func resetTextFields(){
         txtEmail.text = ""
@@ -82,14 +86,7 @@ class VisitorsTableViewCell: UITableViewCell {
         txtPhone.text = ""
     }
     
-    
-    
     @IBAction func btnSaveAction(_ sender: Any) {
-        guard let indexPath = indexPath else { return }
-               let email = txtEmail.text ?? ""
-               let name = txtName.text ?? ""
-               let phone = txtPhone.text ?? ""
-               delegate?.saveVisitorDetails(email: email, name: name, phone: phone, indexPath: indexPath)
-        
+       
     }
 }

@@ -5,6 +5,7 @@
 //  Created by Sumit Aquil on 04/04/24.
 //
 
+//https://finance.ardemos.co.in/rso/api/edit-visitor-schedule
 import Foundation
 
 enum VisitorsEndPoint {
@@ -25,7 +26,7 @@ extension VisitorsEndPoint: EndPointType {
         case .myVisitors(let date):
             return "my-visitors?date=\(date)"
         case .updateVisitors:
-            return "visitor-details-update"
+            return "edit-visitor-schedule"
         }
     }
   

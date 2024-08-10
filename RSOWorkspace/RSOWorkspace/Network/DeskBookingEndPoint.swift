@@ -11,7 +11,7 @@ enum DeskBookingEndPoint {
     case offices(id: Int?, requestModel: BookOfficeRequestModel?)
     case getDesksLisiting(id: Int, requestModel: DeskRequestModel)
     case getDetailsOfMeetingRooms(id: Int, requestModel: BookMeetingRoomRequestModel)
-    case bookingDeskDetails(id : Int)
+    case DeskDetails(deskId : Int)
     case storeDeskBooking(requestModel: StoreDeskBookingRequest)
 }
 extension DeskBookingEndPoint: EndPointType {
@@ -30,8 +30,9 @@ extension DeskBookingEndPoint: EndPointType {
         case .getDetailsOfMeetingRooms(let id ,_):
             
             return "room-details/\(id)"
-        case .bookingDeskDetails(id: let id):
-            return "booking-desk-details/\(id)"
+        //https://finance.ardemos.co.in/rso/api/desk-details/2
+        case .DeskDetails(deskId: let deskId):
+            return "desk-details/\(deskId)"
         case .storeDeskBooking(requestModel: let requestModel):
             return "store-deskbooking"
         }
@@ -48,7 +49,7 @@ extension DeskBookingEndPoint: EndPointType {
             return .get
         case .getDetailsOfMeetingRooms:
             return .get
-        case .bookingDeskDetails(id: let id):
+        case .DeskDetails(deskId: let deskId):
             return .get
         case .storeDeskBooking(requestModel: let requestModel):
             return .post
@@ -63,7 +64,7 @@ extension DeskBookingEndPoint: EndPointType {
             return requestModel
         case .getDetailsOfMeetingRooms(_, let requestModel):
             return requestModel
-        case .bookingDeskDetails(id: let id):
+        case .DeskDetails(deskId: let deskId):
             return nil
         case .storeDeskBooking(requestModel: let requestModel):
             return requestModel

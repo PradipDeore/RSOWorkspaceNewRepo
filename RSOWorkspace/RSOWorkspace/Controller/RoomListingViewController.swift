@@ -22,7 +22,8 @@ class RoomListingViewController: UIViewController {
   var listItems: [MeetingRoomsItem] = [] // Declaring listItems here
   var roomList : [RSOCollectionItem] = []
   
-  
+   var requestModel = MeetingRoomItemRequestModel()
+
   override func viewDidLoad() {
     super.viewDidLoad()
     coordinator?.hideBackButton(isHidden: false)
@@ -36,7 +37,8 @@ class RoomListingViewController: UIViewController {
     txtSearch.setUpTextFieldView(leftImageName: nil, rightImageName: "search")
     txtSearch.text = self.searchingText
     self.textFieldBackground.layer.cornerRadius = 10
-    fetchRooms()
+      //fetchRooms(id: nil, requestModel: nil)
+      fetchRooms(id: 1, requestModel: requestModel)
 
   }
   
@@ -47,11 +49,11 @@ class RoomListingViewController: UIViewController {
   
   // MARK: - Data Fetching
   
-  func fetchRooms() {
+  func fetchRooms(id: Int?, requestModel: MeetingRoomItemRequestModel?) {
     RSOLoader.showLoader()
     APIManager.shared.request(
       modelType: ResponseData.self,
-      type:  DeskEndPoint.meetingRooms) { response in
+      type:  DeskEndPoint.meetingRooms(id: id, requestModel: requestModel)) { response in
         DispatchQueue.main.async {
           switch response {
           case .success(let response):

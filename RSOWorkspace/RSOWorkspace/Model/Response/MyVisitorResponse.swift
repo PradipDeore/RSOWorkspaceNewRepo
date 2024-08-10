@@ -7,22 +7,23 @@
 
 import Foundation
 
-// Model for the individual visitor details
-struct VisitorDetail: Codable {
-    let visitorName: String?
-    let visitorEmail: String?
-    let visitorPhone: String?
-    
-    private enum CodingKeys: String, CodingKey {
-        case visitorName = "visitor_name"
-        case visitorEmail = "visitor_email"
-        case visitorPhone = "visitor_phone"
-    }
-}
 
+// Model for visitor details
+//struct MyVisitorDetail: Codable {
+//    let visitorName: String?
+//    let visitorEmail: String?
+//    let visitorPhone: String?
+//
+//    private enum CodingKeys: String, CodingKey {
+//        case visitorName = "visitor_name"
+//        case visitorEmail = "visitor_email"
+//        case visitorPhone = "visitor_phone"
+//    }
+//}
 
 // Model for the main visitor data
 struct MyVisitor: Codable {
+    let id: Int?
     let firstName: String?
     let lastName: String?
     let type: String?
@@ -35,16 +36,10 @@ struct MyVisitor: Codable {
     let status: String?
     let reason: String?
     let reasonId: Int?
-    let visitorDetails: String? // This is a JSON string
-    
-    // Optional: Decode visitorDetails from JSON string to [VisitorDetail]
-    var visitorDetailsArray: [VisitorDetail]? {
-        guard let data = visitorDetails?.data(using: .utf8) else { return nil }
-        return try? JSONDecoder().decode([VisitorDetail].self, from: data)
-    }
-   
-    
+    let visitorDetails: [MyVisitorDetail]?
+
     private enum CodingKeys: String, CodingKey {
+        case id
         case firstName = "first_name"
         case lastName = "last_name"
         case type
@@ -66,4 +61,7 @@ struct MyVisitorAPIResponse: Codable {
     let status: Bool
     let data: [MyVisitor]
 }
+
+
+
 

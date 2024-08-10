@@ -19,9 +19,15 @@ class ScheduledVisitorDetatailsViewController: UIViewController {
     var eventHandler: ((_ event: Event) -> Void)?
     var isEditMode: Bool = false
     var visitorId:Int?
-       var email: String?
-       var phone: String?
-       var name: String?
+    var email: String?
+    var phone: String?
+    var name: String?
+    var reasonId:Int?
+    var reasonForVisit = ""
+    var arrivalDate = ""
+    var start_time = ""
+    var end_time = ""
+    var myvistordetailsArray: [MyVisitorDetail] = []
            
     private let cellIdentifiers: [CellType] = [.date, .time,  .labelVisitor, .visitors, .reasonForvisit, .buttonEdit, .confirmAndProceed]
     
@@ -34,15 +40,12 @@ class ScheduledVisitorDetatailsViewController: UIViewController {
         setupTableView()
         customizeCell()
         containerView.setCornerRadiusForView()
-        // Use these properties to configure your view
-                if isEditMode {
-                    print("Editing visitor details:")
-                    print("Email: \(email ?? "N/A")")
-                    print("Phone: \(phone ?? "N/A")")
-                    print("Name: \(name ?? "N/A")")
-                }
+      
     }
-    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tableView.reloadData()
+    }
     func scheduleVisitorsAPIDetails(requestModel: ScheduleVisitorsRequest) {
         
         APIManager.shared.request(
@@ -178,19 +181,30 @@ extension ScheduledVisitorDetatailsViewController: UITableViewDataSource, UITabl
         switch cellType {
         case .date:
             let cell = tableView.dequeueReusableCell(withIdentifier: cellType.rawValue, for: indexPath) as! VisitorsDateTableViewCell
-            cell.txtDate.text = displayscheduleVisitorsDetails?.date
+            if isEditMode{
+                cell.txtDate.text = self.arrivalDate
+            }
+            else{
+                cell.txtDate.text = displayscheduleVisitorsDetails?.date
+            }
             cell.selectionStyle = .none
             return cell
         case .time:
             let cell = tableView.dequeueReusableCell(withIdentifier: cellType.rawValue, for: indexPath) as! VisitorsTimeTableViewCell
-            
-            var timeRange = ""
-            if let startTime = self.displayscheduleVisitorsDetails?.startTime, let endTime = self.displayscheduleVisitorsDetails?.endTime {
-                timeRange = "\(startTime) - \(endTime)"
+            if isEditMode{
+                var timeRange = ""
+                timeRange = "\(self.start_time) - \(self.end_time)"
                 cell.txtTime.text = timeRange
-                
-            } else {
-                cell.txtTime.text = "Unavailable"
+            }
+            else{
+                var timeRange = ""
+                if let startTime = self.displayscheduleVisitorsDetails?.startTime, let endTime = self.displayscheduleVisitorsDetails?.endTime {
+                    timeRange = "\(startTime) - \(endTime)"
+                    cell.txtTime.text = timeRange
+                    
+                } else {
+                    cell.txtTime.text = "Unavailable"
+                }
             }
             cell.selectionStyle = .none
 
@@ -198,7 +212,11 @@ extension ScheduledVisitorDetatailsViewController: UITableViewDataSource, UITabl
             
         case .reasonForvisit:
             let cell = tableView.dequeueReusableCell(withIdentifier: cellType.rawValue, for: indexPath) as! ReasonForVisitTableViewCell
-            cell.txtReasonForVisit.text = displayscheduleVisitorsDetails?.reasonForVisit
+            if isEditMode{
+                cell.txtReasonForVisit.text = self.reasonForVisit
+            }else{
+                cell.txtReasonForVisit.text = displayscheduleVisitorsDetails?.reasonForVisit
+            }
             cell.selectionStyle = .none
 
             return cell
@@ -213,9 +231,16 @@ extension ScheduledVisitorDetatailsViewController: UITableViewDataSource, UITabl
         case .visitors:
             let cell = tableView.dequeueReusableCell(withIdentifier: cellType.rawValue, for: indexPath) as! VisitorsListableViewCell
             
-            if let visitor = displayscheduleVisitorsDetails?.visitors[indexPath.row] {
-                let email = visitor.visitorEmail
-                cell.lblEmail.text = email
+            if isEditMode{
+               // let visitorEmail = myvistordetailsArray[indexPath.row].visitor_email
+                let visitorEmail = self.email
+                cell.lblEmail.text = visitorEmail
+                
+            }else{
+                if let visitor = displayscheduleVisitorsDetails?.visitors[indexPath.row] {
+                    let email = visitor.visitorEmail
+                    cell.lblEmail.text = email
+                }
             }
             cell.selectionStyle = .none
 
@@ -270,12 +295,8 @@ extension ScheduledVisitorDetatailsViewController:EditButtonTableViewCellDelegat
 
 extension ScheduledVisitorDetatailsViewController:ConfirmAndProceedTableViewCellDelegate{
     func navigateToMyvisitors() {
-            let updateVisitorRequestModel = UpdateVisitorsRequestModel(
-                id: visitorId ?? 0,
-                visitor_name: name ?? "",
-                visitor_phone: phone ?? "",
-                visitor_email:email ?? ""
-            )
+            
+        let updateVisitorRequestModel = UpdateVisitorsRequestModel(visitor_management_id: visitorId, reason_of_visit:reasonId , arrival_date: arrivalDate, start_time: start_time, end_time: end_time, vistor_detail: myvistordetailsArray)
         if isEditMode {
             updateVisitorsAPI(requestModel: updateVisitorRequestModel)
         } else {

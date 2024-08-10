@@ -31,18 +31,24 @@ class ScheduleVisitorsViewController: UIViewController{
     var listItems: [RSOCollectionItem] = []
     var visitorEmailDelegate:sendVisitorEmailDelegate?
     var visitorsDetailArray : [VisitorDetails] = []
-
+    
     var ddOptions: [Reason] = []
     var eventHandler: ((_ event: Event) -> Void)?
     var apiRequestScheduleVisitorsRequest = ScheduleVisitorsRequest()
     var displayscheduleVisitorsDetailsNextScreen = DisplayScheduleVisitorsDetailModel()
-   
+    
     var isEditMode: Bool = false
     var visitorId:Int?
     var email: String?
     var phone: String?
     var name: String?
-
+    var reasonId:Int?
+    var reasonForVisit = ""
+    var arrivalDate = ""
+    var start_time = ""
+    var end_time = ""
+    var myvisitordetailsArray: [MyVisitorDetail] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let emptyVisitor = VisitorDetails(visitorName: "", visitorEmail: "", visitorPhone: "")
@@ -51,7 +57,7 @@ class ScheduleVisitorsViewController: UIViewController{
         fetchreasonForVisit()
         if isEditMode {
             setInitialVisitorDetails()
-                }
+        }
     }
     func setInitialVisitorDetails() {
         let indexPath = IndexPath(row: 1, section: SectionTypeScheduleVisitors.invitedVisitors.rawValue)
@@ -134,21 +140,34 @@ extension ScheduleVisitorsViewController: UITableViewDataSource, UITableViewDele
         case .selectDate:
             let  cell =  tableView.dequeueReusableCell(withIdentifier: CellIdentifierScheduleVisitors.selectDate.rawValue, for: indexPath) as! SelectDateTableViewCell
             cell.delegate = self
+            if isEditMode{
+                cell.calender.date = Date.dateFromString(arrivalDate, format: .yyyyMMdd) ?? Date()
+                cell.calender.minimumDate = nil
+            }
+            
             cell.selectionStyle = .none
             return cell
             
         case .selectTime:
             let cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifierScheduleVisitors.selectTime.rawValue, for: indexPath) as! SelectTimeTableViewCell
             cell.delegate = self
+            if isEditMode {
+                cell.selectStartTime.date = Date.dateFromString(start_time, format: .HHmmss) ?? Date()
+                cell.selectEndTime.date = Date.dateFromString(end_time, format: .HHmmss) ?? Date()
+            }
             cell.selectionStyle = .none
             
             return cell
         case .reasonForVisit:
             let cell =  tableView.dequeueReusableCell(withIdentifier: CellIdentifierScheduleVisitors.reasonForVisit.rawValue, for: indexPath) as! ReasonForVisitTableViewCells
+            
+            cell.resetTextFields()
             cell.delegate = self
+            if isEditMode {
+                cell.txtSelectReason.text = self.reasonForVisit
+            }
             cell.dropdownOptions = self.ddOptions
             cell.selectionStyle = .none
-            
             return cell
         case .invitedVisitors:
             if indexPath.row == 0 {
@@ -159,13 +178,17 @@ extension ScheduleVisitorsViewController: UITableViewDataSource, UITableViewDele
             //last row for eg count is 3 indexpath.row = 3
             else if indexPath.row == (visitorsDetailArray.count + 1) {
                 let cell =  tableView.dequeueReusableCell(withIdentifier: "VisitorsTableViewCell", for: indexPath) as! VisitorsTableViewCell
+                
+                cell.isEditMode = self.isEditMode
                 cell.delegate = self
-              cell.resetTextFields()
+                cell.resetTextFields()
                 cell.selectionStyle = .none
+                cell.btnAddVisitors.isHidden = false
                 if isEditMode{
                     cell.txtName.text = self.name
                     cell.txtEmail.text = self.email
                     cell.txtPhone.text = self.phone
+                    cell.btnAddVisitors.isHidden = true
                 }
                 return cell
             }else {
@@ -174,7 +197,7 @@ extension ScheduleVisitorsViewController: UITableViewDataSource, UITableViewDele
                 cell.delegate = self
                 cell.selectionStyle = .none
                 
-                 //Get visitor detail from visitorsDetailArray
+                //Get visitor detail from visitorsDetailArray
                 let visitorDetail = visitorsDetailArray[indexPath.row - 1]
                 cell.lblVisitorEmail.text = visitorDetail.visitorEmail
                 cell.visitorEmailView.isHidden = false
@@ -184,21 +207,21 @@ extension ScheduleVisitorsViewController: UITableViewDataSource, UITableViewDele
                         cell.visitorEmailView.isHidden = email?.isEmpty ?? true
                     }
                 }
-               
+                
                 return cell
             }
             
         case .btnCancelAndSave:
             let cell =  tableView.dequeueReusableCell(withIdentifier: CellIdentifierScheduleVisitors.btnCancelAndSave.rawValue, for: indexPath)as! ButtonCancelAndSaveTableViewCell
             cell.delegate = self
-          let list = self.apiRequestScheduleVisitorsRequest.vistor_details ?? []
-          if list.isEmpty {
-            cell.btnSave.alpha = 0.5
-            cell.btnSave.isUserInteractionEnabled = false
-          } else {
-            cell.btnSave.alpha = 1.0
-            cell.btnSave.isUserInteractionEnabled = true
-          }
+            let list = self.apiRequestScheduleVisitorsRequest.vistor_details ?? []
+            if list.isEmpty  && !isEditMode{
+                cell.btnSave.alpha = 0.5
+                cell.btnSave.isUserInteractionEnabled = false
+            } else {
+                cell.btnSave.alpha = 1.0
+                cell.btnSave.isUserInteractionEnabled = true
+            }
             cell.selectionStyle = .none
             return cell
         }
@@ -216,7 +239,6 @@ extension ScheduleVisitorsViewController: UITableViewDataSource, UITableViewDele
         case .invitedVisitors:
             if indexPath.row == 0{
                 return 53
-                
                 //last row for eg count is 3 indexpath.row = 3
             } else if indexPath.row == (visitorsDetailArray.count + 1) {
                 return 278
@@ -257,9 +279,9 @@ extension ScheduleVisitorsViewController: SelectDateTableViewCellDelegate {
     }
 }
 extension ScheduleVisitorsViewController: SelectTimeTableViewCellDelegate{
-  func selectFulldayStatus(_ isFullDay: Bool) {
-  
-  }
+    func selectFulldayStatus(_ isFullDay: Bool) {
+        
+    }
     func didSelectStartTime(_ startTime: Date) {
         // for api request
         let apiStartTime = Date.formatSelectedDate(format: .HHmm, date: startTime)
@@ -285,7 +307,7 @@ extension ScheduleVisitorsViewController:ButtonSaveDelegate{
     func btnSaveTappedAction() {
         
         let visitorsDetailsVC = UIViewController.createController(storyBoard: .VisitorManagement, ofType: ScheduledVisitorDetatailsViewController.self)
-       //for api
+        //for api
         visitorsDetailsVC.requestModel = self.apiRequestScheduleVisitorsRequest
         //for display
         visitorsDetailsVC.displayscheduleVisitorsDetails = self.displayscheduleVisitorsDetailsNextScreen
@@ -293,43 +315,58 @@ extension ScheduleVisitorsViewController:ButtonSaveDelegate{
         visitorsDetailsVC.modalPresentationStyle = .overFullScreen
         visitorsDetailsVC.view.backgroundColor = UIColor.clear
         visitorsDetailsVC.isEditMode = self.isEditMode
-        // Set visitor details if in edit mode
-                if isEditMode {
-                       visitorsDetailsVC.visitorId = self.visitorId
-                    visitorsDetailsVC.email = self.email
-                        visitorsDetailsVC.phone = self.phone
-                        visitorsDetailsVC.name = self.name
-                }
+
+        if isEditMode {
+            let indexPath = IndexPath(row: visitorsDetailArray.count + 1, section: SectionTypeScheduleVisitors.invitedVisitors.rawValue)
+            
+            if let cell = tableView.cellForRow(at: indexPath) as? VisitorsTableViewCell {
+                
+                self.email = cell.txtEmail.text ?? ""
+                self.name  = cell.txtName.text ?? ""
+                self.phone = cell.txtPhone.text ?? ""
+                
+                // Pass the values to the next view controller
+                visitorsDetailsVC.visitorId = self.visitorId
+                visitorsDetailsVC.email = self.email
+                visitorsDetailsVC.phone = self.phone
+                visitorsDetailsVC.name = self.name
+                visitorsDetailsVC.arrivalDate = self.arrivalDate
+                visitorsDetailsVC.start_time = self.start_time
+                visitorsDetailsVC.end_time = self.end_time
+                visitorsDetailsVC.reasonForVisit = self.reasonForVisit
+                visitorsDetailsVC.myvistordetailsArray = self.myvisitordetailsArray
+            }
+        }
         self.present(visitorsDetailsVC, animated: true)
     }
 }
 
 extension ScheduleVisitorsViewController:VisitorsTableViewCellDelegate{
     
-
+    
     func addVisitors(email: String, name: String, phone: String) {
         
-      // Check if email is valid
-      if !RSOValidator.isValidEmail(email) {
-          RSOToastView.shared.show("Invalid email", duration: 2.0, position: .center)
-          return
-      }
-      if name.isEmpty {
-          RSOToastView.shared.show("Please enter visitor name", duration: 2.0, position: .center)
-          return
-      }
-      if !RSOValidator.validatePhoneNumber(phone) {
-          RSOToastView.shared.show("Invalid phone", duration: 2.0, position: .center)
-          return
-      }
+        // Check if email is valid
+        if !RSOValidator.isValidEmail(email) {
+            RSOToastView.shared.show("Invalid email", duration: 2.0, position: .center)
+            return
+        }
+        if name.isEmpty {
+            RSOToastView.shared.show("Please enter visitor name", duration: 2.0, position: .center)
+            return
+        }
+        if !RSOValidator.validatePhoneNumber(phone) {
+            RSOToastView.shared.show("Invalid phone", duration: 2.0, position: .center)
+            return
+        }
         let obj = VisitorDetails(visitorName: name, visitorEmail: email, visitorPhone: phone)
-       
-                   // Normal mode: Add new visitor
-                   if visitorsDetailArray.count == 1, let firstVisitor = visitorsDetailArray.first, firstVisitor.visitorEmail == "" {
-                       visitorsDetailArray.removeFirst()
-                   }
-                   visitorsDetailArray.append(obj)
-               
+        
+        // Normal mode: Add new visitor
+        if visitorsDetailArray.count == 1, let firstVisitor = visitorsDetailArray.first, firstVisitor.visitorEmail == "" {
+            visitorsDetailArray.removeFirst()
+        }
+        visitorsDetailArray.append(obj)
+        
         
         self.apiRequestScheduleVisitorsRequest.vistor_details = visitorsDetailArray
         self.displayscheduleVisitorsDetailsNextScreen.visitors = visitorsDetailArray
@@ -345,7 +382,7 @@ extension ScheduleVisitorsViewController:VisitorsTableViewCellDelegate{
         inviteVisitorsVC.visitorEmailDelegate = self
         self.present(inviteVisitorsVC, animated: true)
     }
-    func saveVisitorDetails(email: String, name: String, phone: String, indexPath: IndexPath) {
+    func saveVisitorDetails(email: String, name: String, phone: String) {
         // Check if email is valid
         if !RSOValidator.isValidEmail(email) {
             RSOToastView.shared.show("Invalid email", duration: 2.0, position: .center)
@@ -359,18 +396,19 @@ extension ScheduleVisitorsViewController:VisitorsTableViewCellDelegate{
             RSOToastView.shared.show("Invalid phone", duration: 2.0, position: .center)
             return
         }
-          let obj = VisitorDetails(visitorName: name, visitorEmail: email, visitorPhone: phone)
-         
-                     // Normal mode: Add new visitor
-                     if visitorsDetailArray.count == 1, let firstVisitor = visitorsDetailArray.first, firstVisitor.visitorEmail == "" {
-                         visitorsDetailArray.removeFirst()
-                     }
-                     visitorsDetailArray.append(obj)
-                 
-          
-          self.apiRequestScheduleVisitorsRequest.vistor_details = visitorsDetailArray
-          self.displayscheduleVisitorsDetailsNextScreen.visitors = visitorsDetailArray
-          tableView.reloadData()
+        let obj = VisitorDetails(visitorName: name, visitorEmail: email, visitorPhone: phone)
+        if !isEditMode{
+            // Normal mode: Add new visitor
+            if visitorsDetailArray.count == 1, let firstVisitor = visitorsDetailArray.first, firstVisitor.visitorEmail == "" {
+                visitorsDetailArray.removeFirst()
+            }
+        }
+        visitorsDetailArray.append(obj)
+        
+        self.apiRequestScheduleVisitorsRequest.vistor_details = visitorsDetailArray
+        self.displayscheduleVisitorsDetailsNextScreen.visitors = visitorsDetailArray
+        
+        tableView.reloadData()
     }
 }
 extension ScheduleVisitorsViewController:InviteVisitorsTableViewCellDelegate{

@@ -17,7 +17,6 @@ extension MyBookingEndPoint: EndPointType {
         case .myBookingListing:
             return "my-bookings"
         case .getAvailableMeetingRoomListing(let id ,_):
-            //return "meeting-rooms-listing/\(id)"
             if let locationId = id {
               return "meeting-rooms-listing/\(locationId)"
             } else {
