@@ -13,6 +13,8 @@ class CardListManager {
     private init() {
     }
     var cards: [GetCardDetails] = []
+  
+    
     
     func getCardDetails() {
         APIManager.shared.request(
@@ -31,4 +33,6 @@ class CardListManager {
                 }
             }
     }
+   
+   
 }

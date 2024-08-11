@@ -90,7 +90,7 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
 
         var heightForRow: CGFloat {
             switch self {
-            case .profileDetails: return 202
+            case .profileDetails: return 204
             case .changePassword: return 50
             case .membershipPlan: return 189
             case .paymentMethod: return 50

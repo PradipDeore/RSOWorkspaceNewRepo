@@ -28,7 +28,7 @@
 		58049D9E2C591BCF00314E7A /* FeedbackRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58049D9D2C591BCF00314E7A /* FeedbackRequestModel.swift */; };
 		58049DA02C591BE000314E7A /* FeedbackResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58049D9F2C591BE000314E7A /* FeedbackResponseModel.swift */; };
 		5805931A2C4F92DE00FE18B2 /* ViewFloorPlanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580593192C4F92DE00FE18B2 /* ViewFloorPlanViewController.swift */; };
-		5805931C2C4F98AE00FE18B2 /* BookingDeskDetailsResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5805931B2C4F98AE00FE18B2 /* BookingDeskDetailsResponseModel.swift */; };
+		5805931C2C4F98AE00FE18B2 /* DeskDetailsResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5805931B2C4F98AE00FE18B2 /* DeskDetailsResponseModel.swift */; };
 		5805931E2C4FC6DC00FE18B2 /* StoreDeskBookingRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5805931D2C4FC6DC00FE18B2 /* StoreDeskBookingRequest.swift */; };
 		580593202C4FC83400FE18B2 /* StoreDeskBookingResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5805931F2C4FC83400FE18B2 /* StoreDeskBookingResponseModel.swift */; };
 		580593242C4FD98F00FE18B2 /* floorPlanCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580593222C4FD98E00FE18B2 /* floorPlanCollectionViewCell.swift */; };
@@ -507,7 +507,7 @@
 		58049D9F2C591BE000314E7A /* FeedbackResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackResponseModel.swift; sourceTree = "<group>"; };
 		58049DA12C596C3300314E7A /* RSOWorkspace.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = RSOWorkspace.entitlements; sourceTree = "<group>"; };
 		580593192C4F92DE00FE18B2 /* ViewFloorPlanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewFloorPlanViewController.swift; sourceTree = "<group>"; };
-		5805931B2C4F98AE00FE18B2 /* BookingDeskDetailsResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingDeskDetailsResponseModel.swift; sourceTree = "<group>"; };
+		5805931B2C4F98AE00FE18B2 /* DeskDetailsResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeskDetailsResponseModel.swift; sourceTree = "<group>"; };
 		5805931D2C4FC6DC00FE18B2 /* StoreDeskBookingRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreDeskBookingRequest.swift; sourceTree = "<group>"; };
 		5805931F2C4FC83400FE18B2 /* StoreDeskBookingResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreDeskBookingResponseModel.swift; sourceTree = "<group>"; };
 		580593222C4FD98E00FE18B2 /* floorPlanCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = floorPlanCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -1507,7 +1507,7 @@
 				5804180A2BD0F438008EA858 /* ConfirmDeskBookingDetailsModel.swift */,
 				58BEF2762C4805BF00C78CF4 /* OfficeBookingResponseModel.swift */,
 				58BEF27A2C48164400C78CF4 /* NotificationResponseModel.swift */,
-				5805931B2C4F98AE00FE18B2 /* BookingDeskDetailsResponseModel.swift */,
+				5805931B2C4F98AE00FE18B2 /* DeskDetailsResponseModel.swift */,
 				58D2D1D32C54F6E4008425DA /* ConfirmOfficeBookingDetailsModel.swift */,
 			);
 			path = Model;
@@ -2508,7 +2508,7 @@
 				583D9DFE2B90A2190073AAC3 /* LocationEndPoint.swift in Sources */,
 				58E6E9382B88714D00EB3600 /* RSOTab.swift in Sources */,
 				58E2D0D92BBA7B0E0016DEB6 /* ChangePasswordTableViewCell.swift in Sources */,
-				5805931C2C4F98AE00FE18B2 /* BookingDeskDetailsResponseModel.swift in Sources */,
+				5805931C2C4F98AE00FE18B2 /* DeskDetailsResponseModel.swift in Sources */,
 				58049D9C2C5908CD00314E7A /* changePasswordResponseModel.swift in Sources */,
 				58713EB42BC94AA20012DD4E /* InviteGuestsCollectionViewCell.swift in Sources */,
 				58374A482B84D53400CA34C5 /* RSOView.swift in Sources */,
@@ -2803,11 +2803,9 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = RSOWorkspace/RSOWorkspace.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
-				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = D2BKM938GX;
+				DEVELOPMENT_TEAM = D2BKM938GX;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = RSOWorkspace/Info.plist;
@@ -2825,7 +2823,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = aquil.com.RSOWorkspace;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "RSO Profile";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

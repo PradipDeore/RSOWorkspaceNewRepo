@@ -106,8 +106,8 @@ class DeskBookingViewController: UIViewController{
             self.clearDeskCellData()
         }
         APIManager.shared.request(
-            modelType: BookingDeskDetailsResponseModel.self,
-            type: DeskBookingEndPoint.bookingDeskDetails(id: id)) { [weak self] response in
+            modelType: DeskDetailsResponseModel.self,
+            type: DeskBookingEndPoint.DeskDetails(deskId: id)) { [weak self] response in
                 DispatchQueue.main.async {
                     RSOLoader.removeLoader()
                     guard let self = self else { return }

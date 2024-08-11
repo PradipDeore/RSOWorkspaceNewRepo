@@ -11,11 +11,25 @@ class ScheduledVisitorDetatailsViewController: UIViewController {
     
     var displayscheduleVisitorsDetails : DisplayScheduleVisitorsDetailModel!
     var requestModel : ScheduleVisitorsRequest!
+    var updateVisitorRequestModel : UpdateVisitorsRequestModel?
+    var displayEditedscheduleVisitorsDetails : DisplayScheduleVisitorsEditDetailModel!
+    
     var coordinator: RSOTabBarCordinator?
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var containerView: UIView!
     var cornerRadius: CGFloat = 10.0
     var eventHandler: ((_ event: Event) -> Void)?
+    var isEditMode: Bool = false
+    var visitorId:Int?
+    var email: String?
+    var phone: String?
+    var name: String?
+    var reasonId:Int?
+    var reasonForVisit = ""
+    var arrivalDate = ""
+    var start_time = ""
+    var end_time = ""
+    var myvistordetailsArray: [MyVisitorDetail] = []
     
     private let cellIdentifiers: [CellType] = [.date, .time,  .labelVisitor, .visitors, .reasonForvisit, .buttonEdit, .confirmAndProceed]
     
@@ -28,8 +42,22 @@ class ScheduledVisitorDetatailsViewController: UIViewController {
         setupTableView()
         customizeCell()
         containerView.setCornerRadiusForView()
+        
     }
-    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if isEditMode {
+            // Ensure the edited details model is correctly set up
+            if displayEditedscheduleVisitorsDetails != nil {
+                tableView.reloadData()  // Reload data to reflect the edited details
+            }
+        } else {
+            // Ensure the normal details model is correctly set up
+            if displayscheduleVisitorsDetails != nil {
+                tableView.reloadData()  // Reload data to reflect the schedule details
+            }
+        }
+    }
     func scheduleVisitorsAPIDetails(requestModel: ScheduleVisitorsRequest) {
         
         APIManager.shared.request(
@@ -43,7 +71,49 @@ class ScheduledVisitorDetatailsViewController: UIViewController {
                     if response.status == true{
                         DispatchQueue.main.async {
                             RSOToastView.shared.show("\(response.message)", duration: 2.0, position: .center)
-                            self.tableView.reloadData()
+                            // Wait for 2 seconds (or the duration of the toast) before dismissing the view
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                                self.dismiss(animated: true) {
+                                    // Optionally reload the table view after dismissing
+                                    self.tableView.reloadData()
+                                }
+                            }
+                        }
+                    }
+                    self.eventHandler?(.dataLoaded)
+                case .failure(let error):
+                    self.eventHandler?(.error(error))
+                    DispatchQueue.main.async {
+                        RSOToastView.shared.show("\(error.localizedDescription)", duration: 2.0, position: .center)
+                    }
+                }
+            }
+    }
+    func updateVisitorsAPI(requestModel: UpdateVisitorsRequestModel) {
+        APIManager.shared.request(
+            modelType: UpdateVisitorsDetailsResponse.self,
+            type: VisitorsEndPoint.updateVisitors(requestModel: requestModel)) { [weak self] response in
+                
+                guard let self = self else { return }
+                switch response {
+                case .success(let responseData):
+                    DispatchQueue.main.async {
+                        if responseData.status {
+                            // Status is true, display success message
+                            let message = responseData.message ?? "Update successful"
+                            RSOToastView.shared.show(message, duration: 2.0, position: .center)
+                            
+                            // Wait for 2 seconds before dismissing and reloading
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                                self.dismiss(animated: true) {
+                                    // Reload the table view if needed
+                                    self.tableView.reloadData()
+                                }
+                            }
+                        } else {
+                            // Status is false, display error message
+                            let errorMessage = responseData.error ?? "Request failed"
+                            RSOToastView.shared.show("Request failed: \(errorMessage)", duration: 2.0, position: .center)
                         }
                     }
                     self.eventHandler?(.dataLoaded)
@@ -100,7 +170,7 @@ extension ScheduledVisitorDetatailsViewController: UITableViewDataSource, UITabl
         }
         return 1
     }
-   
+    
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if section == 0 {
             return 30
@@ -109,13 +179,13 @@ extension ScheduledVisitorDetatailsViewController: UITableViewDataSource, UITabl
     }
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = SectionHeaderView(reuseIdentifier: "SectionHeaderView")
-            if section == 0 {
-                headerView.sectionLabel.text = "Visitors"
-                headerView.sectionLabel.font = RSOFont.poppins(size: 20.0, type: .SemiBold)
-            }else {
-                return nil
-            }
-            return headerView
+        if section == 0 {
+            headerView.sectionLabel.text = "Visitors"
+            headerView.sectionLabel.font = RSOFont.poppins(size: 20.0, type: .SemiBold)
+        }else {
+            return nil
+        }
+        return headerView
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellType = cellIdentifiers[indexPath.section]
@@ -123,29 +193,25 @@ extension ScheduledVisitorDetatailsViewController: UITableViewDataSource, UITabl
         switch cellType {
         case .date:
             let cell = tableView.dequeueReusableCell(withIdentifier: cellType.rawValue, for: indexPath) as! VisitorsDateTableViewCell
-            cell.txtDate.text = displayscheduleVisitorsDetails?.date
+            cell.txtDate.text = isEditMode ? displayEditedscheduleVisitorsDetails?.date : displayscheduleVisitorsDetails?.date
+            
             cell.selectionStyle = .none
             return cell
         case .time:
             let cell = tableView.dequeueReusableCell(withIdentifier: cellType.rawValue, for: indexPath) as! VisitorsTimeTableViewCell
+            let timeRange = isEditMode ?
+            "\(displayEditedscheduleVisitorsDetails?.startTime ?? "") - \(displayEditedscheduleVisitorsDetails?.endTime ?? "")" :
+            "\(displayscheduleVisitorsDetails?.startTime ?? "") - \(displayscheduleVisitorsDetails?.endTime ?? "")"
+            cell.txtTime.text = timeRange.isEmpty ? "Unavailable" : timeRange
             
-            var timeRange = ""
-            if let startTime = self.displayscheduleVisitorsDetails?.startTime, let endTime = self.displayscheduleVisitorsDetails?.endTime {
-                timeRange = "\(startTime) - \(endTime)"
-                cell.txtTime.text = timeRange
-                
-            } else {
-                cell.txtTime.text = "Unavailable"
-            }
-            cell.selectionStyle = .none
-
             return cell
             
         case .reasonForvisit:
             let cell = tableView.dequeueReusableCell(withIdentifier: cellType.rawValue, for: indexPath) as! ReasonForVisitTableViewCell
-            cell.txtReasonForVisit.text = displayscheduleVisitorsDetails?.reasonForVisit
+            cell.txtReasonForVisit.text = isEditMode ? displayEditedscheduleVisitorsDetails?.reasonForVisit : displayscheduleVisitorsDetails?.reasonForVisit
+            
             cell.selectionStyle = .none
-
+            
             return cell
             
         case .labelVisitor:
@@ -153,30 +219,35 @@ extension ScheduledVisitorDetatailsViewController: UITableViewDataSource, UITabl
             cell.lblMeetingRoom.text = "Visitors"
             cell.lblMeetingRoom.font = UIFont(name: "Poppins-SemiBold", size: 14)
             cell.selectionStyle = .none
-
+            
             return cell
         case .visitors:
             let cell = tableView.dequeueReusableCell(withIdentifier: cellType.rawValue, for: indexPath) as! VisitorsListableViewCell
             
-            if let visitor = displayscheduleVisitorsDetails?.visitors[indexPath.row] {
-                let email = visitor.visitorEmail
-                cell.lblEmail.text = email
+            if isEditMode {
+                if let visitor = displayEditedscheduleVisitorsDetails?.visitors[indexPath.row] {
+                    cell.lblEmail.text = visitor.visitor_email
+                }
+            } else {
+                if let visitor = displayscheduleVisitorsDetails?.visitors[indexPath.row] {
+                    cell.lblEmail.text = visitor.visitorEmail
+                }
             }
             cell.selectionStyle = .none
-
+            
             return cell
         case .buttonEdit:
             let cell = tableView.dequeueReusableCell(withIdentifier: cellType.rawValue, for: indexPath) as! EditButtonTableViewCell
             cell.delegate = self
             cell.selectionStyle = .none
-
+            
             return cell
             
         case .confirmAndProceed:
             let cell = tableView.dequeueReusableCell(withIdentifier: cellType.rawValue, for: indexPath) as! ConfirmAndProceedTableViewCell
             cell.delegate = self
             cell.selectionStyle = .none
-
+            
             return cell
         default:
             let cell = tableView.dequeueReusableCell(withIdentifier: cellType.rawValue, for: indexPath)
@@ -215,8 +286,13 @@ extension ScheduledVisitorDetatailsViewController:EditButtonTableViewCellDelegat
 
 extension ScheduledVisitorDetatailsViewController:ConfirmAndProceedTableViewCellDelegate{
     func navigateToMyvisitors() {
-        scheduleVisitorsAPIDetails(requestModel: requestModel)
         
+        let updateVisitorRequestModel = UpdateVisitorsRequestModel(visitor_management_id: visitorId, reason_of_visit:reasonId , arrival_date: arrivalDate, start_time: start_time, end_time: end_time, vistor_detail: myvistordetailsArray)
+        if isEditMode {
+            updateVisitorsAPI(requestModel: updateVisitorRequestModel)
+        } else {
+            scheduleVisitorsAPIDetails(requestModel: requestModel)
+        }
     }
 }
 extension ScheduledVisitorDetatailsViewController:ConfirmAndProceedToPayementTableViewCellDelegate{
@@ -224,6 +300,7 @@ extension ScheduledVisitorDetatailsViewController:ConfirmAndProceedToPayementTab
         let paymentVC = UIViewController.createController(storyBoard: .Payment, ofType: PaymentViewController.self)
         paymentVC.requestParameters = bookingConfirmDetails
         paymentVC.coordinator = self.coordinator
+        
         self.navigationController?.pushViewController(paymentVC, animated: true)
     }
     

@@ -39,6 +39,10 @@ class ReasonForVisitTableViewCells: UITableViewCell {
         self.containerView.layer.masksToBounds = false
         self.containerView.layer.shadowPath = UIBezierPath(roundedRect:  CGRect(x: 0, y: self.containerView.bounds.height - 4, width: self.containerView.bounds.width, height: 4), cornerRadius: self.containerView.layer.cornerRadius).cgPath
     }
+    func resetTextFields(){
+        txtSelectReason.text = ""
+       
+    }
     @IBAction func dropdownButtonTapped(_ sender: Any) {
            let alertController = UIAlertController(title: "Select Reason", message: nil, preferredStyle: .actionSheet)
            
@@ -63,5 +67,5 @@ class ReasonForVisitTableViewCells: UITableViewCell {
                }
            
        }
-    
+   
 }

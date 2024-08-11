@@ -75,18 +75,34 @@ class RSVPButtonViewController: UIViewController {
     }
     @IBAction func btnRSVPTappedAction(_ sender: Any) {
         
-        guard let name = txtName.text, !name.isEmpty,
-              let company = txtCompany.text, !company.isEmpty,
-              let email = txtEmail.text, !email.isEmpty,
-              let phone = txtPhone.text, !phone.isEmpty else {
-            // Show an error message for any missing or empty field
-            RSOToastView.shared.show("All fields are required", duration: 2.0, position: .center)
+        guard let name = txtName.text, !name.isEmpty else {
+            RSOToastView.shared.show("Name is required", duration: 2.0, position: .center)
             return
         }
+        
+        // Check if phone number is valid
+        guard RSOValidator.isValidName(name) else {
+            RSOToastView.shared.show("Invalid Name", duration: 2.0, position: .center)
+            return
+        }
+        guard let company = txtCompany.text, !company.isEmpty else {
+            RSOToastView.shared.show("Company is required", duration: 2.0, position: .center)
+            return
+        }
+
+        guard let email = txtEmail.text, !email.isEmpty else {
+            RSOToastView.shared.show("Email is required", duration: 2.0, position: .center)
+            return
+        }
+
         
         // Check if email is valid
         guard RSOValidator.isValidEmail(email) else {
             RSOToastView.shared.show("Invalid email", duration: 2.0, position: .center)
+            return
+        }
+        guard let phone = txtPhone.text, !phone.isEmpty else {
+            RSOToastView.shared.show("Phone number is required", duration: 2.0, position: .center)
             return
         }
         
@@ -95,6 +111,7 @@ class RSVPButtonViewController: UIViewController {
             RSOToastView.shared.show("Phone Number must contain at least 10 digits", duration: 2.0, position: .center)
             return
         }
+
         rsvpAPI(name: name, companyname: company, email: email, phone: phone)
     }
     

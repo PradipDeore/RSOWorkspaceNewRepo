@@ -214,7 +214,7 @@ extension AmenitiesViewController: DashboardDeskTypeTableViewCellDelegate {
             switch type {
             case .meetingRooms:
                 // Fetch rooms only for meetingRooms
-                meetingRoomsCell.fetchRooms()
+                meetingRoomsCell.fetchRooms(id: nil, requestModel: nil)
                 
                 // Reload the section to update the UI
                 self.tableView.reloadSections(IndexSet(integer: sectionIndex), with: .automatic)

@@ -23,18 +23,18 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ProfileDetailsTableViewCell" rowHeight="202" id="KGk-i7-Jjw" customClass="ProfileDetailsTableViewCell" customModule="RSOWorkspace" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="352" height="202"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ProfileDetailsTableViewCell" rowHeight="204" id="KGk-i7-Jjw" customClass="ProfileDetailsTableViewCell" customModule="RSOWorkspace" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="352" height="204"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="352" height="202"/>
+                <rect key="frame" x="0.0" y="0.0" width="352" height="204"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nAq-D6-AJe" userLabel="ContainerView" customClass="ShadowedView" customModule="RSOWorkspace" customModuleProvider="target">
-                        <rect key="frame" x="25" y="42" width="302" height="155"/>
+                        <rect key="frame" x="25" y="5" width="302" height="194"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Feeniks Digital" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m3n-6n-HmV">
-                                <rect key="frame" x="10" y="65" width="282" height="25"/>
+                                <rect key="frame" x="10" y="104" width="282" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="hgw-eE-lh9"/>
                                 </constraints>
@@ -58,7 +58,7 @@
                                 </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="john@feeniks.com" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uuR-hs-8PW">
-                                <rect key="frame" x="10" y="120" width="198" height="22"/>
+                                <rect key="frame" x="10" y="159" width="198" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="22" id="9sd-eA-pkV"/>
                                 </constraints>
@@ -67,7 +67,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+971 50 658 5250" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y5S-q5-Q2A">
-                                <rect key="frame" x="10" y="101" width="282" height="17"/>
+                                <rect key="frame" x="10" y="140" width="282" height="17"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="17" id="UNY-hy-tSW"/>
                                 </constraints>
@@ -91,15 +91,15 @@
                                     </mask>
                                 </variation>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profileIcon" translatesAutoresizingMaskIntoConstraints="NO" id="Gko-SV-vYa">
-                                <rect key="frame" x="25" y="-34" width="91" height="91"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profileIcon" translatesAutoresizingMaskIntoConstraints="NO" id="Gko-SV-vYa">
+                                <rect key="frame" x="20" y="5" width="90" height="90"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="91" id="SqZ-aG-sFu"/>
-                                    <constraint firstAttribute="width" constant="91" id="miZ-ql-o9v"/>
+                                    <constraint firstAttribute="height" constant="90" id="SqZ-aG-sFu"/>
+                                    <constraint firstAttribute="width" constant="90" id="miZ-ql-o9v"/>
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hEd-KV-3w8" customClass="RSOButton" customModule="RSOWorkspace" customModuleProvider="target">
-                                <rect key="frame" x="218" y="118" width="79" height="24"/>
+                                <rect key="frame" x="218" y="157" width="79" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="79" id="Jiq-aQ-9uu"/>
                                     <constraint firstAttribute="height" constant="24" id="QbJ-1t-7wd"/>
@@ -114,8 +114,9 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="Gko-SV-vYa" firstAttribute="top" secondItem="nAq-D6-AJe" secondAttribute="top" constant="5" id="3Xq-b4-5af"/>
                             <constraint firstItem="m3n-6n-HmV" firstAttribute="leading" secondItem="nAq-D6-AJe" secondAttribute="leading" constant="10" id="49U-HO-jhk"/>
-                            <constraint firstItem="Gko-SV-vYa" firstAttribute="leading" secondItem="nAq-D6-AJe" secondAttribute="leading" constant="25" id="4V7-Vi-P8m"/>
+                            <constraint firstItem="Gko-SV-vYa" firstAttribute="leading" secondItem="nAq-D6-AJe" secondAttribute="leading" constant="20" id="4V7-Vi-P8m"/>
                             <constraint firstAttribute="bottom" secondItem="uuR-hs-8PW" secondAttribute="bottom" constant="13" id="50C-x9-fdP"/>
                             <constraint firstAttribute="trailing" secondItem="m3n-6n-HmV" secondAttribute="trailing" constant="10" id="5ff-YG-qgm"/>
                             <constraint firstItem="SO5-sm-Fuu" firstAttribute="top" secondItem="nAq-D6-AJe" secondAttribute="top" constant="5" id="8hz-an-Efm"/>
@@ -125,6 +126,7 @@
                             <constraint firstItem="uuR-hs-8PW" firstAttribute="leading" secondItem="nAq-D6-AJe" secondAttribute="leading" constant="10" id="Ixf-hu-dXi"/>
                             <constraint firstItem="y5S-q5-Q2A" firstAttribute="top" secondItem="m3n-6n-HmV" secondAttribute="bottom" constant="11" id="Jvq-fM-db3"/>
                             <constraint firstItem="JLU-hh-rS2" firstAttribute="top" secondItem="SO5-sm-Fuu" secondAttribute="bottom" constant="1" id="KY0-4s-tnD"/>
+                            <constraint firstItem="Gko-SV-vYa" firstAttribute="top" secondItem="nAq-D6-AJe" secondAttribute="top" constant="2" id="LD9-sg-pMA"/>
                             <constraint firstItem="SO5-sm-Fuu" firstAttribute="leading" secondItem="Gko-SV-vYa" secondAttribute="trailing" constant="76" id="QYr-MN-dR3"/>
                             <constraint firstAttribute="height" constant="155" id="TIk-kI-N1c"/>
                             <constraint firstAttribute="trailing" secondItem="y5S-q5-Q2A" secondAttribute="trailing" constant="10" id="U1q-3b-9vJ"/>
@@ -137,6 +139,10 @@
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="TIk-kI-N1c"/>
+                                <exclude reference="LD9-sg-pMA"/>
+                                <exclude reference="rri-eE-Gdd"/>
+                                <exclude reference="c1x-Kz-gZJ"/>
                                 <exclude reference="QYr-MN-dR3"/>
                             </mask>
                         </variation>
@@ -146,6 +152,7 @@
                     <constraint firstItem="nAq-D6-AJe" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="34" id="IjY-7x-BRf"/>
                     <constraint firstAttribute="trailing" secondItem="nAq-D6-AJe" secondAttribute="trailing" constant="25" id="V7q-xb-EPE"/>
                     <constraint firstAttribute="bottom" secondItem="nAq-D6-AJe" secondAttribute="bottom" constant="5" id="joY-UZ-t2O"/>
+                    <constraint firstItem="nAq-D6-AJe" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="pCt-WB-4xg"/>
                     <constraint firstItem="nAq-D6-AJe" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="25" id="y2N-1r-2y3"/>
                 </constraints>
                 <variation key="default">

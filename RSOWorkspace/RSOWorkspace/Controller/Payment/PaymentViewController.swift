@@ -130,7 +130,10 @@ extension PaymentViewController: UITableViewDataSource, UITableViewDelegate {
             }
             return 0
         case .paymentMethods:
-                return !UserHelper.shared.isGuest() ? 0 : 1
+            if UserHelper.shared.isUserExplorer(){
+                return 0
+            }
+            return !UserHelper.shared.isGuest() ? 0 : 1
         default:
             return 1
         }
@@ -269,6 +272,7 @@ extension PaymentViewController: UITableViewDataSource, UITableViewDelegate {
             let cell = tableView.dequeueReusableCell(withIdentifier: cellType.rawValue, for: indexPath) as! PaymentMethodTableViewCell
             cell.selectionStyle = .none
             cell.cardDetails = getCardDetailsResponseData // Pass the fetched card details
+
             return cell
             
         case .buttonPayNow:
@@ -371,3 +375,5 @@ extension PaymentViewController: LoginScreenActionDelegate {
     }
   }
 }
+
+

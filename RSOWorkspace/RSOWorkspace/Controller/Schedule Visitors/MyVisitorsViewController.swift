@@ -30,20 +30,16 @@ class MyVisitorsViewController: UIViewController{
     var eventHandler: ((_ event: Event) -> Void)?
     var apiRequestScheduleVisitorsRequest = ScheduleVisitorsRequest()
     var displayscheduleVisitorsDetailsNextScreen = DisplayScheduleVisitorsDetailModel()
-    
-    var isEditingVisitor: Bool = false
-    var editingIndexPath: IndexPath?
-    var email = ""
-    var name = ""
-    var phone = ""
+    let currentDate = Date.formatSelectedDate(format: .yyyyMMdd, date: Date())
     override func viewDidLoad() {
         super.viewDidLoad()
         
         coordinator?.hideBackButton(isHidden: false)
         coordinator?.setTitle(title: "My Visitors")
         setupTableView()
-        fetchMyVisitors()
+        fetchMyVisitors(date: currentDate)
     }
+    
     @IBAction func btnBackAction(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
         
@@ -56,19 +52,23 @@ class MyVisitorsViewController: UIViewController{
         navigationController?.navigationBar.isHidden = true
         tableView.register(UINib(nibName: "VisitorsTableViewCell", bundle: nil), forCellReuseIdentifier: "VisitorsTableViewCell")
     }
-    private func fetchMyVisitors() {
+    private func fetchMyVisitors(date:String) {
         APIManager.shared.request(
             modelType: MyVisitorAPIResponse.self,
-            type: VisitorsEndPoint.myVisitors) { response in
+            type: VisitorsEndPoint.myVisitors(date: date)) { response in
                 switch response {
                 case .success(let response):
                     self.myVisitorResponse = response.data
                     print("myVisitorResponse response is",self.myVisitorResponse)
                     // Optional: Convert visitorDetails JSON string to array for each visitor
                     self.myVisitorResponse.forEach { visitor in
-                        _ = visitor.visitorDetailsArray // This will parse the visitor details JSON string
+                        _ = visitor.visitorDetails // This will parse the visitor details JSON string
                     }
                     DispatchQueue.main.async {
+                        if self.myVisitorResponse.isEmpty {
+                            // Show a toast message if no visitors are found
+                            self.view.makeToast("No Visitors found", duration: 2.0,position: .center)
+                        }
                         self.tableView.reloadData()
                     }
                     self.eventHandler?(.dataLoaded)
@@ -114,45 +114,19 @@ extension MyVisitorsViewController: UITableViewDataSource, UITableViewDelegate {
             let  cell =  tableView.dequeueReusableCell(withIdentifier: CellIdentifierMyVisitors.selectDate.rawValue, for: indexPath) as! SelectDateTableViewCell
             cell.delegate = self
             cell.selectionStyle = .none
+            // Allow all dates, including past dates, in this specific cell
+            cell.calender.minimumDate = nil
             return cell
             
-            
         case .visitorDetails:
-            if isEditingVisitor, editingIndexPath == indexPath {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "VisitorsTableViewCell", for: indexPath) as! VisitorsTableViewCell
-                cell.selectionStyle = .none
-                let item = myVisitorResponse[indexPath.row]
-                cell.addButtonView.isHidden = true
-                cell.editButtonView.isHidden = false
-                cell.visitorDetailDelegate = self
-                cell.lblInviteMoreVisitors.isHidden = true
-                cell.indexPath = indexPath
-                // Set visitor details to cell's text fields
-                if let visitorDetailsArray = item.visitorDetailsArray, !visitorDetailsArray.isEmpty {
-                    // Display the first visitor email for simplicity
-                    let visitor = visitorDetailsArray[0]
-                    cell.txtName.text = visitor.visitorName
-                    cell.txtEmail.text = visitor.visitorEmail
-                    cell.txtPhone.text = visitor.visitorPhone
-                }
-                return cell
-            } else {
-                let cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifierMyVisitors.visitorDetails.rawValue, for: indexPath) as! VisitorDetailsTableViewCell
-                let item = myVisitorResponse[indexPath.row]
-                cell.setData(item: item)
-                // Ensure the visitor details are parsed
-                if let visitorDetailsArray = item.visitorDetailsArray, !visitorDetailsArray.isEmpty {
-                    // Display the first visitor email for simplicity
-                    let visitor = visitorDetailsArray[0]
-                    cell.setVisitorDetails(visitor: visitor)
-                } else {
-                    cell.setVisitorDetails(visitor: VisitorDetail(visitorName: nil, visitorEmail: "No visitors available", visitorPhone: nil))
-                }
-                cell.delegate = self
-                cell.indexPath = indexPath
-                cell.selectionStyle = .none
-                return cell
-            }
+            let cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifierMyVisitors.visitorDetails.rawValue, for: indexPath) as! VisitorDetailsTableViewCell
+            let item = myVisitorResponse[indexPath.row]
+            cell.setData(item: item)
+            cell.delegate = self
+            cell.indexPath = indexPath
+            cell.selectionStyle = .none
+            return cell
+            
         }
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -162,11 +136,8 @@ extension MyVisitorsViewController: UITableViewDataSource, UITableViewDelegate {
         case .selectDate:
             return 334
         case .visitorDetails:
-            if isEditingVisitor, editingIndexPath == indexPath {
-                return 278
-            } else {
-                return 180
-            }
+            return 180
+            
         }
     }
 }
@@ -179,28 +150,30 @@ extension MyVisitorsViewController: SelectDateTableViewCellDelegate {
         // save formated date to show in next screen
         let displayDate = Date.formatSelectedDate(format: .EEEEddMMMMyyyy, date: actualFormatOfDate)
         displayscheduleVisitorsDetailsNextScreen.date = displayDate
-        
+        // Fetch visitors for selected date
+        fetchMyVisitors(date:apiDate)
     }
 }
 extension MyVisitorsViewController:EditVisitorDetailsTableViewCellDelegate{
-    func showeditVisitorDetailsScreen(for indexPath: IndexPath) {
-        isEditingVisitor = true
-        editingIndexPath = indexPath
-        tableView.reloadRows(at: [indexPath], with: .automatic)
+  
+    func showeditVisitorDetailsScreen(visitorManagementId: Int, email: String, phone: String, name: String, reasonId: Int,reasonForVisit: String, arrivaldate: String, starttime: String, endtime: String, vistordetail: [MyVisitorDetail]) {
+        let editVisitorsVC = UIViewController.createController(storyBoard: .VisitorManagement, ofType: ScheduleVisitorsViewController.self)
+        editVisitorsVC.isEditMode = true
+        editVisitorsVC.visitorId = visitorManagementId
+        editVisitorsVC.email = email
+        editVisitorsVC.name = name
+        editVisitorsVC.phone = phone
+        editVisitorsVC.reasonId = reasonId
+        editVisitorsVC.reasonForVisit = reasonForVisit
+        editVisitorsVC.arrivalDate = arrivaldate
+        editVisitorsVC.start_time = starttime
+        editVisitorsVC.end_time = endtime
+        editVisitorsVC.myvisitordetailsArray = vistordetail
+        self.navigationController?.pushViewController(editVisitorsVC, animated: true)
     }
-    
-}
-extension MyVisitorsViewController:DisplayVisitorDetailsDelegate{
-    func displayVisitorsDetailsCell(for indexPath: IndexPath) {
-        isEditingVisitor = false
-        editingIndexPath = indexPath
-        tableView.reloadRows(at: [indexPath], with: .automatic)
-    }
-    
 }
 extension MyVisitorsViewController {
     enum Event {
-        
         case dataLoaded
         case error(Error?)
     }

@@ -10,6 +10,7 @@ import FBSDKLoginKit
 import FirebaseAuth
 import GoogleSignIn
 import FirebaseCore
+import AuthenticationServices
 
 class SignUpViewController: UIViewController {
     
@@ -29,9 +30,27 @@ class SignUpViewController: UIViewController {
         self.customizeUI()
         btnSocialFacebook.addTarget(self, action: #selector(facebookLoginAction), for: .touchUpInside)
         btnSocialGoogle.addTarget(self, action: #selector(googleLoginAction), for: .touchUpInside)
+        btnSocialApple.addTarget(self, action: #selector(handleAppleIdRequest), for: .touchUpInside)
         
         
     }
+    func customizeUI(){
+        txtEmail.placeholderText = "Your email"
+        txtPassword.placeholderText = "Password"
+        txtPhone.placeholderText = "Your phone number"
+        txtPassword.addPasswordToggle()
+        let apple = UIImage(named: "apple_logo")
+        btnSocialApple.configure(with: apple, title: "Continue with Apple")
+        let facebook = UIImage(named: "fb_logo")
+        btnSocialFacebook.configure(with: facebook, title: "Continue with Facebook")
+        let google = UIImage(named: "google_logo")
+        btnSocialGoogle.configure(with: google, title: "Continue with Google")
+    }
+    
+    @IBAction func backButtonAction(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
+    }
+    // facebook
     @objc func facebookLoginAction() {
         let loginManager = LoginManager()
         loginManager.logIn(permissions: ["public_profile", "email"], from: self) { [weak self] (result, error) in
@@ -73,6 +92,7 @@ class SignUpViewController: UIViewController {
         let requestModel = SocailLoginRequestModel(auth_type: "facebook", auth_id: facebookId, email: email, name: name)
         self.socialloginAPI(requestModel: requestModel)
     }
+    //google
     @objc func googleLoginAction() {
         guard let clientID = FirebaseApp.app()?.options.clientID else { return }
         
@@ -115,8 +135,6 @@ class SignUpViewController: UIViewController {
                     return
                 }
                 
-                // User is signed in with Firebase
-                // Perform any additional actions after successful sign-in
             }
         }
         
@@ -138,22 +156,48 @@ class SignUpViewController: UIViewController {
             }
         }
     }
-    func customizeUI(){
-        txtEmail.placeholderText = "Your email"
-        txtPassword.placeholderText = "Password"
-        txtPhone.placeholderText = "Your phone number"
-        txtPassword.addPasswordToggle()
-        let apple = UIImage(named: "apple_logo")
-        btnSocialApple.configure(with: apple, title: "Continue with Apple")
-        let facebook = UIImage(named: "fb_logo")
-        btnSocialFacebook.configure(with: facebook, title: "Continue with Facebook")
-        let google = UIImage(named: "google_logo")
-        btnSocialGoogle.configure(with: google, title: "Continue with Google")
+    //apple
+    @objc func handleAppleIdRequest() {
+    let appleIDProvider = ASAuthorizationAppleIDProvider()
+    let request = appleIDProvider.createRequest()
+    request.requestedScopes = [.fullName, .email]
+    let authorizationController = ASAuthorizationController(authorizationRequests: [request])
+    authorizationController.delegate = self
+    authorizationController.performRequests()
+    }
+   
+    private func handleAppleSignIn(userIdentifier: String, fullName: PersonNameComponents?, email: String?) {
+        // Convert `fullName` to a string or use directly if needed
+        let name = fullName?.givenName ?? ""
+        
+        // Use the provided email if available, or handle the case where it might be nil
+        let emailAddress = email ?? ""
+        
+        // Create a model to send to your backend or perform additional actions
+        let requestModel = SocailLoginRequestModel(auth_type: "apple", auth_id: userIdentifier, email: emailAddress, name: name)
+        
+        // Call the social login API
+        socialloginAPI(requestModel: requestModel)
+    }
+    private func checkAppleIDCredentialState(userID: String) {
+        let appleIDProvider = ASAuthorizationAppleIDProvider()
+        appleIDProvider.getCredentialState(forUserID: userID) { (credentialState, error) in
+            switch credentialState {
+            case .authorized:
+                // The Apple ID credential is valid.
+                break
+            case .revoked:
+                // The Apple ID credential is revoked.
+                break
+            case .notFound:
+                // No credential was found, so show the sign-in UI.
+                break
+            default:
+                break
+            }
+        }
     }
     
-    @IBAction func backButtonAction(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
-    }
     func signUpAPI(email: String, password: String, phone: String) {
         let requestModel = SignUpRequestModel(email: email, password: password, phone: phone)
         APIManager.shared.request(
@@ -247,3 +291,24 @@ extension SignUpViewController {
         case error(Error?)
     }
 }
+extension SignUpViewController:ASAuthorizationControllerDelegate {
+    func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
+        if let appleIDCredential = authorization.credential as?  ASAuthorizationAppleIDCredential {
+            let userIdentifier = appleIDCredential.user
+            let fullName = appleIDCredential.fullName
+            let email = appleIDCredential.email
+            print("User id is \(userIdentifier) \n Full Name is \(String(describing: fullName)) \n Email id is \(String(describing: email))")
+            UserHelper.shared.saveSocialuser(name: userIdentifier, email: email ?? "")
+            handleAppleSignIn(userIdentifier: userIdentifier, fullName: fullName, email: email)
+        }
+
+    }
+    func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
+        // Handle the error appropriately here
+           print("Sign in with Apple failed: \(error.localizedDescription)")
+           RSOToastView.shared.show("Sign in with Apple failed. Please try again.", duration: 2.0, position: .center)
+    }
+}
+
+
+

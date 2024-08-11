@@ -6,9 +6,10 @@
 //
 
 import Foundation
+//https://finance.ardemos.co.in/rso/api/meeting-rooms/1?start_time=10&end_time=12&date=2024-08-10
 
 enum DeskEndPoint {
-    case meetingRooms // Module - GET
+    case meetingRooms(id: Int?, requestModel: MeetingRoomItemRequestModel?) // Module - GET
     case marketPlaces // GET
 }
 
@@ -17,8 +18,12 @@ extension DeskEndPoint: EndPointType {
     
     var path: String {
         switch self {
-        case .meetingRooms:
-            return "meeting-rooms"
+        case .meetingRooms(let id ,_):
+            if let locationId = id {
+              return "meeting-rooms/\(locationId)"
+            } else {
+                return "meeting-rooms/1"
+            }
         case .marketPlaces:
             return "market-place"
         }
@@ -39,8 +44,8 @@ extension DeskEndPoint: EndPointType {
     
     var body: Encodable? {
         switch self {
-        case .meetingRooms:
-            return nil
+        case .meetingRooms(_, let requestModel):
+            return requestModel
         case .marketPlaces:
             return nil
         }

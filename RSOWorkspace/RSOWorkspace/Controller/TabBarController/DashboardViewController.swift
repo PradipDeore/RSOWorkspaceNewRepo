@@ -230,7 +230,7 @@ extension DashboardViewController: DashboardDeskTypeTableViewCellDelegate {
       switch type {
       case .meetingRooms:
         if let meetingRoomsCell = self.tableView.visibleCells.compactMap({ $0 as? DashboardMeetingRoomsTableViewCell }).first {
-          meetingRoomsCell.fetchRooms()
+            meetingRoomsCell.fetchRooms(id: nil, requestModel: nil)
         } else {
           print("DashboardMeetingRoomsTableViewCell not found")
         }

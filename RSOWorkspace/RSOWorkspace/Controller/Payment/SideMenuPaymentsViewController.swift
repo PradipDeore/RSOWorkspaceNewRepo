@@ -249,3 +249,4 @@ extension SideMenuPaymentsViewController:PayNowButtonTableViewCellDelegate{
     
     
 }
+

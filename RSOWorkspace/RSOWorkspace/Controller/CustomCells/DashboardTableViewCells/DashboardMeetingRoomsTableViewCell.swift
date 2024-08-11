@@ -16,33 +16,39 @@ class DashboardMeetingRoomsTableViewCell: UITableViewCell {
     }
     
     var eventHandler: ((EventHandler, _ listItems: [RSOCollectionItem]? ) -> Void)?
+    var requestModel = MeetingRoomItemRequestModel()
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
         collectionView.scrollDirection = .horizontal
         collectionView.isPagingEnabled = true
         collectionView.showsHorizontalScrollIndicator = false // Hide horizontal scroll indicator
-        fetchRooms()
+        fetchRooms(id: 1, requestModel: requestModel)
+
     }
     
-    func fetchRooms() {
+    func fetchRooms(id: Int?, requestModel: MeetingRoomItemRequestModel?) {
         DispatchQueue.main.async {
             RSOLoader.showLoader()
         }
         APIManager.shared.request(
             modelType: ResponseData.self,
-            type: DeskEndPoint.meetingRooms) { response in
+            type: DeskEndPoint.meetingRooms(id: id, requestModel: requestModel)) { response in
                 DispatchQueue.main.async {
                     RSOLoader.removeLoader()
-                }
-                switch response {
-                case .success(let response):
-                    let roomList = response.data
-                    let listItems: [RSOCollectionItem] = roomList.map { RSOCollectionItem(meetingRoomItem: $0) }
-                    self.collectionView.listItems = listItems
-                    self.collectionView.eventHandler?(.dataLoaded)
-                case .failure(let error):
-                    self.collectionView.eventHandler?(.error(error))
+                    
+                    switch response {
+                    case .success(let response):
+                        let roomList = response.data
+                        let listItems: [RSOCollectionItem] = roomList.map { RSOCollectionItem(meetingRoomItem: $0) }
+                        self.collectionView.listItems = listItems
+                        self.collectionView.reloadData()
+                        self.collectionView.eventHandler?(.dataLoaded)
+                    case .failure(let error):
+                        self.collectionView.eventHandler?(.error(error))
+                        RSOToastView.shared.show("\(error.localizedDescription)", duration: 2.0, position: .center)
+                    }
                 }
             }
     }
@@ -62,7 +68,8 @@ class DashboardMeetingRoomsTableViewCell: UITableViewCell {
                         let roomList = responseData.data
                         let listItems: [RSOCollectionItem] = roomList.map { RSOCollectionItem(meetingRoomList: $0) }
                         self.collectionView.listItems = listItems
-                        print("count of collection view list", self.collectionView.listItems.count)
+                        print("count of collection view list",
+                        self.collectionView.listItems.count)
                         self.collectionView.reloadData()
                         self.eventHandler?(.dataLoaded, listItems)
                     case .failure(let error):
@@ -98,7 +105,7 @@ class DashboardMeetingRoomsTableViewCell: UITableViewCell {
     func updateUI(for type: DashboardOption) {
             switch type {
             case .meetingRooms:
-                fetchRooms()
+                fetchRooms(id: 1, requestModel: requestModel)
             case .workspace:
                 fetchOfficeDesk(id: nil, requestModel: nil)
             case .membership:

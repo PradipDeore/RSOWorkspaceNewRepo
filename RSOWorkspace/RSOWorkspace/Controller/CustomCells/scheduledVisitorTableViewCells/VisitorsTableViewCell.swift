@@ -11,33 +11,30 @@ import Toast_Swift
 protocol VisitorsTableViewCellDelegate:AnyObject{
     func InviteMoreVisitors()
     func addVisitors(email:String,name:String,phone:String)
-    func saveVisitorDetails(email: String, name: String, phone: String, indexPath: IndexPath)
+    func saveVisitorDetails(email: String, name: String, phone: String)
+}
 
-    
-}
-protocol DisplayVisitorDetailsDelegate:AnyObject{
-    func displayVisitorsDetailsCell(for indexPath: IndexPath)
-}
 class VisitorsTableViewCell: UITableViewCell {
     
     weak var delegate : VisitorsTableViewCellDelegate?
-    weak var visitorDetailDelegate:DisplayVisitorDetailsDelegate?
     @IBOutlet weak var containerView: UIView!
     var cornerRadius: CGFloat = 10.0
-    
-    @IBOutlet weak var btnCancel: RSOButton!
     @IBOutlet weak var addButtonView: UIView!
     @IBOutlet weak var btnAdd: RSOButton!
     @IBOutlet weak var btnAddVisitors: RSOButton!
-    
-    @IBOutlet weak var editButtonView: UIView!
     @IBOutlet weak var lblInviteMoreVisitors: UILabel!
     @IBOutlet weak var txtEmail: UITextField!
     @IBOutlet weak var txtName: UITextField!
     @IBOutlet weak var txtPhone: UITextField!
-    
-    @IBOutlet weak var btnSaveUpdatedVisitor: RSOButton!
+    // Add this property
+        var isEditMode: Bool = false
     var indexPath: IndexPath?
+    
+
+    var email = ""
+    var phone = ""
+    var name = ""
+
     override func awakeFromNib() {
         super.awakeFromNib()
         customizeCell()
@@ -46,16 +43,10 @@ class VisitorsTableViewCell: UITableViewCell {
         txtPhone.isUserInteractionEnabled = true
         
         btnAdd.setCornerRadiusToButton()
-        btnSaveUpdatedVisitor.setCornerRadiusToButton()
-        btnCancel.setCornerRadiusToButton()
-        btnCancel.backgroundColor = ._768_D_70
         btnAddVisitors.setCornerRadiusToButton()
         btnAdd.backgroundColor = .E_6_F_0_D_9
         btnAdd.setTitleColor(.black, for: .normal)
         btnAdd.titleLabel?.font = RSOFont.poppins(size: 35, type: .Regular)
-        addButtonView.isHidden = false
-        editButtonView.isHidden = true
-        
     }
     
     func customizeCell(){
@@ -81,8 +72,13 @@ class VisitorsTableViewCell: UITableViewCell {
         let email = txtEmail.text ?? ""
         let name = txtName.text ?? ""
         let phone = txtPhone.text ?? ""
-        delegate?.addVisitors(email: email, name: name, phone: phone)
         
+        self.email = email
+        self.name = name
+        self.phone = phone
+        resetTextFields()
+        delegate?.addVisitors(email: email, name: name, phone: phone)
+            
     }
     func resetTextFields(){
         txtEmail.text = ""
@@ -90,18 +86,7 @@ class VisitorsTableViewCell: UITableViewCell {
         txtPhone.text = ""
     }
     
-    @IBAction func btnCancelAction(_ sender: Any) {
-        if let indexPath = indexPath {
-            visitorDetailDelegate?.displayVisitorsDetailsCell(for: indexPath)
-        }
-    }
-    
     @IBAction func btnSaveAction(_ sender: Any) {
-        guard let indexPath = indexPath else { return }
-               let email = txtEmail.text ?? ""
-               let name = txtName.text ?? ""
-               let phone = txtPhone.text ?? ""
-               delegate?.saveVisitorDetails(email: email, name: name, phone: phone, indexPath: indexPath)
-        
+       
     }
 }

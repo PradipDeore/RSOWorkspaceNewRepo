@@ -5,7 +5,7 @@
 //  Created by Sumit Aquil on 21/02/24.
 //
 
-//https://finance.ardemos.co.in/rso/api/meeting-rooms
+//https://finance.ardemos.co.in/rso/api/meeting-rooms/1?start_time=10&end_time=12&date=2024-08-10
 import Foundation
 
 // Model for individual room data

@@ -145,6 +145,10 @@ class LongTermOfficeBookingViewController: UIViewController {
             RSOToastView.shared.show("Please fill in your name", duration: 2.0, position: .center)
             return
         }
+        if !RSOValidator.isValidName(name){
+            RSOToastView.shared.show("Invalid Name", duration: 2.0, position: .center)
+            return
+        }
         
         guard let email = txtEmail.text, !email.isEmpty else {
             RSOToastView.shared.show("Please fill in your email", duration: 2.0, position: .center)

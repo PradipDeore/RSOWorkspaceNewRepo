@@ -606,8 +606,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "157"
             endingLineNumber = "157"
-            landmarkName = "CellType"
-            landmarkType = "13">
+            landmarkName = "btnRequestTappedAction()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -622,8 +622,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "158"
             endingLineNumber = "158"
-            landmarkName = "CellType"
-            landmarkType = "13">
+            landmarkName = "btnRequestTappedAction()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -638,8 +638,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "163"
             endingLineNumber = "163"
-            landmarkName = "ChooseAdditionalServicesViewController"
-            landmarkType = "21">
+            landmarkName = "btnRequestTappedAction()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -734,8 +734,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "160"
             endingLineNumber = "160"
-            landmarkName = "CellType"
-            landmarkType = "13">
+            landmarkName = "btnRequestTappedAction()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -2598,8 +2598,8 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "88"
             endingLineNumber = "88"
-            landmarkName = "ChooseAdditionalServicesViewController"
-            landmarkType = "3">
+            landmarkName = "tableView(_:viewForHeaderInSection:)"
+            landmarkType = "7">
             <Locations>
                <Location
                   uuid = "EDE93AE3-B642-4BFE-B3FA-2917CBC38F09 - ae4b34b927a64d77"
@@ -2983,6 +2983,21 @@
                   endingLineNumber = "277"
                   offsetFromSymbolStart = "148">
                </Location>
+               <Location
+                  uuid = "85344187-9215-40AD-A439-6721613ECCFA - f58a5a4d0ec59b4a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RSOWorkspace.BookingConfirmedViewController.navigateToBookingDetails() -&gt; ()"
+                  moduleName = "RSOWorkspace"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sumitaquil/Desktop/Projects_Aquil/RSOWorkspaceNewRepo/RSOWorkspace/RSOWorkspace/Controller/MeetingRoomsBooking/BookingConfirmedViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "277"
+                  endingLineNumber = "277"
+                  offsetFromSymbolStart = "188">
+               </Location>
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
@@ -3338,8 +3353,8 @@
             filePath = "RSOWorkspace/Controller/SignUpViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "161"
-            endingLineNumber = "161"
+            startingLineNumber = "205"
+            endingLineNumber = "205"
             landmarkName = "signUpAPI(email:password:phone:)"
             landmarkType = "7">
             <Locations>
@@ -3463,6 +3478,36 @@
                   endingLineNumber = "163"
                   offsetFromSymbolStart = "160">
                </Location>
+               <Location
+                  uuid = "303F593D-5CB8-49E1-93D0-C5D4C891262E - ffad3a255bf0f1eb"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RSOWorkspace.SignUpViewController.signUpAPI(email: Swift.String, password: Swift.String, phone: Swift.String) -&gt; ()"
+                  moduleName = "RSOWorkspace"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sumitaquil/Desktop/Projects_Aquil/RSOWorkspaceNewRepo/RSOWorkspace/RSOWorkspace/Controller/SignUpViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "205"
+                  endingLineNumber = "205"
+                  offsetFromSymbolStart = "300">
+               </Location>
+               <Location
+                  uuid = "303F593D-5CB8-49E1-93D0-C5D4C891262E - 93de78da85e132e1"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;RSOWorkspace.SignUpResponse, RSOWorkspace.DataError&gt;) -&gt; () in RSOWorkspace.SignUpViewController.signUpAPI(email: Swift.String, password: Swift.String, phone: Swift.String) -&gt; ()"
+                  moduleName = "RSOWorkspace"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sumitaquil/Desktop/Projects_Aquil/RSOWorkspaceNewRepo/RSOWorkspace/RSOWorkspace/Controller/SignUpViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "207"
+                  endingLineNumber = "207"
+                  offsetFromSymbolStart = "160">
+               </Location>
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
@@ -3492,8 +3537,8 @@
             filePath = "RSOWorkspace/Controller/SignUpViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "139"
-            endingLineNumber = "139"
+            startingLineNumber = "157"
+            endingLineNumber = "157"
             landmarkName = "addEventHandler()"
             landmarkType = "7">
             <Locations>
@@ -3542,6 +3587,36 @@
                   endingLineNumber = "139"
                   offsetFromSymbolStart = "580">
                </Location>
+               <Location
+                  uuid = "CA7FB463-EF12-45B5-8C47-C3E2831B386C - 33dd1d547ab5db60"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (RSOWorkspace.SignUpViewController.Event, Swift.String) -&gt; () in RSOWorkspace.SignUpViewController.addEventHandler() -&gt; ()"
+                  moduleName = "RSOWorkspace"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sumitaquil/Desktop/Projects_Aquil/RSOWorkspaceNewRepo/RSOWorkspace/RSOWorkspace/Controller/SignUpViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "139"
+                  endingLineNumber = "139"
+                  offsetFromSymbolStart = "640">
+               </Location>
+               <Location
+                  uuid = "CA7FB463-EF12-45B5-8C47-C3E2831B386C - 33dd1d547ab5d932"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (RSOWorkspace.SignUpViewController.Event, Swift.String) -&gt; () in RSOWorkspace.SignUpViewController.addEventHandler() -&gt; ()"
+                  moduleName = "RSOWorkspace"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sumitaquil/Desktop/Projects_Aquil/RSOWorkspaceNewRepo/RSOWorkspace/RSOWorkspace/Controller/SignUpViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "157"
+                  endingLineNumber = "157"
+                  offsetFromSymbolStart = "580">
+               </Location>
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
@@ -3555,10 +3630,10 @@
             filePath = "RSOWorkspace/Controller/SignUpViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "141"
-            endingLineNumber = "141"
-            landmarkName = "customizeUI()"
-            landmarkType = "7">
+            startingLineNumber = "200"
+            endingLineNumber = "200"
+            landmarkName = "SignUpViewController"
+            landmarkType = "3">
             <Locations>
                <Location
                   uuid = "1F665936-C6AC-4FDE-9CCA-06B63B20A062 - 348f8c3ae9f51879"
@@ -3650,113 +3725,20 @@
                   endingLineNumber = "142"
                   offsetFromSymbolStart = "92">
                </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "7822C42E-B308-44A7-82D5-4F99E832219A"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "RSOWorkspace/Controller/SignUpViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "144"
-            endingLineNumber = "144"
-            landmarkName = "customizeUI()"
-            landmarkType = "7">
-            <Locations>
                <Location
-                  uuid = "7822C42E-B308-44A7-82D5-4F99E832219A - 58fccec537e4db5e"
+                  uuid = "1F665936-C6AC-4FDE-9CCA-06B63B20A062 - ffad3a255bf0f14e"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Result&lt;RSOWorkspace.SignUpResponse, RSOWorkspace.DataError&gt;) -&gt; () in RSOWorkspace.SignUpViewController.signUpAPI(email: Swift.String, password: Swift.String, phone: Swift.String) -&gt; ()"
-                  moduleName = "RSOWorkspace"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/sumitaquil/Desktop/Projects_Aquil/RSOWorkspace/RSOWorkspace/Controller/SignUpViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "46"
-                  endingLineNumber = "46"
-                  offsetFromSymbolStart = "536">
-               </Location>
-               <Location
-                  uuid = "7822C42E-B308-44A7-82D5-4F99E832219A - 58fccec537e4db5e"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Result&lt;RSOWorkspace.SignUpResponse, RSOWorkspace.DataError&gt;) -&gt; () in RSOWorkspace.SignUpViewController.signUpAPI(email: Swift.String, password: Swift.String, phone: Swift.String) -&gt; ()"
-                  moduleName = "RSOWorkspace"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/sumitaquil/Desktop/Projects_Aquil/RSOWorkspace/RSOWorkspace/Controller/SignUpViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "46"
-                  endingLineNumber = "46"
-                  offsetFromSymbolStart = "632">
-               </Location>
-               <Location
-                  uuid = "7822C42E-B308-44A7-82D5-4F99E832219A - 82d85719fef870bf"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "RSOWorkspace.SignUpViewController.customizeUI() -&gt; ()"
+                  symbolName = "RSOWorkspace.SignUpViewController.signUpAPI(email: Swift.String, password: Swift.String, phone: Swift.String) -&gt; ()"
                   moduleName = "RSOWorkspace"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/sumitaquil/Desktop/Projects_Aquil/RSOWorkspaceNewRepo/RSOWorkspace/RSOWorkspace/Controller/SignUpViewController.swift"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "46"
-                  endingLineNumber = "46"
-                  offsetFromSymbolStart = "500">
-               </Location>
-               <Location
-                  uuid = "7822C42E-B308-44A7-82D5-4F99E832219A - 82d85719fef8750b"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "RSOWorkspace.SignUpViewController.customizeUI() -&gt; ()"
-                  moduleName = "RSOWorkspace"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/sumitaquil/Desktop/Projects_Aquil/RSOWorkspaceNewRepo/RSOWorkspace/RSOWorkspace/Controller/SignUpViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "90"
-                  endingLineNumber = "90"
-                  offsetFromSymbolStart = "500">
-               </Location>
-               <Location
-                  uuid = "7822C42E-B308-44A7-82D5-4F99E832219A - 82d85719fef8754d"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "RSOWorkspace.SignUpViewController.customizeUI() -&gt; ()"
-                  moduleName = "RSOWorkspace"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/sumitaquil/Desktop/Projects_Aquil/RSOWorkspaceNewRepo/RSOWorkspace/RSOWorkspace/Controller/SignUpViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "92"
-                  endingLineNumber = "92"
-                  offsetFromSymbolStart = "500">
-               </Location>
-               <Location
-                  uuid = "7822C42E-B308-44A7-82D5-4F99E832219A - 82d85719fef87c11"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "RSOWorkspace.SignUpViewController.customizeUI() -&gt; ()"
-                  moduleName = "RSOWorkspace"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/sumitaquil/Desktop/Projects_Aquil/RSOWorkspaceNewRepo/RSOWorkspace/RSOWorkspace/Controller/SignUpViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "144"
-                  endingLineNumber = "144"
-                  offsetFromSymbolStart = "500">
+                  startingLineNumber = "202"
+                  endingLineNumber = "202"
+                  offsetFromSymbolStart = "148">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -3828,129 +3810,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "2304643F-F338-447B-AB9E-D2EFB97899B4"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "RSOWorkspace/Controller/Schedule Visitors/MyVisitorsViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "153"
-            endingLineNumber = "153"
-            landmarkName = "tableView(_:cellForRowAt:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "2304643F-F338-447B-AB9E-D2EFB97899B4 - 1acab0f554947544"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "RSOWorkspace.MyVisitorsViewController.tableView(_: __C.UITableView, cellForRowAt: Foundation.IndexPath) -&gt; __C.UITableViewCell"
-                  moduleName = "RSOWorkspace"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/sumitaquil/Desktop/Projects_Aquil/RSOWorkspaceNewRepo/RSOWorkspace/RSOWorkspace/Controller/Schedule%20Visitors/MyVisitorsViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "136"
-                  endingLineNumber = "136"
-                  offsetFromSymbolStart = "2504">
-               </Location>
-               <Location
-                  uuid = "2304643F-F338-447B-AB9E-D2EFB97899B4 - 1acab0f554947544"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "RSOWorkspace.MyVisitorsViewController.tableView(_: __C.UITableView, cellForRowAt: Foundation.IndexPath) -&gt; __C.UITableViewCell"
-                  moduleName = "RSOWorkspace"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/sumitaquil/Desktop/Projects_Aquil/RSOWorkspaceNewRepo/RSOWorkspace/RSOWorkspace/Controller/Schedule%20Visitors/MyVisitorsViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "136"
-                  endingLineNumber = "136"
-                  offsetFromSymbolStart = "2448">
-               </Location>
-               <Location
-                  uuid = "2304643F-F338-447B-AB9E-D2EFB97899B4 - 1acab0f554946b55"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "RSOWorkspace.MyVisitorsViewController.tableView(_: __C.UITableView, cellForRowAt: Foundation.IndexPath) -&gt; __C.UITableViewCell"
-                  moduleName = "RSOWorkspace"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/sumitaquil/Desktop/Projects_Aquil/RSOWorkspaceNewRepo/RSOWorkspace/RSOWorkspace/Controller/Schedule%20Visitors/MyVisitorsViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "151"
-                  endingLineNumber = "151"
-                  offsetFromSymbolStart = "4516">
-               </Location>
-               <Location
-                  uuid = "2304643F-F338-447B-AB9E-D2EFB97899B4 - 1acab0f554946b55"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "RSOWorkspace.MyVisitorsViewController.tableView(_: __C.UITableView, cellForRowAt: Foundation.IndexPath) -&gt; __C.UITableViewCell"
-                  moduleName = "RSOWorkspace"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/sumitaquil/Desktop/Projects_Aquil/RSOWorkspaceNewRepo/RSOWorkspace/RSOWorkspace/Controller/Schedule%20Visitors/MyVisitorsViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "151"
-                  endingLineNumber = "151"
-                  offsetFromSymbolStart = "4368">
-               </Location>
-               <Location
-                  uuid = "2304643F-F338-447B-AB9E-D2EFB97899B4 - 1acab0f554946b55"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "RSOWorkspace.MyVisitorsViewController.tableView(_: __C.UITableView, cellForRowAt: Foundation.IndexPath) -&gt; __C.UITableViewCell"
-                  moduleName = "RSOWorkspace"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/sumitaquil/Desktop/Projects_Aquil/RSOWorkspaceNewRepo/RSOWorkspace/RSOWorkspace/Controller/Schedule%20Visitors/MyVisitorsViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "151"
-                  endingLineNumber = "151"
-                  offsetFromSymbolStart = "4488">
-               </Location>
-               <Location
-                  uuid = "2304643F-F338-447B-AB9E-D2EFB97899B4 - 1acab0f554946fd6"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "RSOWorkspace.MyVisitorsViewController.tableView(_: __C.UITableView, cellForRowAt: Foundation.IndexPath) -&gt; __C.UITableViewCell"
-                  moduleName = "RSOWorkspace"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/sumitaquil/Desktop/Projects_Aquil/RSOWorkspaceNewRepo/RSOWorkspace/RSOWorkspace/Controller/Schedule%20Visitors/MyVisitorsViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "186"
-                  endingLineNumber = "186"
-                  offsetFromSymbolStart = "4488">
-               </Location>
-               <Location
-                  uuid = "2304643F-F338-447B-AB9E-D2EFB97899B4 - 1acab0f554946b97"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "RSOWorkspace.MyVisitorsViewController.tableView(_: __C.UITableView, cellForRowAt: Foundation.IndexPath) -&gt; __C.UITableViewCell"
-                  moduleName = "RSOWorkspace"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/sumitaquil/Desktop/Projects_Aquil/RSOWorkspaceNewRepo/RSOWorkspace/RSOWorkspace/Controller/Schedule%20Visitors/MyVisitorsViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "153"
-                  endingLineNumber = "153"
-                  offsetFromSymbolStart = "4528">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "98DA6064-2441-4F29-8174-26E518C4D808"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
@@ -3958,26 +3817,57 @@
             filePath = "RSOWorkspace/Controller/CustomCells/MyVisitorTableViewCells/VisitorDetailsTableViewCell.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "73"
-            endingLineNumber = "73"
+            startingLineNumber = "99"
+            endingLineNumber = "99"
             landmarkName = "btnEditAction(_:)"
             landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "709CBE81-9607-4E43-A209-8B3774859B93"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "RSOWorkspace/Controller/CustomCells/MyVisitorTableViewCells/VisitorDetailsTableViewCell.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "74"
-            endingLineNumber = "74"
-            landmarkName = "btnEditAction(_:)"
-            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "98DA6064-2441-4F29-8174-26E518C4D808 - 9939bf6c2e10fa46"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RSOWorkspace.VisitorDetailsTableViewCell.btnEditAction(Any) -&gt; ()"
+                  moduleName = "RSOWorkspace"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sumitaquil/Desktop/Projects_Aquil/RSOWorkspaceNewRepo/RSOWorkspace/RSOWorkspace/Controller/CustomCells/MyVisitorTableViewCells/VisitorDetailsTableViewCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "94"
+                  endingLineNumber = "94"
+                  offsetFromSymbolStart = "180">
+               </Location>
+               <Location
+                  uuid = "98DA6064-2441-4F29-8174-26E518C4D808 - 9939bf6c2e10fa46"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RSOWorkspace.VisitorDetailsTableViewCell.btnEditAction(Any) -&gt; ()"
+                  moduleName = "RSOWorkspace"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sumitaquil/Desktop/Projects_Aquil/RSOWorkspaceNewRepo/RSOWorkspace/RSOWorkspace/Controller/CustomCells/MyVisitorTableViewCells/VisitorDetailsTableViewCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "94"
+                  endingLineNumber = "94"
+                  offsetFromSymbolStart = "52">
+               </Location>
+               <Location
+                  uuid = "98DA6064-2441-4F29-8174-26E518C4D808 - 9939bf6c2e10fabd"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RSOWorkspace.VisitorDetailsTableViewCell.btnEditAction(Any) -&gt; ()"
+                  moduleName = "RSOWorkspace"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sumitaquil/Desktop/Projects_Aquil/RSOWorkspaceNewRepo/RSOWorkspace/RSOWorkspace/Controller/CustomCells/MyVisitorTableViewCells/VisitorDetailsTableViewCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "99"
+                  endingLineNumber = "99"
+                  offsetFromSymbolStart = "60">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -3994,162 +3884,6 @@
             endingLineNumber = "11"
             landmarkName = "EditVisitorDetailsTableViewCellDelegate"
             landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "A049F0CB-7A5C-4FCB-9A9B-06BCE299F91F"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "RSOWorkspace/Controller/Schedule Visitors/MyVisitorsViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "189"
-            endingLineNumber = "189"
-            landmarkName = "showeditVisitorDetailsScreen(for:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "3A102FAD-B917-411E-85EE-9C664E62EDBB"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "RSOWorkspace/Controller/Schedule Visitors/MyVisitorsViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "190"
-            endingLineNumber = "190"
-            landmarkName = "showeditVisitorDetailsScreen(for:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "5A3FA620-FB5F-411D-8332-27130A56B65F"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "RSOWorkspace/Controller/Schedule Visitors/MyVisitorsViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "191"
-            endingLineNumber = "191"
-            landmarkName = "MyVisitorsViewController"
-            landmarkType = "21">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "ED0F5AE3-F77B-44C5-AC73-D7EB27C8FE5C"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "RSOWorkspace/Controller/CustomCells/MyVisitorTableViewCells/VisitorDetailsTableViewCell.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "21"
-            endingLineNumber = "21"
-            landmarkName = "VisitorDetailsTableViewCell"
-            landmarkType = "3">
-            <Locations>
-               <Location
-                  uuid = "ED0F5AE3-F77B-44C5-AC73-D7EB27C8FE5C - 25397570cfd70807"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "RSOWorkspace.VisitorDetailsTableViewCell.indexPath.getter : Swift.Optional&lt;Foundation.IndexPath&gt;"
-                  moduleName = "RSOWorkspace"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/sumitaquil/Desktop/Projects_Aquil/RSOWorkspaceNewRepo/RSOWorkspace/RSOWorkspace/Controller/CustomCells/MyVisitorTableViewCells/VisitorDetailsTableViewCell.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "21"
-                  endingLineNumber = "21"
-                  offsetFromSymbolStart = "0">
-               </Location>
-               <Location
-                  uuid = "ED0F5AE3-F77B-44C5-AC73-D7EB27C8FE5C - 1d8fdc338d6db109"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "RSOWorkspace.VisitorDetailsTableViewCell.indexPath.setter : Swift.Optional&lt;Foundation.IndexPath&gt;"
-                  moduleName = "RSOWorkspace"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/sumitaquil/Desktop/Projects_Aquil/RSOWorkspaceNewRepo/RSOWorkspace/%3Ccompiler-generated%3E"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "0"
-                  endingLineNumber = "0"
-                  offsetFromSymbolStart = "32">
-               </Location>
-               <Location
-                  uuid = "ED0F5AE3-F77B-44C5-AC73-D7EB27C8FE5C - 99ecfb2388483009"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "RSOWorkspace.VisitorDetailsTableViewCell.indexPath.modify : Swift.Optional&lt;Foundation.IndexPath&gt;"
-                  moduleName = "RSOWorkspace"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/sumitaquil/Desktop/Projects_Aquil/RSOWorkspaceNewRepo/RSOWorkspace/RSOWorkspace/Controller/CustomCells/MyVisitorTableViewCells/VisitorDetailsTableViewCell.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "21"
-                  endingLineNumber = "21"
-                  offsetFromSymbolStart = "0">
-               </Location>
-               <Location
-                  uuid = "ED0F5AE3-F77B-44C5-AC73-D7EB27C8FE5C - 42ca177aa78ca556"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "RSOWorkspace.VisitorDetailsTableViewCell.indexPath.modify : Swift.Optional&lt;Foundation.IndexPath&gt; with unmangled suffix &quot;.resume.0&quot;"
-                  moduleName = "RSOWorkspace"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/sumitaquil/Desktop/Projects_Aquil/RSOWorkspaceNewRepo/RSOWorkspace/%3Ccompiler-generated%3E"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "0"
-                  endingLineNumber = "0"
-                  offsetFromSymbolStart = "16">
-               </Location>
-               <Location
-                  uuid = "ED0F5AE3-F77B-44C5-AC73-D7EB27C8FE5C - bf17e2366657fce2"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "RSOWorkspace.VisitorDetailsTableViewCell.init(style: __C.UITableViewCellStyle, reuseIdentifier: Swift.Optional&lt;Swift.String&gt;) -&gt; RSOWorkspace.VisitorDetailsTableViewCell"
-                  moduleName = "RSOWorkspace"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/sumitaquil/Desktop/Projects_Aquil/RSOWorkspaceNewRepo/RSOWorkspace/RSOWorkspace/Controller/CustomCells/MyVisitorTableViewCells/VisitorDetailsTableViewCell.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "21"
-                  endingLineNumber = "21"
-                  offsetFromSymbolStart = "380">
-               </Location>
-               <Location
-                  uuid = "ED0F5AE3-F77B-44C5-AC73-D7EB27C8FE5C - 21a5a2a3800f3dcd"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "RSOWorkspace.VisitorDetailsTableViewCell.init(coder: __C.NSCoder) -&gt; Swift.Optional&lt;RSOWorkspace.VisitorDetailsTableViewCell&gt;"
-                  moduleName = "RSOWorkspace"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/sumitaquil/Desktop/Projects_Aquil/RSOWorkspaceNewRepo/RSOWorkspace/RSOWorkspace/Controller/CustomCells/MyVisitorTableViewCells/VisitorDetailsTableViewCell.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "21"
-                  endingLineNumber = "21"
-                  offsetFromSymbolStart = "356">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -4814,6 +4548,21 @@
                   startingLineNumber = "250"
                   endingLineNumber = "250"
                   offsetFromSymbolStart = "528">
+               </Location>
+               <Location
+                  uuid = "8EBB4226-25BA-4EE1-85C3-840A8047B3E6 - c4b4ae36e013646"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RSOWorkspace.ConfirmedDeskBookingViewController.btnConfirmAndProceedTappedAction() -&gt; ()"
+                  moduleName = "RSOWorkspace"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sumitaquil/Desktop/Projects_Aquil/RSOWorkspaceNewRepo/RSOWorkspace/RSOWorkspace/Controller/DeskBooking/ConfirmedDeskBookingViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "250"
+                  endingLineNumber = "250"
+                  offsetFromSymbolStart = "548">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -5493,6 +5242,21 @@
                   endingLineNumber = "36"
                   offsetFromSymbolStart = "188">
                </Location>
+               <Location
+                  uuid = "307CFD46-4249-41DE-9B5C-4B9ABC44421B - d8ec241fdf481f0"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;RSOWorkspace.MembershipResponse, RSOWorkspace.DataError&gt;) -&gt; () in RSOWorkspace.MembershipPaymentDetailsViewController.submitPlan() -&gt; ()"
+                  moduleName = "RSOWorkspace"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sumitaquil/Desktop/Projects_Aquil/RSOWorkspaceNewRepo/RSOWorkspace/RSOWorkspace/Controller/Membership/MembershipPaymentDetailsViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "36"
+                  endingLineNumber = "36"
+                  offsetFromSymbolStart = "244">
+               </Location>
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
@@ -5578,7 +5342,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "ABDCDC4C-B968-41A4-B06C-814DC7F36669"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RSOWorkspace/SideMenu-IOS-Swift/Controllers/SideMenuSubViewController.swift"
@@ -5634,6 +5398,21 @@
                   endingLineNumber = "63"
                   offsetFromSymbolStart = "192">
                </Location>
+               <Location
+                  uuid = "ABDCDC4C-B968-41A4-B06C-814DC7F36669 - 35197575eaae2a25"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RSOWorkspace.SideMenuSubViewController.refreshMenuList() -&gt; ()"
+                  moduleName = "RSOWorkspace"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sumitaquil/Desktop/Projects_Aquil/RSOWorkspaceNewRepo/RSOWorkspace/RSOWorkspace/SideMenu-IOS-Swift/Controllers/SideMenuSubViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "63"
+                  endingLineNumber = "63"
+                  offsetFromSymbolStart = "232">
+               </Location>
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
@@ -5641,7 +5420,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "5AAAC388-8A86-459B-ADC0-DFBB8AD6A7D4"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RSOWorkspace/SideMenu-IOS-Swift/Controllers/SideMenuMainViewController.swift"
@@ -5838,10 +5617,10 @@
             filePath = "RSOWorkspace/Controller/Profile/UpdateProfileViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "256"
-            endingLineNumber = "256"
-            landmarkName = "UpdateProfileViewController"
-            landmarkType = "3">
+            startingLineNumber = "264"
+            endingLineNumber = "264"
+            landmarkName = "btnUpdateAction(_:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -5854,8 +5633,8 @@
             filePath = "RSOWorkspace/Controller/Profile/UpdateProfileViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "258"
-            endingLineNumber = "258"
+            startingLineNumber = "266"
+            endingLineNumber = "266"
             landmarkName = "btnUpdateAction(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -5870,8 +5649,8 @@
             filePath = "RSOWorkspace/Controller/Profile/UpdateProfileViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "164"
-            endingLineNumber = "164"
+            startingLineNumber = "172"
+            endingLineNumber = "172"
             landmarkName = "updateProfileAPI(fname:lname:designationName:photo:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -5886,8 +5665,8 @@
             filePath = "RSOWorkspace/Controller/Profile/UpdateProfileViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "172"
-            endingLineNumber = "172"
+            startingLineNumber = "180"
+            endingLineNumber = "180"
             landmarkName = "updateProfileAPI(fname:lname:designationName:photo:)"
             landmarkType = "7">
             <Locations>
@@ -5981,6 +5760,66 @@
                   endingLineNumber = "172"
                   offsetFromSymbolStart = "908">
                </Location>
+               <Location
+                  uuid = "53BD7390-A488-49AF-AC05-372626429A38 - 28dc00659c202f01"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in RSOWorkspace.UpdateProfileViewController.updateProfileAPI(fname: Swift.String, lname: Swift.String, designationName: Swift.String, photo: Swift.Optional&lt;Foundation.Data&gt;) -&gt; ()"
+                  moduleName = "RSOWorkspace"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sumitaquil/Desktop/Projects_Aquil/RSOWorkspaceNewRepo/RSOWorkspace/RSOWorkspace/Controller/Profile/UpdateProfileViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "180"
+                  endingLineNumber = "180"
+                  offsetFromSymbolStart = "460">
+               </Location>
+               <Location
+                  uuid = "53BD7390-A488-49AF-AC05-372626429A38 - 28dc00659c202f01"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in RSOWorkspace.UpdateProfileViewController.updateProfileAPI(fname: Swift.String, lname: Swift.String, designationName: Swift.String, photo: Swift.Optional&lt;Foundation.Data&gt;) -&gt; ()"
+                  moduleName = "RSOWorkspace"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sumitaquil/Desktop/Projects_Aquil/RSOWorkspaceNewRepo/RSOWorkspace/RSOWorkspace/Controller/Profile/UpdateProfileViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "180"
+                  endingLineNumber = "180"
+                  offsetFromSymbolStart = "952">
+               </Location>
+               <Location
+                  uuid = "53BD7390-A488-49AF-AC05-372626429A38 - 28dc00659c202f01"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in RSOWorkspace.UpdateProfileViewController.updateProfileAPI(fname: Swift.String, lname: Swift.String, designationName: Swift.String, photo: Swift.Optional&lt;Foundation.Data&gt;) -&gt; ()"
+                  moduleName = "RSOWorkspace"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sumitaquil/Desktop/Projects_Aquil/RSOWorkspaceNewRepo/RSOWorkspace/RSOWorkspace/Controller/Profile/UpdateProfileViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "180"
+                  endingLineNumber = "180"
+                  offsetFromSymbolStart = "420">
+               </Location>
+               <Location
+                  uuid = "53BD7390-A488-49AF-AC05-372626429A38 - 28dc00659c202f01"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in RSOWorkspace.UpdateProfileViewController.updateProfileAPI(fname: Swift.String, lname: Swift.String, designationName: Swift.String, photo: Swift.Optional&lt;Foundation.Data&gt;) -&gt; ()"
+                  moduleName = "RSOWorkspace"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sumitaquil/Desktop/Projects_Aquil/RSOWorkspaceNewRepo/RSOWorkspace/RSOWorkspace/Controller/Profile/UpdateProfileViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "180"
+                  endingLineNumber = "180"
+                  offsetFromSymbolStart = "908">
+               </Location>
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
@@ -5994,8 +5833,8 @@
             filePath = "RSOWorkspace/Controller/Profile/UpdateProfileViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "180"
-            endingLineNumber = "180"
+            startingLineNumber = "188"
+            endingLineNumber = "188"
             landmarkName = "updateProfileAPI(fname:lname:designationName:photo:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -6010,8 +5849,8 @@
             filePath = "RSOWorkspace/Controller/Profile/UpdateProfileViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "163"
-            endingLineNumber = "163"
+            startingLineNumber = "171"
+            endingLineNumber = "171"
             landmarkName = "updateProfileAPI(fname:lname:designationName:photo:)"
             landmarkType = "7">
             <Locations>
@@ -6105,6 +5944,66 @@
                   endingLineNumber = "164"
                   offsetFromSymbolStart = "380">
                </Location>
+               <Location
+                  uuid = "60CE17ED-7BA5-48EB-BFAF-AC310CD28951 - c27970ca7e0cfd86"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RSOWorkspace.UpdateProfileViewController.updateProfileAPI(fname: Swift.String, lname: Swift.String, designationName: Swift.String, photo: Swift.Optional&lt;Foundation.Data&gt;) -&gt; ()"
+                  moduleName = "RSOWorkspace"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sumitaquil/Desktop/Projects_Aquil/RSOWorkspaceNewRepo/RSOWorkspace/RSOWorkspace/Controller/Profile/UpdateProfileViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "171"
+                  endingLineNumber = "171"
+                  offsetFromSymbolStart = "8264">
+               </Location>
+               <Location
+                  uuid = "60CE17ED-7BA5-48EB-BFAF-AC310CD28951 - 28dc00659c202c19"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in RSOWorkspace.UpdateProfileViewController.updateProfileAPI(fname: Swift.String, lname: Swift.String, designationName: Swift.String, photo: Swift.Optional&lt;Foundation.Data&gt;) -&gt; ()"
+                  moduleName = "RSOWorkspace"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sumitaquil/Desktop/Projects_Aquil/RSOWorkspaceNewRepo/RSOWorkspace/RSOWorkspace/Controller/Profile/UpdateProfileViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "172"
+                  endingLineNumber = "172"
+                  offsetFromSymbolStart = "420">
+               </Location>
+               <Location
+                  uuid = "60CE17ED-7BA5-48EB-BFAF-AC310CD28951 - c27970ca7e0cfd86"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RSOWorkspace.UpdateProfileViewController.updateProfileAPI(fname: Swift.String, lname: Swift.String, designationName: Swift.String, photo: Swift.Optional&lt;Foundation.Data&gt;) -&gt; ()"
+                  moduleName = "RSOWorkspace"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sumitaquil/Desktop/Projects_Aquil/RSOWorkspaceNewRepo/RSOWorkspace/RSOWorkspace/Controller/Profile/UpdateProfileViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "171"
+                  endingLineNumber = "171"
+                  offsetFromSymbolStart = "8104">
+               </Location>
+               <Location
+                  uuid = "60CE17ED-7BA5-48EB-BFAF-AC310CD28951 - 28dc00659c202c19"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 @Sendable (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in RSOWorkspace.UpdateProfileViewController.updateProfileAPI(fname: Swift.String, lname: Swift.String, designationName: Swift.String, photo: Swift.Optional&lt;Foundation.Data&gt;) -&gt; ()"
+                  moduleName = "RSOWorkspace"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sumitaquil/Desktop/Projects_Aquil/RSOWorkspaceNewRepo/RSOWorkspace/RSOWorkspace/Controller/Profile/UpdateProfileViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "172"
+                  endingLineNumber = "172"
+                  offsetFromSymbolStart = "380">
+               </Location>
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
@@ -6182,8 +6081,8 @@
             filePath = "RSOWorkspace/Controller/Payment/PaymentViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "208"
-            endingLineNumber = "208"
+            startingLineNumber = "211"
+            endingLineNumber = "211"
             landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
             <Locations>
@@ -6232,6 +6131,36 @@
                   endingLineNumber = "209"
                   offsetFromSymbolStart = "11304">
                </Location>
+               <Location
+                  uuid = "2F0F28EA-75BE-4EB8-A38B-DAF1BA8E8D5E - cb8fd63f7a2d0e1d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RSOWorkspace.PaymentViewController.tableView(_: __C.UITableView, cellForRowAt: Foundation.IndexPath) -&gt; __C.UITableViewCell"
+                  moduleName = "RSOWorkspace"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sumitaquil/Desktop/Projects_Aquil/RSOWorkspaceNewRepo/RSOWorkspace/RSOWorkspace/Controller/Payment/PaymentViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "209"
+                  endingLineNumber = "209"
+                  offsetFromSymbolStart = "11352">
+               </Location>
+               <Location
+                  uuid = "2F0F28EA-75BE-4EB8-A38B-DAF1BA8E8D5E - cb8fd63f7a2d0ef8"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RSOWorkspace.PaymentViewController.tableView(_: __C.UITableView, cellForRowAt: Foundation.IndexPath) -&gt; __C.UITableViewCell"
+                  moduleName = "RSOWorkspace"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sumitaquil/Desktop/Projects_Aquil/RSOWorkspaceNewRepo/RSOWorkspace/RSOWorkspace/Controller/Payment/PaymentViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "212"
+                  endingLineNumber = "212"
+                  offsetFromSymbolStart = "11304">
+               </Location>
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
@@ -6245,8 +6174,8 @@
             filePath = "RSOWorkspace/Controller/Payment/PaymentViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "218"
-            endingLineNumber = "218"
+            startingLineNumber = "221"
+            endingLineNumber = "221"
             landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -6319,7 +6248,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "8F95EC94-9E25-400B-95FF-058F377E9A44"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RSOWorkspace/SideMenu-IOS-Swift/Controllers/SideMenuSubViewController.swift"
@@ -6472,6 +6401,36 @@
                   endingLineNumber = "52"
                   offsetFromSymbolStart = "864">
                </Location>
+               <Location
+                  uuid = "FE94CDD2-09A8-43C6-9395-9A3A6984335E - 19d36dfa543fce47"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;RSOWorkspace.MyProfile, RSOWorkspace.DataError&gt;) -&gt; () in RSOWorkspace.SideMenuDashboardViewController.fetchMyProfiles() -&gt; ()"
+                  moduleName = "RSOWorkspace"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sumitaquil/Desktop/Projects_Aquil/RSOWorkspaceNewRepo/RSOWorkspace/RSOWorkspace/Controller/Dashboard/SideMenuDashboardViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "52"
+                  endingLineNumber = "52"
+                  offsetFromSymbolStart = "716">
+               </Location>
+               <Location
+                  uuid = "FE94CDD2-09A8-43C6-9395-9A3A6984335E - 19d36dfa543fce47"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;RSOWorkspace.MyProfile, RSOWorkspace.DataError&gt;) -&gt; () in RSOWorkspace.SideMenuDashboardViewController.fetchMyProfiles() -&gt; ()"
+                  moduleName = "RSOWorkspace"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sumitaquil/Desktop/Projects_Aquil/RSOWorkspaceNewRepo/RSOWorkspace/RSOWorkspace/Controller/Dashboard/SideMenuDashboardViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "52"
+                  endingLineNumber = "52"
+                  offsetFromSymbolStart = "904">
+               </Location>
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
@@ -6479,14 +6438,14 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "498AA1DF-DFE0-4748-8E02-7B6EC0D5BB7B"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RSOWorkspace/Controller/CustomCells/scheduledVisitorTableViewCells/VisitorsTableViewCell.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "87"
-            endingLineNumber = "87"
+            startingLineNumber = "83"
+            endingLineNumber = "83"
             landmarkName = "resetTextFields()"
             landmarkType = "7">
          </BreakpointContent>
@@ -6501,8 +6460,8 @@
             filePath = "RSOWorkspace/Controller/CustomCells/scheduledVisitorTableViewCells/VisitorsTableViewCell.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "88"
-            endingLineNumber = "88"
+            startingLineNumber = "84"
+            endingLineNumber = "84"
             landmarkName = "resetTextFields()"
             landmarkType = "7">
          </BreakpointContent>
@@ -6663,6 +6622,21 @@
                   startingLineNumber = "145"
                   endingLineNumber = "145"
                   offsetFromSymbolStart = "3000">
+               </Location>
+               <Location
+                  uuid = "D8AED2C9-4A50-4BC5-A87C-CB4B9CD9B7D4 - 89dadbc7ce4b53c4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RSOWorkspace.AmenitiesViewController.tableView(_: __C.UITableView, cellForRowAt: Foundation.IndexPath) -&gt; __C.UITableViewCell"
+                  moduleName = "RSOWorkspace"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sumitaquil/Desktop/Projects_Aquil/RSOWorkspaceNewRepo/RSOWorkspace/RSOWorkspace/Controller/Amenities/AmenitiesViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "145"
+                  endingLineNumber = "145"
+                  offsetFromSymbolStart = "3028">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -6839,6 +6813,1009 @@
             endingLineNumber = "355"
             landmarkName = "BookRoomDetailsViewController"
             landmarkType = "21">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "2AD33926-1BF1-44FD-9AA5-060FAB38DE0A"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RSOWorkspace/Controller/Payment/PaymentViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "271"
+            endingLineNumber = "271"
+            landmarkName = "tableView(_:cellForRowAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "9A2462C2-225B-40F7-9E0D-B3CD92A1823D"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RSOWorkspace/Controller/Payment/PaymentViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "275"
+            endingLineNumber = "275"
+            landmarkName = "tableView(_:cellForRowAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B9AC22A5-F61A-4B0B-9B93-635AC66210CB"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RSOWorkspace/Controller/CustomCells/SideMenuPaymentTableViewCells/PaymentMethodTableViewCell.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "35"
+            endingLineNumber = "35"
+            landmarkName = "awakeFromNib()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "B9AC22A5-F61A-4B0B-9B93-635AC66210CB - 5a1fb302701bf620"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RSOWorkspace.PaymentMethodTableViewCell.awakeFromNib() -&gt; ()"
+                  moduleName = "RSOWorkspace"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sumitaquil/Desktop/Projects_Aquil/RSOWorkspaceNewRepo/RSOWorkspace/RSOWorkspace/Controller/CustomCells/SideMenuPaymentTableViewCells/PaymentMethodTableViewCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "35"
+                  endingLineNumber = "35"
+                  offsetFromSymbolStart = "1484">
+               </Location>
+               <Location
+                  uuid = "B9AC22A5-F61A-4B0B-9B93-635AC66210CB - 5a1fb302701bf620"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RSOWorkspace.PaymentMethodTableViewCell.awakeFromNib() -&gt; ()"
+                  moduleName = "RSOWorkspace"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sumitaquil/Desktop/Projects_Aquil/RSOWorkspaceNewRepo/RSOWorkspace/RSOWorkspace/Controller/CustomCells/SideMenuPaymentTableViewCells/PaymentMethodTableViewCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "35"
+                  endingLineNumber = "35"
+                  offsetFromSymbolStart = "1568">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "9080815F-237A-4652-BB27-9E2A75C9E0F8"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RSOWorkspace/Controller/CustomCells/SideMenuPaymentTableViewCells/PaymentMethodTableViewCell.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "42"
+            endingLineNumber = "42"
+            landmarkName = "awakeFromNib()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A1AF6398-3BD4-4760-9A0F-99B7692A50FC"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RSOWorkspace/Controller/CustomCells/scheduledVisitorTableViewCells/VisitorsTableViewCell.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "71"
+            endingLineNumber = "71"
+            landmarkName = "btnAddTappedAction(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "A1AF6398-3BD4-4760-9A0F-99B7692A50FC - 46cece2cd31e2511"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RSOWorkspace.VisitorsTableViewCell.btnAddTappedAction(Any) -&gt; ()"
+                  moduleName = "RSOWorkspace"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sumitaquil/Desktop/Projects_Aquil/RSOWorkspaceNewRepo/RSOWorkspace/RSOWorkspace/Controller/CustomCells/scheduledVisitorTableViewCells/VisitorsTableViewCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "72"
+                  endingLineNumber = "72"
+                  offsetFromSymbolStart = "1908">
+               </Location>
+               <Location
+                  uuid = "A1AF6398-3BD4-4760-9A0F-99B7692A50FC - 46cece2cd31e2511"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RSOWorkspace.VisitorsTableViewCell.btnAddTappedAction(Any) -&gt; ()"
+                  moduleName = "RSOWorkspace"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sumitaquil/Desktop/Projects_Aquil/RSOWorkspaceNewRepo/RSOWorkspace/RSOWorkspace/Controller/CustomCells/scheduledVisitorTableViewCells/VisitorsTableViewCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "72"
+                  endingLineNumber = "72"
+                  offsetFromSymbolStart = "200">
+               </Location>
+               <Location
+                  uuid = "A1AF6398-3BD4-4760-9A0F-99B7692A50FC - 46cece2cd31e2511"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RSOWorkspace.VisitorsTableViewCell.btnAddTappedAction(Any) -&gt; ()"
+                  moduleName = "RSOWorkspace"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sumitaquil/Desktop/Projects_Aquil/RSOWorkspaceNewRepo/RSOWorkspace/RSOWorkspace/Controller/CustomCells/scheduledVisitorTableViewCells/VisitorsTableViewCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "72"
+                  endingLineNumber = "72"
+                  offsetFromSymbolStart = "112">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F225F1B9-D62E-4221-B108-4563860FD83C"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RSOWorkspace/Controller/Schedule Visitors/ScheduleVisitorsViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "411"
+            endingLineNumber = "411"
+            landmarkName = "saveVisitorDetails(email:name:phone:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "F225F1B9-D62E-4221-B108-4563860FD83C - 685648fa90e7a1aa"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RSOWorkspace.ScheduleVisitorsViewController.saveVisitorDetails(email: Swift.String, name: Swift.String, phone: Swift.String) -&gt; ()"
+                  moduleName = "RSOWorkspace"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sumitaquil/Desktop/Projects_Aquil/RSOWorkspaceNewRepo/RSOWorkspace/RSOWorkspace/Controller/Schedule%20Visitors/ScheduleVisitorsViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "410"
+                  endingLineNumber = "410"
+                  offsetFromSymbolStart = "232">
+               </Location>
+               <Location
+                  uuid = "F225F1B9-D62E-4221-B108-4563860FD83C - 685648fa90e7a18b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RSOWorkspace.ScheduleVisitorsViewController.saveVisitorDetails(email: Swift.String, name: Swift.String, phone: Swift.String) -&gt; ()"
+                  moduleName = "RSOWorkspace"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sumitaquil/Desktop/Projects_Aquil/RSOWorkspaceNewRepo/RSOWorkspace/RSOWorkspace/Controller/Schedule%20Visitors/ScheduleVisitorsViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "411"
+                  endingLineNumber = "411"
+                  offsetFromSymbolStart = "312">
+               </Location>
+               <Location
+                  uuid = "F225F1B9-D62E-4221-B108-4563860FD83C - 685648fa90e7a1cd"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RSOWorkspace.ScheduleVisitorsViewController.saveVisitorDetails(email: Swift.String, name: Swift.String, phone: Swift.String) -&gt; ()"
+                  moduleName = "RSOWorkspace"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sumitaquil/Desktop/Projects_Aquil/RSOWorkspaceNewRepo/RSOWorkspace/RSOWorkspace/Controller/Schedule%20Visitors/ScheduleVisitorsViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "413"
+                  endingLineNumber = "413"
+                  offsetFromSymbolStart = "196">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "ACC501D8-6F2E-44D6-ABD0-49B353CCBE27"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RSOWorkspace/Controller/Schedule Visitors/ScheduledVisitorDetatailsViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "246"
+            endingLineNumber = "246"
+            landmarkName = "tableView(_:cellForRowAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "10C12102-F3D4-411D-B1DD-3F235ED17078"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RSOWorkspace/Controller/Schedule Visitors/ScheduledVisitorDetatailsViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "288"
+            endingLineNumber = "288"
+            landmarkName = "navigateToMyvisitors()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6D163D4E-C340-415B-B51A-1FF5F2D111F3"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RSOWorkspace/Controller/Schedule Visitors/ScheduledVisitorDetatailsViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "292"
+            endingLineNumber = "292"
+            landmarkName = "navigateToMyvisitors()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "409E2990-8C91-49DE-A868-8ADC9A54DEF8"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RSOWorkspace/Controller/Schedule Visitors/ScheduleVisitorsViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "427"
+            endingLineNumber = "427"
+            landmarkName = "saveVisitorDetails(email:name:phone:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "409E2990-8C91-49DE-A868-8ADC9A54DEF8 - 685648fa90e7a7ba"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RSOWorkspace.ScheduleVisitorsViewController.saveVisitorDetails(email: Swift.String, name: Swift.String, phone: Swift.String) -&gt; ()"
+                  moduleName = "RSOWorkspace"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sumitaquil/Desktop/Projects_Aquil/RSOWorkspaceNewRepo/RSOWorkspace/RSOWorkspace/Controller/Schedule%20Visitors/ScheduleVisitorsViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "426"
+                  endingLineNumber = "426"
+                  offsetFromSymbolStart = "1532">
+               </Location>
+               <Location
+                  uuid = "409E2990-8C91-49DE-A868-8ADC9A54DEF8 - 685648fa90e7a79b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RSOWorkspace.ScheduleVisitorsViewController.saveVisitorDetails(email: Swift.String, name: Swift.String, phone: Swift.String) -&gt; ()"
+                  moduleName = "RSOWorkspace"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sumitaquil/Desktop/Projects_Aquil/RSOWorkspaceNewRepo/RSOWorkspace/RSOWorkspace/Controller/Schedule%20Visitors/ScheduleVisitorsViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "427"
+                  endingLineNumber = "427"
+                  offsetFromSymbolStart = "1612">
+               </Location>
+               <Location
+                  uuid = "409E2990-8C91-49DE-A868-8ADC9A54DEF8 - 685648fa90e7a7fc"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RSOWorkspace.ScheduleVisitorsViewController.saveVisitorDetails(email: Swift.String, name: Swift.String, phone: Swift.String) -&gt; ()"
+                  moduleName = "RSOWorkspace"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sumitaquil/Desktop/Projects_Aquil/RSOWorkspaceNewRepo/RSOWorkspace/RSOWorkspace/Controller/Schedule%20Visitors/ScheduleVisitorsViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "428"
+                  endingLineNumber = "428"
+                  offsetFromSymbolStart = "668">
+               </Location>
+               <Location
+                  uuid = "409E2990-8C91-49DE-A868-8ADC9A54DEF8 - 685648fa90e7a7fc"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RSOWorkspace.ScheduleVisitorsViewController.saveVisitorDetails(email: Swift.String, name: Swift.String, phone: Swift.String) -&gt; ()"
+                  moduleName = "RSOWorkspace"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sumitaquil/Desktop/Projects_Aquil/RSOWorkspaceNewRepo/RSOWorkspace/RSOWorkspace/Controller/Schedule%20Visitors/ScheduleVisitorsViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "428"
+                  endingLineNumber = "428"
+                  offsetFromSymbolStart = "1052">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "BF166D61-0E77-4165-AF02-AD8B41B7F16C"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RSOWorkspace/Controller/Schedule Visitors/ScheduleVisitorsViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "428"
+            endingLineNumber = "428"
+            landmarkName = "saveVisitorDetails(email:name:phone:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "BF166D61-0E77-4165-AF02-AD8B41B7F16C - 685648fa90e7a7fc"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RSOWorkspace.ScheduleVisitorsViewController.saveVisitorDetails(email: Swift.String, name: Swift.String, phone: Swift.String) -&gt; ()"
+                  moduleName = "RSOWorkspace"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sumitaquil/Desktop/Projects_Aquil/RSOWorkspaceNewRepo/RSOWorkspace/RSOWorkspace/Controller/Schedule%20Visitors/ScheduleVisitorsViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "428"
+                  endingLineNumber = "428"
+                  offsetFromSymbolStart = "1632">
+               </Location>
+               <Location
+                  uuid = "BF166D61-0E77-4165-AF02-AD8B41B7F16C - 685648fa90e7a7fc"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RSOWorkspace.ScheduleVisitorsViewController.saveVisitorDetails(email: Swift.String, name: Swift.String, phone: Swift.String) -&gt; ()"
+                  moduleName = "RSOWorkspace"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sumitaquil/Desktop/Projects_Aquil/RSOWorkspaceNewRepo/RSOWorkspace/RSOWorkspace/Controller/Schedule%20Visitors/ScheduleVisitorsViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "428"
+                  endingLineNumber = "428"
+                  offsetFromSymbolStart = "668">
+               </Location>
+               <Location
+                  uuid = "BF166D61-0E77-4165-AF02-AD8B41B7F16C - 685648fa90e7a7fc"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RSOWorkspace.ScheduleVisitorsViewController.saveVisitorDetails(email: Swift.String, name: Swift.String, phone: Swift.String) -&gt; ()"
+                  moduleName = "RSOWorkspace"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sumitaquil/Desktop/Projects_Aquil/RSOWorkspaceNewRepo/RSOWorkspace/RSOWorkspace/Controller/Schedule%20Visitors/ScheduleVisitorsViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "428"
+                  endingLineNumber = "428"
+                  offsetFromSymbolStart = "1052">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D3DB5E21-5C96-4968-A0E3-7FD6642AA6FF"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RSOWorkspace/Controller/Schedule Visitors/ScheduleVisitorsViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "432"
+            endingLineNumber = "432"
+            landmarkName = "saveVisitorDetails(email:name:phone:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "D3DB5E21-5C96-4968-A0E3-7FD6642AA6FF - 685648fa90e7a4a1"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RSOWorkspace.ScheduleVisitorsViewController.saveVisitorDetails(email: Swift.String, name: Swift.String, phone: Swift.String) -&gt; ()"
+                  moduleName = "RSOWorkspace"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sumitaquil/Desktop/Projects_Aquil/RSOWorkspaceNewRepo/RSOWorkspace/RSOWorkspace/Controller/Schedule%20Visitors/ScheduleVisitorsViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "433"
+                  endingLineNumber = "433"
+                  offsetFromSymbolStart = "1972">
+               </Location>
+               <Location
+                  uuid = "D3DB5E21-5C96-4968-A0E3-7FD6642AA6FF - 685648fa90e7a440"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RSOWorkspace.ScheduleVisitorsViewController.saveVisitorDetails(email: Swift.String, name: Swift.String, phone: Swift.String) -&gt; ()"
+                  moduleName = "RSOWorkspace"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sumitaquil/Desktop/Projects_Aquil/RSOWorkspaceNewRepo/RSOWorkspace/RSOWorkspace/Controller/Schedule%20Visitors/ScheduleVisitorsViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "432"
+                  endingLineNumber = "432"
+                  offsetFromSymbolStart = "1632">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "42CB8D12-C9BD-4EC8-9664-2EB43B040CC9"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RSOWorkspace/Controller/CustomCells/scheduledVisitorTableViewCells/VisitorsTableViewCell.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "89"
+            endingLineNumber = "89"
+            landmarkName = "btnSaveAction(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "42CB8D12-C9BD-4EC8-9664-2EB43B040CC9 - 657acab4ed925aa3"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RSOWorkspace.VisitorsTableViewCell.btnSaveAction(Any) -&gt; ()"
+                  moduleName = "RSOWorkspace"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sumitaquil/Desktop/Projects_Aquil/RSOWorkspaceNewRepo/RSOWorkspace/RSOWorkspace/Controller/CustomCells/scheduledVisitorTableViewCells/VisitorsTableViewCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "90"
+                  endingLineNumber = "90"
+                  offsetFromSymbolStart = "112">
+               </Location>
+               <Location
+                  uuid = "42CB8D12-C9BD-4EC8-9664-2EB43B040CC9 - 657acab4ed925a82"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RSOWorkspace.VisitorsTableViewCell.btnSaveAction(Any) -&gt; ()"
+                  moduleName = "RSOWorkspace"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sumitaquil/Desktop/Projects_Aquil/RSOWorkspaceNewRepo/RSOWorkspace/RSOWorkspace/Controller/CustomCells/scheduledVisitorTableViewCells/VisitorsTableViewCell.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "91"
+                  endingLineNumber = "91"
+                  offsetFromSymbolStart = "20">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8309BC1D-92B4-4D74-A736-4A578C88DF02"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RSOWorkspace/Controller/Schedule Visitors/ScheduleVisitorsViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "346"
+            endingLineNumber = "346"
+            landmarkName = "btnSaveTappedAction()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "8309BC1D-92B4-4D74-A736-4A578C88DF02 - 87ab3b0a65637235"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RSOWorkspace.ScheduleVisitorsViewController.btnSaveTappedAction() -&gt; ()"
+                  moduleName = "RSOWorkspace"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sumitaquil/Desktop/Projects_Aquil/RSOWorkspaceNewRepo/RSOWorkspace/RSOWorkspace/Controller/Schedule%20Visitors/ScheduleVisitorsViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "347"
+                  endingLineNumber = "347"
+                  offsetFromSymbolStart = "1788">
+               </Location>
+               <Location
+                  uuid = "8309BC1D-92B4-4D74-A736-4A578C88DF02 - 87ab3b0a656374a1"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RSOWorkspace.ScheduleVisitorsViewController.btnSaveTappedAction() -&gt; ()"
+                  moduleName = "RSOWorkspace"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sumitaquil/Desktop/Projects_Aquil/RSOWorkspaceNewRepo/RSOWorkspace/RSOWorkspace/Controller/Schedule%20Visitors/ScheduleVisitorsViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "367"
+                  endingLineNumber = "367"
+                  offsetFromSymbolStart = "2660">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "CA3B11B6-50B5-462C-9C7C-3838A74A1951"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RSOWorkspace/Controller/CustomCells/MyVisitorTableViewCells/VisitorDetailsTableViewCell.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "98"
+            endingLineNumber = "98"
+            landmarkName = "btnEditAction(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B2DE2F64-C14C-4039-B873-C9FF69467093"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RSOWorkspace/Controller/CustomCells/MyVisitorTableViewCells/VisitorDetailsTableViewCell.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "85"
+            endingLineNumber = "85"
+            landmarkName = "setData(item:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "26644B8F-B532-4CB9-8DC9-E4E3ACACA8EE"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RSOWorkspace/Controller/Schedule Visitors/MyVisitorsViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "167"
+            endingLineNumber = "167"
+            landmarkName = "showeditVisitorDetailsScreen(visitorManagementId:email:phone:name:reasonId:reasonForVisit:arrivaldate:starttime:endtime:vistordetail:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E2F0767C-55EC-4023-89A0-D2D7E54FBEA3"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RSOWorkspace/Controller/Schedule Visitors/ScheduleVisitorsViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "169"
+            endingLineNumber = "169"
+            landmarkName = "tableView(_:cellForRowAt:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "E2F0767C-55EC-4023-89A0-D2D7E54FBEA3 - 5da5993665a048bd"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RSOWorkspace.ScheduleVisitorsViewController.tableView(_: __C.UITableView, cellForRowAt: Foundation.IndexPath) -&gt; __C.UITableViewCell"
+                  moduleName = "RSOWorkspace"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sumitaquil/Desktop/Projects_Aquil/RSOWorkspaceNewRepo/RSOWorkspace/RSOWorkspace/Controller/Schedule%20Visitors/ScheduleVisitorsViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "166"
+                  endingLineNumber = "166"
+                  offsetFromSymbolStart = "3196">
+               </Location>
+               <Location
+                  uuid = "E2F0767C-55EC-4023-89A0-D2D7E54FBEA3 - 5da5993665a048bd"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RSOWorkspace.ScheduleVisitorsViewController.tableView(_: __C.UITableView, cellForRowAt: Foundation.IndexPath) -&gt; __C.UITableViewCell"
+                  moduleName = "RSOWorkspace"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sumitaquil/Desktop/Projects_Aquil/RSOWorkspaceNewRepo/RSOWorkspace/RSOWorkspace/Controller/Schedule%20Visitors/ScheduleVisitorsViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "166"
+                  endingLineNumber = "166"
+                  offsetFromSymbolStart = "3188">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B74AE7FE-1D8D-40AB-AD51-261AC38FD991"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RSOWorkspace/Controller/Schedule Visitors/ScheduleVisitorsViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "413"
+            endingLineNumber = "413"
+            landmarkName = "saveVisitorDetails(email:name:phone:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "B74AE7FE-1D8D-40AB-AD51-261AC38FD991 - 685648fa90e7a1cd"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RSOWorkspace.ScheduleVisitorsViewController.saveVisitorDetails(email: Swift.String, name: Swift.String, phone: Swift.String) -&gt; ()"
+                  moduleName = "RSOWorkspace"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sumitaquil/Desktop/Projects_Aquil/RSOWorkspaceNewRepo/RSOWorkspace/RSOWorkspace/Controller/Schedule%20Visitors/ScheduleVisitorsViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "413"
+                  endingLineNumber = "413"
+                  offsetFromSymbolStart = "336">
+               </Location>
+               <Location
+                  uuid = "B74AE7FE-1D8D-40AB-AD51-261AC38FD991 - 685648fa90e7a1cd"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RSOWorkspace.ScheduleVisitorsViewController.saveVisitorDetails(email: Swift.String, name: Swift.String, phone: Swift.String) -&gt; ()"
+                  moduleName = "RSOWorkspace"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sumitaquil/Desktop/Projects_Aquil/RSOWorkspaceNewRepo/RSOWorkspace/RSOWorkspace/Controller/Schedule%20Visitors/ScheduleVisitorsViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "413"
+                  endingLineNumber = "413"
+                  offsetFromSymbolStart = "196">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "8F0FEA47-8757-4A5E-9D97-CAF427A06579"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RSOWorkspace/Controller/Schedule Visitors/ScheduledVisitorDetatailsViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "227"
+            endingLineNumber = "227"
+            landmarkName = "tableView(_:cellForRowAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "22205FC3-17D0-417B-AB5D-C1004B38325E"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RSOWorkspace/Controller/Schedule Visitors/ScheduledVisitorDetatailsViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "47"
+            endingLineNumber = "47"
+            landmarkName = "viewWillAppear(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6474945F-35C3-4DC7-AE8D-5F4FACF84A27"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RSOWorkspace/Controller/Schedule Visitors/ScheduleVisitorsViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "327"
+            endingLineNumber = "327"
+            landmarkName = "btnSaveTappedAction()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "6474945F-35C3-4DC7-AE8D-5F4FACF84A27 - 87ab3b0a65637047"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RSOWorkspace.ScheduleVisitorsViewController.btnSaveTappedAction() -&gt; ()"
+                  moduleName = "RSOWorkspace"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sumitaquil/Desktop/Projects_Aquil/RSOWorkspaceNewRepo/RSOWorkspace/RSOWorkspace/Controller/Schedule%20Visitors/ScheduleVisitorsViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "329"
+                  endingLineNumber = "329"
+                  offsetFromSymbolStart = "376">
+               </Location>
+               <Location
+                  uuid = "6474945F-35C3-4DC7-AE8D-5F4FACF84A27 - 87ab3b0a65637189"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RSOWorkspace.ScheduleVisitorsViewController.btnSaveTappedAction() -&gt; ()"
+                  moduleName = "RSOWorkspace"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sumitaquil/Desktop/Projects_Aquil/RSOWorkspaceNewRepo/RSOWorkspace/RSOWorkspace/Controller/Schedule%20Visitors/ScheduleVisitorsViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "327"
+                  endingLineNumber = "327"
+                  offsetFromSymbolStart = "1664">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A90F397A-AF92-4706-9B37-5D78EAF32219"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RSOWorkspace/Controller/Schedule Visitors/ScheduleVisitorsViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "138"
+            endingLineNumber = "138"
+            landmarkName = "tableView(_:cellForRowAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "5A351BFC-EB24-473F-A749-430F1CB45881"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RSOWorkspace/Controller/Schedule Visitors/ScheduledVisitorDetatailsViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "190"
+            endingLineNumber = "190"
+            landmarkName = "tableView(_:cellForRowAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D8A7BABA-D707-4FCF-8465-6C81C89182FC"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RSOWorkspace/Controller/Schedule Visitors/ScheduleVisitorsViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "320"
+            endingLineNumber = "320"
+            landmarkName = "ScheduleVisitorsViewController"
+            landmarkType = "21">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "0A62F646-8264-473D-945E-B243D5EE3554"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RSOWorkspace/Controller/Schedule Visitors/ScheduleVisitorsViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "367"
+            endingLineNumber = "367"
+            landmarkName = "btnSaveTappedAction()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "FC104054-9D7B-4E46-9EA0-AEF5519A2912"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RSOWorkspace/Controller/Schedule Visitors/ScheduledVisitorDetatailsViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "160"
+            endingLineNumber = "160"
+            landmarkName = "ScheduledVisitorDetatailsViewController"
+            landmarkType = "21">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "AB22A0DC-65DF-4516-ABA6-1C6506153D71"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RSOWorkspace/Controller/Schedule Visitors/ScheduledVisitorDetatailsViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "166"
+            endingLineNumber = "166"
+            landmarkName = "tableView(_:numberOfRowsInSection:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "576DFD20-BBEB-419F-9CC0-0AC1CD89FBA3"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RSOWorkspace/Controller/Schedule Visitors/ScheduledVisitorDetatailsViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "174"
+            endingLineNumber = "174"
+            landmarkName = "tableView(_:heightForHeaderInSection:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "9B758AF0-1E33-4C3C-82A3-F8EE952DCBBF"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RSOWorkspace/Controller/Schedule Visitors/ScheduledVisitorDetatailsViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "194"
+            endingLineNumber = "194"
+            landmarkName = "tableView(_:cellForRowAt:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "1DA4DC3C-98CF-4054-A4D0-D496A5407C0F"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RSOWorkspace/Controller/Schedule Visitors/ScheduleVisitorsViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "332"
+            endingLineNumber = "332"
+            landmarkName = "btnSaveTappedAction()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "1DA4DC3C-98CF-4054-A4D0-D496A5407C0F - 87ab3b0a656370e0"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RSOWorkspace.ScheduleVisitorsViewController.btnSaveTappedAction() -&gt; ()"
+                  moduleName = "RSOWorkspace"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sumitaquil/Desktop/Projects_Aquil/RSOWorkspaceNewRepo/RSOWorkspace/RSOWorkspace/Controller/Schedule%20Visitors/ScheduleVisitorsViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "334"
+                  endingLineNumber = "334"
+                  offsetFromSymbolStart = "672">
+               </Location>
+               <Location
+                  uuid = "1DA4DC3C-98CF-4054-A4D0-D496A5407C0F - 87ab3b0a65637022"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RSOWorkspace.ScheduleVisitorsViewController.btnSaveTappedAction() -&gt; ()"
+                  moduleName = "RSOWorkspace"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sumitaquil/Desktop/Projects_Aquil/RSOWorkspaceNewRepo/RSOWorkspace/RSOWorkspace/Controller/Schedule%20Visitors/ScheduleVisitorsViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "332"
+                  endingLineNumber = "332"
+                  offsetFromSymbolStart = "1848">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "0D644E4A-8F1B-46AB-9398-BA98F03F900F"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RSOWorkspace/Controller/Schedule Visitors/ScheduleVisitorsViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "337"
+            endingLineNumber = "337"
+            landmarkName = "btnSaveTappedAction()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "0D644E4A-8F1B-46AB-9398-BA98F03F900F - 87ab3b0a6563737f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RSOWorkspace.ScheduleVisitorsViewController.btnSaveTappedAction() -&gt; ()"
+                  moduleName = "RSOWorkspace"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sumitaquil/Desktop/Projects_Aquil/RSOWorkspaceNewRepo/RSOWorkspace/RSOWorkspace/Controller/Schedule%20Visitors/ScheduleVisitorsViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "337"
+                  endingLineNumber = "337"
+                  offsetFromSymbolStart = "804">
+               </Location>
+               <Location
+                  uuid = "0D644E4A-8F1B-46AB-9398-BA98F03F900F - 87ab3b0a6563737f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RSOWorkspace.ScheduleVisitorsViewController.btnSaveTappedAction() -&gt; ()"
+                  moduleName = "RSOWorkspace"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sumitaquil/Desktop/Projects_Aquil/RSOWorkspaceNewRepo/RSOWorkspace/RSOWorkspace/Controller/Schedule%20Visitors/ScheduleVisitorsViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "337"
+                  endingLineNumber = "337"
+                  offsetFromSymbolStart = "2144">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
