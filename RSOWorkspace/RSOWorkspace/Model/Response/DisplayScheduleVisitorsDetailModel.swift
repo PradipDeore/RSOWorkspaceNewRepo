@@ -14,3 +14,11 @@ struct DisplayScheduleVisitorsDetailModel {
     var reasonForVisit: String = ""
     var visitors : [VisitorDetails] = []
 }
+
+struct DisplayScheduleVisitorsEditDetailModel {
+    var date: String = Date.formatSelectedDate(format: .EEEEddMMMMyyyy, date: nil)
+    var startTime: String = Date.formatSelectedDate(format: .hhmma, date: nil)
+    var endTime: String = Date.formatSelectedDate(format: .hhmma, date: nil)
+    var reasonForVisit: String = ""
+    var visitors : [MyVisitorDetail] = []
+}
