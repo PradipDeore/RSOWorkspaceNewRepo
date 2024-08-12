@@ -5,6 +5,9 @@
 //  Created by Sumit Aquil on 25/01/24.
 //
 
+//client Build with bundle identifier  =  aquil.com.RSOWorkspace, app name = RSO Workspace
+//internal tester build = >app name RSO WorkSpace Internal = aquil.com.RSOWorkspaceInternalTesting
+
 import UIKit
 import IQKeyboardManagerSwift
 import FBSDKCoreKit

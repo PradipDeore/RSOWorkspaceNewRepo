@@ -164,7 +164,7 @@ extension ScheduledVisitorDetatailsViewController: UITableViewDataSource, UITabl
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let cellType = cellIdentifiers[section]
         if cellType == .visitors {
-               if isEditMode { 
+               if isEditMode {
                    return displayEditedscheduleVisitorsDetails.visitors.count
                } else {
                    return displayscheduleVisitorsDetails.visitors.count

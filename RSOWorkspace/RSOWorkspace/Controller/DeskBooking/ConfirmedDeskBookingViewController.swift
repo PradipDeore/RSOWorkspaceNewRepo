@@ -21,7 +21,7 @@ class ConfirmedDeskBookingViewController: UIViewController{
     private let cellIdentifiersConfirmDesk: [CellTypeConfirmDesk] = [ .confirmedLocation, .confirmedSelectedDesks, .confirmedTime, .confirmedDate,  .confirmedTeamMembers,  .confirmAndProceedToPayment, .buttonEdit]
     
     private let cellHeights: [CGFloat] = [ 70, 85, 70, 70, 0, 40, 40]
-    
+   
     // var bookingConfirmDetails : ConfirmBookingRequestModel?
     var confirmdeskBookingResponse: ConfirmDeskBookingDetailsModel?
     var bookingConfirmDetails = ConfirmBookingRequestModel()
@@ -110,7 +110,7 @@ class ConfirmedDeskBookingViewController: UIViewController{
 }
 
 extension ConfirmedDeskBookingViewController: UITableViewDataSource, UITableViewDelegate {
-    
+  
     func numberOfSections(in tableView: UITableView) -> Int {
         return cellIdentifiersConfirmDesk.count
     }

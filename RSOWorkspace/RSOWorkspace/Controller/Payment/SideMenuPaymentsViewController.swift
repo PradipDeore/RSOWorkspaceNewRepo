@@ -18,7 +18,8 @@ class SideMenuPaymentsViewController: UIViewController {
     var selectedMonth: Int = Date.getCurrentMonth()
     var selectedYear: Int = Date.getCurrentYear()
     var selectedMonthName: String = ""
-    
+    var getCardDetailsResponseData: [GetCardDetails] = []
+
     var getAllBookingResponse : [GetAllBookings] = []
     var paymentServiceManager = PaymentNetworkManager.shared
     var totalPrice:Double = 0.0
@@ -179,6 +180,7 @@ extension SideMenuPaymentsViewController: UITableViewDataSource, UITableViewDele
             return cell
         case 2:
             let cell = tableView.dequeueReusableCell(withIdentifier: "PaymentMethodTableViewCell", for: indexPath)as! PaymentMethodTableViewCell
+            cell.cardDetails = getCardDetailsResponseData // Pass the fetched card details
             cell.selectionStyle = .none
             return cell
         case 3:

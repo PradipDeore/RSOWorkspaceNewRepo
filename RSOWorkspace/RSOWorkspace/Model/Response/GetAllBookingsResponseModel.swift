@@ -28,6 +28,17 @@ struct GetAllBookings: Codable {
     let roomPrice, additionalRequirements: String?
     let requirementDetails: String?
 
+    // Computed property to determine booking type
+        var bookingType: String {
+            if roomID != nil && configurationsID == nil {
+                return "meeting"
+            } else if configurationsID != nil {
+                return "office"
+            } else {
+                return "desk"
+            }
+        }
+
     enum CodingKeys: String, CodingKey {
         case id
         case memberID = "member_id"

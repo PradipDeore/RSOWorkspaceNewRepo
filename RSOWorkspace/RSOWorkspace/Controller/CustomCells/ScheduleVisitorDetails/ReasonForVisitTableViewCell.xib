@@ -48,7 +48,7 @@ UmVhc29uIEZvciAQVmlzaXQ
                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kih-p5-HGQ">
                         <rect key="frame" x="25" y="32" width="284" height="32"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Client Meetings" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Yyw-CD-epa">
+                            <textField opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Client Meetings" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Yyw-CD-epa" customClass="RSOTextField" customModule="RSOWorkspace" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="284" height="32"/>
                                 <color key="backgroundColor" name="EFEFEF"/>
                                 <color key="textColor" name="828282"/>
