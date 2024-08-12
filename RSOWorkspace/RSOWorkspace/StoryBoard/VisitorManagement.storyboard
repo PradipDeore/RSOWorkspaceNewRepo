@@ -69,10 +69,10 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ivo-1p-7Si">
-                                <rect key="frame" x="24.666666666666657" y="126" width="344" height="600"/>
+                                <rect key="frame" x="24.666666666666657" y="151" width="344" height="550"/>
                                 <subviews>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="EtG-KQ-VA0">
-                                        <rect key="frame" x="0.0" y="0.0" width="344" height="600"/>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" bouncesZoom="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="EtG-KQ-VA0">
+                                        <rect key="frame" x="0.0" y="0.0" width="344" height="550"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <connections>
                                             <outlet property="dataSource" destination="K2d-2j-GUH" id="Bse-Sv-Dac"/>
@@ -86,7 +86,7 @@
                                     <constraint firstAttribute="width" constant="344" id="Of1-Qi-SuJ"/>
                                     <constraint firstAttribute="bottom" secondItem="EtG-KQ-VA0" secondAttribute="bottom" id="Xck-Nn-l73"/>
                                     <constraint firstItem="EtG-KQ-VA0" firstAttribute="top" secondItem="Ivo-1p-7Si" secondAttribute="top" id="jVa-Sy-aEF"/>
-                                    <constraint firstAttribute="height" constant="600" id="mHI-Nm-kaC"/>
+                                    <constraint firstAttribute="height" constant="550" id="mHI-Nm-kaC"/>
                                     <constraint firstAttribute="trailing" secondItem="EtG-KQ-VA0" secondAttribute="trailing" id="xBk-zm-erR"/>
                                 </constraints>
                             </view>

@@ -12,7 +12,7 @@ struct DisplayScheduleVisitorsDetailModel {
     var startTime: String = Date.formatSelectedDate(format: .hhmma, date: nil)
     var endTime: String = Date.formatSelectedDate(format: .hhmma, date: nil)
     var reasonForVisit: String = ""
-    var visitors : [VisitorDetails] = []
+    var visitors : [MyVisitorDetail] = []
 }
 
 struct DisplayScheduleVisitorsEditDetailModel {

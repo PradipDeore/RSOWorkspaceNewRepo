@@ -12,7 +12,7 @@ struct ScheduleVisitorsRequest: Codable {
     var arrival_date: String = Date.formatSelectedDate(format: .yyyyMMdd, date: nil)
     var start_time: String =  Date.formatSelectedDate(format: .HHmm, date: nil)
     var end_time: String =  Date.formatSelectedDate(format: .HHmm, date: nil)
-    var vistor_details: [VisitorDetails]?
+    var vistor_details: [MyVisitorDetail]?
 }
 
 struct VisitorDetails: Codable {
