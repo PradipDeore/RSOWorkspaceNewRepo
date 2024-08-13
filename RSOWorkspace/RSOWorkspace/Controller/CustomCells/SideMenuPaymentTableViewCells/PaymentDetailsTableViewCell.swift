@@ -18,19 +18,20 @@ class PaymentDetailsTableViewCell: UITableViewCell {
         super.awakeFromNib()
     }
     func setData(item: GetAllBookings) {
-            lblBookingItemDate.text = item.date
             lblBookingItemName.text = item.name
             
-            // Check if the booking is for an office or a room
-            if let officePrice = item.price {
-                // Display office price
-                lblBookingItemPrice.text = officePrice
-            } else if let roomPrice = item.roomPrice {
-                // Display room price
-                lblBookingItemPrice.text = roomPrice
+            if item.bookingType == "office" {
+                lblBookingItemPrice.text = "\(item.totalPrice ?? "0.0")"
+                lblBookingItemDate.text = item.date
+
+            } else if item.bookingType == "desk" {
+                lblBookingItemPrice.text = "\(item.totalPrice ?? "0.0")"
+                lblBookingItemDate.text = item.date
+            } else if item.bookingType == "meeting" {
+                lblBookingItemPrice.text = "\(item.totalPrice ?? "0.0")"
+                lblBookingItemDate.text = item.date
             } else {
-                // Handle the case where price is not available
-                lblBookingItemPrice.text = "N/A"
+                lblBookingItemPrice.text = "Unknown Booking Type"
             }
         }
 }

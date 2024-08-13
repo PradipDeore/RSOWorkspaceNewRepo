@@ -8,12 +8,11 @@
 import Foundation
 
 struct FAQResponse: Codable {
-    let status: Bool
-    let data: [FaqData]
+    let status: Bool?
+    let data: [FaqData]?
 }
 
 struct FaqData: Codable {
-    let id: Int
-    let title: String
-    let description: String
+    let question: String?
+    let answer: String?
 }

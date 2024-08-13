@@ -57,5 +57,7 @@ class InviteVisitorsTableViewCell: UITableViewCell {
     @IBAction func btndeleTappedAction(_ sender: UIButton) {
         delegate?.btnDeleteVisitors(buttonTag: sender.tag)
     }
-    
+    func resetTextFields(){
+        
+    }
 }

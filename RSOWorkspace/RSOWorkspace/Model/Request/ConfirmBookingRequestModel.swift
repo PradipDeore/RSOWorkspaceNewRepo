@@ -24,6 +24,7 @@ struct ConfirmBookingRequestModel{
     var noOfSeats :Int = 0
     var totalHrs:Int = 0
     var officeBookingId: Int = 0
+    var amenityTotalHours:[Int : Int] = [:]
     
   //computed property
   var floatPrice : Float {
@@ -52,18 +53,22 @@ struct ConfirmBookingRequestModel{
       }
   }
 
-  
-  var totalOfAmenity: Float {
-    var totalAmenityPrice: Float = 0.0
-    let timeDifference = self.timeDifferece
-    
-    for amenity in amenityArray {
-      let amenityPrice = Float(amenity.price ?? "0.0") ?? 0.0
-      totalAmenityPrice += (amenityPrice * timeDifference)
+  // calculation of amenity with price * amenity hours
+    var totalOfAmenity: Float {
+        var totalAmenityPrice: Float = 0.0
+        // Check if the amenity has selected hours in the amenityTotalHours dictionary
+
+        for amenity in amenityArray {
+            let amenityPrice = Float(amenity.price ?? "0.0") ?? 0.0
+            if let selectedHours = amenityTotalHours[amenity.id] {
+                totalAmenityPrice += (amenityPrice * Float(selectedHours))
+            }
+        }
+        
+        return totalAmenityPrice
     }
-    return totalAmenityPrice
-  }
-  
+    
+    
   var totalOfMeetingRoom: Float {
     let price = self.floatPrice
     let timeDifference = self.timeDifferece
@@ -74,6 +79,8 @@ struct ConfirmBookingRequestModel{
     let total2 = self.totalOfAmenity
     return total1 + total2
   }
+    
+    
   var calculatedVat : Float{
     return self.subTotal * 0.05
   }
@@ -81,6 +88,8 @@ struct ConfirmBookingRequestModel{
   var finalTotal : Float{
     return self.subTotal + self.calculatedVat
   }
+    
+    //desk calcualtions
   var deskSubTotal: Float {
     var subTotal: Float = 0.0
     for desk in deskList {
@@ -102,6 +111,8 @@ struct ConfirmBookingRequestModel{
     return total
   }
     
+    
+    // office calculations
     //computed property
     var floatPriceOffice : Float {
       let price =  Float(self.roomprice) ?? 0.0

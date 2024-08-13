@@ -7,8 +7,13 @@
 
 import UIKit
 
+protocol ChooseAmenitiesTableViewCellDelegate: AnyObject {
+    func didUpdateHours(for amenityId: Int, hours: Int)
+}
+
 class ChooseAmenitiesTableViewCell: UITableViewCell  {
     
+    weak var delegate: ChooseAmenitiesTableViewCellDelegate?
     @IBOutlet weak var btnsubstract: UIButton!
     @IBOutlet weak var btnAdd: UIButton!
     @IBOutlet weak var lblHours: UILabel!
@@ -19,7 +24,7 @@ class ChooseAmenitiesTableViewCell: UITableViewCell  {
     
     @IBOutlet weak var lblAminityName: UILabel!
     var amenityId: Int = 0
-    var amenityQty: Int = 0
+
     override func awakeFromNib() {
         super.awakeFromNib()
       
@@ -38,13 +43,14 @@ class ChooseAmenitiesTableViewCell: UITableViewCell  {
     @IBAction func btnAddTappedAction(_ sender: Any) {
         count += 1
         updateCountLabel()
-        
+        delegate?.didUpdateHours(for: amenityId, hours: count)
     }
    
     @IBAction func btnSubstractTappedAction(_ sender: Any) {
         if count > 0{
             count -= 1
             updateCountLabel()
+            delegate?.didUpdateHours(for: amenityId, hours: count)
         }
        
     }

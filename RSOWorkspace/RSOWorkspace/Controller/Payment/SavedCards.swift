@@ -17,22 +17,23 @@ class CardListManager {
     
     
     func getCardDetails() {
-        APIManager.shared.request(
-            modelType: GetCardDetailsResponseModel.self,
-            type: PaymentMethodEndPoint.getCardDetail) { response in
-                switch response {
-                case .success(let response):
-                    self.cards = response.data?.filter { cardDetail in
-                        guard let number = cardDetail.number, !number.isEmpty else {
-                            return false
+            APIManager.shared.request(
+                modelType: GetCardDetailsResponseModel.self,
+                type: PaymentMethodEndPoint.getCardDetail) { response in
+                    switch response {
+                    case .success(let response):
+                        DispatchQueue.main.async {
+                            self.cards = response.data?.filter { cardDetail in
+                                guard let number = cardDetail.number, !number.isEmpty else {
+                                    return false
+                                }
+                                return true
+                            } ?? []
                         }
-                        return true
-                    } ?? []
-                case .failure(let error):
-                    print("getCardDetails error")
+                    case .failure(let error):
+                        print("getCardDetails error")
+                    }
                 }
-            }
-    }
-   
+        }
    
 }

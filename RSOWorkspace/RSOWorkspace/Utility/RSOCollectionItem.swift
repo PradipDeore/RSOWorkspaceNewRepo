@@ -74,7 +74,8 @@ struct RSOCollectionItem: Codable {
         self.roomPrice = deskLisitngItem.price
         self.locationName = nil
         self.roomAmenitiesDesk = deskLisitngItem.amenityDetails
-        self.type = deskLisitngItem.type
+        //self.type = deskLisitngItem.type
+        self.type = "desk"
         self.roomAmenityDetails = nil
         self.officeAmenityDesk = []
         self.isItemSelected = false

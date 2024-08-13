@@ -16,7 +16,8 @@ class BookRoomDetailsViewController: UIViewController {
     
     var guestEmailDelegate:sendGuestEmailDelegate?
     var teamMemberNameDelegate:sendteamMemberNameDelegate?
-    
+    // Store the selected hours for each amenity
+       var selectedAmenityHours: [Int: Int] = [:]
     @IBOutlet weak var tableView: UITableView!
     var eventHandler: ((_ event: Event) -> Void)?
     var selectedBookingDetails = BookMeetingRoomRequestModel()
@@ -280,9 +281,13 @@ extension BookRoomDetailsViewController: UITableViewDataSource, UITableViewDeleg
             let cell = tableView.dequeueReusableCell(withIdentifier: "ChooseAmenitiesTableViewCell", for: indexPath) as! ChooseAmenitiesTableViewCell
             cell.selectionStyle = .none
 
-            let aminity = self.confirmBookingDetails.amenityArray[indexPath.row]
-            cell.lblAminityName.text = aminity.name
-            cell.lblPrice.text = "AED " + (aminity.price ?? "0.0")
+            let amenity = self.confirmBookingDetails.amenityArray[indexPath.row]
+            cell.lblAminityName.text = amenity.name
+            cell.lblPrice.text = "AED " + (amenity.price ?? "0.0")
+            
+            cell.amenityId = amenity.id
+            cell.delegate = self
+            cell.count = selectedAmenityHours[amenity.id] ?? 0
             return cell
             
         case 13:
@@ -350,6 +355,13 @@ extension BookRoomDetailsViewController:InviteTeamMembersTableViewCellDelegate{
     func btnDeleteTeamMember(buttonTag: Int) {
         teamMembersArray.remove(at:buttonTag)
         tableView.reloadData()
+    }
+}
+extension BookRoomDetailsViewController:ChooseAmenitiesTableViewCellDelegate{
+    func didUpdateHours(for amenityId: Int, hours: Int) {
+        // Save the hours for the particular amenity
+      selectedAmenityHours[amenityId] = hours
+        self.confirmBookingDetails.amenityTotalHours = selectedAmenityHours
     }
 }
 extension BookRoomDetailsViewController:sendteamMemberNameDelegate{

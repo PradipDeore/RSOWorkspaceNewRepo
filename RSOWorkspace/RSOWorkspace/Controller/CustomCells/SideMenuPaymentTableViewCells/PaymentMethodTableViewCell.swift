@@ -21,27 +21,32 @@ class PaymentMethodTableViewCell: UITableViewCell, UIPickerViewDataSource, UIPic
     var pickerView: UIPickerView!
     
     override func awakeFromNib() {
-        super.awakeFromNib()
-        paymentMethodBGView.setCornerRadiusForView()
-        txtCardNumber.placeholderText = "************1881"
-        txtCardNumber.setUpTextFieldView(rightImageName: "arrowdown")
-        txtCardNumber.borderStyle = .none
-        txtCardNumber.text = nil
-        cardType.text = nil
-        
-        setupPickerView()
-        self.cardDetails = CardListManager.shared.cards
-        selectedCard = cardDetails.first
-        if let selectedCard = selectedCard {
-            txtCardNumber.text = selectedCard.number
-            cardType.text = selectedCard.cardType?.capitalized
+            super.awakeFromNib()
+            
+            DispatchQueue.main.async {
+                
+                self.paymentMethodBGView.setCornerRadiusForView()
+                self.txtCardNumber.placeholderText = "******1881"
+                self.txtCardNumber.setUpTextFieldView(rightImageName: "arrowdown")
+                self.txtCardNumber.borderStyle = .none
+                self.txtCardNumber.text = nil
+                self.cardType.text = nil
+                
+                self.setupPickerView()
+                self.cardDetails = CardListManager.shared.cards
+                self.pickerView.reloadAllComponents()
+                self.selectedCard =  self.cardDetails.first
+                if let selectedCard =  self.selectedCard {
+                    self.txtCardNumber.text = selectedCard.number
+                    self.cardType.text = selectedCard.cardType?.capitalized
+                }
+                self.txtCardNumber.isUserInteractionEnabled = !self.cardDetails.isEmpty
+                
+                if self.cardDetails.isEmpty {
+                    CardListManager.shared.getCardDetails()
+                }
+            }
         }
-        txtCardNumber.isUserInteractionEnabled = !self.cardDetails.isEmpty
-        
-        if self.cardDetails.isEmpty {
-            CardListManager.shared.getCardDetails()
-        }
-    }
     
     func setupPickerView() {
         pickerView = UIPickerView()
@@ -71,6 +76,7 @@ class PaymentMethodTableViewCell: UITableViewCell, UIPickerViewDataSource, UIPic
         }
         txtCardNumber.resignFirstResponder()
     }
+
     
     // MARK: - UIPickerViewDataSource Methods
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -90,6 +96,7 @@ class PaymentMethodTableViewCell: UITableViewCell, UIPickerViewDataSource, UIPic
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        selectedCard = cardDetails[row]
+           // Safely access the selected card
+           selectedCard = cardDetails[row]
     }
 }

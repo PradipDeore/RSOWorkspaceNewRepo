@@ -18,7 +18,8 @@ class SideMenuPaymentsViewController: UIViewController {
     var selectedMonth: Int = Date.getCurrentMonth()
     var selectedYear: Int = Date.getCurrentYear()
     var selectedMonthName: String = ""
-    
+    var getCardDetailsResponseData: [GetCardDetails] = []
+
     var getAllBookingResponse : [GetAllBookings] = []
     var paymentServiceManager = PaymentNetworkManager.shared
     var totalPrice:Double = 0.0

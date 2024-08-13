@@ -47,14 +47,12 @@ class ScheduledVisitorDetatailsViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if isEditMode {
-            // Ensure the edited details model is correctly set up
             if displayEditedscheduleVisitorsDetails != nil {
-                tableView.reloadData()  // Reload data to reflect the edited details
+                tableView.reloadData()
             }
         } else {
-            // Ensure the normal details model is correctly set up
             if displayscheduleVisitorsDetails != nil {
-                tableView.reloadData()  // Reload data to reflect the schedule details
+                tableView.reloadData()
             }
         }
     }
@@ -165,9 +163,13 @@ extension ScheduledVisitorDetatailsViewController: UITableViewDataSource, UITabl
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let cellType = cellIdentifiers[section]
-        if cellType == .visitors{
-            return displayscheduleVisitorsDetails.visitors.count
-        }
+        if cellType == .visitors {
+               if isEditMode {
+                   return displayEditedscheduleVisitorsDetails.visitors.count
+               } else {
+                   return displayscheduleVisitorsDetails.visitors.count
+               }
+           }
         return 1
     }
     
@@ -199,6 +201,7 @@ extension ScheduledVisitorDetatailsViewController: UITableViewDataSource, UITabl
             return cell
         case .time:
             let cell = tableView.dequeueReusableCell(withIdentifier: cellType.rawValue, for: indexPath) as! VisitorsTimeTableViewCell
+            cell.selectionStyle = .none
             let timeRange = isEditMode ?
             "\(displayEditedscheduleVisitorsDetails?.startTime ?? "") - \(displayEditedscheduleVisitorsDetails?.endTime ?? "")" :
             "\(displayscheduleVisitorsDetails?.startTime ?? "") - \(displayscheduleVisitorsDetails?.endTime ?? "")"
@@ -223,16 +226,15 @@ extension ScheduledVisitorDetatailsViewController: UITableViewDataSource, UITabl
             return cell
         case .visitors:
             let cell = tableView.dequeueReusableCell(withIdentifier: cellType.rawValue, for: indexPath) as! VisitorsListableViewCell
-            
-            if isEditMode {
-                if let visitor = displayEditedscheduleVisitorsDetails?.visitors[indexPath.row] {
-                    cell.lblEmail.text = visitor.visitor_email
+            let visitorEmail: String?
+                
+                if isEditMode {
+                    visitorEmail = displayEditedscheduleVisitorsDetails?.visitors[indexPath.row].visitor_email
+                } else {
+                    visitorEmail = displayscheduleVisitorsDetails?.visitors[indexPath.row].visitor_email
                 }
-            } else {
-                if let visitor = displayscheduleVisitorsDetails?.visitors[indexPath.row] {
-                    cell.lblEmail.text = visitor.visitorEmail
-                }
-            }
+                
+                cell.lblEmail.text = visitorEmail
             cell.selectionStyle = .none
             
             return cell
@@ -246,11 +248,6 @@ extension ScheduledVisitorDetatailsViewController: UITableViewDataSource, UITabl
         case .confirmAndProceed:
             let cell = tableView.dequeueReusableCell(withIdentifier: cellType.rawValue, for: indexPath) as! ConfirmAndProceedTableViewCell
             cell.delegate = self
-            cell.selectionStyle = .none
-            
-            return cell
-        default:
-            let cell = tableView.dequeueReusableCell(withIdentifier: cellType.rawValue, for: indexPath)
             cell.selectionStyle = .none
             return cell
         }

@@ -34,7 +34,7 @@ class UpdateProfileViewController: UIViewController, UIImagePickerControllerDele
         customizeCell()
         imgProfile.setRounded()
         setCameraButton()
-       
+        
     }
     func setCameraButton(){
         btnEditPhoto.setCornerRadiusToButton()
@@ -76,45 +76,13 @@ class UpdateProfileViewController: UIViewController, UIImagePickerControllerDele
         txtFirstName.placeholderFont = RSOFont.inter(size: 16, type: .Medium)
         
         txtLastname.placeholderFont = RSOFont.inter(size: 16, type: .Medium)
-      
+        
         txtDesignation.placeholderFont = RSOFont.inter(size: 16, type: .Medium)
-       
+        
         
     }
     
-    //    func updateProfileAPI(fname: String?, lname: String?, designation: String?, photo: Data?) {
-    //           RSOLoader.showLoader()
-    //           let photoBase64 = photo?.base64EncodedString() // Convert image data to base64 string
-    //           let requestModel = UpdateProfileRequestModel(first_name: fname, last_name: lname, designation: designation, photo: photoBase64)
-    //           print("requestModel", requestModel)
-    //           APIManager.shared.request(
-    //               modelType: UpdateProfileResponse.self,
-    //               type: MyProfileEndPoint.updateProfile(requestModel: requestModel)) { response in
-    //
-    //                   switch response {
-    //                   case .success(let response):
-    //                       self.updateProfileResponseData = response
-    //                       UserHelper.shared.saveUserFirstName(firstName: fname)
-    //                       UserHelper.shared.saveUserLastName(lastName: lname)
-    //                       UserHelper.shared.saveUserDesignation(designation: designation)
-    //                       DispatchQueue.main.async {
-    //                           RSOLoader.removeLoader()
-    //                           self.dismissDelegate?.subviewDismmised()
-    //                           RSOToastView.shared.show("\(response.message)", duration: 2.0, position: .center)
-    //                       }
-    //                       DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-    //                           self.dismiss(animated: true, completion: nil)
-    //                       }
-    //                       self.eventHandler?(.dataLoaded)
-    //                   case .failure(let error):
-    //                       self.eventHandler?(.error(error))
-    //                       DispatchQueue.main.async {
-    //                           RSOLoader.removeLoader()
-    //                           RSOToastView.shared.show("\(error.localizedDescription)", duration: 2.0, position: .center)
-    //                       }
-    //                   }
-    //               }
-    //       }
+    
     
     func updateProfileAPI(fname: String, lname: String, designationName: String, photo: Data?) {
         // URL of the API endpoint
@@ -263,11 +231,36 @@ class UpdateProfileViewController: UIViewController, UIImagePickerControllerDele
     }
     
     @IBAction func btnUpdateAction(_ sender: Any) {
-        let fname = txtFirstName.text ?? ""
-        let lname = txtLastname.text ?? ""
-        let designation = txtDesignation.text ?? ""
-        updateProfileAPI(fname: fname, lname: lname, designationName: designation, photo: selectedImageData)
+        // Validate first name
+        guard let fname = txtFirstName.text?.trimmingCharacters(in: .whitespacesAndNewlines), !fname.isEmpty else {
+            RSOToastView.shared.show("First name cannot be empty", duration: 2.0, position: .center)
+            return
+        }
+        guard RSOValidator.isValidName(fname) else {
+            RSOToastView.shared.show("First name cannot contain numbers or special characters", duration: 2.0, position: .center)
+            return
+        }
+        // Validate last name
+        guard let lname = txtLastname.text?.trimmingCharacters(in: .whitespacesAndNewlines), !lname.isEmpty else {
+            RSOToastView.shared.show("Last name cannot be empty", duration: 2.0, position: .center)
+            return
+        }
+        guard RSOValidator.isValidName(lname) else {
+            RSOToastView.shared.show("Last name cannot contain numbers or special characters", duration: 2.0, position: .center)
+            return
+        }
         
+        // Validate designation
+        guard let designation = txtDesignation.text?.trimmingCharacters(in: .whitespacesAndNewlines), !designation.isEmpty else {
+            RSOToastView.shared.show("Designation cannot be empty", duration: 2.0, position: .center)
+            return
+        }
+        guard RSOValidator.isValidName(designation) else {
+            RSOToastView.shared.show("Designation cannot contain numbers or special characters", duration: 2.0, position: .center)
+            return
+        }
+        // Proceed to update profile if all validations pass
+        updateProfileAPI(fname: fname, lname: lname, designationName: designation, photo: selectedImageData)
     }
 }
 extension UpdateProfileViewController {

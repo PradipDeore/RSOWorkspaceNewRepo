@@ -14,7 +14,7 @@ class FAQViewController: UIViewController {
     var eventHandler: ((_ event: Event) -> Void)?
     var myFAQResponse: FAQResponse? {
         didSet {
-            isExpandedArray = Array(repeating: false, count: myFAQResponse?.data.count ?? 0)
+            isExpandedArray = Array(repeating: false, count: myFAQResponse?.data?.count ?? 0)
         }
     }
     
@@ -23,6 +23,7 @@ class FAQViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
+
     }
     @IBAction func btnBackAction(_ sender: Any) {
         self.navigationController?.popViewController(animated: true)
@@ -93,11 +94,11 @@ extension FAQViewController: UITableViewDataSource, UITableViewDelegate {
         }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return myFAQResponse?.data.count ?? 0
+        return myFAQResponse?.data?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let item = myFAQResponse?.data[indexPath.row] else { return UITableViewCell() }
+        guard let item = myFAQResponse?.data?[indexPath.row] else { return UITableViewCell() }
         
         if isExpandedArray[indexPath.row] {
             let cell = tableView.dequeueReusableCell(withIdentifier: "FAQDescriptionTableViewCell", for: indexPath) as! FAQDescriptionTableViewCell

@@ -10,10 +10,12 @@ import UIKit
 class ReasonForVisitTableViewCell: UITableViewCell {
 
     @IBOutlet weak var containerView: UIView!
-    @IBOutlet weak var txtReasonForVisit: UITextField!
+    @IBOutlet weak var txtReasonForVisit: RSOTextField!
     override func awakeFromNib() {
         super.awakeFromNib()
         containerView.setCornerRadiusForView()
+        txtReasonForVisit.borderStyle = .none
+        txtReasonForVisit.customBorderWidth = 0.0
     }
 
     

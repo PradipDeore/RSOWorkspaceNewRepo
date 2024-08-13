@@ -85,24 +85,24 @@ class PaymentViewController: UIViewController {
         }
     }
     
-//    private func applyCouponAPI(code: Int, amount:Int) {
-//        let requestModel = couponRequestModel(code: code, amount: amount)
-//        APIManager.shared.request(
-//            modelType: CouponDetailsResponseModel.self,
-//            type: PaymentRoomBookingEndPoint.applyCoupon(requestModel: requestModel)) { response in
-//                switch response {
-//                case .success(let response):
-//                    self.couponData = response
-//                    DispatchQueue.main.async {
-//                        self.tableView.reloadData()
-//                    }
-//                    self.eventHandler?(.dataLoaded)
-//                case .failure(let error):
-//                    self.eventHandler?(.error(error))
-//                }
-//            }
-//    }
-
+    //    private func applyCouponAPI(code: Int, amount:Int) {
+    //        let requestModel = couponRequestModel(code: code, amount: amount)
+    //        APIManager.shared.request(
+    //            modelType: CouponDetailsResponseModel.self,
+    //            type: PaymentRoomBookingEndPoint.applyCoupon(requestModel: requestModel)) { response in
+    //                switch response {
+    //                case .success(let response):
+    //                    self.couponData = response
+    //                    DispatchQueue.main.async {
+    //                        self.tableView.reloadData()
+    //                    }
+    //                    self.eventHandler?(.dataLoaded)
+    //                case .failure(let error):
+    //                    self.eventHandler?(.error(error))
+    //                }
+    //            }
+    //    }
+    
 }
 
 extension PaymentViewController: UITableViewDataSource, UITableViewDelegate {
@@ -116,7 +116,7 @@ extension PaymentViewController: UITableViewDataSource, UITableViewDelegate {
         switch cellType {
         case .amenityPrice:
             return self.requestParameters?.amenityArray.count ?? 0
-        
+            
         case .meetingRoomPrice:
             if bookingType == .desk {
                 return self.requestParameters?.deskList.count ?? 0
@@ -215,10 +215,15 @@ extension PaymentViewController: UITableViewDataSource, UITableViewDelegate {
                 cell.lblAmenityName.text = amenity.name
                 let amenityPriceInt = amenity.price?.integerValue ?? 0
                 cell.lblAmenityPrice.text = "\(amenityPriceInt)"
-                cell.lblHours.text = "\(Int(self.requestParameters?.timeDifferece ?? 0))"
-                let amenityPrice = Float(amenity.price ?? "0.0") ?? 0.0
-                let totalAmenityPrice = (amenityPrice * (self.requestParameters?.timeDifferece ?? 0))
-                cell.lblTotal.text = "\(totalAmenityPrice)"
+                // Retrieve the selected hours for this amenity from amenityTotalHours
+                let selectedHours = self.requestParameters?.amenityTotalHours[amenity.id] ?? 0
+                cell.lblHours.text = "\(selectedHours)"
+                
+                // Calculate total price for the amenity
+                        let amenityPrice = Float(amenity.price ?? "0.0") ?? 0.0
+                        let totalAmenityPrice = amenityPrice * Float(selectedHours)
+                        cell.lblTotal.text = "\(totalAmenityPrice)"
+                
             }
             return cell
             
@@ -249,30 +254,30 @@ extension PaymentViewController: UITableViewDataSource, UITableViewDelegate {
             }
             return cell
             
-//        case .discount:
-//            let cell = tableView.dequeueReusableCell(withIdentifier: cellType.rawValue, for: indexPath) as! DiscountCodeTableViewCell
-//            if !couponData.isEmpty {
-//                let coupon = couponData[indexPath.row]
-//                cell.setData(item: coupon)
-//                cell.applyCouponAction = {
-//                    self.applyCouponAPI(code: coupon., amount: <#T##Int#>)
-//                }
-//            } else {
-//                cell.applyCouponAction = {
-//                    guard let couponCode = cell.txtDiscount.text, !couponCode.isEmpty else {
-//                        // Handle empty text field
-//                        return
-//                    }
-//                    self.applyCouponAPI(couponCode: couponCode)
-//                }
-//            }
-//            return cell
+            //        case .discount:
+            //            let cell = tableView.dequeueReusableCell(withIdentifier: cellType.rawValue, for: indexPath) as! DiscountCodeTableViewCell
+            //            if !couponData.isEmpty {
+            //                let coupon = couponData[indexPath.row]
+            //                cell.setData(item: coupon)
+            //                cell.applyCouponAction = {
+            //                    self.applyCouponAPI(code: coupon., amount: <#T##Int#>)
+            //                }
+            //            } else {
+            //                cell.applyCouponAction = {
+            //                    guard let couponCode = cell.txtDiscount.text, !couponCode.isEmpty else {
+            //                        // Handle empty text field
+            //                        return
+            //                    }
+            //                    self.applyCouponAPI(couponCode: couponCode)
+            //                }
+            //            }
+            //            return cell
             
         case .paymentMethods:
             let cell = tableView.dequeueReusableCell(withIdentifier: cellType.rawValue, for: indexPath) as! PaymentMethodTableViewCell
             cell.selectionStyle = .none
             cell.cardDetails = getCardDetailsResponseData // Pass the fetched card details
-
+            
             return cell
             
         case .buttonPayNow:
@@ -314,14 +319,14 @@ extension PaymentViewController {
 
 extension PaymentViewController: ButtonPayNowTableViewCellDelegate {
     func btnPayNowTappedAction() {
-      
-      if bookingType != .meetingRoom {
-         if UserHelper.shared.isUserExplorer() {
-          CurrentLoginType.shared.loginScreenDelegate = self
-          LogInViewController.showLoginViewController()
-          return
+        
+        if bookingType != .meetingRoom {
+            if UserHelper.shared.isUserExplorer() {
+                CurrentLoginType.shared.loginScreenDelegate = self
+                LogInViewController.showLoginViewController()
+                return
+            }
         }
-      }
         guard let obj = self.requestParameters else { return }
         
         switch bookingType {
@@ -338,9 +343,9 @@ extension PaymentViewController: ButtonPayNowTableViewCellDelegate {
                 paymentServiceManager.totalPrice = totalPriceDesk
                 paymentServiceManager.vatAmount = vatAmountDesk
                 if UserHelper.shared.isGuest() {
-                  paymentServiceManager.makePayment(requestModel: requestModel)
+                    paymentServiceManager.makePayment(requestModel: requestModel)
                 } else {
-                  paymentServiceManager.paymentDeskBookingAPI(bookingid: bookingId, totalprice: totalPriceDesk, vatamount: vatAmountDesk)
+                    paymentServiceManager.paymentDeskBookingAPI(bookingid: bookingId, totalprice: totalPriceDesk, vatamount: vatAmountDesk)
                 }
             }
         case .meetingRoom:
@@ -361,19 +366,19 @@ extension PaymentViewController: ButtonPayNowTableViewCellDelegate {
             requestModel.total = Int(totalPriceOffice)
             requestModel.email = UserHelper.shared.getUserEmail()
             if UserHelper.shared.isGuest() {
-              paymentServiceManager.makePayment(requestModel: requestModel)
+                paymentServiceManager.makePayment(requestModel: requestModel)
             } else {
-              paymentServiceManager.paymentOfficeBookingAPI(id: bookingId, totalprice: totalPriceOffice, vatamount:  vatAmountOffice)
+                paymentServiceManager.paymentOfficeBookingAPI(id: bookingId, totalprice: totalPriceOffice, vatamount:  vatAmountOffice)
             }
         }
     }
 }
 extension PaymentViewController: LoginScreenActionDelegate {
-  func loginScreenDismissed() {
-    DispatchQueue.main.async {
-      self.btnPayNowTappedAction()
+    func loginScreenDismissed() {
+        DispatchQueue.main.async {
+            self.btnPayNowTappedAction()
+        }
     }
-  }
 }
 
 
