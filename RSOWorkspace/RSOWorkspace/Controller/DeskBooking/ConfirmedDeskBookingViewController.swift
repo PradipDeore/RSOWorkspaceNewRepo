@@ -160,7 +160,7 @@ extension ConfirmedDeskBookingViewController: UITableViewDataSource, UITableView
             cell.btnViewFloorPlan.isHidden = true
             cell.deskList = deskList
             cell.collectionView.reloadData()
-            cell.collectionView.isUserInteractionEnabled = false
+            cell.shouldSelectable = false
             cell.selectionStyle = .none
             return cell
             

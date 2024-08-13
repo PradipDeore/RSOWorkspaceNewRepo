@@ -33,6 +33,8 @@ class LocationViewController: UIViewController,RSOTabCoordinated {
     var selectedLocation = ""
     var locationId = 0
     var expandedIndexPath: IndexPath?
+    var requestModel = MeetingRoomItemRequestModel()
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -226,7 +228,7 @@ extension LocationViewController: DashboardDeskTypeTableViewCellDelegate {
         switch type {
         case .meetingRooms:
             if let meetingRoomsCell = self.tableView.visibleCells.compactMap({ $0 as? DashboardMeetingRoomsTableViewCell }).first {
-                meetingRoomsCell.fetchRooms(id: nil, requestModel: nil)
+                meetingRoomsCell.fetchRooms(id: 1, requestModel: self.requestModel)
             } else {
                 print("DashboardMeetingRoomsTableViewCell not found")
             }

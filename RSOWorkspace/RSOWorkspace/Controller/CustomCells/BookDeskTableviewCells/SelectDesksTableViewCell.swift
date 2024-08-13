@@ -16,7 +16,8 @@ class SelectDesksTableViewCell: UITableViewCell , UICollectionViewDataSource, UI
     weak var delegate: SelectedDeskTableViewCellDelegate?
     @IBOutlet weak var collectionView: UICollectionView!
     var deskList:[RSOCollectionItem] = []
-    
+    var shouldSelectable = true
+
     @IBOutlet weak var btnViewFloorPlan: UIButton!
     
     override func awakeFromNib() {
@@ -54,13 +55,13 @@ class SelectDesksTableViewCell: UITableViewCell , UICollectionViewDataSource, UI
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-        deskList[indexPath.row].isItemSelected?.toggle()
-        self.collectionView.reloadData()
-        let selectedDeskListing = deskList.filter({ $0.isItemSelected ?? false })
-        let selectedIDs = selectedDeskListing.map( { $0.id })
-        delegate?.getselectedDeskNo(selectedDeskNo: selectedIDs, selectedDeskList: selectedDeskListing)
-    }
+           guard shouldSelectable else { return }
+           deskList[indexPath.row].isItemSelected?.toggle()
+           self.collectionView.reloadData()
+           let selectedDeskListing = deskList.filter({ $0.isItemSelected ?? false })
+           let selectedIDs = selectedDeskListing.map( { $0.id })
+           delegate?.getselectedDeskNo(selectedDeskNo: selectedIDs, selectedDeskList: selectedDeskListing)
+       }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width:CGFloat = 95

@@ -8,7 +8,7 @@
 import Foundation
 
 struct ScheduleVisitorsRequest: Codable {
-    var reason_of_visit: String?
+    var reason_of_visit: Int?
     var arrival_date: String = Date.formatSelectedDate(format: .yyyyMMdd, date: nil)
     var start_time: String =  Date.formatSelectedDate(format: .HHmm, date: nil)
     var end_time: String =  Date.formatSelectedDate(format: .HHmm, date: nil)

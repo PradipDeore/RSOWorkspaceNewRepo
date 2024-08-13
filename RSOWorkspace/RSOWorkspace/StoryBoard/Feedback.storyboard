@@ -13,11 +13,13 @@
         <array key="Inter-Medium.ttf">
             <string>Inter-Medium</string>
         </array>
+        <array key="Inter-Regular.ttf">
+            <string>Inter-Regular</string>
+        </array>
         <array key="Inter-SemiBold.ttf">
             <string>Inter-SemiBold</string>
         </array>
         <array key="Inter-VariableFont_slnt,wght.ttf">
-            <string>Inter-Regular</string>
             <string>Inter-Regular_Medium</string>
         </array>
         <array key="Poppins-Bold.ttf">
@@ -217,7 +219,7 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="RtM-Ae-nvs">
                                 <rect key="frame" x="0.0" y="59" width="393" height="793"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" name="F2F2F2"/>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="2uo-UW-Kyl"/>

@@ -21,6 +21,8 @@ class DashboardViewController: UIViewController, RSOTabCoordinated {
   var myBookingResponseData: MyBookingResponse?
   var eventHandler: ((_ event: Event) -> Void)?
   var pagetitle = RSOGreetings.greetingForCurrentTime()
+    var requestModel = MeetingRoomItemRequestModel()
+
   override func viewDidLoad() {
     super.viewDidLoad()
     setupTableView()
@@ -225,12 +227,13 @@ extension DashboardViewController: DashboardDeskTypeTableViewCellDelegate {
   func buttonTapped(type: DashboardOption) {
     DispatchQueue.main.async {
       self.selectedButtonType = type
-        self.tableView.reloadSections(IndexSet(integer: 3), with: .automatic)
+        self.tableView.reloadSections(IndexSet(integer: 2), with: .automatic)
 
       switch type {
       case .meetingRooms:
         if let meetingRoomsCell = self.tableView.visibleCells.compactMap({ $0 as? DashboardMeetingRoomsTableViewCell }).first {
-            meetingRoomsCell.fetchRooms(id: nil, requestModel: nil)
+            meetingRoomsCell.fetchRooms(id: 1, requestModel: self.requestModel)
+
         } else {
           print("DashboardMeetingRoomsTableViewCell not found")
         }

@@ -38,6 +38,8 @@ class AmenitiesViewController: UIViewController,RSOTabCoordinated{
   var apiRequestModelRoomListing = BookMeetingRoomRequestModel()
   var displayBookingDetailsNextScreen = DisplayBookingDetailsModel()
   var roomList : [MeetingRoomListing] = []
+    var requestModel = MeetingRoomItemRequestModel()
+
 
   var selectedMeetingRoomId = 0
   var selectedLocation = ""
@@ -214,7 +216,7 @@ extension AmenitiesViewController: DashboardDeskTypeTableViewCellDelegate {
             switch type {
             case .meetingRooms:
                 // Fetch rooms only for meetingRooms
-                meetingRoomsCell.fetchRooms(id: nil, requestModel: nil)
+                meetingRoomsCell.fetchRooms(id: 1, requestModel: self.requestModel)
                 
                 // Reload the section to update the UI
                 self.tableView.reloadSections(IndexSet(integer: sectionIndex), with: .automatic)

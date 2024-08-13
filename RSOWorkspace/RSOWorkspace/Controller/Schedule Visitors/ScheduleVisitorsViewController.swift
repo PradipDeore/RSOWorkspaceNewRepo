@@ -74,7 +74,8 @@ class ScheduleVisitorsViewController: UIViewController{
             
             displayscheduleVisitorsDetailsNextScreen.reasonForVisit = reasonForVisit
             displayscheduleVisitorsEditDetailsNextScreen.reasonForVisit = reasonForVisit
-            apiRequestScheduleVisitorsRequest.reason_of_visit = reasonForVisit
+            //apiRequestScheduleVisitorsRequest.reason_of_visit = reasonForVisit
+            apiRequestScheduleVisitorsRequest.reason_of_visit = reasonId
             
             //displayscheduleVisitorsDetailsNextScreen.visitors = myvisitordetailsArray
             displayscheduleVisitorsEditDetailsNextScreen.visitors = myvisitordetailsArray
@@ -174,7 +175,7 @@ extension ScheduleVisitorsViewController: UITableViewDataSource, UITableViewDele
         case .reasonForVisit:
             let cell =  tableView.dequeueReusableCell(withIdentifier: CellIdentifierScheduleVisitors.reasonForVisit.rawValue, for: indexPath) as! ReasonForVisitTableViewCells
             
-           // cell.resetTextFields()
+            cell.resetTextFields()
             cell.delegate = self
             if isEditMode {
                 cell.txtSelectReason.text = self.reasonForVisit
@@ -272,7 +273,7 @@ extension ScheduleVisitorsViewController: ReasonForVisitTableViewCellDelegate {
     func dropdownButtonTapped(selectedOption: Reason) {
         // Implement what you want to do with the selected option, for example:
         print("Selected option: \(selectedOption.reason),\(selectedOption.id)")
-        apiRequestScheduleVisitorsRequest.reason_of_visit = selectedOption.reason
+        apiRequestScheduleVisitorsRequest.reason_of_visit = selectedOption.id
         //for upate
         apiEditScheduleVisitorsRequest.reason_of_visit = selectedOption.id
         

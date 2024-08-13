@@ -180,7 +180,6 @@ extension SideMenuPaymentsViewController: UITableViewDataSource, UITableViewDele
             return cell
         case 2:
             let cell = tableView.dequeueReusableCell(withIdentifier: "PaymentMethodTableViewCell", for: indexPath)as! PaymentMethodTableViewCell
-            cell.cardDetails = getCardDetailsResponseData // Pass the fetched card details
             cell.selectionStyle = .none
             return cell
         case 3:

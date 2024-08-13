@@ -18,7 +18,7 @@ class FAQTitleTableViewCell: UITableViewCell {
         customizeCell()
     }
     func setData(item: FaqData){
-        self.lbltitle.text = item.title
+        self.lbltitle.text = item.question
         
     }
     func customizeCell(){
