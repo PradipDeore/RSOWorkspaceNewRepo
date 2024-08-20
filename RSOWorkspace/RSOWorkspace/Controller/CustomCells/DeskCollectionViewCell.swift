@@ -7,11 +7,7 @@
 
 import UIKit
 import Kingfisher
-protocol DeskBookButtonActionDelegate:AnyObject{
-    func showBookRoomDetailsVC(meetingRoomId: Int)
-    func showDeskBookingVC()
-    func showLogInVC()
-}
+
 class DeskCollectionViewCell: UICollectionViewCell {
     //BookButtonActionDelegate
     weak var backActionDelegate: BookButtonActionDelegate?
@@ -27,7 +23,7 @@ class DeskCollectionViewCell: UICollectionViewCell {
     var cornerRadius: CGFloat = 10.0
     var roomName = ""
     var selectedMeetingRoom = 0
-    
+    var itemType = ""
     override func awakeFromNib() {
         super.awakeFromNib()
         customizeCell()
@@ -53,6 +49,7 @@ class DeskCollectionViewCell: UICollectionViewCell {
         selectedMeetingRoom = item.id
         self.lbldeskName.text = item.roomName
         self.lblNoOfPeople.text = "\(item.capacity!) Person"
+        self.itemType = item.type ?? ""
         if item.type == "office" {
             self.lblDescription.text = "Conference Phone"
         } else {
@@ -66,18 +63,18 @@ class DeskCollectionViewCell: UICollectionViewCell {
         }
         if self.tag == 1 {
             self.btnBook.isHidden = false
-
+            
         }
         
     }
     @IBAction func btnBookTappedAction(_ sender: Any) {
         if let _ = RSOToken.shared.getToken() {
-            if self.tag == 1{
-                backActionDelegate?.showBookRoomDetailsVC(meetingRoomId: selectedMeetingRoom)
+            if itemType == "office"{
+                backActionDelegate?.showShortTermOfficeBookingVC()
             }else{
-                backActionDelegate?.showBookMeetingRoomsVC()
-                
+                backActionDelegate?.showDeskBookingVC()
             }
+            
         }else {
             backActionDelegate?.showLogInVC()
         }

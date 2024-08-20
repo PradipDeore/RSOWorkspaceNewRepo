@@ -12,11 +12,15 @@ protocol BookButtonActionDelegate:AnyObject{
     func showBookRoomDetailsVC(meetingRoomId: Int)
     func showBookMeetingRoomsVC()
     func showLogInVC()
+    func showDeskBookingVC()
+    func showShortTermOfficeBookingVC()
     func didSelect(selectedId: Int)
 }
 extension BookButtonActionDelegate {
   func didSelect(selectedId: Int) {
   }
+    func showDeskBookingVC(){}
+    func showShortTermOfficeBookingVC(){}
 }
 class MeetingRoomsCollectionViewCell: UICollectionViewCell {
     

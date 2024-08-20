@@ -195,10 +195,15 @@ extension DashboardViewController {
 }
 
 extension DashboardViewController: BookButtonActionDelegate {
+    func showLongTermOfficeBookingVC() {
+        
+    }
+    
   func showBookRoomDetailsVC(meetingRoomId: Int) {
   }
   // not used
   func showDeskBookingVC() {
+      
   }
   func showBookMeetingRoomsVC() {
     

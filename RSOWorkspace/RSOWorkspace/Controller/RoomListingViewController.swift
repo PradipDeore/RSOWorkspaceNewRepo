@@ -7,7 +7,11 @@
 
 import UIKit
 
-
+enum ItemType {
+    case meetingRoom
+    case officeDesk
+    case desk
+}
 class RoomListingViewController: UIViewController {
   
   @IBOutlet var textFieldBackground: UIView!
@@ -19,7 +23,8 @@ class RoomListingViewController: UIViewController {
   
   var isSearchEnabled = false
   var searchingText = ""
-  
+    var selectedItemType: ItemType = .meetingRoom
+
   var meetingRoomItems: [MeetingRoomsItem] = []
   var officeDeskItems: [Office] = []
   var combinedListItems: [RSOCollectionItem] = []
@@ -33,7 +38,6 @@ class RoomListingViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     coordinator?.hideBackButton(isHidden: false)
-    
     self.collectionView.backActionDelegate = self
     
     txtSearch.delegate = self
@@ -87,6 +91,8 @@ class RoomListingViewController: UIViewController {
             if let officeList = response.data {
               self.officeDeskItems = officeList
               self.combineAndFilterItems()
+                self.collectionView.tag = 0
+                self.collectionView.backActionDelegate = self
             }
           case .failure(let error):
             self.collectionView.eventHandler?(.error(error))
@@ -105,8 +111,11 @@ class RoomListingViewController: UIViewController {
                         // Handle successful response with bookings
                          let deskList = responseData.data
                             self.deskItems = deskList
-                            self.combineAndFilterItems()
-                        
+                        self.collectionView.hideBookButton = false
+                        self.collectionView.tag = 0
+
+                        self.collectionView.backActionDelegate = self
+                        self.combineAndFilterItems()
                     case .failure(let error):
                         self.collectionView.eventHandler?(.error(error))
                     }
@@ -137,12 +146,12 @@ class RoomListingViewController: UIViewController {
   func filterRoomsDesksAndOffices(searchText: String) {
     if !searchText.isEmpty {
       filteredItems = self.combinedListItems.filter { $0.roomName.lowercased().contains(searchText.lowercased()) }
-      if filteredItems.isEmpty {
-        // Show toast if no records are found
-        DispatchQueue.main.async {
-          self.view.makeToast("Record Not Found", duration: 1.5, position: .center)
-        }
-      }
+//      if filteredItems.isEmpty {
+//        // Show toast if no records are found
+//        DispatchQueue.main.async {
+//          self.view.makeToast("Record Not Found", duration: 1.5, position: .center)
+//        }
+//      }
     } else {
       filteredItems = self.combinedListItems
     }
@@ -171,13 +180,22 @@ extension  RoomListingViewController: BookButtonActionDelegate {
     func showBookRoomDetailsVC(meetingRoomId: Int) {
         
     }
-    
     func showBookMeetingRoomsVC() {
       let bookMeetingRoomVC = UIViewController.createController(storyBoard: .Booking, ofType: BookMeetingRoomViewController.self)
       bookMeetingRoomVC.coordinator = self.coordinator
       navigationController?.pushViewController(bookMeetingRoomVC, animated: true)
     }
-    
+    func showDeskBookingVC() {
+        let bookDeskVC = UIViewController.createController(storyBoard: .Booking, ofType: DeskBookingViewController.self)
+              bookDeskVC.coordinator = self.coordinator
+              self.navigationController?.pushViewController(bookDeskVC, animated: true)
+        }
+    func showShortTermOfficeBookingVC(){
+        let officeBookingVC = UIViewController.createController(storyBoard: .OfficeBooking, ofType: ShortTermBookAnOfficeViewController.self)
+        officeBookingVC.coordinator = self.coordinator
+        navigationController?.pushViewController(officeBookingVC, animated: true)
+    }
+
     func showLogInVC() {
         let logInVC = UIViewController.createController(storyBoard: .GetStarted, ofType: LogInViewController.self)
         self.navigationController?.pushViewController(logInVC, animated: true)

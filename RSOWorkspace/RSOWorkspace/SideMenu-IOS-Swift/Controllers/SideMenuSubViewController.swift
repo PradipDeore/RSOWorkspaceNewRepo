@@ -30,6 +30,7 @@ class SideMenuSubViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         headerImageView.setRounded()
         roundedView.layer.cornerRadius = 35
         // TableView
@@ -58,6 +59,16 @@ class SideMenuSubViewController: UIViewController {
         fetchMyProfiles()
         
     }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if UserHelper.shared.isUserExplorer(){
+            self.lblName.isHidden = true
+            self.headerImageView.isHidden = true
+        }else{
+            self.lblName.isHidden = false
+            self.headerImageView.isHidden = false
+        }
+    }
 
     func refreshMenuList(){
         fetchMyProfiles()
@@ -78,7 +89,9 @@ class SideMenuSubViewController: UIViewController {
     }
   func createMenu() -> [SideMenuModel] {
     var menu: [SideMenuModel] = []
-    menu.append(SideMenuModel(title: .myProfile))
+      if !UserHelper.shared.isUserExplorer() {
+          menu.append(SideMenuModel(title: .myProfile))
+      }
     menu.append(SideMenuModel(title: .dashboard))
     menu.append(SideMenuModel(title: .empty))
     menu.append(SideMenuModel(title: .scheduleVisitors))
@@ -117,7 +130,7 @@ class SideMenuSubViewController: UIViewController {
                     let lastName =  self.myProfileResponse?.data.lastName
                     
                     DispatchQueue.main.async {
-                        if !UserHelper.shared.isUserExplorer(){
+                        
                             if let firstName = firstName, let lastName = lastName {
                                 self.lblName.text = "\(firstName) \(lastName)"
                             }
@@ -129,7 +142,7 @@ class SideMenuSubViewController: UIViewController {
                                 let url = URL(string: imageBasePath + imageUrl)
                                 self.headerImageView.kf.setImage(with: url)
                             }
-                        }
+                        
                     }
                     self.eventHandler?(.dataLoaded)
                 case .failure(let error):

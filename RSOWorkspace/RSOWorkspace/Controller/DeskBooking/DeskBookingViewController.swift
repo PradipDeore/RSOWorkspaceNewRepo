@@ -230,6 +230,7 @@ extension DeskBookingViewController: UITableViewDataSource, UITableViewDelegate 
             let cell =  tableView.dequeueReusableCell(withIdentifier: CellIdentifierDeskBooking.selectDesksType.rawValue, for: indexPath)as! SelectMeetingRoomTableViewCell
             cell.collectionView.tag = 1
             cell.collectionView.backActionDelegate = self
+            cell.collectionView.hideBookButton = true
             cell.eventHandler = { [weak self] event, list in
                 
                 guard let self = self else { return }
