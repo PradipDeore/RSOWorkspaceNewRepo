@@ -193,7 +193,13 @@ extension SideMenuMainViewController: SideMenuViewControllerDelegate {
         case .logout:
             // Normal logout for other types of login
             self.logout()
-            
+        case .login:
+            guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+                  let sceneDelegate = windowScene.delegate as? SceneDelegate else {
+                return
+            }
+            let loginVC = UIViewController.createController(storyBoard: .GetStarted, ofType: LogInViewController.self)
+            sceneDelegate.window?.rootViewController?.present(loginVC, animated: true, completion: nil)
         default:
             break
         }

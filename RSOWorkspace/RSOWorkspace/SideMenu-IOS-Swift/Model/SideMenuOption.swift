@@ -20,4 +20,5 @@ enum SideMenuOption: String {
     case locations = "Locations"
     case aboutUs = "About RSO"
     case logout = "Logout"
+    case login = "LogIn"
 }

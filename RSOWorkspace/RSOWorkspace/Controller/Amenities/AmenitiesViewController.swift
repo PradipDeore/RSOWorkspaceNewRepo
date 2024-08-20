@@ -72,7 +72,7 @@ class AmenitiesViewController: UIViewController,RSOTabCoordinated{
             self.dropdownOptions = response.data ?? []
             
           DispatchQueue.main.async {
-            if let selectedOption = self.dropdownOptions.last {
+            if let selectedOption = self.dropdownOptions.first {
                   self.locationId = selectedOption.id ?? 1
                  self.selectedLocation = selectedOption.name ?? "Reef Tower"
                   self.selectedMeetingRoomId = selectedOption.id ?? 1

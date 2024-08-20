@@ -80,7 +80,7 @@ class DeskBookingViewController: UIViewController{
                     switch response {
                     case .success(let response):
                         self.dropdownOptions = response.data ?? []
-                        if let selectedOption = self.dropdownOptions.last {
+                        if let selectedOption = self.dropdownOptions.first {
                             self.locationId = selectedOption.id ?? 1
                             self.selectedDeskId = selectedOption.id ?? 1
                             self.apiRequestModelDeskListing.locationid = selectedOption.id ?? 1
@@ -140,7 +140,7 @@ class DeskBookingViewController: UIViewController{
     }
     func clearDeskCellData() {
         self.deskList = []
-        self.apiRequestModelDeskListing.desk_id = []
+        self.deskbookingConfirmDetails.desk_id = []
         self.displayBookingDetailsNextScreen.selected_desk_no = []
         self.selectedDeskList = []
         self.deskbookingConfirmDetails.desk_id = []
@@ -423,7 +423,8 @@ extension DeskBookingViewController:SelectedDeskTableViewCellDelegate{
     }
     
     func getselectedDeskNo(selectedDeskNo: [Int], selectedDeskList: [RSOCollectionItem]) {
-        apiRequestModelDeskListing.desk_id = selectedDeskNo
+       // apiRequestModelDeskListing.desk_id = selectedDeskNo
+        deskbookingConfirmDetails.desk_id = selectedDeskNo
         displayBookingDetailsNextScreen.selected_desk_no = selectedDeskNo
         self.selectedDeskList = selectedDeskList
         self.displayBookingDetailsNextScreen.selected_desk_no = selectedDeskNo

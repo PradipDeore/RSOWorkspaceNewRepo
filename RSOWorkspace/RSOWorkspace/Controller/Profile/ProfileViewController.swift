@@ -124,7 +124,12 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
             if let profileDetailsCell = cell as? ProfileDetailsTableViewCell {
                 profileDetailsCell.delegate = self
                 if let myProfileDetails = myProfileResponse?.data{
-                    profileDetailsCell.setData(myProfileDetails:  myProfileDetails)
+                     if !UserHelper.shared.isUserExplorer(){
+                        profileDetailsCell.setData(myProfileDetails:  myProfileDetails)
+                     }else{
+                         profileDetailsCell.setDataExplorer(myProfileDetails:  myProfileDetails)
+                     }
+                
                 }
                 return profileDetailsCell
             }

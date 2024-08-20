@@ -60,6 +60,18 @@ class ProfileDetailsTableViewCell: UITableViewCell {
             self.imgProfile.kf.setImage(with: url)
         }
     }
+    func setDataExplorer(myProfileDetails : ProfileData){
+        self.lblName.text = ""
+        self.lblCompanyName.text = ""
+        self.lblEmail.text = ""
+        self.lblDesignation.text = ""
+        self.lblPhoneNo.text = ""
+        
+//        if let photoURLString = myProfileDetails.photo, !photoURLString.isEmpty {
+//            let url = URL(string: imageBasePath + photoURLString)
+//            self.imgProfile.kf.setImage(with: url)
+//        }
+    }
   
   @IBAction func btnEditAction(_ sender: Any) {
     delegate?.sendDetails()

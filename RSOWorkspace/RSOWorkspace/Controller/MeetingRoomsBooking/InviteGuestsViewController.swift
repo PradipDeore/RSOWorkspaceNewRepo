@@ -53,10 +53,18 @@ class InviteGuestsViewController: UIViewController {
     
     @IBAction func btnAddGuestTappedAction(_ sender: Any) {
         
-        if let txtguestEmail = txtSearch.text{
-            guestEmail = txtguestEmail
-        }
-        guestEmailDelegate?.sendGuestEmail(email: guestEmail)
-        dismiss(animated: true)
+        guard let txtGuestEmail = txtSearch.text, !txtGuestEmail.isEmpty else {
+                   RSOToastView.shared.show("Please enter an email address.", duration: 2.0, position: .center)
+                   return
+               }
+
+               if !RSOValidator.isValidEmail(txtGuestEmail) {
+                   RSOToastView.shared.show("Invalid email", duration: 2.0, position: .center)
+                   return
+               }
+
+               guestEmail = txtGuestEmail
+               guestEmailDelegate?.sendGuestEmail(email: guestEmail)
+               dismiss(animated: true)
     }
 }

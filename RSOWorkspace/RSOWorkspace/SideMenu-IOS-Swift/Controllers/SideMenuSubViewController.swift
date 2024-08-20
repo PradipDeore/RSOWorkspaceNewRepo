@@ -95,7 +95,12 @@ class SideMenuSubViewController: UIViewController {
     menu.append(SideMenuModel(title: .locations))
     menu.append(SideMenuModel(title: .aboutUs))
     menu.append(SideMenuModel(title: .empty))
-    menu.append(SideMenuModel(title: .logout))
+      if !UserHelper.shared.isUserExplorer(){
+          menu.append(SideMenuModel(title: .logout))
+
+      }else{
+          menu.append(SideMenuModel(title: .login))
+      }
     return menu
   }
     private func fetchMyProfiles() {
@@ -112,17 +117,18 @@ class SideMenuSubViewController: UIViewController {
                     let lastName =  self.myProfileResponse?.data.lastName
                     
                     DispatchQueue.main.async {
-                      
-                        if let firstName = firstName, let lastName = lastName {
-                            self.lblName.text = "\(firstName) \(lastName)"
-                        }
-                        let companyName = self.myProfileResponse?.data.companyName
-                        if let companyName = companyName{
-                            self.lblCompanyName.text = "\(companyName)"
-                        }
-                        if let imageUrl = self.myProfileResponse?.data.photo, !imageUrl.isEmpty{
-                            let url = URL(string: imageBasePath + imageUrl)
-                            self.headerImageView.kf.setImage(with: url)
+                        if !UserHelper.shared.isUserExplorer(){
+                            if let firstName = firstName, let lastName = lastName {
+                                self.lblName.text = "\(firstName) \(lastName)"
+                            }
+                            let companyName = self.myProfileResponse?.data.companyName
+                            if let companyName = companyName{
+                                self.lblCompanyName.text = "\(companyName)"
+                            }
+                            if let imageUrl = self.myProfileResponse?.data.photo, !imageUrl.isEmpty{
+                                let url = URL(string: imageBasePath + imageUrl)
+                                self.headerImageView.kf.setImage(with: url)
+                            }
                         }
                     }
                     self.eventHandler?(.dataLoaded)

@@ -188,9 +188,9 @@ class LongTermOfficeBookingViewController: UIViewController {
             name: name,
             email: email,
             phone: phone,
-            interestedIn: intrestedInId,
-            noOfSeats: noOfSeats,
-            provideDetails: provideDetails
+            interested_in: intrestedInId,
+            seats: noOfSeats,
+            description: provideDetails
         )
         //print("bookingRequest",bookingRequest)
         longTermOfficeBookingAPI(requestModel: bookingRequest)
