@@ -14,12 +14,12 @@ struct OfficeItemsResponse: Codable {
 
 struct Office: Codable {
     let id: Int
-    let name: String
-    let image: String
-    let capacity: Int
-    let price: String
-    let type: String
-    let amenityDetails: [AmenityDetail]
+    let name: String?
+    let image: String?
+    let capacity: Int?
+    let price: String?
+    let type: String?
+    let amenityDetails: [AmenityDetail]?
 
     enum CodingKeys: String, CodingKey {
         case id, name, image, capacity, price, type

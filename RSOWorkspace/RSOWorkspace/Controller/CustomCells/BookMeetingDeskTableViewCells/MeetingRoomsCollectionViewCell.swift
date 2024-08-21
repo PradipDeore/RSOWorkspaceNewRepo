@@ -107,6 +107,7 @@ class MeetingRoomsCollectionViewCell: UICollectionViewCell {
                 print("book button tag is book meetingroom",self.tag)
 
                 backActionDelegate?.showBookMeetingRoomsVC()
+                backActionDelegate?.didSelect(selectedId: self.selectedMeetingRoom ?? 0) // Call didSelect
             }
         }else {
             backActionDelegate?.showLogInVC()
