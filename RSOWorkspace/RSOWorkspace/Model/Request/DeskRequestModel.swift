@@ -12,9 +12,6 @@ struct DeskRequestModel: Codable {
     var startTime: String = Date.formatSelectedDate(format: .HHmm, date: nil)
     var endTime: String = Date.formatSelectedDate(format: .HHmm, date: nil)
     var isFullDay :String = "No"
-    var desktype: Int = 0
-    var desk_id:[Int] = []
-    var teammembers:[Int] = []
     
     enum CodingKeys: String, CodingKey {
         case locationid
@@ -22,9 +19,7 @@ struct DeskRequestModel: Codable {
         case startTime = "start_time"
         case endTime = "end_time"
         case isFullDay = "is_fullday"
-        case desktype
-        case desk_id = "desk_id"
-        case teammembers
+      
     }
 }
 

@@ -16,8 +16,11 @@ struct RSOCollectionItem: Codable {
     let locationName: String?
     let type : String?
     let roomAmenityDetails: [RoomAmenities]?
-    let roomAmenitiesDesk:[ListingAmenityDetail]
-    let officeAmenityDesk:[AmenityDetail]
+    let roomAmenitiesDesk:[ListingAmenityDetail]?
+    let officeAmenityDesk:[AmenityDetail]?
+    let searchRoomAmenityDetails:[SearchRoomAmenityDetail]?
+    let searchDeskAmenityDetails:[SearchDeskAmenityDetail]?
+    let searchOfficeAmenityDetails:[searchOfficeAmenityDetail]?
     var isItemSelected: Bool?
     // Initializer to convert from MeetingRoomsItem
     init(meetingRoomItem: MeetingRoomsItem) {
@@ -31,6 +34,9 @@ struct RSOCollectionItem: Codable {
         self.roomAmenityDetails = meetingRoomItem.roomAmenityDetails
         self.roomAmenitiesDesk = []
         self.officeAmenityDesk = []
+        self.searchRoomAmenityDetails = []
+        self.searchDeskAmenityDetails = []
+        self.searchOfficeAmenityDetails = []
         self.type = "room"
         self.isItemSelected = false
     }
@@ -47,21 +53,29 @@ struct RSOCollectionItem: Codable {
         self.locationName = nil
         self.roomAmenitiesDesk = []
         self.officeAmenityDesk = []
+        self.searchRoomAmenityDetails = []
+        self.searchDeskAmenityDetails = []
+        self.searchOfficeAmenityDetails = []
+
         self.isItemSelected = false
     }
     // Initializer to convert from DeskItem
     init(deskItem: Office) {
         self.id = deskItem.id
-        self.roomName = deskItem.name
+        self.roomName = deskItem.name ?? ""
         self.capacity = deskItem.capacity
         self.description = nil
         self.roomImage = deskItem.image
         self.roomPrice = deskItem.price
         self.officeAmenityDesk = deskItem.amenityDetails
         self.roomAmenityDetails = nil
-        self.type = deskItem.type
+        self.type = "office"
         self.locationName = nil
         self.roomAmenitiesDesk = []
+        self.searchRoomAmenityDetails = []
+        self.searchDeskAmenityDetails = []
+        self.searchOfficeAmenityDetails = []
+
         self.isItemSelected = false
     }
     // Initializer to convert from DeskListItem
@@ -78,6 +92,67 @@ struct RSOCollectionItem: Codable {
         self.type = "desk"
         self.roomAmenityDetails = nil
         self.officeAmenityDesk = []
+        self.searchRoomAmenityDetails = []
+        self.searchDeskAmenityDetails = []
+        self.searchOfficeAmenityDetails = []
+
+        self.isItemSelected = false
+    }
+    //search  room
+    init(roomSearchListingItem: SearchRoomData) {
+        self.id = roomSearchListingItem.id ?? 0
+        self.roomName = roomSearchListingItem.roomName ?? ""
+        self.capacity = roomSearchListingItem.capacity ?? 0
+        self.description = roomSearchListingItem.description ?? ""
+        self.roomImage = roomSearchListingItem.roomImage ?? ""
+        self.roomPrice = roomSearchListingItem.roomPrice ?? "0"
+        self.locationName = nil
+        self.searchRoomAmenityDetails = roomSearchListingItem.searchroomAmenityDetails ?? []
+        self.searchDeskAmenityDetails = []
+        self.searchOfficeAmenityDetails = []
+
+        self.roomAmenitiesDesk = nil
+        self.type = "room"
+        self.roomAmenityDetails = nil
+        self.officeAmenityDesk = []
+        self.isItemSelected = false
+    }
+    //search desk
+    init(deskSearchListingItem: SearchDeskData) {
+        self.id = deskSearchListingItem.id ?? 0
+        self.roomName = deskSearchListingItem.name ?? ""
+        self.capacity = deskSearchListingItem.capacity ?? 0
+        self.description = deskSearchListingItem.description ?? ""
+        self.roomImage = deskSearchListingItem.image ?? ""
+        self.roomPrice = deskSearchListingItem.price ?? "0"
+        self.locationName = nil
+        self.searchDeskAmenityDetails = deskSearchListingItem.searchDeskamenityDetails
+        self.searchRoomAmenityDetails = []
+        self.roomAmenitiesDesk = nil
+        self.type = "desk"
+        self.roomAmenityDetails = nil
+        self.officeAmenityDesk = []
+        self.searchOfficeAmenityDetails = []
+
+        self.isItemSelected = false
+    }
+    //search office
+    init(officeSearchListingItem: SearchOfficeData) {
+        self.id = officeSearchListingItem.id ?? 0
+        self.roomName = officeSearchListingItem.name ?? ""
+        self.capacity = officeSearchListingItem.capacity ?? 0
+        self.description = nil
+        self.roomImage = officeSearchListingItem.image ?? ""
+        self.roomPrice = officeSearchListingItem.price ?? "0"
+        self.locationName = nil
+        self.searchOfficeAmenityDetails = officeSearchListingItem.searchOfficeamenityDetails ?? []
+        self.searchRoomAmenityDetails = []
+        self.searchDeskAmenityDetails = []
+        self.roomAmenitiesDesk = nil
+        self.type = "office"
+        self.roomAmenityDetails = nil
+        self.officeAmenityDesk = []
+
         self.isItemSelected = false
     }
   // Initializer to convert from DeskListItem
@@ -94,5 +169,10 @@ struct RSOCollectionItem: Codable {
     self.type = "desk"
     self.roomAmenityDetails = nil
     self.officeAmenityDesk = []
+      self.searchRoomAmenityDetails = []
+      self.searchDeskAmenityDetails = []
+      self.searchOfficeAmenityDetails = []
+
+
   }
 }

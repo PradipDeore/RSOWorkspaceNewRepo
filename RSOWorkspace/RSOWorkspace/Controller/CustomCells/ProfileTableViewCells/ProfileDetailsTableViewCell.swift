@@ -30,6 +30,7 @@ class ProfileDetailsTableViewCell: UITableViewCell {
   override func awakeFromNib() {
     super.awakeFromNib()
     setupUI()
+      
   }
   
   func setupUI(){
@@ -60,6 +61,7 @@ class ProfileDetailsTableViewCell: UITableViewCell {
             self.imgProfile.kf.setImage(with: url)
         }
     }
+   
   
   @IBAction func btnEditAction(_ sender: Any) {
     delegate?.sendDetails()

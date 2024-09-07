@@ -80,7 +80,7 @@ class ShortTermBookAnOfficeViewController: UIViewController{
           switch response {
           case .success(let response):
               self.dropdownOptions = response.data ?? []
-            if let selectedOption = self.dropdownOptions.last {
+            if let selectedOption = self.dropdownOptions.first {
                 self.locationId = selectedOption.id ?? 1
                 self.selectedOfficeId = selectedOption.id ?? 1
              // self.apiRequestModelDeskListing.locationid = selectedOption.id

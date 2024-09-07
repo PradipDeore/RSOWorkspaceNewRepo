@@ -21,7 +21,7 @@ class ReportAnIssueViewController: UIViewController {
     var reportAnIssueRespnseData: ReportAnIssueResponse?
     var location_id = 0
     var descriptionOfIssue = ""
-    
+    var selectedLocation = ""
     enum Section: Int, CaseIterable {
         case selectArea = 0
         case addPics
@@ -62,6 +62,10 @@ class ReportAnIssueViewController: UIViewController {
                 case .success(let response):
                     self.dropdownOptions = response.data ?? []
                     DispatchQueue.main.async {
+                        if let selectedOption = self.dropdownOptions.first {
+                              self.location_id = selectedOption.id ?? 1
+                             self.selectedLocation = selectedOption.name ?? "Reef Tower"
+                          }
                         self.tableView.reloadData()
                     }
                     self.eventHandler?(.dataLoaded)
@@ -142,6 +146,7 @@ extension ReportAnIssueViewController: UITableViewDelegate, UITableViewDataSourc
             cell.delegate = self
             cell.dropdownOptions = dropdownOptions
             cell.selectionStyle = .none
+            cell.txtSelectAnArea.text = selectedLocation
             return cell
         case .addPics:
             let cell = tableView.dequeueReusableCell(withIdentifier: "AddPicsTableViewCell", for: indexPath) as! AddPicsTableViewCell
@@ -180,6 +185,7 @@ extension ReportAnIssueViewController: SelectAnAreaTableViewCellDelegate {
     func dropdownButtonTapped(selectedOption: LocationDetails) {
         // Implement what you want to do with the selected option, for example:
         print("Selected option: \(selectedOption.name),\(selectedOption.id)")
+        self.selectedLocation = selectedOption.name ?? "Reef Tower"
         location_id = selectedOption.id ?? 1
     }
     

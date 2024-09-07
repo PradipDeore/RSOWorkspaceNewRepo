@@ -195,10 +195,15 @@ extension DashboardViewController {
 }
 
 extension DashboardViewController: BookButtonActionDelegate {
+    func showLongTermOfficeBookingVC() {
+        
+    }
+    
   func showBookRoomDetailsVC(meetingRoomId: Int) {
   }
   // not used
   func showDeskBookingVC() {
+      
   }
   func showBookMeetingRoomsVC() {
     
@@ -227,7 +232,7 @@ extension DashboardViewController: DashboardDeskTypeTableViewCellDelegate {
   func buttonTapped(type: DashboardOption) {
     DispatchQueue.main.async {
       self.selectedButtonType = type
-        self.tableView.reloadSections(IndexSet(integer: 2), with: .automatic)
+        self.tableView.reloadSections(IndexSet(integer: 3), with: .automatic)
 
       switch type {
       case .meetingRooms:

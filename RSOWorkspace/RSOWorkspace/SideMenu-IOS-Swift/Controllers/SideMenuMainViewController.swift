@@ -193,7 +193,11 @@ extension SideMenuMainViewController: SideMenuViewControllerDelegate {
         case .logout:
             // Normal logout for other types of login
             self.logout()
-            
+        case .login:
+            RSOToken.shared.clearAll()
+            UserHelper.shared.clearUser()
+            CurrentLoginType.shared.isExplorerLogin = false
+            GetStartedViewController.presentAsRootController()
         default:
             break
         }

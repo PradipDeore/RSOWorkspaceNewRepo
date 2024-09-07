@@ -67,7 +67,7 @@ class BookMeetingRoomViewController: UIViewController{
                     self.dropdownOptions = response.data ?? []
                     DispatchQueue.main.async {
                         RSOLoader.removeLoader()
-                        if let selectedOption = self.dropdownOptions.last {
+                        if let selectedOption = self.dropdownOptions.first {
                             self.locationId = selectedOption.id ?? 1
                             self.selectedMeetingRoomId = selectedOption.id ?? 1
                             self.displayBookingDetailsNextScreen.location = selectedOption.name ?? "ReefTower"

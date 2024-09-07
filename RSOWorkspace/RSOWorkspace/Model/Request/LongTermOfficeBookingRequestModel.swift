@@ -11,7 +11,7 @@ struct LongTermOfficeBookingRequestModel: Codable {
     let name: String
     let email: String
     let phone: String
-    let interestedIn: Int
-    let noOfSeats: Int
-    let provideDetails: String
+    let interested_in: Int
+    let seats: Int
+    let description: String
 }

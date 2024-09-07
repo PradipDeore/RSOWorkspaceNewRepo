@@ -39,6 +39,8 @@
 		58127A8E2BAC41BB001693D6 /* ListOfMembersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58127A8D2BAC41BB001693D6 /* ListOfMembersViewController.swift */; };
 		58127A912BAC42DB001693D6 /* FindMembersSearchListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58127A8F2BAC42DB001693D6 /* FindMembersSearchListTableViewCell.swift */; };
 		58127A922BAC42DB001693D6 /* FindMembersSearchListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58127A902BAC42DB001693D6 /* FindMembersSearchListTableViewCell.xib */; };
+		58132FFF2C75B8940017C84D /* SearchEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58132FFE2C75B8930017C84D /* SearchEndPoint.swift */; };
+		581330012C75BB730017C84D /* SearchResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 581330002C75BB730017C84D /* SearchResponseModel.swift */; };
 		581D97D72BA2D3AD00EDDC3B /* PaymentRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 581D97D62BA2D3AD00EDDC3B /* PaymentRequestModel.swift */; };
 		581D97DA2BA3391B00EDDC3B /* AmenityPriceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 581D97D82BA3391B00EDDC3B /* AmenityPriceTableViewCell.swift */; };
 		581D97DB2BA3391B00EDDC3B /* AmenityPriceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 581D97D92BA3391B00EDDC3B /* AmenityPriceTableViewCell.xib */; };
@@ -518,6 +520,8 @@
 		58127A8D2BAC41BB001693D6 /* ListOfMembersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfMembersViewController.swift; sourceTree = "<group>"; };
 		58127A8F2BAC42DB001693D6 /* FindMembersSearchListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindMembersSearchListTableViewCell.swift; sourceTree = "<group>"; };
 		58127A902BAC42DB001693D6 /* FindMembersSearchListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FindMembersSearchListTableViewCell.xib; sourceTree = "<group>"; };
+		58132FFE2C75B8930017C84D /* SearchEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchEndPoint.swift; sourceTree = "<group>"; };
+		581330002C75BB730017C84D /* SearchResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResponseModel.swift; sourceTree = "<group>"; };
 		581D97D62BA2D3AD00EDDC3B /* PaymentRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentRequestModel.swift; sourceTree = "<group>"; };
 		581D97D82BA3391B00EDDC3B /* AmenityPriceTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmenityPriceTableViewCell.swift; sourceTree = "<group>"; };
 		581D97D92BA3391B00EDDC3B /* AmenityPriceTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AmenityPriceTableViewCell.xib; sourceTree = "<group>"; };
@@ -1090,6 +1094,7 @@
 				58B33B7E2C5A067100DBEA34 /* SocialLoginEndPoint.swift */,
 				58B33B862C5A190900DBEA34 /* PaymentMethodEndPoint.swift */,
 				58B33B882C5A234300DBEA34 /* GalleryEndPoint.swift */,
+				58132FFE2C75B8930017C84D /* SearchEndPoint.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -1668,6 +1673,7 @@
 				58F2C6EC2C5CF5DD0028538C /* CouponResponseModel.swift */,
 				58F2C6EE2C5D277F0028538C /* UpdateVisitorsDetailsResponse.swift */,
 				58CEEFB02C60B38A00890989 /* GetAllBookingsResponseModel.swift */,
+				581330002C75BB730017C84D /* SearchResponseModel.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -2488,6 +2494,7 @@
 				58E997D52BBE87A00051BEF3 /* ReasonForVisit.swift in Sources */,
 				58D2D1DC2C551BD6008425DA /* StoreofficeBookingResponse.swift in Sources */,
 				58BCBC2E2C4944B100465381 /* subServiceResponseModel.swift in Sources */,
+				581330012C75BB730017C84D /* SearchResponseModel.swift in Sources */,
 				583D9E002B90A2FD0073AAC3 /* Location.swift in Sources */,
 				583D9E062B90C4730073AAC3 /* RSOCustomCalendarView.swift in Sources */,
 				58A6358F2B7F5CD500A5D2F2 /* LoginBackgroundView.swift in Sources */,
@@ -2589,6 +2596,7 @@
 				58E6E94C2B88A1CA00EB3600 /* RSOGreetings.swift in Sources */,
 				58BA515C2B9AE057000E0EF6 /* BookMeetingRoomRequestModel.swift in Sources */,
 				5804180D2BD0FEE6008EA858 /* BookingConfirmedMeetingRoomTableViewCell.swift in Sources */,
+				58132FFF2C75B8940017C84D /* SearchEndPoint.swift in Sources */,
 				58B33B8B2C5A319500DBEA34 /* LocationGalleryResponseModel.swift in Sources */,
 				58F573A12C57BD5C006F6594 /* ShortTermPaymentOfficeBookingRequestModel.swift in Sources */,
 				58ACDB3B2B78D10A0041B755 /* Constants.swift in Sources */,
@@ -2768,7 +2776,7 @@
 				CODE_SIGN_ENTITLEMENTS = RSOWorkspace/RSOWorkspace.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = D2BKM938GX;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				"EXCLUDED_ARCHS[sdk=*]" = "";
@@ -2805,7 +2813,7 @@
 				CODE_SIGN_ENTITLEMENTS = RSOWorkspace/RSOWorkspace.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = D2BKM938GX;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;

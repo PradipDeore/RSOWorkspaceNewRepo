@@ -452,8 +452,8 @@
                                             <constraint firstAttribute="width" constant="50" id="Zwn-kY-bkm"/>
                                         </constraints>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chris James" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GWd-At-zNz">
-                                        <rect key="frame" x="98.333333333333314" y="47" width="101.66666666666669" height="22.666666666666671"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GWd-At-zNz">
+                                        <rect key="frame" x="200" y="47" width="0.0" height="22.666666666666671"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="22.670000000000002" id="zKV-df-MHZ"/>
                                         </constraints>

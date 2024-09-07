@@ -24,7 +24,7 @@ class PaymentMethodTableViewCell: UITableViewCell, UIPickerViewDataSource, UIPic
             super.awakeFromNib()
             
             DispatchQueue.main.async {
-                
+                self.txtCardNumber.font = RSOFont.poppins(size: 12, type: .Regular)
                 self.paymentMethodBGView.setCornerRadiusForView()
                 self.txtCardNumber.placeholderText = "******1881"
                 self.txtCardNumber.setUpTextFieldView(rightImageName: "arrowdown")
