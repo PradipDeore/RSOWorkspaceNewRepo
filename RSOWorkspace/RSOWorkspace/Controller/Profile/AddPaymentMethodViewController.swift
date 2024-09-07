@@ -33,7 +33,7 @@ class AddPaymentMethodViewController: UIViewController {
     
     func cardStoreAPI(number: Int, expiry: String, card_holder_name: String, card_type: String, id: Int) {
         RSOLoader.showLoader()
-        let requestModel = PaymentMethodRequestModel(number: number, expiry: expiry, card_holder_name: card_holder_name, card_type: card_type)
+        let requestModel = PaymentMethodRequestModel(card_number: number, card_expiry: expiry, card_holder_name: card_holder_name, card_type: card_type)
         print("requestModel",requestModel)
         APIManager.shared.request(
             modelType: PaymentMethodResponseModel.self,

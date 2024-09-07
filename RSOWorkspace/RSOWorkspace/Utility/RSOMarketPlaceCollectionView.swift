@@ -56,6 +56,21 @@ extension RSOMarketPlaceCollectionView: UICollectionViewDataSource {
         return cell
     }
 }
+extension RSOMarketPlaceCollectionView: UICollectionViewDelegate {
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let selectedItem = listItems[indexPath.item]
+        
+        // Check if the URL is available and valid
+        if let urlString = selectedItem.url, let url = URL(string: urlString), UIApplication.shared.canOpenURL(url) {
+            // Open the URL
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        } else {
+            // Optionally handle the case where the URL is invalid or unavailable
+            print("Invalid URL or URL not available for the selected item")
+        }
+    }
+}
 
 // Delegate methods
 extension RSOMarketPlaceCollectionView {

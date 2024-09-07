@@ -74,14 +74,10 @@ class UpdateProfileViewController: UIViewController, UIImagePickerControllerDele
         txtDesignation.text = designation
         
         txtFirstName.placeholderFont = RSOFont.inter(size: 16, type: .Medium)
-        
         txtLastname.placeholderFont = RSOFont.inter(size: 16, type: .Medium)
-        
         txtDesignation.placeholderFont = RSOFont.inter(size: 16, type: .Medium)
         
-        
     }
-    
     
     
     func updateProfileAPI(fname: String, lname: String, designationName: String, photo: Data?) {

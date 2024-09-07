@@ -12,6 +12,13 @@ class SelectMeetingRoomTableViewCell: UITableViewCell {
     
     @IBOutlet weak var collectionView: RSOMeetingRoomsCollectionView!
     var selectedMeetingRoom :RSOCollectionItem?
+    // Add this property to store free amenities array
+       var freeamenityArray: [AmenityFree] = [] {
+           didSet {
+               // Pass it to collection view if needed
+               collectionView.freeamenityArray = freeamenityArray
+           }
+       }
     
     var meetingId: Int = 0 {
         didSet {
@@ -24,7 +31,7 @@ class SelectMeetingRoomTableViewCell: UITableViewCell {
             }
         }
     }
-    
+
     enum EventHandler {
         case dataLoaded
         case error(Error)
@@ -55,6 +62,7 @@ class SelectMeetingRoomTableViewCell: UITableViewCell {
                         let listItems: [RSOCollectionItem] = roomList.map { RSOCollectionItem(meetingRoomList: $0) }
                         self.collectionView.listItems = listItems
                         print("count of collection view list", self.collectionView.listItems.count)
+                      
                         self.collectionView.reloadData()
                         self.eventHandler?(.dataLoaded, listItems)
                     case .failure(let error):
@@ -73,11 +81,13 @@ class SelectMeetingRoomTableViewCell: UITableViewCell {
                     guard let self = self else { return }
                     switch response {
                     case .success(let responseData):
+
                         // Handle successful response with bookings
                         let deskList = responseData.data
                         let listItems: [RSOCollectionItem] = deskList.map { RSOCollectionItem(deskLisitngItem: $0) }
                         self.collectionView.listItems = listItems
                         print("count of collection view list",self.collectionView.listItems.count)
+
                         self.collectionView.reloadData()
                         self.eventHandler?(.dataLoaded, listItems)
                     case .failure(let error):

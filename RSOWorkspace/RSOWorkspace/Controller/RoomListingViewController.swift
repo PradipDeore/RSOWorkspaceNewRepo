@@ -8,7 +8,7 @@
 
 
 import UIKit
-
+import Toast_Swift
 class RoomListingViewController: UIViewController {
     
     @IBOutlet var textFieldBackground: UIView!
@@ -38,7 +38,7 @@ class RoomListingViewController: UIViewController {
         self.textFieldBackground.layer.cornerRadius = 10
         
         // Fetch search data initially with an empty search text
-        fetchSearchData(searchText: "")
+        fetchSearchData(searchingText: searchingText)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -46,15 +46,14 @@ class RoomListingViewController: UIViewController {
         coordinator?.setTitle(title: "Search Products")
     }
     
- 
 
-    private func fetchSearchData(searchText: String) {
+    private func fetchSearchData(searchingText: String) {
         DispatchQueue.main.async {
             RSOLoader.showLoader()
         }
         APIManager.shared.request(
             modelType: SearchResponseModel.self,
-            type: SearchEndPoint.searchItems(searchItemName: searchText)) { [weak self] response in
+            type: SearchEndPoint.searchItems(searchItemName: searchingText)) { [weak self] response in
                 DispatchQueue.main.async {
                     guard let self = self else { return }
                     switch response {
@@ -66,8 +65,6 @@ class RoomListingViewController: UIViewController {
 
                         // Check and map each category if they exist in the response
                         if let rooms = response.rooms, !rooms.isEmpty {
-                          
-
                             meetingRooms = rooms.map { RSOCollectionItem(roomSearchListingItem: $0) }
                         }
                         
@@ -81,7 +78,10 @@ class RoomListingViewController: UIViewController {
 
                         // Combine the items based on availability
                         self.filteredItems = meetingRooms + desks + offices
-                        
+                        if self.filteredItems.isEmpty {
+                        // Show toast message if no items are found
+                            RSOToastView.shared.show("Product Not found", duration: 2.0, position: .center)
+                            }
                         // Update the collection view
                         self.collectionView.listItems = self.filteredItems
                         self.collectionView.reloadData()
@@ -96,11 +96,11 @@ class RoomListingViewController: UIViewController {
 
     // MARK: - Filtering
     
-    func filterRoomsDesksAndOffices(searchText: String) {
-        if !searchText.isEmpty {
-            fetchSearchData(searchText: searchText)
+    func filterRoomsDesksAndOffices(searchingText: String) {
+        if !searchingText.isEmpty {
+            fetchSearchData(searchingText: searchingText)
         } else {
-            fetchSearchData(searchText: "") // Fetch default data if search text is empty
+            fetchSearchData(searchingText: "") // Fetch default data if search text is empty
         }
     }
 }
@@ -117,10 +117,10 @@ extension RoomListingViewController: UITextFieldDelegate {
     }
     
     @objc func textFieldDidChange(_ textField: UITextField) {
-        guard let searchText = textField.text else {
+        guard let searchingText = textField.text else {
             return
         }
-        filterRoomsDesksAndOffices(searchText: searchText.lowercased())
+        filterRoomsDesksAndOffices(searchingText: searchingText.lowercased())
     }
 }
 

@@ -257,7 +257,7 @@ extension ConfirmedDeskBookingViewController:ConfirmAndProceedToPayementTableVie
             start_time: startTime,
             end_time: endTime,
             date: date,
-            is_fullday: "No",
+            is_fullday: "Yes",
             desktype: desktype,
             desk_id: deskID,
             teammembers: teamMembers

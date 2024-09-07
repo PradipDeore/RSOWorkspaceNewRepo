@@ -35,6 +35,7 @@ class BookingConfirmedViewController: UIViewController{
     }
     
     var bookingConfirmDetails = ConfirmBookingRequestModel()
+
     var roomId: Int = 0
     var roomPrice = ""
     var amenityName = ""
@@ -92,8 +93,11 @@ class BookingConfirmedViewController: UIViewController{
                 case .success(let response):
                     
                     self.apiResponseData = response
+                    self.bookingConfirmDetails.setValuesforOrderDetails(model: response)
+
                     if let errorMessage = response.message, errorMessage.isEmpty == false {
                         self.eventHandler?(.error(errorMessage as? Error))
+                        
                         DispatchQueue.main.async {
                             RSOLoader.removeLoader()
                             //  Unsuccessful
@@ -107,7 +111,7 @@ class BookingConfirmedViewController: UIViewController{
                             paymentVC.requestParameters = self.bookingConfirmDetails
                             paymentVC.coordinator = self.coordinator
                             paymentVC.bookingType = .meetingRoom
-                            paymentVC.bookingId = response.booking_id ?? 0
+                            paymentVC.bookingId = response.bookingID ?? 0
                             self.navigationController?.pushViewController(paymentVC, animated: true)
                         }
                         self.eventHandler?(.dataLoaded)
@@ -288,7 +292,9 @@ extension BookingConfirmedViewController:ConfirmAndProceedToPayementTableViewCel
         let locationId = String(locationId)
         let location = StoreRoomBookingLocation(id: locationId, name: locationName)
         let teamlist = convertToTeamList(from: teamMembersArray)
-        let requestModel = StoreRoomBookingRequest(amenities: amenitiesArray, configurationsID: seatingConfigueId, date: dateOfBooking, guestList: guestEmailArray, location: location, memberList: teamlist, roomId: roomId, time: BookingTime)
+       
+        let requestModel = StoreRoomBookingRequest(amenities: amenitiesArray, configurationsID: seatingConfigueId, date: dateOfBooking, guestList: guestEmailArray, location: location, memberList: teamlist, roomId: roomId, time: BookingTime,start_time: startTime,end_time: endTime)
+        
         print("parameters",requestModel)
         storeRoomBookingAPI(requestModel: requestModel)
         

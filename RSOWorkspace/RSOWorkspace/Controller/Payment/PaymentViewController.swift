@@ -47,6 +47,7 @@ class PaymentViewController: UIViewController {
         (.selectMeetingRoomLabel, 20.0),
         (.meetingTime, 80),
         (.amenityPrice, 50),
+        (.roomBookingOrderDetails, 50),
         (.totalCell, 191),
         //(.discount, 60),
         (.paymentMethods, 97),
@@ -115,13 +116,21 @@ extension PaymentViewController: UITableViewDataSource, UITableViewDelegate {
         let cellType = cellIdentifiers[section].0
         switch cellType {
         case .amenityPrice:
-            return self.requestParameters?.amenityArray.count ?? 0
+            let filterAmenities = self.requestParameters?.amenityTotalHours.count ?? 0
+            return filterAmenities
             
         case .meetingRoomPrice:
             if bookingType == .desk {
                 return self.requestParameters?.deskList.count ?? 0
             }else if  bookingType == .meetingRoom{
                 return 1
+            }
+            return 0
+        case .roomBookingOrderDetails:
+            if bookingType == .desk {
+                return 0
+            }else if  bookingType == .meetingRoom{
+                return self.requestParameters?.orderDetailsOfMeetingRoom.count ?? 0
             }
             return 0
         case .officePriceDetails:
@@ -248,8 +257,10 @@ extension PaymentViewController: UITableViewDataSource, UITableViewDelegate {
                     cell.lblSubTotal.text = "\(obj.subTotal)"
                     cell.lblVat.text = "\(obj.calculatedVat)"
                     vatAmountMeetingRoom = Double(obj.calculatedVat)
-                    cell.lblTotalPrice.text = "\(obj.finalTotal)"
-                    totalPriceMeetingRoom = Double(obj.finalTotal)
+                    var grossTotal = Double(obj.grossTotal)
+                    cell.lblTotalPrice.text = grossTotal.toStringWithTwoDecimalPlaces()
+                   
+                    totalPriceMeetingRoom = Double(obj.grossTotal)
                 }
             }
             return cell
@@ -290,6 +301,21 @@ extension PaymentViewController: UITableViewDataSource, UITableViewDelegate {
             }
             cell.selectionStyle = .none
             return cell
+        case .roomBookingOrderDetails:
+            let cell = tableView.dequeueReusableCell(withIdentifier: cellType.rawValue, for: indexPath) as! OrderDetailTableViewCell2
+            cell.selectionStyle = .none
+            if let obj = self.requestParameters {
+                switch bookingType {
+                case .desk:
+                    break
+
+                case .office:
+                    break
+                default:
+                    cell.setData(item: obj.orderDetailsOfMeetingRoom[indexPath.item])
+                }
+            }
+            return cell
         }
     }
     
@@ -314,6 +340,7 @@ extension PaymentViewController {
         //case discount = "DiscountCodeTableViewCell"
         case paymentMethods = "PaymentMethodTableViewCell"
         case buttonPayNow = "ButtonPayNowTableViewCell"
+        case roomBookingOrderDetails = "OrderDetailTableViewCell2"
     }
 }
 

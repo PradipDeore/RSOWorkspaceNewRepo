@@ -11,7 +11,7 @@ struct DeskRequestModel: Codable {
     var date: String = Date.formatSelectedDate(format: .yyyyMMdd, date: nil)
     var startTime: String = Date.formatSelectedDate(format: .HHmm, date: nil)
     var endTime: String = Date.formatSelectedDate(format: .HHmm, date: nil)
-    var isFullDay :String = "No"
+    var isFullDay :String = "Yes"
     
     enum CodingKeys: String, CodingKey {
         case locationid

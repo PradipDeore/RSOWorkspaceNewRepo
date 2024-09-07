@@ -31,6 +31,8 @@ struct StoreRoomBookingRequest:Codable {
     let memberList: [TeamList]?
     let roomId: Int?
     let time: String?
+    let start_time:String?
+    let end_time:String?
 }
 
 // MARK: - Amenity
@@ -55,3 +57,37 @@ struct TeamList :Codable{
 struct StoreRoomBookingLocation :Codable{
     let id, name: String?
 }
+
+// sample model for api request
+//{
+//  "amenities": [
+//    {
+//      "description": "Filler text is text that shares some characteristics of a real written text, but is random or otherwise generated. It may be used to display a sample of fonts, generate text for testing, or to spoof an e-mail spam filter.",
+//      "id": 16,
+//      "interval": 0,
+//      "name": "Amenity 3",
+//      "qty": 0,
+//      "total_price": 0.0
+//    },
+//    {
+//      "description": "Filler text is text that shares some characteristics of a real written text, but is random or otherwise generated. It may be used to display a sample of fonts, generate text for testing, or to spoof an e-mail spam filter.",
+//      "id": 17,
+//      "interval": 0,
+//      "name": "Amenity 2",
+//      "qty": 0,
+//      "total_price": 0.0
+//    }
+//  ],
+//  "configurations_id": 0,
+//  "date": "2024-09-06",
+//  "end_time": "18:00",
+//  "guestList": [],
+//  "location": {
+//    "id": "2",
+//    "name": "Etihad Tower"
+//  },
+//  "memberList": [],
+//  "roomId": 7,
+//  "start_time": "09:00",
+//  "time": "09:00 - 18:00"
+//}

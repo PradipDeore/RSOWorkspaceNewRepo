@@ -41,10 +41,8 @@ class MeetingRoomsCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var meetingRoomDashboardView: UIView!
     @IBOutlet weak var bookMeetingRoomView: UIView!
-    
     @IBOutlet weak var noOfPeople: UILabel!
-    
-        
+            
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -87,25 +85,20 @@ class MeetingRoomsCollectionViewCell: UICollectionViewCell {
             self.meetingRoomDashboardView.isHidden = true
             self.bookMeetingRoomView.isHidden = false
             self.btnBook.isHidden = false
-
         }else{
             self.bookMeetingRoomView.isHidden = true
             self.meetingRoomDashboardView.isHidden = false
             self.btnBook.isHidden = false
-
         }
     }
-
     
     @IBAction func btnBookTappedAction(_ sender: Any) {
        if let _ = RSOToken.shared.getToken() {
             if self.tag == 1{
                 print("book button tag is bookroom details",self.tag)
-
                 backActionDelegate?.showBookRoomDetailsVC(meetingRoomId: selectedMeetingRoom!)
             }else{
                 print("book button tag is book meetingroom",self.tag)
-
                 backActionDelegate?.showBookMeetingRoomsVC()
                 backActionDelegate?.didSelect(selectedId: self.selectedMeetingRoom ?? 0) // Call didSelect
             }

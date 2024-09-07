@@ -18,10 +18,10 @@ struct RSOCollectionItem: Codable {
     let roomAmenityDetails: [RoomAmenities]?
     let roomAmenitiesDesk:[ListingAmenityDetail]?
     let officeAmenityDesk:[AmenityDetail]?
-    let searchRoomAmenityDetails:[SearchRoomAmenityDetail]?
     let searchDeskAmenityDetails:[SearchDeskAmenityDetail]?
     let searchOfficeAmenityDetails:[searchOfficeAmenityDetail]?
     var isItemSelected: Bool?
+    var deskId :Int?
     // Initializer to convert from MeetingRoomsItem
     init(meetingRoomItem: MeetingRoomsItem) {
         self.id = meetingRoomItem.id
@@ -34,7 +34,6 @@ struct RSOCollectionItem: Codable {
         self.roomAmenityDetails = meetingRoomItem.roomAmenityDetails
         self.roomAmenitiesDesk = []
         self.officeAmenityDesk = []
-        self.searchRoomAmenityDetails = []
         self.searchDeskAmenityDetails = []
         self.searchOfficeAmenityDetails = []
         self.type = "room"
@@ -53,7 +52,6 @@ struct RSOCollectionItem: Codable {
         self.locationName = nil
         self.roomAmenitiesDesk = []
         self.officeAmenityDesk = []
-        self.searchRoomAmenityDetails = []
         self.searchDeskAmenityDetails = []
         self.searchOfficeAmenityDetails = []
 
@@ -72,7 +70,6 @@ struct RSOCollectionItem: Codable {
         self.type = "office"
         self.locationName = nil
         self.roomAmenitiesDesk = []
-        self.searchRoomAmenityDetails = []
         self.searchDeskAmenityDetails = []
         self.searchOfficeAmenityDetails = []
 
@@ -92,7 +89,6 @@ struct RSOCollectionItem: Codable {
         self.type = "desk"
         self.roomAmenityDetails = nil
         self.officeAmenityDesk = []
-        self.searchRoomAmenityDetails = []
         self.searchDeskAmenityDetails = []
         self.searchOfficeAmenityDetails = []
 
@@ -106,8 +102,7 @@ struct RSOCollectionItem: Codable {
         self.description = roomSearchListingItem.description ?? ""
         self.roomImage = roomSearchListingItem.roomImage ?? ""
         self.roomPrice = roomSearchListingItem.roomPrice ?? "0"
-        self.locationName = nil
-        self.searchRoomAmenityDetails = roomSearchListingItem.searchroomAmenityDetails ?? []
+        self.locationName = roomSearchListingItem.locationName
         self.searchDeskAmenityDetails = []
         self.searchOfficeAmenityDetails = []
 
@@ -127,7 +122,6 @@ struct RSOCollectionItem: Codable {
         self.roomPrice = deskSearchListingItem.price ?? "0"
         self.locationName = nil
         self.searchDeskAmenityDetails = deskSearchListingItem.searchDeskamenityDetails
-        self.searchRoomAmenityDetails = []
         self.roomAmenitiesDesk = nil
         self.type = "desk"
         self.roomAmenityDetails = nil
@@ -146,7 +140,6 @@ struct RSOCollectionItem: Codable {
         self.roomPrice = officeSearchListingItem.price ?? "0"
         self.locationName = nil
         self.searchOfficeAmenityDetails = officeSearchListingItem.searchOfficeamenityDetails ?? []
-        self.searchRoomAmenityDetails = []
         self.searchDeskAmenityDetails = []
         self.roomAmenitiesDesk = nil
         self.type = "office"
@@ -167,9 +160,9 @@ struct RSOCollectionItem: Codable {
     self.locationName = nil
     self.roomAmenitiesDesk = []
     self.type = "desk"
+    self.deskId = deskType.deskID
     self.roomAmenityDetails = nil
     self.officeAmenityDesk = []
-      self.searchRoomAmenityDetails = []
       self.searchDeskAmenityDetails = []
       self.searchOfficeAmenityDetails = []
 

@@ -6,13 +6,14 @@
 //
 
 import UIKit
-
+import Toast_Swift
 protocol ChooseAmenitiesTableViewCellDelegate: AnyObject {
     func didUpdateHours(for amenityId: Int, hours: Int)
 }
 
 class ChooseAmenitiesTableViewCell: UITableViewCell  {
     
+    var totalHours = 0
     weak var delegate: ChooseAmenitiesTableViewCellDelegate?
     @IBOutlet weak var btnsubstract: UIButton!
     @IBOutlet weak var btnAdd: UIButton!
@@ -41,9 +42,16 @@ class ChooseAmenitiesTableViewCell: UITableViewCell  {
     }
     
     @IBAction func btnAddTappedAction(_ sender: Any) {
+        
         count += 1
-        updateCountLabel()
-        delegate?.didUpdateHours(for: amenityId, hours: count)
+        if count <= totalHours{
+            updateCountLabel()
+            delegate?.didUpdateHours(for: amenityId, hours: count)
+        }else{
+            count -= 1
+            RSOToastView.shared.show("Amenity Hours must be less than Total Booking Time Selected")
+        }
+        
     }
    
     @IBAction func btnSubstractTappedAction(_ sender: Any) {

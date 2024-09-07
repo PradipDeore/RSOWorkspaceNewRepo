@@ -11,6 +11,10 @@ import UIKit
 class RSOMeetingRoomsCollectionView: UICollectionView  {
     
     var backActionDelegate:BookButtonActionDelegate?
+    var freeamenityArray: [AmenityFree] = [] // Add this property
+    var freeamenityArrayDesk: [BookingDeskDetailsFreeAmenity] = [] // Add this property
+    var currentScreen: String? // e.g., "RoomDetailsScreen", "OtherScreen"
+    var currentViewController:UIViewController?
     var hideBookButton = false
     var listItems: [RSOCollectionItem] = []{
         didSet {
@@ -109,20 +113,98 @@ extension RSOMeetingRoomsCollectionView: UICollectionViewDataSource {
             fatalError("Unsupported item type: \(item.type ?? "nil")")
         }
     }
-  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    let item = listItems[indexPath.row]
-   
-    guard let itemType = item.type,  item.type == "desk" || itemType == "office" else {
-           return
-       }
-    for i in 0..<listItems.count {
+//  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+////    let item = listItems[indexPath.row]
+////   
+////    guard let itemType = item.type,  item.type == "desk" || itemType == "office" else {
+////           return
+////       }
+////    for i in 0..<listItems.count {
+////            listItems[i].isItemSelected = false
+////        }
+////    listItems[indexPath.row].isItemSelected?.toggle()
+////    self.reloadData()
+////    backActionDelegate?.didSelect(selectedId: listItems[indexPath.row].id)
+//      let item = listItems[indexPath.row]
+//          
+//          guard let itemType = item.type else {
+//              return
+//          }
+//          
+//      if itemType == "room" {
+//          // Create an alert controller
+//              let selectedAmenities = freeamenityArray // Assuming this is set correctly
+//              print("Free amenities: \(selectedAmenities)")
+//              
+//              let alertController = UIAlertController(title: "Room Information", message:nil, preferredStyle: .alert)
+//              // Create the bullet points for the amenities
+//              var message = ""
+//              for amenity in selectedAmenities {
+//                  let name = amenity.name ?? "No Name"
+//                  let description = amenity.description ?? "No Description"
+//                  
+//                  // Append each amenity with titles for name and description
+//                  message.append("• Amenity Name: \(name)\n")
+//                  message.append("  Description: \(description)\n\n")
+//              }
+//              alertController.message = message
+//              
+//              // Add a Cancel action
+//              let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+//              alertController.addAction(cancelAction)
+//              // Present the alert controller
+//              if let parentVC = self.parentViewController {
+//                  parentVC.present(alertController, animated: true, completion: nil)
+//              } else {
+//                  print("Parent view controller is nil. Unable to present alert.")
+//              }
+//          
+//      }else if itemType == "desk" || itemType == "office" {
+//              // Handle selection of desk or office items as before
+//              for i in 0..<listItems.count {
+//                  listItems[i].isItemSelected = false
+//              }
+//              listItems[indexPath.row].isItemSelected?.toggle()
+//              self.reloadData()
+//              backActionDelegate?.didSelect(selectedId: listItems[indexPath.row].id)
+//          }
+//  }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let item = listItems[indexPath.row]
+        
+        guard let itemType = item.type else {
+            return
+        }
+        
+        if itemType == "room" {
+            // Show the alert for room amenities
+            if let viewController = self.currentViewController, viewController is BookRoomDetailsViewController{
+                viewController.showAmenitiesAlert(amenities: freeamenityArray, title: "Room Information")
+            }
+            
+        } else if itemType == "desk" {
+            print("Selected desk item: \(item)")
+            // Handle selection of desk items
+            handleSelection(for: indexPath)
+            
+        } else if itemType == "office" {
+            // Handle selection of office items
+            handleSelection(for: indexPath)
+        }
+    }
+
+    // Helper function to handle item selection
+    private func handleSelection(for indexPath: IndexPath) {
+        for i in 0..<listItems.count {
             listItems[i].isItemSelected = false
         }
-    listItems[indexPath.row].isItemSelected?.toggle()
-    self.reloadData()
-    backActionDelegate?.didSelect(selectedId: listItems[indexPath.row].id)
-  }
+        listItems[indexPath.row].isItemSelected?.toggle()
+        self.reloadData()
+        backActionDelegate?.didSelect(selectedId: listItems[indexPath.row].id)
+    }
 }
+    
 
 // MARK: - UICollectionViewDelegateFlowLayout
 
@@ -138,5 +220,18 @@ extension RSOMeetingRoomsCollectionView: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 20.0
+    }
+}
+
+extension UIView {
+    var parentViewController: UIViewController? {
+        var parentResponder: UIResponder? = self
+        while parentResponder != nil {
+            if let viewController = parentResponder as? UIViewController {
+                return viewController
+            }
+            parentResponder = parentResponder?.next
+        }
+        return nil
     }
 }

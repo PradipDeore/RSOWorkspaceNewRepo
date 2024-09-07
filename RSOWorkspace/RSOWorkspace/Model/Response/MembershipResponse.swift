@@ -18,7 +18,7 @@ struct MembershipResponse: Codable {
 struct MembershipData: Codable {
     let id: Int?
     let name: String?
-    let orderBy: String?
+    let orderBy: Int?
     let services: [String]?
     let price: [PlanPrice]?
 

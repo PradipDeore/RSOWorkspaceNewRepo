@@ -28,7 +28,6 @@ enum SectionType: Int, CaseIterable {
 
 class BookMeetingRoomViewController: UIViewController{
     var coordinator: RSOTabBarCordinator?
-    
     @IBOutlet weak var tableView: UITableView!
     var listItems: [RSOCollectionItem] = []
     var location: [LocationDetails] = []
@@ -127,11 +126,13 @@ extension BookMeetingRoomViewController: UITableViewDataSource, UITableViewDeleg
         case .selectDate:
             let  cell =  tableView.dequeueReusableCell(withIdentifier: CellIdentifier.selectDate.rawValue, for: indexPath) as! SelectDateTableViewCell
             cell.delegate = self
+            cell.bookingTypeSelectTime = .meetingRoom
             cell.selectionStyle = .none
             return cell
         case .selectTime:
             let cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifier.selectTime.rawValue, for: indexPath) as! SelectTimeTableViewCell
             cell.delegate = self
+            cell.bookingTypeSelectTime = .meetingRoom
             cell.selectionStyle = .none
             return cell
             
@@ -206,6 +207,7 @@ extension BookMeetingRoomViewController: SelectDateTableViewCellDelegate {
         // save formated date to show in next screen
         let displayDate = Date.formatSelectedDate(format: .EEEEddMMMMyyyy, date: actualFormatOfDate)
         displayBookingDetailsNextScreen.date = displayDate
+       
         fetchMeetingRooms()
         
     }
@@ -235,15 +237,12 @@ extension BookMeetingRoomViewController: SelectTimeTableViewCellDelegate{
     func selectFulldayStatus(_ isFullDay: Bool) {
         selectedFullDay = isFullDay ? "Yes" : "No"
     }
-    
 }
-
 
 // MARK: - Enums
 
 extension BookMeetingRoomViewController {
     enum Event {
-        
         case dataLoaded
         case error(Error?)
     }

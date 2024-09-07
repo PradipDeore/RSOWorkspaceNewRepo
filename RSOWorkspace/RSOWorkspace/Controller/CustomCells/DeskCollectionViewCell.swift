@@ -20,6 +20,7 @@ class DeskCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var lblPrice: UILabel!
     @IBOutlet weak var imgRoomImage: UIImageView!
     
+    @IBOutlet weak var viewAmenityDetails: UIButton!
     var cornerRadius: CGFloat = 10.0
     var roomName = ""
     var selectedMeetingRoom = 0
@@ -56,7 +57,7 @@ class DeskCollectionViewCell: UICollectionViewCell {
             self.lblDescription.text = item.description
         }
         
-        self.lblPrice.text = "\(item.roomPrice!) /Hr"
+        self.lblPrice.text = "\(item.roomPrice!) /Day"
         if let imageUrl = item.roomImage, !imageUrl.isEmpty {
             let url = URL(string: imageBasePath + imageUrl)
             self.imgRoomImage.kf.setImage(with: url)
@@ -78,6 +79,11 @@ class DeskCollectionViewCell: UICollectionViewCell {
         }else {
             backActionDelegate?.showLogInVC()
         }
+    }
+    
+    
+    @IBAction func btnViewamenityDetailsAction(_ sender: Any) {
+        
     }
 }
 

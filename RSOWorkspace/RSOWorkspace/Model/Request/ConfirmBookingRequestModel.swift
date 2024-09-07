@@ -20,13 +20,23 @@ struct ConfirmBookingRequestModel{
   var teamMembers: [TeamMembersList] = []
   var guest: [String] = []
   var amenityArray: [Amenity] = []
+    var freeamenityArray: [AmenityFree] = []
   var deskList: [Desk] = []
     var noOfSeats :Int = 0
     var totalHrs:Int = 0
     var officeBookingId: Int = 0
     var amenityTotalHours:[Int : Int] = [:]
     
-  //computed property
+    //order Details Values
+    var orderDetailsOfMeetingRoom : [Total] = []
+    var perHourPrice:String = ""
+    var perHourSubTotalprice:String = ""
+    var dayType :String = ""
+    var isSurcharge :String = ""
+    var isDiscount = ""
+    var surchargePrice :Int = 0
+    var finalTotalOfMeetingRoom:String = ""
+    //computed property
   var floatPrice : Float {
     let price =  Float(self.roomprice) ?? 0.0
     return price
@@ -89,6 +99,29 @@ struct ConfirmBookingRequestModel{
     return self.subTotal + self.calculatedVat
   }
     
+    var grossTotal: Float {
+        // Guard to safely unwrap the `orderDetailsOfMeetingRoom` array
+        guard !self.orderDetailsOfMeetingRoom.isEmpty else { return 0 }
+        
+        // Initialize subTotal to 0
+        var subTotal: Float = 0.0
+        
+        // Iterate through the items in `orderDetailsOfMeetingRoom`
+        for item in self.orderDetailsOfMeetingRoom {
+            // Check if the item's name is "Subtotal"
+            if item.name == "Subtotal" {
+                       // Convert price to Float directly from string
+                       if let price = item.price {
+                           subTotal = Float(price) ?? 0.0
+                    }
+            }
+        }
+        
+        // Return the sum of `finalTotal` and `subTotal`
+        return finalTotal + subTotal
+    }
+
+    
     //desk calcualtions
   var deskSubTotal: Float {
     var subTotal: Float = 0.0
@@ -150,7 +183,13 @@ struct ConfirmBookingRequestModel{
     self.endTime = model.datetime.endTime
     self.teamMembers = model.members ?? []
     self.amenityArray = model.amenity
+      self.freeamenityArray = model.amenityFree ?? []
   }
+    mutating func setValuesforOrderDetails(model: StoreRoomBookingResponse){
+        self.orderDetailsOfMeetingRoom = model.orderDetails?.total ?? []
+     
+    }
+    
   mutating func setValues(response: StoreDeskBookingResponseModel){
     let startTimeString = response.data?.startTime ?? ""
     if let regularStartTime = Date.convertTo(startTimeString, givenFormat: .HHmmss, newFormat: .HHmm) {
@@ -178,6 +217,7 @@ struct ConfirmBookingRequestModel{
       
       
   }
+    
     mutating func setValues(response: StoreofficeBookingResponse){
       let startTimeString = response.data?.startTime ?? ""
       if let regularStartTime = Date.convertTo(startTimeString, givenFormat: .HHmmss, newFormat: .HHmm) {

@@ -28,7 +28,7 @@ struct SearchRoomData: Codable {
     let description: String?
     let roomImage: String?
     let roomPrice: String?
-    let searchroomAmenityDetails: [SearchRoomAmenityDetail]?
+    let locationName:String?
 
     enum CodingKeys: String, CodingKey {
         case id
@@ -37,7 +37,7 @@ struct SearchRoomData: Codable {
         case description
         case roomImage = "room_image"
         case roomPrice = "room_price"
-        case searchroomAmenityDetails = "room_amenity_details"
+        case locationName = "location_name"
     }
     
     // Custom decoding to parse the JSON string into an array
@@ -48,14 +48,10 @@ struct SearchRoomData: Codable {
         capacity = try container.decodeIfPresent(Int.self, forKey: .capacity)
         description = try container.decodeIfPresent(String.self, forKey: .description)
         roomImage = try container.decodeIfPresent(String.self, forKey: .roomImage)
+        locationName = try container.decodeIfPresent(String.self, forKey: .locationName)
         roomPrice = try container.decodeIfPresent(String.self, forKey: .roomPrice)
 
-        let amenityDetailsString = try container.decodeIfPresent(String.self, forKey: .searchroomAmenityDetails)
-        if let amenityDetailsData = amenityDetailsString?.data(using: .utf8) {
-            searchroomAmenityDetails = try? JSONDecoder().decode([SearchRoomAmenityDetail].self, from: amenityDetailsData)
-        } else {
-            searchroomAmenityDetails = nil
-        }
+        
     }
 }
 

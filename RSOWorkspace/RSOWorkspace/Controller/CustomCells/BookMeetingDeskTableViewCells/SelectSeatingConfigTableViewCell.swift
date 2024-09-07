@@ -102,3 +102,6 @@ class SelectSeatingConfigTableViewCell: UITableViewCell, UICollectionViewDataSou
     
     
 }
+    
+    
+

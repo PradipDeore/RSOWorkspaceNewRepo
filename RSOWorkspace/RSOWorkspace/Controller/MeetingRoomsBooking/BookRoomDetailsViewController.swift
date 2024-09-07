@@ -10,6 +10,10 @@ import IQKeyboardManagerSwift
 import SwiftUI
 import CoreLocation
 
+enum ScreenIdentifiers {
+    static let roomDetailsScreen = "SelectMeetingRoomTableViewCell"
+}
+
 class BookRoomDetailsViewController: UIViewController {
     
     var coordinator: RSOTabBarCordinator?
@@ -63,6 +67,7 @@ class BookRoomDetailsViewController: UIViewController {
         tableView.register(UINib(nibName: "InviteTeamMembersTableViewCell", bundle: nil), forCellReuseIdentifier: "InviteTeamMembersTableViewCell")
         tableView.register(UINib(nibName: "InviteGuestsTableViewCell", bundle: nil), forCellReuseIdentifier: "InviteGuestsTableViewCell")
         tableView.register(UINib(nibName: "ChooseAmenitiesTableViewCell", bundle: nil), forCellReuseIdentifier: "ChooseAmenitiesTableViewCell")
+      
         tableView.register(UINib(nibName: "ButtonBookingConfirmTableViewCell", bundle: nil), forCellReuseIdentifier: "ButtonBookingConfirmTableViewCell")
         
         tableView.dataSource = self
@@ -83,8 +88,10 @@ class BookRoomDetailsViewController: UIViewController {
                 case .success(let responseData):
                     // Handle successful response with bookings
                     self.item = responseData
+                    print("room details resposse Item:", item)
                     self.confirmBookingDetails.setValues(model: responseData)
-                    
+                    // Debugging: Print the full confirmBookingDetails
+                                print("Fetched confirmBookingDetails: \(self.confirmBookingDetails)")
                     // set formatted values for display on this details creen
                     self.confirmBookingDetails.date = displayBookingDetails.date
                     self.confirmBookingDetails.displayStartTime = displayBookingDetails.startTime
@@ -97,7 +104,6 @@ class BookRoomDetailsViewController: UIViewController {
                     } else {
                         self.confirmBookingDetails.teamMembers = []
                     }
-                    
                     self.confirmBookingDetails.location = item?.data.locationName  ?? ""
                     
                     self.dateOfBooking = requestModel.date
@@ -176,6 +182,7 @@ extension BookRoomDetailsViewController: UITableViewDataSource, UITableViewDeleg
             var timeRange = ""
             let startTime = self.confirmBookingDetails.displayStartTime
             let endTime = self.confirmBookingDetails.displayendTime
+            
             timeRange = "\(startTime) - \(endTime)"
             cell.txtTime.text = timeRange
             return cell
@@ -191,11 +198,13 @@ extension BookRoomDetailsViewController: UITableViewDataSource, UITableViewDeleg
         case 4:
             let cell = tableView.dequeueReusableCell(withIdentifier: "SelectMeetingRoomTableViewCell", for: indexPath) as! SelectMeetingRoomTableViewCell
             cell.selectionStyle = .none
-
             cell.collectionView.tag = 1
             cell.collectionView.hideBookButton = true
             cell.collectionView.backActionDelegate = self
             cell.collectionView.listItems = listItems
+            cell.freeamenityArray = self.confirmBookingDetails.freeamenityArray // Pass the array here
+            cell.collectionView.currentViewController = self
+
             return cell
         case 5:
             let cell = tableView.dequeueReusableCell(withIdentifier: "SelectMeetingRoomLabelTableViewCell", for: indexPath) as! SelectMeetingRoomLabelTableViewCell
@@ -214,7 +223,6 @@ extension BookRoomDetailsViewController: UITableViewDataSource, UITableViewDeleg
         case 7:
             let cell = tableView.dequeueReusableCell(withIdentifier: "SelectMeetingRoomLabelTableViewCell", for: indexPath) as! SelectMeetingRoomLabelTableViewCell
             cell.selectionStyle = .none
-
             cell.lblMeetingRoom.text = "Invite Team Members"
             cell.lblMeetingRoom.font = UIFont(name: "Poppins-SemiBold", size: 16.0)
             return cell
@@ -242,10 +250,8 @@ extension BookRoomDetailsViewController: UITableViewDataSource, UITableViewDeleg
                    }
                    cell.teamMemberView.isHidden = false
                }
-               
                // Show the Add button only on the first cell
                cell.btnAdd.isHidden = indexPath.row != 0
-
                // Set the delegate if needed
                cell.delegate = self
             return cell
@@ -256,6 +262,7 @@ extension BookRoomDetailsViewController: UITableViewDataSource, UITableViewDeleg
             cell.lblMeetingRoom.text = "Invite Guests"
             cell.lblMeetingRoom.font = UIFont(name: "Poppins-SemiBold", size: 16.0)
             return cell
+        
         case 10:
             let cell = tableView.dequeueReusableCell(withIdentifier: "InviteGuestsTableViewCell", for: indexPath) as! InviteGuestsTableViewCell
             cell.selectionStyle = .none
@@ -273,7 +280,6 @@ extension BookRoomDetailsViewController: UITableViewDataSource, UITableViewDeleg
         case 11:
             let cell = tableView.dequeueReusableCell(withIdentifier: "SelectMeetingRoomLabelTableViewCell", for: indexPath) as! SelectMeetingRoomLabelTableViewCell
             cell.selectionStyle = .none
-
             cell.lblMeetingRoom.text = "Choose Amenities"
             cell.lblMeetingRoom.font = UIFont(name: "Poppins-SemiBold", size: 16.0)
             return cell
@@ -287,16 +293,17 @@ extension BookRoomDetailsViewController: UITableViewDataSource, UITableViewDeleg
             
             cell.amenityId = amenity.id
             cell.delegate = self
+            cell.totalHours = Int(self.confirmBookingDetails.timeDifferece)
+
             cell.count = selectedAmenityHours[amenity.id] ?? 0
             return cell
+        
             
         case 13:
             let cell = tableView.dequeueReusableCell(withIdentifier: "ButtonBookingConfirmTableViewCell", for: indexPath) as! ButtonBookingConfirmTableViewCell
             cell.selectionStyle = .none
-
             cell.delegate = self
             return cell
-            
         default:
             return UITableViewCell()
         }
@@ -330,8 +337,9 @@ extension BookRoomDetailsViewController: UITableViewDataSource, UITableViewDeleg
             return 20
         case 12:
             return 65
+       
         case 13:
-            return 46
+            return 45
         default:
             return 100
         }
@@ -360,8 +368,8 @@ extension BookRoomDetailsViewController:InviteTeamMembersTableViewCellDelegate{
 extension BookRoomDetailsViewController:ChooseAmenitiesTableViewCellDelegate{
     func didUpdateHours(for amenityId: Int, hours: Int) {
         // Save the hours for the particular amenity
-      selectedAmenityHours[amenityId] = hours
-        self.confirmBookingDetails.amenityTotalHours = selectedAmenityHours
+            selectedAmenityHours[amenityId] = hours
+            self.confirmBookingDetails.amenityTotalHours = selectedAmenityHours
     }
 }
 extension BookRoomDetailsViewController:sendteamMemberNameDelegate{

@@ -47,6 +47,8 @@ extension String {
         let calendar = Calendar.current
         return calendar.component(.day, from: date)
     }
+   
+
 }
 
 //usage

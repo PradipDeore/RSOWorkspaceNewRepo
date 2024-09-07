@@ -16,6 +16,7 @@ struct DeskDetailsResponseModel: Codable {
   var interval: [Interval]?
   var deskTypes: [DeskType]?
   var amenities: [BookingDeskDetailsAmenity]?
+  var freeAmenities:[BookingDeskDetailsFreeAmenity]?
   var roomConfiguration: [RoomConfiguration]?
   var message: String?
   
@@ -23,8 +24,10 @@ struct DeskDetailsResponseModel: Codable {
     case status, data, members, companies, interval
     case deskTypes = "desk_types"
     case amenities
+    case freeAmenities = "amenitiesFree"
     case roomConfiguration = "roomConfiguration"
     case message
+
   }
 }
 
@@ -130,6 +133,8 @@ struct DeskType: Codable {
     let id: Int?
     let name: String?
     let isDeleted: Int?
+    let deskID:Int?
+
     let createdAt, updatedAt, deskNo: String?
 
     enum CodingKeys: String, CodingKey {
@@ -138,6 +143,7 @@ struct DeskType: Codable {
         case createdAt = "created_at"
         case updatedAt = "updated_at"
         case deskNo
+        case deskID = "desk_id"
     }
 }
 
@@ -157,6 +163,20 @@ struct BookingDeskDetailsAmenity: Codable {
         case amenitiesPrice = "amenities_price"
     }
 }
+// MARK: - Free Amenity
+struct BookingDeskDetailsFreeAmenity: Codable {
+    let id: Int
+    let name: String?
+    let description: String?
+    let amenitiesPrice: String?
+
+    enum CodingKeys: String, CodingKey {
+        case id, name
+        case description
+        case amenitiesPrice = "amenity_pricing"
+    }
+}
+
 
 // MARK: - RoomConfiguration
 struct RoomConfiguration: Codable {

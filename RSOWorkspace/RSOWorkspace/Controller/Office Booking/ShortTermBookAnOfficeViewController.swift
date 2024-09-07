@@ -139,10 +139,13 @@ extension ShortTermBookAnOfficeViewController: UITableViewDataSource, UITableVie
       let  cell =  tableView.dequeueReusableCell(withIdentifier: CellIdentifierOfficeBooking.selectDate.rawValue, for: indexPath) as! SelectDateTableViewCell
       cell.delegate = self
       cell.selectionStyle = .none
+    cell.bookingTypeSelectTime = .office
+
       return cell
     case .selectTime:
       let cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifierOfficeBooking.selectTime.rawValue, for: indexPath) as! SelectTimeTableViewCell
       cell.delegate = self
+      cell.bookingTypeSelectTime = .office
       cell.selectionStyle = .none
       return cell
    

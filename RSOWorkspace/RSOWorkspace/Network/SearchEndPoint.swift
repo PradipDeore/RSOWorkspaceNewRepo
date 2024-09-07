@@ -15,7 +15,8 @@ extension SearchEndPoint: EndPointType {
     var path: String {
         switch self {
         case .searchItems(let searchItemName):
-            return "search?search=\(searchItemName)"
+            let encodedSearchItemName = searchItemName.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? searchItemName
+                   return "search?search=\(encodedSearchItemName)"
         }
     }
     var url: URL? {

@@ -7,12 +7,20 @@
 //https://finance.ardemos.co.in/rso/api/room-details/2?date=2024-02-25&start_time=09:00&end_time=12:00&is_fullday=Yes
 
 import Foundation
+
 struct RoomDetailResponse: Codable {
     let status: Bool
     let data: RoomData
     let amenity: [Amenity]
+    let amenityFree: [AmenityFree]?
     let members: [TeamMembersList]? // Assuming it's an array of strings or null
     let datetime: Datetime
+  
+    enum CodingKeys: String, CodingKey {
+        case status, data, amenity, members
+        case datetime
+        case amenityFree
+    }
 }
 
 struct RoomData: Codable {
@@ -70,6 +78,12 @@ struct Amenity: Codable {
     let pricing: String?
     let price: String?
 }
+// MARK: - AmenityFree
+struct AmenityFree: Codable {
+    let id: Int?
+    let name, description: String?
+    let price: String?
+}
 struct TeamMembersList: Codable {
     let id: Int
     let first_name: String?
@@ -100,3 +114,5 @@ struct Datetime: Codable {
         case endTime = "end_time"
     }
 }
+
+

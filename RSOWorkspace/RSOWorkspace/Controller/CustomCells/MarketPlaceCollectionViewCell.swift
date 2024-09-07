@@ -35,21 +35,24 @@ class MarketPlaceCollectionViewCell: UICollectionViewCell {
         self.layer.masksToBounds = false
         self.layer.shadowPath = UIBezierPath(roundedRect:  CGRect(x: 0, y: self.bounds.height - 4, width: self.bounds.width, height: 4), cornerRadius: self.containerView.layer.cornerRadius).cgPath
     }
-    func setData(item : MarketPlaceItem){
-        //logo
-        if !item.headerImg.isEmpty {
-            let url = URL(string: imageBasePath + item.headerImg)
+    func setData(item: MarketPlaceItem) {
+        // Logo
+        if let headerImg = item.headerImg, !headerImg.isEmpty {
+            let url = URL(string: imageBasePath + headerImg)
             self.imgLogoImage.kf.setImage(with: url)
         }
+        
+        // Headline
         self.lblHeadline.text = item.headline
         self.lblHeadline2.text = item.headline2
         self.lblSubtext.text = item.subtext
         self.lblLocation.text = item.location
-        // image
-        if !item.image.isEmpty {
-            let url = URL(string: imageBasePath + item.image)
+        
+        // Image
+        if let image = item.image, !image.isEmpty {
+            let url = URL(string: imageBasePath + image)
             self.imgHeaderImage.kf.setImage(with: url)
         }
-        
     }
+        
 }

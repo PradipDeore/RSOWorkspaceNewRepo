@@ -44,6 +44,7 @@ class DeskBookingViewController: UIViewController{
     var selectedDeskList:[RSOCollectionItem] = []
     var viewFloorPlanSeatingConfig:[RoomConfiguration] = []
     var teamMembersArray:[String] = [""]
+    var freeAmenitiesArrayDesk:[BookingDeskDetailsFreeAmenity] = []
     var deskbookingConfirmDetails = StoreDeskBookingRequest()
     var selectedDeskId = 0
     var locationId = 0
@@ -100,7 +101,7 @@ class DeskBookingViewController: UIViewController{
             self.tableView.reloadData()
         }
     }
-    func fetchDesks(id: Int) {
+    func fetchDesksDetails(id: Int) {
         DispatchQueue.main.async {
             RSOLoader.showLoader()
             self.clearDeskCellData()
@@ -114,6 +115,9 @@ class DeskBookingViewController: UIViewController{
                     switch response {
                     case .success(let responseData):
                         // Handle successful response with bookings
+                        self.freeAmenitiesArrayDesk = responseData.freeAmenities ?? []
+                        print("free amenities desk",self.freeAmenitiesArrayDesk)
+
                         if let errorMessage = responseData.message, errorMessage.isEmpty == false {
                             self.eventHandler?(.error(errorMessage as? Error))
                             //  Unsuccessful
@@ -126,7 +130,9 @@ class DeskBookingViewController: UIViewController{
                                 self.deskList = listItems
                                 let indexpath1 = IndexPath(row: 0, section: SectionTypeDeskBooking.selectDesks.rawValue)
                                 let indexpath2 = IndexPath(row: 0, section: SectionTypeDeskBooking.buttonbookingConfirm.rawValue)
+                               
                                 self.tableView.reloadRows(at: [indexpath1,indexpath2], with: .automatic)
+                                self.showAmenitiesAlert(amenities: self.freeAmenitiesArrayDesk, title: "Desk Amenities Information")
                             }
                             self.eventHandler?(.dataLoaded)
                             
@@ -198,11 +204,14 @@ extension DeskBookingViewController: UITableViewDataSource, UITableViewDelegate 
         case .selectDate:
             let  cell =  tableView.dequeueReusableCell(withIdentifier: CellIdentifierDeskBooking.selectDate.rawValue, for: indexPath) as! SelectDateTableViewCell
             cell.delegate = self
+            cell.bookingTypeSelectTime = .desk
+
             cell.selectionStyle = .none
             return cell
         case .selectTime:
             let cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifierDeskBooking.selectTime.rawValue, for: indexPath) as! SelectTimeTableViewCell
             cell.delegate = self
+            cell.bookingTypeSelectTime = .desk
             cell.selectionStyle = .none
             return cell
         case .addTeamMembers:
@@ -237,6 +246,7 @@ extension DeskBookingViewController: UITableViewDataSource, UITableViewDelegate 
                 switch event {
                 case .dataLoaded:
                     if list?.isEmpty == true {
+                        
                         RSOToastView.shared.show("No Desks Available", duration: 2.0, position: .center)
                     }
                 case .error(let error):
@@ -480,6 +490,6 @@ extension DeskBookingViewController: BookButtonActionDelegate{
         print("selected desk type:", selectedId)
         displayBookingDetailsNextScreen.deskId = selectedId
         deskbookingConfirmDetails.desktype = selectedId
-        fetchDesks(id: selectedId)
+        fetchDesksDetails(id: selectedId)
     }
 }

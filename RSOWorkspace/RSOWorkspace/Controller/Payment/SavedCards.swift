@@ -27,6 +27,7 @@ class CardListManager {
                                 guard let number = cardDetail.number, !number.isEmpty else {
                                     return false
                                 }
+                                ("get card details respone",self.cards)
                                 return true
                             } ?? []
                         }

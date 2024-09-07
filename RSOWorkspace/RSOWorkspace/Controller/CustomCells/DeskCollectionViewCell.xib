@@ -12,7 +12,7 @@
         <array key="Inter-Medium.ttf">
             <string>Inter-Medium</string>
         </array>
-        <array key="Inter-Regular.ttf">
+        <array key="Inter-VariableFont_slnt,wght.ttf">
             <string>Inter-Regular</string>
         </array>
         <array key="Poppins-Bold.ttf">
@@ -112,8 +112,8 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ro1-EF-7RO">
                                         <rect key="frame" x="151" y="0.0" width="140" height="84"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="from AED" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cFm-6u-l4x">
-                                                <rect key="frame" x="38" y="10" width="102" height="11.333333333333336"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="from AED" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cFm-6u-l4x">
+                                                <rect key="frame" x="38" y="8" width="102" height="9.3333333333333357"/>
                                                 <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="8"/>
                                                 <color key="textColor" red="0.31764705879999999" green="0.31764705879999999" blue="0.31764705879999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -195,13 +195,13 @@
             <connections>
                 <outlet property="btnBook" destination="E6v-1P-Lj1" id="Lel-mn-zs0"/>
                 <outlet property="containerView" destination="xyt-gh-td4" id="nJA-Uv-YOv"/>
-                <outlet property="imgRoomImage" destination="Tvp-hi-1o5" id="Dic-4U-x00"/>
+                <outlet property="imgRoomImage" destination="Tvp-hi-1o5" id="M1M-Gt-q8G"/>
                 <outlet property="lblDescription" destination="KU4-Y1-Ela" id="99T-y6-eEB"/>
                 <outlet property="lblNoOfPeople" destination="Ia2-jV-DjT" id="OJe-jZ-yYE"/>
                 <outlet property="lblPrice" destination="af5-uQ-AjB" id="ax9-4r-m9U"/>
                 <outlet property="lbldeskName" destination="go4-fP-zec" id="Wxm-j0-03c"/>
             </connections>
-            <point key="canvasLocation" x="58.778625954198468" y="-1.0563380281690142"/>
+            <point key="canvasLocation" x="61.832061068702288" y="-10.211267605633804"/>
         </collectionViewCell>
     </objects>
     <resources>

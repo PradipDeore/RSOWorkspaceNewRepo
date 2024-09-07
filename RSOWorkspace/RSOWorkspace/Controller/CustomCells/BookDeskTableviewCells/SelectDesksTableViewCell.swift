@@ -59,7 +59,7 @@ class SelectDesksTableViewCell: UITableViewCell , UICollectionViewDataSource, UI
            deskList[indexPath.row].isItemSelected?.toggle()
            self.collectionView.reloadData()
            let selectedDeskListing = deskList.filter({ $0.isItemSelected ?? false })
-           let selectedIDs = selectedDeskListing.map( { $0.id })
+           let selectedIDs = selectedDeskListing.compactMap({ $0.deskId })
            delegate?.getselectedDeskNo(selectedDeskNo: selectedIDs, selectedDeskList: selectedDeskListing)
        }
     
