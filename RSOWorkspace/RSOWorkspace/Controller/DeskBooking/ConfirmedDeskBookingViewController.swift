@@ -94,7 +94,7 @@ class ConfirmedDeskBookingViewController: UIViewController{
                             paymentVC.requestParameters = self.bookingConfirmDetails
                             paymentVC.coordinator = self.coordinator
                             paymentVC.bookingType = .desk
-                            paymentVC.bookingId = response.data?.deskTypeID ?? 0
+                            paymentVC.bookingId = response.data?.id ?? 0
                             self.navigationController?.pushViewController(paymentVC, animated: true)
                         }
                         

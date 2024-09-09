@@ -11,13 +11,13 @@ struct DeskListingResponse: Codable {
     let data: [DeskListingItem]
 }
 struct DeskListingItem: Codable {
-    let id: Int
-    let name: String
-    let capacity: Int
-    let description: String
-    let image: String
-    let price: String
-    let type: String
+    let id: Int?
+    let name: String?
+    let capacity: Int?
+    let description: String?
+    let image: String?
+    let price: String?
+    let type: String?
     let amenityDetails: [ListingAmenityDetail]
 
     enum CodingKeys: String, CodingKey {
@@ -27,7 +27,7 @@ struct DeskListingItem: Codable {
 }
 
 struct ListingAmenityDetail: Codable {
-    let amenityName: String
+    let amenityName: String?
 
     enum CodingKeys: String, CodingKey {
         case amenityName = "amenity_name"

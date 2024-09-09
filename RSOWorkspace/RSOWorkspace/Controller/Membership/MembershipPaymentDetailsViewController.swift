@@ -94,7 +94,8 @@ extension MembershipPaymentDetailsViewController: UITableViewDataSource, UITable
       cell.summaryValueLabel.text = "\(SelectedMembershipData.shared.agreementLength) months"
     case 3:
       cell.summaryTitleLabel.text = "Start Date"
-      let date = Date.convertTo(SelectedMembershipData.shared.startDate, givenFormat: .yyyyMMdd, newFormat: .ddMMyyyy)
+     // let date = Date.convertTo(SelectedMembershipData.shared.startDate, givenFormat: .yyyyMMdd, newFormat: .ddMMyyyy)
+        let date = Date.convertTo(SelectedMembershipData.shared.startDate, givenFormat: .yyyyMMddPlus, newFormat: .ddMMyyyy)
       cell.summaryValueLabel.text = date
     case 4:
       cell.summaryTitleLabel.text = "Monthly Cost"

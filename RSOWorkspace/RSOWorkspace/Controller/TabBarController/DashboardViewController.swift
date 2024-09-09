@@ -202,6 +202,9 @@ extension DashboardViewController: BookButtonActionDelegate {
     }
     
   func showBookRoomDetailsVC(meetingRoomId: Int) {
+      let bookMeetingRoomVC = UIViewController.createController(storyBoard: .Booking, ofType: BookMeetingRoomViewController.self)
+      bookMeetingRoomVC.coordinator = self.coordinator
+      self.navigationController?.pushViewController(bookMeetingRoomVC, animated: true)
   }
   // not used
   func showDeskBookingVC() {

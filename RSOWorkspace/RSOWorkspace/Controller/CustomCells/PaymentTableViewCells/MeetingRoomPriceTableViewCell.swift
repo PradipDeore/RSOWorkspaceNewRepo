@@ -10,7 +10,6 @@ import UIKit
 class MeetingRoomPriceTableViewCell: UITableViewCell {
    
     @IBOutlet weak var lblmeetingRoomprice: UILabel!
-    @IBOutlet weak var lblHours: UILabel!
     @IBOutlet weak var lbltotalPrice: UILabel!
    
     @IBOutlet weak var lblMeetingRoomName: UILabel!

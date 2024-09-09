@@ -13,6 +13,12 @@ struct StoreofficeBookingResponse: Codable {
     let data: StoreofficeBooking?
     let vatpercent: String?
     let msg:String?
+    let orderDetails: OfficeBookingOrderDetails?
+
+    enum CodingKeys: String, CodingKey {
+           case status, data, vatpercent,msg
+           case orderDetails = "order_details"
+       }
 }
 
 // MARK: - StoreofficeBooking
@@ -44,5 +50,20 @@ struct StoreofficeBooking: Codable {
         case createdAt = "created_at"
         case updatedAt = "updated_at"
         case name
+    }
+}
+
+// MARK: - OfficeBookingOrderDetails
+struct OfficeBookingOrderDetails: Codable {
+       let total: [OfficeBookingOrderDetailsTotal]?
+}
+
+// MARK: - OfficeBookingOrderDetailsTotal
+struct OfficeBookingOrderDetailsTotal: Codable {
+    let name, price: String?
+
+    enum CodingKeys: String, CodingKey {
+        case name = "Name"
+        case price
     }
 }

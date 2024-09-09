@@ -437,8 +437,15 @@ extension BookRoomDetailsViewController {
 }
 extension BookRoomDetailsViewController:BookButtonActionDelegate{
     func showBookRoomDetailsVC(meetingRoomId: Int) {
+        let bookMeetingRoomVC = UIViewController.createController(storyBoard: .Booking, ofType: BookMeetingRoomViewController.self)
+        bookMeetingRoomVC.coordinator = self.coordinator
+        self.navigationController?.pushViewController(bookMeetingRoomVC, animated: true)
+        
     }
     func showBookMeetingRoomsVC() {
+        let bookMeetingRoomVC = UIViewController.createController(storyBoard: .Booking, ofType: BookMeetingRoomViewController.self)
+        bookMeetingRoomVC.coordinator = self.coordinator
+        self.navigationController?.pushViewController(bookMeetingRoomVC, animated: true)
     }
     func showLogInVC() {
         

@@ -89,6 +89,7 @@ extension RSOMeetingRoomsCollectionView: UICollectionViewDataSource {
         case "desk":
             let cell = dequeueReusableCell(withReuseIdentifier: "DeskCollectionViewCell", for: indexPath) as! DeskCollectionViewCell
             cell.backActionDelegate = backActionDelegate
+            cell.tag = self.tag
             cell.setData(item: item)
             cell.btnBook.isHidden = hideBookButton
           if item.isItemSelected ?? false {
@@ -180,7 +181,7 @@ extension RSOMeetingRoomsCollectionView: UICollectionViewDataSource {
         if itemType == "room" {
             // Show the alert for room amenities
             if let viewController = self.currentViewController, viewController is BookRoomDetailsViewController{
-                viewController.showAmenitiesAlert(amenities: freeamenityArray, title: "Room Information")
+                viewController.showAmenitiesAlert(amenities: freeamenityArray, title: "Inclusive Amenities")
             }
             
         } else if itemType == "desk" {

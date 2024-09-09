@@ -57,7 +57,12 @@ class DeskCollectionViewCell: UICollectionViewCell {
             self.lblDescription.text = item.description
         }
         
-        self.lblPrice.text = "\(item.roomPrice!) /Day"
+        if let price = item.roomPrice {
+            self.lblPrice.text = "\(price) /Day"
+        } else {
+            // Handle the case where roomPrice is nil (e.g., set default text or hide the label)
+            self.lblPrice.text = "0 /Day"
+        }
         if let imageUrl = item.roomImage, !imageUrl.isEmpty {
             let url = URL(string: imageBasePath + imageUrl)
             self.imgRoomImage.kf.setImage(with: url)

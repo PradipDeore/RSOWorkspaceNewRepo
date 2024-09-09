@@ -15,6 +15,7 @@ enum RSODateFormat: String{
   case HHmmss = "HH:mm:ss"
   case ddMMyyyy = "dd/MM/yyyy"
     case MMMM = "MMMM" // Full month name
+    case yyyyMMddPlus = "yyyy-MM-dd HH:mm:ss"
 }
 
 extension Date {

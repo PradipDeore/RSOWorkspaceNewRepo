@@ -49,7 +49,7 @@ struct RSOCollectionItem: Codable {
         self.roomPrice = meetingRoomList.roomPrice
         self.roomAmenityDetails = meetingRoomList.roomAmenityDetails
         self.type = "room"
-        self.locationName = nil
+        self.locationName = meetingRoomList.locationName
         self.roomAmenitiesDesk = []
         self.officeAmenityDesk = []
         self.searchDeskAmenityDetails = []
@@ -77,8 +77,8 @@ struct RSOCollectionItem: Codable {
     }
     // Initializer to convert from DeskListItem
     init(deskLisitngItem: DeskListingItem) {
-        self.id = deskLisitngItem.id
-        self.roomName = deskLisitngItem.name
+        self.id = deskLisitngItem.id ?? 0
+        self.roomName = deskLisitngItem.name ?? ""
         self.capacity = deskLisitngItem.capacity
         self.description = deskLisitngItem.description
         self.roomImage = deskLisitngItem.image

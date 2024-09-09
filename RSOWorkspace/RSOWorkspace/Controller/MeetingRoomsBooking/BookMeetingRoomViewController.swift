@@ -88,7 +88,6 @@ class BookMeetingRoomViewController: UIViewController{
             self.tableView.reloadData()
         } 
     }
-    
 }
 
 // MARK: - UITableViewDataSource, UITableViewDelegate
@@ -157,8 +156,10 @@ extension BookMeetingRoomViewController: UITableViewDataSource, UITableViewDeleg
                 print("eventHandler listItems", self.listItems)
             }
             if selectedMeetingRoomId > 0{
-                cell.fetchmeetingRooms(id: selectedMeetingRoomId,
+                cell.fetchmeetingRooms(id: 1,
                                        requestModel: apiRequestModelRoomListing)
+    /*cell.fetchmeetingRooms(id: selectedMeetingRoomId,
+                                       requestModel: apiRequestModelRoomListing)*/
             }
             return cell
         }
@@ -271,6 +272,9 @@ extension BookMeetingRoomViewController: BookButtonActionDelegate{
         self.navigationController?.pushViewController(bookRoomDetailsVC, animated: true)
     }
     func showBookMeetingRoomsVC() {
+        let bookMeetingRoomVC = UIViewController.createController(storyBoard: .Booking, ofType: BookMeetingRoomViewController.self)
+        bookMeetingRoomVC.coordinator = self.coordinator
+        self.navigationController?.pushViewController(bookMeetingRoomVC, animated: true)
     }
     
     func showLogInVC() {

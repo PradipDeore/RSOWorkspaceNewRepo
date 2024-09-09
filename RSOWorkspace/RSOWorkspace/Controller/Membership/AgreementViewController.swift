@@ -23,7 +23,7 @@ class AgreementViewController: UIViewController, MembershipNavigable {
     datePicker.minimumDate = Date()
     collectionView.register(UINib(nibName: cellIdentifier, bundle: nil), forCellWithReuseIdentifier: cellIdentifier)
     selectedDate = Date.formatSelectedDate(format: .yyyyMMdd, date: Date())
-    SelectedMembershipData.shared.startDate = selectedDate
+    SelectedMembershipData.shared.startDate = selectedDate + " 00:00:00"
     }
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)

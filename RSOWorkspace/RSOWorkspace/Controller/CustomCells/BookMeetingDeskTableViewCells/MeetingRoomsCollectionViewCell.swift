@@ -47,11 +47,10 @@ class MeetingRoomsCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
         // Initialization code
         customizeCell()
-        self.meetingRoomDashboardView.isHidden = false
-        self.bookMeetingRoomView.isHidden = false
-        self.btnBook.isHidden = false
-        self.isAmenitiesScreen = true
-
+       // self.meetingRoomDashboardView.isHidden = false
+       // self.bookMeetingRoomView.isHidden = false
+        //self.btnBook.isHidden = false
+       // self.isAmenitiesScreen = true
     }
    
     func customizeCell(){
@@ -74,22 +73,19 @@ class MeetingRoomsCollectionViewCell: UICollectionViewCell {
         self.lblLocation.text = item.locationName
         self.lblroomPrice.text = "\(item.roomPrice ?? "0") /Hr"
         //let amenityDetails = item.amenityDetails
-        print("setData for room")
-        print("name for room=", item.roomName)
-        print("name for price=", item.roomPrice)
         if let imageUrl = item.roomImage, !imageUrl.isEmpty {
             let url = URL(string: imageBasePath + imageUrl)
             self.imgroomImage.kf.setImage(with: url)
         }
-        if self.tag == 1 {
-            self.meetingRoomDashboardView.isHidden = true
-            self.bookMeetingRoomView.isHidden = false
-            self.btnBook.isHidden = false
-        }else{
-            self.bookMeetingRoomView.isHidden = true
-            self.meetingRoomDashboardView.isHidden = false
-            self.btnBook.isHidden = false
-        }
+//        if self.tag == 1 {
+//            self.meetingRoomDashboardView.isHidden = true
+//            self.bookMeetingRoomView.isHidden = false
+//            self.btnBook.isHidden = false
+//        }else{
+//            self.bookMeetingRoomView.isHidden = true
+//            self.meetingRoomDashboardView.isHidden = false
+//            self.btnBook.isHidden = false
+//        }
     }
     
     @IBAction func btnBookTappedAction(_ sender: Any) {

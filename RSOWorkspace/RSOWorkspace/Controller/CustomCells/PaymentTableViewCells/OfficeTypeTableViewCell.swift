@@ -12,9 +12,10 @@ class OfficeTypeTableViewCell: UITableViewCell {
     @IBOutlet weak var lblOfficeName: UILabel!
     @IBOutlet weak var lblNoOfSeats: UILabel!
     @IBOutlet weak var lbltotalPrice: UILabel!
-    @IBOutlet weak var lblofficeHours: UILabel!
-    @IBOutlet weak var lblOfficePrice: UILabel!
+   
+    @IBOutlet weak var lblOfficeNameWithPrice: UILabel!
     
+   
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

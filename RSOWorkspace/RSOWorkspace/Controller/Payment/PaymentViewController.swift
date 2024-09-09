@@ -48,6 +48,7 @@ class PaymentViewController: UIViewController {
         (.meetingTime, 80),
         (.amenityPrice, 50),
         (.roomBookingOrderDetails, 50),
+        
         (.totalCell, 191),
         //(.discount, 60),
         (.paymentMethods, 97),
@@ -131,11 +132,16 @@ extension PaymentViewController: UITableViewDataSource, UITableViewDelegate {
                 return 0
             }else if  bookingType == .meetingRoom{
                 return self.requestParameters?.orderDetailsOfMeetingRoom.count ?? 0
+                print("order details array count ",self.requestParameters?.orderDetailsOfMeetingRoom.count)
+            }else if bookingType == .office{
+                return self.requestParameters?.orderDetailsOfOffice.count ?? 0
             }
+            
             return 0
         case .officePriceDetails:
             if bookingType == .office {
                 return 1
+                //return self.requestParameters?.orderDetailsOfOffice.count ?? 0
             }
             return 0
         case .paymentMethods:
@@ -188,19 +194,19 @@ extension PaymentViewController: UITableViewDataSource, UITableViewDelegate {
                     let desk = obj.deskList[indexPath.row]
                     cell.lblMeetingRoomName.text = desk.name
                     let price = Float(desk.price )
-                    cell.lblmeetingRoomprice.text = "\(price ?? 00) "
-                    cell.lblHours.text = "\(Int(obj.timeDifferece))"
+                    //cell.lblmeetingRoomprice.text = "\(price ?? 00) "
                     cell.lbltotalPrice.text = "\((price ?? 0.0) * obj.timeDifferece)"
                     
-                } else {
+                } else if  bookingType == .meetingRoom {
                     let meetingRoomName = obj.meetingRoom
                     cell.lblMeetingRoomName.text = meetingRoomName
                     let roomPrice = obj.roomprice.integerValue ?? 0
                     cell.lblmeetingRoomprice.text = "\(roomPrice)"
-                    cell.lblHours.text = "\(Int(obj.timeDifferece))"
                     cell.lbltotalPrice.text = "\(obj.totalOfMeetingRoom)"
                 }
             }
+            
+            
             return cell
         case .officePriceDetails:
             let cell = tableView.dequeueReusableCell(withIdentifier: cellType.rawValue, for: indexPath) as! OfficeTypeTableViewCell
@@ -210,9 +216,9 @@ extension PaymentViewController: UITableViewDataSource, UITableViewDelegate {
                     cell.lblOfficeName.text = obj.meetingRoom
                     cell.lblNoOfSeats.text = "\(obj.noOfSeats)"
                     let officePrice = obj.roomprice.integerValue ?? 0
-                    cell.lblOfficePrice.text = "\(officePrice)"
-                    cell.lblofficeHours.text = "\(obj.totalHrs)"
-                    cell.lbltotalPrice.text = "\((officePrice) * obj.totalHrs)"
+                    cell.lblOfficeNameWithPrice.text = obj.meetingRoom
+                    //cell.lblofficeHours.text = "\(obj.totalHrs)"
+                    cell.lbltotalPrice.text = "\((officePrice))"
                 }
             }
             return cell
@@ -226,7 +232,7 @@ extension PaymentViewController: UITableViewDataSource, UITableViewDelegate {
                 cell.lblAmenityPrice.text = "\(amenityPriceInt)"
                 // Retrieve the selected hours for this amenity from amenityTotalHours
                 let selectedHours = self.requestParameters?.amenityTotalHours[amenity.id] ?? 0
-                cell.lblHours.text = "\(selectedHours)"
+                //cell.lblHours.text = "\(selectedHours)"
                 
                 // Calculate total price for the amenity
                         let amenityPrice = Float(amenity.price ?? "0.0") ?? 0.0
@@ -242,25 +248,24 @@ extension PaymentViewController: UITableViewDataSource, UITableViewDelegate {
             if let obj = self.requestParameters {
                 switch bookingType {
                 case .desk:
-                    cell.lblSubTotal.text = "\(obj.deskSubTotal)"
                     cell.lblVat.text = "\(obj.deskVatTotal)"
                     vatAmountDesk = Double(obj.deskVatTotal)
                     cell.lblTotalPrice.text = "\(obj.deskFinalTotal)"
                     totalPriceDesk = Double(obj.deskFinalTotal)
                 case .office:
-                    cell.lblSubTotal.text = "\(obj.officeSubTotal)"
-                    cell.lblVat.text = "\(obj.officeVatTotal)"
+                    let calculatedVatOffice = Double(obj.officeVatTotal)
+                    cell.lblVat.text = calculatedVatOffice.toStringWithTwoDecimalPlaces()
                     vatAmountOffice = Double(obj.officeVatTotal)
-                    cell.lblTotalPrice.text = "\(obj.officeFinalTotal)"
+                    var finalTotalOffice = Double(obj.officeFinalTotal)
+                    cell.lblTotalPrice.text = finalTotalOffice.toStringWithTwoDecimalPlaces()
                     totalPriceOffice = Double(obj.officeFinalTotal)
                 default:
-                    cell.lblSubTotal.text = "\(obj.subTotal)"
-                    cell.lblVat.text = "\(obj.calculatedVat)"
+                    let calculatedVatMeeting = Double(obj.calculatedVat)
+                    cell.lblVat.text = calculatedVatMeeting.toStringWithTwoDecimalPlaces()
                     vatAmountMeetingRoom = Double(obj.calculatedVat)
-                    var grossTotal = Double(obj.grossTotal)
-                    cell.lblTotalPrice.text = grossTotal.toStringWithTwoDecimalPlaces()
-                   
-                    totalPriceMeetingRoom = Double(obj.grossTotal)
+                    var finalTotal = Double(obj.finalTotal)
+                    cell.lblTotalPrice.text = finalTotal.toStringWithTwoDecimalPlaces()
+                    totalPriceMeetingRoom = Double(obj.finalTotal)
                 }
             }
             return cell
@@ -310,7 +315,7 @@ extension PaymentViewController: UITableViewDataSource, UITableViewDelegate {
                     break
 
                 case .office:
-                    break
+                    cell.setDataOffice(item: obj.orderDetailsOfOffice[indexPath.item])
                 default:
                     cell.setData(item: obj.orderDetailsOfMeetingRoom[indexPath.item])
                 }

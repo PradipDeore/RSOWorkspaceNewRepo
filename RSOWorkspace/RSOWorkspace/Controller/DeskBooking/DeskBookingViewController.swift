@@ -132,7 +132,7 @@ class DeskBookingViewController: UIViewController{
                                 let indexpath2 = IndexPath(row: 0, section: SectionTypeDeskBooking.buttonbookingConfirm.rawValue)
                                
                                 self.tableView.reloadRows(at: [indexpath1,indexpath2], with: .automatic)
-                                self.showAmenitiesAlert(amenities: self.freeAmenitiesArrayDesk, title: "Desk Amenities Information")
+                                self.showAmenitiesAlert(amenities: self.freeAmenitiesArrayDesk, title: "Inclusive Amenities:")
                             }
                             self.eventHandler?(.dataLoaded)
                             
@@ -256,8 +256,10 @@ extension DeskBookingViewController: UITableViewDataSource, UITableViewDelegate 
                 print("eventHandler listItems", self.listItems)
             }
             if selectedDeskId > 0{
-                cell.fetchDesks(id: selectedDeskId,
+                cell.fetchDesks(id: 1,
                                 requestModel: apiRequestModelDeskListing)
+               /* cell.fetchDesks(id: selectedDeskId,
+                                requestModel: apiRequestModelDeskListing)*/
                 
             }
             cell.selectionStyle = .none
@@ -360,7 +362,6 @@ extension DeskBookingViewController: SelectDateTableViewCellDelegate {
         displayBookingDetailsNextScreen.date = displayDate
         self.deskbookingConfirmDetails.date = apiDate
         fetchDesksList()
-        
     }
 }
 extension DeskBookingViewController: SelectTimeTableViewCellDelegate{

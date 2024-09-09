@@ -14,5 +14,5 @@ struct ConfirmOfficeBookingDetailsModel {
     var date: String = Date.formatSelectedDate(format: .EEEEddMMMMyyyy, date: nil)
     var startTime: String = Date.formatSelectedDate(format: .hhmma, date: nil)
     var endTime: String = Date.formatSelectedDate(format: .hhmma, date: nil)
-    var nofOfSeats: Int = 5
+    var nofOfSeats: Int = 0
 }

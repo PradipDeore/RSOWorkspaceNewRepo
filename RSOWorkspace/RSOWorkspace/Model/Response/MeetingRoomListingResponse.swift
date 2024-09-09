@@ -10,7 +10,7 @@
 import Foundation
 
 // Model for the main response data
-struct MeetingRoomListingResponse: Codable {
+struct  MeetingRoomListingResponse: Codable {
   let status: Bool
   let data: [MeetingRoomListing]
 }
@@ -22,6 +22,8 @@ struct MeetingRoomListing: Codable {
   let description: String?
   let roomImage: String?
   let roomPrice: String?
+  let type :String?
+  let locationID:Int?
   let locationName: String?
   let roomAmenityDetails: [RoomAmenities]?
   
@@ -32,7 +34,9 @@ struct MeetingRoomListing: Codable {
     case description
     case roomImage = "image"
     case roomPrice = "price"
+    case locationID = "location_id"
     case locationName = "location_name"
+    case type
     case roomAmenityDetails = "room_amenity_details"
   }
   
@@ -45,7 +49,8 @@ struct MeetingRoomListing: Codable {
     roomImage = try container.decodeIfPresent(String.self, forKey: .roomImage)
     roomPrice = try container.decodeIfPresent(String.self, forKey: .roomPrice)
     locationName = try container.decodeIfPresent(String.self, forKey: .locationName)
-    
+      locationID = try container.decodeIfPresent(Int.self, forKey: .locationID)
+      type = try container.decodeIfPresent(String.self, forKey: .type)
     let roomAmenitiesString = try container.decodeIfPresent(String.self, forKey: .roomAmenityDetails)
     if let amenitiesString = roomAmenitiesString, let amenitiesData = amenitiesString.data(using: .utf8) {
       roomAmenityDetails = try JSONDecoder().decode([RoomAmenities].self, from: amenitiesData)
