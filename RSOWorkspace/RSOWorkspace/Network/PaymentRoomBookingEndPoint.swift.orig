@@ -1,0 +1,81 @@
+//
+//  PaymentRoomBookingEndPoint.swift
+//  RSOWorkspace
+//
+//  Created by Sumit Aquil on 13/04/24.
+//
+
+import Foundation
+
+enum PaymentRoomBookingEndPoint {
+    case paymentRoombooking(requestModel: PaymentRoomBookingRequest)
+    case getStoreRoomBooking(requestModel: StoreRoomBookingRequest)
+    case payment(requestModel: NiPaymentRequestModel)
+<<<<<<< HEAD
+    case applyCoupon
+=======
+    case paymentDeskbooking(requestModel: PaymentRoomBookingRequest)
+>>>>>>> ee2d1b3df586c119d8459dfe77b05eec92575700
+}
+extension PaymentRoomBookingEndPoint: EndPointType {
+
+    var path: String {
+        switch self {
+        case .paymentRoombooking:
+            return "payment-deskbooking"
+        case .getStoreRoomBooking:
+            return "store-roombooking"
+        case .payment:
+            return "ios-payment"
+<<<<<<< HEAD
+        case .applyCoupon:
+            return "coupon-details"
+=======
+        case .paymentDeskbooking:
+            return "payment-deskbooking"
+>>>>>>> ee2d1b3df586c119d8459dfe77b05eec92575700
+        }
+    }
+    var url: URL? {
+        return URL(string: "\(baseURL)\(path)")
+    }
+    var method: HTTPMethods {
+        switch self {
+        case .paymentRoombooking:
+            return .post
+        case .getStoreRoomBooking:
+            return .post
+        case .payment:
+            return .post
+<<<<<<< HEAD
+        case .applyCoupon:
+            return .get
+=======
+        case .paymentDeskbooking:
+            return .post
+>>>>>>> ee2d1b3df586c119d8459dfe77b05eec92575700
+        }
+    }
+    var body: Encodable? {
+        switch self {
+        case .paymentRoombooking(let requestModel):
+            return requestModel
+        case .getStoreRoomBooking(let requestModel):
+            return requestModel
+        case .payment(let requestModel):
+            return requestModel
+<<<<<<< HEAD
+        case .applyCoupon:
+            return nil
+=======
+        case .paymentDeskbooking(let requestModel):
+            return requestModel
+>>>>>>> ee2d1b3df586c119d8459dfe77b05eec92575700
+        }
+    }
+    var headers: [String : String]? {
+        //APIManager.commonHeaders
+        let commonHeaders = APIManager.commonHeaders
+        return commonHeaders
+    }
+}
