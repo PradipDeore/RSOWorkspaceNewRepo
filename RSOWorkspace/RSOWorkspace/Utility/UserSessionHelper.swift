@@ -27,6 +27,7 @@ class UserHelper {
   private let userIsGuestKey = "userIsGuest"
   private let userIsLoggedIn = "userIsLoggedIn"
   private let notificationCountKey = "notifficationCount"
+    private let finalTotalKey = "finalTotal"
   
   func saveUser(_ user: UserData) {
     userDefaults.set(user.id, forKey: customerIdKey)
@@ -38,7 +39,13 @@ class UserHelper {
     userDefaults.set(user.status, forKey: userStatusKey)
     userDefaults.set(true, forKey: userIsLoggedIn)
   }
-
+    func saveFinalTotal(_ finalTotal: Total){
+        userDefaults.set(finalTotal.price , forKey: finalTotalKey)
+        
+    }
+    func getFinalTotal() -> String{
+        return userDefaults.string(forKey: finalTotalKey) ?? "0"
+    }
     func saveSocialuser(name:String, email:String){
         
         let namelist = name.components(separatedBy: " ")

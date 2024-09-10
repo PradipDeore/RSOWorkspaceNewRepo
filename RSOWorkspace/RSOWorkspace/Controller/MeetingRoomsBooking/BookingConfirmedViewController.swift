@@ -287,8 +287,9 @@ extension BookingConfirmedViewController:ConfirmAndProceedToPayementTableViewCel
     func btnConfirmAndProceedTappedAction() {
         RSOLoader.showLoader()
         let startTime = self.bookingConfirmDetails.startTime
-        let endTime = self.bookingConfirmDetails.endTime
-        let BookingTime = "\(startTime ?? "00:00") - \(endTime ?? "00:00")"
+        let endTime =  self.bookingConfirmDetails.endTime
+        let BookingTime =  "\(startTime ) - \(endTime )"
+        
         let locationId = String(locationId)
         let location = StoreRoomBookingLocation(id: locationId, name: locationName)
         let teamlist = convertToTeamList(from: teamMembersArray)

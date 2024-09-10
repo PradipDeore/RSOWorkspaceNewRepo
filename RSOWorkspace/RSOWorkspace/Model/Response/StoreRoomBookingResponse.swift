@@ -29,7 +29,12 @@ struct StoreRoomBookingResponse: Codable {
 
 // MARK: - RoomBookingOrderDetails
 struct RoomBookingOrderDetails: Codable {
-    let total: [Total]?
+    let mainprice: Mainprice?
+        let weekday: Weekday?
+        let weekend: Weekend?
+        let surcharge: Surcharge?
+        let daytype: String?
+        let total: [Total]?
 }
 
 // MARK: - Total
@@ -43,52 +48,115 @@ struct Total: Codable {
     }
 }
 
-//
-//enum Price: Codable {
-//    case integer(Int)
-//    case string(String)
-//
-//    // Computed property to return a formatted price as String
-//    var formattedPrice: String {
-//        switch self {
-//        case .integer(let value):
-//            // Convert integer to a formatted string with 2 decimal places
-//            return String(format: "%.2f", Double(value))
-//        case .string(let value):
-//            // Return the string value, ensuring it always has 2 decimal places
-//            if let doubleValue = Double(value) {
-//                return String(format: "%.2f", doubleValue)
-//            } else {
-//                return value // In case the string can't be parsed as a Double, just return the original string
-//            }
-//        }
-//    }
-//
-//    // Decoder to handle Int and String
-//    init(from decoder: Decoder) throws {
-//        let container = try decoder.singleValueContainer()
-//        if let x = try? container.decode(Int.self) {
-//            self = .integer(x)
-//            return
-//        }
-//        if let x = try? container.decode(String.self) {
-//            self = .string(x)
-//            return
-//        }
-//        throw DecodingError.typeMismatch(Price.self, DecodingError.Context(codingPath: decoder.codingPath, debugDescription: "Wrong type for Price"))
-//    }
-//
-//    // Encoder to handle Int and String
-//    func encode(to encoder: Encoder) throws {
-//        var container = encoder.singleValueContainer()
-//        switch self {
-//        case .integer(let x):
-//            try container.encode(x)
-//        case .string(let x):
-//            try container.encode(x)
-//        }
-//    }
-//}
+// MARK: - Mainprice
+struct Mainprice: Codable {
+    let perHour: String?
+    let totalHours, regularHours, surchargeHours: Int?
+    let subtotal: String?
+    
+
+    enum CodingKeys: String, CodingKey {
+        case perHour = "per_hour"
+        case totalHours = "total_hours"
+        case regularHours = "regular_hours"
+        case surchargeHours = "surcharge_hours"
+        case subtotal
+    }
+}
+
+// MARK: - Surcharge
+struct Surcharge: Codable {
+    let isSurcharge:String?
+    let charges: Price?
+    let hours:Int?
+    let surchargeAmount: Double?
+
+        enum CodingKeys: String, CodingKey {
+            case isSurcharge, charges, hours
+            case surchargeAmount = "SurchargeAmount"
+        }
+
+        init(from decoder: Decoder) throws {
+            let container = try decoder.container(keyedBy: CodingKeys.self)
+
+            isSurcharge = try container.decodeIfPresent(String.self, forKey: .isSurcharge)
+            charges = try container.decodeIfPresent(Price.self, forKey: .charges)
+            hours = try container.decodeIfPresent(Int.self, forKey: .hours)
+
+            // Handle surchargeAmount which might be Int or Double
+            if let surchargeAmountInt = try? container.decode(Int.self, forKey: .surchargeAmount) {
+                surchargeAmount = Double(surchargeAmountInt)
+            } else if let surchargeAmountDouble = try? container.decode(Double.self, forKey: .surchargeAmount) {
+                surchargeAmount = surchargeAmountDouble
+            } else {
+                surchargeAmount = nil
+            }
+        }
+}
+// MARK: - Weekday
+struct Weekday: Codable {
+    let isDiscount: String?
+    let discount: Price?
+    let original_amount:String?
+    let discount_amount:String?
+    let discounted_total:String?
+    let hours:Int?
+   
+}
+
+// MARK: - Weekend
+struct Weekend: Codable {
+    let isCharges:String?
+    let charges: Price?
+    let hours: Int?
+}
+
+
+enum Price: Codable {
+    case integer(Int)
+    case string(String)
+
+    // Computed property to return a formatted price as String
+    var formattedPrice: String {
+        switch self {
+        case .integer(let value):
+            // Convert integer to a formatted string with 2 decimal places
+            return String(format: "%.2f", Double(value))
+        case .string(let value):
+            // Return the string value, ensuring it always has 2 decimal places
+            if let doubleValue = Double(value) {
+                return String(format: "%.2f", doubleValue)
+            } else {
+                return value // In case the string can't be parsed as a Double, just return the original string
+            }
+        }
+    }
+
+    // Decoder to handle Int and String
+    init(from decoder: Decoder) throws {
+        let container = try decoder.singleValueContainer()
+        if let x = try? container.decode(Int.self) {
+            self = .integer(x)
+            return
+        }
+        if let x = try? container.decode(String.self) {
+            self = .string(x)
+            return
+        }
+        throw DecodingError.typeMismatch(Price.self, DecodingError.Context(codingPath: decoder.codingPath, debugDescription: "Wrong type for Price"))
+    }
+
+    // Encoder to handle Int and String
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.singleValueContainer()
+        switch self {
+        case .integer(let x):
+            try container.encode(x)
+        case .string(let x):
+            try container.encode(x)
+        }
+    }
+}
 
 
 

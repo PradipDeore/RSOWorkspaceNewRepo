@@ -26,17 +26,19 @@ struct ConfirmBookingRequestModel{
     var totalHrs:Int = 0
     var officeBookingId: Int = 0
     var amenityTotalHours:[Int : Int] = [:]
-    
+    var mainPrice : Mainprice?
+    var weekDay : Weekday?
+    var weekEnd : Weekend?
+    var surcharge:Surcharge?
     //order Details Values
     var orderDetailsOfMeetingRoom : [Total] = []
-    var orderDetailsOfOffice : [OfficeBookingOrderDetailsTotal] = []
-    var perHourPrice:String = ""
-    var perHourSubTotalprice:String = ""
-    var dayType :String = ""
-    var isSurcharge :String = ""
-    var isDiscount = ""
-    var surchargePrice :Int = 0
+    var orderDetailsOfMeetingRoomwithAll : RoomBookingOrderDetails?
+    
+    var orderDetailsOfOffice : [TotalOfficeOrderDetails] = []
+    var orderDetailsfOfficewithAll: OfficeBookingOrderDetails?
+   
     var finalTotalOfMeetingRoom:String = ""
+    
     //computed property
   var floatPrice : Float {
     let price =  Float(self.roomprice) ?? 0.0
@@ -97,34 +99,31 @@ struct ConfirmBookingRequestModel{
   }
   
   var finalTotal : Float{
-    return self.subTotal + self.calculatedVat
+    //return self.subTotal + self.calculatedVat
+      return self.subTotal
   }
     
     var grossTotalMeetingRoom: Float {
-        // Guard to safely unwrap the `orderDetailsOfMeetingRoom` array
         guard !self.orderDetailsOfMeetingRoom.isEmpty else { return 0 }
         
         // Initialize subTotal to 0
-        var subTotal: Float = 0.0
+        var total: Float = 0.0
         
-        // Iterate through the items in `orderDetailsOfMeetingRoom`
         for item in self.orderDetailsOfMeetingRoom {
-            // Check if the item's name is "Subtotal"
             if item.name == "Subtotal" {
-                       // Convert price to Float directly from string
                        if let price = item.price {
-                           subTotal = Float(price) ?? 0.0
+                           total = Float(price) ?? 0.0
+                           print("total is ",total)
                     }
             }
         }
         
-        // Return the sum of `finalTotal` and `subTotal`
-        return finalTotal + subTotal
+        // Calculate VAT as 5% of the total
+            let vat = total * 0.05
+        return total + vat
     }
     
-    
 
-    
     //desk calcualtions
   var deskSubTotal: Float {
     var subTotal: Float = 0.0
@@ -172,7 +171,8 @@ struct ConfirmBookingRequestModel{
     
     var officeFinalTotal: Float {
       var totalFinalOffice: Float = 0.0
-        totalFinalOffice = officeSubTotal + officeVatTotal
+       // totalFinalOffice = officeSubTotal + officeVatTotal
+       // totalFinalOffice  = orderDetailsOfOffice
       return totalFinalOffice
     }
     var grossTotalOffice: Float {
@@ -180,7 +180,7 @@ struct ConfirmBookingRequestModel{
         guard !self.orderDetailsOfOffice.isEmpty else { return 0 }
         
         // Initialize subTotal to 0
-        var subTotal: Float = 0.0
+        var total: Float = 0.0
         
         // Iterate through the items in `orderDetailsOfMeetingRoom`
         for item in self.orderDetailsOfOffice {
@@ -188,13 +188,14 @@ struct ConfirmBookingRequestModel{
             if item.name == "Subtotal" {
                        // Convert price to Float directly from string
                        if let price = item.price {
-                           subTotal = Float(price) ?? 0.0
+                           total = Float(price) ?? 0.0
                     }
             }
         }
         
-        // Return the sum of `finalTotal` and `subTotal`
-        return officeFinalTotal + subTotal
+        // Calculate VAT as 5% of the total
+            let vat = total * 0.05
+        return total + vat + totalOfAmenity
     }
   mutating func setValues(model: RoomDetailResponse){
     self.meetingId = model.data.id
@@ -210,8 +211,13 @@ struct ConfirmBookingRequestModel{
       self.freeamenityArray = model.amenityFree ?? []
   }
     mutating func setValuesforOrderDetails(model: StoreRoomBookingResponse){
+        
+        self.orderDetailsOfMeetingRoomwithAll = model.orderDetails
         self.orderDetailsOfMeetingRoom = model.orderDetails?.total ?? []
-     
+        self.mainPrice = model.orderDetails?.mainprice
+        self.weekDay = model.orderDetails?.weekday
+        self.surcharge = model.orderDetails?.surcharge
+        self.weekEnd = model.orderDetails?.weekend
     }
     
   mutating func setValues(response: StoreDeskBookingResponseModel){
@@ -235,7 +241,20 @@ struct ConfirmBookingRequestModel{
     // Display date
     let bookingdate = response.data?.date ?? ""
     self.date = bookingdate
-    self.roomprice = "\(response.data?.totalPrice ?? 0)"
+   // self.roomprice = "\(response.data?.totalPrice ?? 0)"
+      if let firstDesk = self.deskList.first {
+              self.roomprice = firstDesk.price
+          } else {
+              self.roomprice = "0.0" // Default value if no desks are available
+          }
+//      // Calculate the total price from desks' prices
+//          let totalDeskPrice = self.deskList.reduce(0.0) { (result, desk) -> Double in
+//              return result + (Double(desk.price) ?? 0.0)
+//          }
+//          
+//          // Assign the calculated desk price to roomprice
+//          self.roomprice = "\(totalDeskPrice)"
+          
     self.meetingId = response.data?.id ?? 0
     self.deskList = response.desks ?? []
       
@@ -270,6 +289,7 @@ struct ConfirmBookingRequestModel{
       self.totalHrs = response.data?.totalHrs ?? 0
       self.officeBookingId = response.data?.id ?? 0
       self.orderDetailsOfOffice = response.orderDetails?.total ?? []
+        self.orderDetailsfOfficewithAll = response.orderDetails
         
     }
 }

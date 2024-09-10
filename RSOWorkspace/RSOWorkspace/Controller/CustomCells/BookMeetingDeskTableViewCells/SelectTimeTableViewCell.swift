@@ -27,7 +27,6 @@ class SelectTimeTableViewCell: UITableViewCell {
     @IBOutlet weak var btnBookfullDay: RSOButton!
     @IBOutlet weak var selectStartTime: UIDatePicker!
     @IBOutlet weak var selectEndTime: UIDatePicker!
-        
     override func awakeFromNib() {
         super.awakeFromNib()
         self.btnBookfullDay.layer.cornerRadius = btnBookfullDay.bounds.height / 2
@@ -112,6 +111,7 @@ class SelectTimeTableViewCell: UITableViewCell {
                 selectStartTime.date = fullDayStartTime
                 RSOToastView.shared.show("Start time cannot be before 8:30 AM for full-day bookings.", duration: 2.0, position: .center)
             }
+           
             // Manually adjust the end time if needed, but do not reset it automatically
             let fullDayEndTime = getSpecificTime(hour: 22, minute: 0) // 10:00 PM
             if selectEndTime.date > fullDayEndTime {
@@ -191,7 +191,7 @@ class SelectTimeTableViewCell: UITableViewCell {
     
     func validateStartEndTime() {
         if selectStartTime.date > selectEndTime.date {
-            setEndDateLaterStartDate()
+           // setEndDateLaterStartDate()
             RSOToastView.shared.show("End time must be greater than start time.", duration: 2.0, position: .center)
         }
     }

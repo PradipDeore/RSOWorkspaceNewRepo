@@ -24,13 +24,13 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="waW-9W-1nN">
-                        <rect key="frame" x="25" y="0.0" width="412" height="52"/>
+                        <rect key="frame" x="25" y="0.0" width="399" height="52"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="3MS-g7-lHA">
-                                <rect key="frame" x="15" y="0.0" width="389" height="52"/>
+                                <rect key="frame" x="15" y="0.0" width="376" height="52"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2fp-Du-Qgh">
-                                        <rect key="frame" x="0.0" y="0.0" width="127.66666666666667" height="52"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="123.33333333333333" height="52"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="D3401" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bxy-B0-dxB">
                                                 <rect key="frame" x="0.33333333333333331" y="12" width="135" height="28"/>
@@ -50,22 +50,10 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wa7-lI-Fmc">
-                                        <rect key="frame" x="130.66666666666666" y="0.0" width="127.66666666666666" height="52"/>
+                                        <rect key="frame" x="126.33333333333334" y="0.0" width="123.33333333333334" height="52"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hMc-Fy-fQA">
-                                                <rect key="frame" x="5" y="10" width="117.66666666666667" height="32"/>
-                                                <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="145" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Nj-wz-NKC">
-                                                        <rect key="frame" x="0.0" y="0.0" width="117.66666666666667" height="32"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="32" id="jRf-T8-7qK"/>
-                                                            <constraint firstAttribute="width" constant="100" id="qXR-bY-hzc"/>
-                                                        </constraints>
-                                                        <fontDescription key="fontDescription" name="Inter-Medium" family="Inter" pointSize="16"/>
-                                                        <color key="textColor" name="2C2C2C"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
-                                                </subviews>
+                                                <rect key="frame" x="5" y="10" width="113.33333333333333" height="32"/>
                                             </stackView>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -77,10 +65,10 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xf9-Sk-hqm">
-                                        <rect key="frame" x="261.33333333333331" y="0.0" width="127.66666666666669" height="52"/>
+                                        <rect key="frame" x="252.66666666666671" y="0.0" width="123.33333333333334" height="52"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="435.00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OkX-Xi-fKp">
-                                                <rect key="frame" x="3" y="0.0" width="122" height="52"/>
+                                                <rect key="frame" x="0.66666666666662877" y="0.0" width="122" height="52"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="52" id="G6a-a9-bTc"/>
                                                     <constraint firstAttribute="width" constant="122" id="Jbz-ZY-Yeb"/>
@@ -119,8 +107,7 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <color key="backgroundColor" name="F2F2F2"/>
             <connections>
-                <outlet property="lblMeetingRoomName" destination="bxy-B0-dxB" id="bPW-rK-8Xs"/>
-                <outlet property="lblmeetingRoomprice" destination="6Nj-wz-NKC" id="Gml-dr-IEo"/>
+                <outlet property="lblMeetingRoomName" destination="bxy-B0-dxB" id="R4e-dB-O7e"/>
                 <outlet property="lbltotalPrice" destination="OkX-Xi-fKp" id="T8O-DY-nbl"/>
             </connections>
             <point key="canvasLocation" x="191.6030534351145" y="-56.338028169014088"/>

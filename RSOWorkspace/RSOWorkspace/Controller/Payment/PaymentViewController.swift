@@ -21,6 +21,10 @@ enum BookingType {
     case desk
     case office
 }
+struct orderSummaryItem{
+    let title:String?
+    let price:String?
+}
 class PaymentViewController: UIViewController {
     
     var coordinator: RSOTabBarCordinator?
@@ -39,9 +43,31 @@ class PaymentViewController: UIViewController {
     var intHoursOffice = 0
     var totalPriceOffice: Double = 0.0
     var vatAmountOffice: Double = 0.0
-    
+    var totalFinalPriceOfmeetingRoom: Double = 0.0
+    var totalFinalPriceOfOffice : Double = 0.0
     var officeName = ""
     var bookingType: BookingType = .meetingRoom
+    var totalAmenityPrices: [Int: Float] = [:]
+
+    var orderdetailsaArray : [orderSummaryItem] = []
+   // var totalAmenityPrice: Float {
+        // Initialize total price to 0
+        //var totalPrice: Float = 0.0
+        
+//        // Iterate through the amenities array and calculate the total price
+//        if let amenityArray = self.requestParameters?.amenityArray {
+//            for amenity in amenityArray {
+//                // Retrieve the selected hours for the current amenity
+//                let selectedHours = self.requestParameters?.amenityTotalHours[amenity.id] ?? 0
+//                // Calculate the price for the current amenity
+//                let amenityPrice = Float(amenity.price ?? "0.0") ?? 0.0
+//                // Add the total price of this amenity to the global total
+//                totalPrice += amenityPrice * Float(selectedHours)
+//            }
+//        }
+//        
+//        return totalPrice
+    //}
     //var couponData: CouponDetailsResponseModel?
     private var cellIdentifiers: [(CellType, CGFloat)] = [
         (.selectMeetingRoomLabel, 20.0),
@@ -60,8 +86,185 @@ class PaymentViewController: UIViewController {
         setupCellIdentifiers()
         setupTableView()
         coordinator?.hideBackButton(isHidden: false)
+           
+        if let orderDetails = requestParameters?.orderDetailsOfMeetingRoomwithAll {
+                appendOrderDetailsData(orderDetails: orderDetails)
+            } else {
+                print("Order details are not available.")
+            }
+        if let orderDetailsofOffice = requestParameters?.orderDetailsfOfficewithAll {
+                appendOrderDetailsDataOffice(orderDetails: orderDetailsofOffice)
+            } else {
+                print("office Order details are not available.")
+            }
     }
-    
+    func appendOrderDetailsData(orderDetails: RoomBookingOrderDetails) {
+        // Clear existing data
+        orderdetailsaArray.removeAll()
+        var subtotalValue: Double = 0.0
+
+        // Main Price
+        if let mainPrice = orderDetails.mainprice {
+            if let subtotal = mainPrice.subtotal {
+                // Remove any commas from the subtotal string
+                let cleanSubtotal = subtotal.replacingOccurrences(of: ",", with: "")
+                
+                // Convert cleaned string to Double
+                subtotalValue = Double(cleanSubtotal) ?? 0.0
+                
+                let subtotalItem = orderSummaryItem(title: "Subtotal", price: "AED \(subtotalValue.toStringWithTwoDecimalPlaces())")
+                orderdetailsaArray.append(subtotalItem)
+            }
+        }
+            
+        // Weekday Discount
+        if let weekday = orderDetails.weekday, weekday.isDiscount == "yes" {
+            let discountPercentage = Double(weekday.discount?.formattedPrice ?? "0.00") ?? 0.0
+            let hours = weekday.hours ?? 0
+            let discountedPrice: Double
+               if let discountPriceValueString = weekday.discount_amount,
+                  let discountPriceValue = Double(discountPriceValueString) {
+                   print("discountedPrice:", discountPriceValue)
+                   discountedPrice = discountPriceValue
+               } else {
+                   print("discountedPrice is nil or not convertible to Double, defaulting to 0")
+                   discountedPrice = 0.0
+               }
+
+            let discountDescription = "Discount (\(discountPercentage)% on \(hours) hour\(hours > 1 ? "s" : ""))"
+
+            let discountItem = orderSummaryItem(title: discountDescription, price: "AED \(discountedPrice)")
+
+            orderdetailsaArray.append(discountItem)
+        }
+        
+        if let weekend = orderDetails.weekend, weekend.isCharges == "yes" {
+            let weekendPercentage = Double(weekend.charges?.formattedPrice ?? "0.00") ?? 0.0
+            
+            // Calculate the weekend charges
+            let weekendChargesAmount = subtotalValue * (weekendPercentage / 100)
+            ("subtotal value",subtotalValue)
+            let weekendDescription = "Weekend Charges (\(weekendPercentage)% of Subtotal)"
+            let weekendItem = orderSummaryItem(title: weekendDescription, price: "AED \(weekendChargesAmount.toStringWithTwoDecimalPlaces())")
+            orderdetailsaArray.append(weekendItem)
+        }
+
+        // Surcharge
+            if let surcharge = orderDetails.surcharge, surcharge.isSurcharge == "yes" {
+                let surchargeAmount = surcharge.surchargeAmount ?? 0
+                let surchargeCharges = surcharge.charges?.formattedPrice ?? "0.00"
+                let hours = surcharge.hours ?? 0
+                
+                // Create a descriptive surcharge string
+                let surchargeDescription = "Surcharge (\(surchargeCharges) on \(hours) hour\(hours > 1 ? "s" : ""))"
+                
+                let surchargeItem = orderSummaryItem(title: surchargeDescription, price: "AED \(surchargeAmount)")
+                orderdetailsaArray.append(surchargeItem)
+            }
+        // Total Price
+        if let totalItems = orderDetails.total {
+            for totalItem in totalItems {
+                let totalName = totalItem.name
+                if let totalPrice = totalItem.price {
+                    totalFinalPriceOfmeetingRoom = Double(totalPrice.replacingOccurrences(of: ",", with: "")) ?? 0.0
+                }
+                let totalDetailItem = orderSummaryItem(title: totalName, price: "AED \(totalFinalPriceOfmeetingRoom)")
+                orderdetailsaArray.append(totalDetailItem)
+            }
+        }
+            
+            
+        // Reload the table view to reflect the new data
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+    }
+    func appendOrderDetailsDataOffice(orderDetails: OfficeBookingOrderDetails) {
+        // Clear existing data
+        orderdetailsaArray.removeAll()
+        var subtotalValue: Double = 0.0
+
+        // Main Price
+        if let mainPrice = orderDetails.mainprice {
+            if let subtotal = mainPrice.subtotal {
+                // Remove any commas from the subtotal string
+                let cleanSubtotal = subtotal.replacingOccurrences(of: ",", with: "")
+                
+                // Convert cleaned string to Double
+                subtotalValue = Double(cleanSubtotal) ?? 0.0
+                
+                let subtotalItem = orderSummaryItem(title: "Subtotal", price: "AED \(subtotalValue.toStringWithTwoDecimalPlaces())")
+                orderdetailsaArray.append(subtotalItem)
+            }
+        }
+            
+        // Weekday Discount
+        if let weekday = orderDetails.weekday, weekday.isDiscount == "yes" {
+            let discountPercentage = Double(weekday.discount?.formattedPrice ?? "0.00") ?? 0.0
+            let hours = weekday.hours ?? 0
+            let discountedPrice: Double
+               if let discountPriceValueString = weekday.discount_amount,
+                  let discountPriceValue = Double(discountPriceValueString) {
+                   print("discountedPrice:", discountPriceValue)
+                   discountedPrice = discountPriceValue
+               } else {
+                   print("discountedPrice is nil or not convertible to Double, defaulting to 0")
+                   discountedPrice = 0.0
+               }
+
+            let discountDescription = "Discount (\(discountPercentage)% on \(hours) hour\(hours > 1 ? "s" : ""))"
+
+            let discountItem = orderSummaryItem(title: discountDescription, price: "AED \(discountedPrice)")
+
+            orderdetailsaArray.append(discountItem)
+        }
+        
+        if let weekend = orderDetails.weekend, weekend.isCharges == "yes" {
+            let weekendPercentage = Double(weekend.charges?.formattedPrice ?? "0.00") ?? 0.0
+            
+            // Calculate the weekend charges
+            let weekendChargesAmount = subtotalValue * (weekendPercentage / 100)
+            ("subtotal value",subtotalValue)
+            let weekendDescription = "Weekend Charges (\(weekendPercentage)% of Subtotal)"
+            let weekendItem = orderSummaryItem(title: weekendDescription, price: "AED \(weekendChargesAmount.toStringWithTwoDecimalPlaces())")
+            orderdetailsaArray.append(weekendItem)
+        }
+
+        // Surcharge
+            if let surcharge = orderDetails.surcharge, surcharge.isSurcharge == "yes" {
+                let surchargeAmount = surcharge.surchargeAmount ?? 0
+                let surchargeCharges = surcharge.charges?.formattedPrice ?? "0.00"
+                let hours = surcharge.hours ?? 0
+                
+                // Create a descriptive surcharge string
+                let surchargeDescription = "Surcharge (\(surchargeCharges) on \(hours) hour\(hours > 1 ? "s" : ""))"
+                
+                let surchargeItem = orderSummaryItem(title: surchargeDescription, price: "AED \(surchargeAmount)")
+                orderdetailsaArray.append(surchargeItem)
+            }
+        // Total Price
+        if let totalItems = orderDetails.total {
+            for totalItem in totalItems {
+                let totalName = totalItem.name
+                if let totalPrice = totalItem.price {
+                    // Correct parsing of the total price
+                    totalFinalPriceOfOffice = Double(totalPrice.replacingOccurrences(of: ",", with: "")) ?? 0.0
+                }
+                
+                // Ensure the correct value is being assigned to the price in the UI
+               // let totalDetailItem = orderSummaryItem(title: totalName, price: "AED \(totalFinalPriceOfOffice)")
+                //orderdetailsaArray.append(totalDetailItem)
+            }
+        }
+            
+            
+        // Reload the table view to reflect the new data
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+    }
+
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         // getCardDetails()
@@ -131,17 +334,18 @@ extension PaymentViewController: UITableViewDataSource, UITableViewDelegate {
             if bookingType == .desk {
                 return 0
             }else if  bookingType == .meetingRoom{
-                return self.requestParameters?.orderDetailsOfMeetingRoom.count ?? 0
-                print("order details array count ",self.requestParameters?.orderDetailsOfMeetingRoom.count)
+                return self.orderdetailsaArray.count
+               
             }else if bookingType == .office{
-                return self.requestParameters?.orderDetailsOfOffice.count ?? 0
+              //  return self.requestParameters?.orderDetailsOfOffice.count ?? 0
+                return self.orderdetailsaArray.count
             }
             
             return 0
         case .officePriceDetails:
             if bookingType == .office {
-                return 1
-                //return self.requestParameters?.orderDetailsOfOffice.count ?? 0
+                //return 1
+                return self.requestParameters?.orderDetailsOfOffice.count ?? 0
             }
             return 0
         case .paymentMethods:
@@ -195,14 +399,17 @@ extension PaymentViewController: UITableViewDataSource, UITableViewDelegate {
                     cell.lblMeetingRoomName.text = desk.name
                     let price = Float(desk.price )
                     //cell.lblmeetingRoomprice.text = "\(price ?? 00) "
-                    cell.lbltotalPrice.text = "\((price ?? 0.0) * obj.timeDifferece)"
+                    cell.lbltotalPrice.text = "AED \((price ?? 0.0) * obj.timeDifferece)"
                     
                 } else if  bookingType == .meetingRoom {
                     let meetingRoomName = obj.meetingRoom
                     cell.lblMeetingRoomName.text = meetingRoomName
                     let roomPrice = obj.roomprice.integerValue ?? 0
-                    cell.lblmeetingRoomprice.text = "\(roomPrice)"
+                   // cell.lblmeetingRoomprice.text = "\(roomPrice)"
                     cell.lbltotalPrice.text = "\(obj.totalOfMeetingRoom)"
+
+                    print("roomPrice: \(roomPrice)")
+                    cell.lbltotalPrice.text = "AED \(obj.totalOfMeetingRoom)"
                 }
             }
             
@@ -218,7 +425,7 @@ extension PaymentViewController: UITableViewDataSource, UITableViewDelegate {
                     let officePrice = obj.roomprice.integerValue ?? 0
                     cell.lblOfficeNameWithPrice.text = obj.meetingRoom
                     //cell.lblofficeHours.text = "\(obj.totalHrs)"
-                    cell.lbltotalPrice.text = "\((officePrice))"
+                    cell.lbltotalPrice.text = "AED \((officePrice))"
                 }
             }
             return cell
@@ -237,7 +444,10 @@ extension PaymentViewController: UITableViewDataSource, UITableViewDelegate {
                 // Calculate total price for the amenity
                         let amenityPrice = Float(amenity.price ?? "0.0") ?? 0.0
                         let totalAmenityPrice = amenityPrice * Float(selectedHours)
-                        cell.lblTotal.text = "\(totalAmenityPrice)"
+                        cell.lblTotal.text = "AED  \(totalAmenityPrice)"
+               
+                // Store the total price for the amenity globally
+                self.totalAmenityPrices[amenity.id] = totalAmenityPrice
                 
             }
             return cell
@@ -253,19 +463,34 @@ extension PaymentViewController: UITableViewDataSource, UITableViewDelegate {
                     cell.lblTotalPrice.text = "\(obj.deskFinalTotal)"
                     totalPriceDesk = Double(obj.deskFinalTotal)
                 case .office:
-                    let calculatedVatOffice = Double(obj.officeVatTotal)
-                    cell.lblVat.text = calculatedVatOffice.toStringWithTwoDecimalPlaces()
-                    vatAmountOffice = Double(obj.officeVatTotal)
-                    var finalTotalOffice = Double(obj.officeFinalTotal)
-                    cell.lblTotalPrice.text = finalTotalOffice.toStringWithTwoDecimalPlaces()
-                    totalPriceOffice = Double(obj.officeFinalTotal)
+                    
+                    let grossTotalOffice = Double(totalFinalPriceOfOffice)
+                    let vatPercentage: Double = 0.05
+                    let vatAmount = grossTotalOffice * vatPercentage
+                    print("vatAmount",vatAmount)
+                    let totalPriceWithVAT = grossTotalOffice + vatAmount
+                    print("totalPriceWithVAT",totalPriceWithVAT)
+                    cell.lblVat.text = "AED \(vatAmount.toStringWithTwoDecimalPlaces())"
+
+                    cell.lblTotalPrice.text = "\(totalPriceWithVAT.toStringWithTwoDecimalPlaces())"
+                    vatAmountOffice = vatAmount
+                    totalPriceOffice = totalPriceWithVAT
+                    //totalFinalPriceOfOffice
+                 
                 default:
-                    let calculatedVatMeeting = Double(obj.calculatedVat)
-                    cell.lblVat.text = calculatedVatMeeting.toStringWithTwoDecimalPlaces()
-                    vatAmountMeetingRoom = Double(obj.calculatedVat)
-                    var finalTotal = Double(obj.finalTotal)
-                    cell.lblTotalPrice.text = finalTotal.toStringWithTwoDecimalPlaces()
-                    totalPriceMeetingRoom = Double(obj.finalTotal)
+                    let grossTotalMeetingRoom = Double(totalFinalPriceOfmeetingRoom)
+                    print("totalFinalPriceOfmeetingRoom", totalFinalPriceOfmeetingRoom)
+                    print("grossTotalMeetingRoom", grossTotalMeetingRoom)
+                    let vatPercentage: Double = 0.05
+                    let vatAmount = grossTotalMeetingRoom * vatPercentage
+                    // Sum all the values in totalAmenityPrices
+                    // Sum all the values in totalAmenityPrices (convert Float to Double)
+                    let totalAmenityPriceSum = Double(self.totalAmenityPrices.values.reduce(0, +))
+                    let totalPriceWithVAT = grossTotalMeetingRoom + vatAmount + totalAmenityPriceSum
+                    cell.lblVat.text = "AED \(vatAmount.toStringWithTwoDecimalPlaces())"
+                    cell.lblTotalPrice.text = "\(totalPriceWithVAT.toStringWithTwoDecimalPlaces())"
+                    vatAmountMeetingRoom = vatAmount
+                    totalPriceMeetingRoom = totalPriceWithVAT
                 }
             }
             return cell
@@ -315,13 +540,20 @@ extension PaymentViewController: UITableViewDataSource, UITableViewDelegate {
                     break
 
                 case .office:
-                    cell.setDataOffice(item: obj.orderDetailsOfOffice[indexPath.item])
+                    let item = orderdetailsaArray[indexPath.item]
+                    cell.lbltitle.text = item.title
+                    cell.lblPrice.text = item.price
                 default:
-                    cell.setData(item: obj.orderDetailsOfMeetingRoom[indexPath.item])
+                    let item = orderdetailsaArray[indexPath.item]
+                    cell.lbltitle.text = item.title
+                    cell.lblPrice.text = item.price
                 }
             }
             return cell
+            
         }
+    
+    
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
