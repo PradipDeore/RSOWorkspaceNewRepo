@@ -48,61 +48,51 @@ class PaymentViewController: UIViewController {
     var officeName = ""
     var bookingType: BookingType = .meetingRoom
     var totalAmenityPrices: [Int: Float] = [:]
-
+    
     var orderdetailsaArray : [orderSummaryItem] = []
-   // var totalAmenityPrice: Float {
-        // Initialize total price to 0
-        //var totalPrice: Float = 0.0
-        
-//        // Iterate through the amenities array and calculate the total price
-//        if let amenityArray = self.requestParameters?.amenityArray {
-//            for amenity in amenityArray {
-//                // Retrieve the selected hours for the current amenity
-//                let selectedHours = self.requestParameters?.amenityTotalHours[amenity.id] ?? 0
-//                // Calculate the price for the current amenity
-//                let amenityPrice = Float(amenity.price ?? "0.0") ?? 0.0
-//                // Add the total price of this amenity to the global total
-//                totalPrice += amenityPrice * Float(selectedHours)
-//            }
-//        }
-//        
-//        return totalPrice
-    //}
-    //var couponData: CouponDetailsResponseModel?
+    
     private var cellIdentifiers: [(CellType, CGFloat)] = [
         (.selectMeetingRoomLabel, 20.0),
         (.meetingTime, 80),
         (.amenityPrice, 50),
         (.roomBookingOrderDetails, 50),
         
-        (.totalCell, 191),
+        (.totalCell, 115),
         //(.discount, 60),
-        (.paymentMethods, 97),
-        (.buttonPayNow, 40)
+        (.paymentMethods, 136),//97
+        (.buttonPayNow, 80)
     ]
+    
+    // Assuming `requestParameters` is your data model containing amenities
+    var filteredAmenities: [Amenity] {
+        return self.requestParameters?.amenityArray.filter { (amenity) in
+            let hours = self.requestParameters?.amenityTotalHours[amenity.id] ?? 0
+            return hours > 0
+        } ?? []
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupCellIdentifiers()
         setupTableView()
         coordinator?.hideBackButton(isHidden: false)
-           
+        
         if let orderDetails = requestParameters?.orderDetailsOfMeetingRoomwithAll {
-                appendOrderDetailsData(orderDetails: orderDetails)
-            } else {
-                print("Order details are not available.")
-            }
+            appendOrderDetailsData(orderDetails: orderDetails)
+        } else {
+            print("Order details are not available.")
+        }
         if let orderDetailsofOffice = requestParameters?.orderDetailsfOfficewithAll {
-                appendOrderDetailsDataOffice(orderDetails: orderDetailsofOffice)
-            } else {
-                print("office Order details are not available.")
-            }
+            appendOrderDetailsDataOffice(orderDetails: orderDetailsofOffice)
+        } else {
+            print("office Order details are not available.")
+        }
     }
     func appendOrderDetailsData(orderDetails: RoomBookingOrderDetails) {
         // Clear existing data
         orderdetailsaArray.removeAll()
         var subtotalValue: Double = 0.0
-
+        
         // Main Price
         if let mainPrice = orderDetails.mainprice {
             if let subtotal = mainPrice.subtotal {
@@ -116,25 +106,19 @@ class PaymentViewController: UIViewController {
                 orderdetailsaArray.append(subtotalItem)
             }
         }
-            
+        
         // Weekday Discount
         if let weekday = orderDetails.weekday, weekday.isDiscount == "yes" {
             let discountPercentage = Double(weekday.discount?.formattedPrice ?? "0.00") ?? 0.0
             let hours = weekday.hours ?? 0
-            let discountedPrice: Double
-               if let discountPriceValueString = weekday.discount_amount,
-                  let discountPriceValue = Double(discountPriceValueString) {
-                   print("discountedPrice:", discountPriceValue)
-                   discountedPrice = discountPriceValue
-               } else {
-                   print("discountedPrice is nil or not convertible to Double, defaulting to 0")
-                   discountedPrice = 0.0
-               }
-
-            let discountDescription = "Discount (\(discountPercentage)% on \(hours) hour\(hours > 1 ? "s" : ""))"
-
+            // Use the discount amount directly as a string
+            let discountedPrice = weekday.discount_amount ?? "0.00"
+            // Format the percentage to ensure no decimals
+            let formattedDiscountPercentage = String(format: "%.0f", discountPercentage)
+            let discountDescription = "Discount (\(formattedDiscountPercentage)% on \(hours) hour\(hours > 1 ? "s" : ""))"
+            
             let discountItem = orderSummaryItem(title: discountDescription, price: "AED \(discountedPrice)")
-
+            
             orderdetailsaArray.append(discountItem)
         }
         
@@ -144,36 +128,38 @@ class PaymentViewController: UIViewController {
             // Calculate the weekend charges
             let weekendChargesAmount = subtotalValue * (weekendPercentage / 100)
             ("subtotal value",subtotalValue)
-            let weekendDescription = "Weekend Charges (\(weekendPercentage)% of Subtotal)"
+            let formattedweekendPercentage = String(format: "%.0f", weekendPercentage)
+            let weekendDescription = "Weekend Charges (\(formattedweekendPercentage)% on Subtotal)"
             let weekendItem = orderSummaryItem(title: weekendDescription, price: "AED \(weekendChargesAmount.toStringWithTwoDecimalPlaces())")
             orderdetailsaArray.append(weekendItem)
         }
-
+        
         // Surcharge
-            if let surcharge = orderDetails.surcharge, surcharge.isSurcharge == "yes" {
-                let surchargeAmount = surcharge.surchargeAmount ?? 0
-                let surchargeCharges = surcharge.charges?.formattedPrice ?? "0.00"
-                let hours = surcharge.hours ?? 0
-                
-                // Create a descriptive surcharge string
-                let surchargeDescription = "Surcharge (\(surchargeCharges) on \(hours) hour\(hours > 1 ? "s" : ""))"
-                
-                let surchargeItem = orderSummaryItem(title: surchargeDescription, price: "AED \(surchargeAmount)")
-                orderdetailsaArray.append(surchargeItem)
-            }
+        if let surcharge = orderDetails.surcharge, surcharge.isSurcharge == "yes" {
+            let surchargeAmount = surcharge.surchargeAmount ?? 0.0
+            let formattedSurchargeAmount = String(format: "%.2f", surchargeAmount) // Ensure two decimal places
+            let surchargeCharges = surcharge.charges?.formattedPrice ?? "0"
+            let hours = surcharge.hours ?? 0
+            
+            // Create a descriptive surcharge string
+            let surchargeDescription = "Surcharge (\(surchargeCharges) % on \(hours) hour\(hours > 1 ? "s" : ""))"
+            
+            let surchargeItem = orderSummaryItem(title: surchargeDescription, price: "AED \(formattedSurchargeAmount)")
+            orderdetailsaArray.append(surchargeItem)
+        }
         // Total Price
         if let totalItems = orderDetails.total {
             for totalItem in totalItems {
-                let totalName = totalItem.name
+                // let totalName = totalItem.name
                 if let totalPrice = totalItem.price {
                     totalFinalPriceOfmeetingRoom = Double(totalPrice.replacingOccurrences(of: ",", with: "")) ?? 0.0
                 }
-                let totalDetailItem = orderSummaryItem(title: totalName, price: "AED \(totalFinalPriceOfmeetingRoom)")
-                orderdetailsaArray.append(totalDetailItem)
+                // let totalDetailItem = orderSummaryItem(title: totalName, price: "AED \(totalFinalPriceOfmeetingRoom)")
+                //orderdetailsaArray.append(totalDetailItem)
             }
         }
-            
-            
+        
+        
         // Reload the table view to reflect the new data
         DispatchQueue.main.async {
             self.tableView.reloadData()
@@ -183,7 +169,7 @@ class PaymentViewController: UIViewController {
         // Clear existing data
         orderdetailsaArray.removeAll()
         var subtotalValue: Double = 0.0
-
+        
         // Main Price
         if let mainPrice = orderDetails.mainprice {
             if let subtotal = mainPrice.subtotal {
@@ -197,25 +183,18 @@ class PaymentViewController: UIViewController {
                 orderdetailsaArray.append(subtotalItem)
             }
         }
-            
+        
         // Weekday Discount
         if let weekday = orderDetails.weekday, weekday.isDiscount == "yes" {
             let discountPercentage = Double(weekday.discount?.formattedPrice ?? "0.00") ?? 0.0
             let hours = weekday.hours ?? 0
-            let discountedPrice: Double
-               if let discountPriceValueString = weekday.discount_amount,
-                  let discountPriceValue = Double(discountPriceValueString) {
-                   print("discountedPrice:", discountPriceValue)
-                   discountedPrice = discountPriceValue
-               } else {
-                   print("discountedPrice is nil or not convertible to Double, defaulting to 0")
-                   discountedPrice = 0.0
-               }
-
+            // Use the discount amount directly as a string
+            let discountedPrice = weekday.discount_amount ?? "0.00"
+            
             let discountDescription = "Discount (\(discountPercentage)% on \(hours) hour\(hours > 1 ? "s" : ""))"
-
+            
             let discountItem = orderSummaryItem(title: discountDescription, price: "AED \(discountedPrice)")
-
+            
             orderdetailsaArray.append(discountItem)
         }
         
@@ -224,24 +203,26 @@ class PaymentViewController: UIViewController {
             
             // Calculate the weekend charges
             let weekendChargesAmount = subtotalValue * (weekendPercentage / 100)
-            ("subtotal value",subtotalValue)
-            let weekendDescription = "Weekend Charges (\(weekendPercentage)% of Subtotal)"
+            
+            let formattedweekendPercentage = String(format: "%.0f", weekendPercentage)
+            let weekendDescription = "Weekend Charges (\(formattedweekendPercentage)% on Subtotal)"
             let weekendItem = orderSummaryItem(title: weekendDescription, price: "AED \(weekendChargesAmount.toStringWithTwoDecimalPlaces())")
             orderdetailsaArray.append(weekendItem)
         }
-
+        
         // Surcharge
-            if let surcharge = orderDetails.surcharge, surcharge.isSurcharge == "yes" {
-                let surchargeAmount = surcharge.surchargeAmount ?? 0
-                let surchargeCharges = surcharge.charges?.formattedPrice ?? "0.00"
-                let hours = surcharge.hours ?? 0
-                
-                // Create a descriptive surcharge string
-                let surchargeDescription = "Surcharge (\(surchargeCharges) on \(hours) hour\(hours > 1 ? "s" : ""))"
-                
-                let surchargeItem = orderSummaryItem(title: surchargeDescription, price: "AED \(surchargeAmount)")
-                orderdetailsaArray.append(surchargeItem)
-            }
+        if let surcharge = orderDetails.surcharge, surcharge.isSurcharge == "yes" {
+            let surchargeAmount = surcharge.surchargeAmount ?? 0.0
+            let formattedSurchargeAmount = String(format: "%.2f", surchargeAmount) // Ensure two decimal places
+            let surchargeCharges = surcharge.charges?.formattedPrice ?? "0.00"
+            let hours = surcharge.hours ?? 0
+            
+            // Create a descriptive surcharge string
+            let surchargeDescription = "Surcharge (\(surchargeCharges)% on \(hours) hour\(hours > 1 ? "s" : ""))"
+            
+            let surchargeItem = orderSummaryItem(title: surchargeDescription, price: "AED \(formattedSurchargeAmount)")
+            orderdetailsaArray.append(surchargeItem)
+        }
         // Total Price
         if let totalItems = orderDetails.total {
             for totalItem in totalItems {
@@ -252,19 +233,19 @@ class PaymentViewController: UIViewController {
                 }
                 
                 // Ensure the correct value is being assigned to the price in the UI
-               // let totalDetailItem = orderSummaryItem(title: totalName, price: "AED \(totalFinalPriceOfOffice)")
+                // let totalDetailItem = orderSummaryItem(title: totalName, price: "AED \(totalFinalPriceOfOffice)")
                 //orderdetailsaArray.append(totalDetailItem)
             }
         }
-            
-            
+        
+        
         // Reload the table view to reflect the new data
         DispatchQueue.main.async {
             self.tableView.reloadData()
         }
     }
-
-
+    
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         // getCardDetails()
@@ -320,8 +301,9 @@ extension PaymentViewController: UITableViewDataSource, UITableViewDelegate {
         let cellType = cellIdentifiers[section].0
         switch cellType {
         case .amenityPrice:
-            let filterAmenities = self.requestParameters?.amenityTotalHours.count ?? 0
-            return filterAmenities
+            //  let filterAmenities = self.requestParameters?.amenityTotalHours.count ?? 0
+            //return filterAmenities
+            return filteredAmenities.count
             
         case .meetingRoomPrice:
             if bookingType == .desk {
@@ -335,9 +317,9 @@ extension PaymentViewController: UITableViewDataSource, UITableViewDelegate {
                 return 0
             }else if  bookingType == .meetingRoom{
                 return self.orderdetailsaArray.count
-               
+                
             }else if bookingType == .office{
-              //  return self.requestParameters?.orderDetailsOfOffice.count ?? 0
+                //  return self.requestParameters?.orderDetailsOfOffice.count ?? 0
                 return self.orderdetailsaArray.count
             }
             
@@ -379,16 +361,30 @@ extension PaymentViewController: UITableViewDataSource, UITableViewDelegate {
         case .meetingTime:
             let cell = tableView.dequeueReusableCell(withIdentifier: cellType.rawValue, for: indexPath) as! MeetingTimeTableViewCell
             cell.selectionStyle = .none
-            if let startTime = self.requestParameters?.displayStartTime, let endTime = self.requestParameters?.displayendTime {
-                cell.txtTime.text = "\(startTime) - \(endTime)"
-            } else {
-                cell.txtTime.text = "Unavailable"
+            if bookingType == .office || bookingType == .meetingRoom {
+                if let startTime = self.requestParameters?.displayStartTime, let endTime = self.requestParameters?.displayendTime {
+                    cell.txtTime.text = "\(startTime) - \(endTime)"
+                } else {
+                    cell.txtTime.text = "Unavailable"
+                }
+                if let floathours = self.requestParameters?.timeDifferece {
+                    intHoursMeetingRoom = Int(floathours)
+                }
+                cell.lblHours.text = "\(intHoursMeetingRoom)"
+            }else  if bookingType == .desk {
+                if let startTime = self.requestParameters?.displayStartTime, let endTime = self.requestParameters?.displayendTime {
+                    cell.txtTime.text = "\(startTime) - \(endTime)"
+                } else {
+                    cell.txtTime.text = "Unavailable"
+                }
+                if let floathours = self.requestParameters?.timeDifferece {
+                    intHoursMeetingRoom = Int(floathours)
+                }
+                cell.lblHours.isHidden = true
+                cell.Labelhrs.isHidden = true
             }
-            if let floathours = self.requestParameters?.timeDifferece {
-                intHoursMeetingRoom = Int(floathours)
-            }
-            cell.lblHours.text = "\(intHoursMeetingRoom)"
             return cell
+            
             
         case .meetingRoomPrice:
             let cell = tableView.dequeueReusableCell(withIdentifier: cellType.rawValue, for: indexPath) as! MeetingRoomPriceTableViewCell
@@ -397,19 +393,18 @@ extension PaymentViewController: UITableViewDataSource, UITableViewDelegate {
                 if bookingType == .desk{
                     let desk = obj.deskList[indexPath.row]
                     cell.lblMeetingRoomName.text = desk.name
-                    let price = Float(desk.price )
-                    //cell.lblmeetingRoomprice.text = "\(price ?? 00) "
-                    cell.lbltotalPrice.text = "AED \((price ?? 0.0) * obj.timeDifferece)"
+                    let price = Double(desk.price ) ?? 0.0
+                    cell.lbltotalPrice.text = "AED \(String(describing: price.toStringWithTwoDecimalPlaces()))"
                     
-                } else if  bookingType == .meetingRoom {
+                } else if bookingType == .meetingRoom {
                     let meetingRoomName = obj.meetingRoom
                     cell.lblMeetingRoomName.text = meetingRoomName
-                    let roomPrice = obj.roomprice.integerValue ?? 0
-                   // cell.lblmeetingRoomprice.text = "\(roomPrice)"
-                    cell.lbltotalPrice.text = "\(obj.totalOfMeetingRoom)"
-
+                    let roomPrice = Double(obj.roomprice) ?? 0.0
+                    // cell.lblmeetingRoomprice.text = "\(roomPrice)"
+                    let formattedRoomPrice = String(format: "%.2f", roomPrice) // Format with two decimal places
                     print("roomPrice: \(roomPrice)")
-                    cell.lbltotalPrice.text = "AED \(obj.totalOfMeetingRoom)"
+                    // cell.lbltotalPrice.text = "AED \(obj.totalOfMeetingRoom)"
+                    cell.lbltotalPrice.text = "AED \(formattedRoomPrice)"
                 }
             }
             
@@ -422,10 +417,10 @@ extension PaymentViewController: UITableViewDataSource, UITableViewDelegate {
                 if bookingType == .office{
                     cell.lblOfficeName.text = obj.meetingRoom
                     cell.lblNoOfSeats.text = "\(obj.noOfSeats)"
-                    let officePrice = obj.roomprice.integerValue ?? 0
+                    let officePrice = Double(obj.roomprice) ?? 0.0
                     cell.lblOfficeNameWithPrice.text = obj.meetingRoom
                     //cell.lblofficeHours.text = "\(obj.totalHrs)"
-                    cell.lbltotalPrice.text = "AED \((officePrice))"
+                    cell.lbltotalPrice.text = "AED \(officePrice.toStringWithTwoDecimalPlaces())"
                 }
             }
             return cell
@@ -433,23 +428,29 @@ extension PaymentViewController: UITableViewDataSource, UITableViewDelegate {
         case .amenityPrice:
             let cell = tableView.dequeueReusableCell(withIdentifier: cellType.rawValue, for: indexPath) as! AmenityPriceTableViewCell
             cell.selectionStyle = .none
-            if let amenity = self.requestParameters?.amenityArray[indexPath.row] {
-                cell.lblAmenityName.text = amenity.name
-                let amenityPriceInt = amenity.price?.integerValue ?? 0
-                cell.lblAmenityPrice.text = "\(amenityPriceInt)"
-                // Retrieve the selected hours for this amenity from amenityTotalHours
-                let selectedHours = self.requestParameters?.amenityTotalHours[amenity.id] ?? 0
-                //cell.lblHours.text = "\(selectedHours)"
-                
-                // Calculate total price for the amenity
-                        let amenityPrice = Float(amenity.price ?? "0.0") ?? 0.0
-                        let totalAmenityPrice = amenityPrice * Float(selectedHours)
-                        cell.lblTotal.text = "AED  \(totalAmenityPrice)"
-               
-                // Store the total price for the amenity globally
-                self.totalAmenityPrices[amenity.id] = totalAmenityPrice
-                
-            }
+            let amenity = filteredAmenities[indexPath.row]
+            cell.lblAmenityName.text = amenity.name
+            let amenityPricePerHour = Double(amenity.price ?? "0.0")
+            let formattedAmenityPricePerHours = String(format: "%.2f", amenityPricePerHour ?? 0.0) // Format with two decimal places
+            
+            cell.lblAmenityPrice.text = "AED \(formattedAmenityPricePerHours)"
+            // Retrieve the selected hours for this amenity from amenityTotalHours
+            let selectedHours = self.requestParameters?.amenityTotalHours[amenity.id] ?? 0
+            //cell.lblHours.text = "\(selectedHours)"
+            
+            // Calculate total price for the amenity
+            let amenityPrice = Float(amenity.price ?? "0.0") ?? 0.0
+            
+            let totalAmenityPrice = amenityPrice * Float(selectedHours)
+            let formattedAmenityPrice = String(format: "%.2f", totalAmenityPrice) // Format with two decimal places
+            
+            cell.lblTotal.text = "AED  \(formattedAmenityPrice)"
+            
+            // Store the total price for the amenity globally
+            self.totalAmenityPrices[amenity.id] = totalAmenityPrice
+            
+            
+            
             return cell
             
         case .totalCell:
@@ -458,9 +459,11 @@ extension PaymentViewController: UITableViewDataSource, UITableViewDelegate {
             if let obj = self.requestParameters {
                 switch bookingType {
                 case .desk:
-                    cell.lblVat.text = "\(obj.deskVatTotal)"
+                    let deskVat = Double(obj.deskVatTotal)
+                    cell.lblVat.text = "AED \(deskVat.toStringWithTwoDecimalPlaces())"
                     vatAmountDesk = Double(obj.deskVatTotal)
-                    cell.lblTotalPrice.text = "\(obj.deskFinalTotal)"
+                    let deskFinalTotal = Double(obj.deskFinalTotal)
+                    cell.lblTotalPrice.text = "\(deskFinalTotal.toStringWithTwoDecimalPlaces())"
                     totalPriceDesk = Double(obj.deskFinalTotal)
                 case .office:
                     
@@ -471,12 +474,12 @@ extension PaymentViewController: UITableViewDataSource, UITableViewDelegate {
                     let totalPriceWithVAT = grossTotalOffice + vatAmount
                     print("totalPriceWithVAT",totalPriceWithVAT)
                     cell.lblVat.text = "AED \(vatAmount.toStringWithTwoDecimalPlaces())"
-
+                    
                     cell.lblTotalPrice.text = "\(totalPriceWithVAT.toStringWithTwoDecimalPlaces())"
                     vatAmountOffice = vatAmount
                     totalPriceOffice = totalPriceWithVAT
                     //totalFinalPriceOfOffice
-                 
+                    
                 default:
                     let grossTotalMeetingRoom = Double(totalFinalPriceOfmeetingRoom)
                     print("totalFinalPriceOfmeetingRoom", totalFinalPriceOfmeetingRoom)
@@ -517,15 +520,17 @@ extension PaymentViewController: UITableViewDataSource, UITableViewDelegate {
         case .paymentMethods:
             let cell = tableView.dequeueReusableCell(withIdentifier: cellType.rawValue, for: indexPath) as! PaymentMethodTableViewCell
             cell.selectionStyle = .none
-            cell.cardDetails = getCardDetailsResponseData // Pass the fetched card details
-            
+           // cell.cardDetails = getCardDetailsResponseData // Pass the fetched card details// if comment will remove crash issuewill be appear 
+            cell.contentView.backgroundColor = .F_2_F_2_F_2
+            //cell.paymentMethodBGView.backgroundColor = .clear
+            //cell.paymentMethodView.backgroundColor = .clear
             return cell
             
         case .buttonPayNow:
             let cell = tableView.dequeueReusableCell(withIdentifier: cellType.rawValue, for: indexPath) as! ButtonPayNowTableViewCell
             cell.delegate = self
             if !UserHelper.shared.isGuest(){
-                cell.btnPayNow.setTitle("Generate Invoice", for: .normal)
+                cell.btnPayNow.setTitle("Proceed To Booking", for: .normal)
             }else{
                 cell.btnPayNow.setTitle("Pay Now", for: .normal)
             }
@@ -538,7 +543,7 @@ extension PaymentViewController: UITableViewDataSource, UITableViewDelegate {
                 switch bookingType {
                 case .desk:
                     break
-
+                    
                 case .office:
                     let item = orderdetailsaArray[indexPath.item]
                     cell.lbltitle.text = item.title
@@ -552,8 +557,8 @@ extension PaymentViewController: UITableViewDataSource, UITableViewDelegate {
             return cell
             
         }
-    
-    
+        
+        
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

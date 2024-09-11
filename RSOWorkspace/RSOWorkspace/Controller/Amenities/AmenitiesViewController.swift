@@ -260,6 +260,12 @@ extension AmenitiesViewController {
     }
 
 extension AmenitiesViewController: BookButtonActionDelegate{
+    func showShortTermOfficeBookingVC(){
+        let bookOfficeVC = UIViewController.createController(storyBoard: .OfficeBooking, ofType: ShortTermBookAnOfficeViewController.self)
+        bookOfficeVC.coordinator = self.coordinator
+        self.navigationController?.pushViewController(bookOfficeVC, animated: true)
+    }
+    
     func showBookRoomDetailsVC(meetingRoomId: Int) {
 
     }

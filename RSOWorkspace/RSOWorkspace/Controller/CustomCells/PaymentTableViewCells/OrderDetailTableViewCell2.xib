@@ -26,20 +26,14 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GXs-ws-NIl">
                         <rect key="frame" x="27" y="0.0" width="358" height="60"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Regular Hours Amount" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LmU-50-W4J">
-                                <rect key="frame" x="0.0" y="16" width="233" height="28"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Regular Hours Amount Week end discount on 1 hours" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LmU-50-W4J">
+                                <rect key="frame" x="0.0" y="4" width="233" height="52"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="28" id="lbh-jF-VX4"/>
-                                    <constraint firstAttribute="width" constant="182" id="sed-dv-eZ7"/>
+                                    <constraint firstAttribute="height" constant="52" id="pKs-H8-CAQ"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Inter-Medium" family="Inter" pointSize="14"/>
                                 <color key="textColor" name="2C2C2C"/>
                                 <nil key="highlightedColor"/>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="sed-dv-eZ7"/>
-                                    </mask>
-                                </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AED 435.00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sce-2D-qwt">
                                 <rect key="frame" x="238" y="4" width="120" height="52"/>
@@ -54,13 +48,13 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="LmU-50-W4J" firstAttribute="leading" secondItem="GXs-ws-NIl" secondAttribute="leading" id="DIn-ai-bVg"/>
                             <constraint firstAttribute="bottom" secondItem="sce-2D-qwt" secondAttribute="bottom" constant="4" id="JE8-IM-B17"/>
-                            <constraint firstAttribute="bottom" secondItem="LmU-50-W4J" secondAttribute="bottom" constant="16" id="SS1-gJ-oP8"/>
-                            <constraint firstItem="sce-2D-qwt" firstAttribute="leading" secondItem="LmU-50-W4J" secondAttribute="trailing" constant="5" id="aDW-HY-YhE"/>
-                            <constraint firstItem="LmU-50-W4J" firstAttribute="leading" secondItem="GXs-ws-NIl" secondAttribute="leading" id="k1k-1Y-8lv"/>
-                            <constraint firstItem="LmU-50-W4J" firstAttribute="top" secondItem="GXs-ws-NIl" secondAttribute="top" constant="16" id="quE-SG-Seu"/>
+                            <constraint firstAttribute="bottom" secondItem="LmU-50-W4J" secondAttribute="bottom" constant="4" id="Ofq-Rp-Zct"/>
+                            <constraint firstItem="sce-2D-qwt" firstAttribute="leading" secondItem="LmU-50-W4J" secondAttribute="trailing" constant="5" id="VWP-pt-Al9"/>
                             <constraint firstAttribute="trailing" secondItem="sce-2D-qwt" secondAttribute="trailing" id="ttR-gf-yAR"/>
                             <constraint firstItem="sce-2D-qwt" firstAttribute="top" secondItem="GXs-ws-NIl" secondAttribute="top" constant="4" id="xln-kf-sgt"/>
+                            <constraint firstItem="LmU-50-W4J" firstAttribute="top" secondItem="GXs-ws-NIl" secondAttribute="top" constant="4" id="zWS-AM-3xN"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -78,7 +72,7 @@
                 <outlet property="lblPrice" destination="sce-2D-qwt" id="gDH-kb-rNW"/>
                 <outlet property="lbltitle" destination="LmU-50-W4J" id="3QY-AI-bth"/>
             </connections>
-            <point key="canvasLocation" x="123.66412213740458" y="-12.323943661971832"/>
+            <point key="canvasLocation" x="122" y="-16"/>
         </tableViewCell>
     </objects>
     <resources>

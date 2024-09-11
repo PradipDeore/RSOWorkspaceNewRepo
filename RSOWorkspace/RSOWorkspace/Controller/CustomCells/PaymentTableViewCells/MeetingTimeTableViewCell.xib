@@ -95,6 +95,7 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
+                <outlet property="Labelhrs" destination="8kB-v4-hno" id="HOv-Xy-bPW"/>
                 <outlet property="lblHours" destination="25l-oQ-BQV" id="0Fn-Q2-Rj7"/>
                 <outlet property="textFieldView" destination="Gdc-Vk-JpC" id="ZrV-Yc-vdU"/>
                 <outlet property="txtTime" destination="UGt-fe-Qsx" id="f7i-Ez-aDx"/>

@@ -26,54 +26,63 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dJg-5P-uKb">
                         <rect key="frame" x="25" y="0.0" width="358" height="60"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="amenity" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XO3-Ja-NTE">
-                                <rect key="frame" x="0.0" y="16" width="122" height="28"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="28" id="3kn-KT-Otw"/>
-                                    <constraint firstAttribute="width" constant="122" id="TJD-fa-bH5"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="Inter-Medium" family="Inter" pointSize="14"/>
-                                <color key="textColor" name="2C2C2C"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="145" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LEe-2Q-HUm">
-                                <rect key="frame" x="130" y="14" width="50" height="32"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="32" id="Jgk-JF-v9p"/>
-                                    <constraint firstAttribute="height" constant="32" id="Vuy-pe-eJQ"/>
-                                    <constraint firstAttribute="width" constant="50" id="xul-ja-ab4"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="Inter-Medium" family="Inter" pointSize="16"/>
-                                <color key="textColor" name="2C2C2C"/>
-                                <nil key="highlightedColor"/>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="Jgk-JF-v9p"/>
-                                    </mask>
-                                </variation>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="435.00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MAB-Wl-Rcy">
-                                <rect key="frame" x="265" y="4" width="93" height="52"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="93" id="8R8-wo-4rv"/>
-                                    <constraint firstAttribute="height" constant="52" id="vag-QP-SQK"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="Inter-Medium" family="Inter" pointSize="16"/>
-                                <color key="textColor" name="2C2C2C"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="Bah-JL-Khu">
+                                <rect key="frame" x="0.0" y="0.0" width="358" height="60"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="amenity" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XO3-Ja-NTE">
+                                        <rect key="frame" x="0.0" y="0.0" width="131" height="60"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="CMy-5s-cKn"/>
+                                            <constraint firstAttribute="width" constant="131" id="x5P-ot-Tcr"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Inter-Medium" family="Inter" pointSize="14"/>
+                                        <color key="textColor" name="2C2C2C"/>
+                                        <nil key="highlightedColor"/>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="CMy-5s-cKn"/>
+                                            </mask>
+                                        </variation>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="145" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LEe-2Q-HUm">
+                                        <rect key="frame" x="147" y="0.0" width="65" height="60"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="65" id="P2N-Y9-MKE"/>
+                                            <constraint firstAttribute="height" constant="60" id="oDk-9k-cwy"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Inter-Medium" family="Inter" pointSize="16"/>
+                                        <color key="textColor" name="2C2C2C"/>
+                                        <nil key="highlightedColor"/>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="oDk-9k-cwy"/>
+                                            </mask>
+                                        </variation>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="435.00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MAB-Wl-Rcy">
+                                        <rect key="frame" x="228" y="0.0" width="130" height="60"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="130" id="NwU-Me-FQG"/>
+                                            <constraint firstAttribute="height" constant="60" id="VQf-05-mTZ"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Inter-Medium" family="Inter" pointSize="16"/>
+                                        <color key="textColor" name="2C2C2C"/>
+                                        <nil key="highlightedColor"/>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="VQf-05-mTZ"/>
+                                            </mask>
+                                        </variation>
+                                    </label>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="LEe-2Q-HUm" firstAttribute="top" secondItem="dJg-5P-uKb" secondAttribute="top" constant="14" id="2j0-KU-XSB"/>
-                            <constraint firstAttribute="bottom" secondItem="XO3-Ja-NTE" secondAttribute="bottom" constant="16" id="LTj-oG-asH"/>
-                            <constraint firstItem="LEe-2Q-HUm" firstAttribute="leading" secondItem="XO3-Ja-NTE" secondAttribute="trailing" constant="8" id="SJl-zU-3ei"/>
-                            <constraint firstAttribute="trailing" secondItem="MAB-Wl-Rcy" secondAttribute="trailing" id="ZxA-vh-77v"/>
-                            <constraint firstAttribute="bottom" secondItem="MAB-Wl-Rcy" secondAttribute="bottom" constant="4" id="nAp-vY-0dS"/>
-                            <constraint firstItem="MAB-Wl-Rcy" firstAttribute="top" secondItem="dJg-5P-uKb" secondAttribute="top" constant="4" id="nDe-Cv-KM3"/>
-                            <constraint firstAttribute="bottom" secondItem="LEe-2Q-HUm" secondAttribute="bottom" constant="14" id="p98-vS-7Rv"/>
-                            <constraint firstItem="XO3-Ja-NTE" firstAttribute="top" secondItem="dJg-5P-uKb" secondAttribute="top" constant="16" id="wyI-PJ-7Wd"/>
-                            <constraint firstItem="XO3-Ja-NTE" firstAttribute="leading" secondItem="dJg-5P-uKb" secondAttribute="leading" id="za7-5E-e6w"/>
+                            <constraint firstAttribute="trailing" secondItem="Bah-JL-Khu" secondAttribute="trailing" id="4ae-eI-qoP"/>
+                            <constraint firstItem="Bah-JL-Khu" firstAttribute="leading" secondItem="dJg-5P-uKb" secondAttribute="leading" id="9m2-YU-Xhc"/>
+                            <constraint firstAttribute="bottom" secondItem="Bah-JL-Khu" secondAttribute="bottom" id="SjN-IB-NIT"/>
+                            <constraint firstItem="Bah-JL-Khu" firstAttribute="top" secondItem="dJg-5P-uKb" secondAttribute="top" id="X5j-5v-xkL"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -92,7 +101,7 @@
                 <outlet property="lblAmenityPrice" destination="LEe-2Q-HUm" id="Jsc-nN-Vtj"/>
                 <outlet property="lblTotal" destination="MAB-Wl-Rcy" id="A7t-jn-qFf"/>
             </connections>
-            <point key="canvasLocation" x="-595" y="-249"/>
+            <point key="canvasLocation" x="-595.41984732824426" y="-249.29577464788733"/>
         </tableViewCell>
     </objects>
     <resources>

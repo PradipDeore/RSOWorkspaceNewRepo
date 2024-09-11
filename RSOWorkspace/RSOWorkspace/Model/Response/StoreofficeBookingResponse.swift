@@ -142,14 +142,19 @@ enum PriceType: Codable {
     var formattedPrice: String {
         switch self {
         case .integer(let value):
-            // Convert integer to a formatted string with 2 decimal places
-            return String(format: "%.2f", Double(value))
+            // Convert integer to a formatted string with no decimal places
+            return String(format: "%.0f", Double(value))
         case .string(let value):
-            // Return the string value, ensuring it always has 2 decimal places
+            // Try to convert the string to a Double and handle formatting
             if let doubleValue = Double(value) {
-                return String(format: "%.2f", doubleValue)
+                // Check if the double value is a whole number
+                if doubleValue.truncatingRemainder(dividingBy: 1) == 0 {
+                    return String(format: "%.0f", doubleValue) // No decimals for whole numbers
+                } else {
+                    return String(format: "%.2f", doubleValue) // Keep two decimal places for fractional numbers
+                }
             } else {
-                return value // In case the string can't be parsed as a Double, just return the original string
+                return value // Return the original string if it can't be parsed
             }
         }
     }

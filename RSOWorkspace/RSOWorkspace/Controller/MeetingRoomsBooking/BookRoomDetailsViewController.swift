@@ -280,7 +280,11 @@ extension BookRoomDetailsViewController: UITableViewDataSource, UITableViewDeleg
         case 11:
             let cell = tableView.dequeueReusableCell(withIdentifier: "SelectMeetingRoomLabelTableViewCell", for: indexPath) as! SelectMeetingRoomLabelTableViewCell
             cell.selectionStyle = .none
-            cell.lblMeetingRoom.text = "Choose Amenities"
+            if self.confirmBookingDetails.amenityArray.isEmpty{
+                cell.lblMeetingRoom.text = "Paid Amenities Not Available"
+            }else{
+                cell.lblMeetingRoom.text = "Choose Amenities"
+            }
             cell.lblMeetingRoom.font = UIFont(name: "Poppins-SemiBold", size: 16.0)
             return cell
         case 12:

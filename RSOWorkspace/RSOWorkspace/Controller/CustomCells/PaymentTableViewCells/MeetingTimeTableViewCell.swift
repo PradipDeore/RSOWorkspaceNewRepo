@@ -13,6 +13,7 @@ class MeetingTimeTableViewCell: UITableViewCell {
     @IBOutlet weak var lblHours: UILabel!
     @IBOutlet weak var textFieldView: UIView!
    
+    @IBOutlet weak var Labelhrs: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         txtTime.setUpTextFieldView(leftImageName: "clock")

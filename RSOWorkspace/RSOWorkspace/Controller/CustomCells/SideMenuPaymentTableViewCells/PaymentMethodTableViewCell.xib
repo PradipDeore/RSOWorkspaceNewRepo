@@ -81,8 +81,9 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Visa" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aIm-98-rEL">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Visa" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aIm-98-rEL">
                                 <rect key="frame" x="9" y="44" width="143" height="24"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Poppins-Bold" family="Poppins" pointSize="14"/>
                                 <color key="textColor" systemColor="systemBlueColor"/>
                                 <nil key="highlightedColor"/>
@@ -90,15 +91,11 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="Mm1-aq-uza" firstAttribute="leading" secondItem="aIm-98-rEL" secondAttribute="trailing" constant="9" id="7O5-H5-8fU"/>
                             <constraint firstItem="X5s-Up-snh" firstAttribute="top" secondItem="sjM-zu-wkf" secondAttribute="top" constant="8" id="BLo-Fi-7Ym"/>
                             <constraint firstItem="X5s-Up-snh" firstAttribute="leading" secondItem="sjM-zu-wkf" secondAttribute="leading" constant="8" id="BSu-Lh-DpQ"/>
                             <constraint firstAttribute="trailing" secondItem="X5s-Up-snh" secondAttribute="trailing" constant="10" id="DYu-aG-OZO"/>
                             <constraint firstItem="Mm1-aq-uza" firstAttribute="top" secondItem="X5s-Up-snh" secondAttribute="bottom" constant="10" id="Kep-L5-qJB"/>
-                            <constraint firstItem="aIm-98-rEL" firstAttribute="leading" secondItem="sjM-zu-wkf" secondAttribute="leading" constant="9" id="dAc-Gg-A1V"/>
                             <constraint firstAttribute="trailing" secondItem="Mm1-aq-uza" secondAttribute="trailing" constant="12" id="eXx-41-wlQ"/>
-                            <constraint firstAttribute="bottom" secondItem="aIm-98-rEL" secondAttribute="bottom" constant="16" id="ekm-K0-9SZ"/>
-                            <constraint firstItem="aIm-98-rEL" firstAttribute="top" secondItem="X5s-Up-snh" secondAttribute="bottom" constant="16" id="k5M-P5-8DF"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -126,7 +123,7 @@
             <color red="0.17299999296665192" green="0.17299999296665192" blue="0.17299999296665192" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="systemBlueColor">
-            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
