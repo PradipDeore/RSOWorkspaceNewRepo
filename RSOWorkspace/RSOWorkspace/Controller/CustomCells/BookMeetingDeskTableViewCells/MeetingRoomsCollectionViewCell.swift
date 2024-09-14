@@ -7,7 +7,7 @@
 
 import UIKit
 import Kingfisher
-
+import Toast_Swift
 protocol BookButtonActionDelegate:AnyObject{
     func showBookRoomDetailsVC(meetingRoomId: Int)
     func showBookMeetingRoomsVC()
@@ -91,8 +91,9 @@ class MeetingRoomsCollectionViewCell: UICollectionViewCell {
     @IBAction func btnBookTappedAction(_ sender: Any) {
        if let _ = RSOToken.shared.getToken() {
             if self.tag == 1{
-                print("book button tag is bookroom details",self.tag)
-                backActionDelegate?.showBookRoomDetailsVC(meetingRoomId: selectedMeetingRoom!)
+               
+                    backActionDelegate?.showBookRoomDetailsVC(meetingRoomId: selectedMeetingRoom!)
+                
             }else{
                 print("book button tag is book meetingroom",self.tag)
                 backActionDelegate?.showBookMeetingRoomsVC()

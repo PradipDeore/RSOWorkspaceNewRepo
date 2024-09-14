@@ -9,12 +9,14 @@ import Foundation
 
 struct MyBookingResponse: Codable {
     let status: Bool
+    let currentPage:Int?
     var bookMeetings: BookingData? // Dictionary or array of meeting bookings
     var bookDesks: BookingData?
     var mergedBookings: BookingData?
 
     enum CodingKeys: String, CodingKey {
         case status
+        case currentPage = "current_page"
         case bookMeetings = "BookMeetings"
         case bookDesks = "BookDesks"
         case mergedBookings = "mergedBookings"

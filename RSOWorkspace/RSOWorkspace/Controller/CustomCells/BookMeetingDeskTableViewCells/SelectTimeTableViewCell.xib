@@ -106,7 +106,7 @@
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="Book Full Day"/>
                                 <connections>
-                                    <action selector="isFullDayAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="c3l-2S-02U"/>
+                                    <action selector="toggleFullDaySelection:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="qmC-56-WVW"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -133,6 +133,7 @@
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
                 <outlet property="btnBookfullDay" destination="1RA-nT-juK" id="Thf-Ku-kOC"/>
+                <outlet property="btnBookfullDayHeightConstraint" destination="Bq5-RR-MI3" id="V3x-LU-wnD"/>
                 <outlet property="selectEndTime" destination="efO-jQ-0Z9" id="OGm-FW-3D9"/>
                 <outlet property="selectStartTime" destination="llJ-gJ-uv3" id="MFo-Ya-P9w"/>
                 <outlet property="timePanel" destination="0gg-8e-fWc" id="ddg-NT-PZn"/>

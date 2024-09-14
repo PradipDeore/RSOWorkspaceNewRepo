@@ -128,21 +128,25 @@ struct ConfirmBookingRequestModel{
   var deskSubTotal: Float {
     var subTotal: Float = 0.0
     for desk in deskList {
-      let roomPrice = desk.price
-      let roomPriceFloat = Float(roomPrice) ?? 0.0
-      let totalRoomPrice = roomPriceFloat * timeDifferece
-      subTotal = subTotal + totalRoomPrice
+      let deskPrice = desk.price
+      let deskPriceFloat = Float(deskPrice) ?? 0.0
+        let totalDeskPrice = deskPriceFloat
+      subTotal = subTotal + totalDeskPrice
     }
     return subTotal
   }
   var deskVatTotal: Float {
     var vatTotal: Float = 0.0
     vatTotal = deskSubTotal * 5 / 100
+    print("deskVatTotal: \(vatTotal)") // Debugging statement
+
     return vatTotal
   }
   var deskFinalTotal: Float {
     var total: Float = 0.0
     total = deskSubTotal + deskVatTotal
+      print("deskFinalTotal: \(total)") // Debugging statement
+
     return total
   }
     

@@ -366,6 +366,7 @@
 		58D584B42B96FE6100D17D0A /* ButtonBookingConfirmTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58D584B22B96FE6100D17D0A /* ButtonBookingConfirmTableViewCell.xib */; };
 		58D5AFF62BB5BBBF001FF067 /* ReportAnIssueRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D5AFF52BB5BBBF001FF067 /* ReportAnIssueRequestModel.swift */; };
 		58D5AFF82BB5BDD3001FF067 /* ReportAnIssueResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D5AFF72BB5BDD3001FF067 /* ReportAnIssueResponse.swift */; };
+		58D7749A2C95949900BE96FF /* DateTimeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D774992C95949900BE96FF /* DateTimeManager.swift */; };
 		58E05E222B8610FB00189E99 /* EndPointType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E05E212B8610FB00189E99 /* EndPointType.swift */; };
 		58E05E242B86154000189E99 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E05E232B86154000189E99 /* APIManager.swift */; };
 		58E05E262B8619AB00189E99 /* DeskEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E05E252B8619AB00189E99 /* DeskEndPoint.swift */; };
@@ -850,6 +851,7 @@
 		58D584B22B96FE6100D17D0A /* ButtonBookingConfirmTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ButtonBookingConfirmTableViewCell.xib; sourceTree = "<group>"; };
 		58D5AFF52BB5BBBF001FF067 /* ReportAnIssueRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportAnIssueRequestModel.swift; sourceTree = "<group>"; };
 		58D5AFF72BB5BDD3001FF067 /* ReportAnIssueResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportAnIssueResponse.swift; sourceTree = "<group>"; };
+		58D774992C95949900BE96FF /* DateTimeManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateTimeManager.swift; sourceTree = "<group>"; };
 		58E05E212B8610FB00189E99 /* EndPointType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPointType.swift; sourceTree = "<group>"; };
 		58E05E232B86154000189E99 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		58E05E252B8619AB00189E99 /* DeskEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeskEndPoint.swift; sourceTree = "<group>"; };
@@ -1451,6 +1453,7 @@
 		58ACDB372B78C7550041B755 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				58D774992C95949900BE96FF /* DateTimeManager.swift */,
 				580255DD2C4A7B22000FF860 /* UserSessionHelper.swift */,
 				EEDF1C852C5CC4DB00CBCCF5 /* ExpirationDatePicker.swift */,
 				EEA44D802C4805530081EE0D /* RSOToastView.swift */,
@@ -1659,9 +1662,9 @@
 				58C4812E2BB3E2ED0084CD6B /* rsvpResponse.swift */,
 				58D5AFF72BB5BDD3001FF067 /* ReportAnIssueResponse.swift */,
 				586488272BBAB2560024CBA2 /* MyProfile.swift */,
-				589BBAA42BBBF64C00DCEF70 /* FAQResponse.swift */,
 				586FA6FF2BBC268300EA2772 /* AboutRSOModel.swift */,
 				58A16CCB2BBC5DE30003DD50 /* GalleryResponseModel.swift */,
+				589BBAA42BBBF64C00DCEF70 /* FAQResponse.swift */,
 				58E997D42BBE87A00051BEF3 /* ReasonForVisit.swift */,
 				582591012BBED4620011ECDA /* MyBookingResponse.swift */,
 				5843D7582BC6747E00D5C8DD /* DisplayScheduleVisitorsDetailModel.swift */,
@@ -2641,6 +2644,7 @@
 				583403942B998E8E00318BB8 /* TotalTableViewCell.swift in Sources */,
 				58E6E9532B88A5DF00EB3600 /* MyBookingOpenTableViewCell.swift in Sources */,
 				581F30AC2BBFBB580083A400 /* ScheduledVisitorDetatailsViewController.swift in Sources */,
+				58D7749A2C95949900BE96FF /* DateTimeManager.swift in Sources */,
 				58E6E9682B89D9E200EB3600 /* DashboardMeetingRoomsTableViewCell.swift in Sources */,
 				5843D75B2BC6768C00D5C8DD /* ScheduleVisitorResponse.swift in Sources */,
 				5864882F2BBAD2CD0024CBA2 /* FeedbackViewController.swift in Sources */,
@@ -2800,7 +2804,7 @@
 				CODE_SIGN_ENTITLEMENTS = RSOWorkspace/RSOWorkspace.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 12;
 				DEVELOPMENT_TEAM = D2BKM938GX;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				"EXCLUDED_ARCHS[sdk=*]" = "";
@@ -2818,7 +2822,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = aquil.com.RSOWorkspace;
+				PRODUCT_BUNDLE_IDENTIFIER = aquil.com.RSOWorkspaceInternalTesting;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -2837,7 +2841,7 @@
 				CODE_SIGN_ENTITLEMENTS = RSOWorkspace/RSOWorkspace.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 12;
 				DEVELOPMENT_TEAM = D2BKM938GX;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -2854,7 +2858,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = aquil.com.RSOWorkspace;
+				PRODUCT_BUNDLE_IDENTIFIER = aquil.com.RSOWorkspaceInternalTesting;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;

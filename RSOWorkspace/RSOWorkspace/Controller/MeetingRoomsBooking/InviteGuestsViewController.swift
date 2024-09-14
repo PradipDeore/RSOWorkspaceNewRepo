@@ -23,7 +23,7 @@ class InviteGuestsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.btnAdd.layer.cornerRadius = btnAdd.bounds.height / 2
-        txtSearch.placeholderText = "Search  Guests"
+        txtSearch.placeholderText = "Add Member Email"
         txtSearch.customBackgroundColor = .F_2_F_2_F_2
         txtSearch.placeholderColor = ._000000
         txtSearch.placeholderFont = RSOFont.poppins(size: 16, type: .Medium)

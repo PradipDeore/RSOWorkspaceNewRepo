@@ -22,7 +22,7 @@ class SelectNoOfSeatsTableViewCell: UITableViewCell {
     }
 
     @IBAction func btnIncrementSeatsCount(_ sender: Any) {
-        if let currentCount = Int(txtNoOfSeats.text ?? "0") {
+        if let currentCount = Int(txtNoOfSeats.text ?? "1") {
                     let updatedCount = currentCount + 1
                     txtNoOfSeats.text = "\(updatedCount)"
                     delegate?.didUpdateNumberOfSeats(updatedCount)
@@ -33,13 +33,13 @@ class SelectNoOfSeatsTableViewCell: UITableViewCell {
     }
     
     @IBAction func btnDecrementSeatsCount(_ sender: Any) {
-        if let currentCount = Int(txtNoOfSeats.text ?? "0"), currentCount > 0 {
+        if let currentCount = Int(txtNoOfSeats.text ?? "1"), currentCount > 1 {
                     let updatedCount = currentCount - 1
                     txtNoOfSeats.text = "\(updatedCount)"
                     delegate?.didUpdateNumberOfSeats(updatedCount)
                 } else {
-                    txtNoOfSeats.text = "0"
-                    delegate?.didUpdateNumberOfSeats(0)
+                    txtNoOfSeats.text = "1"
+                    delegate?.didUpdateNumberOfSeats(1)
                 }
     }
     

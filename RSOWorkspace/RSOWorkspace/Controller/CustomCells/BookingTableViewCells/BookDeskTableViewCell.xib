@@ -39,11 +39,12 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B7C-rY-MAJ">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B7C-rY-MAJ">
                                 <rect key="frame" x="25" y="38" width="183" height="53"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="183" id="9Yo-wL-LUR"/>
                                 </constraints>
+                                <string key="text">A reserved desk with an ergonomic chair and storage space in a shared office. A professional place to collaborate, focus, and be productive.</string>
                                 <fontDescription key="fontDescription" name="Inter-Medium" family="Inter" pointSize="10"/>
                                 <color key="textColor" name="616161"/>
                                 <nil key="highlightedColor"/>

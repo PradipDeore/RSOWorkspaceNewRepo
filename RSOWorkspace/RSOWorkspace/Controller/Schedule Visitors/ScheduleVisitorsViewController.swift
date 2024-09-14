@@ -214,19 +214,19 @@ extension ScheduleVisitorsViewController: UITableViewDataSource, UITableViewDele
                 cell.selectionStyle = .none
                 
                 //Get visitor detail from visitorsDetailArray
-                let visitorDetail = visitorsDetailArray[indexPath.row - 1]
-                cell.lblVisitorEmail.text = visitorDetail.visitor_email
-                cell.visitorEmailView.isHidden = false
-                if indexPath.row == 0 && isEditMode{
-                    if visitorsDetailArray.first?.visitor_email == "" {
-                        cell.visitorEmailView.isHidden = true
-                        cell.visitorEmailView.isHidden = email?.isEmpty ?? true
-                    }
-                }
-                
-                return cell
-            }
-            
+                                let visitorDetail = visitorsDetailArray[indexPath.row - 1]
+                                cell.lblVisitorEmail.text = visitorDetail.visitor_email
+                                cell.visitorEmailView.isHidden = false
+                                if indexPath.row == 0 && isEditMode{
+                                    if visitorsDetailArray.first?.visitor_email == "" {
+                                        cell.visitorEmailView.isHidden = true
+                                        cell.visitorEmailView.isHidden = email?.isEmpty ?? true
+                                    }
+                                }
+                                
+                                return cell
+                            }
+                        
         case .btnCancelAndSave:
             let cell =  tableView.dequeueReusableCell(withIdentifier: CellIdentifierScheduleVisitors.btnCancelAndSave.rawValue, for: indexPath)as! ButtonCancelAndSaveTableViewCell
             cell.delegate = self

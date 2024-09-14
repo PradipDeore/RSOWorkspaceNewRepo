@@ -76,7 +76,6 @@ class VisitorsTableViewCell: UITableViewCell {
         self.email = email
         self.name = name
         self.phone = phone
-        resetTextFields()
         delegate?.addVisitors(email: email, name: name, phone: phone)
             
     }

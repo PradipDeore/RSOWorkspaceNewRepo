@@ -26,63 +26,30 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dJg-5P-uKb">
                         <rect key="frame" x="25" y="0.0" width="358" height="60"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="Bah-JL-Khu">
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="QjH-x9-1sm">
                                 <rect key="frame" x="0.0" y="0.0" width="358" height="60"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="amenity" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XO3-Ja-NTE">
-                                        <rect key="frame" x="0.0" y="0.0" width="131" height="60"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="60" id="CMy-5s-cKn"/>
-                                            <constraint firstAttribute="width" constant="131" id="x5P-ot-Tcr"/>
-                                        </constraints>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="amenity AED 0.00" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XO3-Ja-NTE">
+                                        <rect key="frame" x="0.0" y="0.0" width="244.66666666666666" height="60"/>
                                         <fontDescription key="fontDescription" name="Inter-Medium" family="Inter" pointSize="14"/>
                                         <color key="textColor" name="2C2C2C"/>
                                         <nil key="highlightedColor"/>
-                                        <variation key="default">
-                                            <mask key="constraints">
-                                                <exclude reference="CMy-5s-cKn"/>
-                                            </mask>
-                                        </variation>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="145" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LEe-2Q-HUm">
-                                        <rect key="frame" x="147" y="0.0" width="65" height="60"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="65" id="P2N-Y9-MKE"/>
-                                            <constraint firstAttribute="height" constant="60" id="oDk-9k-cwy"/>
-                                        </constraints>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" verticalHuggingPriority="251" text="435.00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MAB-Wl-Rcy">
+                                        <rect key="frame" x="244.66666666666671" y="0.0" width="113.33333333333334" height="60"/>
                                         <fontDescription key="fontDescription" name="Inter-Medium" family="Inter" pointSize="16"/>
                                         <color key="textColor" name="2C2C2C"/>
                                         <nil key="highlightedColor"/>
-                                        <variation key="default">
-                                            <mask key="constraints">
-                                                <exclude reference="oDk-9k-cwy"/>
-                                            </mask>
-                                        </variation>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="435.00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MAB-Wl-Rcy">
-                                        <rect key="frame" x="228" y="0.0" width="130" height="60"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="130" id="NwU-Me-FQG"/>
-                                            <constraint firstAttribute="height" constant="60" id="VQf-05-mTZ"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name="Inter-Medium" family="Inter" pointSize="16"/>
-                                        <color key="textColor" name="2C2C2C"/>
-                                        <nil key="highlightedColor"/>
-                                        <variation key="default">
-                                            <mask key="constraints">
-                                                <exclude reference="VQf-05-mTZ"/>
-                                            </mask>
-                                        </variation>
                                     </label>
                                 </subviews>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="Bah-JL-Khu" secondAttribute="trailing" id="4ae-eI-qoP"/>
-                            <constraint firstItem="Bah-JL-Khu" firstAttribute="leading" secondItem="dJg-5P-uKb" secondAttribute="leading" id="9m2-YU-Xhc"/>
-                            <constraint firstAttribute="bottom" secondItem="Bah-JL-Khu" secondAttribute="bottom" id="SjN-IB-NIT"/>
-                            <constraint firstItem="Bah-JL-Khu" firstAttribute="top" secondItem="dJg-5P-uKb" secondAttribute="top" id="X5j-5v-xkL"/>
+                            <constraint firstAttribute="bottom" secondItem="QjH-x9-1sm" secondAttribute="bottom" id="0V7-8u-uiY"/>
+                            <constraint firstItem="QjH-x9-1sm" firstAttribute="top" secondItem="dJg-5P-uKb" secondAttribute="top" id="Ec7-Wr-Gif"/>
+                            <constraint firstItem="QjH-x9-1sm" firstAttribute="leading" secondItem="dJg-5P-uKb" secondAttribute="leading" id="EkO-HW-hLA"/>
+                            <constraint firstAttribute="trailing" secondItem="QjH-x9-1sm" secondAttribute="trailing" id="nmi-Pu-LJh"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -98,7 +65,6 @@
             <color key="backgroundColor" name="F2F2F2"/>
             <connections>
                 <outlet property="lblAmenityName" destination="XO3-Ja-NTE" id="JHU-sD-qDv"/>
-                <outlet property="lblAmenityPrice" destination="LEe-2Q-HUm" id="Jsc-nN-Vtj"/>
                 <outlet property="lblTotal" destination="MAB-Wl-Rcy" id="A7t-jn-qFf"/>
             </connections>
             <point key="canvasLocation" x="-595.41984732824426" y="-249.29577464788733"/>

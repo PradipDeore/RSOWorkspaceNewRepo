@@ -139,13 +139,15 @@ extension ShortTermBookAnOfficeViewController: UITableViewDataSource, UITableVie
       let  cell =  tableView.dequeueReusableCell(withIdentifier: CellIdentifierOfficeBooking.selectDate.rawValue, for: indexPath) as! SelectDateTableViewCell
       cell.delegate = self
       cell.selectionStyle = .none
-    cell.bookingTypeSelectTime = .office
-
+        cell.bookingTypeSelectTime = .office
+        cell.initWithDefaultDate()
       return cell
     case .selectTime:
       let cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifierOfficeBooking.selectTime.rawValue, for: indexPath) as! SelectTimeTableViewCell
+
       cell.delegate = self
       cell.bookingTypeSelectTime = .office
+        cell.setupInitialTimeValues()
       cell.selectionStyle = .none
       return cell
    
@@ -280,7 +282,11 @@ extension ShortTermBookAnOfficeViewController: SelectDateTableViewCellDelegate {
     let displayDate = Date.formatSelectedDate(format: .EEEEddMMMMyyyy, date: actualFormatOfDate)
     displayBookingDetailsNextScreen.date = displayDate
     self.officebookingConfirmDetails.date = apiDate
-    self.fetchOfficeList()
+    //self.fetchOfficeList()
+      DispatchQueue.main.async {
+          //  ********** fetchMeetingRooms() instead reload time cell
+          self.tableView.reloadSections([SectionTypeOfficeBooking.selectTime.rawValue], with: .none)
+      }
   }
 }
 extension ShortTermBookAnOfficeViewController: SelectTimeTableViewCellDelegate{
@@ -297,7 +303,7 @@ extension ShortTermBookAnOfficeViewController: SelectTimeTableViewCellDelegate{
     let displayStartTime = Date.formatSelectedDate(format: .hhmma, date: startTime)
     displayBookingDetailsNextScreen.startTime = displayStartTime
     self.officebookingConfirmDetails.start_time = apiStartTime
-      self.fetchOfficeList()
+      //self.fetchOfficeList()
     
   }
   
@@ -309,7 +315,11 @@ extension ShortTermBookAnOfficeViewController: SelectTimeTableViewCellDelegate{
     let displayEndTime = Date.formatSelectedDate(format: .hhmma, date: endTime)
     displayBookingDetailsNextScreen.endTime = displayEndTime
     self.officebookingConfirmDetails.end_time = apiEndTime
-      self.fetchOfficeList()
+    //self.fetchOfficeList()
+      DispatchQueue.main.async {
+          //  ********** fetchMeetingRooms() instead reload time cell
+          self.tableView.reloadSections([SectionTypeOfficeBooking.selectOfficeType.rawValue], with: .none)
+      }
   }
 }
 
@@ -323,6 +333,7 @@ extension ShortTermBookAnOfficeViewController {
 
 extension ShortTermBookAnOfficeViewController: BookButtonActionDelegate{
   func showBookRoomDetailsVC(meetingRoomId: Int) {
+      
       let confirmOfficeBookingDetailsVC = UIViewController.createController(storyBoard: .Booking, ofType: ConfirmShortTermBookingViewController.self)
       // confirmDeskBookingDetailsVC.meetingId = meetingRoomId
       //confirmDeskBookingDetailsVC.requestModel = apiRequestModelDeskListing
@@ -345,6 +356,10 @@ extension ShortTermBookAnOfficeViewController: BookButtonActionDelegate{
   }
   
   func didSelect(selectedId: Int) {
+      if DateTimeManager.shared.isDateToday() && DateTimeManager.shared.isCurrentTimePassedForEndTime()  {
+          RSOToastView.shared.show("Booking is no longer available. Please choose a different date or time.")
+          return
+      }
       DispatchQueue.main.async{
           if let officeTypeName = self.listItems.filter( {$0.id == selectedId }).first?.roomName {
               self.officeName = officeTypeName

@@ -47,7 +47,7 @@
                                     <constraint firstAttribute="height" constant="34" id="nSA-eP-LTn"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ba1-EB-Cb8">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Meeting rooms to suit any purpose. Available by the hour, the day or as long as you need" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ba1-EB-Cb8">
                                 <rect key="frame" x="25" y="38" width="183" height="53"/>
                                 <fontDescription key="fontDescription" name="Inter-Medium" family="Inter" pointSize="10"/>
                                 <color key="textColor" name="616161"/>

@@ -51,17 +51,25 @@ class DeskCollectionViewCell: UICollectionViewCell {
         self.lbldeskName.text = item.roomName
         self.lblNoOfPeople.text = "\(item.capacity!) Person"
         self.itemType = item.type ?? ""
+        
         if item.type == "office" {
+            if let price = item.roomPrice {
+                self.lblPrice.text = "\(price) /Hr"
+            } else {
+                self.lblPrice.text = "0 /Hr"
+            }
             self.lblDescription.text = "Conference Phone"
+           
         } else {
             self.lblDescription.text = item.description
         }
         
-        if let price = item.roomPrice {
-            self.lblPrice.text = "\(price) /Day"
-        } else {
-            // Handle the case where roomPrice is nil (e.g., set default text or hide the label)
-            self.lblPrice.text = "0 /Day"
+        if item.type == "desk" {
+            if let price = item.roomPrice {
+                self.lblPrice.text = "\(price) /Day"
+            } else {
+                self.lblPrice.text = "0 /Day"
+            }
         }
         if let imageUrl = item.roomImage, !imageUrl.isEmpty {
             let url = URL(string: imageBasePath + imageUrl)
@@ -71,22 +79,24 @@ class DeskCollectionViewCell: UICollectionViewCell {
             self.btnBook.isHidden = false
             
         }
-        
     }
     @IBAction func btnBookTappedAction(_ sender: Any) {
         if let _ = RSOToken.shared.getToken() {
+            let currentTime = Date()
             if itemType == "office"{
-                backActionDelegate?.showShortTermOfficeBookingVC()
+                if UserHelper.shared.getSavedStartTime() == UserHelper.shared.getSavedEndTime(){
+                    self.contentView.makeToast("start time and end time must not be same !")
+                }else {
+                    backActionDelegate?.showShortTermOfficeBookingVC()
+                }
             }else{
                 backActionDelegate?.showDeskBookingVC()
             }
-            
         }else {
             backActionDelegate?.showLogInVC()
         }
     }
-    
-    
+   
     @IBAction func btnViewamenityDetailsAction(_ sender: Any) {
         
     }

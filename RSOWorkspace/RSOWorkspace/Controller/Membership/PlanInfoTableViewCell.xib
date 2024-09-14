@@ -58,7 +58,7 @@
                             </mask>
                         </variation>
                     </view>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WMX-I4-zb7" userLabel="line View">
+                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WMX-I4-zb7" userLabel="line View">
                         <rect key="frame" x="20" y="65" width="280" height="0.6666666666666714"/>
                         <color key="backgroundColor" name="E3E3E3"/>
                         <constraints>

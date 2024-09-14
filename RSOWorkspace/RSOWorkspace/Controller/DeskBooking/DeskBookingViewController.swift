@@ -86,7 +86,7 @@ class DeskBookingViewController: UIViewController{
                             self.selectedDeskId = selectedOption.id ?? 1
                             self.apiRequestModelDeskListing.locationid = selectedOption.id ?? 1
                             self.displayBookingDetailsNextScreen.location = selectedOption.name ?? "Reef Tower"
-                            self.fetchDesksList()
+                           //  self.fetchDesksList()
                             self.tableView.reloadData()
                             self.eventHandler?(.dataLoaded)
                         }
@@ -205,13 +205,14 @@ extension DeskBookingViewController: UITableViewDataSource, UITableViewDelegate 
             let  cell =  tableView.dequeueReusableCell(withIdentifier: CellIdentifierDeskBooking.selectDate.rawValue, for: indexPath) as! SelectDateTableViewCell
             cell.delegate = self
             cell.bookingTypeSelectTime = .desk
-
+            cell.initWithDefaultDate()
             cell.selectionStyle = .none
             return cell
         case .selectTime:
             let cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifierDeskBooking.selectTime.rawValue, for: indexPath) as! SelectTimeTableViewCell
             cell.delegate = self
             cell.bookingTypeSelectTime = .desk
+            cell.setupInitialTimeValues()
             cell.selectionStyle = .none
             return cell
         case .addTeamMembers:
@@ -254,6 +255,10 @@ extension DeskBookingViewController: UITableViewDataSource, UITableViewDelegate 
                 }
                 self.listItems = list ?? []
                 print("eventHandler listItems", self.listItems)
+                DispatchQueue.main.async {
+                    self.tableView.reloadSections([ SectionTypeDeskBooking.selectDesks.rawValue], with: .none)
+                }
+               
             }
             if selectedDeskId > 0{
                 cell.fetchDesks(id: 1,
@@ -332,9 +337,7 @@ extension DeskBookingViewController:ButtonBookingConfirmTableViewCellDelegate{
         confirmDeskBookingDetailsVC.deskbookingConfirmDetails = self.deskbookingConfirmDetails
         //self.present(confirmDeskBookingDetailsVC,animated: true)
         self.navigationController?.pushViewController(confirmDeskBookingDetailsVC, animated: true)
-        
     }
-    
 }
 extension DeskBookingViewController: SelectLocationTableViewCellDelegate {
     
@@ -354,6 +357,11 @@ extension DeskBookingViewController: SelectLocationTableViewCellDelegate {
 }
 extension DeskBookingViewController: SelectDateTableViewCellDelegate {
     func didSelectDate(_ actualFormatOfDate: Date) {
+        // for desk after 5.30 user can’t book for today but book for future --------------
+        if DateTimeManager.shared.isDateToday() && DateTimeManager.shared.isCurrentTimePassedForEndTime()  {
+            RSOToastView.shared.show("Booking is no longer available. Please choose a different date or time.")
+            
+        }
         // on date change save api formatted date for this vc model and next vc model
         let apiDate = Date.formatSelectedDate(format: .yyyyMMdd, date: actualFormatOfDate)
         apiRequestModelDeskListing.date = apiDate
@@ -361,7 +369,11 @@ extension DeskBookingViewController: SelectDateTableViewCellDelegate {
         let displayDate = Date.formatSelectedDate(format: .EEEEddMMMMyyyy, date: actualFormatOfDate)
         displayBookingDetailsNextScreen.date = displayDate
         self.deskbookingConfirmDetails.date = apiDate
-        fetchDesksList()
+       // fetchDesksList()
+        DispatchQueue.main.async {
+            //  ********** fetchMeetingRooms() instead reload time cell
+            self.tableView.reloadSections([SectionTypeDeskBooking.selectTime.rawValue], with: .none)
+        }
     }
 }
 extension DeskBookingViewController: SelectTimeTableViewCellDelegate{
@@ -377,7 +389,7 @@ extension DeskBookingViewController: SelectTimeTableViewCellDelegate{
         let displayStartTime = Date.formatSelectedDate(format: .hhmma, date: startTime)
         displayBookingDetailsNextScreen.startTime = displayStartTime
         self.deskbookingConfirmDetails.start_time = apiStartTime
-        fetchDesksList()
+        //fetchDesksList()
         
     }
     
@@ -389,9 +401,12 @@ extension DeskBookingViewController: SelectTimeTableViewCellDelegate{
         let displayEndTime = Date.formatSelectedDate(format: .hhmma, date: endTime)
         displayBookingDetailsNextScreen.endTime = displayEndTime
         self.deskbookingConfirmDetails.end_time = apiEndTime
-        fetchDesksList()
-        
-        
+        // fetchDesksList()
+        self.deskList.removeAll()
+        self.listItems.removeAll()
+        DispatchQueue.main.async {
+            self.tableView.reloadSections([SectionTypeDeskBooking.selectDesksType.rawValue, SectionTypeDeskBooking.selectDesks.rawValue], with: .none)
+        }
     }
 }
 extension DeskBookingViewController:InviteTeamMembersTableViewCellDelegate{
@@ -487,6 +502,11 @@ extension DeskBookingViewController: BookButtonActionDelegate{
     }
     
     func didSelect(selectedId: Int) {
+        // for desk after 5.30 user can’t book for today but book for future --------------
+        if DateTimeManager.shared.isDateToday() && DateTimeManager.shared.isCurrentTimePassedForEndTime()  {
+            RSOToastView.shared.show("Booking is no longer available. Please choose a different date or time.")
+            return
+        }
         self.selectedDeskTypeId = selectedId
         print("selected desk type:", selectedId)
         displayBookingDetailsNextScreen.deskId = selectedId

@@ -394,6 +394,8 @@ extension PaymentViewController: UITableViewDataSource, UITableViewDelegate {
                     let desk = obj.deskList[indexPath.row]
                     cell.lblMeetingRoomName.text = desk.name
                     let price = Double(desk.price ) ?? 0.0
+                    let deskSubTotal = obj.deskSubTotal
+                    print("deskSubTotal is ",deskSubTotal)
                     cell.lbltotalPrice.text = "AED \(String(describing: price.toStringWithTwoDecimalPlaces()))"
                     
                 } else if bookingType == .meetingRoom {
@@ -429,15 +431,12 @@ extension PaymentViewController: UITableViewDataSource, UITableViewDelegate {
             let cell = tableView.dequeueReusableCell(withIdentifier: cellType.rawValue, for: indexPath) as! AmenityPriceTableViewCell
             cell.selectionStyle = .none
             let amenity = filteredAmenities[indexPath.row]
-            cell.lblAmenityName.text = amenity.name
             let amenityPricePerHour = Double(amenity.price ?? "0.0")
             let formattedAmenityPricePerHours = String(format: "%.2f", amenityPricePerHour ?? 0.0) // Format with two decimal places
-            
-            cell.lblAmenityPrice.text = "AED \(formattedAmenityPricePerHours)"
+            cell.lblAmenityName.text = "\(amenity.name ?? "") AED \(formattedAmenityPricePerHours)"
             // Retrieve the selected hours for this amenity from amenityTotalHours
             let selectedHours = self.requestParameters?.amenityTotalHours[amenity.id] ?? 0
             //cell.lblHours.text = "\(selectedHours)"
-            
             // Calculate total price for the amenity
             let amenityPrice = Float(amenity.price ?? "0.0") ?? 0.0
             
@@ -462,6 +461,7 @@ extension PaymentViewController: UITableViewDataSource, UITableViewDelegate {
                     let deskVat = Double(obj.deskVatTotal)
                     cell.lblVat.text = "AED \(deskVat.toStringWithTwoDecimalPlaces())"
                     vatAmountDesk = Double(obj.deskVatTotal)
+                   
                     let deskFinalTotal = Double(obj.deskFinalTotal)
                     cell.lblTotalPrice.text = "\(deskFinalTotal.toStringWithTwoDecimalPlaces())"
                     totalPriceDesk = Double(obj.deskFinalTotal)
@@ -522,8 +522,7 @@ extension PaymentViewController: UITableViewDataSource, UITableViewDelegate {
             cell.selectionStyle = .none
            // cell.cardDetails = getCardDetailsResponseData // Pass the fetched card details// if comment will remove crash issuewill be appear 
             cell.contentView.backgroundColor = .F_2_F_2_F_2
-            //cell.paymentMethodBGView.backgroundColor = .clear
-            //cell.paymentMethodView.backgroundColor = .clear
+           
             return cell
             
         case .buttonPayNow:
@@ -589,12 +588,10 @@ extension PaymentViewController {
 extension PaymentViewController: ButtonPayNowTableViewCellDelegate {
     func btnPayNowTappedAction() {
         
-        if bookingType != .meetingRoom {
             if UserHelper.shared.isUserExplorer() {
                 CurrentLoginType.shared.loginScreenDelegate = self
                 LogInViewController.showLoginViewController()
                 return
-            }
         }
         guard let obj = self.requestParameters else { return }
         

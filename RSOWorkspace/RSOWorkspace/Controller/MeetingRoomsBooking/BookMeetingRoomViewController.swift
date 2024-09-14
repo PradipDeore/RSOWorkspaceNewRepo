@@ -70,7 +70,7 @@ class BookMeetingRoomViewController: UIViewController{
                             self.locationId = selectedOption.id ?? 1
                             self.selectedMeetingRoomId = selectedOption.id ?? 1
                             self.displayBookingDetailsNextScreen.location = selectedOption.name ?? "ReefTower"
-                            self.fetchMeetingRooms()
+                            //self.fetchMeetingRooms()
                         }
                         self.tableView.reloadData()
                     }
@@ -126,12 +126,15 @@ extension BookMeetingRoomViewController: UITableViewDataSource, UITableViewDeleg
             let  cell =  tableView.dequeueReusableCell(withIdentifier: CellIdentifier.selectDate.rawValue, for: indexPath) as! SelectDateTableViewCell
             cell.delegate = self
             cell.bookingTypeSelectTime = .meetingRoom
+            cell.initWithDefaultDate()
             cell.selectionStyle = .none
             return cell
         case .selectTime:
             let cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifier.selectTime.rawValue, for: indexPath) as! SelectTimeTableViewCell
+
             cell.delegate = self
             cell.bookingTypeSelectTime = .meetingRoom
+            cell.setupInitialTimeValues()
             cell.selectionStyle = .none
             return cell
             
@@ -202,6 +205,7 @@ extension BookMeetingRoomViewController: SelectLocationTableViewCellDelegate {
 }
 extension BookMeetingRoomViewController: SelectDateTableViewCellDelegate {
     func didSelectDate(_ actualFormatOfDate: Date) {
+        print("actualFormatOfDate",actualFormatOfDate)
         // on date change save api formatted date for this vc model and next vc model
         let apiDate = Date.formatSelectedDate(format: .yyyyMMdd, date: actualFormatOfDate)
         apiRequestModelRoomListing.date = apiDate
@@ -209,7 +213,10 @@ extension BookMeetingRoomViewController: SelectDateTableViewCellDelegate {
         let displayDate = Date.formatSelectedDate(format: .EEEEddMMMMyyyy, date: actualFormatOfDate)
         displayBookingDetailsNextScreen.date = displayDate
        
-        fetchMeetingRooms()
+        DispatchQueue.main.async {
+            //  ********** fetchMeetingRooms() instead reload time cell
+            self.tableView.reloadSections([SectionType.selectTime.rawValue], with: .none)
+        }
         
     }
 }
@@ -222,7 +229,7 @@ extension BookMeetingRoomViewController: SelectTimeTableViewCellDelegate{
         //display in next vc
         let displayStartTime = Date.formatSelectedDate(format: .hhmma, date: startTime)
         displayBookingDetailsNextScreen.startTime = displayStartTime
-        fetchMeetingRooms()
+        //fetchMeetingRooms()
     }
     
     func didSelectEndTime(_ endTime: Date) {
@@ -232,7 +239,10 @@ extension BookMeetingRoomViewController: SelectTimeTableViewCellDelegate{
         //display in next vc
         let displayEndTime = Date.formatSelectedDate(format: .hhmma, date: endTime)
         displayBookingDetailsNextScreen.endTime = displayEndTime
-        fetchMeetingRooms()
+        DispatchQueue.main.async {
+            //  ********** fetchMeetingRooms() instead reload time cell
+            self.tableView.reloadSections([SectionType.selectMeetingRoom.rawValue], with: .none)
+        }
         
     }
     func selectFulldayStatus(_ isFullDay: Bool) {
@@ -261,6 +271,10 @@ extension UITableView {
 }
 extension BookMeetingRoomViewController: BookButtonActionDelegate{
     func showBookRoomDetailsVC(meetingRoomId: Int) {
+        if DateTimeManager.shared.isDateToday() && DateTimeManager.shared.isCurrentTimePassedForEndTime()  {
+            RSOToastView.shared.show("Booking is no longer available. Please choose a different date or time.")
+            return 
+        }
         let bookRoomDetailsVC = UIViewController.createController(storyBoard: .Booking, ofType: BookRoomDetailsViewController.self)
         bookRoomDetailsVC.meetingId = meetingRoomId
         apiRequestModelRoomListing.isFullDay = selectedFullDay
