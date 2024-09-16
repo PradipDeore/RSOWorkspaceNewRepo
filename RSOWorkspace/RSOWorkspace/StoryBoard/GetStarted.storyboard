@@ -223,12 +223,26 @@
                                             <constraint firstAttribute="width" constant="212" id="YPc-gv-A7N"/>
                                         </constraints>
                                     </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tTl-gN-szZ">
+                                        <rect key="frame" x="16" y="40" width="45" height="24"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="24" id="0GO-nf-YeA"/>
+                                            <constraint firstAttribute="width" constant="45" id="d46-Xg-ASm"/>
+                                        </constraints>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" image="backArrow"/>
+                                        <connections>
+                                            <action selector="backButtonAction:" destination="D1H-35-ljL" eventType="touchUpInside" id="qYN-AX-EJF"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
+                                    <constraint firstItem="tTl-gN-szZ" firstAttribute="top" secondItem="yIb-zD-jNS" secondAttribute="top" constant="40" id="Cfk-XC-Tf4"/>
                                     <constraint firstItem="Vj1-BN-2j5" firstAttribute="top" secondItem="yIb-zD-jNS" secondAttribute="top" constant="160" id="ZXo-9m-O5r"/>
                                     <constraint firstItem="fV5-eu-LGA" firstAttribute="top" secondItem="yIb-zD-jNS" secondAttribute="top" constant="180" id="fhz-Lt-MZL"/>
                                     <constraint firstItem="Vj1-BN-2j5" firstAttribute="leading" secondItem="yIb-zD-jNS" secondAttribute="leading" id="gew-eS-zIY"/>
+                                    <constraint firstItem="tTl-gN-szZ" firstAttribute="leading" secondItem="yIb-zD-jNS" secondAttribute="leading" constant="16" id="isd-67-TJj"/>
                                     <constraint firstAttribute="trailing" secondItem="fV5-eu-LGA" secondAttribute="trailing" id="qkR-94-Ejk"/>
                                 </constraints>
                             </view>
@@ -427,7 +441,7 @@
                                 </constraints>
                             </view>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="Azq-eZ-4vM">
-                                <rect key="frame" x="40" y="89" width="120" height="40"/>
+                                <rect key="frame" x="40" y="79" width="120" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="120" id="isT-Ew-yfp"/>
                                     <constraint firstAttribute="height" constant="40" id="yVn-Qz-x3U"/>
@@ -584,7 +598,7 @@
                             <constraint firstItem="9pB-e3-BpO" firstAttribute="trailing" secondItem="lBc-dy-0N3" secondAttribute="trailing" constant="39" id="oAT-RK-cF2"/>
                             <constraint firstItem="Ohv-8Z-vdi" firstAttribute="centerX" secondItem="8nB-tb-WeJ" secondAttribute="centerX" id="plz-Ar-rVb"/>
                             <constraint firstItem="lBc-dy-0N3" firstAttribute="leading" secondItem="9pB-e3-BpO" secondAttribute="leading" constant="39" id="t1y-Ea-RIW"/>
-                            <constraint firstItem="Azq-eZ-4vM" firstAttribute="top" secondItem="9pB-e3-BpO" secondAttribute="top" constant="30" id="u4R-wL-ngC"/>
+                            <constraint firstItem="Azq-eZ-4vM" firstAttribute="top" secondItem="9pB-e3-BpO" secondAttribute="top" constant="20" id="u4R-wL-ngC"/>
                         </constraints>
                     </view>
                     <connections>

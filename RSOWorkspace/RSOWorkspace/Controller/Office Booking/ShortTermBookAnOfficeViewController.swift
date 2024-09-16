@@ -208,7 +208,7 @@ extension ShortTermBookAnOfficeViewController: UITableViewDataSource, UITableVie
     case .selectLocation:
       return 100
     case .selectDate:
-      return 334
+        return UITableView.automaticDimension
     case .selectTime:
       return 80
     case .selectMeetingRoomLabel:

@@ -212,7 +212,7 @@ struct ConfirmBookingRequestModel{
     self.endTime = model.datetime.endTime
     self.teamMembers = model.members ?? []
     self.amenityArray = model.amenity
-      self.freeamenityArray = model.amenityFree ?? []
+    self.freeamenityArray = model.amenityFree ?? []
   }
     mutating func setValuesforOrderDetails(model: StoreRoomBookingResponse){
         

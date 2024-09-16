@@ -361,7 +361,7 @@ extension PaymentViewController: UITableViewDataSource, UITableViewDelegate {
         case .meetingTime:
             let cell = tableView.dequeueReusableCell(withIdentifier: cellType.rawValue, for: indexPath) as! MeetingTimeTableViewCell
             cell.selectionStyle = .none
-            if bookingType == .office || bookingType == .meetingRoom {
+            if  bookingType == .meetingRoom {
                 if let startTime = self.requestParameters?.displayStartTime, let endTime = self.requestParameters?.displayendTime {
                     cell.txtTime.text = "\(startTime) - \(endTime)"
                 } else {
@@ -371,7 +371,19 @@ extension PaymentViewController: UITableViewDataSource, UITableViewDelegate {
                     intHoursMeetingRoom = Int(floathours)
                 }
                 cell.lblHours.text = "\(intHoursMeetingRoom)"
-            }else  if bookingType == .desk {
+            
+            }else if bookingType == .office {
+                if let startTime = self.requestParameters?.displayStartTime, let endTime = self.requestParameters?.displayendTime {
+                    cell.txtTime.text = "\(startTime) - \(endTime)"
+                } else {
+                    cell.txtTime.text = "Unavailable"
+                }
+                if let floathours = self.requestParameters?.totalHrs {
+                    intHoursMeetingRoom = Int(floathours)
+                }
+                cell.lblHours.text = "\(intHoursMeetingRoom)"
+            }
+            else  {
                 if let startTime = self.requestParameters?.displayStartTime, let endTime = self.requestParameters?.displayendTime {
                     cell.txtTime.text = "\(startTime) - \(endTime)"
                 } else {
@@ -528,10 +540,12 @@ extension PaymentViewController: UITableViewDataSource, UITableViewDelegate {
         case .buttonPayNow:
             let cell = tableView.dequeueReusableCell(withIdentifier: cellType.rawValue, for: indexPath) as! ButtonPayNowTableViewCell
             cell.delegate = self
-            if !UserHelper.shared.isGuest(){
-                cell.btnPayNow.setTitle("Proceed To Booking", for: .normal)
-            }else{
+            if UserHelper.shared.isGuest() || UserHelper.shared.isUserExplorer(){
                 cell.btnPayNow.setTitle("Pay Now", for: .normal)
+
+            }else{
+                cell.btnPayNow.setTitle("Proceed To Booking", for: .normal)
+
             }
             cell.selectionStyle = .none
             return cell
@@ -587,7 +601,8 @@ extension PaymentViewController {
 
 extension PaymentViewController: ButtonPayNowTableViewCellDelegate {
     func btnPayNowTappedAction() {
-        
+        print("Is Social Login User: \(UserHelper.shared.isSocialLoginUser())")
+
             if UserHelper.shared.isUserExplorer() {
                 CurrentLoginType.shared.loginScreenDelegate = self
                 LogInViewController.showLoginViewController()
@@ -608,7 +623,7 @@ extension PaymentViewController: ButtonPayNowTableViewCellDelegate {
                 paymentServiceManager.bookingId = bookingId
                 paymentServiceManager.totalPrice = totalPriceDesk
                 paymentServiceManager.vatAmount = vatAmountDesk
-                if UserHelper.shared.isGuest() {
+                if UserHelper.shared.isGuest() || UserHelper.shared.isSocialLoginUser() {
                     paymentServiceManager.makePayment(requestModel: requestModel)
                 } else {
                     paymentServiceManager.paymentDeskBookingAPI(bookingid: bookingId, totalprice: totalPriceDesk, vatamount: vatAmountDesk)
@@ -631,7 +646,7 @@ extension PaymentViewController: ButtonPayNowTableViewCellDelegate {
             var requestModel = NiPaymentRequestModel()
             requestModel.total = Int(totalPriceOffice)
             requestModel.email = UserHelper.shared.getUserEmail()
-            if UserHelper.shared.isGuest() {
+            if UserHelper.shared.isGuest() || UserHelper.shared.isSocialLoginUser() {
                 paymentServiceManager.makePayment(requestModel: requestModel)
             } else {
                 paymentServiceManager.paymentOfficeBookingAPI(id: bookingId, totalprice: totalPriceOffice, vatamount:  vatAmountOffice)

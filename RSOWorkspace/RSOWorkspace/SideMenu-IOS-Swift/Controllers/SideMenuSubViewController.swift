@@ -67,6 +67,7 @@ class SideMenuSubViewController: UIViewController {
         }else{
             self.lblName.isHidden = false
             self.headerImageView.isHidden = false
+            
         }
     }
 
@@ -128,7 +129,7 @@ class SideMenuSubViewController: UIViewController {
                     self.myProfileResponse = response
                     let firstName =  self.myProfileResponse?.data.firstName
                     let lastName =  self.myProfileResponse?.data.lastName
-                    
+                    let photoPath = self.myProfileResponse?.data.photo
                     DispatchQueue.main.async {
                         
                             if let firstName = firstName, let lastName = lastName {

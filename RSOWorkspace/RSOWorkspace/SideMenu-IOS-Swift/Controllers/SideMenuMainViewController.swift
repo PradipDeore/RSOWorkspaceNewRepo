@@ -15,7 +15,16 @@ class SideMenuMainViewController: UIViewController,RSOTabCoordinated {
     
     private var sideMenuViewController: SideMenuSubViewController!
     private var sideMenuRevealWidth: CGFloat = 300
-    private var paddingForRotation: CGFloat = 110
+   // private var paddingForRotation: CGFloat = 130//110
+    private var paddingForRotation: CGFloat {
+        let screenHeight = UIScreen.main.bounds.height
+
+        if screenHeight >= 926 { // For iPhone 15 Pro Max and similar large screens
+            return 130
+        } else {
+            return 100
+        }
+    }
     private var isExpanded: Bool = false
     private var revealFromLeft: Bool = false
     private var sideMenuTrailingConstraint: NSLayoutConstraint!
@@ -28,7 +37,6 @@ class SideMenuMainViewController: UIViewController,RSOTabCoordinated {
         super.viewDidLoad()
         setupSideMenu()
     }
-    
     
     private func setupSideMenu() {
         addShadowView()

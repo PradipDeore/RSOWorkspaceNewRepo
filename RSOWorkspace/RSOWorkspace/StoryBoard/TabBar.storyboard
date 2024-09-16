@@ -414,6 +414,7 @@
                             <constraint firstItem="i1i-zm-Yhe" firstAttribute="centerY" secondItem="Gsg-hk-SkU" secondAttribute="centerY" id="rYm-v8-c0Q"/>
                         </constraints>
                     </view>
+                    <size key="freeformSize" width="393" height="852"/>
                     <connections>
                         <outlet property="btnSearch" destination="ZC7-Px-mHh" id="g0W-rm-o1i"/>
                         <outlet property="searchView" destination="i1i-zm-Yhe" id="4nl-uM-7mL"/>
@@ -429,11 +430,11 @@
             <objects>
                 <viewController storyboardIdentifier="SideMenuSubViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Hdv-Hq-x1W" customClass="SideMenuSubViewController" customModule="RSOWorkspace" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1NF-7F-EI2">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pfh-4S-myE" userLabel="roundedView">
-                                <rect key="frame" x="0.0" y="0.0" width="420" height="896"/>
+                                <rect key="frame" x="0.0" y="0.0" width="493" height="852"/>
                                 <color key="backgroundColor" name="BFBFBF"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="Layer.co">
@@ -442,10 +443,10 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kPu-9b-a4k">
-                                <rect key="frame" x="0.0" y="99" width="320" height="128"/>
+                                <rect key="frame" x="0.0" y="99" width="393" height="128"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="teamMemberphoto" translatesAutoresizingMaskIntoConstraints="NO" id="nLv-fR-H3w">
-                                        <rect key="frame" x="230" y="29" width="50" height="51"/>
+                                        <rect key="frame" x="303" y="29" width="50" height="51"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="51" id="V8s-8R-zfA"/>
@@ -453,7 +454,7 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GWd-At-zNz">
-                                        <rect key="frame" x="200" y="47" width="0.0" height="22.666666666666671"/>
+                                        <rect key="frame" x="273" y="47" width="0.0" height="22.666666666666671"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="22.670000000000002" id="zKV-df-MHZ"/>
                                         </constraints>
@@ -489,17 +490,17 @@
                                 </variation>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="oMt-dX-0SG">
-                                <rect key="frame" x="0.0" y="227" width="320" height="574"/>
+                                <rect key="frame" x="0.0" y="227" width="393" height="530"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Version 1.1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lja-8a-jTs">
-                                <rect key="frame" x="30" y="821" width="260" height="21"/>
+                                <rect key="frame" x="30" y="777" width="333" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ckz-ac-FVU">
-                                <rect key="frame" x="115" y="77" width="185" height="25"/>
+                                <rect key="frame" x="188" y="77" width="185" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="25" id="jMW-9f-auE"/>
                                     <constraint firstAttribute="width" constant="185" id="vGk-8S-qjL"/>
@@ -530,7 +531,6 @@
                             <constraint firstItem="lja-8a-jTs" firstAttribute="leading" secondItem="cq5-vR-I1h" secondAttribute="leading" constant="30" id="zJF-1e-GM3"/>
                         </constraints>
                     </view>
-                    <size key="freeformSize" width="320" height="896"/>
                     <connections>
                         <outlet property="footerLabel" destination="lja-8a-jTs" id="wc6-v7-sw0"/>
                         <outlet property="headerImageView" destination="nLv-fR-H3w" id="bay-Qu-mUH"/>
@@ -542,7 +542,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6x5-RC-zId" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6169.4656488549617" y="-63.380281690140848"/>
+            <point key="canvasLocation" x="6196.1832061068699" y="-63.380281690140848"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="nPQ-uX-OIP">
@@ -569,6 +569,7 @@
                         <viewLayoutGuide key="safeArea" id="FF9-Kc-Xdy"/>
                         <color key="backgroundColor" systemColor="systemMintColor"/>
                     </view>
+                    <size key="freeformSize" width="393" height="852"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="grU-nI-bYA" sceneMemberID="firstResponder"/>
             </objects>
@@ -598,7 +599,7 @@
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemMintColor">
-            <color red="0.0" green="0.78039215689999997" blue="0.74509803919999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.0" green="0.7803921568627451" blue="0.74509803921568629" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

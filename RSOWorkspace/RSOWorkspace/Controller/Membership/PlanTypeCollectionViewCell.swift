@@ -27,6 +27,7 @@ class PlanTypeCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var containerView: ShadowedView!
     let planPriceIdentifier = "PlanPriceTableViewCell"
     let planInfoIdentifier = "PlanInfoTableViewCell"
+    let selectPlanTypeLabelIdentifier = "SelectPlanTypeLableTableViewCell"
     var selectedIndex = -1
     var priceOptions: [PlanPrice] = []
     weak var planDelegate: PlanSelectDelegate?
@@ -35,6 +36,7 @@ class PlanTypeCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
         tableView.register(UINib(nibName: planPriceIdentifier, bundle: nil), forCellReuseIdentifier: planPriceIdentifier)
         tableView.register(UINib(nibName: planInfoIdentifier, bundle: nil), forCellReuseIdentifier: planInfoIdentifier)
+        tableView.register(UINib(nibName: selectPlanTypeLabelIdentifier, bundle: nil), forCellReuseIdentifier: selectPlanTypeLabelIdentifier)
         self.continueButton.isUserInteractionEnabled = false
         self.continueButton.alpha = 0.5
     }
@@ -52,12 +54,15 @@ class PlanTypeCollectionViewCell: UICollectionViewCell {
 }
 extension PlanTypeCollectionViewCell: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        return 3
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
             return services.count
-        }
+       }
+        else if section == 1{
+            return 1
+       }
         return priceOptions.count
     }
     
@@ -65,13 +70,21 @@ extension PlanTypeCollectionViewCell: UITableViewDelegate, UITableViewDataSource
         if indexPath.section == 0 {
             return 70
         }
+        else if indexPath.section == 1{
+            return 40
+        }
         return 60
     }
-    
+   
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: planInfoIdentifier, for: indexPath) as! PlanInfoTableViewCell
             cell.messageLabel.text = services[indexPath.row]
+            cell.selectionStyle = .none
+            return cell
+        }
+        else if indexPath.section == 1{
+            let cell = tableView.dequeueReusableCell(withIdentifier: selectPlanTypeLabelIdentifier, for: indexPath) as! SelectPlanTypeLableTableViewCell
             cell.selectionStyle = .none
             return cell
         } else {
@@ -107,7 +120,7 @@ extension PlanTypeCollectionViewCell: UITableViewDelegate, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.section == 1 {
+        if indexPath.section == 2 {
             // logic to handle single selection across collection cells
             SelectedIndexData.shared.collectionIndex = self.tag
             SelectedIndexData.shared.tableIndex = indexPath.row

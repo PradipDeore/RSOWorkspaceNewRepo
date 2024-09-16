@@ -84,11 +84,7 @@ class DeskCollectionViewCell: UICollectionViewCell {
         if let _ = RSOToken.shared.getToken() {
             let currentTime = Date()
             if itemType == "office"{
-                if UserHelper.shared.getSavedStartTime() == UserHelper.shared.getSavedEndTime(){
-                    self.contentView.makeToast("start time and end time must not be same !")
-                }else {
                     backActionDelegate?.showShortTermOfficeBookingVC()
-                }
             }else{
                 backActionDelegate?.showDeskBookingVC()
             }

@@ -174,7 +174,8 @@ extension BookMeetingRoomViewController: UITableViewDataSource, UITableViewDeleg
         case .selectLocation:
             return 100
         case .selectDate:
-            return 334
+            //return 334
+            return UITableView.automaticDimension // Automatically adjusts height based on content
         case .selectTime:
             return 80
         case .selectMeetingRoomLabel:

@@ -115,20 +115,21 @@ struct DeskBooking: Codable {
     let memberId: Int
     let companyId: Int?
     let deskTypeId: Int?
-    let startTime: String
-    let endTime: String
-    let date: String
-    let intervalId: Int
-    let vatAmount: String
-    let totalPrice: String
+    let startTime: String?
+    let endTime: String?
+    let date: String?
+    let intervalId: Int?
+    let vatAmount: String?
+    let totalPrice: String?
     let totalMembers: Int?
-    let totalHours: Int
-    let status: String
-    let createdAt: String
-    let updatedAt: String
-    let deskNo: Int?
+    let totalHours: Int?
+    let status: String?
+    let createdAt: String?
+    let updatedAt: String?
+    let deskNo: String?
     let floorMapId: Int?
-    let listType: String
+    let listType: String?
+    let floorNumber:Int?
 
     enum CodingKeys: String, CodingKey {
         case id
@@ -147,6 +148,7 @@ struct DeskBooking: Codable {
         case createdAt = "created_at"
         case updatedAt = "updated_at"
         case deskNo = "desk_no"
+        case floorNumber = "floor_number"
         case floorMapId = "floor_map_id"
         case listType = "list_type"
     }

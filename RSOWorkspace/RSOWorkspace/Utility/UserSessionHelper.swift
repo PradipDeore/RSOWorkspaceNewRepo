@@ -30,6 +30,8 @@ class UserHelper {
     private let userSelectedDateKey = "userSelectedDate"
     private let selectedStartTime = "userSelectedStartTime"
     private let selectedEndTime = "userSelectedEndTime"
+    // New keys for social login
+        private let isSocialLoginUserKey = "isSocialLoginUser"
     
     func saveUser(_ user: UserData) {
         userDefaults.set(user.id, forKey: customerIdKey)
@@ -40,6 +42,8 @@ class UserHelper {
         userDefaults.set(user.designation, forKey: userDesignationKey)
         userDefaults.set(user.status, forKey: userStatusKey)
         userDefaults.set(true, forKey: userIsLoggedIn)
+        saveSocialLoginUser(false)  // Set the social login flag to false (normal login)
+
     }
     func saveSelectedDateByuser(_ selectedDate: Date){
         let selectedDateString = selectedDate.stringFromDate(format: .yyyyMMdd)
@@ -104,7 +108,15 @@ class UserHelper {
     }
 
 
-    
+    // Save a flag to indicate whether the user logged in via social login
+        func saveSocialLoginUser(_ isSocialLogin: Bool) {
+            userDefaults.set(isSocialLogin, forKey: isSocialLoginUserKey)
+        }
+        
+        // Check if the user is a social login user
+        func isSocialLoginUser() -> Bool {
+            return userDefaults.bool(forKey: isSocialLoginUserKey)
+        }
     func saveSocialuser(name:String, email:String){
         
         let namelist = name.components(separatedBy: " ")
@@ -116,6 +128,7 @@ class UserHelper {
         }
         userDefaults.set(email, forKey: userEmailKey)
         userDefaults.set(true, forKey: userIsLoggedIn)
+        saveSocialLoginUser(true)  // Set the social login flag to true
     }
     
     func saveUserIsGuest(_ isGuest: Bool) {
@@ -131,7 +144,9 @@ class UserHelper {
     func isUserExplorer() -> Bool {
         return !userDefaults.bool(forKey: userIsLoggedIn)
     }
-    
+    func saveUserIsExplorer(_ isExplorer: Bool) {
+        userDefaults.set(isExplorer, forKey: userIsLoggedIn)
+    }
     
     func getUserId() -> Int? {
         return userDefaults.integer(forKey: customerIdKey)
@@ -217,6 +232,7 @@ class UserHelper {
         userDefaults.removeObject(forKey: userStatusKey)
         userDefaults.removeObject(forKey: userIsGuestKey)
         userDefaults.removeObject(forKey: userIsLoggedIn)
+        userDefaults.removeObject(forKey: isSocialLoginUserKey)  // Remove social login flag
         userDefaults.synchronize()
     }
 }

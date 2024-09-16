@@ -186,6 +186,8 @@
 		588D8A7B2B627A6D00545748 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 588D8A7A2B627A6D00545748 /* Assets.xcassets */; };
 		588D8A7E2B627A6D00545748 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 588D8A7C2B627A6D00545748 /* LaunchScreen.storyboard */; };
 		589464102BA57CA500DC6472 /* ConciergeStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5894640F2BA57CA500DC6472 /* ConciergeStoryboard.storyboard */; };
+		5897A0CF2C96D109005366E0 /* SelectPlanTypeLableTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5897A0CD2C96D109005366E0 /* SelectPlanTypeLableTableViewCell.swift */; };
+		5897A0D02C96D109005366E0 /* SelectPlanTypeLableTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5897A0CE2C96D109005366E0 /* SelectPlanTypeLableTableViewCell.xib */; };
 		589BBA9C2BBBEE7C00DCEF70 /* FAQViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589BBA9B2BBBEE7C00DCEF70 /* FAQViewController.swift */; };
 		589BBAA02BBBEF3D00DCEF70 /* FAQTitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589BBA9E2BBBEF3D00DCEF70 /* FAQTitleTableViewCell.swift */; };
 		589BBAA12BBBEF3D00DCEF70 /* FAQTitleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 589BBA9F2BBBEF3D00DCEF70 /* FAQTitleTableViewCell.xib */; };
@@ -675,6 +677,8 @@
 		588D8A7D2B627A6D00545748 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		588D8A7F2B627A6D00545748 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5894640F2BA57CA500DC6472 /* ConciergeStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ConciergeStoryboard.storyboard; sourceTree = "<group>"; };
+		5897A0CD2C96D109005366E0 /* SelectPlanTypeLableTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectPlanTypeLableTableViewCell.swift; sourceTree = "<group>"; };
+		5897A0CE2C96D109005366E0 /* SelectPlanTypeLableTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectPlanTypeLableTableViewCell.xib; sourceTree = "<group>"; };
 		589BBA9B2BBBEE7C00DCEF70 /* FAQViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQViewController.swift; sourceTree = "<group>"; };
 		589BBA9E2BBBEF3D00DCEF70 /* FAQTitleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FAQTitleTableViewCell.swift; path = RSOWorkspace/Controller/Feedback/FAQTitleTableViewCell.swift; sourceTree = SOURCE_ROOT; };
 		589BBA9F2BBBEF3D00DCEF70 /* FAQTitleTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = FAQTitleTableViewCell.xib; path = RSOWorkspace/Controller/Feedback/FAQTitleTableViewCell.xib; sourceTree = SOURCE_ROOT; };
@@ -2039,6 +2043,8 @@
 				EE3DCE9D2C5B4E8D00B884BC /* MembershipTableViewCell.xib */,
 				5883E7012C5BE57400299927 /* PaymentSummaryHeaderTableViewCell.swift */,
 				5883E7022C5BE57400299927 /* PaymentSummaryHeaderTableViewCell.xib */,
+				5897A0CD2C96D109005366E0 /* SelectPlanTypeLableTableViewCell.swift */,
+				5897A0CE2C96D109005366E0 /* SelectPlanTypeLableTableViewCell.xib */,
 			);
 			path = Membership;
 			sourceTree = "<group>";
@@ -2246,6 +2252,7 @@
 				58EB0E472BB6D62600DC2827 /* SideMenuCell.xib in Resources */,
 				58713EAB2BC926550012DD4E /* SelectDesksTableViewCell.xib in Resources */,
 				58A16CD42BBC7D5B0003DD50 /* LocationOpenTableViewCell.xib in Resources */,
+				5897A0D02C96D109005366E0 /* SelectPlanTypeLableTableViewCell.xib in Resources */,
 				589FB6A02B7644A90067255E /* Poppins-BoldItalic.ttf in Resources */,
 				589BBAA12BBBEF3D00DCEF70 /* FAQTitleTableViewCell.xib in Resources */,
 				58713EB52BC94AA20012DD4E /* InviteGuestsCollectionViewCell.xib in Resources */,
@@ -2382,6 +2389,7 @@
 				588D8A762B627A6B00545748 /* ViewController.swift in Sources */,
 				58B4060B2BCD47380045DD4C /* PaymentTableViewCell.swift in Sources */,
 				5843D7622BC6875E00D5C8DD /* EditButtonTableViewCell.swift in Sources */,
+				5897A0CF2C96D109005366E0 /* SelectPlanTypeLableTableViewCell.swift in Sources */,
 				5864882A2BBAB58F0024CBA2 /* MyProfileEndPoint.swift in Sources */,
 				58EB0E452BB6D62600DC2827 /* SideMenuMainViewController.swift in Sources */,
 				58B406012BCCFDAC0045DD4C /* DeskRequestModel.swift in Sources */,
@@ -2804,7 +2812,7 @@
 				CODE_SIGN_ENTITLEMENTS = RSOWorkspace/RSOWorkspace.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 12;
+				CURRENT_PROJECT_VERSION = 15;
 				DEVELOPMENT_TEAM = D2BKM938GX;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				"EXCLUDED_ARCHS[sdk=*]" = "";
@@ -2841,7 +2849,7 @@
 				CODE_SIGN_ENTITLEMENTS = RSOWorkspace/RSOWorkspace.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 12;
+				CURRENT_PROJECT_VERSION = 15;
 				DEVELOPMENT_TEAM = D2BKM938GX;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;

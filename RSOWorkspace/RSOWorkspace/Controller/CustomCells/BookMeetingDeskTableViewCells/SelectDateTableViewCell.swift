@@ -56,7 +56,6 @@ class SelectDateTableViewCell: UITableViewCell {
                     self.makeToast("Desk booking is not allowed for weekends.",duration:2.0,position:.center)
                     let nextMonday = getNextMonday(from: selectedDate)
                     calender.date = nextMonday
-                    calender.minimumDate = nextMonday
                     // -------------- for future use --------------
                     DateTimeManager.shared.setSelectedDate(nextMonday)
                     //---------------------------------------------

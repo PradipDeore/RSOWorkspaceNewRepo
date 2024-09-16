@@ -37,7 +37,7 @@ class PaymentNetworkManager: CardPaymentDelegate ,ApplePayDelegate{
 
     DispatchQueue.main.async {
       RSOLoader.showLoader()
-      if UserHelper.shared.isGuest() {
+      if UserHelper.shared.isGuest() || UserHelper.shared.isSocialLoginUser() {
         var requestModel = NiPaymentRequestModel()
         requestModel.total = Int(totalprice)
         requestModel.email = UserHelper.shared.getUserEmail()

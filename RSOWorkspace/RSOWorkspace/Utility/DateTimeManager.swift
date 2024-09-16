@@ -15,14 +15,14 @@ struct DateTimeSelection {
 
 class DateTimeManager {
     static let shared = DateTimeManager()
-    var eightThirtyAM: Date = Date()
-    var fiveThirtyPM: Date = Date()
+    //var eightThirtyAM: Date = Date()
+   // var fiveThirtyPM: Date = Date()
     var tenPM: Date = Date()
     var nineAM: Date = Date()
     var sixPM: Date = Date()
     private init() {
-        eightThirtyAM = getTime(hour: 8, minute: 30)
-        fiveThirtyPM = getTime(hour: 17, minute: 30)
+        //eightThirtyAM = getTime(hour: 8, minute: 30)
+        //fiveThirtyPM = getTime(hour: 17, minute: 30)
         tenPM = getTime(hour: 22, minute: 00)
         nineAM = getTime(hour: 9, minute: 00)
         sixPM = getTime(hour: 18, minute: 00)
@@ -81,7 +81,6 @@ class DateTimeManager {
               let endTime = dateTimeSelection.endTime else {
             return false
         }
-        
         return isTimePassed(for: selectedDate, selectedTime: endTime, againstDate: againstDate)
     }
 

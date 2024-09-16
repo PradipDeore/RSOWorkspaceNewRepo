@@ -11,6 +11,7 @@ import Toast_Swift
 struct MyBookingItem {
     var dateString: String = ""
     var filteredBookings: [MeetingBooking] = []
+    //var filteredBookingsDesk: [DeskBooking] = []
 }
 
 import UIKit
@@ -127,6 +128,7 @@ class MyBookingViewController: UIViewController {
                 filteredSections = bookingsDictionary.map { (date, bookings) in
                     return MyBookingItem(dateString: date, filteredBookings: bookings)
                 }
+               
                 self.tableView.reloadData()
             case .array(_):
                 filteredSections = []
@@ -174,6 +176,11 @@ extension MyBookingViewController: UITableViewDataSource, UITableViewDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MyBookingOpenTableViewCell", for: indexPath) as! MyBookingOpenTableViewCell
         let booking = filteredSections[indexPath.section].filteredBookings[indexPath.row]
         cell.setData(item: booking)
+//        // Safely access filteredBookingsDesk if it has enough data
+//          if indexPath.row < filteredSections[indexPath.section].filteredBookingsDesk.count {
+//              let bookingDesk = filteredSections[indexPath.section].filteredBookingsDesk[indexPath.row]
+//              cell.setDataDesk(item: bookingDesk)
+//          }
         cell.delegate = self
         return cell
     }

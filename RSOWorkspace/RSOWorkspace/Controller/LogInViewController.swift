@@ -30,6 +30,10 @@ class LogInViewController: UIViewController {
         super.viewDidLoad()
         customizeUI()
     }
+    
+    @IBAction func backButtonAction(_ sender: Any) {
+        self.navigationController?.popViewController(animated: true)
+    }
     func customizeUI(){
         txtEmail.placeholderText = "Your email"
         txtPassword.placeholderText = "Password"

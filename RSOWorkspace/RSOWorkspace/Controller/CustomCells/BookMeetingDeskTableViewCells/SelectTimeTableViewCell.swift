@@ -34,6 +34,10 @@ class SelectTimeTableViewCell: UITableViewCell {
      @IBOutlet weak var selectEndTime: UIDatePicker!
     @IBOutlet weak var btnBookfullDayHeightConstraint: NSLayoutConstraint!
 
+    @IBOutlet weak var timePanelLeadingConstraint: NSLayoutConstraint!
+    
+    @IBOutlet weak var timePanelTrailingConstraint: NSLayoutConstraint!
+    
     
     // MARK: - Properties
     weak var delegate: SelectTimeTableViewCellDelegate?
@@ -53,8 +57,8 @@ class SelectTimeTableViewCell: UITableViewCell {
         
     }
     func setupTimes() {
-        eightThirtyAM = DateTimeManager.shared.eightThirtyAM
-        fiveThirtyPM = DateTimeManager.shared.fiveThirtyPM
+       // eightThirtyAM = DateTimeManager.shared.eightThirtyAM
+       // fiveThirtyPM = DateTimeManager.shared.fiveThirtyPM
         tenPM = DateTimeManager.shared.tenPM
         nineAM = DateTimeManager.shared.nineAM
         sixPM = DateTimeManager.shared.sixPM
@@ -75,6 +79,7 @@ class SelectTimeTableViewCell: UITableViewCell {
        
         if UserHelper.shared.isGuest(){
             self.btnBookfullDay.isHidden = true
+            
             
         }else{
             self.btnBookfullDay.isHidden = false
@@ -102,7 +107,11 @@ class SelectTimeTableViewCell: UITableViewCell {
         case .meetingRoom, .office:
             // display start time 8.30 and end time 10 for office and meeting
             setupInitialTimeValuesForOfficeRoom()
-            configure830AMto530PM()
+            configure9AMto6PMforMeetingOffice()
+            if DateTimeManager.shared.isDateToday() {
+                            self.configureForCurrentTime()
+                        }
+          
             if DateTimeManager.shared.isDateToday() && DateTimeManager.shared.isCurrentTimePassedForStartTime()  {
                             btnBookfullDay.isUserInteractionEnabled = false
                            
@@ -138,8 +147,8 @@ class SelectTimeTableViewCell: UITableViewCell {
 
     }
     private func setupInitialTimeValuesForOfficeRoom() {
-        configureDatePicker(selectStartTime, minDate: eightThirtyAM, maxDate: tenPM)
-        configureDatePicker(selectEndTime, minDate: eightThirtyAM, maxDate: tenPM)
+        configureDatePicker(selectStartTime, minDate: nineAM, maxDate: tenPM)
+        configureDatePicker(selectEndTime, minDate: nineAM, maxDate: tenPM)
 
     }
     
@@ -195,8 +204,8 @@ class SelectTimeTableViewCell: UITableViewCell {
     private func deselectFullDay() {
             configureTimeSelection(isStartEnabled: true, isEndEnabled: true)
             guard bookingTypeSelectTime != .desk else { return }
-            let startTime = eightThirtyAM
-            let endTime = fiveThirtyPM
+            let startTime = nineAM
+            let endTime = sixPM
             
             // Update the date pickers to reflect the full day times
             selectStartTime.date = startTime
@@ -213,17 +222,18 @@ class SelectTimeTableViewCell: UITableViewCell {
     private func configureForCurrentTime() {
         let now = Date()
         selectStartTime.date = now
-        selectEndTime.date = tenPM
-        configureTimeSelection(isStartEnabled: true, isEndEnabled: true)
+        //selectEndTime.date = tenPM
+       // configureTimeSelection(isStartEnabled: true, isEndEnabled: true)
+        DateTimeManager.shared.setStartTime(now)
     }
-    private func configure830AMto530PM() {
-        selectStartTime.date = eightThirtyAM
-        selectEndTime.date = fiveThirtyPM
+    private func configure9AMto6PMforMeetingOffice() {
+        selectStartTime.date = nineAM
+        selectEndTime.date = sixPM
         configureTimeSelection(isStartEnabled: true, isEndEnabled: true)
         // -------------- for future use startTime --------------
-        DateTimeManager.shared.setStartTime(eightThirtyAM)
+        DateTimeManager.shared.setStartTime(nineAM)
         // -------------- for future use endTime --------------
-        DateTimeManager.shared.setEndTime(fiveThirtyPM)
+        DateTimeManager.shared.setEndTime(sixPM)
         //----------------------------------------------------
     }
     private func configure9AMto6PM() {
@@ -234,6 +244,11 @@ class SelectTimeTableViewCell: UITableViewCell {
     private func updateFullDayButtonState() {
         btnBookfullDay.backgroundColor = btnBookfullDay.isSelected ? .black : .lightGray
         delegate?.selectFulldayStatus(btnBookfullDay.isSelected)
+        self.timePanelLeadingConstraint.constant = btnBookfullDay.isHidden ? 25 : 165
+        self.timePanelTrailingConstraint.priority = btnBookfullDay.isHidden ? UILayoutPriority(250) : UILayoutPriority(1000)
+
+
+
     }
     
     private func adjustEndDateToAfterStartTime() {
@@ -263,7 +278,7 @@ class SelectTimeTableViewCell: UITableViewCell {
     
     private func configureDatePicker(_ picker: UIDatePicker, minDate: Date, maxDate: Date) {
         picker.datePickerMode = .time
-        picker.minuteInterval = 30
+        //picker.minuteInterval = 30
         picker.minimumDate = minDate
         picker.maximumDate = maxDate
     }
