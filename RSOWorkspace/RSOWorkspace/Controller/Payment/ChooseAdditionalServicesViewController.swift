@@ -5,7 +5,6 @@
 //  Created by Sumit Aquil on 07/03/24.
 //
 
-import NISdk
 import UIKit
 import PassKit
 

@@ -21,7 +21,7 @@ extension MembershipEndPoint: EndPointType {
     case .recurringPay:
       return "recurring-pay"
     case .recurringCallback:
-      return "recurring-callback"
+      return "recurringCallback"
     }
   }
   var url: URL? {

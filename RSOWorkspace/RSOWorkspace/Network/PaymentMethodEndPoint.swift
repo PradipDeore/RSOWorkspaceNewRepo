@@ -14,6 +14,8 @@ enum PaymentMethodEndPoint {
     case storeCardDetails(requestModel: PaymentMethodRequestModel)
     case getCardDetail
     case getAllBookings(requestModel: GetAllBookingsRequestModel)
+    case payment(requestModel: CardPaymentRequestModel)
+    
 }
 extension PaymentMethodEndPoint: EndPointType {
     var path: String {
@@ -24,6 +26,8 @@ extension PaymentMethodEndPoint: EndPointType {
             return "get-card"
         case .getAllBookings(requestModel: _):
             return "get-all-bookings"
+        case .payment(requestModel: let requestModel):
+            return "payment"
         }
     }
     var url: URL? {
@@ -37,6 +41,8 @@ extension PaymentMethodEndPoint: EndPointType {
             return .get
         case .getAllBookings(requestModel: _):
             return .get
+        case .payment(requestModel: let requestModel):
+            return .post
         }
     }
     var body: Encodable? {
@@ -46,6 +52,8 @@ extension PaymentMethodEndPoint: EndPointType {
         case .getCardDetail:
             return nil
         case .getAllBookings(requestModel: let requestModel):
+            return requestModel
+        case .payment(requestModel: let requestModel):
             return requestModel
         }
     }

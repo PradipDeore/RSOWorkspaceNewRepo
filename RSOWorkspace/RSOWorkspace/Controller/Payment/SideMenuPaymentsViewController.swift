@@ -21,7 +21,7 @@ class SideMenuPaymentsViewController: UIViewController {
     var getCardDetailsResponseData: [GetCardDetails] = []
 
     var getAllBookingResponse : [GetAllBookings] = []
-    var paymentServiceManager = PaymentNetworkManager.shared
+   // var paymentServiceManager = PaymentNetworkManager.shared
     var totalPrice:Double = 0.0
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -198,7 +198,7 @@ extension SideMenuPaymentsViewController: UITableViewDataSource, UITableViewDele
             requestModel.total = Int(totalPrice)
             requestModel.email = UserHelper.shared.getUserEmail()
             if UserHelper.shared.isGuest() {
-                paymentServiceManager.makePayment(requestModel: requestModel)
+                //paymentServiceManager.makePayment(requestModel: requestModel)
             }
         }
     }
@@ -239,12 +239,12 @@ extension SideMenuPaymentsViewController {
 
 extension SideMenuPaymentsViewController:PayNowButtonTableViewCellDelegate{
     func didTapPayNowButton() {
-        paymentServiceManager.currentViewController = self
+       // paymentServiceManager.currentViewController = self
         var requestModel = NiPaymentRequestModel()
         requestModel.total = Int(calculateTotalPrice())
         requestModel.email = UserHelper.shared.getUserEmail()
         if UserHelper.shared.isGuest() {
-            paymentServiceManager.makePayment(requestModel: requestModel)
+           // paymentServiceManager.makePayment(requestModel: requestModel)
         }
     }
     

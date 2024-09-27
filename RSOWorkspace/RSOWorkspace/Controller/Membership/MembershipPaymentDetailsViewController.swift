@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+import NISdk
 class MembershipPaymentDetailsViewController: UIViewController, MembershipNavigable {
   @IBOutlet var continueButton: UIButton!
   @IBOutlet var tableView: UITableView!
@@ -47,6 +47,7 @@ class MembershipPaymentDetailsViewController: UIViewController, MembershipNaviga
                     let floatValue = Float(requestModel.monthlyCost) ?? 0.0
                     PaymentRequestModel.total = Int(floatValue)
                     PaymentRequestModel.email = UserHelper.shared.getUserEmail()
+                    PaymentNetworkManager.shared.paymentTypeEntity = .membership
                     PaymentNetworkManager.shared.currentViewController = self
                     PaymentNetworkManager.shared.currentNavigationController = self.navigationController
                     PaymentNetworkManager.shared.makePayment(requestModel: PaymentRequestModel)

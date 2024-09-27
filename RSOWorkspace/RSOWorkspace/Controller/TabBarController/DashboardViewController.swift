@@ -37,6 +37,9 @@ class DashboardViewController: UIViewController, RSOTabCoordinated {
     coordinator?.setTitle(title: pagetitle)
     coordinator?.updateButtonSelection(0)
     print("dashboard view controller view will appear called")
+      
+      tableView.reloadData()
+      
   }
   
   private func setupTableView() {
@@ -44,6 +47,7 @@ class DashboardViewController: UIViewController, RSOTabCoordinated {
     tableView.delegate = self
     navigationController?.navigationBar.isHidden = true
     registerTableCells()
+      
   }
   
   private func registerTableCells() {

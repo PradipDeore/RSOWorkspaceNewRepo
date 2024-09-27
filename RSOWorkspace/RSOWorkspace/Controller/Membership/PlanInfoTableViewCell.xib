@@ -83,7 +83,7 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="green-check" width="64" height="64"/>
+        <image name="green-check" width="160" height="160"/>
         <namedColor name="E3E3E3">
             <color red="0.88999998569488525" green="0.88999998569488525" blue="0.88999998569488525" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

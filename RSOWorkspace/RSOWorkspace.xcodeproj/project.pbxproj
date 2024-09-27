@@ -223,7 +223,7 @@
 		58A7FBD42BA0AB5400B48DFF /* BookingDetailsRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A7FBD32BA0AB5400B48DFF /* BookingDetailsRequestModel.swift */; };
 		58A7FBD62BA0B89A00B48DFF /* RoomDetailResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A7FBD52BA0B89A00B48DFF /* RoomDetailResponse.swift */; };
 		58ACDB392B78C78F0041B755 /* RSOButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58ACDB382B78C78F0041B755 /* RSOButton.swift */; };
-		58ACDB3B2B78D10A0041B755 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58ACDB3A2B78D10A0041B755 /* Constants.swift */; };
+		58ACDB3B2B78D10A0041B755 /* RSOConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58ACDB3A2B78D10A0041B755 /* RSOConstants.swift */; };
 		58AE87B72C50FF6D004A99D6 /* CouponDetailsResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AE87B62C50FF6D004A99D6 /* CouponDetailsResponseModel.swift */; };
 		58AE87B92C513591004A99D6 /* PaymentNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AE87B82C513591004A99D6 /* PaymentNetworkManager.swift */; };
 		58B33B7B2C5A051200DBEA34 /* SocialLoginRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B33B7A2C5A051200DBEA34 /* SocialLoginRequestModel.swift */; };
@@ -286,7 +286,7 @@
 		58BE5E682B8C6FBF002244F5 /* RSOMeetingRoomsCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58BE5E672B8C6FBF002244F5 /* RSOMeetingRoomsCollectionView.swift */; };
 		58BE90C32B9F0551001FCE54 /* RSOCollectionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58BE90C22B9F0551001FCE54 /* RSOCollectionItem.swift */; };
 		58BEF2602C47DDC500C78CF4 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58BEF25B2C47DDC500C78CF4 /* Date.swift */; };
-		58BEF2612C47DDC500C78CF4 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58BEF25C2C47DDC500C78CF4 /* String.swift */; };
+		58BEF2612C47DDC500C78CF4 /* Extension + String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58BEF25C2C47DDC500C78CF4 /* Extension + String.swift */; };
 		58BEF2622C47DDC500C78CF4 /* ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58BEF25D2C47DDC500C78CF4 /* ImageView.swift */; };
 		58BEF2632C47DDC500C78CF4 /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58BEF25E2C47DDC500C78CF4 /* UILabel.swift */; };
 		58BEF2642C47DDC500C78CF4 /* AppDelegate+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58BEF25F2C47DDC500C78CF4 /* AppDelegate+Extension.swift */; };
@@ -418,6 +418,8 @@
 		58E6F7182BA826B6009D4E21 /* RequestButtonTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58E6F7162BA826B6009D4E21 /* RequestButtonTableViewCell.xib */; };
 		58E997D32BBE87160051BEF3 /* VisitorsEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E997D22BBE87160051BEF3 /* VisitorsEndPoint.swift */; };
 		58E997D52BBE87A00051BEF3 /* ReasonForVisit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E997D42BBE87A00051BEF3 /* ReasonForVisit.swift */; };
+		58E9AAD12CA6F4FC00FD96A8 /* RecurringCallBackRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E9AAD02CA6F4FC00FD96A8 /* RecurringCallBackRequestModel.swift */; };
+		58E9AAD32CA6F58000FD96A8 /* RecurringCallBackResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E9AAD22CA6F58000FD96A8 /* RecurringCallBackResponseModel.swift */; };
 		58EB0E142BB695DB00DC2827 /* LongTermOfficeBookingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58EB0E132BB695DB00DC2827 /* LongTermOfficeBookingViewController.swift */; };
 		58EB0E3B2BB6D61D00DC2827 /* SideMenuModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58EB0E3A2BB6D61D00DC2827 /* SideMenuModel.swift */; };
 		58EB0E442BB6D62600DC2827 /* SideMenuSubViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58EB0E3D2BB6D62600DC2827 /* SideMenuSubViewController.swift */; };
@@ -449,6 +451,8 @@
 		58F2C6ED2C5CF5DD0028538C /* CouponResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F2C6EC2C5CF5DD0028538C /* CouponResponseModel.swift */; };
 		58F2C6EF2C5D277F0028538C /* UpdateVisitorsDetailsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F2C6EE2C5D277F0028538C /* UpdateVisitorsDetailsResponse.swift */; };
 		58F2C6F12C5D281D0028538C /* UpdateVisitorsRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F2C6F02C5D281D0028538C /* UpdateVisitorsRequestModel.swift */; };
+		58F301782CA55EC00022B287 /* CardPaymentRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F301772CA55EC00022B287 /* CardPaymentRequestModel.swift */; };
+		58F3017A2CA562C40022B287 /* CardPaymentResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F301792CA562C30022B287 /* CardPaymentResponseModel.swift */; };
 		58F458392B91982400CF8AFA /* SelectTimeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F458372B91982400CF8AFA /* SelectTimeTableViewCell.swift */; };
 		58F4583A2B91982400CF8AFA /* SelectTimeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58F458382B91982400CF8AFA /* SelectTimeTableViewCell.xib */; };
 		58F4583D2B91A1D300CF8AFA /* SelectMeetingRoomLabelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F4583B2B91A1D300CF8AFA /* SelectMeetingRoomLabelTableViewCell.swift */; };
@@ -714,7 +718,7 @@
 		58A7FBD32BA0AB5400B48DFF /* BookingDetailsRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingDetailsRequestModel.swift; sourceTree = "<group>"; };
 		58A7FBD52BA0B89A00B48DFF /* RoomDetailResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomDetailResponse.swift; sourceTree = "<group>"; };
 		58ACDB382B78C78F0041B755 /* RSOButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSOButton.swift; sourceTree = "<group>"; };
-		58ACDB3A2B78D10A0041B755 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		58ACDB3A2B78D10A0041B755 /* RSOConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSOConstants.swift; sourceTree = "<group>"; };
 		58AE87B62C50FF6D004A99D6 /* CouponDetailsResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponDetailsResponseModel.swift; sourceTree = "<group>"; };
 		58AE87B82C513591004A99D6 /* PaymentNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentNetworkManager.swift; sourceTree = "<group>"; };
 		58B33B7A2C5A051200DBEA34 /* SocialLoginRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialLoginRequestModel.swift; sourceTree = "<group>"; };
@@ -769,7 +773,7 @@
 		58BE5E672B8C6FBF002244F5 /* RSOMeetingRoomsCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSOMeetingRoomsCollectionView.swift; sourceTree = "<group>"; };
 		58BE90C22B9F0551001FCE54 /* RSOCollectionItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSOCollectionItem.swift; sourceTree = "<group>"; };
 		58BEF25B2C47DDC500C78CF4 /* Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
-		58BEF25C2C47DDC500C78CF4 /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		58BEF25C2C47DDC500C78CF4 /* Extension + String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extension + String.swift"; sourceTree = "<group>"; };
 		58BEF25D2C47DDC500C78CF4 /* ImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageView.swift; sourceTree = "<group>"; };
 		58BEF25E2C47DDC500C78CF4 /* UILabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
 		58BEF25F2C47DDC500C78CF4 /* AppDelegate+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Extension.swift"; sourceTree = "<group>"; };
@@ -905,6 +909,8 @@
 		58E6F7162BA826B6009D4E21 /* RequestButtonTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RequestButtonTableViewCell.xib; sourceTree = "<group>"; };
 		58E997D22BBE87160051BEF3 /* VisitorsEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitorsEndPoint.swift; sourceTree = "<group>"; };
 		58E997D42BBE87A00051BEF3 /* ReasonForVisit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "\U0010ReasonForVisit.swift"; sourceTree = "<group>"; };
+		58E9AAD02CA6F4FC00FD96A8 /* RecurringCallBackRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecurringCallBackRequestModel.swift; sourceTree = "<group>"; };
+		58E9AAD22CA6F58000FD96A8 /* RecurringCallBackResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecurringCallBackResponseModel.swift; sourceTree = "<group>"; };
 		58EB0E132BB695DB00DC2827 /* LongTermOfficeBookingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LongTermOfficeBookingViewController.swift; sourceTree = "<group>"; };
 		58EB0E3A2BB6D61D00DC2827 /* SideMenuModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideMenuModel.swift; sourceTree = "<group>"; };
 		58EB0E3D2BB6D62600DC2827 /* SideMenuSubViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideMenuSubViewController.swift; sourceTree = "<group>"; };
@@ -937,6 +943,8 @@
 		58F2C6EC2C5CF5DD0028538C /* CouponResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponResponseModel.swift; sourceTree = "<group>"; };
 		58F2C6EE2C5D277F0028538C /* UpdateVisitorsDetailsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateVisitorsDetailsResponse.swift; sourceTree = "<group>"; };
 		58F2C6F02C5D281D0028538C /* UpdateVisitorsRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateVisitorsRequestModel.swift; sourceTree = "<group>"; };
+		58F301772CA55EC00022B287 /* CardPaymentRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardPaymentRequestModel.swift; sourceTree = "<group>"; };
+		58F301792CA562C30022B287 /* CardPaymentResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardPaymentResponseModel.swift; sourceTree = "<group>"; };
 		58F458372B91982400CF8AFA /* SelectTimeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectTimeTableViewCell.swift; sourceTree = "<group>"; };
 		58F458382B91982400CF8AFA /* SelectTimeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectTimeTableViewCell.xib; sourceTree = "<group>"; };
 		58F4583B2B91A1D300CF8AFA /* SelectMeetingRoomLabelTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectMeetingRoomLabelTableViewCell.swift; sourceTree = "<group>"; };
@@ -1464,7 +1472,7 @@
 				58BEF25A2C47DDC500C78CF4 /* Extension */,
 				58E6E9342B88714D00EB3600 /* TabView */,
 				58ACDB382B78C78F0041B755 /* RSOButton.swift */,
-				58ACDB3A2B78D10A0041B755 /* Constants.swift */,
+				58ACDB3A2B78D10A0041B755 /* RSOConstants.swift */,
 				58BF43A12B7B4F1200CD68EA /* RSOTextField.swift */,
 				58B461532B8096F100C3FF21 /* RSOController.swift */,
 				58B461552B80A91200C3FF21 /* RSOSocialButton.swift */,
@@ -1640,7 +1648,7 @@
 			children = (
 				58BEF2652C47DE7600C78CF4 /* UITextView.swift */,
 				58BEF25B2C47DDC500C78CF4 /* Date.swift */,
-				58BEF25C2C47DDC500C78CF4 /* String.swift */,
+				58BEF25C2C47DDC500C78CF4 /* Extension + String.swift */,
 				58BEF25D2C47DDC500C78CF4 /* ImageView.swift */,
 				58BEF25E2C47DDC500C78CF4 /* UILabel.swift */,
 				58BEF25F2C47DDC500C78CF4 /* AppDelegate+Extension.swift */,
@@ -1699,6 +1707,8 @@
 				58CEEFB02C60B38A00890989 /* GetAllBookingsResponseModel.swift */,
 				581330002C75BB730017C84D /* SearchResponseModel.swift */,
 				580668C12C90B6BF007517B0 /* ShortTermOfficeBookingDetailsResponseModel.swift */,
+				58F301792CA562C30022B287 /* CardPaymentResponseModel.swift */,
+				58E9AAD22CA6F58000FD96A8 /* RecurringCallBackResponseModel.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -1738,6 +1748,8 @@
 				58F2C6EA2C5CF5990028538C /* couponRequestModel.swift */,
 				58F2C6F02C5D281D0028538C /* UpdateVisitorsRequestModel.swift */,
 				58CEEFAE2C60B2FA00890989 /* GetAllBookingsRequestModel.swift */,
+				58F301772CA55EC00022B287 /* CardPaymentRequestModel.swift */,
+				58E9AAD02CA6F4FC00FD96A8 /* RecurringCallBackRequestModel.swift */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -2104,6 +2116,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ar,
 			);
 			mainGroup = 588D8A652B627A6B00545748;
 			packageReferences = (
@@ -2386,6 +2399,7 @@
 				EEAB97A22C5233A800BD5E0D /* MembershipTabItem.swift in Sources */,
 				58BEF2792C4815B700C78CF4 /* NotificationEndPoint.swift in Sources */,
 				589BBAA52BBBF64C00DCEF70 /* FAQResponse.swift in Sources */,
+				58F301782CA55EC00022B287 /* CardPaymentRequestModel.swift in Sources */,
 				588D8A762B627A6B00545748 /* ViewController.swift in Sources */,
 				58B4060B2BCD47380045DD4C /* PaymentTableViewCell.swift in Sources */,
 				5843D7622BC6875E00D5C8DD /* EditButtonTableViewCell.swift in Sources */,
@@ -2407,6 +2421,7 @@
 				581D97D72BA2D3AD00EDDC3B /* PaymentRequestModel.swift in Sources */,
 				583D9DF32B90831B0073AAC3 /* BookMeetingRoomViewController.swift in Sources */,
 				58713EAA2BC926550012DD4E /* SelectDesksTableViewCell.swift in Sources */,
+				58F3017A2CA562C40022B287 /* CardPaymentResponseModel.swift in Sources */,
 				58F2635C2BAC211A00AEDEC9 /* BrowseMembersViewController.swift in Sources */,
 				58BF2F192B8C967000620846 /* SearchRSOViewController.swift in Sources */,
 				58E2D0DD2BBA7E110016DEB6 /* MembershipPlanTableViewCell.swift in Sources */,
@@ -2449,7 +2464,7 @@
 				58C4812F2BB3E2ED0084CD6B /* rsvpResponse.swift in Sources */,
 				583403A02B99C99C00318BB8 /* ChooseAdditionalServicesViewController.swift in Sources */,
 				EEAB97A02C522ADC00BD5E0D /* MembershipViewController.swift in Sources */,
-				58BEF2612C47DDC500C78CF4 /* String.swift in Sources */,
+				58BEF2612C47DDC500C78CF4 /* Extension + String.swift in Sources */,
 				583DBEBF2BB1447700C3F93B /* CommuneEndPoint.swift in Sources */,
 				58CE5FF82C5243B000278890 /* ShortTermBookAnOfficeViewController.swift in Sources */,
 				58BB6B012B983BCB001E1F3D /* TagFlowLayout.swift in Sources */,
@@ -2479,6 +2494,7 @@
 				58BEF2752C48047600C78CF4 /* BookOfficeRequestModel.swift in Sources */,
 				58EB0E482BB6D62600DC2827 /* SideMenuCell.swift in Sources */,
 				EEA44D812C4805530081EE0D /* RSOToastView.swift in Sources */,
+				58E9AAD12CA6F4FC00FD96A8 /* RecurringCallBackRequestModel.swift in Sources */,
 				58F88E402BA8230200771268 /* ReportAnIssueViewController.swift in Sources */,
 				580418092BD0F004008EA858 /* ConfirmedDeskBookingViewController.swift in Sources */,
 				58399EA92C4E41E700B7B565 /* PaymentResponseModel.swift in Sources */,
@@ -2547,6 +2563,7 @@
 				58696B0F2BAD8C1300937A4F /* FindMembersCardViewController.swift in Sources */,
 				583D9DFE2B90A2190073AAC3 /* LocationEndPoint.swift in Sources */,
 				58E6E9382B88714D00EB3600 /* RSOTab.swift in Sources */,
+				58E9AAD32CA6F58000FD96A8 /* RecurringCallBackResponseModel.swift in Sources */,
 				58E2D0D92BBA7B0E0016DEB6 /* ChangePasswordTableViewCell.swift in Sources */,
 				5805931C2C4F98AE00FE18B2 /* DeskDetailsResponseModel.swift in Sources */,
 				58049D9C2C5908CD00314E7A /* changePasswordResponseModel.swift in Sources */,
@@ -2634,7 +2651,7 @@
 				58132FFF2C75B8940017C84D /* SearchEndPoint.swift in Sources */,
 				58B33B8B2C5A319500DBEA34 /* LocationGalleryResponseModel.swift in Sources */,
 				58F573A12C57BD5C006F6594 /* ShortTermPaymentOfficeBookingRequestModel.swift in Sources */,
-				58ACDB3B2B78D10A0041B755 /* Constants.swift in Sources */,
+				58ACDB3B2B78D10A0041B755 /* RSOConstants.swift in Sources */,
 				EE3B78272C550C6B00706F16 /* SelectedMembershipData.swift in Sources */,
 				58B6A7CA2BCE5412008A2286 /* StatusTypeEnum.swift in Sources */,
 				58BE5E682B8C6FBF002244F5 /* RSOMeetingRoomsCollectionView.swift in Sources */,
@@ -2812,7 +2829,7 @@
 				CODE_SIGN_ENTITLEMENTS = RSOWorkspace/RSOWorkspace.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 15;
+				CURRENT_PROJECT_VERSION = 18;
 				DEVELOPMENT_TEAM = D2BKM938GX;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				"EXCLUDED_ARCHS[sdk=*]" = "";
@@ -2849,7 +2866,7 @@
 				CODE_SIGN_ENTITLEMENTS = RSOWorkspace/RSOWorkspace.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 15;
+				CURRENT_PROJECT_VERSION = 18;
 				DEVELOPMENT_TEAM = D2BKM938GX;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;

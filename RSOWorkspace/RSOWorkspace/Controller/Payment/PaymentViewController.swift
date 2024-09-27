@@ -25,7 +25,9 @@ struct orderSummaryItem{
     let title:String?
     let price:String?
 }
-class PaymentViewController: UIViewController {
+class PaymentViewController: UIViewController{
+    
+    
     
     var coordinator: RSOTabBarCordinator?
     var bookingId: Int = 0
@@ -624,7 +626,7 @@ extension PaymentViewController: ButtonPayNowTableViewCellDelegate {
                 paymentServiceManager.totalPrice = totalPriceDesk
                 paymentServiceManager.vatAmount = vatAmountDesk
                 if UserHelper.shared.isGuest() || UserHelper.shared.isSocialLoginUser() {
-                    paymentServiceManager.makePayment(requestModel: requestModel)
+                paymentServiceManager.makePayment(requestModel: requestModel)
                 } else {
                     paymentServiceManager.paymentDeskBookingAPI(bookingid: bookingId, totalprice: totalPriceDesk, vatamount: vatAmountDesk)
                 }
@@ -632,11 +634,11 @@ extension PaymentViewController: ButtonPayNowTableViewCellDelegate {
         case .meetingRoom:
             let additionalServicesVC = UIViewController.createController(storyBoard: .Payment, ofType: ChooseAdditionalServicesViewController.self)
             additionalServicesVC.vatAmount = self.vatAmountMeetingRoom
-            additionalServicesVC.totalPrice = self.totalPriceMeetingRoom
+            additionalServicesVC.totalPrice =  self.totalPriceMeetingRoom
             additionalServicesVC.bookingId = self.bookingId
             self.navigationController?.pushViewController(additionalServicesVC, animated: true)
             
-        case .office:
+        case .office: break
             paymentServiceManager.currentViewController = self
             paymentServiceManager.currentNavigationController = self.navigationController
             paymentServiceManager.paymentTypeEntity = .office
@@ -644,7 +646,7 @@ extension PaymentViewController: ButtonPayNowTableViewCellDelegate {
             paymentServiceManager.totalPrice = totalPriceOffice
             paymentServiceManager.vatAmount = vatAmountOffice
             var requestModel = NiPaymentRequestModel()
-            requestModel.total = Int(totalPriceOffice)
+            requestModel.total =  Int(totalPriceOffice)
             requestModel.email = UserHelper.shared.getUserEmail()
             if UserHelper.shared.isGuest() || UserHelper.shared.isSocialLoginUser() {
                 paymentServiceManager.makePayment(requestModel: requestModel)
@@ -661,5 +663,9 @@ extension PaymentViewController: LoginScreenActionDelegate {
         }
     }
 }
+
+
+
+
 
 

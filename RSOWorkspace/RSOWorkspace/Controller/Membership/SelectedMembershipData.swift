@@ -24,8 +24,11 @@ class SelectedMembershipData: Codable {
     var planType: String
     var monthlyCost: String
 }
+
 struct RecurringCallbackRequestModel: Codable {
-  let ref:String
+  let reference:String
+    let agreementLength:String
+    let startDate:String
 }
 
 class SelectedPlanPriceList {

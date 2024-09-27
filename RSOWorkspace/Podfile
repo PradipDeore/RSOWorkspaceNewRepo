@@ -8,10 +8,10 @@ target 'RSOWorkspace' do
  pod 'IQKeyboardManagerSwift'
  pod 'Toast-Swift'
  pod 'Kingfisher'
- pod 'NISdk'
  pod 'ProgressHUD'
  pod 'FBSDKCoreKit'
  pod 'FBSDKLoginKit'
+ pod 'NISdk'
   # Pods for RSOWorkspace
 
 end

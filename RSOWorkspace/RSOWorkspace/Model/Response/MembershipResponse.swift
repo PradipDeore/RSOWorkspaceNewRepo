@@ -14,6 +14,7 @@ struct MembershipResponse: Codable {
     let message:String?
 }
 
+
 // MARK: - Datum
 struct MembershipData: Codable {
     let id: Int?

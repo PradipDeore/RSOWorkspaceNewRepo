@@ -25,6 +25,8 @@
 	<string>4550608060f01c09db8a4ece4372b423</string>
 	<key>FacebookDisplayName</key>
 	<string>social login rso</string>
+	<key>ISITSAppUsesNonExemptEncryption</key>
+	<string>NO</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>fbapi</string>
