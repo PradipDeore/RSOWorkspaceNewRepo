@@ -10,6 +10,12 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <array key="Poppins-Bold.ttf">
+            <string>Poppins-Bold</string>
+        </array>
+        <array key="Poppins-Medium.ttf">
+            <string>Poppins-Medium</string>
+        </array>
         <array key="Poppins-SemiBold.ttf">
             <string>Poppins-SemiBold</string>
         </array>
@@ -221,8 +227,107 @@
             </objects>
             <point key="canvasLocation" x="919.84732824427476" y="19.718309859154932"/>
         </scene>
+        <!--Payment Success View Controller-->
+        <scene sceneID="Wg6-bL-vKo">
+            <objects>
+                <viewController storyboardIdentifier="PaymentSuccessViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="WZP-ZK-lqp" customClass="PaymentSuccessViewController" customModule="RSOWorkspace" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="EJe-Vn-PiC">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" alpha="0.60000002384185791" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bkx-dv-c0x">
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                                <color key="backgroundColor" red="0.35294117650000001" green="0.35294117650000001" blue="0.35294117650000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <connections>
+                                    <action selector="btnDismissViewAction:" destination="WZP-ZK-lqp" eventType="touchUpInside" id="VTn-nY-UAN"/>
+                                    <action selector="btnHideViewTappedAction:" destination="WZP-ZK-lqp" eventType="touchUpInside" id="HOl-GH-SlZ"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k3o-ff-TCa" userLabel="paymnetSuccessView">
+                                <rect key="frame" x="24.666666666666657" y="276" width="344" height="300"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thank you for your payment.Your trasaction has been completed successfully." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Aa-4R-HfL">
+                                        <rect key="frame" x="20" y="99" width="304" height="67.333333333333314"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="102" id="UpV-xs-ck1"/>
+                                            <constraint firstAttribute="width" constant="293" id="wNF-za-o6V"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="16"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="wNF-za-o6V"/>
+                                                <exclude reference="UpV-xs-ck1"/>
+                                            </mask>
+                                        </variation>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2AJ-8h-nqg" customClass="RSOButton" customModule="RSOWorkspace" customModuleProvider="target">
+                                        <rect key="frame" x="19" y="237" width="306" height="38"/>
+                                        <color key="backgroundColor" name="768D70"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="306" id="9i8-YS-umJ"/>
+                                            <constraint firstAttribute="height" constant="38" id="JLj-cL-mzO"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Poppins-Bold" family="Poppins" pointSize="15"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="Go To HomePage"/>
+                                        <connections>
+                                            <action selector="btnGoToHomepageAction:" destination="WZP-ZK-lqp" eventType="touchUpInside" id="DGu-1z-mbs"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Payment SuccessFull" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HMU-em-BoS">
+                                        <rect key="frame" x="20" y="35" width="293" height="43"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="43" id="E75-ZM-B5C"/>
+                                            <constraint firstAttribute="width" constant="293" id="vU6-F3-4Gc"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="22"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="7Aa-4R-HfL" firstAttribute="top" secondItem="HMU-em-BoS" secondAttribute="bottom" constant="21" id="18M-Im-zYo"/>
+                                    <constraint firstItem="HMU-em-BoS" firstAttribute="top" secondItem="k3o-ff-TCa" secondAttribute="top" constant="35" id="Hfn-NG-bhA"/>
+                                    <constraint firstItem="7Aa-4R-HfL" firstAttribute="leading" secondItem="k3o-ff-TCa" secondAttribute="leading" constant="20" id="I6J-kt-sj3"/>
+                                    <constraint firstAttribute="bottom" secondItem="2AJ-8h-nqg" secondAttribute="bottom" constant="25" id="Mel-tO-Srx"/>
+                                    <constraint firstItem="HMU-em-BoS" firstAttribute="leading" secondItem="k3o-ff-TCa" secondAttribute="leading" constant="20" id="P04-tO-HvI"/>
+                                    <constraint firstItem="7Aa-4R-HfL" firstAttribute="centerX" secondItem="k3o-ff-TCa" secondAttribute="centerX" id="clY-4E-IBl"/>
+                                    <constraint firstAttribute="height" constant="300" id="piQ-e8-37O"/>
+                                    <constraint firstAttribute="width" constant="344" id="raA-lz-TKw"/>
+                                    <constraint firstItem="2AJ-8h-nqg" firstAttribute="centerX" secondItem="k3o-ff-TCa" secondAttribute="centerX" id="utB-Xf-Rwj"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="HYj-fh-KNr"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="bkx-dv-c0x" firstAttribute="top" secondItem="EJe-Vn-PiC" secondAttribute="top" id="FGf-9g-zrV"/>
+                            <constraint firstItem="bkx-dv-c0x" firstAttribute="leading" secondItem="HYj-fh-KNr" secondAttribute="leading" id="W9M-tF-VWw"/>
+                            <constraint firstItem="k3o-ff-TCa" firstAttribute="centerY" secondItem="EJe-Vn-PiC" secondAttribute="centerY" id="bBT-tl-FnR"/>
+                            <constraint firstItem="bkx-dv-c0x" firstAttribute="trailing" secondItem="HYj-fh-KNr" secondAttribute="trailing" id="dcw-oB-WCA"/>
+                            <constraint firstItem="k3o-ff-TCa" firstAttribute="centerX" secondItem="EJe-Vn-PiC" secondAttribute="centerX" id="f1h-ad-61S"/>
+                            <constraint firstAttribute="bottom" secondItem="bkx-dv-c0x" secondAttribute="bottom" id="q80-7m-nzi"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="btnDismissView" destination="bkx-dv-c0x" id="XBw-2w-DsZ"/>
+                        <outlet property="btnHome" destination="2AJ-8h-nqg" id="o9V-xw-h8N"/>
+                        <outlet property="paymentSuccessView" destination="k3o-ff-TCa" id="uCn-kh-1Dx"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uSG-Hg-Ies" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1600.7633587786258" y="19.718309859154932"/>
+        </scene>
     </scenes>
     <resources>
+        <namedColor name="768D70">
+            <color red="0.46274509803921571" green="0.55294117647058827" blue="0.4392156862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <namedColor name="F2F2F2">
             <color red="0.94900000095367432" green="0.94900000095367432" blue="0.94900000095367432" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

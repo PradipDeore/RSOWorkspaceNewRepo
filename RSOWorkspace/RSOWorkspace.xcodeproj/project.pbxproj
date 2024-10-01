@@ -428,6 +428,9 @@
 		58EB0E482BB6D62600DC2827 /* SideMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58EB0E432BB6D62600DC2827 /* SideMenuCell.swift */; };
 		58EB2CEC2BA567CA00D69C46 /* OnDemandServiceCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58EB2CEA2BA567CA00D69C46 /* OnDemandServiceCollectionViewCell.swift */; };
 		58EB2CED2BA567CA00D69C46 /* OnDemandServiceCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58EB2CEB2BA567CA00D69C46 /* OnDemandServiceCollectionViewCell.xib */; };
+		58EB43692CAC1D7E00489137 /* PaymentSuccessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58EB43682CAC1D7E00489137 /* PaymentSuccessViewController.swift */; };
+		58EB436B2CAC3D9E00489137 /* PaymentCallBackRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58EB436A2CAC3D9E00489137 /* PaymentCallBackRequest.swift */; };
+		58EB436D2CAC3DBA00489137 /* PaymentCallBacklResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58EB436C2CAC3DBA00489137 /* PaymentCallBacklResponse.swift */; };
 		58ED2D1A2B8F386C004D06C8 /* Booking.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58ED2D192B8F386C004D06C8 /* Booking.storyboard */; };
 		58ED2D1D2B8F38B8004D06C8 /* MyBookingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58ED2D1C2B8F38B8004D06C8 /* MyBookingViewController.swift */; };
 		58ED2D1F2B8F4C1D004D06C8 /* MyBookingEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58ED2D1E2B8F4C1D004D06C8 /* MyBookingEndPoint.swift */; };
@@ -919,6 +922,9 @@
 		58EB0E432BB6D62600DC2827 /* SideMenuCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideMenuCell.swift; sourceTree = "<group>"; };
 		58EB2CEA2BA567CA00D69C46 /* OnDemandServiceCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnDemandServiceCollectionViewCell.swift; sourceTree = "<group>"; };
 		58EB2CEB2BA567CA00D69C46 /* OnDemandServiceCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OnDemandServiceCollectionViewCell.xib; sourceTree = "<group>"; };
+		58EB43682CAC1D7E00489137 /* PaymentSuccessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentSuccessViewController.swift; sourceTree = "<group>"; };
+		58EB436A2CAC3D9E00489137 /* PaymentCallBackRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentCallBackRequest.swift; sourceTree = "<group>"; };
+		58EB436C2CAC3DBA00489137 /* PaymentCallBacklResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentCallBacklResponse.swift; sourceTree = "<group>"; };
 		58ED2D192B8F386C004D06C8 /* Booking.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Booking.storyboard; sourceTree = "<group>"; };
 		58ED2D1C2B8F38B8004D06C8 /* MyBookingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBookingViewController.swift; sourceTree = "<group>"; };
 		58ED2D1E2B8F4C1D004D06C8 /* MyBookingEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBookingEndPoint.swift; sourceTree = "<group>"; };
@@ -1597,6 +1603,7 @@
 				58BCBC1A2C491F1B00465381 /* SideMenuPaymentsViewController.swift */,
 				58AE87B82C513591004A99D6 /* PaymentNetworkManager.swift */,
 				58F2C6E82C5CCA3B0028538C /* SavedCards.swift */,
+				58EB43682CAC1D7E00489137 /* PaymentSuccessViewController.swift */,
 			);
 			path = Payment;
 			sourceTree = "<group>";
@@ -1709,6 +1716,7 @@
 				580668C12C90B6BF007517B0 /* ShortTermOfficeBookingDetailsResponseModel.swift */,
 				58F301792CA562C30022B287 /* CardPaymentResponseModel.swift */,
 				58E9AAD22CA6F58000FD96A8 /* RecurringCallBackResponseModel.swift */,
+				58EB436C2CAC3DBA00489137 /* PaymentCallBacklResponse.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -1750,6 +1758,7 @@
 				58CEEFAE2C60B2FA00890989 /* GetAllBookingsRequestModel.swift */,
 				58F301772CA55EC00022B287 /* CardPaymentRequestModel.swift */,
 				58E9AAD02CA6F4FC00FD96A8 /* RecurringCallBackRequestModel.swift */,
+				58EB436A2CAC3D9E00489137 /* PaymentCallBackRequest.swift */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -2485,11 +2494,13 @@
 				58E6F7132BA8268A009D4E21 /* ProvideDetailsOfIssueTableViewCell.swift in Sources */,
 				58BCFBB42B7A215F00342275 /* LogInViewController.swift in Sources */,
 				58BF85212B87518F009FF06C /* ForgotPasswordResponse.swift in Sources */,
+				58EB436D2CAC3DBA00489137 /* PaymentCallBacklResponse.swift in Sources */,
 				58713EA62BC90A820012DD4E /* DeskBookingViewController.swift in Sources */,
 				58F261C72BBD9A2F00A5D633 /* VisitorsTableViewCell.swift in Sources */,
 				58BEF2642C47DDC500C78CF4 /* AppDelegate+Extension.swift in Sources */,
 				58E05E262B8619AB00189E99 /* DeskEndPoint.swift in Sources */,
 				58D513342BCA4C2C00B87739 /* PaymentRoomBookingRequest.swift in Sources */,
+				58EB436B2CAC3D9E00489137 /* PaymentCallBackRequest.swift in Sources */,
 				58EB2CEC2BA567CA00D69C46 /* OnDemandServiceCollectionViewCell.swift in Sources */,
 				58BEF2752C48047600C78CF4 /* BookOfficeRequestModel.swift in Sources */,
 				58EB0E482BB6D62600DC2827 /* SideMenuCell.swift in Sources */,
@@ -2563,6 +2574,7 @@
 				58696B0F2BAD8C1300937A4F /* FindMembersCardViewController.swift in Sources */,
 				583D9DFE2B90A2190073AAC3 /* LocationEndPoint.swift in Sources */,
 				58E6E9382B88714D00EB3600 /* RSOTab.swift in Sources */,
+				58EB43692CAC1D7E00489137 /* PaymentSuccessViewController.swift in Sources */,
 				58E9AAD32CA6F58000FD96A8 /* RecurringCallBackResponseModel.swift in Sources */,
 				58E2D0D92BBA7B0E0016DEB6 /* ChangePasswordTableViewCell.swift in Sources */,
 				5805931C2C4F98AE00FE18B2 /* DeskDetailsResponseModel.swift in Sources */,
@@ -2829,7 +2841,7 @@
 				CODE_SIGN_ENTITLEMENTS = RSOWorkspace/RSOWorkspace.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 18;
+				CURRENT_PROJECT_VERSION = 20;
 				DEVELOPMENT_TEAM = D2BKM938GX;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				"EXCLUDED_ARCHS[sdk=*]" = "";
@@ -2866,7 +2878,7 @@
 				CODE_SIGN_ENTITLEMENTS = RSOWorkspace/RSOWorkspace.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 18;
+				CURRENT_PROJECT_VERSION = 20;
 				DEVELOPMENT_TEAM = D2BKM938GX;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;

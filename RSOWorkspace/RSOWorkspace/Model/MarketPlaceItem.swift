@@ -21,14 +21,14 @@ struct MarketPlaceItem: Codable {
     let subtext: String?
     let location: String?
     let image: String?
-    let url:String?
+    let link:String?
     
     
     enum CodingKeys: String, CodingKey {
         case headerType = "header_type"
         case headerImg = "header_img"
         case headerText = "header_text"
-        case headline, headline2, subtext, location, image,url
+        case headline, headline2, subtext, location, image,link
     }
 }
 

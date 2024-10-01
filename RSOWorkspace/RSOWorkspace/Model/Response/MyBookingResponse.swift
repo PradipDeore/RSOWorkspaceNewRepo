@@ -79,6 +79,7 @@ struct MeetingBooking: Codable {
     let deskTypeId: Int?
     let deskNo:String?
     let floorMapId: String?
+    let qrCodeUrl:String?
 
     enum CodingKeys: String, CodingKey {
         case id
@@ -103,10 +104,10 @@ struct MeetingBooking: Codable {
         case updatedAt = "updated_at"
         case roomName = "room_name"
         case listType = "list_type"
-        
         case deskTypeId = "desk_type_id"
         case deskNo = "desk_no"
         case floorMapId = "floor_map_id"
+        case qrCodeUrl  = "qr_code_url"
     }
 }
 
@@ -130,6 +131,7 @@ struct DeskBooking: Codable {
     let floorMapId: Int?
     let listType: String?
     let floorNumber:Int?
+    let qrCodeUrl:String?
 
     enum CodingKeys: String, CodingKey {
         case id
@@ -151,5 +153,7 @@ struct DeskBooking: Codable {
         case floorNumber = "floor_number"
         case floorMapId = "floor_map_id"
         case listType = "list_type"
+        case qrCodeUrl  = "qr_code_url"
+
     }
 }

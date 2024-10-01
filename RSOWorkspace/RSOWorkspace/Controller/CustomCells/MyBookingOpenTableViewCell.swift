@@ -7,7 +7,7 @@
 
 import UIKit
 protocol MyBookingOpenTableViewCellDelegate:AnyObject{
-    func displayBookingQRCode()
+    func displayBookingQRCode(item: MeetingBooking)
 }
 
 class MyBookingOpenTableViewCell: UITableViewCell {
@@ -27,6 +27,8 @@ class MyBookingOpenTableViewCell: UITableViewCell {
     @IBOutlet weak var lblStatus: UILabel!
     
     @IBOutlet weak var btnBokingKey: UIButton!
+    var bookingItemMeeting: MeetingBooking?
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -40,6 +42,7 @@ class MyBookingOpenTableViewCell: UITableViewCell {
         self.addShadow()
     }
     func setData(item : MeetingBooking){
+        self.bookingItemMeeting = item
         
         if let startDateString = item.startTime{
             //convert the date string in date format
@@ -56,14 +59,22 @@ class MyBookingOpenTableViewCell: UITableViewCell {
             self.lblRoomName.text = "\(item.roomName ?? "")"
 
         }else {
-            self.lblRoomName.text =  "Desk No \(item.deskNo ?? "") Floor \(item.floorMapId ?? "")"
+            self.lblRoomName.text =  "Desk No \(item.deskNo ?? "") Floor 1"
         }
         self.lblStatus.text = item.status
       
     }
+//    func setData(item : DeskBooking){
+//        self.bookingItem = item
+//     
+//       self.lblRoomName.text =  "Desk No \(item.deskNo ?? "") Floor \(item.floorNumber ?? "")"
+//        }
+//      
+//    }
     
     @IBAction func btnBookingKeyAction(_ sender: Any) {
-        delegate?.displayBookingQRCode()
+        guard let item = bookingItemMeeting else { return }
+               delegate?.displayBookingQRCode(item: item)
     }
     
 }

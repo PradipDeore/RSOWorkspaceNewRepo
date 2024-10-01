@@ -194,8 +194,9 @@ extension MyBookingViewController: UITableViewDataSource, UITableViewDelegate {
     }
 }
 extension MyBookingViewController:MyBookingOpenTableViewCellDelegate {
-    func displayBookingQRCode() {
+    func displayBookingQRCode(item: MeetingBooking){
         let displayQRVC = UIViewController.createController(storyBoard: .Booking, ofType: DisplayQRCodeViewController.self)
+        displayQRVC.setQRCodeImage(item: item)
         displayQRVC.modalTransitionStyle = .crossDissolve
         displayQRVC.modalPresentationStyle = .overCurrentContext
         self.present(displayQRVC, animated: true)

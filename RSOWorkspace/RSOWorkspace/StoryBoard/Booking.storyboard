@@ -873,6 +873,7 @@
                     </view>
                     <connections>
                         <outlet property="QRCodeView" destination="yvB-GH-OZp" id="lvW-bF-4Y8"/>
+                        <outlet property="imgQRCode" destination="hcw-1u-myl" id="V2H-o9-Twc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kGk-sh-TZW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

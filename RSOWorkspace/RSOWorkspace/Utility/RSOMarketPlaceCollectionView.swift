@@ -62,7 +62,7 @@ extension RSOMarketPlaceCollectionView: UICollectionViewDelegate {
         let selectedItem = listItems[indexPath.item]
         
         // Check if the URL is available and valid
-        if let urlString = selectedItem.url, let url = URL(string: urlString), UIApplication.shared.canOpenURL(url) {
+        if let urlString = selectedItem.link, let url = URL(string: urlString), UIApplication.shared.canOpenURL(url) {
             // Open the URL
             UIApplication.shared.open(url, options: [:], completionHandler: nil)
         } else {

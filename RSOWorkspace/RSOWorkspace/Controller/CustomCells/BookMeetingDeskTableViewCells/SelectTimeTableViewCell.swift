@@ -123,13 +123,21 @@ class SelectTimeTableViewCell: UITableViewCell {
             updateFullDayButtonState()
             
             // -------------- Check is end time for date paased --------------
-            if DateTimeManager.shared.isCurrentTimePassedForEndTime() {
-                configureTimeSelection(isStartEnabled: false, isEndEnabled: false)
-                btnBookfullDay.isUserInteractionEnabled = false
-                showToast("Booking is closed for today. Please select another date.")
-                return
-            }
-           
+//            if DateTimeManager.shared.isCurrentTimePassedForEndTime() {
+//                configureTimeSelection(isStartEnabled: false, isEndEnabled: false)
+//                btnBookfullDay.isUserInteractionEnabled = false
+//                showToast("Booking is closed for today. Please select another date.")
+//                return
+//            }
+//            if UserHelper.shared.isGuest(){
+//                if DateTimeManager.shared.isCurrentTimePassedForEndTime(){
+//                    configureTimeSelection(isStartEnabled: false, isEndEnabled: false)
+//                    btnBookfullDay.isUserInteractionEnabled = false
+//                    showToast("Booking is closed for today. Please select another date.")
+//                    return
+//                }
+//            }
+//          
 
         default:
             break

@@ -27,7 +27,8 @@ class PaymentNetworkManager: CardPaymentDelegate ,ApplePayDelegate{
     var paymentTypeEntity:PaymentTypeEntity = .room
     var orderResponse: OrderResponse?
     var paymentRoomBookingRequestModel: PaymentRoomBookingRequest?
-    
+    var orderReference = ""
+    var paymnetCallBackResponse:PaymentCallBacklResponse?
     var bookingId: Int = 0
     var totalPrice: Double = 0.0
     var vatAmount: Double = 0.0
@@ -64,7 +65,12 @@ class PaymentNetworkManager: CardPaymentDelegate ,ApplePayDelegate{
                         } else {
                             self.apiResponseData = response
                             RSOToastView.shared.show(response.message, duration: 2.0, position: .center)
-                            self.currentNavigationController?.popToRootViewController(animated: true)
+                            self.paymentCallBack(orderRef:self.orderReference)
+                            let paymentSuccessVC = UIViewController.createController(storyBoard: .Payment, ofType: PaymentSuccessViewController.self)
+                            self.currentNavigationController?.present(paymentSuccessVC, animated: true)
+                            
+                            
+                            //self.currentNavigationController?.popToRootViewController(animated: true)
                             self.eventHandler?(.dataLoaded)
                         }
                     case .failure(let error):
@@ -92,7 +98,10 @@ class PaymentNetworkManager: CardPaymentDelegate ,ApplePayDelegate{
                             RSOToastView.shared.show(response.msg, duration: 2.0, position: .center)
                         } else {
                             RSOToastView.shared.show(response.msg, duration: 2.0, position: .center)
-                            self.currentNavigationController?.popToRootViewController(animated: true)
+                            self.paymentCallBack(orderRef:self.orderReference)
+                            let paymentSuccessVC = UIViewController.createController(storyBoard: .Payment, ofType: PaymentSuccessViewController.self)
+                            self.currentNavigationController?.present(paymentSuccessVC, animated: true)
+                            //                            self.currentNavigationController?.popToRootViewController(animated: true)
                             self.eventHandler?(.dataLoaded)
                         }
                     case .failure(let error):
@@ -121,7 +130,10 @@ class PaymentNetworkManager: CardPaymentDelegate ,ApplePayDelegate{
                         } else {
                             self.apiOfficeResponseData = response
                             RSOToastView.shared.show(response.msg, duration: 2.0, position: .center)
-                            self.currentNavigationController?.popToRootViewController(animated: true)
+                            self.paymentCallBack(orderRef:self.orderReference)
+                            let paymentSuccessVC = UIViewController.createController(storyBoard: .Payment, ofType: PaymentSuccessViewController.self)
+                            self.currentNavigationController?.present(paymentSuccessVC, animated: true)
+                            // self.currentNavigationController?.popToRootViewController(animated: true)
                             self.eventHandler?(.dataLoaded)
                         }
                     case .failure(let error):
@@ -146,9 +158,37 @@ class PaymentNetworkManager: CardPaymentDelegate ,ApplePayDelegate{
                     case .success(let response):
                         let orderResponse = response.data
                         self.orderResponse = orderResponse
+                        // Accessing orderReference from the payment object within embeddedData
+                        if let paymentData = orderResponse.embeddedData?.payment?.first {
+                            self.orderReference = paymentData.orderReference ?? ""
+                        } else {
+                            self.orderReference = "" // Handle case where payment data is not available
+                        }
                         self.showCardPaymentUI(orderResponse: orderResponse)
                     case .failure(let error):
-                        //  Unsuccessful
+                        RSOToastView.shared.show("\(error.localizedDescription)", duration: 2.0, position: .center)
+                    }
+                }
+            }
+        }
+    }
+    // after payment desk, meeting and room booking call this api
+    func paymentCallBack(orderRef:String) {
+        let requestModel = PaymentCallBackRequest(ref: orderRef)
+      
+        DispatchQueue.main.async {
+            RSOLoader.showLoader()
+            APIManager.shared.request(
+                modelType: PaymentCallBacklResponse.self,
+                type: PaymentRoomBookingEndPoint.paymentCallBack(requestModel: requestModel)
+            ) { response in
+                DispatchQueue.main.async {
+                    RSOLoader.removeLoader()
+                    switch response {
+                    case .success(let response):
+                        let responsePaymentCallback = response
+                        RSOToastView.shared.show(responsePaymentCallback.message, duration: 2.0, position: .center)
+                    case .failure(let error):
                         RSOToastView.shared.show("\(error.localizedDescription)", duration: 2.0, position: .center)
                     }
                 }
@@ -173,9 +213,11 @@ class PaymentNetworkManager: CardPaymentDelegate ,ApplePayDelegate{
                     switch response {
                     case .success(let response):
                         RSOToastView.shared.show("Membership purchased successfully", duration: 2.0, position: .center)
-//                            self.currentNavigationController?.popToRootViewController(animated: true)
-//                            self.eventHandler?(.dataLoaded)
-                           
+                        let paymentSuccessVC = UIViewController.createController(storyBoard: .Payment, ofType: PaymentSuccessViewController.self)
+                        self.currentNavigationController?.present(paymentSuccessVC, animated: true)
+                        //                            self.currentNavigationController?.popToRootViewController(animated: true)
+                        //                            self.eventHandler?(.dataLoaded)
+                        
                         
                     case .failure(let error):
                         // Unsuccessful
@@ -184,7 +226,7 @@ class PaymentNetworkManager: CardPaymentDelegate ,ApplePayDelegate{
                 }
             }
     }
-
+    
     func paymentCompletionNavigation() {
         DispatchQueue.main.async {
             switch self.paymentTypeEntity {

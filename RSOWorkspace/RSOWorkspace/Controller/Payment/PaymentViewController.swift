@@ -638,7 +638,7 @@ extension PaymentViewController: ButtonPayNowTableViewCellDelegate {
             additionalServicesVC.bookingId = self.bookingId
             self.navigationController?.pushViewController(additionalServicesVC, animated: true)
             
-        case .office: break
+        case .office: 
             paymentServiceManager.currentViewController = self
             paymentServiceManager.currentNavigationController = self.navigationController
             paymentServiceManager.paymentTypeEntity = .office

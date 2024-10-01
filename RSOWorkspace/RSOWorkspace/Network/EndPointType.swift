@@ -21,7 +21,18 @@ protocol EndPointType {
     var headers: [String: String]? { get }
 }
 extension EndPointType{
+    
+    // developemnt server
+//    var baseURL: String {
+//        return "https://finance.ardemos.co.in/rso/api/"
+//    }
+    
+    //producton or live server
     var baseURL: String {
-        return "https://finance.ardemos.co.in/rso/api/"
+        return "https://rso.teamalo.com/api/"
     }
+    
+//https://rso.teamalo.com
+//Or
+//https://rso.teamalo.com/api
 }
