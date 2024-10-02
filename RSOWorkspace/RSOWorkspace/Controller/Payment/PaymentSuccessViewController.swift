@@ -16,6 +16,7 @@ class PaymentSuccessViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         paymentSuccessView.setCornerRadiusForView()
+        btnHome.backgroundColor = ._768_D_70
     }
     
 

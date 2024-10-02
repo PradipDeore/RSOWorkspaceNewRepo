@@ -247,7 +247,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k3o-ff-TCa" userLabel="paymnetSuccessView">
                                 <rect key="frame" x="24.666666666666657" y="276" width="344" height="300"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thank you for your payment.Your trasaction has been completed successfully." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Aa-4R-HfL">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thank you for your payment.Your transaction has been completed successfully." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Aa-4R-HfL">
                                         <rect key="frame" x="20" y="99" width="304" height="67.333333333333314"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="102" id="UpV-xs-ck1"/>
@@ -277,7 +277,7 @@
                                             <action selector="btnGoToHomepageAction:" destination="WZP-ZK-lqp" eventType="touchUpInside" id="DGu-1z-mbs"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Payment SuccessFull" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HMU-em-BoS">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Payment Successful" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HMU-em-BoS">
                                         <rect key="frame" x="20" y="35" width="293" height="43"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="43" id="E75-ZM-B5C"/>

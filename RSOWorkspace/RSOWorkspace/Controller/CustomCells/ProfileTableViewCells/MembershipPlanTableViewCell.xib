@@ -12,6 +12,9 @@
         <array key="Inter-SemiBold.ttf">
             <string>Inter-SemiBold</string>
         </array>
+        <array key="Inter-VariableFont_slnt,wght.ttf">
+            <string>Inter-Regular</string>
+        </array>
         <array key="Poppins-SemiBold.ttf">
             <string>Poppins-SemiBold</string>
         </array>
@@ -19,42 +22,36 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MembershipPlanTableViewCell" rowHeight="185" id="KGk-i7-Jjw" customClass="MembershipPlanTableViewCell" customModule="RSOWorkspace" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="361" height="185"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MembershipPlanTableViewCell" rowHeight="265" id="KGk-i7-Jjw" customClass="MembershipPlanTableViewCell" customModule="RSOWorkspace" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="361" height="265"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="361" height="185"/>
+                <rect key="frame" x="0.0" y="0.0" width="361" height="265"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aP7-iP-IHM" userLabel="ContainerView" customClass="ShadowedView" customModule="RSOWorkspace" customModuleProvider="target">
-                        <rect key="frame" x="25" y="10" width="311" height="165"/>
+                        <rect key="frame" x="25" y="10" width="311" height="245"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Membership Plan " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M57-16-bc5">
-                                <rect key="frame" x="10" y="42" width="280" height="22"/>
+                                <rect key="frame" x="10" y="42" width="174" height="22"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="22" id="kfW-3Y-fZf"/>
+                                    <constraint firstAttribute="height" constant="22" id="9Gq-fP-Q9p"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Inter-SemiBold" family="Inter" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u2p-Oo-1zu">
-                                <rect key="frame" x="10" y="71" width="280" height="34"/>
-                                <fontDescription key="fontDescription" name="Inter-SemiBold" family="Inter" pointSize="14"/>
-                                <color key="textColor" name="595959"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="My Membership" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1CZ-6D-Uja">
-                                <rect key="frame" x="10" y="11" width="280" height="21"/>
+                                <rect key="frame" x="10" y="11" width="291" height="21"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="8bT-KV-mbu"/>
+                                    <constraint firstAttribute="height" constant="21" id="pjW-M4-U8N"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="14"/>
                                 <color key="textColor" name="000000"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="JJc-eo-xGr">
-                                <rect key="frame" x="37" y="121" width="258" height="24"/>
+                                <rect key="frame" x="37" y="201" width="258" height="24"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pQa-7o-PTK" customClass="RSOButton" customModule="RSOWorkspace" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="150" height="24"/>
@@ -86,21 +83,89 @@
                                     </button>
                                 </subviews>
                             </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Plan Length:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qSr-2j-lC7">
+                                <rect key="frame" x="8" y="73" width="70.666666666666671" height="14.666666666666671"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="12"/>
+                                <color key="textColor" name="171719"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="3" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x2t-Io-N5E">
+                                <rect key="frame" x="87" y="73" width="44" height="15"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="12"/>
+                                <color key="textColor" name="595959"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="10 Days" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0e8-b6-F2o">
+                                <rect key="frame" x="77" y="100" width="105" height="15"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="12"/>
+                                <color key="textColor" name="595959"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="10 Days" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I7F-s7-9Tw">
+                                <rect key="frame" x="162" y="128" width="84" height="15"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="12"/>
+                                <color key="textColor" name="595959"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Monthly Accessible Days:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ik0-pu-FWQ">
+                                <rect key="frame" x="8" y="128" width="146" height="15"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="12"/>
+                                <color key="textColor" name="171719"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Monythly Cost:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kF9-Wh-jn8">
+                                <rect key="frame" x="10" y="157" width="86" height="15"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="12"/>
+                                <color key="textColor" name="171719"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Plan Type:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q7G-Eq-9gM">
+                                <rect key="frame" x="10" y="100" width="59" height="15"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="12"/>
+                                <color key="textColor" name="171719"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="500.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ALs-2T-8y0">
+                                <rect key="frame" x="104" y="157" width="67" height="15"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="12"/>
+                                <color key="textColor" name="595959"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lx9-9S-OC1">
+                                <rect key="frame" x="192" y="12" width="103" height="76"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="76" id="OhN-ul-6lw"/>
+                                    <constraint firstAttribute="width" constant="103" id="gKv-CH-rB3"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="JJc-eo-xGr" secondAttribute="bottom" constant="20" id="0QG-F6-fna"/>
-                            <constraint firstItem="M57-16-bc5" firstAttribute="leading" secondItem="1CZ-6D-Uja" secondAttribute="leading" id="1PF-AO-Xpo"/>
-                            <constraint firstAttribute="trailing" secondItem="1CZ-6D-Uja" secondAttribute="trailing" constant="21" id="FUn-vE-kpS"/>
-                            <constraint firstItem="M57-16-bc5" firstAttribute="top" secondItem="1CZ-6D-Uja" secondAttribute="bottom" constant="10" id="IwZ-ig-Glk"/>
-                            <constraint firstItem="1CZ-6D-Uja" firstAttribute="leading" secondItem="aP7-iP-IHM" secondAttribute="leading" constant="10" id="QZE-Wc-ThX"/>
-                            <constraint firstItem="u2p-Oo-1zu" firstAttribute="top" secondItem="M57-16-bc5" secondAttribute="bottom" constant="7" id="RPy-kt-e7x"/>
-                            <constraint firstItem="u2p-Oo-1zu" firstAttribute="trailing" secondItem="M57-16-bc5" secondAttribute="trailing" id="Rrk-tN-DUV"/>
-                            <constraint firstItem="JJc-eo-xGr" firstAttribute="top" secondItem="u2p-Oo-1zu" secondAttribute="bottom" constant="16" id="WnT-XU-1m4"/>
+                            <constraint firstItem="lx9-9S-OC1" firstAttribute="top" secondItem="aP7-iP-IHM" secondAttribute="top" constant="12" id="0nm-2d-vUM"/>
+                            <constraint firstItem="1CZ-6D-Uja" firstAttribute="leading" secondItem="aP7-iP-IHM" secondAttribute="leading" constant="10" id="1GV-mc-PxE"/>
+                            <constraint firstAttribute="trailing" secondItem="1CZ-6D-Uja" secondAttribute="trailing" constant="10" id="BB1-46-uCv"/>
+                            <constraint firstItem="M57-16-bc5" firstAttribute="top" secondItem="1CZ-6D-Uja" secondAttribute="bottom" constant="10" id="KA4-sV-p6k"/>
+                            <constraint firstAttribute="trailing" secondItem="lx9-9S-OC1" secondAttribute="trailing" constant="16" id="OUB-Mh-rv7"/>
+                            <constraint firstItem="1CZ-6D-Uja" firstAttribute="top" secondItem="aP7-iP-IHM" secondAttribute="top" constant="11" id="Tue-Wo-sSV"/>
+                            <constraint firstAttribute="trailing" secondItem="M57-16-bc5" secondAttribute="trailing" constant="10" id="gS2-Ap-t3R"/>
+                            <constraint firstItem="lx9-9S-OC1" firstAttribute="leading" secondItem="M57-16-bc5" secondAttribute="trailing" constant="8" id="gSi-eY-QgQ"/>
+                            <constraint firstItem="M57-16-bc5" firstAttribute="leading" secondItem="aP7-iP-IHM" secondAttribute="leading" constant="10" id="iGA-vn-Bk7"/>
                             <constraint firstAttribute="trailing" secondItem="JJc-eo-xGr" secondAttribute="trailing" constant="16" id="lTJ-ON-cvV"/>
-                            <constraint firstItem="u2p-Oo-1zu" firstAttribute="leading" secondItem="M57-16-bc5" secondAttribute="leading" id="o9X-CO-r5E"/>
-                            <constraint firstItem="M57-16-bc5" firstAttribute="trailing" secondItem="1CZ-6D-Uja" secondAttribute="trailing" id="v9B-bd-4yw"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="gS2-Ap-t3R"/>
+                            </mask>
+                        </variation>
                     </view>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -117,15 +182,22 @@
                 <outlet property="btnBuyMemberShip" destination="pQa-7o-PTK" id="i3F-Bx-EOR"/>
                 <outlet property="btnRenewPlan" destination="4Ya-d4-z2J" id="dMM-V1-zQc"/>
                 <outlet property="containerView" destination="aP7-iP-IHM" id="GJU-TW-P9P"/>
-                <outlet property="lblMemberShipDesc" destination="u2p-Oo-1zu" id="jkX-fz-Oab"/>
+                <outlet property="imgQRCode" destination="lx9-9S-OC1" id="cRQ-jU-cL9"/>
                 <outlet property="lblMembershipPlan" destination="M57-16-bc5" id="TT6-S0-cMg"/>
+                <outlet property="lblMonthlyAccessibleDays" destination="I7F-s7-9Tw" id="Emm-LM-UWE"/>
+                <outlet property="lblMonthlyCost" destination="ALs-2T-8y0" id="QOx-6l-026"/>
+                <outlet property="lblPlanLength" destination="x2t-Io-N5E" id="MHF-77-ToL"/>
+                <outlet property="lblPlanType" destination="0e8-b6-F2o" id="A9v-UU-gkM"/>
             </connections>
-            <point key="canvasLocation" x="-59" y="-24"/>
+            <point key="canvasLocation" x="-60.305343511450381" y="-1.7605633802816902"/>
         </tableViewCell>
     </objects>
     <resources>
         <namedColor name="000000">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="171719">
+            <color red="0.090000003576278687" green="0.090000003576278687" blue="0.097999997437000275" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="595959">
             <color red="0.34900000691413879" green="0.34900000691413879" blue="0.34900000691413879" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

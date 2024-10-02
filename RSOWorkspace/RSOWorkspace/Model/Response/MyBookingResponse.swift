@@ -50,7 +50,6 @@ struct MyBookingResponse: Codable {
     }
 }
 
-
 struct MeetingBooking: Codable {
     let id: Int
     let memberId: Int
@@ -68,13 +67,12 @@ struct MeetingBooking: Codable {
     let vatAmount: String?
     let totalPrice: String?
     let status: String?
-    let additionalRequirements: String?
     let requirementDetails: String?
     let createdAt: String?
     let updatedAt: String?
     let roomName: String?
     let listType: String?
-    
+   // let floorNumber:String?
     //for desk response parameters
     let deskTypeId: Int?
     let deskNo:String?
@@ -98,7 +96,6 @@ struct MeetingBooking: Codable {
         case vatAmount = "vat_amount"
         case totalPrice = "total_price"
         case status
-        case additionalRequirements = "additional_requirements"
         case requirementDetails = "requirement_details"
         case createdAt = "created_at"
         case updatedAt = "updated_at"
@@ -108,6 +105,7 @@ struct MeetingBooking: Codable {
         case deskNo = "desk_no"
         case floorMapId = "floor_map_id"
         case qrCodeUrl  = "qr_code_url"
+       // case floorNumber = "floor_number"
     }
 }
 

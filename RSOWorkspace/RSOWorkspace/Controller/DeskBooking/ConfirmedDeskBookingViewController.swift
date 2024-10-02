@@ -199,6 +199,7 @@ extension ConfirmedDeskBookingViewController: UITableViewDataSource, UITableView
             
         case .confirmAndProceedToPayment:
             let cell = tableView.dequeueReusableCell(withIdentifier: cellType.rawValue, for: indexPath) as! ConfirmAndProceedToPayementTableViewCell
+            cell.btnConfirmAndProceed.isEnabled = true
             cell.delegate = self
             if !UserHelper.shared.isGuest(){
                 cell.btnConfirmAndProceed.setTitle("Confirm", for: .normal)
