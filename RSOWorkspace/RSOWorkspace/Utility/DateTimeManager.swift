@@ -69,11 +69,15 @@ class DateTimeManager {
     
     // Function to check if current time has passed for the end time
     func isCurrentTimePassedForEndTime() -> Bool {
-        guard let selectedDate = dateTimeSelection.selectedDate,
-              let endTime = dateTimeSelection.endTime else {
-            return false
-        }
-        
+//        guard let selectedDate = dateTimeSelection.selectedDate,
+//              let endTime = dateTimeSelection.endTime else {
+//            return false
+//        }
+        guard let selectedDate = dateTimeSelection.selectedDate
+               else { return false }
+        // Use tenPM directly since it's not optional
+           let endTime = DateTimeManager.shared.tenPM
+        //return isCurrentTimePassed(for: selectedDate, selectedTime: endTime)
         return isCurrentTimePassed(for: selectedDate, selectedTime: endTime)
     }
     func isTimePassedForEndTime(againstDate: Date) -> Bool {

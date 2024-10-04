@@ -92,8 +92,9 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
             switch self {
             case .profileDetails: return 204
             case .changePassword: return 50
-            case .membershipPlan: return 265
+            case .membershipPlan:   return 265
             case .paymentMethod: return 50
+            default : return 100
             
             }
         }

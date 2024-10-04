@@ -134,7 +134,7 @@ class LogInViewController: UIViewController {
                                                            accessToken: user.accessToken.tokenString)
             
             // Pass the idToken as auth_id
-            let requestModel = SocailLoginRequestModel(auth_type: "google", auth_id: idToken, email: email, name: name)
+            let requestModel = SocailLoginRequestModel(auth_type: "google", auth_id: user.accessToken.tokenString, email: email, name: name)
             self.socialloginAPI(requestModel: requestModel)
             
             // Sign in to Firebase with the Google credential

@@ -50,10 +50,15 @@ class MyBookingOpenTableViewCell: UITableViewCell {
             //convert date in hhmma format
             lblStartTime.text = Date.formatSelectedDate(format: .hhmma, date: startDate)
         }
-        if let endDateString = item.endTime{
-            let endDate =  Date.dateFromString(endDateString, format: .hhmmss)
+        if let endTimeString = item.endTime {
+            // Ensure you use the correct format for parsing the API response
+            let endDate = Date.dateFromString(endTimeString, format: .HHmmss) // Use HHmmss for 24-hour format
+            print("End time from API response: ", endDate ?? "")
+
+            // Format the end date to your desired output format
             lblEndTime.text = Date.formatSelectedDate(format: .hhmma, date: endDate)
         }
+
         if item.listType == "meeting"
         {
             self.lblRoomName.text = "\(item.roomName ?? "")"
@@ -77,4 +82,19 @@ class MyBookingOpenTableViewCell: UITableViewCell {
                delegate?.displayBookingQRCode(item: item)
     }
     
+}
+extension Date {
+    static func dateFromString(_ dateString: String, format: String) -> Date? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = format
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX") // To handle locale issues
+        return dateFormatter.date(from: dateString)
+    }
+
+    static func formatSelectedDate(format: String, date: Date?) -> String? {
+        guard let date = date else { return nil }
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = format
+        return dateFormatter.string(from: date)
+    }
 }

@@ -67,42 +67,34 @@ class SideMenuPaymentsViewController: UIViewController {
         for (index, month) in months.enumerated() {
             let monthIndex = index + 1 // 1-based index for months (January = 1, February = 2, etc.)
             
-            // Determine whether this month should be disabled
-            var isDisabled = false
             var title = month
             
-            // Disable future months (including the current month if the year is in the future)
-            if monthIndex > currentMonth || (monthIndex == currentMonth && currentYear > Date.getCurrentYear()) {
-                isDisabled = true
-            } else if monthIndex == currentMonth {
+            // Mark the current month with additional text
+            if monthIndex == currentMonth {
                 title += " (Current Month)"
             }
             
-            let action = UIAlertAction(title: month, style: isDisabled ? .destructive : .default) { [weak self] action in
-                if !isDisabled {
-                    self?.txtMonths.text = month
-                    self?.selectedMonth = monthIndex // Store the selected month index
-                    self?.selectedMonthName = month // Store the selected month name
-                    if let selectedMonth = self?.selectedMonth {
-                        self?.getAllBookingsAPI(month: selectedMonth, year: self?.selectedYear ?? currentYear)
-                    }
-                    
+            let action = UIAlertAction(title: title, style: .default) { [weak self] action in
+                // Update the selected month and make the API call
+                self?.txtMonths.text = month
+                self?.selectedMonth = monthIndex // Store the selected month index
+                self?.selectedMonthName = month // Store the selected month name
+                if let selectedMonth = self?.selectedMonth {
+                    self?.getAllBookingsAPI(month: selectedMonth, year: self?.selectedYear ?? currentYear)
                 }
             }
             
-            action.isEnabled = !isDisabled
             actionSheet.addAction(action)
         }
-        
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        actionSheet.addAction(cancelAction)
-        
-        // For iPad support
-        if let popoverController = actionSheet.popoverPresentationController {
-            popoverController.sourceView = self.view
-            popoverController.sourceRect = btnSelectMonth.frame
-        }
-        self.present(actionSheet, animated: true, completion: nil)
+           actionSheet.addAction(cancelAction)
+           
+           // For iPad support
+           if let popoverController = actionSheet.popoverPresentationController {
+               popoverController.sourceView = self.view
+               popoverController.sourceRect = btnSelectMonth.frame
+           }
+           self.present(actionSheet, animated: true, completion: nil)
     }
     
     

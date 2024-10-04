@@ -34,11 +34,13 @@ class RSOTabBarViewController: UIViewController {
         super.viewDidLoad()
         
         lblnotificationCount.makeCircular()
-        if let count = UserHelper.shared.getNotificationCount() {
-            lblnotificationCount.text = String(count)
-        } else {
-            lblnotificationCount.text = "0" // or handle the nil case as needed
-        }
+//        if let count = UserHelper.shared.getNotificationCount() {
+//            lblnotificationCount.text = String(count)
+//        } else {
+//            lblnotificationCount.text = "0" // or handle the nil case as needed
+//        }
+        /// Initial notification count setup
+        updateNotificationBadge()
 
         showGreetingMessage()
         lastSelectedTabIndex = 0
@@ -63,7 +65,17 @@ class RSOTabBarViewController: UIViewController {
         tabButtonTapped(tabButtons.first)
       
     }
-    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        updateNotificationBadge()
+    }
+
+    // Function to update the notification count badge
+    func updateNotificationBadge() {
+        let unreadCount = UserHelper.shared.getUnreadNotificationCount()
+        lblnotificationCount.text = unreadCount > 0 ? String(unreadCount) : "0"
+
+    }
     @IBAction func btnBackAction(_ sender: Any) {
         let currentNavcontroller = self.viewControllers[lastSelectedTabIndex] as? UINavigationController
         currentNavcontroller?.popViewController(animated: true)

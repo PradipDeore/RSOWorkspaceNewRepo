@@ -17,9 +17,10 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var txtEmail: RSOTextField!
     @IBOutlet weak var txtPassword: RSOTextField!
     @IBOutlet weak var txtPhone: RSOTextField!
-    @IBOutlet weak var btnSocialApple: RSOSocialButton!
-    @IBOutlet weak var btnSocialFacebook: RSOSocialButton!
-    @IBOutlet weak var btnSocialGoogle: RSOSocialButton!
+    
+    @IBOutlet weak var txtFullName: RSOTextField!
+    
+  
     
     var eventHandler: ((_ event: Event, _ message: String) -> Void)? // Data Binding Closure
     var signupResponseData: SignUpResponse?
@@ -35,6 +36,7 @@ class SignUpViewController: UIViewController {
         
     }
     func customizeUI(){
+        txtFullName.placeholderText = "Your Full Name"
         txtEmail.placeholderText = "Your email"
         txtPassword.placeholderText = "Password"
         txtPhone.placeholderText = "Your phone number"
@@ -204,8 +206,8 @@ class SignUpViewController: UIViewController {
     //        }
     //    }
     
-    func signUpAPI(email: String, password: String, phone: String) {
-        let requestModel = SignUpRequestModel(email: email, password: password, phone: phone)
+    func signUpAPI(fullName:String,email: String, password: String, phone: String) {
+        let requestModel = SignUpRequestModel(full_name: fullName, email: email, password: password, phone: phone)
         APIManager.shared.request(
             modelType: SignUpResponse.self,
             type: LogInSignUpEndPoint.signUp(requestModel: requestModel)) { response in
@@ -271,6 +273,16 @@ class SignUpViewController: UIViewController {
     //    }
     @IBAction func btnSubmitTappedAction(_ sender: Any) {
         
+        guard let fullName = txtFullName.text, !fullName.isEmpty else {
+            RSOToastView.shared.show("Please Full Name", duration: 2.0, position: .center)
+            return
+        }
+        // Check if email is valid
+        if !RSOValidator.isValidName(fullName) {
+            RSOToastView.shared.show("Please enter a valid full name containing only alphabetic characters.", duration: 2.0, position: .center)
+            return
+        }
+
         guard let email = txtEmail.text, !email.isEmpty else {
             RSOToastView.shared.show("Please enter your email", duration: 2.0, position: .center)
             return
@@ -298,7 +310,7 @@ class SignUpViewController: UIViewController {
             RSOToastView.shared.show("Phone Number must contains at least 10 digits",duration: 2.0,position: .center)
             return
         }
-        signUpAPI(email: email, password: password, phone: phone)
+        signUpAPI(fullName: fullName, email: email, password: password, phone: phone)
         
     }
 }

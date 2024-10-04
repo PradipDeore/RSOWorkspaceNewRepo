@@ -26,7 +26,9 @@ class UserHelper {
     private let userStatusKey = "userStatus"
     private let userIsGuestKey = "userIsGuest"
     private let userIsLoggedIn = "userIsLoggedIn"
-    private let notificationCountKey = "notifficationCount"
+    private let unreadNotificationCountKey = "unreadNotificationCountKey"
+       private let readNotificationCountKey = "readNotificationCountKey"
+       
     private let userSelectedDateKey = "userSelectedDate"
     private let selectedStartTime = "userSelectedStartTime"
     private let selectedEndTime = "userSelectedEndTime"
@@ -203,23 +205,27 @@ class UserHelper {
         return userDefaults.string(forKey: userPhotoKey)
     }
     
-    func saveNotificationCount(notificationCount: Int?) {
-        guard let count = notificationCount else {
-            print("Notification count is nil, not saving.")
-            return
+    // Save unread notification count
+        func saveUnreadNotificationCount(notificationCount: Int) {
+            userDefaults.set(notificationCount, forKey: unreadNotificationCountKey)
+            print("Unread notification count saved: \(notificationCount)")
         }
-        print("Saving notification count: \(count)")
-        userDefaults.set(count, forKey: notificationCountKey)
-    }
-    
-    func getNotificationCount() -> Int? {
-        // Check if the key exists in UserDefaults
-        if userDefaults.object(forKey: notificationCountKey) == nil {
-            return nil
+        
+        // Get unread notification count
+        func getUnreadNotificationCount() -> Int {
+            return userDefaults.integer(forKey: unreadNotificationCountKey)
         }
-        // Retrieve the stored integer value
-        return userDefaults.integer(forKey: notificationCountKey)
-    }
+        
+        // Save total notification count (optional)
+        func saveReadNotificationCount(notificationCount: Int) {
+            userDefaults.set(notificationCount, forKey: readNotificationCountKey)
+            print("Read notification count saved: \(notificationCount)")
+        }
+
+        // Get total notification count (optional)
+        func getNotificationCount() -> Int {
+            return userDefaults.integer(forKey: readNotificationCountKey)
+        }
     
     
     func clearUser() {

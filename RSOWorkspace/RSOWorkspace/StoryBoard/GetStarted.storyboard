@@ -641,39 +641,15 @@
                                                         </constraints>
                                                     </imageView>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Sign up  " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h8R-Zo-SBJ">
-                                                        <rect key="frame" x="86" y="400" width="221" height="24"/>
+                                                        <rect key="frame" x="86" y="318" width="221" height="24"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="height" constant="24" id="Uno-KR-exq"/>
-                                                            <constraint firstAttribute="width" constant="221" id="qfF-ME-755"/>
+                                                            <constraint firstAttribute="width" constant="221" id="FhH-mY-IJM"/>
+                                                            <constraint firstAttribute="height" constant="24" id="vK3-iQ-BI7"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" name="Poppins-Bold" family="Poppins" pointSize="16"/>
                                                         <color key="textColor" name="000000"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rjJ-O9-7Jl" customClass="RSOTextField" customModule="RSOWorkspace" customModuleProvider="target">
-                                                        <rect key="frame" x="42" y="441" width="309" height="42"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="42" id="kOR-Zl-QaZ"/>
-                                                        </constraints>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits"/>
-                                                    </textField>
-                                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PoX-Go-nhh" customClass="RSOTextField" customModule="RSOWorkspace" customModuleProvider="target">
-                                                        <rect key="frame" x="42" y="509" width="309" height="42"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="42" id="1ir-QP-jte"/>
-                                                        </constraints>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
-                                                    </textField>
-                                                    <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hRC-wj-mcB" customClass="RSOTextField" customModule="RSOWorkspace" customModuleProvider="target">
-                                                        <rect key="frame" x="42" y="577" width="309" height="42"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="42" id="Va1-ia-WXj"/>
-                                                        </constraints>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
-                                                    </textField>
                                                     <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="LogInViewController" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P7m-1x-Ag5" customClass="RSOButton" customModule="RSOWorkspace" customModuleProvider="target">
                                                         <rect key="frame" x="36.666666666666657" y="644" width="320" height="46"/>
                                                         <constraints>
@@ -716,31 +692,63 @@
                                                             <action selector="backButtonAction:" destination="wrR-e3-cOO" eventType="touchUpInside" id="MWn-JE-V2g"/>
                                                         </connections>
                                                     </button>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="eaJ-RP-IeM">
+                                                        <rect key="frame" x="42" y="372" width="309" height="243"/>
+                                                        <subviews>
+                                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hcl-Xa-9fa" customClass="RSOTextField" customModule="RSOWorkspace" customModuleProvider="target">
+                                                                <rect key="frame" x="0.0" y="0.0" width="309" height="42"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" constant="309" id="Lek-uy-tpP"/>
+                                                                    <constraint firstAttribute="height" constant="42" id="mIH-IW-tCG"/>
+                                                                </constraints>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                <textInputTraits key="textInputTraits"/>
+                                                            </textField>
+                                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rjJ-O9-7Jl" customClass="RSOTextField" customModule="RSOWorkspace" customModuleProvider="target">
+                                                                <rect key="frame" x="0.0" y="67" width="309" height="42"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="42" id="Asf-8M-it8"/>
+                                                                    <constraint firstAttribute="width" constant="309" id="i06-hh-1UD"/>
+                                                                </constraints>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                <textInputTraits key="textInputTraits"/>
+                                                            </textField>
+                                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PoX-Go-nhh" customClass="RSOTextField" customModule="RSOWorkspace" customModuleProvider="target">
+                                                                <rect key="frame" x="0.0" y="134" width="309" height="42"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" constant="309" id="9Vp-4l-ueh"/>
+                                                                    <constraint firstAttribute="height" constant="42" id="BeN-rd-D0x"/>
+                                                                </constraints>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                <textInputTraits key="textInputTraits" enablesReturnKeyAutomatically="YES" secureTextEntry="YES"/>
+                                                            </textField>
+                                                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hRC-wj-mcB" customClass="RSOTextField" customModule="RSOWorkspace" customModuleProvider="target">
+                                                                <rect key="frame" x="0.0" y="201" width="309" height="42"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="42" id="C8V-dO-oss"/>
+                                                                    <constraint firstAttribute="width" constant="309" id="bWz-CF-zAQ"/>
+                                                                </constraints>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                                            </textField>
+                                                        </subviews>
+                                                    </stackView>
                                                 </subviews>
                                                 <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
-                                                    <constraint firstItem="hRC-wj-mcB" firstAttribute="top" secondItem="PoX-Go-nhh" secondAttribute="bottom" constant="26" id="0LN-00-kE7"/>
-                                                    <constraint firstItem="rjJ-O9-7Jl" firstAttribute="top" secondItem="h8R-Zo-SBJ" secondAttribute="bottom" constant="17" id="1Ax-0T-S37"/>
-                                                    <constraint firstAttribute="trailing" secondItem="PoX-Go-nhh" secondAttribute="trailing" constant="42" id="54b-g2-MP8"/>
-                                                    <constraint firstItem="hRC-wj-mcB" firstAttribute="centerX" secondItem="PoX-Go-nhh" secondAttribute="centerX" id="6c2-8Y-YEy"/>
+                                                    <constraint firstItem="h8R-Zo-SBJ" firstAttribute="centerX" secondItem="Tea-Ha-Wed" secondAttribute="centerX" id="46J-H5-03p"/>
+                                                    <constraint firstItem="h8R-Zo-SBJ" firstAttribute="top" secondItem="Q5D-lJ-EOm" secondAttribute="bottom" constant="38" id="8ot-Wq-B1G"/>
                                                     <constraint firstItem="uDT-SL-KXd" firstAttribute="top" secondItem="Tea-Ha-Wed" secondAttribute="top" constant="20" id="CY3-7D-AeN"/>
-                                                    <constraint firstAttribute="trailing" secondItem="hRC-wj-mcB" secondAttribute="trailing" constant="42" id="GZT-AR-8E4"/>
                                                     <constraint firstAttribute="trailing" secondItem="uDT-SL-KXd" secondAttribute="trailing" id="J7M-cc-tHS"/>
-                                                    <constraint firstItem="P7m-1x-Ag5" firstAttribute="top" secondItem="hRC-wj-mcB" secondAttribute="bottom" constant="25" id="PX9-VF-4ut"/>
-                                                    <constraint firstItem="PoX-Go-nhh" firstAttribute="top" secondItem="rjJ-O9-7Jl" secondAttribute="bottom" constant="26" id="SAy-2b-Vh5"/>
-                                                    <constraint firstItem="PoX-Go-nhh" firstAttribute="leading" secondItem="Tea-Ha-Wed" secondAttribute="leading" constant="42" id="Wx9-7b-W7e"/>
-                                                    <constraint firstItem="PoX-Go-nhh" firstAttribute="centerX" secondItem="rjJ-O9-7Jl" secondAttribute="centerX" id="YJq-qQ-wKR"/>
+                                                    <constraint firstItem="P7m-1x-Ag5" firstAttribute="top" secondItem="eaJ-RP-IeM" secondAttribute="bottom" constant="29" id="LV2-HZ-p4P"/>
+                                                    <constraint firstItem="eaJ-RP-IeM" firstAttribute="top" secondItem="h8R-Zo-SBJ" secondAttribute="bottom" constant="30" id="Npo-ba-gKP"/>
+                                                    <constraint firstItem="P7m-1x-Ag5" firstAttribute="centerX" secondItem="Tea-Ha-Wed" secondAttribute="centerX" id="Vlg-Uz-tV2"/>
                                                     <constraint firstItem="Q5D-lJ-EOm" firstAttribute="top" secondItem="Tea-Ha-Wed" secondAttribute="top" constant="100" id="YQ0-mg-GUe"/>
-                                                    <constraint firstItem="hRC-wj-mcB" firstAttribute="leading" secondItem="Tea-Ha-Wed" secondAttribute="leading" constant="42" id="Yyh-Vw-Q2N"/>
-                                                    <constraint firstItem="P7m-1x-Ag5" firstAttribute="centerX" secondItem="rjJ-O9-7Jl" secondAttribute="centerX" id="ZlU-t5-fTU"/>
                                                     <constraint firstItem="PZv-7m-fpi" firstAttribute="leading" secondItem="Tea-Ha-Wed" secondAttribute="leading" constant="14" id="ae5-SU-Ih8"/>
-                                                    <constraint firstItem="rjJ-O9-7Jl" firstAttribute="leading" secondItem="Tea-Ha-Wed" secondAttribute="leading" constant="42" id="fEX-iL-I15"/>
-                                                    <constraint firstAttribute="trailing" secondItem="rjJ-O9-7Jl" secondAttribute="trailing" constant="42" id="fh7-Xa-ZYY"/>
+                                                    <constraint firstAttribute="trailing" secondItem="eaJ-RP-IeM" secondAttribute="trailing" constant="42" id="b62-ba-9cy"/>
                                                     <constraint firstItem="Q5D-lJ-EOm" firstAttribute="leading" secondItem="Tea-Ha-Wed" secondAttribute="leading" id="gIH-9T-oRX"/>
                                                     <constraint firstItem="PZv-7m-fpi" firstAttribute="top" secondItem="Tea-Ha-Wed" secondAttribute="top" constant="10" id="hWV-Xf-5Mz"/>
-                                                    <constraint firstItem="h8R-Zo-SBJ" firstAttribute="top" secondItem="Tea-Ha-Wed" secondAttribute="top" constant="400" id="jk6-ol-XcU"/>
-                                                    <constraint firstItem="rjJ-O9-7Jl" firstAttribute="centerX" secondItem="Tea-Ha-Wed" secondAttribute="centerX" id="wTh-Nl-9Or"/>
-                                                    <constraint firstItem="h8R-Zo-SBJ" firstAttribute="centerX" secondItem="Tea-Ha-Wed" secondAttribute="centerX" id="yCD-rq-mqv"/>
+                                                    <constraint firstItem="eaJ-RP-IeM" firstAttribute="leading" secondItem="Tea-Ha-Wed" secondAttribute="leading" constant="42" id="wwx-up-HSP"/>
                                                 </constraints>
                                             </view>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="Mqj-oy-rlU">
@@ -785,6 +793,7 @@
                     <size key="freeformSize" width="393" height="800"/>
                     <connections>
                         <outlet property="txtEmail" destination="rjJ-O9-7Jl" id="K0g-qS-F1r"/>
+                        <outlet property="txtFullName" destination="hcl-Xa-9fa" id="7QO-hn-f8b"/>
                         <outlet property="txtPassword" destination="PoX-Go-nhh" id="P5k-ab-vjZ"/>
                         <outlet property="txtPhone" destination="hRC-wj-mcB" id="UCw-QE-u7Z"/>
                     </connections>

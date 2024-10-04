@@ -127,6 +127,16 @@
 		5864882F2BBAD2CD0024CBA2 /* FeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5864882E2BBAD2CD0024CBA2 /* FeedbackViewController.swift */; };
 		58696B0D2BAD833800937A4F /* RSVPButtonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58696B0C2BAD833800937A4F /* RSVPButtonViewController.swift */; };
 		58696B0F2BAD8C1300937A4F /* FindMembersCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58696B0E2BAD8C1300937A4F /* FindMembersCardViewController.swift */; };
+		586F73302CAE73A30006B24D /* Extension + String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586F732F2CAE73A30006B24D /* Extension + String.swift */; };
+		586F73322CAE74140006B24D /* PaymentCallBackRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586F73312CAE74140006B24D /* PaymentCallBackRequest.swift */; };
+		586F73352CAE74410006B24D /* RecurringCallBackRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586F73332CAE74410006B24D /* RecurringCallBackRequestModel.swift */; };
+		586F73362CAE74410006B24D /* CardPaymentRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586F73342CAE74410006B24D /* CardPaymentRequestModel.swift */; };
+		586F73382CAE74A80006B24D /* PaymentSuccessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586F73372CAE74A80006B24D /* PaymentSuccessViewController.swift */; };
+		586F733C2CAE74D80006B24D /* RecurringCallBackResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586F73392CAE74D80006B24D /* RecurringCallBackResponseModel.swift */; };
+		586F733D2CAE74D80006B24D /* PaymentCallBacklResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586F733A2CAE74D80006B24D /* PaymentCallBacklResponse.swift */; };
+		586F733E2CAE74D80006B24D /* CardPaymentResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586F733B2CAE74D80006B24D /* CardPaymentResponseModel.swift */; };
+		586F73412CAE75450006B24D /* SelectPlanTypeLableTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586F733F2CAE75450006B24D /* SelectPlanTypeLableTableViewCell.swift */; };
+		586F73422CAE75450006B24D /* SelectPlanTypeLableTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 586F73402CAE75450006B24D /* SelectPlanTypeLableTableViewCell.xib */; };
 		586FA6FE2BBC1A2B00EA2772 /* RSOWorkspaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586FA6FD2BBC1A2B00EA2772 /* RSOWorkspaceViewController.swift */; };
 		586FA7002BBC268300EA2772 /* AboutRSOModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586FA6FF2BBC268300EA2772 /* AboutRSOModel.swift */; };
 		586FA7042BBC28DA00EA2772 /* aboutRSOTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 586FA7022BBC28DA00EA2772 /* aboutRSOTableViewCell.swift */; };
@@ -186,8 +196,6 @@
 		588D8A7B2B627A6D00545748 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 588D8A7A2B627A6D00545748 /* Assets.xcassets */; };
 		588D8A7E2B627A6D00545748 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 588D8A7C2B627A6D00545748 /* LaunchScreen.storyboard */; };
 		589464102BA57CA500DC6472 /* ConciergeStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5894640F2BA57CA500DC6472 /* ConciergeStoryboard.storyboard */; };
-		5897A0CF2C96D109005366E0 /* SelectPlanTypeLableTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5897A0CD2C96D109005366E0 /* SelectPlanTypeLableTableViewCell.swift */; };
-		5897A0D02C96D109005366E0 /* SelectPlanTypeLableTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5897A0CE2C96D109005366E0 /* SelectPlanTypeLableTableViewCell.xib */; };
 		589BBA9C2BBBEE7C00DCEF70 /* FAQViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589BBA9B2BBBEE7C00DCEF70 /* FAQViewController.swift */; };
 		589BBAA02BBBEF3D00DCEF70 /* FAQTitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 589BBA9E2BBBEF3D00DCEF70 /* FAQTitleTableViewCell.swift */; };
 		589BBAA12BBBEF3D00DCEF70 /* FAQTitleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 589BBA9F2BBBEF3D00DCEF70 /* FAQTitleTableViewCell.xib */; };
@@ -220,10 +228,12 @@
 		58A16CD72BBC7D6E0003DD50 /* LocationCloseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A16CD52BBC7D6E0003DD50 /* LocationCloseTableViewCell.swift */; };
 		58A16CD82BBC7D6E0003DD50 /* LocationCloseTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58A16CD62BBC7D6E0003DD50 /* LocationCloseTableViewCell.xib */; };
 		58A6358F2B7F5CD500A5D2F2 /* LoginBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A6358E2B7F5CD400A5D2F2 /* LoginBackgroundView.swift */; };
+		58A7DF402CAFF29900CF58FE /* NotificationDescTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A7DF3E2CAFF29900CF58FE /* NotificationDescTableViewCell.swift */; };
+		58A7DF412CAFF29900CF58FE /* NotificationDescTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58A7DF3F2CAFF29900CF58FE /* NotificationDescTableViewCell.xib */; };
 		58A7FBD42BA0AB5400B48DFF /* BookingDetailsRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A7FBD32BA0AB5400B48DFF /* BookingDetailsRequestModel.swift */; };
 		58A7FBD62BA0B89A00B48DFF /* RoomDetailResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A7FBD52BA0B89A00B48DFF /* RoomDetailResponse.swift */; };
 		58ACDB392B78C78F0041B755 /* RSOButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58ACDB382B78C78F0041B755 /* RSOButton.swift */; };
-		58ACDB3B2B78D10A0041B755 /* RSOConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58ACDB3A2B78D10A0041B755 /* RSOConstants.swift */; };
+		58ACDB3B2B78D10A0041B755 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58ACDB3A2B78D10A0041B755 /* Constants.swift */; };
 		58AE87B72C50FF6D004A99D6 /* CouponDetailsResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AE87B62C50FF6D004A99D6 /* CouponDetailsResponseModel.swift */; };
 		58AE87B92C513591004A99D6 /* PaymentNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58AE87B82C513591004A99D6 /* PaymentNetworkManager.swift */; };
 		58B33B7B2C5A051200DBEA34 /* SocialLoginRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58B33B7A2C5A051200DBEA34 /* SocialLoginRequestModel.swift */; };
@@ -286,7 +296,6 @@
 		58BE5E682B8C6FBF002244F5 /* RSOMeetingRoomsCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58BE5E672B8C6FBF002244F5 /* RSOMeetingRoomsCollectionView.swift */; };
 		58BE90C32B9F0551001FCE54 /* RSOCollectionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58BE90C22B9F0551001FCE54 /* RSOCollectionItem.swift */; };
 		58BEF2602C47DDC500C78CF4 /* Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58BEF25B2C47DDC500C78CF4 /* Date.swift */; };
-		58BEF2612C47DDC500C78CF4 /* Extension + String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58BEF25C2C47DDC500C78CF4 /* Extension + String.swift */; };
 		58BEF2622C47DDC500C78CF4 /* ImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58BEF25D2C47DDC500C78CF4 /* ImageView.swift */; };
 		58BEF2632C47DDC500C78CF4 /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58BEF25E2C47DDC500C78CF4 /* UILabel.swift */; };
 		58BEF2642C47DDC500C78CF4 /* AppDelegate+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58BEF25F2C47DDC500C78CF4 /* AppDelegate+Extension.swift */; };
@@ -418,8 +427,6 @@
 		58E6F7182BA826B6009D4E21 /* RequestButtonTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58E6F7162BA826B6009D4E21 /* RequestButtonTableViewCell.xib */; };
 		58E997D32BBE87160051BEF3 /* VisitorsEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E997D22BBE87160051BEF3 /* VisitorsEndPoint.swift */; };
 		58E997D52BBE87A00051BEF3 /* ReasonForVisit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E997D42BBE87A00051BEF3 /* ReasonForVisit.swift */; };
-		58E9AAD12CA6F4FC00FD96A8 /* RecurringCallBackRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E9AAD02CA6F4FC00FD96A8 /* RecurringCallBackRequestModel.swift */; };
-		58E9AAD32CA6F58000FD96A8 /* RecurringCallBackResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E9AAD22CA6F58000FD96A8 /* RecurringCallBackResponseModel.swift */; };
 		58EB0E142BB695DB00DC2827 /* LongTermOfficeBookingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58EB0E132BB695DB00DC2827 /* LongTermOfficeBookingViewController.swift */; };
 		58EB0E3B2BB6D61D00DC2827 /* SideMenuModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58EB0E3A2BB6D61D00DC2827 /* SideMenuModel.swift */; };
 		58EB0E442BB6D62600DC2827 /* SideMenuSubViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58EB0E3D2BB6D62600DC2827 /* SideMenuSubViewController.swift */; };
@@ -428,9 +435,6 @@
 		58EB0E482BB6D62600DC2827 /* SideMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58EB0E432BB6D62600DC2827 /* SideMenuCell.swift */; };
 		58EB2CEC2BA567CA00D69C46 /* OnDemandServiceCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58EB2CEA2BA567CA00D69C46 /* OnDemandServiceCollectionViewCell.swift */; };
 		58EB2CED2BA567CA00D69C46 /* OnDemandServiceCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58EB2CEB2BA567CA00D69C46 /* OnDemandServiceCollectionViewCell.xib */; };
-		58EB43692CAC1D7E00489137 /* PaymentSuccessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58EB43682CAC1D7E00489137 /* PaymentSuccessViewController.swift */; };
-		58EB436B2CAC3D9E00489137 /* PaymentCallBackRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58EB436A2CAC3D9E00489137 /* PaymentCallBackRequest.swift */; };
-		58EB436D2CAC3DBA00489137 /* PaymentCallBacklResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58EB436C2CAC3DBA00489137 /* PaymentCallBacklResponse.swift */; };
 		58ED2D1A2B8F386C004D06C8 /* Booking.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58ED2D192B8F386C004D06C8 /* Booking.storyboard */; };
 		58ED2D1D2B8F38B8004D06C8 /* MyBookingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58ED2D1C2B8F38B8004D06C8 /* MyBookingViewController.swift */; };
 		58ED2D1F2B8F4C1D004D06C8 /* MyBookingEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58ED2D1E2B8F4C1D004D06C8 /* MyBookingEndPoint.swift */; };
@@ -454,8 +458,6 @@
 		58F2C6ED2C5CF5DD0028538C /* CouponResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F2C6EC2C5CF5DD0028538C /* CouponResponseModel.swift */; };
 		58F2C6EF2C5D277F0028538C /* UpdateVisitorsDetailsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F2C6EE2C5D277F0028538C /* UpdateVisitorsDetailsResponse.swift */; };
 		58F2C6F12C5D281D0028538C /* UpdateVisitorsRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F2C6F02C5D281D0028538C /* UpdateVisitorsRequestModel.swift */; };
-		58F301782CA55EC00022B287 /* CardPaymentRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F301772CA55EC00022B287 /* CardPaymentRequestModel.swift */; };
-		58F3017A2CA562C40022B287 /* CardPaymentResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F301792CA562C30022B287 /* CardPaymentResponseModel.swift */; };
 		58F458392B91982400CF8AFA /* SelectTimeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F458372B91982400CF8AFA /* SelectTimeTableViewCell.swift */; };
 		58F4583A2B91982400CF8AFA /* SelectTimeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58F458382B91982400CF8AFA /* SelectTimeTableViewCell.xib */; };
 		58F4583D2B91A1D300CF8AFA /* SelectMeetingRoomLabelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F4583B2B91A1D300CF8AFA /* SelectMeetingRoomLabelTableViewCell.swift */; };
@@ -475,6 +477,8 @@
 		58F573A72C57D129006F6594 /* exploreResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F573A62C57D129006F6594 /* exploreResponse.swift */; };
 		58F88E402BA8230200771268 /* ReportAnIssueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F88E3F2BA8230200771268 /* ReportAnIssueViewController.swift */; };
 		58F96E242C479DFA009C4DC5 /* subServicesRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58F96E232C479DFA009C4DC5 /* subServicesRequestModel.swift */; };
+		58FEAFC42CB02046008F6099 /* TermsAndConditionsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58FEAFC22CB02046008F6099 /* TermsAndConditionsTableViewCell.swift */; };
+		58FEAFC52CB02046008F6099 /* TermsAndConditionsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58FEAFC32CB02046008F6099 /* TermsAndConditionsTableViewCell.xib */; };
 		EE3B78222C54B54600706F16 /* MembershipResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3B78212C54B54600706F16 /* MembershipResponse.swift */; };
 		EE3B78242C54BB0E00706F16 /* MembershipEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3B78232C54BB0E00706F16 /* MembershipEndPoint.swift */; };
 		EE3B78272C550C6B00706F16 /* SelectedMembershipData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE3B78262C550C6B00706F16 /* SelectedMembershipData.swift */; };
@@ -624,6 +628,16 @@
 		5864882E2BBAD2CD0024CBA2 /* FeedbackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackViewController.swift; sourceTree = "<group>"; };
 		58696B0C2BAD833800937A4F /* RSVPButtonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSVPButtonViewController.swift; sourceTree = "<group>"; };
 		58696B0E2BAD8C1300937A4F /* FindMembersCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindMembersCardViewController.swift; sourceTree = "<group>"; };
+		586F732F2CAE73A30006B24D /* Extension + String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extension + String.swift"; sourceTree = "<group>"; };
+		586F73312CAE74140006B24D /* PaymentCallBackRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PaymentCallBackRequest.swift; path = Request/PaymentCallBackRequest.swift; sourceTree = "<group>"; };
+		586F73332CAE74410006B24D /* RecurringCallBackRequestModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecurringCallBackRequestModel.swift; sourceTree = "<group>"; };
+		586F73342CAE74410006B24D /* CardPaymentRequestModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardPaymentRequestModel.swift; sourceTree = "<group>"; };
+		586F73372CAE74A80006B24D /* PaymentSuccessViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentSuccessViewController.swift; sourceTree = "<group>"; };
+		586F73392CAE74D80006B24D /* RecurringCallBackResponseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecurringCallBackResponseModel.swift; sourceTree = "<group>"; };
+		586F733A2CAE74D80006B24D /* PaymentCallBacklResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentCallBacklResponse.swift; sourceTree = "<group>"; };
+		586F733B2CAE74D80006B24D /* CardPaymentResponseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardPaymentResponseModel.swift; sourceTree = "<group>"; };
+		586F733F2CAE75450006B24D /* SelectPlanTypeLableTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectPlanTypeLableTableViewCell.swift; sourceTree = "<group>"; };
+		586F73402CAE75450006B24D /* SelectPlanTypeLableTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SelectPlanTypeLableTableViewCell.xib; sourceTree = "<group>"; };
 		586FA6FD2BBC1A2B00EA2772 /* RSOWorkspaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSOWorkspaceViewController.swift; sourceTree = "<group>"; };
 		586FA6FF2BBC268300EA2772 /* AboutRSOModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutRSOModel.swift; sourceTree = "<group>"; };
 		586FA7022BBC28DA00EA2772 /* aboutRSOTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = aboutRSOTableViewCell.swift; sourceTree = "<group>"; };
@@ -684,8 +698,6 @@
 		588D8A7D2B627A6D00545748 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		588D8A7F2B627A6D00545748 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5894640F2BA57CA500DC6472 /* ConciergeStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ConciergeStoryboard.storyboard; sourceTree = "<group>"; };
-		5897A0CD2C96D109005366E0 /* SelectPlanTypeLableTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectPlanTypeLableTableViewCell.swift; sourceTree = "<group>"; };
-		5897A0CE2C96D109005366E0 /* SelectPlanTypeLableTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectPlanTypeLableTableViewCell.xib; sourceTree = "<group>"; };
 		589BBA9B2BBBEE7C00DCEF70 /* FAQViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FAQViewController.swift; sourceTree = "<group>"; };
 		589BBA9E2BBBEF3D00DCEF70 /* FAQTitleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FAQTitleTableViewCell.swift; path = RSOWorkspace/Controller/Feedback/FAQTitleTableViewCell.swift; sourceTree = SOURCE_ROOT; };
 		589BBA9F2BBBEF3D00DCEF70 /* FAQTitleTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = FAQTitleTableViewCell.xib; path = RSOWorkspace/Controller/Feedback/FAQTitleTableViewCell.xib; sourceTree = SOURCE_ROOT; };
@@ -718,10 +730,12 @@
 		58A16CD52BBC7D6E0003DD50 /* LocationCloseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationCloseTableViewCell.swift; sourceTree = "<group>"; };
 		58A16CD62BBC7D6E0003DD50 /* LocationCloseTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LocationCloseTableViewCell.xib; sourceTree = "<group>"; };
 		58A6358E2B7F5CD400A5D2F2 /* LoginBackgroundView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginBackgroundView.swift; sourceTree = "<group>"; };
+		58A7DF3E2CAFF29900CF58FE /* NotificationDescTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationDescTableViewCell.swift; sourceTree = "<group>"; };
+		58A7DF3F2CAFF29900CF58FE /* NotificationDescTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotificationDescTableViewCell.xib; sourceTree = "<group>"; };
 		58A7FBD32BA0AB5400B48DFF /* BookingDetailsRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingDetailsRequestModel.swift; sourceTree = "<group>"; };
 		58A7FBD52BA0B89A00B48DFF /* RoomDetailResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomDetailResponse.swift; sourceTree = "<group>"; };
 		58ACDB382B78C78F0041B755 /* RSOButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSOButton.swift; sourceTree = "<group>"; };
-		58ACDB3A2B78D10A0041B755 /* RSOConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSOConstants.swift; sourceTree = "<group>"; };
+		58ACDB3A2B78D10A0041B755 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		58AE87B62C50FF6D004A99D6 /* CouponDetailsResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponDetailsResponseModel.swift; sourceTree = "<group>"; };
 		58AE87B82C513591004A99D6 /* PaymentNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentNetworkManager.swift; sourceTree = "<group>"; };
 		58B33B7A2C5A051200DBEA34 /* SocialLoginRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialLoginRequestModel.swift; sourceTree = "<group>"; };
@@ -776,7 +790,6 @@
 		58BE5E672B8C6FBF002244F5 /* RSOMeetingRoomsCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSOMeetingRoomsCollectionView.swift; sourceTree = "<group>"; };
 		58BE90C22B9F0551001FCE54 /* RSOCollectionItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RSOCollectionItem.swift; sourceTree = "<group>"; };
 		58BEF25B2C47DDC500C78CF4 /* Date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Date.swift; sourceTree = "<group>"; };
-		58BEF25C2C47DDC500C78CF4 /* Extension + String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Extension + String.swift"; sourceTree = "<group>"; };
 		58BEF25D2C47DDC500C78CF4 /* ImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageView.swift; sourceTree = "<group>"; };
 		58BEF25E2C47DDC500C78CF4 /* UILabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
 		58BEF25F2C47DDC500C78CF4 /* AppDelegate+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Extension.swift"; sourceTree = "<group>"; };
@@ -912,8 +925,6 @@
 		58E6F7162BA826B6009D4E21 /* RequestButtonTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RequestButtonTableViewCell.xib; sourceTree = "<group>"; };
 		58E997D22BBE87160051BEF3 /* VisitorsEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitorsEndPoint.swift; sourceTree = "<group>"; };
 		58E997D42BBE87A00051BEF3 /* ReasonForVisit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "\U0010ReasonForVisit.swift"; sourceTree = "<group>"; };
-		58E9AAD02CA6F4FC00FD96A8 /* RecurringCallBackRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecurringCallBackRequestModel.swift; sourceTree = "<group>"; };
-		58E9AAD22CA6F58000FD96A8 /* RecurringCallBackResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecurringCallBackResponseModel.swift; sourceTree = "<group>"; };
 		58EB0E132BB695DB00DC2827 /* LongTermOfficeBookingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LongTermOfficeBookingViewController.swift; sourceTree = "<group>"; };
 		58EB0E3A2BB6D61D00DC2827 /* SideMenuModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideMenuModel.swift; sourceTree = "<group>"; };
 		58EB0E3D2BB6D62600DC2827 /* SideMenuSubViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideMenuSubViewController.swift; sourceTree = "<group>"; };
@@ -922,9 +933,6 @@
 		58EB0E432BB6D62600DC2827 /* SideMenuCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideMenuCell.swift; sourceTree = "<group>"; };
 		58EB2CEA2BA567CA00D69C46 /* OnDemandServiceCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnDemandServiceCollectionViewCell.swift; sourceTree = "<group>"; };
 		58EB2CEB2BA567CA00D69C46 /* OnDemandServiceCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OnDemandServiceCollectionViewCell.xib; sourceTree = "<group>"; };
-		58EB43682CAC1D7E00489137 /* PaymentSuccessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentSuccessViewController.swift; sourceTree = "<group>"; };
-		58EB436A2CAC3D9E00489137 /* PaymentCallBackRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentCallBackRequest.swift; sourceTree = "<group>"; };
-		58EB436C2CAC3DBA00489137 /* PaymentCallBacklResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentCallBacklResponse.swift; sourceTree = "<group>"; };
 		58ED2D192B8F386C004D06C8 /* Booking.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Booking.storyboard; sourceTree = "<group>"; };
 		58ED2D1C2B8F38B8004D06C8 /* MyBookingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBookingViewController.swift; sourceTree = "<group>"; };
 		58ED2D1E2B8F4C1D004D06C8 /* MyBookingEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBookingEndPoint.swift; sourceTree = "<group>"; };
@@ -949,8 +957,6 @@
 		58F2C6EC2C5CF5DD0028538C /* CouponResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CouponResponseModel.swift; sourceTree = "<group>"; };
 		58F2C6EE2C5D277F0028538C /* UpdateVisitorsDetailsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateVisitorsDetailsResponse.swift; sourceTree = "<group>"; };
 		58F2C6F02C5D281D0028538C /* UpdateVisitorsRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateVisitorsRequestModel.swift; sourceTree = "<group>"; };
-		58F301772CA55EC00022B287 /* CardPaymentRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardPaymentRequestModel.swift; sourceTree = "<group>"; };
-		58F301792CA562C30022B287 /* CardPaymentResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardPaymentResponseModel.swift; sourceTree = "<group>"; };
 		58F458372B91982400CF8AFA /* SelectTimeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectTimeTableViewCell.swift; sourceTree = "<group>"; };
 		58F458382B91982400CF8AFA /* SelectTimeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectTimeTableViewCell.xib; sourceTree = "<group>"; };
 		58F4583B2B91A1D300CF8AFA /* SelectMeetingRoomLabelTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectMeetingRoomLabelTableViewCell.swift; sourceTree = "<group>"; };
@@ -971,6 +977,8 @@
 		58F573A62C57D129006F6594 /* exploreResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = exploreResponse.swift; sourceTree = "<group>"; };
 		58F88E3F2BA8230200771268 /* ReportAnIssueViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportAnIssueViewController.swift; sourceTree = "<group>"; };
 		58F96E232C479DFA009C4DC5 /* subServicesRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = subServicesRequestModel.swift; sourceTree = "<group>"; };
+		58FEAFC22CB02046008F6099 /* TermsAndConditionsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermsAndConditionsTableViewCell.swift; sourceTree = "<group>"; };
+		58FEAFC32CB02046008F6099 /* TermsAndConditionsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TermsAndConditionsTableViewCell.xib; sourceTree = "<group>"; };
 		679B083A745FEFA843A18302 /* Pods-RSOWorkspace.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RSOWorkspace.release.xcconfig"; path = "Target Support Files/Pods-RSOWorkspace/Pods-RSOWorkspace.release.xcconfig"; sourceTree = "<group>"; };
 		7AB224176F3C3ECB7C30B655 /* Pods-RSOWorkspace.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RSOWorkspace.debug.xcconfig"; path = "Target Support Files/Pods-RSOWorkspace/Pods-RSOWorkspace.debug.xcconfig"; sourceTree = "<group>"; };
 		EE3B78212C54B54600706F16 /* MembershipResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MembershipResponse.swift; sourceTree = "<group>"; };
@@ -1047,6 +1055,8 @@
 			children = (
 				580418212BD13DC7008EA858 /* NotificationTableViewCell.swift */,
 				580418222BD13DC7008EA858 /* NotificationTableViewCell.xib */,
+				58A7DF3E2CAFF29900CF58FE /* NotificationDescTableViewCell.swift */,
+				58A7DF3F2CAFF29900CF58FE /* NotificationDescTableViewCell.xib */,
 			);
 			path = NotificationsTablvewCells;
 			sourceTree = "<group>";
@@ -1478,7 +1488,7 @@
 				58BEF25A2C47DDC500C78CF4 /* Extension */,
 				58E6E9342B88714D00EB3600 /* TabView */,
 				58ACDB382B78C78F0041B755 /* RSOButton.swift */,
-				58ACDB3A2B78D10A0041B755 /* RSOConstants.swift */,
+				58ACDB3A2B78D10A0041B755 /* Constants.swift */,
 				58BF43A12B7B4F1200CD68EA /* RSOTextField.swift */,
 				58B461532B8096F100C3FF21 /* RSOController.swift */,
 				58B461552B80A91200C3FF21 /* RSOSocialButton.swift */,
@@ -1537,6 +1547,7 @@
 		58BAEB1F2B6CC836000B140C /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				586F73312CAE74140006B24D /* PaymentCallBackRequest.swift */,
 				58BF851B2B8735E2009FF06C /* Request */,
 				58BF851A2B8735D8009FF06C /* Response */,
 				58251BD02B85D6C2002F7F28 /* MeetingRoomsItem.swift */,
@@ -1598,12 +1609,12 @@
 		58BB6B042B986976001E1F3D /* Payment */ = {
 			isa = PBXGroup;
 			children = (
+				586F73372CAE74A80006B24D /* PaymentSuccessViewController.swift */,
 				58BB6B052B98699D001E1F3D /* PaymentViewController.swift */,
 				5834039E2B99C99C00318BB8 /* ChooseAdditionalServicesViewController.swift */,
 				58BCBC1A2C491F1B00465381 /* SideMenuPaymentsViewController.swift */,
 				58AE87B82C513591004A99D6 /* PaymentNetworkManager.swift */,
 				58F2C6E82C5CCA3B0028538C /* SavedCards.swift */,
-				58EB43682CAC1D7E00489137 /* PaymentSuccessViewController.swift */,
 			);
 			path = Payment;
 			sourceTree = "<group>";
@@ -1653,9 +1664,9 @@
 		58BEF25A2C47DDC500C78CF4 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				586F732F2CAE73A30006B24D /* Extension + String.swift */,
 				58BEF2652C47DE7600C78CF4 /* UITextView.swift */,
 				58BEF25B2C47DDC500C78CF4 /* Date.swift */,
-				58BEF25C2C47DDC500C78CF4 /* Extension + String.swift */,
 				58BEF25D2C47DDC500C78CF4 /* ImageView.swift */,
 				58BEF25E2C47DDC500C78CF4 /* UILabel.swift */,
 				58BEF25F2C47DDC500C78CF4 /* AppDelegate+Extension.swift */,
@@ -1667,6 +1678,9 @@
 		58BF851A2B8735D8009FF06C /* Response */ = {
 			isa = PBXGroup;
 			children = (
+				586F733B2CAE74D80006B24D /* CardPaymentResponseModel.swift */,
+				586F733A2CAE74D80006B24D /* PaymentCallBacklResponse.swift */,
+				586F73392CAE74D80006B24D /* RecurringCallBackResponseModel.swift */,
 				58E05E272B861FC100189E99 /* LogInResponse.swift */,
 				58BF85202B87518E009FF06C /* ForgotPasswordResponse.swift */,
 				58BF85242B875E4D009FF06C /* SignUpResponse.swift */,
@@ -1714,9 +1728,6 @@
 				58CEEFB02C60B38A00890989 /* GetAllBookingsResponseModel.swift */,
 				581330002C75BB730017C84D /* SearchResponseModel.swift */,
 				580668C12C90B6BF007517B0 /* ShortTermOfficeBookingDetailsResponseModel.swift */,
-				58F301792CA562C30022B287 /* CardPaymentResponseModel.swift */,
-				58E9AAD22CA6F58000FD96A8 /* RecurringCallBackResponseModel.swift */,
-				58EB436C2CAC3DBA00489137 /* PaymentCallBacklResponse.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -1724,6 +1735,8 @@
 		58BF851B2B8735E2009FF06C /* Request */ = {
 			isa = PBXGroup;
 			children = (
+				586F73342CAE74410006B24D /* CardPaymentRequestModel.swift */,
+				586F73332CAE74410006B24D /* RecurringCallBackRequestModel.swift */,
 				58BF851C2B873609009FF06C /* LoginRequestModel.swift */,
 				58BF851E2B874FA4009FF06C /* ForgotPasswordRequestModel.swift */,
 				58BF85222B875D5B009FF06C /* SignUpRequestModel.swift */,
@@ -1756,9 +1769,6 @@
 				58F2C6EA2C5CF5990028538C /* couponRequestModel.swift */,
 				58F2C6F02C5D281D0028538C /* UpdateVisitorsRequestModel.swift */,
 				58CEEFAE2C60B2FA00890989 /* GetAllBookingsRequestModel.swift */,
-				58F301772CA55EC00022B287 /* CardPaymentRequestModel.swift */,
-				58E9AAD02CA6F4FC00FD96A8 /* RecurringCallBackRequestModel.swift */,
-				58EB436A2CAC3D9E00489137 /* PaymentCallBackRequest.swift */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -2041,6 +2051,8 @@
 		EE3B78252C55091800706F16 /* Membership */ = {
 			isa = PBXGroup;
 			children = (
+				586F733F2CAE75450006B24D /* SelectPlanTypeLableTableViewCell.swift */,
+				586F73402CAE75450006B24D /* SelectPlanTypeLableTableViewCell.xib */,
 				EEAB979F2C522ADC00BD5E0D /* MembershipViewController.swift */,
 				EEAB97A12C5233A800BD5E0D /* MembershipTabItem.swift */,
 				EEAB97A32C52379400BD5E0D /* PlanTypeViewController.swift */,
@@ -2064,8 +2076,8 @@
 				EE3DCE9D2C5B4E8D00B884BC /* MembershipTableViewCell.xib */,
 				5883E7012C5BE57400299927 /* PaymentSummaryHeaderTableViewCell.swift */,
 				5883E7022C5BE57400299927 /* PaymentSummaryHeaderTableViewCell.xib */,
-				5897A0CD2C96D109005366E0 /* SelectPlanTypeLableTableViewCell.swift */,
-				5897A0CE2C96D109005366E0 /* SelectPlanTypeLableTableViewCell.xib */,
+				58FEAFC22CB02046008F6099 /* TermsAndConditionsTableViewCell.swift */,
+				58FEAFC32CB02046008F6099 /* TermsAndConditionsTableViewCell.xib */,
 			);
 			path = Membership;
 			sourceTree = "<group>";
@@ -2125,7 +2137,6 @@
 			knownRegions = (
 				en,
 				Base,
-				ar,
 			);
 			mainGroup = 588D8A652B627A6B00545748;
 			packageReferences = (
@@ -2182,6 +2193,7 @@
 				58E2D0CC2BBA6A610016DEB6 /* Profile.storyboard in Resources */,
 				58E6E9542B88A5DF00EB3600 /* MyBookingOpenTableViewCell.xib in Resources */,
 				589FB6A72B7644A90067255E /* OFL.txt in Resources */,
+				58A7DF412CAFF29900CF58FE /* NotificationDescTableViewCell.xib in Resources */,
 				583403992B99A13E00318BB8 /* PayWithRewardPointsTableViewCell.xib in Resources */,
 				58E6E95A2B88BEFB00EB3600 /* MarketPlaceCollectionViewCell.xib in Resources */,
 				583403A52B99CB2500318BB8 /* ChooseAdditionalServicesTableViewCell.xib in Resources */,
@@ -2249,6 +2261,7 @@
 				589FB6A62B7644A90067255E /* Poppins-BlackItalic.ttf in Resources */,
 				580593252C4FD98F00FE18B2 /* floorPlanCollectionViewCell.xib in Resources */,
 				581F30BA2BBFBE0E0083A400 /* VisitorsListableViewCell.xib in Resources */,
+				58FEAFC52CB02046008F6099 /* TermsAndConditionsTableViewCell.xib in Resources */,
 				580668BE2C90880D007517B0 /* OrdeDetailsWebViewTableViewCell.xib in Resources */,
 				58E6E9612B89D99B00EB3600 /* DashboardMarketPlaceTableViewCell.xib in Resources */,
 				58D584942B96F2FB00D17D0A /* BookingConfirmedLocationTableViewCell.xib in Resources */,
@@ -2274,7 +2287,7 @@
 				58EB0E472BB6D62600DC2827 /* SideMenuCell.xib in Resources */,
 				58713EAB2BC926550012DD4E /* SelectDesksTableViewCell.xib in Resources */,
 				58A16CD42BBC7D5B0003DD50 /* LocationOpenTableViewCell.xib in Resources */,
-				5897A0D02C96D109005366E0 /* SelectPlanTypeLableTableViewCell.xib in Resources */,
+				586F73422CAE75450006B24D /* SelectPlanTypeLableTableViewCell.xib in Resources */,
 				589FB6A02B7644A90067255E /* Poppins-BoldItalic.ttf in Resources */,
 				589BBAA12BBBEF3D00DCEF70 /* FAQTitleTableViewCell.xib in Resources */,
 				58713EB52BC94AA20012DD4E /* InviteGuestsCollectionViewCell.xib in Resources */,
@@ -2358,7 +2371,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				58BCBC1F2C49281C00465381 /* PaymentDateTableViewCell.swift in Sources */,
+				58A7DF402CAFF29900CF58FE /* NotificationDescTableViewCell.swift in Sources */,
 				583403A92B99CE3F00318BB8 /* ProvideRequirementDetailsTableViewCell.swift in Sources */,
+				586F733E2CAE74D80006B24D /* CardPaymentResponseModel.swift in Sources */,
 				58D5848A2B96DA1400D17D0A /* AddTeamMemberViewController.swift in Sources */,
 				5805931A2C4F92DE00FE18B2 /* ViewFloorPlanViewController.swift in Sources */,
 				58E6E94F2B88A5C500EB3600 /* MyBookingCloseTableViewCell.swift in Sources */,
@@ -2374,8 +2389,10 @@
 				58B33B7B2C5A051200DBEA34 /* SocialLoginRequestModel.swift in Sources */,
 				58F2C6ED2C5CF5DD0028538C /* CouponResponseModel.swift in Sources */,
 				582A272F2C462E7A00CD5729 /* AddPaymentMethodTableViewCell.swift in Sources */,
+				58FEAFC42CB02046008F6099 /* TermsAndConditionsTableViewCell.swift in Sources */,
 				58E6E96C2B89E0E500EB3600 /* RSOMarketPlaceCollectionView.swift in Sources */,
 				586FA70D2BBC354E00EA2772 /* GalleryTableViewCell.swift in Sources */,
+				586F73362CAE74410006B24D /* CardPaymentRequestModel.swift in Sources */,
 				58F2C6E72C5C975A0028538C /* PhoneCallUtility.swift in Sources */,
 				582591042BBEE0700011ECDA /* MyBookingDateHeaderView.swift in Sources */,
 				58B33B892C5A234300DBEA34 /* GalleryEndPoint.swift in Sources */,
@@ -2395,6 +2412,7 @@
 				583403AD2B99EFC100318BB8 /* CancelAndRequestButtonTableViewCell.swift in Sources */,
 				58AE87B72C50FF6D004A99D6 /* CouponDetailsResponseModel.swift in Sources */,
 				58049DA02C591BE000314E7A /* FeedbackResponseModel.swift in Sources */,
+				586F733D2CAE74D80006B24D /* PaymentCallBacklResponse.swift in Sources */,
 				5883339C2B7E27A2008334A0 /* SignUpViewController.swift in Sources */,
 				58E6E9432B88766F00EB3600 /* ConciergeViewController.swift in Sources */,
 				58F573A72C57D129006F6594 /* exploreResponse.swift in Sources */,
@@ -2408,11 +2426,9 @@
 				EEAB97A22C5233A800BD5E0D /* MembershipTabItem.swift in Sources */,
 				58BEF2792C4815B700C78CF4 /* NotificationEndPoint.swift in Sources */,
 				589BBAA52BBBF64C00DCEF70 /* FAQResponse.swift in Sources */,
-				58F301782CA55EC00022B287 /* CardPaymentRequestModel.swift in Sources */,
 				588D8A762B627A6B00545748 /* ViewController.swift in Sources */,
 				58B4060B2BCD47380045DD4C /* PaymentTableViewCell.swift in Sources */,
 				5843D7622BC6875E00D5C8DD /* EditButtonTableViewCell.swift in Sources */,
-				5897A0CF2C96D109005366E0 /* SelectPlanTypeLableTableViewCell.swift in Sources */,
 				5864882A2BBAB58F0024CBA2 /* MyProfileEndPoint.swift in Sources */,
 				58EB0E452BB6D62600DC2827 /* SideMenuMainViewController.swift in Sources */,
 				58B406012BCCFDAC0045DD4C /* DeskRequestModel.swift in Sources */,
@@ -2430,7 +2446,6 @@
 				581D97D72BA2D3AD00EDDC3B /* PaymentRequestModel.swift in Sources */,
 				583D9DF32B90831B0073AAC3 /* BookMeetingRoomViewController.swift in Sources */,
 				58713EAA2BC926550012DD4E /* SelectDesksTableViewCell.swift in Sources */,
-				58F3017A2CA562C40022B287 /* CardPaymentResponseModel.swift in Sources */,
 				58F2635C2BAC211A00AEDEC9 /* BrowseMembersViewController.swift in Sources */,
 				58BF2F192B8C967000620846 /* SearchRSOViewController.swift in Sources */,
 				58E2D0DD2BBA7E110016DEB6 /* MembershipPlanTableViewCell.swift in Sources */,
@@ -2473,7 +2488,6 @@
 				58C4812F2BB3E2ED0084CD6B /* rsvpResponse.swift in Sources */,
 				583403A02B99C99C00318BB8 /* ChooseAdditionalServicesViewController.swift in Sources */,
 				EEAB97A02C522ADC00BD5E0D /* MembershipViewController.swift in Sources */,
-				58BEF2612C47DDC500C78CF4 /* Extension + String.swift in Sources */,
 				583DBEBF2BB1447700C3F93B /* CommuneEndPoint.swift in Sources */,
 				58CE5FF82C5243B000278890 /* ShortTermBookAnOfficeViewController.swift in Sources */,
 				58BB6B012B983BCB001E1F3D /* TagFlowLayout.swift in Sources */,
@@ -2481,6 +2495,7 @@
 				58D584AF2B96F49700D17D0A /* ButtonEditTableViewCell.swift in Sources */,
 				5883339A2B7E1C0B008334A0 /* ForgotPasswordViewController.swift in Sources */,
 				58ED2D212B8F4F9E004D06C8 /* MyBookingRequestModel.swift in Sources */,
+				586F73382CAE74A80006B24D /* PaymentSuccessViewController.swift in Sources */,
 				58BB6B1A2B986D1B001E1F3D /* MeetingTimeTableViewCell.swift in Sources */,
 				586FA7082BBC34B500EA2772 /* AmenitiesViewController.swift in Sources */,
 				588D8A742B627A6B00545748 /* SceneDelegate.swift in Sources */,
@@ -2494,18 +2509,15 @@
 				58E6F7132BA8268A009D4E21 /* ProvideDetailsOfIssueTableViewCell.swift in Sources */,
 				58BCFBB42B7A215F00342275 /* LogInViewController.swift in Sources */,
 				58BF85212B87518F009FF06C /* ForgotPasswordResponse.swift in Sources */,
-				58EB436D2CAC3DBA00489137 /* PaymentCallBacklResponse.swift in Sources */,
 				58713EA62BC90A820012DD4E /* DeskBookingViewController.swift in Sources */,
 				58F261C72BBD9A2F00A5D633 /* VisitorsTableViewCell.swift in Sources */,
 				58BEF2642C47DDC500C78CF4 /* AppDelegate+Extension.swift in Sources */,
 				58E05E262B8619AB00189E99 /* DeskEndPoint.swift in Sources */,
 				58D513342BCA4C2C00B87739 /* PaymentRoomBookingRequest.swift in Sources */,
-				58EB436B2CAC3D9E00489137 /* PaymentCallBackRequest.swift in Sources */,
 				58EB2CEC2BA567CA00D69C46 /* OnDemandServiceCollectionViewCell.swift in Sources */,
 				58BEF2752C48047600C78CF4 /* BookOfficeRequestModel.swift in Sources */,
 				58EB0E482BB6D62600DC2827 /* SideMenuCell.swift in Sources */,
 				EEA44D812C4805530081EE0D /* RSOToastView.swift in Sources */,
-				58E9AAD12CA6F4FC00FD96A8 /* RecurringCallBackRequestModel.swift in Sources */,
 				58F88E402BA8230200771268 /* ReportAnIssueViewController.swift in Sources */,
 				580418092BD0F004008EA858 /* ConfirmedDeskBookingViewController.swift in Sources */,
 				58399EA92C4E41E700B7B565 /* PaymentResponseModel.swift in Sources */,
@@ -2574,11 +2586,10 @@
 				58696B0F2BAD8C1300937A4F /* FindMembersCardViewController.swift in Sources */,
 				583D9DFE2B90A2190073AAC3 /* LocationEndPoint.swift in Sources */,
 				58E6E9382B88714D00EB3600 /* RSOTab.swift in Sources */,
-				58EB43692CAC1D7E00489137 /* PaymentSuccessViewController.swift in Sources */,
-				58E9AAD32CA6F58000FD96A8 /* RecurringCallBackResponseModel.swift in Sources */,
 				58E2D0D92BBA7B0E0016DEB6 /* ChangePasswordTableViewCell.swift in Sources */,
 				5805931C2C4F98AE00FE18B2 /* DeskDetailsResponseModel.swift in Sources */,
 				58049D9C2C5908CD00314E7A /* changePasswordResponseModel.swift in Sources */,
+				586F733C2CAE74D80006B24D /* RecurringCallBackResponseModel.swift in Sources */,
 				58713EB42BC94AA20012DD4E /* InviteGuestsCollectionViewCell.swift in Sources */,
 				58374A482B84D53400CA34C5 /* RSOView.swift in Sources */,
 				58B405FB2BCCEABC0045DD4C /* StoreRoomBookingRequest.swift in Sources */,
@@ -2586,6 +2597,7 @@
 				58E6E93F2B88763700EB3600 /* DashboardViewController.swift in Sources */,
 				58B33B812C5A128300DBEA34 /* AddPaymentMethodViewController.swift in Sources */,
 				58BF851F2B874FA4009FF06C /* ForgotPasswordRequestModel.swift in Sources */,
+				586F73412CAE75450006B24D /* SelectPlanTypeLableTableViewCell.swift in Sources */,
 				58049D982C59056300314E7A /* ChangePasswordViewController.swift in Sources */,
 				58696B0D2BAD833800937A4F /* RSVPButtonViewController.swift in Sources */,
 				58F4584B2B91DB2900CF8AFA /* MeetingRoomsCollectionViewCell.swift in Sources */,
@@ -2601,6 +2613,7 @@
 				58CF20872C53E4E50070538A /* DisplayQRCodeViewController.swift in Sources */,
 				58E6E9562B88BE6A00EB3600 /* MarketPlaceViewController.swift in Sources */,
 				58B461542B8096F100C3FF21 /* RSOController.swift in Sources */,
+				586F73302CAE73A30006B24D /* Extension + String.swift in Sources */,
 				58CF119A2BA9502800B95EE9 /* Service.swift in Sources */,
 				58A16CD32BBC7D5B0003DD50 /* LocationOpenTableViewCell.swift in Sources */,
 				58C9AC022B8DC41300C719D1 /* BookMeetingRoomTableViewCell.swift in Sources */,
@@ -2663,7 +2676,7 @@
 				58132FFF2C75B8940017C84D /* SearchEndPoint.swift in Sources */,
 				58B33B8B2C5A319500DBEA34 /* LocationGalleryResponseModel.swift in Sources */,
 				58F573A12C57BD5C006F6594 /* ShortTermPaymentOfficeBookingRequestModel.swift in Sources */,
-				58ACDB3B2B78D10A0041B755 /* RSOConstants.swift in Sources */,
+				58ACDB3B2B78D10A0041B755 /* Constants.swift in Sources */,
 				EE3B78272C550C6B00706F16 /* SelectedMembershipData.swift in Sources */,
 				58B6A7CA2BCE5412008A2286 /* StatusTypeEnum.swift in Sources */,
 				58BE5E682B8C6FBF002244F5 /* RSOMeetingRoomsCollectionView.swift in Sources */,
@@ -2672,6 +2685,7 @@
 				58F5739E2C578A47006F6594 /* OfficeTypeTableViewCell.swift in Sources */,
 				58ED2D1F2B8F4C1D004D06C8 /* MyBookingEndPoint.swift in Sources */,
 				EEDF1C842C5C8DB700CBCCF5 /* CustomHeaderView.swift in Sources */,
+				586F73322CAE74140006B24D /* PaymentCallBackRequest.swift in Sources */,
 				58B33B872C5A190900DBEA34 /* PaymentMethodEndPoint.swift in Sources */,
 				EEE105B52C49256B007ECE4D /* RSOLoader.swift in Sources */,
 				586FA7042BBC28DA00EA2772 /* aboutRSOTableViewCell.swift in Sources */,
@@ -2682,6 +2696,7 @@
 				58E6E9532B88A5DF00EB3600 /* MyBookingOpenTableViewCell.swift in Sources */,
 				581F30AC2BBFBB580083A400 /* ScheduledVisitorDetatailsViewController.swift in Sources */,
 				58D7749A2C95949900BE96FF /* DateTimeManager.swift in Sources */,
+				586F73352CAE74410006B24D /* RecurringCallBackRequestModel.swift in Sources */,
 				58E6E9682B89D9E200EB3600 /* DashboardMeetingRoomsTableViewCell.swift in Sources */,
 				5843D75B2BC6768C00D5C8DD /* ScheduleVisitorResponse.swift in Sources */,
 				5864882F2BBAD2CD0024CBA2 /* FeedbackViewController.swift in Sources */,
@@ -2841,7 +2856,7 @@
 				CODE_SIGN_ENTITLEMENTS = RSOWorkspace/RSOWorkspace.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 21;
+				CURRENT_PROJECT_VERSION = 25;
 				DEVELOPMENT_TEAM = D2BKM938GX;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				"EXCLUDED_ARCHS[sdk=*]" = "";
@@ -2878,7 +2893,7 @@
 				CODE_SIGN_ENTITLEMENTS = RSOWorkspace/RSOWorkspace.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 21;
+				CURRENT_PROJECT_VERSION = 25;
 				DEVELOPMENT_TEAM = D2BKM938GX;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;

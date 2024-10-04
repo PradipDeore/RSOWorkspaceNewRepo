@@ -11,7 +11,7 @@ class NotificationTableViewCell: UITableViewCell {
 
     
     @IBOutlet weak var imgNotification: UIImageView!
-    @IBOutlet weak var lblDescription: UILabel!
+    @IBOutlet weak var lblTitle: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -24,7 +24,7 @@ class NotificationTableViewCell: UITableViewCell {
                 self.imgNotification.kf.setImage(with: imageUrl)
             }
         }
-        self.lblDescription.text = item.description
+        self.lblTitle.text = item.name
     }
    
 }

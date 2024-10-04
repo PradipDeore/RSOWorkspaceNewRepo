@@ -150,7 +150,7 @@ extension BookMeetingRoomViewController: UITableViewDataSource, UITableViewDeleg
                 switch event {
                 case .dataLoaded:
                     if list?.isEmpty == true {
-                        RSOToastView.shared.show("No Rooms Available", duration: 2.0, position: .center)
+                        RSOToastView.shared.show("No Rooms For Selected Date And Time ", duration: 2.0, position: .center)
                     }
                 case .error(let error):
                     RSOToastView.shared.show("Error: \(error.localizedDescription)", duration: 2.0, position: .center)

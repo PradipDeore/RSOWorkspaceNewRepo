@@ -31,12 +31,17 @@
                         </constraints>
                     </imageView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eKx-KJ-Wg0">
-                        <rect key="frame" x="25" y="78" width="300" height="1"/>
+                        <rect key="frame" x="25" y="78" width="298" height="1"/>
                         <color key="backgroundColor" name="BFBFBF"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="300" id="T4C-0Y-FVV"/>
                             <constraint firstAttribute="height" constant="1" id="z3L-NS-wwk"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="T4C-0Y-FVV"/>
+                            </mask>
+                        </variation>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor." textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gp2-Ba-qYX">
                         <rect key="frame" x="86" y="10" width="242" height="48"/>
@@ -48,6 +53,8 @@
                 <constraints>
                     <constraint firstItem="gp2-Ba-qYX" firstAttribute="centerY" secondItem="8zj-Cr-8GC" secondAttribute="centerY" id="1EM-Me-gCP"/>
                     <constraint firstItem="eKx-KJ-Wg0" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="25" id="EU9-gx-pDz"/>
+                    <constraint firstItem="eKx-KJ-Wg0" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="25" id="Gog-H3-W49"/>
+                    <constraint firstAttribute="trailing" secondItem="eKx-KJ-Wg0" secondAttribute="trailing" constant="25" id="HDn-FT-2y4"/>
                     <constraint firstItem="eKx-KJ-Wg0" firstAttribute="top" secondItem="gp2-Ba-qYX" secondAttribute="bottom" constant="20" id="RX8-UQ-TAi"/>
                     <constraint firstItem="8zj-Cr-8GC" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="14" id="WcH-m3-bdn"/>
                     <constraint firstItem="8zj-Cr-8GC" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="25" id="aTf-vG-Ql2"/>
@@ -55,12 +62,17 @@
                     <constraint firstItem="gp2-Ba-qYX" firstAttribute="leading" secondItem="8zj-Cr-8GC" secondAttribute="trailing" constant="21" id="rex-5a-zZ4"/>
                     <constraint firstAttribute="trailing" secondItem="gp2-Ba-qYX" secondAttribute="trailing" constant="20" id="zKT-9P-zOZ"/>
                 </constraints>
+                <variation key="default">
+                    <mask key="constraints">
+                        <exclude reference="EU9-gx-pDz"/>
+                    </mask>
+                </variation>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
                 <outlet property="imgNotification" destination="8zj-Cr-8GC" id="pqR-eL-nSq"/>
-                <outlet property="lblDescription" destination="gp2-Ba-qYX" id="dNt-qH-cy5"/>
+                <outlet property="lblTitle" destination="gp2-Ba-qYX" id="dNt-qH-cy5"/>
             </connections>
             <point key="canvasLocation" x="122.13740458015266" y="5.6338028169014089"/>
         </tableViewCell>

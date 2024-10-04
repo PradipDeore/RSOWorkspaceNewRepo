@@ -7,15 +7,6 @@
 
 import UIKit
 
-//
-//  PaymentViewController.swift
-//  RSOWorkspace
-//
-//  Created by Sumit Aquil on 06/03/24.
-//
-
-import UIKit
-
 enum BookingType {
     case meetingRoom
     case desk
@@ -26,8 +17,6 @@ struct orderSummaryItem{
     let price:String?
 }
 class PaymentViewController: UIViewController{
-    
-    
     
     var coordinator: RSOTabBarCordinator?
     var bookingId: Int = 0
@@ -62,6 +51,7 @@ class PaymentViewController: UIViewController{
         (.totalCell, 115),
         //(.discount, 60),
         (.paymentMethods, 136),//97
+        (.termsAndCondtions, 63),
         (.buttonPayNow, 80)
     ]
     
@@ -571,6 +561,11 @@ extension PaymentViewController: UITableViewDataSource, UITableViewDelegate {
             }
             return cell
             
+        case .termsAndCondtions:
+            let cell = tableView.dequeueReusableCell(withIdentifier: cellType.rawValue, for: indexPath) as! TermsAndConditionsTableViewCell
+            cell.selectionStyle = .none
+            cell.contentView.backgroundColor = .F_2_F_2_F_2
+            return cell
         }
         
         
@@ -598,6 +593,7 @@ extension PaymentViewController {
         case paymentMethods = "PaymentMethodTableViewCell"
         case buttonPayNow = "ButtonPayNowTableViewCell"
         case roomBookingOrderDetails = "OrderDetailTableViewCell2"
+        case termsAndCondtions = "TermsAndConditionsTableViewCell"
     }
 }
 
