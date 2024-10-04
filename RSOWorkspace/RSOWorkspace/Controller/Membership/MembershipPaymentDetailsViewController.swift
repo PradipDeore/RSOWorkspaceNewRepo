@@ -14,7 +14,8 @@ class MembershipPaymentDetailsViewController: UIViewController, MembershipNaviga
   let headerIdentifier =  "PaymentSummaryHeaderTableViewCell"
     let termsAndConditionIdentifier = "TermsAndConditionsTableViewCell"
   var membershipNavigationDelegate: MembershipNavigationDelegate?
-  
+    var isTermsAccepted = false // This flag will track the checkbox state.
+
   override func viewDidLoad() {
     super.viewDidLoad()
     tableView.register(UINib(nibName: identifier, bundle: nil), forCellReuseIdentifier: identifier)
@@ -29,6 +30,11 @@ class MembershipPaymentDetailsViewController: UIViewController, MembershipNaviga
     self.tableView.reloadData()
   }
   @IBAction func continueAction(_ sender: Any) {
+      // Check if the Terms and Conditions are accepted
+             if !isTermsAccepted {
+                 RSOToastView.shared.show("Please agree to the Terms and Conditions before proceeding", duration: 2.0, position: .center)
+                 return
+             }
     submitPlan()
   }
   func submitPlan() {
@@ -82,12 +88,12 @@ extension MembershipPaymentDetailsViewController: UITableViewDataSource, UITable
       if indexPath.section == 0 {
           let cell = tableView.dequeueReusableCell(withIdentifier: headerIdentifier, for: indexPath) as! PaymentSummaryHeaderTableViewCell
           cell.selectionStyle = .none
+        
           return cell
       }else if indexPath.section == 1 {
           
           let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as! PaymentSummaryTableViewCell
           cell.selectionStyle = .none
-          
           switch indexPath.row {
           case 0:
               cell.summaryTitleLabel.text = "Package Name"
@@ -113,6 +119,8 @@ extension MembershipPaymentDetailsViewController: UITableViewDataSource, UITable
       }else{
           let cell = tableView.dequeueReusableCell(withIdentifier: termsAndConditionIdentifier, for: indexPath) as! TermsAndConditionsTableViewCell
           cell.selectionStyle = .none
+          cell.delegate = self // Set delegate
+
           return cell
       }
       return UITableViewCell()
@@ -133,3 +141,16 @@ extension MembershipPaymentDetailsViewController: UITableViewDataSource, UITable
   }
 }
 
+extension MembershipPaymentDetailsViewController: TermsAndConditionsDelegate {
+    func didToggleTermsCheckbox(isSelected: Bool) {
+        isTermsAccepted = isSelected
+
+        // Handle the checkbox selection state
+        if isSelected {
+
+            print("Terms and Conditions accepted")
+        } else {
+            print("Terms and Conditions not accepted")
+        }
+    }
+}

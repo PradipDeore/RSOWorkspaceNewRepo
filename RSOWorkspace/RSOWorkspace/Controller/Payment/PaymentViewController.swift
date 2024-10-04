@@ -18,6 +18,8 @@ struct orderSummaryItem{
 }
 class PaymentViewController: UIViewController{
     
+    var isTermsAccepted = false // This flag will track the checkbox state.
+
     var coordinator: RSOTabBarCordinator?
     var bookingId: Int = 0
     @IBOutlet weak var tableView: UITableView!
@@ -564,6 +566,7 @@ extension PaymentViewController: UITableViewDataSource, UITableViewDelegate {
         case .termsAndCondtions:
             let cell = tableView.dequeueReusableCell(withIdentifier: cellType.rawValue, for: indexPath) as! TermsAndConditionsTableViewCell
             cell.selectionStyle = .none
+            cell.delegate = self // Set delegate
             cell.contentView.backgroundColor = .F_2_F_2_F_2
             return cell
         }
@@ -599,6 +602,12 @@ extension PaymentViewController {
 
 extension PaymentViewController: ButtonPayNowTableViewCellDelegate {
     func btnPayNowTappedAction() {
+        // Check if the Terms and Conditions are accepted
+               if !isTermsAccepted {
+                   RSOToastView.shared.show("Please agree to the Terms and Conditions before proceeding", duration: 2.0, position: .center)
+                   return
+               }
+        
         print("Is Social Login User: \(UserHelper.shared.isSocialLoginUser())")
 
             if UserHelper.shared.isUserExplorer() {
@@ -660,6 +669,19 @@ extension PaymentViewController: LoginScreenActionDelegate {
     }
 }
 
+extension PaymentViewController: TermsAndConditionsDelegate {
+    func didToggleTermsCheckbox(isSelected: Bool) {
+        isTermsAccepted = isSelected
+
+        // Handle the checkbox selection state
+        if isSelected {
+
+            print("Terms and Conditions accepted")
+        } else {
+            print("Terms and Conditions not accepted")
+        }
+    }
+}
 
 
 
