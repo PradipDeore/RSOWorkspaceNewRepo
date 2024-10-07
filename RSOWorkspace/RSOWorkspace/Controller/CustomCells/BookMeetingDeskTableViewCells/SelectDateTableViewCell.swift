@@ -65,10 +65,11 @@ class SelectDateTableViewCell: UITableViewCell {
                 }
             case .meetingRoom, .office:
                 UserHelper.shared.saveSelectedDateByuser(selectedDate)
-                
                 delegate?.didSelectDate(selectedDate)
-                
             }
+        } else {
+            UserHelper.shared.saveSelectedDateByuser(selectedDate)
+            delegate?.didSelectDate(selectedDate)
         }
 
         // Update the label with the month name

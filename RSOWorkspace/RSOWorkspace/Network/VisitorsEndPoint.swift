@@ -13,6 +13,7 @@ enum VisitorsEndPoint {
     case scheduleVisitors(requestModel : ScheduleVisitorsRequest)
     case myVisitors(date:String)
     case updateVisitors(requestModel : UpdateVisitorsRequestModel)
+    case cancelVisitor(visitorId:Int)
 
 }
 extension VisitorsEndPoint: EndPointType {
@@ -27,6 +28,8 @@ extension VisitorsEndPoint: EndPointType {
             return "my-visitors?date=\(date)"
         case .updateVisitors:
             return "edit-visitor-schedule"
+        case .cancelVisitor(let visitorId):
+            return "visitor-status/\(visitorId)"
         }
     }
   
@@ -44,6 +47,8 @@ extension VisitorsEndPoint: EndPointType {
             return .get
         case .updateVisitors:
             return .post
+        case .cancelVisitor(visitorId: let visitorId):
+            return .get
         }
     }
     
@@ -57,6 +62,8 @@ extension VisitorsEndPoint: EndPointType {
             return nil
         case .updateVisitors(let requestModel):
             return requestModel
+        case .cancelVisitor(visitorId: let visitorId):
+            return nil
         }
     }
     

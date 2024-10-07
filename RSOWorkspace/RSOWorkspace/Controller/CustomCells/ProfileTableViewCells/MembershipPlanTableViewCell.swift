@@ -59,22 +59,36 @@ class MembershipPlanTableViewCell: UITableViewCell {
     }
     func setData(item: MyProfile){
         self.profileDetails = item
-        if item.data.membershipName != nil{
+        if item.data.membershipName != nil {
             
-            self.lblPlanType.text = "\(item.data.planType ?? "")"
             self.titleLabelPlanType.isHidden = false
             self.titleLabelPlanLength.isHidden = false
             self.titleLabelMonthlyCost.isHidden = false
             self.titleLableMonthlyAccessibleDays.isHidden = false
             self.lblPlanLength.text = "\(item.data.planLength ?? "") Months"
+            self.lblPlanType.text = "\(item.data.planType ?? "")"
+
             self.lblMonthlyAccessibleDays.text = item.data.monthlyAccessibleDays
             self.lblMonthlyCost.text = "AED \(item.data.monthlyCost ?? "")"
             self.lblMembershipPlan.text = item.data.membershipName
             
             self.btnRenewPlan.isHidden = false
             self.btnBuyMemberShip.isHidden = true
+        }else if UserHelper.shared.isSocialLoginUser(){
+            self.lblMembershipPlan.text = "no active membership"
+            self.lblPlanType.isHidden = true
+            self.lblPlanLength.isHidden = true
+            self.lblMonthlyAccessibleDays.isHidden = true
+            self.lblMonthlyCost.isHidden = true
+            self.titleLabelPlanType.isHidden = true
+            self.titleLabelPlanLength.isHidden = true
+            self.titleLabelMonthlyCost.isHidden = true
+            self.titleLableMonthlyAccessibleDays.isHidden = true
+            
+            self.btnBuyMemberShip.isHidden = false
+            self.btnRenewPlan.isHidden = true
         }else{
-            self.lblMembershipPlan.text = "No Active Membership"
+            self.lblMembershipPlan.text = "no active membership"
             self.lblPlanType.isHidden = true
             self.lblPlanLength.isHidden = true
             self.lblMonthlyAccessibleDays.isHidden = true
@@ -87,15 +101,16 @@ class MembershipPlanTableViewCell: UITableViewCell {
             self.btnBuyMemberShip.isHidden = false
             self.btnRenewPlan.isHidden = true
         }
-        
-        
-        // Load the QR code image from the URL
-        if let qrCodeUrlString = item.data.qrCodeUrl, let qrCodeUrl = URL(string: qrCodeUrlString) {
-            self.imgQRCode.kf.setImage(with: qrCodeUrl)
-        } else {
-            // Handle case where QR code URL is not available or valid
-            self.imgQRCode.image = UIImage(named: "dmmy")
-        }
+      
+        if let qrCodeUrlString = item.qrCodeUrl {
+               print("QR Code URL: \(qrCodeUrlString)") // Check the URL being passed
+               if let qrCodeUrl = URL(string: qrCodeUrlString) {
+                   self.imgQRCode.kf.setImage(with: qrCodeUrl)
+               }
+           } else {
+               print("QR Code URL is nil")
+               self.imgQRCode.image = UIImage(named: "dummyQRCode")
+           }
         
     }
     
@@ -107,4 +122,5 @@ class MembershipPlanTableViewCell: UITableViewCell {
         delegate?.navigateToDisplayMembershipPlans()
         
     }
+       
 }

@@ -5,15 +5,21 @@
 //  Created by Sumit Aquil on 05/04/24.
 //
 
+
+protocol ScheduledVisitorDetailsProtocol: AnyObject {
+    func didUpdateSuccessfully()
+}
 import UIKit
 import Toast_Swift
+
 class ScheduledVisitorDetatailsViewController: UIViewController {
     
     var displayscheduleVisitorsDetails : DisplayScheduleVisitorsDetailModel!
     var requestModel : ScheduleVisitorsRequest!
     var updateVisitorRequestModel : UpdateVisitorsRequestModel?
     var displayEditedscheduleVisitorsDetails : DisplayScheduleVisitorsEditDetailModel!
-    
+    var onDismiss: (() -> Void)?
+
     var coordinator: RSOTabBarCordinator?
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var containerView: UIView!
@@ -36,6 +42,7 @@ class ScheduledVisitorDetatailsViewController: UIViewController {
     private let cellHeights: [CGFloat] = [70, 70, 25, 32, 70, 40, 40]
     
     var bookingConfirmDetails : ConfirmBookingRequestModel?
+    weak var scheduledVisitorDetailsDelegate: ScheduledVisitorDetailsProtocol?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,6 +77,7 @@ class ScheduledVisitorDetatailsViewController: UIViewController {
                         DispatchQueue.main.async {
                             RSOToastView.shared.show("\(response.message)", duration: 2.0, position: .center)
                             // Wait for 2 seconds (or the duration of the toast) before dismissing the view
+                            self.scheduledVisitorDetailsDelegate?.didUpdateSuccessfully()
                             DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
                                 self.dismiss(animated: true) {
                                     // Optionally reload the table view after dismissing
@@ -100,7 +108,7 @@ class ScheduledVisitorDetatailsViewController: UIViewController {
                             // Status is true, display success message
                             let message = responseData.message ?? "Update successful"
                             RSOToastView.shared.show(message, duration: 2.0, position: .center)
-                            
+                            self.scheduledVisitorDetailsDelegate?.didUpdateSuccessfully()
                             // Wait for 2 seconds before dismissing and reloading
                             DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
                                 self.dismiss(animated: true) {
@@ -228,7 +236,7 @@ extension ScheduledVisitorDetatailsViewController: UITableViewDataSource, UITabl
             let cell = tableView.dequeueReusableCell(withIdentifier: cellType.rawValue, for: indexPath) as! VisitorsListableViewCell
             let visitorEmail: String?
                 
-                if isEditMode {
+            if isEditMode {
                     visitorEmail = displayEditedscheduleVisitorsDetails?.visitors[indexPath.row].visitor_email
                 } else {
                     visitorEmail = displayscheduleVisitorsDetails?.visitors[indexPath.row].visitor_email
@@ -276,9 +284,9 @@ extension ScheduledVisitorDetatailsViewController {
     }
 }
 extension ScheduledVisitorDetatailsViewController:EditButtonTableViewCellDelegate{
-    func navigateScheduleVisitors() {
-        self.dismiss(animated:true)
-    }
+        func navigateScheduleVisitors() {
+            self.dismiss(animated:true)
+        }
 }
 
 extension ScheduledVisitorDetatailsViewController:ConfirmAndProceedTableViewCellDelegate{

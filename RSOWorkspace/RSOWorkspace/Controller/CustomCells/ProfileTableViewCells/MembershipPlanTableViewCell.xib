@@ -9,11 +9,11 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <array key="Inter-Regular.ttf">
+            <string>Inter-Regular</string>
+        </array>
         <array key="Inter-SemiBold.ttf">
             <string>Inter-SemiBold</string>
-        </array>
-        <array key="Inter-VariableFont_slnt,wght.ttf">
-            <string>Inter-Regular</string>
         </array>
         <array key="Poppins-SemiBold.ttf">
             <string>Poppins-SemiBold</string>
@@ -32,12 +32,12 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aP7-iP-IHM" userLabel="ContainerView" customClass="ShadowedView" customModule="RSOWorkspace" customModuleProvider="target">
                         <rect key="frame" x="25" y="10" width="311" height="245"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Membership Plan " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M57-16-bc5">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Membership Plan " lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M57-16-bc5">
                                 <rect key="frame" x="10" y="42" width="174" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="22" id="9Gq-fP-Q9p"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Inter-SemiBold" family="Inter" pointSize="18"/>
+                                <fontDescription key="fontDescription" name="Inter-SemiBold" family="Inter" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -132,7 +132,7 @@
                                 <color key="textColor" name="595959"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="dummyQRCode" translatesAutoresizingMaskIntoConstraints="NO" id="lx9-9S-OC1">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lx9-9S-OC1">
                                 <rect key="frame" x="192" y="12" width="103" height="76"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="76" id="OhN-ul-6lw"/>
@@ -197,7 +197,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="dummyQRCode" width="8000" height="8000"/>
         <namedColor name="000000">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

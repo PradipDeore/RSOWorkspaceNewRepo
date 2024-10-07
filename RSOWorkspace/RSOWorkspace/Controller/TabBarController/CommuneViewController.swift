@@ -10,10 +10,11 @@ import UIKit
 class CommuneViewController: UIViewController,RSOTabCoordinated{
 
     var coordinator: RSOTabBarCordinator?
-
+ 
     @IBOutlet weak var tableView: UITableView!
     var eventHandler: ((_ event: Event) -> Void)?
-
+    var searchText = ""
+   
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
@@ -38,6 +39,7 @@ class CommuneViewController: UIViewController,RSOTabCoordinated{
             tableView.register(UINib(nibName: identifier, bundle: nil), forCellReuseIdentifier: identifier)
         }
     }
+  
 }
 extension CommuneViewController: UITableViewDataSource, UITableViewDelegate {
     
@@ -123,21 +125,39 @@ extension CommuneViewController {
         case error(Error?)
     }
 }
-extension CommuneViewController:BrowseDirectoryActionDelegate{
-    func btnBrowseDirectoryTappedAction() {
-        let membersListVC = UIViewController.createController(storyBoard: .Commune, ofType: ListOfMembersViewController.self)
-        membersListVC.coordinator = self.coordinator
-        self.navigationController?.pushViewController(membersListVC, animated: true)
+    extension CommuneViewController:BrowseDirectoryActionDelegate{
+        func sendSearchText(_ text: String) {
+            self.searchText = text // Store the search text in a property if needed
+               print("Search Text: \(text)") // Handle the search text as needed
+            let membersListVC = UIViewController.createController(storyBoard: .Commune, ofType: ListOfMembersViewController.self)
+            membersListVC.coordinator = self.coordinator
+            membersListVC.searchText = self.searchText
+
+            self.navigationController?.pushViewController(membersListVC, animated: true)
+         
+           }
+        func filterMembers(with searchText: String) {
+       tableView.reloadData()
+            }
+        
+        func btnBrowseDirectoryTappedAction() {
+            let membersListVC = UIViewController.createController(storyBoard: .Commune, ofType: ListOfMembersViewController.self)
+            membersListVC.coordinator = self.coordinator
+          //  membersListVC.searchText = self.searchText // Pass the search text
+
+            self.navigationController?.pushViewController(membersListVC, animated: true)
+        }
+     
+       
+        
     }
-    
-    
-}
 extension CommuneViewController:ButtonCompaniesTappedDelegate{
     func btnCompaniesTappedAction() {
         let companiesVC = UIViewController.createController(storyBoard: .Commune, ofType: CompaniesListViewController.self)
         companiesVC.coordinator = self.coordinator
         self.navigationController?.pushViewController(companiesVC, animated: true)
     }
+   
 }
 extension CommuneViewController:ButtonRSVPTappedDelegate{
     func btnRSVPTappedAction() {
@@ -150,22 +170,3 @@ extension CommuneViewController:ButtonRSVPTappedDelegate{
   
 }
 
-//extension CommuneViewController: BookButtonActionDelegate {
-//    func showBookRoomDetailsVC(meetingRoomId: Int) {
-//        // Implement your logic here
-//    }
-//    
-//    func showBookMeetingRoomsVC() {
-//        let bookMeetingRoomVC = UIViewController.createController(storyBoard: .Booking, ofType: BookMeetingRoomViewController.self)
-//        navigationController?.pushViewController(bookMeetingRoomVC, animated: true)
-//    }
-//    
-//    func showLogInVC() {
-//        guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
-//              let sceneDelegate = windowScene.delegate as? SceneDelegate else {
-//            return
-//        }
-//        let loginVC = UIViewController.createController(storyBoard: .GetStarted, ofType: LogInViewController.self)
-//        sceneDelegate.window?.rootViewController?.present(loginVC, animated: true, completion: nil)
-//    }
-//}

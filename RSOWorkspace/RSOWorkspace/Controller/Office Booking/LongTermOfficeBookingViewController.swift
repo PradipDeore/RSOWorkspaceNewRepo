@@ -166,10 +166,10 @@ class LongTermOfficeBookingViewController: UIViewController {
             return
         }
         // check if phone number is valid
-        if !RSOValidator.validatePhoneNumber(phone){
-          RSOToastView.shared.show("Phone Number must contains at least 10 digits",duration: 2.0,position: .center)
-          return
-        }
+//        if !RSOValidator.validatePhoneNumber(phone){
+//          RSOToastView.shared.show("Phone Number must contains at least 7 digits",duration: 2.0,position: .center)
+//          return
+//        }
         guard let interestedIn = txtInterestedIn.text, !interestedIn.isEmpty else {
             RSOToastView.shared.show("Please select your interest", duration: 2.0, position: .center)
             return

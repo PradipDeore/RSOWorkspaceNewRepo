@@ -9,11 +9,12 @@ import UIKit
 
 protocol EditVisitorDetailsTableViewCellDelegate:AnyObject{
     func showeditVisitorDetailsScreen(visitorManagementId:Int,email: String, phone: String, name: String,reasonId:Int,reasonForVisit:String,arrivaldate:String,starttime:String, endtime:String, vistordetail:[MyVisitorDetail])
+    func cancelVisitor(visitorManagementId: Int, cell: VisitorDetailsTableViewCell) // Pass the cell to hide buttons
+
 }
 class VisitorDetailsTableViewCell: UITableViewCell {
     
     weak var delegate: EditVisitorDetailsTableViewCellDelegate?
-    @IBOutlet weak var btnEdit: RSOButton!
     @IBOutlet weak var ReasonForVisitView: UIView!
     @IBOutlet weak var containerView: UIView!
     var cornerRadius: CGFloat = 10.0
@@ -33,10 +34,17 @@ class VisitorDetailsTableViewCell: UITableViewCell {
     var end_time = ""
     var vistordetails: [MyVisitorDetail] = []
 
+    @IBOutlet weak var lblCancelVisitorMsg: UILabel!
+    @IBOutlet weak var btnEdit: RSOButton!
+    
+    @IBOutlet weak var btnCancel: RSOButton!
+    var visitorID = 0
     override func awakeFromNib() {
         super.awakeFromNib()
+        lblCancelVisitorMsg.isHidden = true
         ReasonForVisitView.setCornerRadiusForView()
         btnEdit.setCornerRadiusToButton2()
+        btnCancel.setCornerRadiusToButton2()
         customizeCell()
         
     }
@@ -54,7 +62,7 @@ class VisitorDetailsTableViewCell: UITableViewCell {
     }
     
     func setData(item :MyVisitor){
-        
+        self.visitorID =  item.id ?? 0
         arrivalDate = item.arrivalDate ?? Date.formatSelectedDate(format: .yyyyMMdd, date: Date())
         
         if let startDateString = item.startTime {
@@ -93,10 +101,36 @@ class VisitorDetailsTableViewCell: UITableViewCell {
                 lblVisitorEmail.text = ""
             }
         self.lblReasonForVisit.text = item.reason
+        // Hide or show the buttons based on the cancellation status
+                if item.isCancelled {
+                    hideEditAndCancelButtons()
+                } else {
+                    showEditAndCancelButtons()
+                }
         
     }
     @IBAction func btnEditAction(_ sender: Any) {
         delegate?.showeditVisitorDetailsScreen(visitorManagementId:visitorManagementId,email: email, phone: phone, name: name,reasonId:reasonId, reasonForVisit: reasonForVisit,arrivaldate:arrivalDate,starttime:start_time, endtime:end_time, vistordetail:vistordetails)
     }
+    
+    
+    @IBAction func btnCancelAction(_ sender: Any) {
+       
+        delegate?.cancelVisitor(visitorManagementId: visitorManagementId, cell: self)  // Pass the cell here
+
+    }
+    // Hide the buttons when a visitor is canceled
+        func hideEditAndCancelButtons() {
+            btnCancel.isHidden = true
+            btnEdit.isHidden = true
+            lblCancelVisitorMsg.isHidden = false
+        }
+        
+        // Show the buttons when a visitor is not canceled
+        func showEditAndCancelButtons() {
+            btnCancel.isHidden = false
+            btnEdit.isHidden = false
+            lblCancelVisitorMsg.isHidden = true
+        }
     
 }

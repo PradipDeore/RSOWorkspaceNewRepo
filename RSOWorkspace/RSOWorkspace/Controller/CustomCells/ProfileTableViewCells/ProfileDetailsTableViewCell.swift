@@ -50,12 +50,18 @@ class ProfileDetailsTableViewCell: UITableViewCell {
 //    self.lblPhoneNo.text = ""
 //  }
     func setData(myProfileDetails : ProfileData){
-        self.lblName.text = "\(myProfileDetails.firstName ?? "") \(myProfileDetails.lastName ?? "")"
-        self.lblCompanyName.text = myProfileDetails.companyName
-        self.lblEmail.text = myProfileDetails.email
-        self.lblDesignation.text = myProfileDetails.designation
-        self.lblPhoneNo.text = myProfileDetails.phone
+        // Check if firstName and lastName are available, otherwise set blank text
+           let firstName = myProfileDetails.firstName?.isEmpty == false ? myProfileDetails.firstName! : ""
+           let lastName = myProfileDetails.lastName?.isEmpty == false ? myProfileDetails.lastName! : ""
+           self.lblName.text = "\(firstName) \(lastName)"
+           
+           // Check for company name, email, designation, and phone number availability
+           self.lblCompanyName.text = myProfileDetails.companyName?.isEmpty == false ? myProfileDetails.companyName : ""
+           self.lblEmail.text = myProfileDetails.email?.isEmpty == false ? myProfileDetails.email : ""
+           self.lblDesignation.text = myProfileDetails.designation?.isEmpty == false ? myProfileDetails.designation : ""
+           self.lblPhoneNo.text = myProfileDetails.phone?.isEmpty == false ? myProfileDetails.phone : ""
         
+      
         if let photoURLString = myProfileDetails.photo, !photoURLString.isEmpty {
             let url = URL(string: imageBasePath + photoURLString)
             self.imgProfile.kf.setImage(with: url)

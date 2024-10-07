@@ -77,6 +77,31 @@ class MyVisitorsViewController: UIViewController{
                 }
             }
     }
+    private func cancelVisitors(visitorId: Int, cell: VisitorDetailsTableViewCell, completion: @escaping () -> Void) {
+        RSOLoader.showLoader()
+        APIManager.shared.request(
+            modelType: CancelVisitorResponseModel.self,
+            type: VisitorsEndPoint.cancelVisitor(visitorId: visitorId)) { response in
+                switch response {
+                case .success(let response):
+                    RSOLoader.removeLoader()
+                    if response.status == true {
+                        print("Visitor canceled successfully")
+                        // Update the UI after the visitor is canceled
+                        self.myVisitorResponse.removeAll { $0.id == visitorId }
+                        DispatchQueue.main.async {
+                            self.tableView.reloadData()
+                            // Hide buttons after the API call is successful
+                            cell.hideEditAndCancelButtons()
+                        }
+                        completion()  // Call completion to hide buttons
+                    }
+                    self.eventHandler?(.dataLoaded)
+                case .failure(let error):
+                    self.eventHandler?(.error(error))
+                }
+            }
+    }
     
     
 }
@@ -134,7 +159,7 @@ extension MyVisitorsViewController: UITableViewDataSource, UITableViewDelegate {
         
         switch section {
         case .selectDate:
-            return 334
+            return UITableView.automaticDimension
         case .visitorDetails:
             return 180
             
@@ -156,6 +181,17 @@ extension MyVisitorsViewController: SelectDateTableViewCellDelegate {
 }
 extension MyVisitorsViewController:EditVisitorDetailsTableViewCellDelegate{
   
+    func cancelVisitor(visitorManagementId: Int, cell: VisitorDetailsTableViewCell) {
+        cancelVisitors(visitorId: visitorManagementId, cell: cell) {
+               if let indexPath = self.tableView.indexPath(for: cell) {
+                   self.myVisitorResponse[indexPath.row].isCancelled = true
+                    // Ensure UI updates are performed on the main thread
+                   DispatchQueue.main.async {
+                       self.tableView.reloadRows(at: [indexPath], with: .none)
+                   }
+               }
+           }
+    }
     func showeditVisitorDetailsScreen(visitorManagementId: Int, email: String, phone: String, name: String, reasonId: Int,reasonForVisit: String, arrivaldate: String, starttime: String, endtime: String, vistordetail: [MyVisitorDetail]) {
         let editVisitorsVC = UIViewController.createController(storyBoard: .VisitorManagement, ofType: ScheduleVisitorsViewController.self)
         editVisitorsVC.isEditMode = true
@@ -171,6 +207,7 @@ extension MyVisitorsViewController:EditVisitorDetailsTableViewCellDelegate{
         editVisitorsVC.myvisitordetailsArray = vistordetail
         self.navigationController?.pushViewController(editVisitorsVC, animated: true)
     }
+  
 }
 extension MyVisitorsViewController {
     enum Event {

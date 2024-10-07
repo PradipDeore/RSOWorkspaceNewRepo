@@ -81,8 +81,10 @@ class UpdateProfileViewController: UIViewController, UIImagePickerControllerDele
     
     
     func updateProfileAPI(fname: String, lname: String, designationName: String, photo: Data?) {
+            
         // URL of the API endpoint
-        let url = URL(string: "https://finance.ardemos.co.in/rso/api/update-profile")!
+        guard let url = URL(string: Configuration.shared.baseURL)?.appendingPathComponent("update-profile") else { return }
+        
         let token = RSOToken.shared.getToken() ?? ""
         // Create the request
         var request = URLRequest(url: url)

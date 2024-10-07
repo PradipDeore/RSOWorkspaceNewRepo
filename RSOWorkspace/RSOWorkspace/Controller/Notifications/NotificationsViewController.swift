@@ -11,16 +11,16 @@ class NotificationsViewController: UIViewController {
     
     var coordinator: RSOTabBarCordinator?
     @IBOutlet weak var tableView: UITableView!
-    var notificationList:[Notifications] = []
+    var notificationList:[NotificationData] = []
     var eventHandler: ((_ event: Event) -> Void)?
     let notificationCount = 0
     var unreadNotificationCount = 0
-
+    var notificationId = 0
     var expandedIndexSet: Set<Int> = [] // Track which cells are expanded
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-       
+        
         setupTableView()
         fetchNotifications()
     }
@@ -39,23 +39,38 @@ class NotificationsViewController: UIViewController {
         self.coordinator?.loadHomeScreen()
     }
     
-    private func fetchNotifications () {
+    private func fetchNotifications() {
         APIManager.shared.request(
             modelType: NotificationResponseModel.self, // Assuming your API returns an array of Services
             type: NotificationEndPoint.notifications) { response in
                 switch response {
                 case .success(let response):
                     self.notificationList = response.data ?? []
-                   // let notificationCount  = self.notificationList.count
+                    // let notificationCount  = self.notificationList.count
                     //UserHelper.shared.saveNotificationCount(notificationCount: notificationCount)
-                    self.unreadNotificationCount = self.notificationList.filter { !$0.isRead }.count
-
-                    let notificationCount = response.id
-                    UserHelper.shared.saveUnreadNotificationCount(notificationCount: notificationCount ?? 0)
+                    let notificationCount = response.unseenCount
+                    UserHelper.shared.saveUnreadNotificationCount(notificationCount: notificationCount )
                     UserHelper.shared.saveReadNotificationCount(notificationCount: self.unreadNotificationCount)
-                   
+                    
                     DispatchQueue.main.async {
                         self.tableView.reloadData()
+                    }
+                    self.eventHandler?(.dataLoaded)
+                case .failure(let error):
+                    self.eventHandler?(.error(error))
+                }
+            }
+    }
+    private func fetchNotificationStatus(notificationId:Int) {
+        APIManager.shared.request(
+            modelType: NotificationStatusResponseModel.self, // Assuming your API returns an array of Services
+            type: NotificationEndPoint.notificationStatus(notificationId: notificationId)) { response in
+                switch response {
+                case .success(let response):
+                    if response.status {
+                        print("Notification status fetched successfully")
+                    } else {
+                        print("Notification status is false")
                     }
                     self.eventHandler?(.dataLoaded)
                 case .failure(let error):
@@ -74,54 +89,58 @@ extension NotificationsViewController: UITableViewDelegate, UITableViewDataSourc
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        // Check if this row is expanded
-               if expandedIndexSet.contains(indexPath.row) {
-                   // Show the description cell
-                   let cell = tableView.dequeueReusableCell(withIdentifier: "NotificationDescTableViewCell", for: indexPath) as! NotificationDescTableViewCell
-                   let item = notificationList[indexPath.row]
-                   cell.setNotificationsDetails(item: item)
-                   cell.selectionStyle = .none
-                   return cell
-               } else {
-                   // Show the regular notification cell
-                   let cell = tableView.dequeueReusableCell(withIdentifier: "NotificationTableViewCell", for: indexPath) as! NotificationTableViewCell
-                   let item = notificationList[indexPath.row]
-                   cell.setNotifications(item: item)
-                   // If the notification is unread, highlight it
-                   cell.selectionStyle = .none
-                   return cell
-               }
+        if expandedIndexSet.contains(indexPath.row) {
+               // Show the description cell
+               let cell = tableView.dequeueReusableCell(withIdentifier: "NotificationDescTableViewCell", for: indexPath) as! NotificationDescTableViewCell
+               let item = notificationList[indexPath.row]
+               cell.setNotificationsDetails(item: item)
+               cell.selectionStyle = .none
+               return cell
+           } else {
+               // Show the regular notification cell
+               let cell = tableView.dequeueReusableCell(withIdentifier: "NotificationTableViewCell", for: indexPath) as! NotificationTableViewCell
+               let item = notificationList[indexPath.row]
+               cell.setNotifications(item: item)
+               cell.selectionStyle = .none
+               return cell
+           }
     }
     //    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
     //        return 85
     //    }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // Toggle expanded state
-               if expandedIndexSet.contains(indexPath.row) {
-                   expandedIndexSet.remove(indexPath.row) // Collapse
-               } else {
-                   expandedIndexSet.removeAll() // Collapse others
-                   expandedIndexSet.insert(indexPath.row) // Expand selected
-               }
+        // Fetch the selected notification
+           var selectedNotification = notificationList[indexPath.row]
+           
+           // If the notification is unread (isSeen == 0), mark it as read
+           if selectedNotification.isSeen == 0 {
+               selectedNotification.isSeen = 1
+               notificationList[indexPath.row] = selectedNotification
                
-        if !notificationList[indexPath.row].isRead {
-                   notificationList[indexPath.row].isRead = true
-                   unreadNotificationCount -= 1
-                   UserHelper.shared.saveUnreadNotificationCount(notificationCount: unreadNotificationCount)
-               }
+               // Optionally update your backend that the notification is seen
+               fetchNotificationStatus(notificationId: selectedNotification.id)
                
-               // Reload the table view to update UI
-               tableView.reloadData()
-       }
-       
-       func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-           // Return different heights depending on the state
-           if expandedIndexSet.contains(indexPath.row) {
-               return UITableView.automaticDimension // Dynamic height for description cell
-           } else {
-               return 85 // Fixed height for notification cell
+               // Reload just the selected row to reflect the seen status
+               tableView.reloadRows(at: [indexPath], with: .automatic)
            }
-       }
+           
+           // Optionally toggle expansion for the cell
+           if expandedIndexSet.contains(indexPath.row) {
+               expandedIndexSet.remove(indexPath.row)
+           } else {
+               expandedIndexSet.insert(indexPath.row)
+           }
+           tableView.reloadRows(at: [indexPath], with: .automatic)
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        // Return different heights depending on the state
+        if expandedIndexSet.contains(indexPath.row) {
+            return UITableView.automaticDimension // Dynamic height for description cell
+        } else {
+            return 85 // Fixed height for notification cell
+        }
+    }
 }
 extension NotificationsViewController {
     enum Event {

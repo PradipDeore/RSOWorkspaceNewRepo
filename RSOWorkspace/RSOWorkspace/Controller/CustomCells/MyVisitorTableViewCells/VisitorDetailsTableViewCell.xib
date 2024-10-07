@@ -13,6 +13,9 @@
         <array key="Inter-Medium.ttf">
             <string>Inter-Medium</string>
         </array>
+        <array key="Poppins-Medium.ttf">
+            <string>Poppins-Medium</string>
+        </array>
         <array key="Poppins-SemiBold.ttf">
             <string>Poppins-SemiBold</string>
         </array>
@@ -20,15 +23,15 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="VisitorDetailsTableViewCell" rowHeight="165" id="KGk-i7-Jjw" customClass="VisitorDetailsTableViewCell" customModule="RSOWorkspace" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="382" height="165"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="VisitorDetailsTableViewCell" rowHeight="188" id="KGk-i7-Jjw" customClass="VisitorDetailsTableViewCell" customModule="RSOWorkspace" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="384" height="188"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="382" height="165"/>
+                <rect key="frame" x="0.0" y="0.0" width="384" height="188"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="017-ac-QQt" userLabel="ContainerView">
-                        <rect key="frame" x="25" y="0.0" width="332" height="155"/>
+                        <rect key="frame" x="25" y="0.0" width="334" height="178"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="9:00 AM" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a8Z-DS-2UB">
                                 <rect key="frame" x="14" y="15" width="100" height="20"/>
@@ -61,7 +64,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="abdul@yahoo.com" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D0F-hg-dtJ">
-                                <rect key="frame" x="146" y="15" width="176" height="15"/>
+                                <rect key="frame" x="146" y="15" width="178" height="15"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="15" id="KWn-HL-RnV"/>
                                 </constraints>
@@ -105,6 +108,29 @@
                                     <action selector="btnEditAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="FTN-Uf-dFI"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xB6-0N-2Y6" customClass="RSOButton" customModule="RSOWorkspace" customModuleProvider="target">
+                                <rect key="frame" x="178" y="124" width="124" height="25"/>
+                                <color key="backgroundColor" name="768D70"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="SPU-dW-HUl"/>
+                                    <constraint firstAttribute="width" constant="124" id="hDQ-B4-Xqr"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="12"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" title="Cancel"/>
+                                <connections>
+                                    <action selector="btnCancelAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="AgJ-td-IEJ"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Visitors Cancel Succussfully " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aMc-aD-cin">
+                                <rect key="frame" x="16" y="126" width="302" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="qcw-WG-OW3"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="15"/>
+                                <color key="textColor" name="BFBFBF"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
@@ -113,12 +139,17 @@
                             <constraint firstItem="Ipw-xK-Iq2" firstAttribute="top" secondItem="vYu-lQ-Si1" secondAttribute="bottom" constant="13" id="OWO-1Y-oH7"/>
                             <constraint firstItem="a8Z-DS-2UB" firstAttribute="top" secondItem="017-ac-QQt" secondAttribute="top" constant="15" id="RSG-dl-6PA"/>
                             <constraint firstItem="lns-EW-6gb" firstAttribute="top" secondItem="Ipw-xK-Iq2" secondAttribute="bottom" constant="22" id="Sk4-PZ-rKI"/>
+                            <constraint firstItem="xB6-0N-2Y6" firstAttribute="leading" secondItem="lns-EW-6gb" secondAttribute="trailing" constant="39" id="UY6-zP-cpS"/>
                             <constraint firstItem="a8Z-DS-2UB" firstAttribute="leading" secondItem="017-ac-QQt" secondAttribute="leading" constant="14" id="ZGH-qg-Pd1"/>
                             <constraint firstItem="lns-EW-6gb" firstAttribute="leading" secondItem="Ipw-xK-Iq2" secondAttribute="leading" id="cLq-RO-6CP"/>
                             <constraint firstItem="vYu-lQ-Si1" firstAttribute="top" secondItem="a8Z-DS-2UB" secondAttribute="bottom" constant="2" id="fOz-yt-dcm"/>
                             <constraint firstItem="D0F-hg-dtJ" firstAttribute="top" secondItem="017-ac-QQt" secondAttribute="top" constant="15" id="hdw-vv-z3k"/>
                             <constraint firstItem="D0F-hg-dtJ" firstAttribute="leading" secondItem="6fa-YB-qem" secondAttribute="trailing" constant="8" id="jVC-9p-Kn6"/>
+                            <constraint firstItem="xB6-0N-2Y6" firstAttribute="top" secondItem="Ipw-xK-Iq2" secondAttribute="bottom" constant="22" id="mIb-7g-CoO"/>
                             <constraint firstAttribute="trailing" secondItem="D0F-hg-dtJ" secondAttribute="trailing" constant="10" id="mQ8-iQ-lig"/>
+                            <constraint firstItem="aMc-aD-cin" firstAttribute="leading" secondItem="017-ac-QQt" secondAttribute="leading" constant="16" id="pn5-Md-eeS"/>
+                            <constraint firstAttribute="trailing" secondItem="aMc-aD-cin" secondAttribute="trailing" constant="16" id="sqe-y0-jfZ"/>
+                            <constraint firstItem="aMc-aD-cin" firstAttribute="top" secondItem="Ipw-xK-Iq2" secondAttribute="bottom" constant="24" id="vRO-E8-FJx"/>
                             <constraint firstItem="vYu-lQ-Si1" firstAttribute="leading" secondItem="017-ac-QQt" secondAttribute="leading" constant="13" id="vif-IZ-xAp"/>
                             <constraint firstItem="6fa-YB-qem" firstAttribute="leading" secondItem="a8Z-DS-2UB" secondAttribute="trailing" constant="9" id="y1U-z2-Dlo"/>
                         </constraints>
@@ -141,19 +172,27 @@
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
                 <outlet property="ReasonForVisitView" destination="Ipw-xK-Iq2" id="Pwg-vR-YRs"/>
-                <outlet property="btnEdit" destination="lns-EW-6gb" id="ozW-OO-xFG"/>
+                <outlet property="btnCancel" destination="xB6-0N-2Y6" id="FNy-HP-TMn"/>
+                <outlet property="btnEdit" destination="lns-EW-6gb" id="Ghm-kM-yC5"/>
                 <outlet property="containerView" destination="017-ac-QQt" id="JS6-nf-Po2"/>
+                <outlet property="lblCancelVisitorMsg" destination="aMc-aD-cin" id="HEb-51-ya0"/>
                 <outlet property="lblEndtime" destination="vYu-lQ-Si1" id="vfk-rG-LUw"/>
                 <outlet property="lblReasonForVisit" destination="R7W-xi-Nwb" id="2LW-VG-Aax"/>
                 <outlet property="lblStartTime" destination="a8Z-DS-2UB" id="lUz-xs-TyO"/>
                 <outlet property="lblVisitorEmail" destination="D0F-hg-dtJ" id="U9e-8d-72C"/>
             </connections>
-            <point key="canvasLocation" x="90.07633587786259" y="31.338028169014088"/>
+            <point key="canvasLocation" x="91.603053435114504" y="39.436619718309863"/>
         </tableViewCell>
     </objects>
     <resources>
         <namedColor name="454545">
             <color red="0.27099999785423279" green="0.27099999785423279" blue="0.27099999785423279" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="768D70">
+            <color red="0.46274509803921571" green="0.55294117647058827" blue="0.4392156862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="BFBFBF">
+            <color red="0.74900001287460327" green="0.74900001287460327" blue="0.74900001287460327" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="EFEFEF">
             <color red="0.93699997663497925" green="0.93699997663497925" blue="0.93699997663497925" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

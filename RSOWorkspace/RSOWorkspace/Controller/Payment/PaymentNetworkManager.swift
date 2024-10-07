@@ -65,12 +65,13 @@ class PaymentNetworkManager: CardPaymentDelegate ,ApplePayDelegate{
                         } else {
                             self.apiResponseData = response
                             RSOToastView.shared.show(response.message, duration: 2.0, position: .center)
-                            self.paymentCallBack(orderRef:self.orderReference)
-                            let paymentSuccessVC = UIViewController.createController(storyBoard: .Payment, ofType: PaymentSuccessViewController.self)
-                            self.currentNavigationController?.present(paymentSuccessVC, animated: true)
-                            
-                            
-                            //self.currentNavigationController?.popToRootViewController(animated: true)
+                            if UserHelper.shared.isGuest() || UserHelper.shared.isSocialLoginUser() {
+                                self.paymentCallBack(orderRef:self.orderReference)
+                                let paymentSuccessVC = UIViewController.createController(storyBoard: .Payment, ofType: PaymentSuccessViewController.self)
+                                self.currentNavigationController?.present(paymentSuccessVC, animated: true)
+                            }else{
+                              self.currentNavigationController?.popToRootViewController(animated: true)
+                            }
                             self.eventHandler?(.dataLoaded)
                         }
                     case .failure(let error):
@@ -98,10 +99,14 @@ class PaymentNetworkManager: CardPaymentDelegate ,ApplePayDelegate{
                             RSOToastView.shared.show(response.msg, duration: 2.0, position: .center)
                         } else {
                             RSOToastView.shared.show(response.msg, duration: 2.0, position: .center)
-                            self.paymentCallBack(orderRef:self.orderReference)
-                            let paymentSuccessVC = UIViewController.createController(storyBoard: .Payment, ofType: PaymentSuccessViewController.self)
-                            self.currentNavigationController?.present(paymentSuccessVC, animated: true)
-                            //                            self.currentNavigationController?.popToRootViewController(animated: true)
+                            if UserHelper.shared.isGuest() || UserHelper.shared.isSocialLoginUser() {
+                                self.paymentCallBack(orderRef:self.orderReference)
+                                let paymentSuccessVC = UIViewController.createController(storyBoard: .Payment, ofType: PaymentSuccessViewController.self)
+                                self.currentNavigationController?.present(paymentSuccessVC, animated: true)
+                            }else{
+                              self.currentNavigationController?.popToRootViewController(animated: true)
+                            }
+                         
                             self.eventHandler?(.dataLoaded)
                         }
                     case .failure(let error):
@@ -130,10 +135,14 @@ class PaymentNetworkManager: CardPaymentDelegate ,ApplePayDelegate{
                         } else {
                             self.apiOfficeResponseData = response
                             RSOToastView.shared.show(response.msg, duration: 2.0, position: .center)
-                            self.paymentCallBack(orderRef:self.orderReference)
-                            let paymentSuccessVC = UIViewController.createController(storyBoard: .Payment, ofType: PaymentSuccessViewController.self)
-                            self.currentNavigationController?.present(paymentSuccessVC, animated: true)
-                            // self.currentNavigationController?.popToRootViewController(animated: true)
+                            if UserHelper.shared.isGuest() || UserHelper.shared.isSocialLoginUser() {
+                                self.paymentCallBack(orderRef:self.orderReference)
+                                let paymentSuccessVC = UIViewController.createController(storyBoard: .Payment, ofType: PaymentSuccessViewController.self)
+                                self.currentNavigationController?.present(paymentSuccessVC, animated: true)
+                            }else{
+                              self.currentNavigationController?.popToRootViewController(animated: true)
+                            }
+                         
                             self.eventHandler?(.dataLoaded)
                         }
                     case .failure(let error):

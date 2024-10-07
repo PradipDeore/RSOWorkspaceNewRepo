@@ -141,6 +141,14 @@ class SelectTimeTableViewCell: UITableViewCell {
           
 
         default:
+            setupInitialTimeValuesForDesk()
+            if DateTimeManager.shared.isDateToday() {
+                configureForCurrentTime()
+                selectEndTime.date = sixPM
+            } else {
+                configure9AMto6PM()
+            }
+            configureTimeSelection(isStartEnabled: true, isEndEnabled: true)
             break
         }
     

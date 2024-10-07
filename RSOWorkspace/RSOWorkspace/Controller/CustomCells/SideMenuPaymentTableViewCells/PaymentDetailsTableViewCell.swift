@@ -23,7 +23,6 @@ class PaymentDetailsTableViewCell: UITableViewCell {
             if item.bookingType == "office" {
                 lblBookingItemPrice.text = "\(item.totalPrice ?? "0.0")"
                 lblBookingItemDate.text = item.date
-
             } else if item.bookingType == "desk" {
                 lblBookingItemPrice.text = "\(item.totalPrice ?? "0.0")"
                 lblBookingItemDate.text = item.date

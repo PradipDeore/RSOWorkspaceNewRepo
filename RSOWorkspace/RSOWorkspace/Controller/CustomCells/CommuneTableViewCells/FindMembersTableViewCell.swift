@@ -8,9 +8,11 @@
 import UIKit
 protocol BrowseDirectoryActionDelegate:AnyObject{
     func btnBrowseDirectoryTappedAction()
+    func sendSearchText(_ text: String) // New method for sending search text
+
 
 }
-class FindMembersTableViewCell: UITableViewCell {
+class FindMembersTableViewCell: UITableViewCell, UITextFieldDelegate {
    
     weak var delegate : BrowseDirectoryActionDelegate?
     @IBOutlet weak var txtSearch: RSOTextField!
@@ -20,6 +22,8 @@ class FindMembersTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        txtSearch.delegate = self // Set delegate for the text field
+
         self.btnBrowseDirectory.layer.cornerRadius = btnBrowseDirectory.bounds.height / 2
         
         txtSearch.layer.cornerRadius = txtSearch.bounds.height / 2
@@ -32,6 +36,7 @@ class FindMembersTableViewCell: UITableViewCell {
         
         
         customizeCell()
+
     }
     func customizeCell(){
 
@@ -48,7 +53,18 @@ class FindMembersTableViewCell: UITableViewCell {
     }
     
     @IBAction func btnBrowseDirectoryTappedAction(_ sender: Any) {
+        if let searchText = txtSearch.text {
+               delegate?.sendSearchText(searchText) // Send search text to delegate
+           }
         delegate?.btnBrowseDirectoryTappedAction()
         
     }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+            if let searchText = textField.text, !searchText.isEmpty {
+                delegate?.sendSearchText(searchText) // Send the search text to the delegate
+                textField.text = "" // Clear the text field if needed
+                textField.resignFirstResponder() // Dismiss the keyboard
+            }
+            return true
+        }
 }

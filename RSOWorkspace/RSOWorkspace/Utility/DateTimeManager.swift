@@ -95,7 +95,19 @@ class DateTimeManager {
         let calendar = Calendar.current
         return calendar.isDateInToday(selectedDate)
     }
+    
+    func areDatesSameDay(date1: Date, date2: Date) -> Bool {
+        let calendar = Calendar.current
+        return calendar.isDate(date1, inSameDayAs: date2)
+    }
 
+    func isSelectedDateSametoDate(givenDate: Date) -> Bool {
+        if let selDate = getSelectedDate() {
+            let calendar = Calendar.current
+            return calendar.isDate(selDate, inSameDayAs: givenDate)
+        }
+        return false
+    }
     
     // Utility function to merge date and time and compare with current time
     private func isCurrentTimePassed(for selectedDate: Date, selectedTime: Date) -> Bool {

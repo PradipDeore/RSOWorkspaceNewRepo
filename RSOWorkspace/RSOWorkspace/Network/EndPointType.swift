@@ -20,19 +20,9 @@ protocol EndPointType {
     var body: Encodable? { get }
     var headers: [String: String]? { get }
 }
-extension EndPointType{
-    
-    // developemnt server
-//    var baseURL: String {
-//        return "https://finance.ardemos.co.in/rso/api/"
-//    }
-    
-    //producton or live server
+// Extend the EndPointType to use the Configuration's baseURL
+extension EndPointType {
     var baseURL: String {
-        return "https://rso.teamalo.com/api/"
+        return Configuration.shared.baseURL
     }
-    
-//https://rso.teamalo.com
-//Or
-//https://rso.teamalo.com/api
 }

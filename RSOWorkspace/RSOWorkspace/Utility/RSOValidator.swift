@@ -60,7 +60,7 @@ class RSOValidator{
         // Check if the expiry date is in the future
         return expiryDate > Date()
     }
-    class func validatePhoneNumber(_ phoneNumber: String) -> Bool {
+    class func validatePhoneNumberIndia(_ phoneNumber: String) -> Bool {
         // Define regular expression patterns for valid phone numbers
         let indianPhoneNumberPattern = "^[6-9]\\d{9}$" // Indian numbers start with 6-9 and are 10 digits long
         let dubaiPhoneNumberPattern = "^(?:\\+971|971)?[5-9]\\d{8}$" // Dubai numbers can start with +971 or 971 and are 9 digits long
@@ -71,4 +71,18 @@ class RSOValidator{
         
         return isIndianNumber || isDubaiNumber
     }
+    class func validatePhoneNumber(_ phoneNumber: String) -> Bool {
+        // Define regular expression patterns for valid phone numbers
+        let indianPhoneNumberPattern = "^[6-9]\\d{9}$" // Indian numbers start with 6-9 and are 10 digits long
+        let dubaiPhoneNumberPattern = "^(?:\\+971|971)?[5-9]\\d{8}$" // Dubai numbers can start with +971 or 971 and are 9 digits long
+        let dubaiStatePhoneNumberPattern = "^(?:\\+971|971)?5[0245689]\\d{7}$" // Mobile numbers in Dubai starting with +971 50, 52, 54, etc.
+        
+        // Check if the phone number matches any of the patterns
+        let isIndianNumber = NSPredicate(format: "SELF MATCHES %@", indianPhoneNumberPattern).evaluate(with: phoneNumber)
+        let isDubaiNumber = NSPredicate(format: "SELF MATCHES %@", dubaiPhoneNumberPattern).evaluate(with: phoneNumber)
+        let isDubaiStateNumber = NSPredicate(format: "SELF MATCHES %@", dubaiStatePhoneNumberPattern).evaluate(with: phoneNumber)
+        
+        return isIndianNumber || isDubaiNumber || isDubaiStateNumber
+    }
+
 }

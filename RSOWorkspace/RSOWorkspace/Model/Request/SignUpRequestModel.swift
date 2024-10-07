@@ -7,7 +7,7 @@
 
 import Foundation
 struct SignUpRequestModel: Codable {
-    let full_name:String
+    let name:String
     let email: String
     let password: String
     let phone : String

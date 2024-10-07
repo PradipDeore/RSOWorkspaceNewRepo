@@ -207,7 +207,7 @@ class SignUpViewController: UIViewController {
     //    }
     
     func signUpAPI(fullName:String,email: String, password: String, phone: String) {
-        let requestModel = SignUpRequestModel(full_name: fullName, email: email, password: password, phone: phone)
+        let requestModel = SignUpRequestModel(name: fullName, email: email, password: password, phone: phone)
         APIManager.shared.request(
             modelType: SignUpResponse.self,
             type: LogInSignUpEndPoint.signUp(requestModel: requestModel)) { response in

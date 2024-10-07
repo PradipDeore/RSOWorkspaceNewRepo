@@ -11,7 +11,7 @@ import Toast_Swift
 protocol VisitorsTableViewCellDelegate:AnyObject{
     func InviteMoreVisitors()
     func addVisitors(email:String,name:String,phone:String)
-    func saveVisitorDetails(email: String, name: String, phone: String)
+    //func saveVisitorDetails(email: String, name: String, phone: String)
 }
 
 class VisitorsTableViewCell: UITableViewCell {

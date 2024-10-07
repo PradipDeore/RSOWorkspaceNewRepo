@@ -10,6 +10,7 @@ import Foundation
 enum NotificationEndPoint {
     case notifications // Module - GET
     case feedback(requestModel: FeedbackRequestModel)
+    case notificationStatus(notificationId:Int)
 }
 extension NotificationEndPoint: EndPointType {
     
@@ -19,6 +20,8 @@ extension NotificationEndPoint: EndPointType {
             return "notification"
         case .feedback:
             return "feedback-store"
+        case .notificationStatus(let notificationId ):
+            return "notification-status/\(notificationId)"
         }
     }
 
@@ -31,6 +34,8 @@ extension NotificationEndPoint: EndPointType {
             return .get
         case .feedback:
             return .post
+        case .notificationStatus:
+            return .get
         }
     }
     var body: Encodable? {
@@ -39,6 +44,8 @@ extension NotificationEndPoint: EndPointType {
             return nil
         case .feedback(let requestModel):
             return requestModel
+        case .notificationStatus:
+            return nil
         }
     }
         var headers: [String : String]? {

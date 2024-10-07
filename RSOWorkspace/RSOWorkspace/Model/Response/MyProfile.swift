@@ -9,6 +9,7 @@ import Foundation
 struct MyProfile: Codable {
     let status: Bool
     let data: ProfileData
+    let qrCodeUrl: String?  // Move qrCodeUrl to the root level
 }
 
 struct ProfileData: Codable {
@@ -22,7 +23,6 @@ struct ProfileData: Codable {
     let membershipName, planLength, planType, monthlyAccessibleDays: String?
     let monthlyCost: String?
     let companyName: String?
-    let qrCodeUrl:String?
     
     enum CodingKeys: String, CodingKey {
         case firstName = "first_name"
@@ -38,7 +38,6 @@ struct ProfileData: Codable {
         case monthlyAccessibleDays = "monthly_accessible_days"
         case monthlyCost = "monthly_cost"
         case companyName = "company_name"
-        case qrCodeUrl
     }
 }
 

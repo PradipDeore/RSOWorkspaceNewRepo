@@ -48,13 +48,14 @@ class DisplayQRCodeViewController: UIViewController {
         loadQRCodeImage(from: qrCodeURL)
 
         if let startDateString = item.startTime {
-            let startDate =  Date.dateFromString(startDateString, format: .hhmmss)
+            let startDate =  Date.dateFromString(startDateString, format: .HHmmss)
             self.lblStarttime.text = Date.formatSelectedDate(format: .hhmma, date: startDate)
         }
         if let endDateString = item.endTime {
-            let endDate =  Date.dateFromString(endDateString, format: .hhmmss)
+            let endDate =  Date.dateFromString(endDateString, format: .HHmmss)
             self.lblEndTime.text = Date.formatSelectedDate(format: .hhmma, date: endDate)
         }
+      
         if item.listType == "meeting"
         {
             self.lblitemName.text = "\(item.roomName ?? "")"

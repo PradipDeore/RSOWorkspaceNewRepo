@@ -45,9 +45,14 @@ class MyBookingOpenTableViewCell: UITableViewCell {
         self.bookingItemMeeting = item
         
         if let startDateString = item.startTime{
-            //convert the date string in date format
-            let startDate =  Date.dateFromString(startDateString, format: .hhmmss)
-            //convert date in hhmma format
+////            //convert the date string in date format
+//            let startDate =  Date.dateFromString(startDateString, format: .hhmmss)
+////            //convert date in hhmma format
+//            lblStartTime.text = Date.formatSelectedDate(format: .hhmma, date: startDate)
+           
+            // Ensure you use the correct format for parsing the API response
+            let startDate = Date.dateFromString(startDateString, format: .HHmmss) // Use HHmmss for 24-hour format
+//            print("start  time from API response: ", startDate ?? "")
             lblStartTime.text = Date.formatSelectedDate(format: .hhmma, date: startDate)
         }
         if let endTimeString = item.endTime {

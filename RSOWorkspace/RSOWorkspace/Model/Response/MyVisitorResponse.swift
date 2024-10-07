@@ -37,6 +37,7 @@ struct MyVisitor: Codable {
     let reason: String?
     let reasonId: Int?
     let visitorDetails: [MyVisitorDetail]?
+    var isCancelled: Bool = false  // Add this to track the cancellation status
 
     private enum CodingKeys: String, CodingKey {
         case id

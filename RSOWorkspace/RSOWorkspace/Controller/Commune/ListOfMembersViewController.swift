@@ -18,7 +18,7 @@ class ListOfMembersViewController: UIViewController {
     var eventHandler: ((_ event: Event) -> Void)?
     var memberListArray:[Member] = []
     var memberCompanyName = ""
-
+    var searchText :String?
     var companyMembersDict: [Int: [Member]] = [:] // Dictionary to store members for each company
     var companyList:[Company] = []
     var memberListSearchArray: [Int: [Member]] = [:]
@@ -31,9 +31,13 @@ class ListOfMembersViewController: UIViewController {
       
         setupTableView()
         setsearchTextField()
-        //fetchListOfMembers(requestModel: nil)
         txtSearch.delegate = self // Set the delegate for txtSearch
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.txtSearch.text = self.searchText
         fetchCompaniesAndMembers()
+        RSOLoader.showLoader()
     }
     
     @IBAction func btnBrowseDirectoryTappedAction(_ sender: Any) {
@@ -63,47 +67,55 @@ class ListOfMembersViewController: UIViewController {
         navigationController?.navigationBar.isHidden = true
     }
     
+
     func fetchCompaniesAndMembers() {
+        let dispatchGroup = DispatchGroup() // Create a dispatch group
+
         // Fetch companies
         APIManager.shared.request(modelType: CompanyListResponse.self, type: CommuneEndPoint.companyList) { [weak self] response in
             guard let self = self else { return }
             switch response {
             case .success(let response):
                 self.companyList = response.data
+
                 // Iterate over each company to fetch its members
                 for company in self.companyList {
-                    self.fetchListOfMembers(requestModel: MemberSearchRequest(membersSearch: nil, companyId: company.id), forCompany: company)
+                    dispatchGroup.enter() // Enter the group before starting each request
+                    self.fetchListOfMembers(requestModel: MemberSearchRequest(membersSearch: nil, companyId: company.id), forCompany: company, dispatchGroup: dispatchGroup)
+                }
+
+                // Notify when all member requests have been completed
+                dispatchGroup.notify(queue: .main) {
+                    self.filterMembers()
+                    RSOLoader.removeLoader()
+                    self.eventHandler?(.dataLoaded) // This callback will be called once all fetch operations are completed
                 }
                 
-                
             case .failure(let error):
-                self.eventHandler?(.error(error))
+                DispatchQueue.main.async {
+                    RSOLoader.removeLoader()
+                    self.eventHandler?(.error(error))
+                }
             }
         }
     }
-    
-    func fetchListOfMembers(requestModel: MemberSearchRequest?, forCompany company: Company) {
- 
+
+    func fetchListOfMembers(requestModel: MemberSearchRequest?, forCompany company: Company, dispatchGroup: DispatchGroup) {
         APIManager.shared.request(modelType: MemberListResponse.self, type: CommuneEndPoint.memberList(requestModel: requestModel ?? MemberSearchRequest(membersSearch: nil, companyId: nil))) { [weak self] response in
             guard let self = self else { return }
             switch response {
             case .success(let response):
                 let members = response.data
-//                if let companyId = company?.id{
-//                    self.companyMembersDict[companyId] = members // Store members for the company using company ID as key
-//
-//                }
                 self.companyMembersDict[company.id] = members // Store members for the company using company ID as key
-
-                DispatchQueue.main.async {
-                    self.tableView.reloadData()
-                }
-                self.eventHandler?(.dataLoaded)
+                
             case .failure(let error):
                 self.eventHandler?(.error(error))
             }
+
+            dispatchGroup.leave() // Leave the group when the request is complete
         }
     }
+
     func fetchListOfMembers(requestModel:MemberSearchRequest?) {
        
         APIManager.shared.request(
@@ -115,7 +127,6 @@ class ListOfMembersViewController: UIViewController {
                     print("count is ",self.memberListArray.count)
                     DispatchQueue.main.async {
                         print("Member List Count: \(self.memberListArray.count)")
-                        self.tableView.reloadData()
                     }
                     self.eventHandler?(.dataLoaded)
                 case .failure(let error):
@@ -189,7 +200,6 @@ extension ListOfMembersViewController {
 extension ListOfMembersViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder() // Hide the keyboard
-        filterMembers()
         return true
     }
 
@@ -214,14 +224,13 @@ extension ListOfMembersViewController: UITextFieldDelegate {
             if !filteredMembers.isEmpty {
                 memberListSearchArray[companyId] = filteredMembers
             }
-            if memberListSearchArray.flatMap({ $0.value }).isEmpty {
-                self.view.makeToast("No Records found", duration: 2,position: .center)
-                   }
         }
+        if memberListSearchArray.flatMap({ $0.value }).isEmpty {
+            self.view.makeToast("No Records found", duration: 2,position: .center)
+               }
 
         tableView.reloadData()
     }
-
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         // Delay the filter operation to ensure that all the changes from typing are reflected
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {

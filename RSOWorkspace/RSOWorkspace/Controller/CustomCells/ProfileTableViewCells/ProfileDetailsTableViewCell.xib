@@ -91,7 +91,7 @@
                                     </mask>
                                 </variation>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profileIcon" translatesAutoresizingMaskIntoConstraints="NO" id="Gko-SV-vYa">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="teamMemberphoto" translatesAutoresizingMaskIntoConstraints="NO" id="Gko-SV-vYa">
                                 <rect key="frame" x="20" y="5" width="90" height="90"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="90" id="SqZ-aG-sFu"/>
@@ -177,7 +177,7 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="profileIcon" width="39" height="39"/>
+        <image name="teamMemberphoto" width="64" height="64"/>
         <namedColor name="2C2C2C">
             <color red="0.17299999296665192" green="0.17299999296665192" blue="0.17299999296665192" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

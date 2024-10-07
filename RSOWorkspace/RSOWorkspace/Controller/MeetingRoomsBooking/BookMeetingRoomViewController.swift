@@ -15,7 +15,9 @@ enum CellIdentifier: String {
     case selectTime = "SelectTimeTableViewCell"
     case selectMeetingRoomLabel = "SelectMeetingRoomLabelTableViewCell"
     case selectMeetingRoom = "SelectMeetingRoomTableViewCell"
+    case noDataAvailable = "NoDataAvailableTableViewCell"
 }
+
 
 enum SectionType: Int, CaseIterable {
     case selectLocation
@@ -23,6 +25,7 @@ enum SectionType: Int, CaseIterable {
     case selectTime
     case selectMeetingRoomLabel
     case selectMeetingRoom
+    case noDataAvailable
 }
 
 
@@ -35,17 +38,19 @@ class BookMeetingRoomViewController: UIViewController{
     var eventHandler: ((_ event: Event) -> Void)?
     var apiRequestModelRoomListing = BookMeetingRoomRequestModel()
     var displayBookingDetailsNextScreen = DisplayBookingDetailsModel()
+    var isNoDataAvailable: Bool = false
     
     var selectedMeetingRoomId = 0
     var selectedLocation = ""
     var locationId:Int = 0
     var selectedFullDay = ""
+    var shouldCallFetchmeetingRoomsAPI = true
     // var selectedMeetingRoomDate = ""
     override func viewDidLoad() {
         super.viewDidLoad()
         self.coordinator?.hideBackButton(isHidden: false)
         self.coordinator?.setTitle(title: "Book a Meeting Room")
-        
+        shouldCallFetchmeetingRoomsAPI = true
         setupTableView()
         fetchLocations()
     }
@@ -54,6 +59,8 @@ class BookMeetingRoomViewController: UIViewController{
         tableView.dataSource = self
         tableView.delegate = self
         tableView.registerCells()
+        tableView.register(UINib(nibName: "NoDataAvailableTableViewCell", bundle: nil), forCellReuseIdentifier: "NoDataAvailableTableViewCell")
+
     }
     
     private func fetchLocations() {
@@ -86,8 +93,34 @@ class BookMeetingRoomViewController: UIViewController{
     private func fetchMeetingRooms() {
         if selectedMeetingRoomId > 0 {
             self.tableView.reloadData()
-        } 
+        }
     }
+    func fetchmeetingRooms(id: Int, requestModel: BookMeetingRoomRequestModel) {
+        
+        APIManager.shared.request(
+            modelType: MeetingRoomListingResponse.self,
+            type: MyBookingEndPoint.getAvailableMeetingRoomListing(id: id, requestModel: requestModel)) { [weak self] response in
+                DispatchQueue.main.async {
+                    guard let self = self else { return }
+                    
+                    switch response {
+                    case .success(let responseData):
+                        // Handle successful response with bookings
+                        let roomList = responseData.data
+                        let listItems: [RSOCollectionItem] = roomList.map { RSOCollectionItem(meetingRoomList: $0) }
+                        self.listItems = listItems
+                      
+                        self.tableView.reloadSections([SectionType.selectMeetingRoom.rawValue, SectionType.noDataAvailable.rawValue], with: .none)
+
+                        self.eventHandler?(.dataLoaded)
+                    case .failure(let error):
+                        self.eventHandler?(.error(error))
+                        RSOToastView.shared.show("\(error.localizedDescription)", duration: 2.0, position: .center)
+                    }
+                }
+            }
+    }
+    
 }
 
 // MARK: - UITableViewDataSource, UITableViewDelegate
@@ -131,7 +164,7 @@ extension BookMeetingRoomViewController: UITableViewDataSource, UITableViewDeleg
             return cell
         case .selectTime:
             let cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifier.selectTime.rawValue, for: indexPath) as! SelectTimeTableViewCell
-
+            
             cell.delegate = self
             cell.bookingTypeSelectTime = .meetingRoom
             cell.setupInitialTimeValues()
@@ -145,27 +178,14 @@ extension BookMeetingRoomViewController: UITableViewDataSource, UITableViewDeleg
             cell.collectionView.tag = 1
             cell.selectionStyle = .none
             cell.collectionView.backActionDelegate = self
-            cell.eventHandler = { [weak self] event, list in
-                guard let self = self else { return }
-                switch event {
-                case .dataLoaded:
-                    if list?.isEmpty == true {
-                        RSOToastView.shared.show("No Rooms For Selected Date And Time ", duration: 2.0, position: .center)
-                    }
-                case .error(let error):
-                    RSOToastView.shared.show("Error: \(error.localizedDescription)", duration: 2.0, position: .center)
-                }
-                self.listItems = list ?? []
-                print("eventHandler listItems", self.listItems)
-            }
-            if selectedMeetingRoomId > 0{
-                cell.fetchmeetingRooms(id: 1,
-                                       requestModel: apiRequestModelRoomListing)
-    /*cell.fetchmeetingRooms(id: selectedMeetingRoomId,
-                                       requestModel: apiRequestModelRoomListing)*/
-            }
+            cell.collectionView.listItems = self.listItems
+            return cell
+        case .noDataAvailable:
+            let cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifier.noDataAvailable.rawValue, for: indexPath) as! NoDataAvailableTableViewCell
+            cell.lblMessage.text = "No Rooms Available For Selected Date And Time"
             return cell
         }
+    
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         guard let section = SectionType(rawValue: indexPath.section) else { return 0 }
@@ -179,10 +199,11 @@ extension BookMeetingRoomViewController: UITableViewDataSource, UITableViewDeleg
         case .selectTime:
             return 80
         case .selectMeetingRoomLabel:
-            return 20
+            return self.listItems.isEmpty ? 0.0 : 20.0
         case .selectMeetingRoom:
-            return 209
-            
+            return self.listItems.isEmpty ? 0.0 : 209
+        case .noDataAvailable:
+            return self.listItems.isEmpty ? 120.0 : 0.0
         }
     }
 }
@@ -213,7 +234,7 @@ extension BookMeetingRoomViewController: SelectDateTableViewCellDelegate {
         // save formated date to show in next screen
         let displayDate = Date.formatSelectedDate(format: .EEEEddMMMMyyyy, date: actualFormatOfDate)
         displayBookingDetailsNextScreen.date = displayDate
-       
+        
         DispatchQueue.main.async {
             //  ********** fetchMeetingRooms() instead reload time cell
             self.tableView.reloadSections([SectionType.selectTime.rawValue], with: .none)
@@ -240,12 +261,9 @@ extension BookMeetingRoomViewController: SelectTimeTableViewCellDelegate{
         //display in next vc
         let displayEndTime = Date.formatSelectedDate(format: .hhmma, date: endTime)
         displayBookingDetailsNextScreen.endTime = displayEndTime
-        DispatchQueue.main.async {
-            //  ********** fetchMeetingRooms() instead reload time cell
-            self.tableView.reloadSections([SectionType.selectMeetingRoom.rawValue], with: .none)
-        }
-        
+        self.fetchmeetingRooms(id: 1, requestModel: apiRequestModelRoomListing)
     }
+    
     func selectFulldayStatus(_ isFullDay: Bool) {
         selectedFullDay = isFullDay ? "Yes" : "No"
     }
@@ -274,7 +292,7 @@ extension BookMeetingRoomViewController: BookButtonActionDelegate{
     func showBookRoomDetailsVC(meetingRoomId: Int) {
         if DateTimeManager.shared.isDateToday() && DateTimeManager.shared.isCurrentTimePassedForEndTime()  {
             RSOToastView.shared.show("Booking is no longer available. Please choose a different date or time.")
-            return 
+            return
         }
         let bookRoomDetailsVC = UIViewController.createController(storyBoard: .Booking, ofType: BookRoomDetailsViewController.self)
         bookRoomDetailsVC.meetingId = meetingRoomId
@@ -301,3 +319,4 @@ extension BookMeetingRoomViewController: BookButtonActionDelegate{
         sceneDelegate.window?.rootViewController?.present(loginVC, animated: true, completion: nil)
     }
 }
+
