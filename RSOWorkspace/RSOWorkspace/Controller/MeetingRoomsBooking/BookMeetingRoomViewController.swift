@@ -15,7 +15,6 @@ enum CellIdentifier: String {
     case selectTime = "SelectTimeTableViewCell"
     case selectMeetingRoomLabel = "SelectMeetingRoomLabelTableViewCell"
     case selectMeetingRoom = "SelectMeetingRoomTableViewCell"
-    case noDataAvailable = "NoDataAvailableTableViewCell"
 }
 
 
@@ -25,7 +24,6 @@ enum SectionType: Int, CaseIterable {
     case selectTime
     case selectMeetingRoomLabel
     case selectMeetingRoom
-    case noDataAvailable
 }
 
 
@@ -44,13 +42,12 @@ class BookMeetingRoomViewController: UIViewController{
     var selectedLocation = ""
     var locationId:Int = 0
     var selectedFullDay = ""
-    var shouldCallFetchmeetingRoomsAPI = true
     // var selectedMeetingRoomDate = ""
     override func viewDidLoad() {
         super.viewDidLoad()
         self.coordinator?.hideBackButton(isHidden: false)
         self.coordinator?.setTitle(title: "Book a Meeting Room")
-        shouldCallFetchmeetingRoomsAPI = true
+        
         setupTableView()
         fetchLocations()
     }
@@ -95,32 +92,6 @@ class BookMeetingRoomViewController: UIViewController{
             self.tableView.reloadData()
         }
     }
-    func fetchmeetingRooms(id: Int, requestModel: BookMeetingRoomRequestModel) {
-        
-        APIManager.shared.request(
-            modelType: MeetingRoomListingResponse.self,
-            type: MyBookingEndPoint.getAvailableMeetingRoomListing(id: id, requestModel: requestModel)) { [weak self] response in
-                DispatchQueue.main.async {
-                    guard let self = self else { return }
-                    
-                    switch response {
-                    case .success(let responseData):
-                        // Handle successful response with bookings
-                        let roomList = responseData.data
-                        let listItems: [RSOCollectionItem] = roomList.map { RSOCollectionItem(meetingRoomList: $0) }
-                        self.listItems = listItems
-                      
-                        self.tableView.reloadSections([SectionType.selectMeetingRoom.rawValue, SectionType.noDataAvailable.rawValue], with: .none)
-
-                        self.eventHandler?(.dataLoaded)
-                    case .failure(let error):
-                        self.eventHandler?(.error(error))
-                        RSOToastView.shared.show("\(error.localizedDescription)", duration: 2.0, position: .center)
-                    }
-                }
-            }
-    }
-    
 }
 
 // MARK: - UITableViewDataSource, UITableViewDelegate
@@ -174,16 +145,71 @@ extension BookMeetingRoomViewController: UITableViewDataSource, UITableViewDeleg
         case .selectMeetingRoomLabel:
             return tableView.dequeueReusableCell(withIdentifier: CellIdentifier.selectMeetingRoomLabel.rawValue, for: indexPath)
         case .selectMeetingRoom:
-            let cell =  tableView.dequeueReusableCell(withIdentifier: CellIdentifier.selectMeetingRoom.rawValue, for: indexPath)as! SelectMeetingRoomTableViewCell
-            cell.collectionView.tag = 1
-            cell.selectionStyle = .none
-            cell.collectionView.backActionDelegate = self
-            cell.collectionView.listItems = self.listItems
-            return cell
-        case .noDataAvailable:
-            let cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifier.noDataAvailable.rawValue, for: indexPath) as! NoDataAvailableTableViewCell
-            cell.lblMessage.text = "No Rooms Available For Selected Date And Time"
-            return cell
+                        let cell =  tableView.dequeueReusableCell(withIdentifier: CellIdentifier.selectMeetingRoom.rawValue, for: indexPath)as! SelectMeetingRoomTableViewCell
+                        cell.collectionView.tag = 1
+                        cell.selectionStyle = .none
+                        cell.collectionView.backActionDelegate = self
+                        cell.eventHandler = { [weak self] event, list in
+                            guard let self = self else { return }
+                            switch event {
+                            case .dataLoaded:
+                                if list?.isEmpty == true {
+                                     RSOToastView.shared.show("No Rooms For Selected Date And Time ", duration: 2.0, position: .center)
+            
+
+                                }
+                               
+            
+                            case .error(let error):
+                                RSOToastView.shared.show("Error: \(error.localizedDescription)", duration: 2.0, position: .center)
+                            }
+                            self.listItems = list ?? []
+                            print("eventHandler listItems", self.listItems)
+                        }
+                        if selectedMeetingRoomId > 0{
+                            cell.fetchmeetingRooms(id: 1,
+                                                   requestModel: apiRequestModelRoomListing)
+                            /*cell.fetchmeetingRooms(id: selectedMeetingRoomId,
+                             requestModel: apiRequestModelRoomListing)*/
+                        }
+                        return cell
+            
+            // new code
+          
+//            if isNoDataAvailable {
+//                let cell = tableView.dequeueReusableCell(withIdentifier: "NoDataAvailableTableViewCell", for: indexPath) as! NoDataAvailableTableViewCell
+//                cell.lblMessage.text = "No Rooms Available For Selected Date And Time"
+//                return cell
+//            } else {
+//                let cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifier.selectMeetingRoom.rawValue, for: indexPath) as! SelectMeetingRoomTableViewCell
+//                cell.collectionView.tag = 1
+//                cell.selectionStyle = .none
+//                cell.collectionView.backActionDelegate = self
+//
+//                cell.eventHandler = { [weak self] event, list in
+//                    guard let self = self else { return }
+//                    switch event {
+//                    case .dataLoaded:
+//                        self.listItems = list ?? []
+//                        if self.listItems.isEmpty {
+//                            self.isNoDataAvailable = true
+//                            self.tableView.reloadData()
+//                        } else {
+//                            self.isNoDataAvailable = false
+//                            self.tableView.reloadData()
+//                        }
+//                    case .error(let error):
+//                        RSOToastView.shared.show("Error: \(error.localizedDescription)", duration: 2.0, position: .center)
+//                    }
+//                    print("eventHandler listItems", self.listItems)
+//                }
+//
+//                if selectedMeetingRoomId > 0 {
+//                    cell.fetchmeetingRooms(id: 1, requestModel: apiRequestModelRoomListing)
+//                }
+//                return cell
+//            }
+            
         }
     
     }
@@ -199,11 +225,10 @@ extension BookMeetingRoomViewController: UITableViewDataSource, UITableViewDeleg
         case .selectTime:
             return 80
         case .selectMeetingRoomLabel:
-            return self.listItems.isEmpty ? 0.0 : 20.0
+            return 20
         case .selectMeetingRoom:
-            return self.listItems.isEmpty ? 0.0 : 209
-        case .noDataAvailable:
-            return self.listItems.isEmpty ? 120.0 : 0.0
+            return 209
+            
         }
     }
 }
@@ -239,7 +264,6 @@ extension BookMeetingRoomViewController: SelectDateTableViewCellDelegate {
             //  ********** fetchMeetingRooms() instead reload time cell
             self.tableView.reloadSections([SectionType.selectTime.rawValue], with: .none)
         }
-        
     }
 }
 extension BookMeetingRoomViewController: SelectTimeTableViewCellDelegate{
@@ -261,9 +285,12 @@ extension BookMeetingRoomViewController: SelectTimeTableViewCellDelegate{
         //display in next vc
         let displayEndTime = Date.formatSelectedDate(format: .hhmma, date: endTime)
         displayBookingDetailsNextScreen.endTime = displayEndTime
-        self.fetchmeetingRooms(id: 1, requestModel: apiRequestModelRoomListing)
+        DispatchQueue.main.async {
+            //  ********** fetchMeetingRooms() instead reload time cell
+            self.tableView.reloadSections([SectionType.selectMeetingRoom.rawValue], with: .none)
+        }
+        
     }
-    
     func selectFulldayStatus(_ isFullDay: Bool) {
         selectedFullDay = isFullDay ? "Yes" : "No"
     }
@@ -319,4 +346,3 @@ extension BookMeetingRoomViewController: BookButtonActionDelegate{
         sceneDelegate.window?.rootViewController?.present(loginVC, animated: true, completion: nil)
     }
 }
-

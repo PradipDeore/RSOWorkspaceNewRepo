@@ -214,7 +214,6 @@ extension ScheduledVisitorDetatailsViewController: UITableViewDataSource, UITabl
             "\(displayEditedscheduleVisitorsDetails?.startTime ?? "") - \(displayEditedscheduleVisitorsDetails?.endTime ?? "")" :
             "\(displayscheduleVisitorsDetails?.startTime ?? "") - \(displayscheduleVisitorsDetails?.endTime ?? "")"
             cell.txtTime.text = timeRange.isEmpty ? "Unavailable" : timeRange
-            
             return cell
             
         case .reasonForvisit:

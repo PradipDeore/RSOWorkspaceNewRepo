@@ -11,7 +11,8 @@ struct PaymentRoomBookingRequest: Codable {
     let additional_requirements: [String]
     let booking_id: Int
     let requirement_details: String
-    let total_price: Double
+    //let total_price: Double
+    let total:Double
     let vatamount: Double
 }
 

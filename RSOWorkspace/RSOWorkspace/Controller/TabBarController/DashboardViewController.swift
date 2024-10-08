@@ -158,7 +158,12 @@ extension DashboardViewController: UITableViewDataSource, UITableViewDelegate {
     switch sectionType {
     case .myBookingClose:
       if let myBookingCell = cell as? MyBookingCloseTableViewCell {
-        myBookingCell.btnBooking.addTarget(self, action: #selector(btnBookingTappedAction), for: .touchUpInside)
+          if UserHelper.shared.isUserExplorer(){
+              myBookingCell.btnBooking.isUserInteractionEnabled = false
+          }else{
+              myBookingCell.btnBooking.isUserInteractionEnabled = true
+              myBookingCell.btnBooking.addTarget(self, action: #selector(btnBookingTappedAction), for: .touchUpInside)
+          }
       }
     case .meetingRooms:
 

@@ -62,6 +62,7 @@ class ScheduleVisitorsViewController: UIViewController{
         if isEditMode {
             setInitialVisitorDetails()
         }
+        self.arrivalDate = Date.formatSelectedDate(format: .yyyyMMdd, date: Date())
     }
     func setInitialVisitorDetails() {
         let indexPath = IndexPath(row: 1, section: SectionTypeScheduleVisitors.invitedVisitors.rawValue)
@@ -158,30 +159,12 @@ extension ScheduleVisitorsViewController: UITableViewDataSource, UITableViewDele
         case .selectDate:
             let  cell =  tableView.dequeueReusableCell(withIdentifier: CellIdentifierScheduleVisitors.selectDate.rawValue, for: indexPath) as! SelectDateTableViewCell
             cell.delegate = self
-            if isEditMode{
+           // if isEditMode{
                 cell.calender.date = Date.dateFromString(arrivalDate, format: .yyyyMMdd) ?? Date()
-            }
+            //}
             cell.initWithDefaultDate()
 
-//            if isEditMode {
-//                    // Convert the arrival date and set the calendar date only if it is valid
-//                    let dateToSet = Date.dateFromString(arrivalDate, format: .yyyyMMdd)
-//                    
-//                    // Ensure your calendar view has minimum and maximum dates set
-//                    // Set a minimum date, for example, today
-//                    cell.calender.minimumDate = Date() // or some past date if you allow past dates
-//                    
-//                    // Set a maximum date if needed
-//                    // cell.calender.maximumDate = nil // Uncomment if you want to allow selecting any future date
-//                    
-//                    // Check if the date to set is within the valid range
-//                    if let validDate = dateToSet, validDate >= cell.calender.minimumDate! {
-//                        cell.calender.date = validDate
-//                    } else {
-//                        // Handle the case where the date is invalid
-//                        print("Selected date is out of bounds.")
-//                    }
-//                }
+
             
             cell.selectionStyle = .none
             return cell
@@ -205,9 +188,9 @@ extension ScheduleVisitorsViewController: UITableViewDataSource, UITableViewDele
             cell.resetReasonTextFields()
             cell.delegate = self
         
-            if isEditMode {
+           // if isEditMode {
                 cell.txtSelectReason.text = self.reasonForVisit
-            }
+           // }
                
             cell.dropdownOptions = self.ddOptions
             cell.selectionStyle = .none
@@ -300,6 +283,7 @@ extension ScheduleVisitorsViewController: ReasonForVisitTableViewCellDelegate {
         apiEditScheduleVisitorsRequest.reason_of_visit = selectedOption.id
         
         self.reasonId =  selectedOption.id
+        self.reasonForVisit = selectedOption.reason
         //for add
         displayscheduleVisitorsDetailsNextScreen.reasonForVisit = selectedOption.reason
         //for update
@@ -320,7 +304,8 @@ extension ScheduleVisitorsViewController: SelectDateTableViewCellDelegate {
         // save formated date to show in next screen
         let displayDate = Date.formatSelectedDate(format: .EEEEddMMMMyyyy, date: actualFormatOfDate)
         displayscheduleVisitorsDetailsNextScreen.date = displayDate
-        
+        print("arrival date is",self.arrivalDate)
+        self.arrivalDate = Date.formatSelectedDate(format: .yyyyMMdd, date: actualFormatOfDate)
         DispatchQueue.main.async {
             //  ********** fetchMeetingRooms() instead reload time cell
             self.tableView.reloadSections([SectionTypeScheduleVisitors.selectTime.rawValue], with: .none)
@@ -339,6 +324,8 @@ extension ScheduleVisitorsViewController: SelectTimeTableViewCellDelegate{
         //for edit
         apiEditScheduleVisitorsRequest.start_time = apiStartTime
         //display in next vc
+        self.start_time = Date.formatSelectedDate(format: .HHmm, date: startTime)
+        
         let displayStartTime = Date.formatSelectedDate(format: .hhmma, date: startTime)
         displayscheduleVisitorsDetailsNextScreen.startTime = displayStartTime
         displayscheduleVisitorsEditDetailsNextScreen.startTime = displayStartTime
@@ -351,6 +338,7 @@ extension ScheduleVisitorsViewController: SelectTimeTableViewCellDelegate{
         //for edit
         apiEditScheduleVisitorsRequest.end_time = apiEndTime
         //display in next vc
+        self.end_time = Date.formatSelectedDate(format: .HHmm, date: endTime)
         let displayEndTime = Date.formatSelectedDate(format: .hhmma, date: endTime)
         displayscheduleVisitorsDetailsNextScreen.endTime = displayEndTime
         //for update

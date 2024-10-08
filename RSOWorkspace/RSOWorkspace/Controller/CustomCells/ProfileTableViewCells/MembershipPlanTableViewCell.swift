@@ -43,9 +43,10 @@ class MembershipPlanTableViewCell: UITableViewCell {
         
     }
     func setupUI(){
-        if UserHelper.shared.isGuest(){
+        if UserHelper.shared.isGuest() || UserHelper.shared.isSocialLoginUser(){
             self.btnRenewPlan.isHidden = true
             self.btnBuyMemberShip.isHidden = false
+            self.lblMembershipPlan.isHidden = false
             
         }else{
             self.btnBuyMemberShip.isHidden = true
@@ -74,19 +75,7 @@ class MembershipPlanTableViewCell: UITableViewCell {
             
             self.btnRenewPlan.isHidden = false
             self.btnBuyMemberShip.isHidden = true
-        }else if UserHelper.shared.isSocialLoginUser(){
-            self.lblMembershipPlan.text = "no active membership"
-            self.lblPlanType.isHidden = true
-            self.lblPlanLength.isHidden = true
-            self.lblMonthlyAccessibleDays.isHidden = true
-            self.lblMonthlyCost.isHidden = true
-            self.titleLabelPlanType.isHidden = true
-            self.titleLabelPlanLength.isHidden = true
-            self.titleLabelMonthlyCost.isHidden = true
-            self.titleLableMonthlyAccessibleDays.isHidden = true
-            
-            self.btnBuyMemberShip.isHidden = false
-            self.btnRenewPlan.isHidden = true
+        
         }else{
             self.lblMembershipPlan.text = "no active membership"
             self.lblPlanType.isHidden = true
@@ -101,6 +90,7 @@ class MembershipPlanTableViewCell: UITableViewCell {
             self.btnBuyMemberShip.isHidden = false
             self.btnRenewPlan.isHidden = true
         }
+       
       
         if let qrCodeUrlString = item.qrCodeUrl {
                print("QR Code URL: \(qrCodeUrlString)") // Check the URL being passed
@@ -113,6 +103,32 @@ class MembershipPlanTableViewCell: UITableViewCell {
            }
         
     }
+    
+   
+
+    // Helper functions to show or hide the membership plan details
+    func showPlanDetails() {
+        self.titleLabelPlanType.isHidden = false
+        self.titleLabelPlanLength.isHidden = false
+        self.titleLabelMonthlyCost.isHidden = false
+        self.titleLableMonthlyAccessibleDays.isHidden = false
+        self.lblPlanLength.isHidden = false
+        self.lblPlanType.isHidden = false
+        self.lblMonthlyAccessibleDays.isHidden = false
+        self.lblMonthlyCost.isHidden = false
+    }
+
+    func hidePlanDetails() {
+        self.titleLabelPlanType.isHidden = true
+        self.titleLabelPlanLength.isHidden = true
+        self.titleLabelMonthlyCost.isHidden = true
+        self.titleLableMonthlyAccessibleDays.isHidden = true
+        self.lblPlanLength.isHidden = true
+        self.lblPlanType.isHidden = true
+        self.lblMonthlyAccessibleDays.isHidden = true
+        self.lblMonthlyCost.isHidden = true
+    }
+
     
     @IBAction func btnBuyMembershipAction(_ sender: Any) {
         delegate?.navigateToDisplayMembershipPlans()

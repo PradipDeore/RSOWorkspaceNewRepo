@@ -33,7 +33,7 @@ class PaymentNetworkManager: CardPaymentDelegate ,ApplePayDelegate{
     var totalPrice: Double = 0.0
     var vatAmount: Double = 0.0
     func paymentRoomBookingAPI(additionalrequirements :[String], bookingid:Int, requirementdetails:String,totalprice:Double,vatamount:Double) {
-        self.paymentRoomBookingRequestModel = PaymentRoomBookingRequest(additional_requirements: additionalrequirements, booking_id: bookingid, requirement_details: requirementdetails, total_price: totalprice, vatamount: vatamount)
+        self.paymentRoomBookingRequestModel = PaymentRoomBookingRequest(additional_requirements: additionalrequirements, booking_id: bookingid, requirement_details: requirementdetails, total: totalprice, vatamount: vatamount)
         
         DispatchQueue.main.async {
             RSOLoader.showLoader()
