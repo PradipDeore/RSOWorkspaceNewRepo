@@ -13,9 +13,14 @@ protocol RSOTabCoordinated: AnyObject {
 }
 class RSOTabBarCordinator {
      let tabBarController: RSOTabBarViewController
+        var tabButtons: [UIButton] {
+            return tabBarController.tabButtons
+        }
     init(tabBarController: RSOTabBarViewController) {
         self.tabBarController = tabBarController
     }
+    
+   
     func showChildViewController(_ viewController: UIViewController) {
         tabBarController.addChild(viewController)
         viewController.didMove(toParent: tabBarController)
@@ -65,4 +70,18 @@ class RSOTabBarCordinator {
     func updateButtonSelection(_ index: Int) {
         self.tabBarController.updateButtonSelection(index)
     }
+    
+    func updateTabButtons() {
+            let buttons =  self.tabBarController.tabButtons
+            // Update the tab buttons based on the guest status
+            for (index, button) in buttons.enumerated() {
+                if (index == 2 || index == 3) && UserHelper.shared.isGuest() {
+                    button.isUserInteractionEnabled = false
+                    button.alpha = 0.5 // Make the button visually disabled
+                } else {
+                    button.isUserInteractionEnabled = true
+                    button.alpha = 1.0 // Reset the button to normal
+                }
+            }
+        }
 }

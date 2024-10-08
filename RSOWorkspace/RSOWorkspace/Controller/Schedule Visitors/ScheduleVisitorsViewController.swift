@@ -71,14 +71,17 @@ class ScheduleVisitorsViewController: UIViewController{
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         if isEditMode {
-            setInitialVisitorDetails()
+            //setInitialVisitorDetails()
             
             displayscheduleVisitorsDetailsNextScreen.reasonForVisit = reasonForVisit
             displayscheduleVisitorsEditDetailsNextScreen.reasonForVisit = reasonForVisit
           
             // 7 oct 2024 bharati added these lines
-            displayscheduleVisitorsEditDetailsNextScreen.startTime = start_time
-            displayscheduleVisitorsEditDetailsNextScreen.endTime = end_time
+            
+            // Ensure that start_time and end_time are assigned correctly
+                  displayscheduleVisitorsEditDetailsNextScreen.startTime = start_time
+            
+                  displayscheduleVisitorsEditDetailsNextScreen.endTime = end_time
 
             apiRequestScheduleVisitorsRequest.reason_of_visit = reasonId
             
@@ -163,9 +166,6 @@ extension ScheduleVisitorsViewController: UITableViewDataSource, UITableViewDele
                 cell.calender.date = Date.dateFromString(arrivalDate, format: .yyyyMMdd) ?? Date()
             //}
             cell.initWithDefaultDate()
-
-
-            
             cell.selectionStyle = .none
             return cell
             
@@ -325,8 +325,8 @@ extension ScheduleVisitorsViewController: SelectTimeTableViewCellDelegate{
         apiEditScheduleVisitorsRequest.start_time = apiStartTime
         //display in next vc
         self.start_time = Date.formatSelectedDate(format: .HHmm, date: startTime)
-        
         let displayStartTime = Date.formatSelectedDate(format: .hhmma, date: startTime)
+        self.start_time = displayStartTime
         displayscheduleVisitorsDetailsNextScreen.startTime = displayStartTime
         displayscheduleVisitorsEditDetailsNextScreen.startTime = displayStartTime
     }
@@ -340,9 +340,10 @@ extension ScheduleVisitorsViewController: SelectTimeTableViewCellDelegate{
         //display in next vc
         self.end_time = Date.formatSelectedDate(format: .HHmm, date: endTime)
         let displayEndTime = Date.formatSelectedDate(format: .hhmma, date: endTime)
+        self.end_time = displayEndTime
         displayscheduleVisitorsDetailsNextScreen.endTime = displayEndTime
         //for update
-        displayscheduleVisitorsEditDetailsNextScreen.startTime = displayEndTime
+        displayscheduleVisitorsEditDetailsNextScreen.endTime = displayEndTime
         
     }
 }
@@ -453,36 +454,7 @@ extension ScheduleVisitorsViewController:VisitorsTableViewCellDelegate{
         inviteVisitorsVC.visitorEmailDelegate = self
         self.present(inviteVisitorsVC, animated: true)
     }
-//    func saveVisitorDetails(email: String, name: String, phone: String) {
-//        // Check if email is valid
-//        if !RSOValidator.isValidEmail(email) {
-//            RSOToastView.shared.show("Invalid email", duration: 2.0, position: .center)
-//            return
-//        }
-//        if name.isEmpty {
-//            RSOToastView.shared.show("Please enter visitor name", duration: 2.0, position: .center)
-//            return
-//        }
-//        if !RSOValidator.validatePhoneNumber(phone) {
-//            RSOToastView.shared.show("Invalid phone", duration: 2.0, position: .center)
-//            return
-//        }
-//        let obj = MyVisitorDetail(visitor_name: name, visitor_email: email, visitor_phone: phone)
-//        if !isEditMode{
-//            // Normal mode: Add new visitor
-//            if myvisitordetailsArray.count == 1, let firstVisitor = myvisitordetailsArray.first, firstVisitor.visitor_email == "" {
-//                myvisitordetailsArray.removeFirst()
-//            }
-//        }
-//        myvisitordetailsArray.append(obj)
-//        
-//        self.apiEditScheduleVisitorsRequest.vistor_detail = myvisitordetailsArray
-//        self.displayscheduleVisitorsEditDetailsNextScreen.visitors = myvisitordetailsArray
-//        
-//        tableView.reloadData()
-//      
-//    
-//    }
+
     func updateSaveButtonState() {
         let list = self.apiRequestScheduleVisitorsRequest.vistor_details ?? []
         // Access the btnCancelAndSave cell

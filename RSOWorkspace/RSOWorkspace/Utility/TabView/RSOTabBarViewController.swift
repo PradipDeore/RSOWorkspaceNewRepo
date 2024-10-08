@@ -43,9 +43,8 @@ class RSOTabBarViewController: UIViewController {
         coordinator = RSOTabBarCordinator(tabBarController: self)
         setupTabBarView()
         for (index, item) in RSOTabItem.allCases.enumerated() {
-          if index == 3 && UserHelper.shared.isGuest() {
-              continue // Skip adding the report tab if it's set to false
-          }
+
+          
             let viewController = item.createTabChildController()
             // set coordinator value
             if let childViewController = viewController as? RSOTabCoordinated {
@@ -103,9 +102,7 @@ class RSOTabBarViewController: UIViewController {
         for (index, item) in RSOTabItem.allCases.enumerated() {
           print("index=", index)
           print("item=", item)
-//          if index == 3 && UserHelper.shared.isGuest() {
-//              continue // Skip adding the report tab if it's set to false
-//          }
+
           let itemWidth = Int(screenWidth) / itemCount
           print("itemWidth=", itemWidth)
           print("itemCount=", itemCount)
@@ -131,7 +128,6 @@ class RSOTabBarViewController: UIViewController {
                 button.isUserInteractionEnabled = false
                 button.alpha = 0.5
             }
-                
         }
     }
     @objc  func tabButtonTapped(_ sender: UIButton?) {

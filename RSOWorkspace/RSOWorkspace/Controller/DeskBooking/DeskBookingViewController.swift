@@ -16,7 +16,6 @@ enum CellIdentifierDeskBooking: String {
     case selectDesksType = "SelectMeetingRoomTableViewCell"
     case selectDesks = "SelectDesksTableViewCell"
     case buttonbookingConfirm = "ButtonBookingConfirmTableViewCell"
-    case noDataAvailable = "NoDataAvailableTableViewCell"
 }
 
 enum SectionTypeDeskBooking: Int, CaseIterable {
@@ -28,7 +27,6 @@ enum SectionTypeDeskBooking: Int, CaseIterable {
     case selectDesksType
     case selectDesks
     case buttonbookingConfirm
-    case noDataAvailable
 }
 class DeskBookingViewController: UIViewController{
     
@@ -53,8 +51,6 @@ class DeskBookingViewController: UIViewController{
     var selectedLocation = ""
     var selectedDeskNo = ""
     var selectedDeskTypeId = 0
-    var isNoDataAvailable: Bool = false
-    
     // var selectedMeetingRoomDate = ""
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,6 +59,7 @@ class DeskBookingViewController: UIViewController{
         
         setupTableView()
         fetchLocations()
+        
     }
     
     private func setupTableView() {
@@ -158,30 +155,6 @@ class DeskBookingViewController: UIViewController{
         let indexpath2 = IndexPath(row: 0, section: SectionTypeDeskBooking.buttonbookingConfirm.rawValue)
         self.tableView.reloadRows(at: [indexpath1,indexpath2], with: .automatic)
     }
-    func fetchDesks(id: Int, requestModel: DeskRequestModel) {
-        APIManager.shared.request(
-            modelType: DeskListingResponse.self,
-            type: DeskBookingEndPoint.getDesksLisiting(id: id, requestModel: requestModel)) { [weak self] response in
-                DispatchQueue.main.async {
-                    guard let self = self else { return }
-                    switch response {
-                    case .success(let responseData):
-
-                        // Handle successful response with bookings
-                        let deskList = responseData.data
-                        let listItems: [RSOCollectionItem] = deskList.map { RSOCollectionItem(deskLisitngItem: $0) }
-                       
-//                        print("count of collection view list",self.collectionView.listItems.count)
-                        self.listItems = listItems
-                        self.tableView.reloadSections([SectionTypeDeskBooking.selectDesksType.rawValue, SectionTypeDeskBooking.noDataAvailable.rawValue], with: .none)
-                        self.eventHandler?(.dataLoaded)
-                    case .failure(let error):
-                        self.eventHandler?(.error(error))
-                        RSOToastView.shared.show("\(error.localizedDescription)", duration: 2.0, position: .center)
-                    }
-                }
-            }
-    }
 }
 
 // MARK: - UITableViewDataSource, UITableViewDelegate
@@ -268,41 +241,33 @@ extension DeskBookingViewController: UITableViewDataSource, UITableViewDelegate 
             cell.collectionView.tag = 1
             cell.collectionView.backActionDelegate = self
             cell.collectionView.hideBookButton = true
-            cell.collectionView.listItems = self.listItems
-            
-            
-//            cell.eventHandler = { [weak self] event, list in
-//                
-//                guard let self = self else { return }
-//                switch event {
-//                case .dataLoaded:
-//                    if list?.isEmpty == true {
-//                        RSOToastView.shared.show("No Desks Available For Selected Date And Time", duration: 2.0, position: .center)
-//                    }
-//                case .error(let error):
-//                    RSOToastView.shared.show("Error: \(error.localizedDescription)", duration: 2.0, position: .center)
-//                }
-//                self.listItems = list ?? []
-//                print("eventHandler listItems", self.listItems)
-//                DispatchQueue.main.async {
-//                    self.tableView.reloadSections([ SectionTypeDeskBooking.selectDesks.rawValue], with: .none)
-//                }
-//               
-//            }
-//            if selectedDeskId > 0{
-//                cell.fetchDesks(id: 1,
-//                                requestModel: apiRequestModelDeskListing)
-//            
+            cell.eventHandler = { [weak self] event, list in
                 
-           // }
+                guard let self = self else { return }
+                switch event {
+                case .dataLoaded:
+                    if list?.isEmpty == true {
+                        
+                        RSOToastView.shared.show("No Desks Available For Selected Date And Time", duration: 2.0, position: .center)
+                    }
+                case .error(let error):
+                    RSOToastView.shared.show("Error: \(error.localizedDescription)", duration: 2.0, position: .center)
+                }
+                self.listItems = list ?? []
+                print("eventHandler listItems", self.listItems)
+                DispatchQueue.main.async {
+                    self.tableView.reloadSections([ SectionTypeDeskBooking.selectDesks.rawValue], with: .none)
+                }
+               
+            }
+            if selectedDeskId > 0{
+                cell.fetchDesks(id: 1,
+                                requestModel: apiRequestModelDeskListing)
+               /* cell.fetchDesks(id: selectedDeskId,
+                                requestModel: apiRequestModelDeskListing)*/
+                
+            }
             cell.selectionStyle = .none
-            return cell
-            
-          
-        case .noDataAvailable:
-            let cell =  tableView.dequeueReusableCell(withIdentifier: CellIdentifierDeskBooking.noDataAvailable.rawValue, for: indexPath) as! NoDataAvailableTableViewCell
-          
-            cell.lblMessage.text = "No Desk Available For Selected Date And Time"
             return cell
         case .selectDesks:
             let cell =  tableView.dequeueReusableCell(withIdentifier: CellIdentifierDeskBooking.selectDesks.rawValue, for: indexPath) as! SelectDesksTableViewCell
@@ -326,7 +291,6 @@ extension DeskBookingViewController: UITableViewDataSource, UITableViewDelegate 
             cell.btnConfirm.alpha = cell.btnConfirm.isEnabled ? 1.0 : 0.4
             cell.selectionStyle = .none
             return cell
-        
         }
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -342,17 +306,13 @@ extension DeskBookingViewController: UITableViewDataSource, UITableViewDelegate 
         case .addTeamMembers:
             return UserHelper.shared.isGuest() ? 0: 0
         case .selectMeetingRoomLabel:
-           // return 20
-            return self.listItems.isEmpty ? 0.0 : 20.0
+            return 20
         case .selectDesksType:
-            //return 209
-            return self.listItems.isEmpty ? 0.0 : 209
+            return 209
         case .selectDesks:
             return 80
         case .buttonbookingConfirm:
             return 50
-        case .noDataAvailable:
-            return self.listItems.isEmpty ? 120.0 : 0.0
         }
     }
 }
@@ -360,7 +320,7 @@ extension DeskBookingViewController: UITableViewDataSource, UITableViewDelegate 
 
 extension UITableView {
     func registerCellsDeskBooking() {
-        let cellIdentifiers: [CellIdentifierDeskBooking] = [.selectLocation, .selectDate, .selectTime, .addTeamMembers, .selectMeetingRoomLabel, .selectDesksType,.noDataAvailable,.selectDesks,.buttonbookingConfirm]
+        let cellIdentifiers: [CellIdentifierDeskBooking] = [.selectLocation, .selectDate, .selectTime, .addTeamMembers, .selectMeetingRoomLabel, .selectDesksType,.selectDesks,.buttonbookingConfirm]
         cellIdentifiers.forEach { reuseIdentifier in
             register(UINib(nibName: reuseIdentifier.rawValue, bundle: nil), forCellReuseIdentifier: reuseIdentifier.rawValue)
         }

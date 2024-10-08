@@ -32,6 +32,10 @@ class PaymentNetworkManager: CardPaymentDelegate ,ApplePayDelegate{
     var bookingId: Int = 0
     var totalPrice: Double = 0.0
     var vatAmount: Double = 0.0
+    
+    var bookMeetingID = ""
+    var bookDeskID = ""
+   
     func paymentRoomBookingAPI(additionalrequirements :[String], bookingid:Int, requirementdetails:String,totalprice:Double,vatamount:Double) {
         self.paymentRoomBookingRequestModel = PaymentRoomBookingRequest(additional_requirements: additionalrequirements, booking_id: bookingid, requirement_details: requirementdetails, total: totalprice, vatamount: vatamount)
         
@@ -41,6 +45,7 @@ class PaymentNetworkManager: CardPaymentDelegate ,ApplePayDelegate{
                 var requestModel = NiPaymentRequestModel()
                 requestModel.total = Int(totalprice)
                 requestModel.email = UserHelper.shared.getUserEmail()
+                requestModel.BookMeetingID = "\(bookingid)"
                 self.makePayment(requestModel: requestModel)
             } else {
                 self.submitRoomBooking()
@@ -64,7 +69,7 @@ class PaymentNetworkManager: CardPaymentDelegate ,ApplePayDelegate{
                             RSOToastView.shared.show(response.message, duration: 2.0, position: .center)
                         } else {
                             self.apiResponseData = response
-                            RSOToastView.shared.show(response.message, duration: 2.0, position: .center)
+                           // RSOToastView.shared.show(response.message, duration: 2.0, position: .center)
                             if UserHelper.shared.isGuest() || UserHelper.shared.isSocialLoginUser() {
                                 self.paymentCallBack(orderRef:self.orderReference)
                                 let paymentSuccessVC = UIViewController.createController(storyBoard: .Payment, ofType: PaymentSuccessViewController.self)
@@ -98,7 +103,7 @@ class PaymentNetworkManager: CardPaymentDelegate ,ApplePayDelegate{
                         if response.status.isError {
                             RSOToastView.shared.show(response.msg, duration: 2.0, position: .center)
                         } else {
-                            RSOToastView.shared.show(response.msg, duration: 2.0, position: .center)
+                          //  RSOToastView.shared.show(response.msg, duration: 2.0, position: .center)
                             if UserHelper.shared.isGuest() || UserHelper.shared.isSocialLoginUser() {
                                 self.paymentCallBack(orderRef:self.orderReference)
                                 let paymentSuccessVC = UIViewController.createController(storyBoard: .Payment, ofType: PaymentSuccessViewController.self)
@@ -131,7 +136,7 @@ class PaymentNetworkManager: CardPaymentDelegate ,ApplePayDelegate{
                     switch response {
                     case .success(let response):
                         if response.status.isError {
-                            RSOToastView.shared.show(response.msg, duration: 2.0, position: .center)
+                           // RSOToastView.shared.show(response.msg, duration: 2.0, position: .center)
                         } else {
                             self.apiOfficeResponseData = response
                             RSOToastView.shared.show(response.msg, duration: 2.0, position: .center)

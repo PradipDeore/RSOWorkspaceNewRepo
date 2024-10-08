@@ -22,26 +22,57 @@ class DashboardViewController: UIViewController, RSOTabCoordinated {
   var eventHandler: ((_ event: Event) -> Void)?
   var pagetitle = RSOGreetings.greetingForCurrentTime()
     var requestModel = MeetingRoomItemRequestModel()
-
-  override func viewDidLoad() {
+    var listItems: [RSOCollectionItem] = []
+ 
+    override func viewDidLoad() {
     super.viewDidLoad()
+      
     setupTableView()
     membershipViewController = UIViewController.createController(storyBoard: .Membership, ofType: MembershipViewController.self)
       CardListManager.shared.getCardDetails()
+      
+           // Fetch rooms on page load
+           fetchRoomsOnPageLoad()
+
   }
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
+      tableView.reloadData()
+      
+      
+      
     coordinator?.hideBackButton(isHidden: true)
     coordinator?.hideTopViewForHome(isHidden: false)
     pagetitle = RSOGreetings.greetingForCurrentTime()
     coordinator?.setTitle(title: pagetitle)
     coordinator?.updateButtonSelection(0)
     print("dashboard view controller view will appear called")
-      
-      tableView.reloadData()
-      
+
   }
-  
+    private func fetchRoomsOnPageLoad() {
+            // Ensure the fetch method is called immediately
+            if selectedButtonType == .meetingRooms {
+                fetchMeetingRooms()
+            }
+        }
+
+        private func fetchMeetingRooms() {
+            // Fetch meeting rooms data directly
+            if let meetingRoomsCell = tableView.cellForRow(at: IndexPath(row: 0, section: SectionType.meetingRooms.rawValue)) as? DashboardMeetingRoomsTableViewCell {
+                meetingRoomsCell.fetchRooms(id: 1, requestModel: requestModel)
+            } else {
+                // Optionally, you can reload the table view and then fetch data
+                tableView.reloadSections(IndexSet(integer: SectionType.meetingRooms.rawValue), with: .none)
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                    // Ensure the cell is available for fetching data after the reload
+                    if let meetingRoomsCell = self.tableView.cellForRow(at: IndexPath(row: 0, section: SectionType.meetingRooms.rawValue)) as? DashboardMeetingRoomsTableViewCell {
+                        meetingRoomsCell.fetchRooms(id: 1, requestModel: self.requestModel)
+                    } else {
+                        print("DashboardMeetingRoomsTableViewCell not found after reload.")
+                    }
+                }
+            }
+        }
   private func setupTableView() {
     tableView.dataSource = self
     tableView.delegate = self
@@ -245,10 +276,13 @@ extension DashboardViewController: DashboardDeskTypeTableViewCellDelegate {
   func buttonTapped(type: DashboardOption) {
     DispatchQueue.main.async {
       self.selectedButtonType = type
-        self.tableView.reloadSections(IndexSet(integer: 3), with: .automatic)
+       // self.tableView.reloadSections(IndexSet(integer: 3), with: .automatic)
+        self.tableView.reloadSections(IndexSet(integer: SectionType.meetingRooms.rawValue), with: .automatic)
 
       switch type {
       case .meetingRooms:
+          print("Meeting Rooms button tapped")
+
         if let meetingRoomsCell = self.tableView.visibleCells.compactMap({ $0 as? DashboardMeetingRoomsTableViewCell }).first {
             meetingRoomsCell.fetchRooms(id: 1, requestModel: self.requestModel)
 
@@ -256,6 +290,8 @@ extension DashboardViewController: DashboardDeskTypeTableViewCellDelegate {
           print("DashboardMeetingRoomsTableViewCell not found")
         }
       case .workspace:
+          print("Workspace button tapped")
+
         if let meetingRoomsCell = self.tableView.visibleCells.compactMap({ $0 as? DashboardMeetingRoomsTableViewCell }).first {
           meetingRoomsCell.fetchOfficeDesk(id: nil, requestModel: nil)
         } else {
@@ -265,4 +301,28 @@ extension DashboardViewController: DashboardDeskTypeTableViewCellDelegate {
       }
     }
   }
+//    func buttonTapped(type: DashboardOption) {
+//            DispatchQueue.main.async {
+//                self.selectedButtonType = type
+//                
+//                // Reloading the entire table view is not efficient, you can target specific sections or rows.
+//               // self.tableView.reloadSections(IndexSet(integer: 3), with: .automatic)
+//                 self.tableView.reloadSections(IndexSet(integer: SectionType.meetingRooms.rawValue), with: .automatic)
+//                // Directly accessing the index path for the cell you want to work with
+//                let indexPath = IndexPath(row: 0, section: 3) // Assuming the dashboardMeetingRooms cell is at section 3
+//                if let meetingRoomsCell = self.tableView.cellForRow(at: indexPath) as? DashboardMeetingRoomsTableViewCell {
+//                    switch type {
+//                    case .meetingRooms:
+//                        meetingRoomsCell.fetchRooms(id: 1, requestModel: self.requestModel)
+//                    case .workspace:
+//                        meetingRoomsCell.fetchOfficeDesk(id: nil, requestModel: nil)
+//                    case .membership:
+//                        // Handle membership case if needed
+//                        break
+//                    }
+//                } else {
+//                    print("DashboardMeetingRoomsTableViewCell not found at indexPath \(indexPath)")
+//                }
+//            }
+//        }
 }

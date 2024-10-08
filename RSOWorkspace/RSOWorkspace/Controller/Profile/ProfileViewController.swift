@@ -93,7 +93,7 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
             case .profileDetails: return 204
             case .changePassword: return 50
             case .membershipPlan:   return 265
-            case .paymentMethod: return 50
+            case .paymentMethod: return 0 //return 50
             default : return 100
             
             }

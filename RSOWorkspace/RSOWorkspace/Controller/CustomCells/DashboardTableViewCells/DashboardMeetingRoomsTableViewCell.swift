@@ -24,7 +24,7 @@ class DashboardMeetingRoomsTableViewCell: UITableViewCell {
         collectionView.scrollDirection = .horizontal
         collectionView.isPagingEnabled = true
         collectionView.showsHorizontalScrollIndicator = false // Hide horizontal scroll indicator
-        fetchRooms(id: 1, requestModel: requestModel)
+        //fetchRooms(id: 1, requestModel: requestModel)
 
     }
     

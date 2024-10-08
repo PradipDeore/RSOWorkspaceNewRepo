@@ -41,7 +41,7 @@ class PaymentViewController: UIViewController{
     var officeName = ""
     var bookingType: BookingType = .meetingRoom
     var totalAmenityPrices: [Int: Float] = [:]
-    
+
     var orderdetailsaArray : [orderSummaryItem] = []
     
     private var cellIdentifiers: [(CellType, CGFloat)] = [
@@ -82,6 +82,18 @@ class PaymentViewController: UIViewController{
             print("office Order details are not available.")
         }
     }
+  
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        // getCardDetails()
+        print("after login view will appear called ")
+      
+        self.tableView.reloadData()
+        
+    }
+    
+    
     func appendOrderDetailsData(orderDetails: RoomBookingOrderDetails) {
         // Clear existing data
         orderdetailsaArray.removeAll()
@@ -239,12 +251,7 @@ class PaymentViewController: UIViewController{
         }
     }
     
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        // getCardDetails()
-        self.tableView.reloadData()
-    }
+
     private func setupCellIdentifiers() {
         switch bookingType {
         case .office:
@@ -328,7 +335,8 @@ extension PaymentViewController: UITableViewDataSource, UITableViewDelegate {
             if UserHelper.shared.isUserExplorer(){
                 return 0
             }
-            return !UserHelper.shared.isGuest() ? 0 : 1
+            //return !UserHelper.shared.isGuest() ? 0 : 1
+            return !UserHelper.shared.isGuest() ? 0 : 0
         default:
             return 1
         }
@@ -602,6 +610,12 @@ extension PaymentViewController {
 
 extension PaymentViewController: ButtonPayNowTableViewCellDelegate {
     func btnPayNowTappedAction() {
+      
+        if UserHelper.shared.isUserExplorer() {
+            CurrentLoginType.shared.loginScreenDelegate = self
+            LogInViewController.showLoginViewController()
+            return
+    }
         // Check if the Terms and Conditions are accepted
                if !isTermsAccepted {
                    RSOToastView.shared.show("Please agree to the Terms and Conditions before proceeding", duration: 2.0, position: .center)
@@ -610,11 +624,7 @@ extension PaymentViewController: ButtonPayNowTableViewCellDelegate {
         
         print("Is Social Login User: \(UserHelper.shared.isSocialLoginUser())")
 
-            if UserHelper.shared.isUserExplorer() {
-                CurrentLoginType.shared.loginScreenDelegate = self
-                LogInViewController.showLoginViewController()
-                return
-        }
+           
         guard let obj = self.requestParameters else { return }
         
         switch bookingType {
@@ -624,6 +634,8 @@ extension PaymentViewController: ButtonPayNowTableViewCellDelegate {
                 var requestModel = NiPaymentRequestModel()
                 requestModel.total = Int(totalPriceDesk)
                 requestModel.email = UserHelper.shared.getUserEmail()
+                requestModel.BookdeskID = "\(bookingId)"
+                
                 paymentServiceManager.currentViewController = self
                 paymentServiceManager.currentNavigationController = self.navigationController
                 paymentServiceManager.paymentTypeEntity = .desk
@@ -641,6 +653,7 @@ extension PaymentViewController: ButtonPayNowTableViewCellDelegate {
             additionalServicesVC.vatAmount = self.vatAmountMeetingRoom
             additionalServicesVC.totalPrice =  self.totalPriceMeetingRoom
             additionalServicesVC.bookingId = self.bookingId
+            additionalServicesVC.coordinator = self.coordinator
             self.navigationController?.pushViewController(additionalServicesVC, animated: true)
             
         case .office: 
@@ -650,9 +663,11 @@ extension PaymentViewController: ButtonPayNowTableViewCellDelegate {
             paymentServiceManager.bookingId = bookingId
             paymentServiceManager.totalPrice = totalPriceOffice
             paymentServiceManager.vatAmount = vatAmountOffice
+            
             var requestModel = NiPaymentRequestModel()
             requestModel.total =  Int(totalPriceOffice)
             requestModel.email = UserHelper.shared.getUserEmail()
+            requestModel.BookMeetingID = "\(bookingId)"
             if UserHelper.shared.isGuest() || UserHelper.shared.isSocialLoginUser() {
                 paymentServiceManager.makePayment(requestModel: requestModel)
             } else {
@@ -664,6 +679,7 @@ extension PaymentViewController: ButtonPayNowTableViewCellDelegate {
 extension PaymentViewController: LoginScreenActionDelegate {
     func loginScreenDismissed() {
         DispatchQueue.main.async {
+            self.coordinator?.updateTabButtons()
             self.btnPayNowTappedAction()
         }
     }

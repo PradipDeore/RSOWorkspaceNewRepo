@@ -35,6 +35,8 @@ class ChooseAdditionalServicesViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+      
+   
     setupTableView()
     containerView.setCornerRadiusForView()
     setValuesForAdditionalServices()
@@ -162,6 +164,7 @@ extension ChooseAdditionalServicesViewController:CancelAndRequestButtonTableView
       paymentServiceManager.paymentTypeEntity = .room
       paymentServiceManager.currentViewController = self
       paymentServiceManager.currentNavigationController = self.navigationController
+    
       paymentServiceManager.paymentRoomBookingAPI(additionalrequirements: selectedServices, bookingid: self.bookingId, requirementdetails: details, totalprice: totalPrice, vatamount: vatAmount)
   }
   
@@ -174,7 +177,8 @@ extension ChooseAdditionalServicesViewController:CancelAndRequestButtonTableView
 extension ChooseAdditionalServicesViewController: LoginScreenActionDelegate {
   func loginScreenDismissed() {
     DispatchQueue.main.async {
-      self.btnRequestTappedAction()
+        self.coordinator?.updateTabButtons()
+        self.btnRequestTappedAction()
     }
   }
 }
