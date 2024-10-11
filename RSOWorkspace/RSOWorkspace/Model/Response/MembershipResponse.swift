@@ -12,6 +12,7 @@ struct MembershipResponse: Codable {
     let status: StatusType?
     let data: [MembershipData]?
     let message:String?
+    
 }
 
 
@@ -61,4 +62,5 @@ struct PlanPrice: Codable {
     let price: String?
     let duration: String?
     let length: Int?
+    let per_person_text:String?
 }

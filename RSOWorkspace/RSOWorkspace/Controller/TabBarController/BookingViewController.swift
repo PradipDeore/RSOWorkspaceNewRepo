@@ -11,7 +11,8 @@ class BookingViewController: UIViewController, RSOTabCoordinated {
   
   var coordinator: RSOTabBarCordinator?
   @IBOutlet weak var tableView: UITableView!
-  
+    var viewControllers = [UIViewController]()
+
   enum BookingSection: Int, CaseIterable {
     case desk = 0
     case meetingRoom
@@ -145,3 +146,16 @@ extension BookingViewController:BookOfficeTableViewCellDelegate{
   
   
 }
+
+//extension BookingViewController: SearchingDelegate {
+//  func didSearch(searchString: String) {
+//    DispatchQueue.main.async {
+//        guard let currentNavcontroller = self.viewControllers[self.lastSelectedTabIndex] as? UINavigationController else { return }
+//      let roomListingVC = UIViewController.createController(storyBoard: .Products, ofType: RoomListingViewController.self)
+//      roomListingVC.searchingText = searchString
+//      roomListingVC.coordinator = self.coordinator
+//      roomListingVC.isSearchEnabled = true
+//      currentNavcontroller.pushViewController(roomListingVC, animated: false)
+//    }
+//  }
+//}

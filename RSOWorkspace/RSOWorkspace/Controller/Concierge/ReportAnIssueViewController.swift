@@ -10,10 +10,8 @@ import UIKit
 class ReportAnIssueViewController: UIViewController {
     
     var coordinator: RSOTabBarCordinator?
-    
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var tableView: UITableView!
-    
     var cornerRadius: CGFloat = 10.0
     var location: [LocationDetails] = []
     var dropdownOptions: [LocationDetails] = []
@@ -22,6 +20,9 @@ class ReportAnIssueViewController: UIViewController {
     var location_id = 0
     var descriptionOfIssue = ""
     var selectedLocation = ""
+    var selectedImage: UIImage? // Store selected image here
+
+    
     enum Section: Int, CaseIterable {
         case selectArea = 0
         case addPics
@@ -74,52 +75,149 @@ class ReportAnIssueViewController: UIViewController {
                 }
             }
     }
-    func reportAnIssueAPI(locationid :Int, description:String) {
-        let requestModel = ReportAnIssueRequestModel(location_id: locationid, description: description)
-        print("requestModel",requestModel)
-        APIManager.shared.request(
-            modelType: ReportAnIssueResponse.self,
-            type: ServicesEndPoint.reportAnIssue(requestModel: requestModel)) { response in
-                switch response {
-                case .success(let response):
-                    self.reportAnIssueRespnseData = response
-                    //record inserted successfully
-                    DispatchQueue.main.async {
-                        RSOToastView.shared.show("\(response.message)", duration: 3.0, position: .center)
-                        
-                        // Reset the form
-                        self.resetForm()
-                    }
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-                        self.dismiss(animated: true, completion: nil)
-                    }
-                    self.eventHandler?(.dataLoaded)
-                case .failure(let error):
+//    func reportAnIssueAPI(locationid :Int,description:String) {
+//        let requestModel = ReportAnIssueRequestModel(location_id: locationid,  description: description)
+//        print("requestModel",requestModel)
+//        APIManager.shared.request(
+//            modelType: ReportAnIssueResponse.self,
+//            type: ServicesEndPoint.reportAnIssue(requestModel: requestModel)) { response in
+//                switch response {
+//                case .success(let response):
+//                    self.reportAnIssueRespnseData = response
+//                    //record inserted successfully
+//                    DispatchQueue.main.async {
+//                        RSOToastView.shared.show("\(response.message)", duration: 3.0, position: .center)
+//                        
+//                        // Reset the form
+//                        self.resetForm()
+//                    }
+//                    DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+//                        self.dismiss(animated: true, completion: nil)
+//                    }
+//                    self.eventHandler?(.dataLoaded)
+//                case .failure(let error):
+//                    self.eventHandler?(.error(error))
+//                    DispatchQueue.main.async {
+//                        //  Unsuccessful
+//                        RSOToastView.shared.show("\(error.localizedDescription)", duration: 2.0, position: .center)
+//                    }
+//                }
+//            }
+//    }
+//    
+    
+    func reportAnIssueAPI(locationId: Int, image: UIImage?, description: String) {
+        guard let image = image else {
+            RSOToastView.shared.show("Please select an image", duration: 2.0, position: .center)
+            return
+        }
+        // URL of the API endpoint
+        guard let url = URL(string: Configuration.shared.baseURL)?.appendingPathComponent("report-issue") else { return }
+        
+        let token = RSOToken.shared.getToken() ?? ""
+        // Create the request
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        let boundary = UUID().uuidString
+        request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
+
+
+        let httpBody = createMultipartBody(locationId: locationId, image: image, description: description, boundary: boundary)
+        request.httpBody = httpBody
+        print("Request Headers: \(request.allHTTPHeaderFields ?? [:])")
+           print("Request Parameters: locationId: \(locationId), description: \(description)")
+        let session = URLSession.shared
+        let task = session.dataTask(with: request) { (data, response, error) in
+            guard let data = data, error == nil else {
+                DispatchQueue.main.async {
                     self.eventHandler?(.error(error))
-                    DispatchQueue.main.async {
-                        //  Unsuccessful
-                        RSOToastView.shared.show("\(error.localizedDescription)", duration: 2.0, position: .center)
-                    }
+                    RSOToastView.shared.show("Upload failed: \(error?.localizedDescription ?? "Unknown error")", duration: 2.0, position: .center)
+                }
+                return
+            }
+            
+            // Log the raw response to debug the issue
+            if let httpResponse = response as? HTTPURLResponse {
+                print("Status Code: \(httpResponse.statusCode)")
+            }
+
+            // Log the raw response data
+            if let jsonString = String(data: data, encoding: .utf8) {
+                print("Raw Response Data: \(jsonString)")
+            }
+
+            // Attempt to parse the data
+            do {
+                let decoder = JSONDecoder()
+                let responseModel = try decoder.decode(ReportAnIssueResponse.self, from: data)
+                DispatchQueue.main.async {
+                    self.reportAnIssueRespnseData = responseModel
+                    RSOToastView.shared.show("\(responseModel.message)", duration: 3.0, position: .center)
+                    self.resetForm()
+                    self.dismiss(animated: true, completion: nil)
+                    self.eventHandler?(.dataLoaded)
+                }
+                // Log successful response model
+            print("Parsed Response: \(responseModel)")
+            } catch {
+                DispatchQueue.main.async {
+                    // Show parsing error in the UI
+                    RSOToastView.shared.show("Parsing error: \(error.localizedDescription)", duration: 2.0, position: .center)
                 }
             }
-    }
-    
-    func resetForm() {
-        location_id = 0
-        descriptionOfIssue = ""
-        dropdownOptions = []
-        
-        // Reset images in the AddPicsTableViewCell
-        if let cell = tableView.cellForRow(at: IndexPath(row: 0, section: Section.addPics.rawValue)) as? AddPicsTableViewCell {
-            cell.resetImages()
         }
-        // Reset the description text field in ProvideDetailsOfIssueTableViewCell
-            if let provideDetailsCell = tableView.cellForRow(at: IndexPath(row: 0, section: Section.provideDetails.rawValue)) as? ProvideDetailsOfIssueTableViewCell {
-                provideDetailsCell.textFieldView.text = ""
-                provideDetailsCell.descriptionText = "" // This will also call the delegate method to reset descriptionOfIssue
-            }
-        tableView.reloadData()
+
+        task.resume()
     }
+
+
+       func createMultipartBody(locationId: Int, image: UIImage, description: String, boundary: String) -> Data {
+           var body = Data()
+
+           // Add location_id
+           body.append("--\(boundary)\r\n".data(using: .utf8)!)
+           body.append("Content-Disposition: form-data; name=\"location_id\"\r\n\r\n".data(using: .utf8)!)
+           body.append("\(locationId)\r\n".data(using: .utf8)!)
+
+           // Add description
+           body.append("--\(boundary)\r\n".data(using: .utf8)!)
+           body.append("Content-Disposition: form-data; name=\"description\"\r\n\r\n".data(using: .utf8)!)
+           body.append("\(description)\r\n".data(using: .utf8)!)
+
+           // Add image data
+              if let imageData = image.jpegData(compressionQuality: 0.7) {
+                  body.append("--\(boundary)\r\n".data(using: .utf8)!)
+                  body.append("Content-Disposition: form-data; name=\"image\"; filename=\"issueImage.jpg\"\r\n".data(using: .utf8)!)
+                  body.append("Content-Type: image/jpeg\r\n\r\n".data(using: .utf8)!)
+                  body.append(imageData)
+                  body.append("\r\n".data(using: .utf8)!)
+              } else {
+                  print("Failed to convert image to JPEG format.")
+              }
+           // End boundary
+           body.append("--\(boundary)--\r\n".data(using: .utf8)!)
+
+           return body
+       }
+
+       func resetForm() {
+           location_id = 0
+           descriptionOfIssue = ""
+           dropdownOptions = []
+           selectedImage = nil
+           
+           // Reset images in the AddPicsTableViewCell
+           if let cell = tableView.cellForRow(at: IndexPath(row: 0, section: Section.addPics.rawValue)) as? AddPicsTableViewCell {
+               cell.resetImages()
+           }
+           // Reset the description text field in ProvideDetailsOfIssueTableViewCell
+           if let provideDetailsCell = tableView.cellForRow(at: IndexPath(row: 0, section: Section.provideDetails.rawValue)) as? ProvideDetailsOfIssueTableViewCell {
+               provideDetailsCell.textFieldView.text = ""
+               provideDetailsCell.descriptionText = ""
+           }
+           tableView.reloadData()
+       }
 }
 
 extension ReportAnIssueViewController: UITableViewDelegate, UITableViewDataSource {
@@ -207,7 +305,8 @@ extension ReportAnIssueViewController:RequestButtonTableViewCellDelegate{
             RSOToastView.shared.show("All fields are required", duration: 2.0, position: .center)
             return
         }
-        reportAnIssueAPI(locationid: location_id, description: descriptionOfIssue)
+        reportAnIssueAPI(locationId: location_id, image: selectedImage, description: descriptionOfIssue)
+
     }
 }
 
@@ -228,17 +327,20 @@ extension ReportAnIssueViewController:AddPicsTableViewCellDelegate{
 }
 extension ReportAnIssueViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        picker.dismiss(animated: true, completion: nil)
-        
-        if let image = info[.originalImage] as? UIImage {
-            // Call the displayPhoto function of the cell passing the selected image
-            if let cell = tableView.cellForRow(at: IndexPath(row: 0, section: Section.addPics.rawValue)) as? AddPicsTableViewCell {
-                cell.displayPhoto(image)
+            picker.dismiss(animated: true, completion: nil)
+            
+            if let image = info[.originalImage] as? UIImage {
+                // Save the selected image
+                self.selectedImage = image
+                
+                // Display the selected image in the AddPicsTableViewCell
+                if let cell = tableView.cellForRow(at: IndexPath(row: 0, section: Section.addPics.rawValue)) as? AddPicsTableViewCell {
+                    cell.displayPhoto(image)
+                }
             }
         }
-    }
-    
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        picker.dismiss(animated: true, completion: nil)
-    }
+        
+        func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+            picker.dismiss(animated: true, completion: nil)
+        }
 }

@@ -124,7 +124,12 @@ class RSOTabBarViewController: UIViewController {
           let originX = (tabButtons.count - 1 ) * itemWidth
             button.leadingAnchor.constraint(equalTo: tabBarView.leadingAnchor, constant: CGFloat(originX)).isActive = true
             
-            if (index == 2 || index == 3) && UserHelper.shared.isGuest(){
+            if (index == 2 || index == 3) && UserHelper.shared.isGuest()  {
+                button.isUserInteractionEnabled = false
+                button.alpha = 0.5
+            }
+           
+            if (index == 2 || index == 3) && UserHelper.shared.isSocialLoginUser() {
                 button.isUserInteractionEnabled = false
                 button.alpha = 0.5
             }
@@ -187,7 +192,8 @@ class RSOTabBarViewController: UIViewController {
 extension RSOTabBarViewController: SearchingDelegate {
   func didSearch(searchString: String) {
     DispatchQueue.main.async {
-      guard let currentNavcontroller = self.viewControllers.first as? UINavigationController else { return }
+     //guard let currentNavcontroller = self.viewControllers.first as? UINavigationController else { return }
+        guard let currentNavcontroller = self.viewControllers[self.lastSelectedTabIndex] as? UINavigationController else { return }
       let roomListingVC = UIViewController.createController(storyBoard: .Products, ofType: RoomListingViewController.self)
       roomListingVC.searchingText = searchString
       roomListingVC.coordinator = self.coordinator

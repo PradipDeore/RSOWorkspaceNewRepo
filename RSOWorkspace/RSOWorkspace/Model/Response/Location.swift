@@ -16,12 +16,14 @@ struct LocationResponse: Codable {
 // MARK: - LocationDetails
 struct LocationDetails: Codable {
     let id: Int?
-    let name, geoLocation, latitude, longitude: String?
-    let address1, address2: String?
+     let name, geoLocation, latitude, longitude: String?
+     let address1, address2, phone, email: String?
+     let contactName: String?
 
-    enum CodingKeys: String, CodingKey {
-        case id, name
-        case geoLocation = "geo_location"
-        case latitude, longitude, address1, address2
-    }
-}
+     enum CodingKeys: String, CodingKey {
+         case id, name
+         case geoLocation
+         case latitude, longitude, address1, address2, phone, email
+         case contactName
+     }
+ }

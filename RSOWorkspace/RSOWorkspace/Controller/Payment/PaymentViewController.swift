@@ -369,7 +369,7 @@ extension PaymentViewController: UITableViewDataSource, UITableViewDelegate {
                 } else {
                     cell.txtTime.text = "Unavailable"
                 }
-                if let floathours = self.requestParameters?.timeDifferece {
+                if let floathours = self.requestParameters?.totalHrs {
                     intHoursMeetingRoom = Int(floathours)
                 }
                 cell.lblHours.text = "\(intHoursMeetingRoom)"

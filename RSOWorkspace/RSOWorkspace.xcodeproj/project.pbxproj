@@ -378,6 +378,8 @@
 		58D5AFF62BB5BBBF001FF067 /* ReportAnIssueRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D5AFF52BB5BBBF001FF067 /* ReportAnIssueRequestModel.swift */; };
 		58D5AFF82BB5BDD3001FF067 /* ReportAnIssueResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D5AFF72BB5BDD3001FF067 /* ReportAnIssueResponse.swift */; };
 		58D7749A2C95949900BE96FF /* DateTimeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58D774992C95949900BE96FF /* DateTimeManager.swift */; };
+		58DD72D52CB95AE500A6D314 /* AboutUsEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58DD72D42CB95AE500A6D314 /* AboutUsEndPoint.swift */; };
+		58DD72D72CB95C8700A6D314 /* AboutUsResponseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58DD72D62CB95C8700A6D314 /* AboutUsResponseModel.swift */; };
 		58E05E222B8610FB00189E99 /* EndPointType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E05E212B8610FB00189E99 /* EndPointType.swift */; };
 		58E05E242B86154000189E99 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E05E232B86154000189E99 /* APIManager.swift */; };
 		58E05E262B8619AB00189E99 /* DeskEndPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58E05E252B8619AB00189E99 /* DeskEndPoint.swift */; };
@@ -881,6 +883,8 @@
 		58D5AFF52BB5BBBF001FF067 /* ReportAnIssueRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportAnIssueRequestModel.swift; sourceTree = "<group>"; };
 		58D5AFF72BB5BDD3001FF067 /* ReportAnIssueResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportAnIssueResponse.swift; sourceTree = "<group>"; };
 		58D774992C95949900BE96FF /* DateTimeManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateTimeManager.swift; sourceTree = "<group>"; };
+		58DD72D42CB95AE500A6D314 /* AboutUsEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutUsEndPoint.swift; sourceTree = "<group>"; };
+		58DD72D62CB95C8700A6D314 /* AboutUsResponseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutUsResponseModel.swift; sourceTree = "<group>"; };
 		58E05E212B8610FB00189E99 /* EndPointType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPointType.swift; sourceTree = "<group>"; };
 		58E05E232B86154000189E99 /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		58E05E252B8619AB00189E99 /* DeskEndPoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeskEndPoint.swift; sourceTree = "<group>"; };
@@ -1148,6 +1152,7 @@
 				58B33B882C5A234300DBEA34 /* GalleryEndPoint.swift */,
 				58132FFE2C75B8930017C84D /* SearchEndPoint.swift */,
 				5832EEE42CB1829F006A2802 /* Configuration.swift */,
+				58DD72D42CB95AE500A6D314 /* AboutUsEndPoint.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -1743,6 +1748,7 @@
 				58F3C8542CB11B1A0053F77A /* NotificationStatusResponseModel.swift */,
 				58F3C8562CB11C8A0053F77A /* NotificationResponseModel.swift */,
 				58F6774C2CB3AB7000B90109 /* CancelVisitorResponseModel.swift */,
+				58DD72D62CB95C8700A6D314 /* AboutUsResponseModel.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -2588,6 +2594,7 @@
 				58BCBC2E2C4944B100465381 /* subServiceResponseModel.swift in Sources */,
 				581330012C75BB730017C84D /* SearchResponseModel.swift in Sources */,
 				583D9E002B90A2FD0073AAC3 /* Location.swift in Sources */,
+				58DD72D72CB95C8700A6D314 /* AboutUsResponseModel.swift in Sources */,
 				583D9E062B90C4730073AAC3 /* RSOCustomCalendarView.swift in Sources */,
 				58A6358F2B7F5CD500A5D2F2 /* LoginBackgroundView.swift in Sources */,
 				58BCBC272C49286E00465381 /* PaymentMethodTableViewCell.swift in Sources */,
@@ -2692,6 +2699,7 @@
 				584B4B4B2B9207AA00C6F5B2 /* LocationTableViewCell.swift in Sources */,
 				58E6E94C2B88A1CA00EB3600 /* RSOGreetings.swift in Sources */,
 				58BA515C2B9AE057000E0EF6 /* BookMeetingRoomRequestModel.swift in Sources */,
+				58DD72D52CB95AE500A6D314 /* AboutUsEndPoint.swift in Sources */,
 				5804180D2BD0FEE6008EA858 /* BookingConfirmedMeetingRoomTableViewCell.swift in Sources */,
 				58132FFF2C75B8940017C84D /* SearchEndPoint.swift in Sources */,
 				58B33B8B2C5A319500DBEA34 /* LocationGalleryResponseModel.swift in Sources */,
@@ -2876,7 +2884,7 @@
 				CODE_SIGN_ENTITLEMENTS = RSOWorkspace/RSOWorkspace.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 10;
+				CURRENT_PROJECT_VERSION = 31;
 				DEVELOPMENT_TEAM = D2BKM938GX;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				"EXCLUDED_ARCHS[sdk=*]" = "";
@@ -2894,7 +2902,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = aquil.com.RSOWorkspace;
+				PRODUCT_BUNDLE_IDENTIFIER = aquil.com.RSOWorkspaceInternalTesting;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -2913,7 +2921,7 @@
 				CODE_SIGN_ENTITLEMENTS = RSOWorkspace/RSOWorkspace.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 10;
+				CURRENT_PROJECT_VERSION = 31;
 				DEVELOPMENT_TEAM = D2BKM938GX;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -2930,7 +2938,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = aquil.com.RSOWorkspace;
+				PRODUCT_BUNDLE_IDENTIFIER = aquil.com.RSOWorkspaceInternalTesting;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;

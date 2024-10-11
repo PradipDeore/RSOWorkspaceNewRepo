@@ -80,7 +80,6 @@ class ScheduleVisitorsViewController: UIViewController{
             
             // Ensure that start_time and end_time are assigned correctly
                   displayscheduleVisitorsEditDetailsNextScreen.startTime = start_time
-            
                   displayscheduleVisitorsEditDetailsNextScreen.endTime = end_time
 
             apiRequestScheduleVisitorsRequest.reason_of_visit = reasonId
@@ -324,9 +323,8 @@ extension ScheduleVisitorsViewController: SelectTimeTableViewCellDelegate{
         //for edit
         apiEditScheduleVisitorsRequest.start_time = apiStartTime
         //display in next vc
-        self.start_time = Date.formatSelectedDate(format: .HHmm, date: startTime)
+        self.start_time = Date.formatSelectedDate(format: .HHmmss, date: startTime)
         let displayStartTime = Date.formatSelectedDate(format: .hhmma, date: startTime)
-        self.start_time = displayStartTime
         displayscheduleVisitorsDetailsNextScreen.startTime = displayStartTime
         displayscheduleVisitorsEditDetailsNextScreen.startTime = displayStartTime
     }
@@ -338,9 +336,8 @@ extension ScheduleVisitorsViewController: SelectTimeTableViewCellDelegate{
         //for edit
         apiEditScheduleVisitorsRequest.end_time = apiEndTime
         //display in next vc
-        self.end_time = Date.formatSelectedDate(format: .HHmm, date: endTime)
+        self.end_time = Date.formatSelectedDate(format: .HHmmss, date: endTime)
         let displayEndTime = Date.formatSelectedDate(format: .hhmma, date: endTime)
-        self.end_time = displayEndTime
         displayscheduleVisitorsDetailsNextScreen.endTime = displayEndTime
         //for update
         displayscheduleVisitorsEditDetailsNextScreen.endTime = displayEndTime
@@ -358,6 +355,11 @@ extension ScheduleVisitorsViewController:ButtonSaveDelegate{
                 return
             }
         }
+      
+           // Update API request and display models with the filtered visitor details
+           self.apiRequestScheduleVisitorsRequest.vistor_details = visitorsDetailArray
+           self.displayscheduleVisitorsDetailsNextScreen.visitors = visitorsDetailArray
+        
         print("Request Model: \(apiRequestScheduleVisitorsRequest)")
            print("Edit Model: \(apiEditScheduleVisitorsRequest)")
            print("Display Schedule: \(displayscheduleVisitorsDetailsNextScreen)")
@@ -425,7 +427,7 @@ extension ScheduleVisitorsViewController:VisitorsTableViewCellDelegate{
             return
         }
         if !RSOValidator.validatePhoneNumber(phone) {
-            RSOToastView.shared.show("Invalid phone", duration: 2.0, position: .center)
+            RSOToastView.shared.show("Please enter a valid  phone number", duration: 2.0, position: .center)
             return
         }
         let obj = MyVisitorDetail(visitor_name: name, visitor_email: email, visitor_phone: phone)
@@ -476,13 +478,27 @@ extension ScheduleVisitorsViewController:InviteVisitorsTableViewCellDelegate{
     
     func btnDeleteVisitors(buttonTag: Int) {
         
-        visitorsDetailArray.remove(at:buttonTag)
-        // If the array is empty after deletion, add a placeholder VisitorDetails object
-        if visitorsDetailArray.isEmpty {
-            let emptyVisitor = MyVisitorDetail(visitor_name: "", visitor_email: "", visitor_phone: "")
-            visitorsDetailArray.append(emptyVisitor)
-        }
-        tableView.reloadData()
+//        visitorsDetailArray.remove(at:buttonTag)
+//        // If the array is empty after deletion, add a placeholder VisitorDetails object
+//        if visitorsDetailArray.isEmpty {
+//            let emptyVisitor = MyVisitorDetail(visitor_name: "", visitor_email: "", visitor_phone: "")
+//            visitorsDetailArray.append(emptyVisitor)
+//        }
+//        tableView.reloadData()
+        
+        visitorsDetailArray.remove(at: buttonTag)
+           
+           // If the array is empty after deletion, add a placeholder VisitorDetails object
+           if visitorsDetailArray.isEmpty {
+               let emptyVisitor = MyVisitorDetail(visitor_name: "", visitor_email: "", visitor_phone: "")
+               visitorsDetailArray.append(emptyVisitor)
+           }
+
+           // Update the request model
+           self.apiRequestScheduleVisitorsRequest.vistor_details = visitorsDetailArray
+           self.displayscheduleVisitorsDetailsNextScreen.visitors = visitorsDetailArray
+           
+           tableView.reloadData()
     }
 }
 extension ScheduleVisitorsViewController:sendVisitorEmailDelegate{

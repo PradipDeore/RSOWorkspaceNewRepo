@@ -51,7 +51,7 @@ class ShortTermBookAnOfficeViewController: UIViewController{
   var selectedOfficeTypeId = 0
   var noOfSeats: Int = 0
   var officeName = ""
-  
+  var capacityOfPerson = 0
     // var selectedMeetingRoomDate = ""
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -163,17 +163,19 @@ extension ShortTermBookAnOfficeViewController: UITableViewDataSource, UITableVie
       cell.collectionView.hideBookButton = true
       cell.collectionView.backActionDelegate = self
       cell.eventHandler = { [weak self] event, list in
-            guard let self = self else { return }
-            switch event {
-            case .dataLoaded:
-                if list?.isEmpty == true {
-                    RSOToastView.shared.show("No Offices Available For Selected Date And Time", duration: 2.0, position: .center)
-                }
-            case .error(let error):
-                RSOToastView.shared.show("Error: \(error.localizedDescription)", duration: 2.0, position: .center)
-            }
-            self.listItems = list ?? []
-            print("eventHandler listItems", self.listItems)
+          DispatchQueue.main.async {
+              guard let self = self else { return }
+              switch event {
+              case .dataLoaded:
+                  if list?.isEmpty == true {
+                      RSOToastView.shared.show("No Offices Available For Selected Date And Time", duration: 2.0, position: .center)
+                  }
+              case .error(let error):
+                  RSOToastView.shared.show("Error: \(error.localizedDescription)", duration: 2.0, position: .center)
+              }
+              self.listItems = list ?? []
+              print("eventHandler listItems", self.listItems)
+          }
         }
       if selectedOfficeId > 0{
         cell.fetchOfficeDesk(id: selectedOfficeId,
@@ -186,6 +188,8 @@ extension ShortTermBookAnOfficeViewController: UITableViewDataSource, UITableVie
     case .selectNoOfSeats:
       let cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifierOfficeBooking.selectNoOfSeats.rawValue, for: indexPath) as! SelectNoOfSeatsTableViewCell
         cell.delegate = self
+        cell.isOfficeSelected =  self.selectedOfficeTypeId > 0
+        cell.noOfMaxSeatsToBook = self.capacityOfPerson
       cell.selectionStyle = .none
       return cell
    
@@ -361,16 +365,20 @@ extension ShortTermBookAnOfficeViewController: BookButtonActionDelegate{
           return
       }
       DispatchQueue.main.async{
-          if let officeTypeName = self.listItems.filter( {$0.id == selectedId }).first?.roomName {
-              self.officeName = officeTypeName
+          if let office = self.listItems.filter( {$0.id == selectedId }).first {
+              self.officeName = office.roomName
+              self.capacityOfPerson = office.capacity ?? 0
           }
           self.selectedOfficeTypeId = selectedId
           print("selected office type id:", selectedId)
           self.displayBookingDetailsNextScreen.officeId = selectedId
           self.displayBookingDetailsNextScreen.officeName = self.officeName
           self.officebookingConfirmDetails.office_id = selectedId
-          let indexpath = IndexPath(row: 0, section: SectionTypeOfficeBooking.buttonbookingConfirm.rawValue)
-          self.tableView.reloadRows(at: [indexpath], with: .automatic)
+         
+          let indexpath1 = IndexPath(row: 0, section: SectionTypeOfficeBooking.buttonbookingConfirm.rawValue)
+          let indexpath2 = IndexPath(row: 0, section: SectionTypeOfficeBooking.selectNoOfSeats.rawValue)
+
+          self.tableView.reloadRows(at: [indexpath1, indexpath2], with: .automatic)
       }
   }
 }

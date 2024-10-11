@@ -40,6 +40,7 @@ class LocationViewController: UIViewController,RSOTabCoordinated {
         super.viewDidLoad()
         setupTableView()
         fetchLocations()
+        fetchRoomsOnPageLoad()
     }
     override func viewWillAppear(_ animated: Bool) {
       super.viewWillAppear(animated)
@@ -90,6 +91,29 @@ class LocationViewController: UIViewController,RSOTabCoordinated {
         }
         
     }
+    private func fetchRoomsOnPageLoad() {
+            // Ensure the fetch method is called immediately
+            if selectedButtonType == .meetingRooms {
+                fetchMeetingRooms()
+            }
+        }
+    private func fetchMeetingRooms() {
+        // Fetch meeting rooms data directly
+        if let meetingRoomsCell = tableView.cellForRow(at: IndexPath(row: 0, section: SectionTypeLocation.selectMeetingRoom.rawValue)) as? DashboardMeetingRoomsTableViewCell {
+            meetingRoomsCell.fetchRooms(id: 1, requestModel: requestModel)
+        } else {
+            // Optionally, you can reload the table view and then fetch data
+            tableView.reloadSections(IndexSet(integer: SectionTypeAmenities.btnMeetingsWorkspace.rawValue), with: .none)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                // Ensure the cell is available for fetching data after the reload
+                if let meetingRoomsCell = self.tableView.cellForRow(at: IndexPath(row: 0, section: SectionTypeLocation.selectMeetingRoom.rawValue)) as? DashboardMeetingRoomsTableViewCell {
+                    meetingRoomsCell.fetchRooms(id: 1, requestModel: self.requestModel)
+                } else {
+                    print("DashboardMeetingRoomsTableViewCell not found after reload.")
+                }
+            }
+        }
+    }
 }
 
 // MARK: - UITableViewDataSource, UITableViewDelegate
@@ -127,6 +151,7 @@ extension LocationViewController: UITableViewDataSource, UITableViewDelegate {
                 let cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifierLocation.locationOpen.rawValue, for: indexPath) as! LocationOpenTableViewCell
                 cell.lblLocation.text = dropdownOptions[indexPath.row].name
                 cell.lblAddress1.text = dropdownOptions[indexPath.row].address1
+                cell.lblPhoneNumber.text = dropdownOptions[indexPath.row].phone
                 cell.lblGeoLocation.text = dropdownOptions[indexPath.row].geoLocation
                 
                 cell.selectionStyle = .none

@@ -27,14 +27,14 @@ class MarketPlaceCollectionViewCell: UICollectionViewCell {
         self.containerView.layer.cornerRadius = cornerRadius
         self.containerView.layer.masksToBounds = true
         
-        let shadowColor = UIColor.black.withAlphaComponent(0.5)
+        let shadowColor = UIColor.black.withAlphaComponent(0.2)
         self.layer.shadowColor = shadowColor.cgColor
         self.layer.shadowOffset = CGSize(width: 0, height: 4.0)
-        self.layer.shadowRadius = 10.0
-        self.layer.shadowOpacity = 19.0
         self.layer.masksToBounds = false
-        self.layer.shadowPath = UIBezierPath(roundedRect:  CGRect(x: 0, y: self.bounds.height - 4, width: self.bounds.width, height: 4), cornerRadius: self.containerView.layer.cornerRadius).cgPath
-    }
+        // Set shadow path to match the bottom area of the container
+          self.layer.shadowPath = UIBezierPath(roundedRect: CGRect(x: 0, y: self.bounds.height - 4, width: self.bounds.width, height: 4), cornerRadius: self.containerView.layer.cornerRadius).cgPath
+      }
+    
     func setData(item: MarketPlaceItem) {
         // Logo
         if let headerImg = item.headerImg, !headerImg.isEmpty {

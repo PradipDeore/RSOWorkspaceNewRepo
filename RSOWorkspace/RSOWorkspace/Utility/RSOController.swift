@@ -103,7 +103,7 @@ extension UIViewController {
 
         
         // Add a Cancel action
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        let cancelAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
         alertController.addAction(cancelAction)
          self.present(alertController, animated: true, completion: nil)
             print("Parent view controller is nil. Unable to present alert.")

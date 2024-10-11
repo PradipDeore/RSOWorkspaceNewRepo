@@ -120,10 +120,10 @@ class SignUpViewController: UIViewController {
             return
         }
         // check if phone number is valid
-//        if !RSOValidator.validateDubaiPhoneNumber(phone) {
-//            RSOToastView.shared.show("Please enter a valid Dubai phone number with at least 9 digits", duration: 2.0, position: .center)
-//            return
-//        }
+        if !RSOValidator.validatePhoneNumber(phone) {
+            RSOToastView.shared.show("Please enter a valid  phone number ", duration: 2.0, position: .center)
+            return
+        }
         
         signUpAPI(fullName: fullName, email: email, password: password, phone: phone)
         

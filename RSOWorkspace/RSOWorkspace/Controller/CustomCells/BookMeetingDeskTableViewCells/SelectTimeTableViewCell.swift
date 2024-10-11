@@ -149,13 +149,20 @@ class SelectTimeTableViewCell: UITableViewCell {
                 configure9AMto6PM()
             }
             configureTimeSelection(isStartEnabled: true, isEndEnabled: true)
-            break
+            if DateTimeManager.shared.isDateToday() && DateTimeManager.shared.isCurrentTimePassedForStartTime()  {
+                            btnBookfullDay.isUserInteractionEnabled = false
+                           
+            } else {
+                btnBookfullDay.isUserInteractionEnabled = true
+            }
+            updateFullDayButtonState()
+            btnBookfullDay.isSelected = false
+            updateFullDayButtonState()
         }
     
         // Call API with default values
         delegate?.didSelectStartTime(selectStartTime.date)
         delegate?.didSelectEndTime(selectEndTime.date)
-        isInitialSetup = false
     }
     
     private func setupInitialTimeValuesForDesk() {
@@ -171,7 +178,7 @@ class SelectTimeTableViewCell: UITableViewCell {
     
     // MARK: - Actions
     @IBAction private func selectStartTime(_ sender: UIDatePicker) {
-        guard !isInitialSetup else { return }
+       // guard !isInitialSetup else { return }
         let startTime = sender.date
         delegate?.didSelectStartTime(startTime)
         validateStartEndTime()
@@ -183,7 +190,7 @@ class SelectTimeTableViewCell: UITableViewCell {
     }
     
     @IBAction private func selectEndTime(_ sender: UIDatePicker) {
-        guard !isInitialSetup else { return }
+       // guard !isInitialSetup else { return }
         let endTime = sender.date
         delegate?.didSelectEndTime(endTime)
         validateStartEndTime()
@@ -263,7 +270,6 @@ class SelectTimeTableViewCell: UITableViewCell {
         delegate?.selectFulldayStatus(btnBookfullDay.isSelected)
         self.timePanelLeadingConstraint.constant = btnBookfullDay.isHidden ? 25 : 165
         self.timePanelTrailingConstraint.priority = btnBookfullDay.isHidden ? UILayoutPriority(250) : UILayoutPriority(1000)
-
 
 
     }

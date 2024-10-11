@@ -38,9 +38,6 @@ class DashboardViewController: UIViewController, RSOTabCoordinated {
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
       tableView.reloadData()
-      
-      
-      
     coordinator?.hideBackButton(isHidden: true)
     coordinator?.hideTopViewForHome(isHidden: false)
     pagetitle = RSOGreetings.greetingForCurrentTime()
@@ -148,7 +145,7 @@ extension DashboardViewController: UITableViewDataSource, UITableViewDelegate {
     var heightForRow: CGFloat {
       switch self {
       case .myBookingClose: return 45
-      case .marketPlace:  return 209
+      case .marketPlace:  return 209 //return 209
       case .deskType: return 35
       case .meetingRooms: return 209
       }
@@ -160,13 +157,15 @@ extension DashboardViewController: UITableViewDataSource, UITableViewDelegate {
   }
   
   func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-    return 10
+    return 5
   }
-  
-  func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-    return UIView()
-  }
-  
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 0
+    }
+//  func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+//    return UIView()
+//  }
+
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return 1
   }

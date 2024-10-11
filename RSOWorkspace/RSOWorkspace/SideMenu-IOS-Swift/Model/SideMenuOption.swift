@@ -11,7 +11,7 @@ enum SideMenuOption: String {
     case empty = ""
     case myProfile = "My Profile"
     case dashboard = "Dashboard"
-    case scheduleVisitors = "Schedule Visitors"
+    case scheduleVisitors = "Schedule Visit"
     case myVisitors = "My Visitors"
     case payments = "Payments"
     case amenities = "Amenities"

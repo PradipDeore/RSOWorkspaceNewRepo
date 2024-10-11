@@ -34,10 +34,10 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bda-bK-6au">
-                        <rect key="frame" x="5" y="5" width="285" height="147"/>
+                        <rect key="frame" x="5" y="0.0" width="285" height="152"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Meeting" translatesAutoresizingMaskIntoConstraints="NO" id="pRd-Eu-5qn">
-                                <rect key="frame" x="0.0" y="0.0" width="132" height="147"/>
+                                <rect key="frame" x="0.0" y="0.0" width="132" height="152"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="148" id="56W-YN-3yX"/>
                                     <constraint firstAttribute="width" constant="132" id="CkR-Jd-ot6"/>
@@ -70,13 +70,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown print" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fa3-CV-ATV">
-                                <rect key="frame" x="142" y="45" width="133" height="34"/>
+                                <rect key="frame" x="142" y="45" width="133" height="39"/>
                                 <fontDescription key="fontDescription" name="Inter-Medium" family="Inter" pointSize="9"/>
                                 <color key="textColor" red="0.31764705882352939" green="0.31764705882352939" blue="0.31764705882352939" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="svsdsd" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xpt-ci-Iop">
-                                <rect key="frame" x="161" y="112" width="114" height="25"/>
+                                <rect key="frame" x="161" y="117" width="114" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="88" id="Fd3-mI-REe"/>
                                     <constraint firstAttribute="height" constant="25" id="koI-5n-s5d"/>
@@ -91,14 +91,14 @@
                                 </variation>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Location" translatesAutoresizingMaskIntoConstraints="NO" id="BO2-f6-4Hb">
-                                <rect key="frame" x="132" y="117" width="29" height="20"/>
+                                <rect key="frame" x="132" y="122" width="29" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="SQt-8J-1pQ"/>
                                     <constraint firstAttribute="width" constant="29" id="bk8-6A-T39"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown print" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VQK-8j-Vfm">
-                                <rect key="frame" x="142" y="89" width="133" height="20"/>
+                                <rect key="frame" x="142" y="94" width="133" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="TX6-DD-SHv"/>
                                 </constraints>
@@ -147,7 +147,7 @@
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="Bda-bK-6au" secondAttribute="bottom" constant="5" id="1qD-Iw-6X4"/>
                 <constraint firstAttribute="trailing" secondItem="Bda-bK-6au" secondAttribute="trailing" constant="5" id="M3B-U4-Ozz"/>
-                <constraint firstItem="Bda-bK-6au" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="5" id="TLL-dE-q1W"/>
+                <constraint firstItem="Bda-bK-6au" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="TLL-dE-q1W"/>
                 <constraint firstItem="Bda-bK-6au" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="VUB-Nx-onY"/>
             </constraints>
             <size key="customSize" width="322" height="215"/>

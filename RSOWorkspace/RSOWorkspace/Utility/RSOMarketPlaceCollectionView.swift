@@ -20,7 +20,7 @@ class RSOMarketPlaceCollectionView: UICollectionView, UICollectionViewDelegateFl
     
     var eventHandler: ((_ event: MarketPlaceViewController.Event) -> Void)?
     
-    var scrollDirection: UICollectionView.ScrollDirection = .vertical {
+    var scrollDirection: UICollectionView.ScrollDirection = .horizontal {
         didSet {
             if let layout = collectionViewLayout as? UICollectionViewFlowLayout {
                 layout.scrollDirection = scrollDirection
@@ -77,9 +77,9 @@ extension RSOMarketPlaceCollectionView {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if scrollDirection == .vertical {
-            return CGSize(width: bounds.width - 20, height: 225)
+            return CGSize(width: bounds.width - 20, height: 200)
         } else {
-            return CGSize(width: bounds.width - 50, height: 225)
+            return CGSize(width: bounds.width - 50, height: 200)
         }
     }
     

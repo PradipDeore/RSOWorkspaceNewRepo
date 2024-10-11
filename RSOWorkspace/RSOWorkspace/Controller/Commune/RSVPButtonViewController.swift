@@ -108,7 +108,7 @@ class RSVPButtonViewController: UIViewController {
         
         // Check if phone number is valid
         guard RSOValidator.validatePhoneNumber(phone) else {
-            RSOToastView.shared.show("Phone Number must contain at least 10 digits", duration: 2.0, position: .center)
+            RSOToastView.shared.show("Please enter a valid  phone number", duration: 2.0, position: .center)
             return
         }
 

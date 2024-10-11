@@ -75,7 +75,7 @@ class RSOTabBarCordinator {
             let buttons =  self.tabBarController.tabButtons
             // Update the tab buttons based on the guest status
             for (index, button) in buttons.enumerated() {
-                if (index == 2 || index == 3) && UserHelper.shared.isGuest() {
+                if (index == 2 || index == 3) && UserHelper.shared.isGuest() && UserHelper.shared.isSocialLoginUser()  {
                     button.isUserInteractionEnabled = false
                     button.alpha = 0.5 // Make the button visually disabled
                 } else {

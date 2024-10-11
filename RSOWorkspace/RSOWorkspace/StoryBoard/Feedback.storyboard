@@ -348,6 +348,7 @@
                     </view>
                     <size key="freeformSize" width="393" height="1150"/>
                     <connections>
+                        <outlet property="lblAboutRSOTitleText" destination="cPc-lu-2Mj" id="871-e2-QBS"/>
                         <outlet property="tableView" destination="g8P-xk-1hk" id="3Ur-yw-r4H"/>
                     </connections>
                 </viewController>

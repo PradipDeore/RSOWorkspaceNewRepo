@@ -8,16 +8,17 @@
 import Foundation
 
 enum ServicesEndPoint {
-    case onDemandServices(serviceId:Int?) // Module - GET
+    case onDemandServices // Module - GET
     case subServices(requestModel:subServicesRequestModel)
     case reportAnIssue(requestModel: ReportAnIssueRequestModel)
+    
 }
 extension ServicesEndPoint: EndPointType {
     
     var path: String {
         switch self {
-        case .onDemandServices(let serviceid):
-            return "on-demand-service??service_id=\(serviceid)"
+        case .onDemandServices:
+            return "on-demand-service"
         case .reportAnIssue:
             return "report-issue"
         case .subServices(requestModel: let requestModel):

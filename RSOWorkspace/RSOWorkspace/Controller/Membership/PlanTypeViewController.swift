@@ -51,6 +51,8 @@ class PlanTypeViewController: UIViewController, MembershipNavigable {
           guard let self = self else { return }
           switch response {
           case .success(let response):
+              // Print the response for debugging
+            print("API Response MembershipPlan: \(response)")
             self.list = response.data ?? []
             self.collectionView.reloadData()
           case .failure(let error):

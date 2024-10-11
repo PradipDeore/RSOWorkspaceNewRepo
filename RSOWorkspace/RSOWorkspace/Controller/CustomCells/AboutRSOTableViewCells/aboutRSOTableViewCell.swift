@@ -18,9 +18,15 @@ class aboutRSOTableViewCell: UITableViewCell {
         // Initialization code
     }
     func setData(item : AboutRSO){
-        self.lblTitle.text = item.title
-        self.lblDescription.text = item.description
-        self.imgAbout.image = UIImage(named: item.imageName)
+        self.lblTitle.text = item.sec5Title
+        self.lblDescription.text = item.sec5Desc
+        
+        if let imgUrl = item.sec5Img, !imgUrl.isEmpty {
+            if let imageUrl = URL(string: imageBasePath + imgUrl) {
+                self.imgAbout.kf.setImage(with: imageUrl)
+            }
+        }
+        //self.imgAbout.image = UIImage(named: item.sec5Img ?? "")
     }
    
     

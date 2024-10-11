@@ -213,6 +213,7 @@ struct ConfirmBookingRequestModel{
     self.teamMembers = model.members ?? []
     self.amenityArray = model.amenity
     self.freeamenityArray = model.amenityFree ?? []
+    
   }
     mutating func setValuesforOrderDetails(model: StoreRoomBookingResponse){
         
@@ -222,6 +223,12 @@ struct ConfirmBookingRequestModel{
         self.weekDay = model.orderDetails?.weekday
         self.surcharge = model.orderDetails?.surcharge
         self.weekEnd = model.orderDetails?.weekend
+        // Convert `String?` to `Int?` safely for `totalHrs`
+           if let totalHrsString = model.totalHrs, let totalHrsInt = Int(totalHrsString) {
+               self.totalHrs = totalHrsInt
+           } else {
+               self.totalHrs = 0
+           }
     }
     
   mutating func setValues(response: StoreDeskBookingResponseModel){

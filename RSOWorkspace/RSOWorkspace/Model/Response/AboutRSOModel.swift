@@ -6,8 +6,8 @@
 //
 
 import Foundation
-struct AboutRSO{
-    let imageName : String
-    let title : String
-    let description:String
-}
+//struct AboutRSO{
+//    let imageName : String
+//    let title : String
+//    let description:String
+//}
