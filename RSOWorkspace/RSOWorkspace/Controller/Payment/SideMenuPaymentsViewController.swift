@@ -187,7 +187,7 @@ extension SideMenuPaymentsViewController: UITableViewDataSource, UITableViewDele
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 3 {
             var requestModel = NiPaymentRequestModel()
-            requestModel.total = Int(totalPrice)
+            requestModel.total = totalPrice
             requestModel.email = UserHelper.shared.getUserEmail()
             if UserHelper.shared.isGuest() {
                 //paymentServiceManager.makePayment(requestModel: requestModel)
@@ -234,7 +234,7 @@ extension SideMenuPaymentsViewController:PayNowButtonTableViewCellDelegate{
     func didTapPayNowButton() {
        // paymentServiceManager.currentViewController = self
         var requestModel = NiPaymentRequestModel()
-        requestModel.total = Int(calculateTotalPrice())
+        requestModel.total = calculateTotalPrice()
         requestModel.email = UserHelper.shared.getUserEmail()
         if UserHelper.shared.isGuest() {
            // paymentServiceManager.makePayment(requestModel: requestModel)

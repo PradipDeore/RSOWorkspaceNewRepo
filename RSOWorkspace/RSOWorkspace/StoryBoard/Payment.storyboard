@@ -245,10 +245,10 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k3o-ff-TCa" userLabel="paymnetSuccessView">
-                                <rect key="frame" x="24.666666666666657" y="276" width="344" height="300"/>
+                                <rect key="frame" x="21.666666666666657" y="301" width="350" height="250"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Thank you for your payment.Your transaction has been completed successfully." textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Aa-4R-HfL">
-                                        <rect key="frame" x="20" y="99" width="304" height="67.333333333333314"/>
+                                        <rect key="frame" x="20" y="91.333333333333314" width="310" height="67.333333333333314"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="102" id="UpV-xs-ck1"/>
                                             <constraint firstAttribute="width" constant="293" id="wNF-za-o6V"/>
@@ -264,7 +264,7 @@
                                         </variation>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2AJ-8h-nqg" customClass="RSOButton" customModule="RSOWorkspace" customModuleProvider="target">
-                                        <rect key="frame" x="19" y="237" width="306" height="38"/>
+                                        <rect key="frame" x="22" y="180" width="306" height="38"/>
                                         <color key="backgroundColor" name="768D70"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="306" id="9i8-YS-umJ"/>
@@ -277,8 +277,8 @@
                                             <action selector="btnGoToHomepageAction:" destination="WZP-ZK-lqp" eventType="touchUpInside" id="DGu-1z-mbs"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Payment Successful" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HMU-em-BoS">
-                                        <rect key="frame" x="20" y="35" width="293" height="43"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Payment Successful!" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HMU-em-BoS">
+                                        <rect key="frame" x="16" y="19.999999999999996" width="318" height="61.666666666666657"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="43" id="E75-ZM-B5C"/>
                                             <constraint firstAttribute="width" constant="293" id="vU6-F3-4Gc"/>
@@ -286,20 +286,36 @@
                                         <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="22"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="vU6-F3-4Gc"/>
+                                                <exclude reference="E75-ZM-B5C"/>
+                                            </mask>
+                                        </variation>
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstItem="7Aa-4R-HfL" firstAttribute="top" secondItem="HMU-em-BoS" secondAttribute="bottom" constant="21" id="18M-Im-zYo"/>
-                                    <constraint firstItem="HMU-em-BoS" firstAttribute="top" secondItem="k3o-ff-TCa" secondAttribute="top" constant="35" id="Hfn-NG-bhA"/>
+                                    <constraint firstItem="7Aa-4R-HfL" firstAttribute="top" secondItem="HMU-em-BoS" secondAttribute="bottom" constant="16" id="18M-Im-zYo"/>
+                                    <constraint firstItem="7Aa-4R-HfL" firstAttribute="centerX" secondItem="k3o-ff-TCa" secondAttribute="centerX" id="2pb-pf-80o"/>
+                                    <constraint firstItem="HMU-em-BoS" firstAttribute="top" secondItem="k3o-ff-TCa" secondAttribute="top" constant="20" id="Hfn-NG-bhA"/>
                                     <constraint firstItem="7Aa-4R-HfL" firstAttribute="leading" secondItem="k3o-ff-TCa" secondAttribute="leading" constant="20" id="I6J-kt-sj3"/>
-                                    <constraint firstAttribute="bottom" secondItem="2AJ-8h-nqg" secondAttribute="bottom" constant="25" id="Mel-tO-Srx"/>
-                                    <constraint firstItem="HMU-em-BoS" firstAttribute="leading" secondItem="k3o-ff-TCa" secondAttribute="leading" constant="20" id="P04-tO-HvI"/>
+                                    <constraint firstAttribute="bottom" secondItem="2AJ-8h-nqg" secondAttribute="bottom" constant="32" id="Mel-tO-Srx"/>
+                                    <constraint firstItem="HMU-em-BoS" firstAttribute="leading" secondItem="k3o-ff-TCa" secondAttribute="leading" constant="16" id="P04-tO-HvI"/>
                                     <constraint firstItem="7Aa-4R-HfL" firstAttribute="centerX" secondItem="k3o-ff-TCa" secondAttribute="centerX" id="clY-4E-IBl"/>
-                                    <constraint firstAttribute="height" constant="300" id="piQ-e8-37O"/>
-                                    <constraint firstAttribute="width" constant="344" id="raA-lz-TKw"/>
+                                    <constraint firstItem="7Aa-4R-HfL" firstAttribute="top" secondItem="HMU-em-BoS" secondAttribute="bottom" constant="9.6699999999999999" id="fRz-Vm-hnx"/>
+                                    <constraint firstItem="7Aa-4R-HfL" firstAttribute="centerY" secondItem="k3o-ff-TCa" secondAttribute="centerY" id="lhA-id-FiA"/>
+                                    <constraint firstAttribute="height" constant="250" id="piQ-e8-37O"/>
+                                    <constraint firstAttribute="width" constant="350" id="raA-lz-TKw"/>
+                                    <constraint firstAttribute="trailing" secondItem="HMU-em-BoS" secondAttribute="trailing" constant="16" id="tuU-rO-iU7"/>
                                     <constraint firstItem="2AJ-8h-nqg" firstAttribute="centerX" secondItem="k3o-ff-TCa" secondAttribute="centerX" id="utB-Xf-Rwj"/>
                                 </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="clY-4E-IBl"/>
+                                        <exclude reference="18M-Im-zYo"/>
+                                    </mask>
+                                </variation>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="HYj-fh-KNr"/>
@@ -316,6 +332,8 @@
                     <connections>
                         <outlet property="btnDismissView" destination="bkx-dv-c0x" id="XBw-2w-DsZ"/>
                         <outlet property="btnHome" destination="2AJ-8h-nqg" id="o9V-xw-h8N"/>
+                        <outlet property="lblPaymentSuccess" destination="HMU-em-BoS" id="Z2i-Ee-NII"/>
+                        <outlet property="lblmessage" destination="7Aa-4R-HfL" id="Wo0-vB-1rG"/>
                         <outlet property="paymentSuccessView" destination="k3o-ff-TCa" id="uCn-kh-1Dx"/>
                     </connections>
                 </viewController>

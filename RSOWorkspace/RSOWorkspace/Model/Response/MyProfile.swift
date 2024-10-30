@@ -8,7 +8,7 @@
 import Foundation
 struct MyProfile: Codable {
     let status: Bool
-    let data: ProfileData
+    let data: ProfileData?
     let qrCodeUrl: String?  // Move qrCodeUrl to the root level
 }
 

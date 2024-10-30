@@ -17,16 +17,19 @@ struct PaymentRequestModel{
 
 //BookMeetingID
 //BookdeskID
+//BookOfficeID
 struct NiPaymentRequestModel: Codable {
-    var total: Int?
+    var total: Double?
     var email: String?
     var BookMeetingID:String?
     var BookdeskID:String?
+    var BookOfficeID:String?
    
     init() {
         self.total = 0
         self.email = ""
         self.BookMeetingID = ""
         self.BookdeskID = ""
+        self.BookOfficeID = ""
     }
 }

@@ -198,10 +198,10 @@ extension ProfileViewController {
 extension ProfileViewController:editProfileDelegate{
     func sendDetails() {
        
-        let firstName = myProfileResponse?.data.firstName ?? ""
-        let lastName = myProfileResponse?.data.lastName ?? ""
-        let designation = myProfileResponse?.data.designation ?? ""
-        let photo =  myProfileResponse?.data.photo ?? ""
+        let firstName = myProfileResponse?.data?.firstName ?? ""
+        let lastName = myProfileResponse?.data?.lastName ?? ""
+        let designation = myProfileResponse?.data?.designation ?? ""
+        let photo =  myProfileResponse?.data?.photo ?? ""
 
         print("Sending details to UpdateProfileViewController")
         print("firstName:", firstName)

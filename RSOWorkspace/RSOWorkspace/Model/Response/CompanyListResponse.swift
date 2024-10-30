@@ -9,9 +9,9 @@ import Foundation
 
 struct Company: Codable {
     let id: Int
-    let name: String
-    let phone: String
-    let description: String
+    let name: String?
+    let phone: String?
+    let description: String?
     
     enum CodingKeys: String, CodingKey {
         case id
@@ -24,5 +24,5 @@ struct Company: Codable {
 
 struct CompanyListResponse: Codable {
     let status: Bool
-    let data: [Company]
+    let data: [Company]?
 }

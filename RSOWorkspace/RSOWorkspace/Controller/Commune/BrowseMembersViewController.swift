@@ -84,7 +84,7 @@ class BrowseMembersViewController: UIViewController {
             guard let self = self else { return }
             switch response {
             case .success(let response):
-                self.companyList = response.data
+                self.companyList = response.data ?? []
                 
                 // Iterate over each company to fetch its members
                 for company in self.companyList {
@@ -248,13 +248,13 @@ extension BrowseMembersViewController: UITableViewDataSource, UITableViewDelegat
                 let company = companyList[indexPath.section]
                 if let members = memberListSearchArray[company.id], indexPath.row < members.count {
                     selectedMember = members[indexPath.row]
-                    selectedMemberCompany = company.name
+                    selectedMemberCompany = company.name ?? ""
                 }
             }else{
                 let company = companyList[indexPath.section]
                 if let members = companyMembersDict[company.id], indexPath.row < members.count {
                     selectedMember = members[indexPath.row]
-                    selectedMemberCompany = company.name
+                    selectedMemberCompany = company.name ?? ""
 
                 }
             }

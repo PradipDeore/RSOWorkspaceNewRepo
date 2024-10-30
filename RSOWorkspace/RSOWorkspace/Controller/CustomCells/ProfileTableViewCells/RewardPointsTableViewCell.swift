@@ -17,7 +17,7 @@ class RewardPointsTableViewCell: UITableViewCell {
     
     }
     func setData(item: MyProfile){
-        if let rewardpoint = item.data.rewardPoints{
+        if let rewardpoint = item.data?.rewardPoints{
             self.lblPoints.text = String(rewardpoint)
         }
     }

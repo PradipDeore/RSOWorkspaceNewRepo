@@ -60,18 +60,18 @@ class MembershipPlanTableViewCell: UITableViewCell {
     }
     func setData(item: MyProfile){
         self.profileDetails = item
-        if item.data.membershipName != nil {
+        if item.data?.membershipName != nil {
             
             self.titleLabelPlanType.isHidden = false
             self.titleLabelPlanLength.isHidden = false
             self.titleLabelMonthlyCost.isHidden = false
             self.titleLableMonthlyAccessibleDays.isHidden = false
-            self.lblPlanLength.text = "\(item.data.planLength ?? "") Months"
-            self.lblPlanType.text = "\(item.data.planType ?? "")"
+            self.lblPlanLength.text = "\(item.data?.planLength ?? "") Months"
+            self.lblPlanType.text = "\(item.data?.planType ?? "")"
 
-            self.lblMonthlyAccessibleDays.text = item.data.monthlyAccessibleDays
-            self.lblMonthlyCost.text = "AED \(item.data.monthlyCost ?? "")"
-            self.lblMembershipPlan.text = item.data.membershipName
+            self.lblMonthlyAccessibleDays.text = item.data?.monthlyAccessibleDays
+            self.lblMonthlyCost.text = "AED \(item.data?.monthlyCost ?? "")"
+            self.lblMembershipPlan.text = item.data?.membershipName
             
             self.btnRenewPlan.isHidden = false
             self.btnBuyMemberShip.isHidden = true

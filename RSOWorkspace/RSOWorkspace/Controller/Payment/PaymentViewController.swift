@@ -476,7 +476,7 @@ extension PaymentViewController: UITableViewDataSource, UITableViewDelegate {
                     cell.lblVat.text = "AED \(deskVat.toStringWithTwoDecimalPlaces())"
                     vatAmountDesk = Double(obj.deskVatTotal)
                    
-                    let deskFinalTotal = Double(obj.deskFinalTotal)
+                    let deskFinalTotal = Double(obj.deskFinalTotal) 
                     cell.lblTotalPrice.text = "\(deskFinalTotal.toStringWithTwoDecimalPlaces())"
                     totalPriceDesk = Double(obj.deskFinalTotal)
                 case .office:
@@ -492,7 +492,6 @@ extension PaymentViewController: UITableViewDataSource, UITableViewDelegate {
                     cell.lblTotalPrice.text = "\(totalPriceWithVAT.toStringWithTwoDecimalPlaces())"
                     vatAmountOffice = vatAmount
                     totalPriceOffice = totalPriceWithVAT
-                    //totalFinalPriceOfOffice
                     
                 default:
                     let grossTotalMeetingRoom = Double(totalFinalPriceOfmeetingRoom)
@@ -500,8 +499,6 @@ extension PaymentViewController: UITableViewDataSource, UITableViewDelegate {
                     print("grossTotalMeetingRoom", grossTotalMeetingRoom)
                     let vatPercentage: Double = 0.05
                     let vatAmount = grossTotalMeetingRoom * vatPercentage
-                    // Sum all the values in totalAmenityPrices
-                    // Sum all the values in totalAmenityPrices (convert Float to Double)
                     let totalAmenityPriceSum = Double(self.totalAmenityPrices.values.reduce(0, +))
                     let totalPriceWithVAT = grossTotalMeetingRoom + vatAmount + totalAmenityPriceSum
                     cell.lblVat.text = "AED \(vatAmount.toStringWithTwoDecimalPlaces())"
@@ -632,10 +629,10 @@ extension PaymentViewController: ButtonPayNowTableViewCellDelegate {
             let deskCount = obj.deskList.count
             if deskCount > 0 {
                 var requestModel = NiPaymentRequestModel()
-                requestModel.total = Int(totalPriceDesk)
+                requestModel.total = totalPriceDesk
                 requestModel.email = UserHelper.shared.getUserEmail()
                 requestModel.BookdeskID = "\(bookingId)"
-                
+                 
                 paymentServiceManager.currentViewController = self
                 paymentServiceManager.currentNavigationController = self.navigationController
                 paymentServiceManager.paymentTypeEntity = .desk
@@ -665,9 +662,9 @@ extension PaymentViewController: ButtonPayNowTableViewCellDelegate {
             paymentServiceManager.vatAmount = vatAmountOffice
             
             var requestModel = NiPaymentRequestModel()
-            requestModel.total =  Int(totalPriceOffice)
+            requestModel.total =  totalPriceOffice
             requestModel.email = UserHelper.shared.getUserEmail()
-            requestModel.BookMeetingID = "\(bookingId)"
+            requestModel.BookOfficeID = "\(bookingId)"
             if UserHelper.shared.isGuest() || UserHelper.shared.isSocialLoginUser() {
                 paymentServiceManager.makePayment(requestModel: requestModel)
             } else {

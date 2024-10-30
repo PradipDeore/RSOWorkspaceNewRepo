@@ -13,14 +13,14 @@
         <array key="Inter-Bold.ttf">
             <string>Inter-Bold</string>
         </array>
-        <array key="Inter-Medium.ttf">
-            <string>Inter-Medium</string>
-        </array>
-        <array key="Poppins-Medium.ttf">
-            <string>Poppins-Medium</string>
+        <array key="Inter-Regular.ttf">
+            <string>Inter-Regular</string>
         </array>
         <array key="Poppins-Regular.ttf">
             <string>Poppins-Regular</string>
+        </array>
+        <array key="Poppins-SemiBold.ttf">
+            <string>Poppins-SemiBold</string>
         </array>
     </customFonts>
     <objects>
@@ -63,15 +63,15 @@
                                     </mask>
                                 </variation>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lorem Ipsum has been the industry's standard dummy " textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="feg-pC-eUE">
-                                <rect key="frame" x="142" y="35" width="133" height="0.0"/>
-                                <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="11"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lorem Ipsum has been the industry's standard dummy " textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="feg-pC-eUE">
+                                <rect key="frame" x="142" y="35" width="133" height="0.3333333333333357"/>
+                                <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="14"/>
                                 <color key="textColor" name="000000"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown print" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fa3-CV-ATV">
-                                <rect key="frame" x="142" y="45" width="133" height="39"/>
-                                <fontDescription key="fontDescription" name="Inter-Medium" family="Inter" pointSize="9"/>
+                                <rect key="frame" x="142" y="40.333333333333343" width="133" height="48.666666666666657"/>
+                                <fontDescription key="fontDescription" name="Inter-Regular" family="Inter" pointSize="10"/>
                                 <color key="textColor" red="0.31764705882352939" green="0.31764705882352939" blue="0.31764705882352939" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -91,9 +91,9 @@
                                 </variation>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Location" translatesAutoresizingMaskIntoConstraints="NO" id="BO2-f6-4Hb">
-                                <rect key="frame" x="132" y="122" width="29" height="20"/>
+                                <rect key="frame" x="132" y="124" width="29" height="18"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="20" id="SQt-8J-1pQ"/>
+                                    <constraint firstAttribute="height" constant="18" id="SQt-8J-1pQ"/>
                                     <constraint firstAttribute="width" constant="29" id="bk8-6A-T39"/>
                                 </constraints>
                             </imageView>
@@ -125,10 +125,10 @@
                             <constraint firstAttribute="trailing" secondItem="Fa3-CV-ATV" secondAttribute="trailing" constant="10" id="baS-Ef-ecP"/>
                             <constraint firstItem="pRd-Eu-5qn" firstAttribute="leading" secondItem="Bda-bK-6au" secondAttribute="leading" id="cRK-gx-T2C"/>
                             <constraint firstAttribute="trailing" secondItem="Xpt-ci-Iop" secondAttribute="trailing" constant="10" id="eoW-4a-jK0"/>
-                            <constraint firstItem="Fa3-CV-ATV" firstAttribute="top" secondItem="feg-pC-eUE" secondAttribute="bottom" constant="10" id="g49-SO-w0U"/>
+                            <constraint firstItem="Fa3-CV-ATV" firstAttribute="top" secondItem="feg-pC-eUE" secondAttribute="bottom" constant="5" id="g49-SO-w0U"/>
                             <constraint firstItem="VQK-8j-Vfm" firstAttribute="top" secondItem="feg-pC-eUE" secondAttribute="bottom" constant="10" id="l4N-iF-tzz"/>
                             <constraint firstItem="BO2-f6-4Hb" firstAttribute="leading" secondItem="pRd-Eu-5qn" secondAttribute="trailing" id="m4I-Is-esw"/>
-                            <constraint firstItem="VQK-8j-Vfm" firstAttribute="top" secondItem="Fa3-CV-ATV" secondAttribute="bottom" constant="10" id="mPl-LV-ae9"/>
+                            <constraint firstItem="VQK-8j-Vfm" firstAttribute="top" secondItem="Fa3-CV-ATV" secondAttribute="bottom" constant="5" id="mPl-LV-ae9"/>
                             <constraint firstAttribute="trailing" secondItem="VQK-8j-Vfm" secondAttribute="trailing" constant="10" id="pRJ-uB-k60"/>
                             <constraint firstItem="Xpt-ci-Iop" firstAttribute="leading" secondItem="BO2-f6-4Hb" secondAttribute="trailing" id="s8M-7E-B5G"/>
                             <constraint firstAttribute="trailing" secondItem="feg-pC-eUE" secondAttribute="trailing" constant="10" id="wpH-jC-n70"/>

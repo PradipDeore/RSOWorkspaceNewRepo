@@ -154,7 +154,8 @@ class SideMenuMainViewController: UIViewController,RSOTabCoordinated {
 
 extension SideMenuMainViewController: SideMenuViewControllerDelegate {
     
-  func selectedCell(_ row: Int, menuTitle: SideMenuOption) {        DispatchQueue.main.async { self.sideMenuState(expanded: false) }
+  func selectedCell(_ row: Int, menuTitle: SideMenuOption) { 
+      DispatchQueue.main.async { self.sideMenuState(expanded: false) }
       let menuNavVC = self.coordinator?.getInnerNavigationVC() ?? self.navigationController
     self.coordinator?.setTitle(title: menuTitle.rawValue)
       self.coordinator?.hideBackButton(isHidden: false)

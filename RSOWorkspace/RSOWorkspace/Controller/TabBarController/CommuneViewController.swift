@@ -129,6 +129,7 @@ extension CommuneViewController {
         func sendSearchText(_ text: String) {
             self.searchText = text // Store the search text in a property if needed
                print("Search Text: \(text)") // Handle the search text as needed
+            guard !isAlreadyPushed() else { return }
             let membersListVC = UIViewController.createController(storyBoard: .Commune, ofType: ListOfMembersViewController.self)
             membersListVC.coordinator = self.coordinator
             membersListVC.searchText = self.searchText
@@ -141,6 +142,7 @@ extension CommuneViewController {
             }
         
         func btnBrowseDirectoryTappedAction() {
+            guard !isAlreadyPushed() else { return }
             let membersListVC = UIViewController.createController(storyBoard: .Commune, ofType: ListOfMembersViewController.self)
             membersListVC.coordinator = self.coordinator
           //  membersListVC.searchText = self.searchText // Pass the search text
@@ -148,7 +150,12 @@ extension CommuneViewController {
             self.navigationController?.pushViewController(membersListVC, animated: true)
         }
      
-       
+        func isAlreadyPushed() -> Bool {
+            if let navigationController = self.navigationController {
+                return navigationController.viewControllers.contains { $0 is ListOfMembersViewController }
+            }
+            return false
+        }
         
     }
 extension CommuneViewController:ButtonCompaniesTappedDelegate{

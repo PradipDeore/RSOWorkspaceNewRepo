@@ -95,7 +95,7 @@ extension PlanTypeCollectionViewCell: UITableViewDelegate, UITableViewDataSource
             // let planInfo = "From AED \(planPrice.price ?? ""), \(planPrice.duration ?? "")"
             // cell.setTextMessage(msg: planInfo)
             let priceText = "AED \(planPrice.price ?? "")"
-            let fullText = "From \(priceText)/\(planPrice.per_person_text ?? ""), \(planPrice.duration ?? "")"
+            let fullText = "From \(priceText)/\(planPrice.per_person_text ?? ""), \(planPrice.duration ?? "") access"
             
             // Create an attributed string with the full text
             let attributedString = NSMutableAttributedString(string: fullText)

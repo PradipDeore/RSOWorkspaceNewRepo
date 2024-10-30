@@ -104,7 +104,9 @@ class SideMenuSubViewController: UIViewController {
         }
         menu.append(SideMenuModel(title: .dashboard))
         menu.append(SideMenuModel(title: .empty))
-        menu.append(SideMenuModel(title: .scheduleVisitors))
+        if !UserHelper.shared.isUserExplorer() {
+            menu.append(SideMenuModel(title: .scheduleVisitors))
+        }
         menu.append(SideMenuModel(title: .myVisitors))
         menu.append(SideMenuModel(title: .empty))
         menu.append(SideMenuModel(title: .amenities))
@@ -138,18 +140,18 @@ class SideMenuSubViewController: UIViewController {
                     switch response {
                     case .success(let response):
                         self.myProfileResponse = response
-                        let firstName =  self.myProfileResponse?.data.firstName
-                        let lastName =  self.myProfileResponse?.data.lastName
-                        let photoPath = self.myProfileResponse?.data.photo
+                        let firstName =  self.myProfileResponse?.data?.firstName
+                        let lastName =  self.myProfileResponse?.data?.lastName
+                        let photoPath = self.myProfileResponse?.data?.photo
                         
                         if let firstName = firstName, let lastName = lastName {
                             self.lblName.text = "\(firstName) \(lastName)"
                         }
-                        let companyName = self.myProfileResponse?.data.companyName
+                        let companyName = self.myProfileResponse?.data?.companyName
                         if let companyName = companyName{
                             self.lblCompanyName.text = "\(companyName)"
                         }
-                        if let imageUrl = self.myProfileResponse?.data.photo, !imageUrl.isEmpty{
+                        if let imageUrl = self.myProfileResponse?.data?.photo, !imageUrl.isEmpty{
                             let url = URL(string: imageBasePath + imageUrl)
                             self.headerImageView.kf.setImage(with: url)
                         }

@@ -49,5 +49,16 @@ class LocationOpenTableViewCell: UITableViewCell {
         }
     }
     
+    @IBAction func btnMapClickedAction(_ sender: Any) {
+        // URL of the location in Google Maps
+           let urlString = "https://maps.app.goo.gl/yoEKhkVpfFsPk8fY8"
+           
+           // Attempt to open the URL if it’s valid
+           if let url = URL(string: urlString) {
+               UIApplication.shared.open(url, options: [:], completionHandler: nil)
+           } else {
+               print("Invalid URL for Google Maps")
+           }
+    }
     
 }

@@ -53,12 +53,12 @@ class SignUpViewController: UIViewController {
                 case .dataLoaded:
                     // Display the response message as a toast
                     RSOToastView.shared.show(message, duration: 2.0, position: .center)
-                    
-                    // Check if the signup response status is true
                     if let signupResponse = self.signupResponseData, signupResponse.status {
+                    self.clearInputFields()
                         // If signup is successful, pop the view controller after 2 seconds
                         DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                            self.navigationController?.popViewController(animated: true)
+                            let logInVC = UIViewController.createController(storyBoard: .GetStarted, ofType: LogInViewController.self)
+                            self.navigationController?.pushViewController(logInVC, animated: true)
                         }
                     }
                     // If status is false, the toast will already be shown and the user will remain on the same screen
@@ -71,10 +71,14 @@ class SignUpViewController: UIViewController {
     }
     
     func signUpAPI(fullName:String,email: String, password: String, phone: String) {
+        RSOLoader.showLoader()
+
         let requestModel = SignUpRequestModel(name: fullName, email: email, password: password, phone: phone)
         APIManager.shared.request(
             modelType: SignUpResponse.self,
             type: LogInSignUpEndPoint.signUp(requestModel: requestModel)) { response in
+                // Remove the loader once a response is received
+               RSOLoader.removeLoader()
                 switch response {
                 case .success(let response):
                     self.signupResponseData = response
@@ -84,7 +88,12 @@ class SignUpViewController: UIViewController {
                 }
             }
     }
-   
+    func clearInputFields() {
+           txtFullName.text = ""
+           txtEmail.text = ""
+           txtPassword.text = ""
+           txtPhone.text = ""
+       }
     @IBAction func btnSubmitTappedAction(_ sender: Any) {
         
         guard let fullName = txtFullName.text, !fullName.isEmpty else {

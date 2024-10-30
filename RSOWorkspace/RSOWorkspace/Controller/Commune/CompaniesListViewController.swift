@@ -38,7 +38,7 @@ class CompaniesListViewController: UIViewController {
             type: CommuneEndPoint.companyList) { response in
                 switch response {
                 case .success(let response):
-                    self.companiesListArray = response.data
+                    self.companiesListArray = response.data ?? []
                 
                     print("count is ",self.companiesListArray.count)
                     print("memberListArray ",self.companiesListArray)
@@ -103,7 +103,7 @@ extension CompaniesListViewController:ButtonBrowseMambersDelegate{
                
         let browseMembersListVC = UIViewController.createController(storyBoard: .Commune, ofType: BrowseMembersViewController.self)
         browseMembersListVC.selectedCompanyId = selectedCompany.id
-        browseMembersListVC.selectedCompanyName = selectedCompany.name
+        browseMembersListVC.selectedCompanyName = selectedCompany.name ?? ""
         
         self.navigationController?.pushViewController(browseMembersListVC, animated: true)
     }

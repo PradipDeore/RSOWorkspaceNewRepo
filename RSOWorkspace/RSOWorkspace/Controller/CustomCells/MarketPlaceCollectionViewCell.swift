@@ -46,12 +46,15 @@ class MarketPlaceCollectionViewCell: UICollectionViewCell {
         self.lblHeadline.text = item.headline
         self.lblHeadline2.text = item.headline2
         self.lblSubtext.text = item.subtext
-        self.lblLocation.text = item.location
         
-        // Image
-        if let image = item.image, !image.isEmpty {
-            let url = URL(string: imageBasePath + image)
-            self.imgHeaderImage.kf.setImage(with: url)
+        if let location =  item.location, !location.isEmpty{
+            self.lblLocation.text = location
+            
+            // Image
+            if let image = item.image, !image.isEmpty {
+                let url = URL(string: imageBasePath + image)
+                self.imgHeaderImage.kf.setImage(with: url)
+            }
         }
     }
         

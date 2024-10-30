@@ -151,7 +151,7 @@ extension LocationViewController: UITableViewDataSource, UITableViewDelegate {
                 let cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifierLocation.locationOpen.rawValue, for: indexPath) as! LocationOpenTableViewCell
                 cell.lblLocation.text = dropdownOptions[indexPath.row].name
                 cell.lblAddress1.text = dropdownOptions[indexPath.row].address1
-                cell.lblPhoneNumber.text = dropdownOptions[indexPath.row].phone
+                cell.lblPhoneNumber.text = "+971 \(dropdownOptions[indexPath.row].phone ?? "")"
                 cell.lblGeoLocation.text = dropdownOptions[indexPath.row].geoLocation
                 
                 cell.selectionStyle = .none

@@ -260,7 +260,7 @@
                                     <outlet property="dataSource" destination="Whn-3W-sw4" id="B4O-8D-WCP"/>
                                 </connections>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qm8-eg-xPM">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qm8-eg-xPM">
                                 <rect key="frame" x="238" y="742" width="130" height="59"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="59" id="mwW-Sb-qUS"/>

@@ -15,7 +15,8 @@ class MembershipPaymentDetailsViewController: UIViewController, MembershipNaviga
     let termsAndConditionIdentifier = "TermsAndConditionsTableViewCell"
   var membershipNavigationDelegate: MembershipNavigationDelegate?
     var isTermsAccepted = false // This flag will track the checkbox state.
-
+    var orderResponse: OrderResponse?
+    
   override func viewDidLoad() {
     super.viewDidLoad()
     tableView.register(UINib(nibName: identifier, bundle: nil), forCellReuseIdentifier: identifier)
@@ -41,7 +42,7 @@ class MembershipPaymentDetailsViewController: UIViewController, MembershipNaviga
     RSOLoader.showLoader()
     let requestModel = SelectedMembershipData.shared
     APIManager.shared.request(
-        modelType: MembershipResponse.self,
+        modelType: OrderResponse.self,
         type: MembershipEndPoint.recurringPay(requestModel: requestModel)) { [weak self] response in
           DispatchQueue.main.async {
             RSOLoader.removeLoader()
@@ -49,18 +50,24 @@ class MembershipPaymentDetailsViewController: UIViewController, MembershipNaviga
               
             switch response {
             case .success(let responseObj):
-                if let errormsg = responseObj.error, !errormsg.isEmpty  {
-                    RSOToastView.shared.show("\(responseObj.message ?? "something bad happened")", duration: 2.0, position: .center)
-                }else{
-                    var PaymentRequestModel = NiPaymentRequestModel()
-                    let floatValue = Float(requestModel.monthlyCost) ?? 0.0
-                    PaymentRequestModel.total = Int(floatValue)
-                    PaymentRequestModel.email = UserHelper.shared.getUserEmail()
+//                if let errormsg = responseObj.error, !errormsg.isEmpty  {
+//                    RSOToastView.shared.show("\(responseObj.message ?? "something bad happened")", duration: 2.0, position: .center)
+//                }else{
+//                    var PaymentRequestModel = NiPaymentRequestModel()
+//                    let floatValue = Float(requestModel.monthlyCost) ?? 0.0
+//                    PaymentRequestModel.total = Double(floatValue)
+//                    PaymentRequestModel.email = UserHelper.shared.getUserEmail()
+
+                    let orderResponse = responseObj
+                    self.orderResponse = orderResponse
                     PaymentNetworkManager.shared.paymentTypeEntity = .membership
                     PaymentNetworkManager.shared.currentViewController = self
                     PaymentNetworkManager.shared.currentNavigationController = self.navigationController
-                    PaymentNetworkManager.shared.makePayment(requestModel: PaymentRequestModel)
-                }
+                PaymentNetworkManager.shared.orderResponse = orderResponse
+            //self.orderResponse?.embeddedData?.payment?.first?.orderReference =  orderResponse.embeddedData?.payment?.first?.orderReference ?? ""
+                    PaymentNetworkManager.shared.showCardPaymentUI(orderResponse: orderResponse)
+                 
+               // }
             case .failure(let error):
               //  Unsuccessful
               RSOToastView.shared.show("\(error.localizedDescription)", duration: 2.0, position: .center)

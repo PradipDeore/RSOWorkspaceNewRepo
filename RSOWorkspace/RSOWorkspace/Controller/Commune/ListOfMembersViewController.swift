@@ -76,7 +76,7 @@ class ListOfMembersViewController: UIViewController {
             guard let self = self else { return }
             switch response {
             case .success(let response):
-                self.companyList = response.data
+                self.companyList = response.data ?? []
 
                 // Iterate over each company to fetch its members
                 for company in self.companyList {
@@ -170,14 +170,14 @@ extension ListOfMembersViewController: UITableViewDataSource, UITableViewDelegat
                  let members = memberListSearchArray[company.id] ?? [] // Get members for the company
                  
                  if let firstMember = members.first {
-                     cell.setData(item: firstMember, memberCompany: company.name)
+                     cell.setData(item: firstMember, memberCompany: company.name ?? "")
                  }
         }else{
             let company = companyList[indexPath.row]
                  let members = companyMembersDict[company.id] ?? [] // Get members for the company
                  
                  if let firstMember = members.first {
-                     cell.setData(item: firstMember, memberCompany: company.name)
+                     cell.setData(item: firstMember, memberCompany: company.name ?? "")
                  }
         }
 
