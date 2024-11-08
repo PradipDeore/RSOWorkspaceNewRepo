@@ -21,6 +21,7 @@ class ListOfMembersViewController: UIViewController {
     var searchText :String?
     var companyMembersDict: [Int: [Member]] = [:] // Dictionary to store members for each company
     var companyList:[Company] = []
+    var searchCompanyList:[Company] = []
     var memberListSearchArray: [Int: [Member]] = [:]
    
     override func viewDidLoad() {
@@ -166,7 +167,7 @@ extension ListOfMembersViewController: UITableViewDataSource, UITableViewDelegat
         cell.selectionStyle = .none
        
         if let searchText = txtSearch.text, !searchText.isEmpty{
-            let company = companyList[indexPath.row]
+            let company = searchCompanyList[indexPath.row]
                  let members = memberListSearchArray[company.id] ?? [] // Get members for the company
                  
                  if let firstMember = members.first {
@@ -210,9 +211,12 @@ extension ListOfMembersViewController: UITextFieldDelegate {
             tableView.reloadData()
             return
         }
+        
+        print("filterMembers searchText=",searchText)
 
         // Filter members based on the search query for each company
         memberListSearchArray = [:] // Clear previous search results
+        searchCompanyList = []
         for (companyId, members) in companyMembersDict {
             let filteredMembers = members.filter { member in
                 if let firstName = member.firstName, let lastName = member.lastName {
@@ -222,7 +226,10 @@ extension ListOfMembersViewController: UITextFieldDelegate {
                 return false
             }
             if !filteredMembers.isEmpty {
+                searchCompanyList.append(Company(id: companyId, name: "", phone: "", description: ""))
                 memberListSearchArray[companyId] = filteredMembers
+                print("filterMembers memberListSearchArray=",memberListSearchArray)
+
             }
         }
         if memberListSearchArray.flatMap({ $0.value }).isEmpty {

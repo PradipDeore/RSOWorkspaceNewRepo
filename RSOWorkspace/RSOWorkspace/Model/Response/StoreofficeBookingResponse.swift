@@ -66,7 +66,9 @@ struct OfficeBookingOrderDetails: Codable {
 // MARK: - MainpriceOfficeOrderDetails
 struct MainpriceOfficeOrderDetails: Codable {
     let perHour: String?
-    let totalHours, regularHours, surchargeHours: Int?
+    let totalHours:Int?
+    let regularHours:Double?
+    let surchargeHours: Double?
     let subtotal: String?
 
     enum CodingKeys: String, CodingKey {
@@ -76,6 +78,28 @@ struct MainpriceOfficeOrderDetails: Codable {
         case surchargeHours = "surcharge_hours"
         case subtotal
     }
+    
+    init(from decoder: Decoder) throws {
+            let container = try decoder.container(keyedBy: CodingKeys.self)
+
+            perHour = try container.decodeIfPresent(String.self, forKey: .perHour)
+            totalHours = try container.decodeIfPresent(Int.self, forKey: .totalHours)
+            subtotal = try container.decodeIfPresent(String.self, forKey: .subtotal)
+
+            // Decode regularHours
+            if let regularHoursInt = try? container.decode(Int.self, forKey: .regularHours) {
+                regularHours = Double(regularHoursInt)
+            } else {
+                regularHours = try container.decodeIfPresent(Double.self, forKey: .regularHours)
+            }
+
+            // Decode surchargeHours
+            if let surchargeHoursInt = try? container.decode(Int.self, forKey: .surchargeHours) {
+                surchargeHours = Double(surchargeHoursInt)
+            } else {
+                surchargeHours = try container.decodeIfPresent(Double.self, forKey: .surchargeHours)
+            }
+        }
 }
 
 // MARK: - SurchargeOfficeOrderDetails

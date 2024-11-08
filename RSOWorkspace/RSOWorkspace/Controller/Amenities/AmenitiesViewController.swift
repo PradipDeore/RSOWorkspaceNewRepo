@@ -153,6 +153,7 @@ extension AmenitiesViewController: UITableViewDataSource, UITableViewDelegate {
         case .btnMeetingsWorkspace:
             let cell =  tableView.dequeueReusableCell(withIdentifier: CellIdentifierAmenities.btnMeetingsWorkspace.rawValue, for: indexPath) as! DashboardDeskTypeTableViewCell
             cell.btnMembership.isHidden = true
+            cell.btnWorkspace.isHidden = true
             cell.delegate = self
             cell.selectionStyle = .none
 

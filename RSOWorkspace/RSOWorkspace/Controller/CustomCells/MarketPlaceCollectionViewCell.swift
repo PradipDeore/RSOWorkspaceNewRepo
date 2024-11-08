@@ -18,6 +18,7 @@ class MarketPlaceCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var lblSubtext: UILabel!
     @IBOutlet weak var lblLocation: UILabel!
     
+    @IBOutlet weak var imgLocation: UIImageView!
     var cornerRadius: CGFloat = 10.0
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -40,21 +41,26 @@ class MarketPlaceCollectionViewCell: UICollectionViewCell {
         if let headerImg = item.headerImg, !headerImg.isEmpty {
             let url = URL(string: imageBasePath + headerImg)
             self.imgLogoImage.kf.setImage(with: url)
+        }else{
+            self.imgHeaderImage.image = UIImage(named: "NOImage")
         }
         
         // Headline
         self.lblHeadline.text = item.headline
         self.lblHeadline2.text = item.headline2
         self.lblSubtext.text = item.subtext
-        
+        // Image
+        if let image = item.image, !image.isEmpty {
+            let url = URL(string: imageBasePath + image)
+            self.imgHeaderImage.kf.setImage(with: url)
+        }
+      
         if let location =  item.location, !location.isEmpty{
             self.lblLocation.text = location
-            
-            // Image
-            if let image = item.image, !image.isEmpty {
-                let url = URL(string: imageBasePath + image)
-                self.imgHeaderImage.kf.setImage(with: url)
-            }
+            self.imgLocation.isHidden = false
+        }else{
+            self.lblLocation.text = ""
+            self.imgLocation.isHidden = true
         }
     }
         

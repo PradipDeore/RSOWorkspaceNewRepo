@@ -29,8 +29,8 @@ class ProfileDetailsTableViewCell: UITableViewCell {
   
   override func awakeFromNib() {
     super.awakeFromNib()
+    setEmptyData()
     setupUI()
-      
   }
   
   func setupUI(){
@@ -38,17 +38,14 @@ class ProfileDetailsTableViewCell: UITableViewCell {
     self.btnEdit.setCornerRadiusToButton2()
     
   }
-//  func setData(){
-//    let user = UserHelper.shared
-//    if let desg = user.getUserDesignation() {
-//      self.designation = desg
-//    }
-//    self.lblName.text = user.getFullname()
-//    self.lblCompanyName.text = user.getUserCompanyID()
-//    self.lblEmail.text = user.getUserEmail()
-//    self.lblDesignation.text = self.designation
-//    self.lblPhoneNo.text = ""
-//  }
+  func setEmptyData(){
+   
+    self.lblName.text = ""
+    self.lblCompanyName.text = ""
+    self.lblEmail.text = ""
+    self.lblDesignation.text = ""
+    self.lblPhoneNo.text = ""
+  }
     func setData(myProfileDetails : ProfileData){
         // Check if firstName and lastName are available, otherwise set blank text
            let firstName = myProfileDetails.firstName?.isEmpty == false ? myProfileDetails.firstName! : ""

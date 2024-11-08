@@ -158,6 +158,7 @@ class PaymentViewController: UIViewController{
             for totalItem in totalItems {
                 // let totalName = totalItem.name
                 if let totalPrice = totalItem.price {
+                   
                     totalFinalPriceOfmeetingRoom = Double(totalPrice.replacingOccurrences(of: ",", with: "")) ?? 0.0
                 }
                 // let totalDetailItem = orderSummaryItem(title: totalName, price: "AED \(totalFinalPriceOfmeetingRoom)")
@@ -234,6 +235,7 @@ class PaymentViewController: UIViewController{
             for totalItem in totalItems {
                 let totalName = totalItem.name
                 if let totalPrice = totalItem.price {
+                    print("totla price of office ",totalPrice)
                     // Correct parsing of the total price
                     totalFinalPriceOfOffice = Double(totalPrice.replacingOccurrences(of: ",", with: "")) ?? 0.0
                 }

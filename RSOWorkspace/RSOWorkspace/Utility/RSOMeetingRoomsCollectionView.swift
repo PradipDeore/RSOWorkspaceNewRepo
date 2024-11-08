@@ -212,9 +212,18 @@ extension RSOMeetingRoomsCollectionView: UICollectionViewDataSource {
 extension RSOMeetingRoomsCollectionView: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        if scrollDirection == .vertical {
-            return CGSize(width: bounds.width - 20, height: 225)
-        } else {
+       
+        let itemType = listItems[indexPath.row]
+        
+//        guard let itemType = item.type else {
+//            return
+//        }
+        
+        if itemType.type == "room" {
+            return CGSize(width: bounds.width - 50, height: 225)
+        }else if itemType.type  == "desk"{
+            return CGSize(width: bounds.width - 50, height: 300)
+        }else{
             return CGSize(width: bounds.width - 50, height: 225)
         }
     }

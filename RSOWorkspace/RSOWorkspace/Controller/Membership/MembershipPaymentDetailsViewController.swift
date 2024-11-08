@@ -16,7 +16,20 @@ class MembershipPaymentDetailsViewController: UIViewController, MembershipNaviga
   var membershipNavigationDelegate: MembershipNavigationDelegate?
     var isTermsAccepted = false // This flag will track the checkbox state.
     var orderResponse: OrderResponse?
-    
+    let requestModel = SelectedMembershipData.shared
+   
+    var vatAmount:Double{
+        let membershipData = SelectedMembershipData.shared
+        let priceDouble = Double(membershipData.monthlyCost) ?? 0.0
+        return priceDouble * 0.05
+    }
+    var totalCost: Double {
+        let priceDouble = Double(requestModel.monthlyCost) ?? 0.0
+        let calculatedTotalCost = priceDouble + vatAmount
+        requestModel.monthlyCost = String(format: "%.2f", calculatedTotalCost)
+        return calculatedTotalCost
+    }
+
   override func viewDidLoad() {
     super.viewDidLoad()
     tableView.register(UINib(nibName: identifier, bundle: nil), forCellReuseIdentifier: identifier)
@@ -28,6 +41,7 @@ class MembershipPaymentDetailsViewController: UIViewController, MembershipNaviga
   }
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
+      
     self.tableView.reloadData()
   }
   @IBAction func continueAction(_ sender: Any) {
@@ -40,7 +54,7 @@ class MembershipPaymentDetailsViewController: UIViewController, MembershipNaviga
   }
   func submitPlan() {
     RSOLoader.showLoader()
-    let requestModel = SelectedMembershipData.shared
+   
     APIManager.shared.request(
         modelType: OrderResponse.self,
         type: MembershipEndPoint.recurringPay(requestModel: requestModel)) { [weak self] response in
@@ -50,14 +64,6 @@ class MembershipPaymentDetailsViewController: UIViewController, MembershipNaviga
               
             switch response {
             case .success(let responseObj):
-//                if let errormsg = responseObj.error, !errormsg.isEmpty  {
-//                    RSOToastView.shared.show("\(responseObj.message ?? "something bad happened")", duration: 2.0, position: .center)
-//                }else{
-//                    var PaymentRequestModel = NiPaymentRequestModel()
-//                    let floatValue = Float(requestModel.monthlyCost) ?? 0.0
-//                    PaymentRequestModel.total = Double(floatValue)
-//                    PaymentRequestModel.email = UserHelper.shared.getUserEmail()
-
                     let orderResponse = responseObj
                     self.orderResponse = orderResponse
                     PaymentNetworkManager.shared.paymentTypeEntity = .membership
@@ -88,7 +94,7 @@ extension MembershipPaymentDetailsViewController: UITableViewDataSource, UITable
       }else if section == 2{
           return 1
       }
-    return 5
+    return 7
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -118,7 +124,15 @@ extension MembershipPaymentDetailsViewController: UITableViewDataSource, UITable
               cell.summaryValueLabel.text = date
           case 4:
               cell.summaryTitleLabel.text = "Monthly Cost"
-              cell.summaryValueLabel.text = SelectedMembershipData.shared.monthlyCost
+              let monthlyCost = SelectedMembershipData.shared.monthlyCost
+              cell.summaryValueLabel.text = "AED \(monthlyCost)"
+
+          case 5:
+              cell.summaryTitleLabel.text = "Vat 5%"
+              cell.summaryValueLabel.text = String(format: "AED %.2f", vatAmount)
+          case 6:
+              cell.summaryTitleLabel.text = "Total Cost"
+              cell.summaryValueLabel.text = String(format: "AED %.2f", totalCost)
           default:
               return UITableViewCell()
           }

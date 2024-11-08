@@ -23,7 +23,7 @@ class BookingViewController: UIViewController, RSOTabCoordinated {
       case .desk, .meetingRoom:
         return 100
       case .office:
-        return 200
+        return 150
       }
     }
     

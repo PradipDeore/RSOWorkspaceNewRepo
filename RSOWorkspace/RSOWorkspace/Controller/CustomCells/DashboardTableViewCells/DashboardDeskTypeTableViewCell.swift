@@ -28,6 +28,7 @@ class DashboardDeskTypeTableViewCell: UITableViewCell {
     let defaultButtonColor  = UIColor(named: "000000") ?? .black
     override func awakeFromNib() {
         super.awakeFromNib()
+        btnWorkspace.isHidden = true
         customizeCell()
         setButtonAppearance(button: btnMeetings, backgroundColor: selectedButtonColor, textColor: .black)
         let customFont = UIFont(name: "Poppins-Bold", size: 14.0)

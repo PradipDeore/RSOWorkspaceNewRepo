@@ -40,12 +40,12 @@ struct ConfirmBookingRequestModel{
     var finalTotalOfMeetingRoom:String = ""
     
     //computed property
-  var floatPrice : Float {
-    let price =  Float(self.roomprice) ?? 0.0
+  var floatPrice : Double {
+    let price =  Double(self.roomprice) ?? 0.0
     return price
   }
   
-  var timeDifferece: Float {
+  var timeDifferece: Double {
       get {
           let formatter = DateFormatter()
           formatter.dateFormat = "HH:mm"
@@ -56,7 +56,7 @@ struct ConfirmBookingRequestModel{
               
               if let differenceInHours = components.hour {
                   // Ensure the difference is at least 1 hour or more
-                  return max(Float(differenceInHours), 1.0)
+                  return max(Double(differenceInHours), 1.0)
               }
           }
           return 1.0 // Default to 1 if there's an issue
@@ -67,14 +67,14 @@ struct ConfirmBookingRequestModel{
   }
 
   // calculation of amenity with price * amenity hours
-    var totalOfAmenity: Float {
-        var totalAmenityPrice: Float = 0.0
+    var totalOfAmenity: Double {
+        var totalAmenityPrice: Double = 0.0
         // Check if the amenity has selected hours in the amenityTotalHours dictionary
 
         for amenity in amenityArray {
-            let amenityPrice = Float(amenity.price ?? "0.0") ?? 0.0
+            let amenityPrice = Double(amenity.price ?? "0.0") ?? 0.0
             if let selectedHours = amenityTotalHours[amenity.id] {
-                totalAmenityPrice += (amenityPrice * Float(selectedHours))
+                totalAmenityPrice += (amenityPrice * Double(selectedHours))
             }
         }
         
@@ -82,37 +82,37 @@ struct ConfirmBookingRequestModel{
     }
     
     
-  var totalOfMeetingRoom: Float {
+  var totalOfMeetingRoom: Double {
     let price = self.floatPrice
     let timeDifference = self.timeDifferece
     return price * timeDifference
   }
-  var subTotal : Float{
+  var subTotal : Double{
     let total1 = self.totalOfMeetingRoom
     let total2 = self.totalOfAmenity
     return total1 + total2
   }
     
     
-  var calculatedVat : Float{
+  var calculatedVat : Double{
     return self.subTotal * 0.05
   }
   
-  var finalTotal : Float{
+  var finalTotal : Double{
     //return self.subTotal + self.calculatedVat
       return self.subTotal
   }
     
-    var grossTotalMeetingRoom: Float {
+    var grossTotalMeetingRoom: Double {
         guard !self.orderDetailsOfMeetingRoom.isEmpty else { return 0 }
         
         // Initialize subTotal to 0
-        var total: Float = 0.0
+        var total: Double = 0.0
         
         for item in self.orderDetailsOfMeetingRoom {
             if item.name == "Subtotal" {
                        if let price = item.price {
-                           total = Float(price) ?? 0.0
+                           total = Double(price) ?? 0.0
                            print("total is ",total)
                     }
             }
@@ -125,25 +125,27 @@ struct ConfirmBookingRequestModel{
     
 
     //desk calcualtions
-  var deskSubTotal: Float {
-    var subTotal: Float = 0.0
+  var deskSubTotal: Double {
+    var subTotal: Double = 0.0
     for desk in deskList {
-      let deskPrice = desk.price
-      let deskPriceFloat = Float(deskPrice) ?? 0.0
+        let deskPrice = desk.price
+      let deskPriceFloat = Double(deskPrice) ?? 0.0
         let totalDeskPrice = deskPriceFloat
       subTotal = subTotal + totalDeskPrice
     }
     return subTotal
   }
-  var deskVatTotal: Float {
-    var vatTotal: Float = 0.0
+    
+  var deskVatTotal: Double {
+    var vatTotal: Double = 0.0
     vatTotal = deskSubTotal * 5 / 100
     print("deskVatTotal: \(vatTotal)") // Debugging statement
 
     return vatTotal
   }
-  var deskFinalTotal: Float {
-    var total: Float = 0.0
+ 
+    var deskFinalTotal: Double {
+    var total: Double = 0.0
     total = deskSubTotal + deskVatTotal
       print("deskFinalTotal: \(total)") // Debugging statement
 
@@ -153,38 +155,38 @@ struct ConfirmBookingRequestModel{
     
     // office calculations
     //computed property
-    var floatPriceOffice : Float {
-      let price =  Float(self.roomprice) ?? 0.0
+    var floatPriceOffice : Double {
+      let price =  Double(self.roomprice) ?? 0.0
       return price
     }
     
-    var officeSubTotal: Float {
-      var subTotalOffice: Float = 0.0
+    var officeSubTotal: Double {
+      var subTotalOffice: Double = 0.0
         let officePrice = self.floatPriceOffice
-        let officePriceFloat = Float(officePrice) ?? 0.0
+        let officePriceFloat = Double(officePrice) ?? 0.0
         let totalOfficePrice = officePriceFloat * timeDifferece
         subTotalOffice = subTotalOffice + totalOfficePrice
       return subTotalOffice
     }
 
-    var officeVatTotal: Float {
-      var vatTotalOffice: Float = 0.0
+    var officeVatTotal: Double {
+      var vatTotalOffice: Double = 0.0
         vatTotalOffice = officeSubTotal * 5 / 100
       return vatTotalOffice
     }
     
-    var officeFinalTotal: Float {
-      var totalFinalOffice: Float = 0.0
+    var officeFinalTotal: Double {
+      var totalFinalOffice: Double = 0.0
        // totalFinalOffice = officeSubTotal + officeVatTotal
        // totalFinalOffice  = orderDetailsOfOffice
       return totalFinalOffice
     }
-    var grossTotalOffice: Float {
+    var grossTotalOffice: Double {
         // Guard to safely unwrap the `orderDetailOfOffice` array
         guard !self.orderDetailsOfOffice.isEmpty else { return 0 }
         
         // Initialize subTotal to 0
-        var total: Float = 0.0
+        var total: Double = 0.0
         
         // Iterate through the items in `orderDetailsOfMeetingRoom`
         for item in self.orderDetailsOfOffice {
@@ -192,7 +194,7 @@ struct ConfirmBookingRequestModel{
             if item.name == "Subtotal" {
                        // Convert price to Float directly from string
                        if let price = item.price {
-                           total = Float(price) ?? 0.0
+                           total = Double(price) ?? 0.0
                     }
             }
         }

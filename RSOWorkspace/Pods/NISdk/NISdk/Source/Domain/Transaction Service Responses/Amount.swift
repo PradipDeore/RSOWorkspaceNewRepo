@@ -43,9 +43,11 @@ public struct Amount: Codable {
         let language = NISdk.sharedInstance.sdkLanguage
         let direction = Locale.characterDirection(forLanguage: language)
         if (direction == .rightToLeft) {
-            return "\(currencyCode ?? "") \(orderAmountValue)"
-        } else {
+            //return "\(currencyCode ?? "") \(orderAmountValue)"
             return "\(orderAmountValue) \(currencyCode ?? "")"
+        } else {
+            return "\(currencyCode ?? "") \(orderAmountValue)"
+           // return "\(orderAmountValue) \(currencyCode ?? "")"
         }
     }
     

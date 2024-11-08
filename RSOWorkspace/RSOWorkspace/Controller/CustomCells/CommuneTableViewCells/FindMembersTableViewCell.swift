@@ -34,8 +34,8 @@ class FindMembersTableViewCell: UITableViewCell, UITextFieldDelegate {
         txtSearch.customBorderWidth = 0.0
         txtSearch.setUpTextFieldView(rightImageName:"search")
         
-        
         customizeCell()
+      //  txtSearch.addDoneOnKeyboard(withTarget: self, action: #selector(doneButtonClicked))
 
     }
     func customizeCell(){
@@ -51,7 +51,13 @@ class FindMembersTableViewCell: UITableViewCell, UITextFieldDelegate {
         self.searchView.layer.masksToBounds = false
         self.searchView.layer.shadowPath = UIBezierPath(roundedRect:  CGRect(x: 0, y: self.searchView.bounds.height - 4, width: self.searchView.bounds.width, height: 4), cornerRadius: self.searchView.layer.cornerRadius).cgPath
     }
-    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if let searchText = textField.text, !searchText.isEmpty {
+            delegate?.sendSearchText(searchText) // Send the search text to the delegate
+            textField.text = "" // Clear the text field if needed
+        }
+    }
+
     @IBAction func btnBrowseDirectoryTappedAction(_ sender: Any) {
         if let searchText = txtSearch.text {
                delegate?.sendSearchText(searchText) // Send search text to delegate

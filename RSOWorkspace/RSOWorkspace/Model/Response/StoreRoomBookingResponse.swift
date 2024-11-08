@@ -51,7 +51,8 @@ struct Total: Codable {
 // MARK: - Mainprice
 struct Mainprice: Codable {
     let perHour: String?
-    let totalHours, regularHours, surchargeHours: Int?
+    let totalHours:Int?
+    let regularHours, surchargeHours: Double?
     let subtotal: String?
     
 
@@ -62,6 +63,27 @@ struct Mainprice: Codable {
         case surchargeHours = "surcharge_hours"
         case subtotal
     }
+    init(from decoder: Decoder) throws {
+               let container = try decoder.container(keyedBy: CodingKeys.self)
+
+               perHour = try container.decodeIfPresent(String.self, forKey: .perHour)
+               totalHours = try container.decodeIfPresent(Int.self, forKey: .totalHours)
+               subtotal = try container.decodeIfPresent(String.self, forKey: .subtotal)
+
+               // Decode regularHours
+               if let regularHoursInt = try? container.decode(Int.self, forKey: .regularHours) {
+                   regularHours = Double(regularHoursInt)
+               } else {
+                   regularHours = try container.decodeIfPresent(Double.self, forKey: .regularHours)
+               }
+
+               // Decode surchargeHours
+               if let surchargeHoursInt = try? container.decode(Int.self, forKey: .surchargeHours) {
+                   surchargeHours = Double(surchargeHoursInt)
+               } else {
+                   surchargeHours = try container.decodeIfPresent(Double.self, forKey: .surchargeHours)
+               }
+           }
 }
 
 // MARK: - Surcharge

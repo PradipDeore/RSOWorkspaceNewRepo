@@ -12,7 +12,7 @@ struct RSOCollectionItem: Codable {
     let capacity: Int?
     let description: String?
     let roomImage: String?
-    let roomPrice: String?
+    var roomPrice: String?
     let locationName: String?
     let type : String?
     let roomAmenityDetails: [RoomAmenities]?
@@ -93,6 +93,7 @@ struct RSOCollectionItem: Codable {
         self.searchOfficeAmenityDetails = []
 
         self.isItemSelected = false
+        
     }
     //search  room
     init(roomSearchListingItem: SearchRoomData) {

@@ -45,7 +45,7 @@
                                     <constraint firstAttribute="width" constant="57" id="osG-9D-KyA"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="convenience at your fingertips,get instant access to a wide range of services anytime while you manage tasks effortlessly." lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="udf-ic-Vu3">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Convenience at your fingertips,get instant access to a wide range of services anytime while you manage tasks effortlessly." lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="udf-ic-Vu3">
                                 <rect key="frame" x="10" y="56" width="209" height="99"/>
                                 <fontDescription key="fontDescription" name="Inter-Medium" family="Inter" pointSize="12"/>
                                 <color key="textColor" name="616161"/>

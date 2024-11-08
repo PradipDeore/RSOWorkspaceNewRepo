@@ -18,6 +18,7 @@ class CommuneViewController: UIViewController,RSOTabCoordinated{
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTableView()
+    
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -145,7 +146,6 @@ extension CommuneViewController {
             guard !isAlreadyPushed() else { return }
             let membersListVC = UIViewController.createController(storyBoard: .Commune, ofType: ListOfMembersViewController.self)
             membersListVC.coordinator = self.coordinator
-          //  membersListVC.searchText = self.searchText // Pass the search text
 
             self.navigationController?.pushViewController(membersListVC, animated: true)
         }

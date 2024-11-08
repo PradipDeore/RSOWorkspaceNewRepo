@@ -43,8 +43,6 @@ class RSOTabBarViewController: UIViewController {
         coordinator = RSOTabBarCordinator(tabBarController: self)
         setupTabBarView()
         for (index, item) in RSOTabItem.allCases.enumerated() {
-
-          
             let viewController = item.createTabChildController()
             // set coordinator value
             if let childViewController = viewController as? RSOTabCoordinated {

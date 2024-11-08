@@ -26,8 +26,8 @@ class ForgotPasswordViewController: UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
     @IBAction func btnCheckVerifyScreenAction(_ sender: Any) {
-        let verifyVC = UIViewController.createController(storyBoard: .GetStarted, ofType: VerifyViewController.self)
-        self.navigationController?.pushViewController(verifyVC, animated: true)
+//        let verifyVC = UIViewController.createController(storyBoard: .GetStarted, ofType: VerifyViewController.self)
+//        self.navigationController?.pushViewController(verifyVC, animated: true)
     }
     
     func forgotPasswordAPI(email: String) {
@@ -70,7 +70,6 @@ class ForgotPasswordViewController: UIViewController {
 }
 extension ForgotPasswordViewController {
     enum Event {
-        
         case dataLoaded
         case error(Error?)
     }

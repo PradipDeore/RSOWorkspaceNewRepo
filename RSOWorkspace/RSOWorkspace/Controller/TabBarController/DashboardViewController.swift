@@ -8,7 +8,7 @@
 import UIKit
 import Toast_Swift
 enum DashboardOption: String {
-    case meetingRooms = "Meeting Rooms"
+    case meetingRooms = "Meetings"
     case workspace = "Workspace"
     case membership = "Membership"
 }

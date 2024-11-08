@@ -28,6 +28,7 @@ class BookOfficeTableViewCell: UITableViewCell {
         self.containerView.layer.cornerRadius = cornerRadius
         self.containerView.layer.masksToBounds = true
         self.addShadow()
+        self.btnShortTermBooking.isHidden = true
     }
     
     @IBAction func btnShortTermBookingAction(_ sender: Any) {

@@ -8,7 +8,7 @@
 import Foundation
 // Enum to represent different server environments
 enum ServerEnvironment: String {
-    case development = "https://finance.ardemos.co.in/rso/api/"
+    case development = "https://finance.ardemos.co.in/rso-live-live/api/"
     case production = "https://rso.teamalo.com/api/"
     case live = "https://www.rsoworkplace.com/api/"
 }

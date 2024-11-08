@@ -53,7 +53,6 @@ class MembershipPlanTableViewCell: UITableViewCell {
             self.lblMembershipPlan.isHidden = true
             self.btnRenewPlan.isHidden = false
         }
-        
         self.btnRenewPlan.setCornerRadiusToButton2()
         self.btnBuyMemberShip.setCornerRadiusToButton2()
         
