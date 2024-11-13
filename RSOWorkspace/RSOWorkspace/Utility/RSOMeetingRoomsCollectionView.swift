@@ -222,7 +222,7 @@ extension RSOMeetingRoomsCollectionView: UICollectionViewDelegateFlowLayout {
         if itemType.type == "room" {
             return CGSize(width: bounds.width - 50, height: 225)
         }else if itemType.type  == "desk"{
-            return CGSize(width: bounds.width - 50, height: 300)
+            return CGSize(width: bounds.width - 50, height: 325)
         }else{
             return CGSize(width: bounds.width - 50, height: 225)
         }

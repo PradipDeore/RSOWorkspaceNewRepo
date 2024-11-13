@@ -226,6 +226,7 @@ extension BookingConfirmedViewController: UITableViewDataSource, UITableViewDele
             let cell = tableView.dequeueReusableCell(withIdentifier: cellType.rawValue, for: indexPath) as! ConfirmAndProceedToPayementTableViewCell
             cell.btnConfirmAndProceed.isEnabled = true
             if !UserHelper.shared.isGuest(){
+                cell.btnConfirmAndProceed.isEnabled = true
                 cell.btnConfirmAndProceed.setTitle("Confirm", for: .normal)
             }
             cell.delegate = self
@@ -285,6 +286,13 @@ extension BookingConfirmedViewController:ButtonEditTableViewCellDelegate{
 }
 extension BookingConfirmedViewController:ConfirmAndProceedToPayementTableViewCellDelegate{
     func btnConfirmAndProceedTappedAction() {
+        
+         if UserHelper.shared.isUserExplorer() {
+              CurrentLoginType.shared.loginScreenDelegate = self
+              LogInViewController.showLoginViewController()
+              return
+      }
+       
         RSOLoader.showLoader()
         let startTime = self.bookingConfirmDetails.startTime
         let endTime =  self.bookingConfirmDetails.endTime
@@ -303,6 +311,14 @@ extension BookingConfirmedViewController:ConfirmAndProceedToPayementTableViewCel
     func convertToTeamList(from teamMembers: [TeamMembersList]) -> [TeamList] {
         return teamMembers.map { member in
             return TeamList(id: member.id, name:member.fullName)
+        }
+    }
+}
+extension BookingConfirmedViewController: LoginScreenActionDelegate {
+    func loginScreenDismissed() {
+        DispatchQueue.main.async {
+            self.coordinator?.updateTabButtons()
+            //self.btnPayNowTappedAction()
         }
     }
 }

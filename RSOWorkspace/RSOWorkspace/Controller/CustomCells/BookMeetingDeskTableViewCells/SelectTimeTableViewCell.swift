@@ -77,14 +77,14 @@ class SelectTimeTableViewCell: UITableViewCell {
         
     func setupInitialTimeValues() {
        
-        if UserHelper.shared.isGuest(){
-            self.btnBookfullDay.isHidden = true
-            
-            
-        }else{
-            self.btnBookfullDay.isHidden = false
-            btnBookfullDay.isUserInteractionEnabled = true
-        }
+//        if UserHelper.shared.isGuest(){
+//            self.btnBookfullDay.isHidden = true
+//            
+//            
+//        }else{
+//            self.btnBookfullDay.isHidden = false
+//            btnBookfullDay.isUserInteractionEnabled = true
+//        }
         
         switch bookingTypeSelectTime {
         case .desk:
@@ -113,7 +113,7 @@ class SelectTimeTableViewCell: UITableViewCell {
                         }
           
             if DateTimeManager.shared.isDateToday() && DateTimeManager.shared.isCurrentTimePassedForStartTime()  {
-                            btnBookfullDay.isUserInteractionEnabled = false
+                btnBookfullDay.isUserInteractionEnabled = false
                            
             } else {
                 btnBookfullDay.isUserInteractionEnabled = true

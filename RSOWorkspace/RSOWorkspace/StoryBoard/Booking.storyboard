@@ -65,7 +65,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MP5-dc-Psj" customClass="RSOButton" customModule="RSOWorkspace" customModuleProvider="target">
-                                                <rect key="frame" x="70.000000000000014" y="0.0" width="158.33333333333337" height="29"/>
+                                                <rect key="frame" x="70" y="0.0" width="184" height="29"/>
                                                 <color key="backgroundColor" name="000000"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="117" id="2bW-Tj-lss"/>
@@ -83,14 +83,14 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y8O-ve-jb1" customClass="RSOButton" customModule="RSOWorkspace" customModuleProvider="target">
-                                                <rect key="frame" x="238.33333333333329" y="0.0" width="104.66666666666666" height="29"/>
+                                                <rect key="frame" x="264" y="0.0" width="79" height="29"/>
                                                 <color key="backgroundColor" name="000000"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="106" id="aLw-am-6lS"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="Inter-SemiBold" family="Inter" pointSize="14"/>
                                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                                <state key="normal" title="Workspace"/>
+                                                <state key="normal" title="Desks"/>
                                                 <variation key="default">
                                                     <mask key="constraints">
                                                         <exclude reference="aLw-am-6lS"/>
@@ -538,10 +538,10 @@
                                                 </connections>
                                             </button>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mes-L0-2pj">
-                                                <rect key="frame" x="16" y="363" width="334" height="150"/>
+                                                <rect key="frame" x="25" y="363" width="323" height="150"/>
                                                 <subviews>
                                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="sgD-RD-Jft">
-                                                        <rect key="frame" x="0.0" y="0.0" width="334" height="150"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="323" height="150"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <color key="textColor" name="828282"/>
                                                         <fontDescription key="fontDescription" name="Inter-Medium" family="Inter" pointSize="16"/>
@@ -557,6 +557,11 @@
                                                     <constraint firstItem="sgD-RD-Jft" firstAttribute="leading" secondItem="mes-L0-2pj" secondAttribute="leading" id="pp5-x8-0oq"/>
                                                     <constraint firstAttribute="bottom" secondItem="sgD-RD-Jft" secondAttribute="bottom" id="ygv-7B-lav"/>
                                                 </constraints>
+                                                <variation key="default">
+                                                    <mask key="constraints">
+                                                        <exclude reference="Awx-Fh-aOY"/>
+                                                    </mask>
+                                                </variation>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9UQ-1D-1Yb" customClass="RSOButton" customModule="RSOWorkspace" customModuleProvider="target">
                                                 <rect key="frame" x="20" y="543" width="333" height="46"/>
@@ -581,12 +586,13 @@
                                             <constraint firstItem="rSB-1d-Nsx" firstAttribute="top" secondItem="YWq-Al-zYM" secondAttribute="bottom" constant="34" id="8ZW-Dm-98X"/>
                                             <constraint firstItem="mGw-B8-Wg2" firstAttribute="leading" secondItem="gWo-hn-9un" secondAttribute="trailing" constant="20" id="El0-GF-Gch"/>
                                             <constraint firstItem="YWq-Al-zYM" firstAttribute="height" secondItem="8zU-gW-lCj" secondAttribute="height" id="GgN-Vi-wt7"/>
+                                            <constraint firstAttribute="trailing" secondItem="mes-L0-2pj" secondAttribute="trailing" constant="25" id="KMq-5x-XjB"/>
                                             <constraint firstItem="8Hx-Xc-2Cm" firstAttribute="top" secondItem="SMu-8U-9zx" secondAttribute="bottom" constant="21" id="KlR-By-afW"/>
                                             <constraint firstItem="mes-L0-2pj" firstAttribute="top" secondItem="wKv-Ux-vEd" secondAttribute="bottom" constant="20" id="Rjd-cz-FLp"/>
                                             <constraint firstItem="8zU-gW-lCj" firstAttribute="leading" secondItem="SMu-8U-9zx" secondAttribute="leading" id="Rmw-IT-UUM"/>
                                             <constraint firstItem="8zU-gW-lCj" firstAttribute="leading" secondItem="rSB-1d-Nsx" secondAttribute="leading" id="T1g-D2-6zu"/>
                                             <constraint firstItem="mGw-B8-Wg2" firstAttribute="baseline" secondItem="wKv-Ux-vEd" secondAttribute="baseline" id="UvB-i5-GCP"/>
-                                            <constraint firstItem="mes-L0-2pj" firstAttribute="leading" secondItem="sCu-xB-Mee" secondAttribute="leading" constant="16" id="b0p-qh-IBH"/>
+                                            <constraint firstItem="mes-L0-2pj" firstAttribute="leading" secondItem="sCu-xB-Mee" secondAttribute="leading" constant="25" id="b0p-qh-IBH"/>
                                             <constraint firstItem="mes-L0-2pj" firstAttribute="top" secondItem="rSB-1d-Nsx" secondAttribute="bottom" constant="15" id="dRk-OD-ovo"/>
                                             <constraint firstItem="9UQ-1D-1Yb" firstAttribute="leading" secondItem="sCu-xB-Mee" secondAttribute="leading" constant="20" id="gMc-xd-qCL"/>
                                             <constraint firstItem="8zU-gW-lCj" firstAttribute="centerX" secondItem="sCu-xB-Mee" secondAttribute="centerX" id="hPt-gD-H1L"/>

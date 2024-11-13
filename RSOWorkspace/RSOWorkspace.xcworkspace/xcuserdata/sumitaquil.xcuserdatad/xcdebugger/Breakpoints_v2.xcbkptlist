@@ -2765,8 +2765,8 @@
             filePath = "RSOWorkspace/Controller/MeetingRoomsBooking/BookingConfirmedViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "278"
-            endingLineNumber = "278"
+            startingLineNumber = "279"
+            endingLineNumber = "279"
             landmarkName = "BookingConfirmedViewController"
             landmarkType = "21">
             <Locations>
@@ -3806,8 +3806,8 @@
             filePath = "RSOWorkspace/Controller/DeskBooking/ConfirmedDeskBookingViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "260"
-            endingLineNumber = "260"
+            startingLineNumber = "266"
+            endingLineNumber = "266"
             landmarkName = "btnConfirmAndProceedTappedAction()"
             landmarkType = "7">
          </BreakpointContent>
@@ -4233,8 +4233,8 @@
             filePath = "RSOWorkspace/Controller/DeskBooking/ConfirmedDeskBookingViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "250"
-            endingLineNumber = "250"
+            startingLineNumber = "256"
+            endingLineNumber = "256"
             landmarkName = "btnConfirmAndProceedTappedAction()"
             landmarkType = "7">
             <Locations>
@@ -4682,8 +4682,8 @@
             filePath = "RSOWorkspace/Controller/CustomCells/BookDeskTableviewCells/SelectDesksTableViewCell.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "73"
-            endingLineNumber = "73"
+            startingLineNumber = "72"
+            endingLineNumber = "72"
             landmarkName = "btnViewFloorPlan(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -5698,8 +5698,8 @@
             filePath = "RSOWorkspace/Controller/Payment/PaymentViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "432"
-            endingLineNumber = "432"
+            startingLineNumber = "433"
+            endingLineNumber = "433"
             landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
             <Locations>
@@ -6533,8 +6533,8 @@
             filePath = "RSOWorkspace/Controller/Payment/PaymentViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "519"
-            endingLineNumber = "519"
+            startingLineNumber = "520"
+            endingLineNumber = "520"
             landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
             <Locations>
@@ -6596,8 +6596,8 @@
             filePath = "RSOWorkspace/Controller/Payment/PaymentViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "523"
-            endingLineNumber = "523"
+            startingLineNumber = "524"
+            endingLineNumber = "524"
             landmarkName = "tableView(_:cellForRowAt:)"
             landmarkType = "7">
             <Locations>
@@ -7250,8 +7250,8 @@
             filePath = "RSOWorkspace/Controller/DeskBooking/ConfirmedDeskBookingViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "249"
-            endingLineNumber = "249"
+            startingLineNumber = "255"
+            endingLineNumber = "255"
             landmarkName = "btnConfirmAndProceedTappedAction()"
             landmarkType = "7">
          </BreakpointContent>
@@ -7330,8 +7330,8 @@
             filePath = "RSOWorkspace/Controller/MeetingRoomsBooking/BookingConfirmedViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "289"
-            endingLineNumber = "289"
+            startingLineNumber = "297"
+            endingLineNumber = "297"
             landmarkName = "btnConfirmAndProceedTappedAction()"
             landmarkType = "7">
          </BreakpointContent>
@@ -7346,8 +7346,8 @@
             filePath = "RSOWorkspace/Controller/MeetingRoomsBooking/BookingConfirmedViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "290"
-            endingLineNumber = "290"
+            startingLineNumber = "298"
+            endingLineNumber = "298"
             landmarkName = "btnConfirmAndProceedTappedAction()"
             landmarkType = "7">
          </BreakpointContent>

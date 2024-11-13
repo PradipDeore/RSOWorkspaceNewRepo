@@ -91,7 +91,7 @@ struct Surcharge: Codable {
     let isSurcharge:String?
     let charges: Price?
     let hours:Int?
-    let surchargeAmount: Double?
+    let surchargeAmount: String?
 
         enum CodingKeys: String, CodingKey {
             case isSurcharge, charges, hours
@@ -104,15 +104,15 @@ struct Surcharge: Codable {
             isSurcharge = try container.decodeIfPresent(String.self, forKey: .isSurcharge)
             charges = try container.decodeIfPresent(Price.self, forKey: .charges)
             hours = try container.decodeIfPresent(Int.self, forKey: .hours)
-
+        surchargeAmount = try container.decodeIfPresent(String.self, forKey: .surchargeAmount)
             // Handle surchargeAmount which might be Int or Double
-            if let surchargeAmountInt = try? container.decode(Int.self, forKey: .surchargeAmount) {
-                surchargeAmount = Double(surchargeAmountInt)
-            } else if let surchargeAmountDouble = try? container.decode(Double.self, forKey: .surchargeAmount) {
-                surchargeAmount = surchargeAmountDouble
-            } else {
-                surchargeAmount = nil
-            }
+//            if let surchargeAmountInt = try? container.decode(Int.self, forKey: .surchargeAmount) {
+//                surchargeAmount = Double(surchargeAmountInt)
+//            } else if let surchargeAmountDouble = try? container.decode(Double.self, forKey: .surchargeAmount) {
+//                surchargeAmount = surchargeAmountDouble
+//            } else {
+//                surchargeAmount = nil
+//            }
         }
 }
 // MARK: - Weekday

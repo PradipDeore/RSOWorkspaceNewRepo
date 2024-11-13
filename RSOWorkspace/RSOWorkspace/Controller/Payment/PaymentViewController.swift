@@ -142,8 +142,9 @@ class PaymentViewController: UIViewController{
         
         // Surcharge
         if let surcharge = orderDetails.surcharge, surcharge.isSurcharge == "yes" {
-            let surchargeAmount = surcharge.surchargeAmount ?? 0.0
-            let formattedSurchargeAmount = String(format: "%.2f", surchargeAmount) // Ensure two decimal places
+            guard let surchargeAmount = surcharge.surchargeAmount else { return  }
+          //  let formattedSurchargeAmount = String(format: "%.2f", surchargeAmount) // Ensure two decimal places
+            let formattedSurchargeAmount = surchargeAmount
             let surchargeCharges = surcharge.charges?.formattedPrice ?? "0"
             let hours = surcharge.hours ?? 0
             
@@ -609,12 +610,12 @@ extension PaymentViewController {
 
 extension PaymentViewController: ButtonPayNowTableViewCellDelegate {
     func btnPayNowTappedAction() {
-      
-        if UserHelper.shared.isUserExplorer() {
-            CurrentLoginType.shared.loginScreenDelegate = self
-            LogInViewController.showLoginViewController()
-            return
-    }
+//      
+//        if UserHelper.shared.isUserExplorer() {
+//            CurrentLoginType.shared.loginScreenDelegate = self
+//            LogInViewController.showLoginViewController()
+//            return
+//    }
         // Check if the Terms and Conditions are accepted
                if !isTermsAccepted {
                    RSOToastView.shared.show("Please agree to the Terms and Conditions before proceeding", duration: 2.0, position: .center)
@@ -648,13 +649,20 @@ extension PaymentViewController: ButtonPayNowTableViewCellDelegate {
                 }
             }
         case .meetingRoom:
-            let additionalServicesVC = UIViewController.createController(storyBoard: .Payment, ofType: ChooseAdditionalServicesViewController.self)
-            additionalServicesVC.vatAmount = self.vatAmountMeetingRoom
-            additionalServicesVC.totalPrice =  self.totalPriceMeetingRoom
-            additionalServicesVC.bookingId = self.bookingId
-            additionalServicesVC.coordinator = self.coordinator
-            self.navigationController?.pushViewController(additionalServicesVC, animated: true)
+//            let additionalServicesVC = UIViewController.createController(storyBoard: .Payment, ofType: ChooseAdditionalServicesViewController.self)
+//            additionalServicesVC.vatAmount = self.vatAmountMeetingRoom
+//            additionalServicesVC.totalPrice =  self.totalPriceMeetingRoom
+//            additionalServicesVC.bookingId = self.bookingId
+//            additionalServicesVC.coordinator = self.coordinator
+//            self.navigationController?.pushViewController(additionalServicesVC, animated: true)
             
+            let details = "RSO booking"
+            paymentServiceManager.paymentTypeEntity = .room
+            paymentServiceManager.currentViewController = self
+            paymentServiceManager.currentNavigationController = self.navigationController
+            paymentServiceManager.paymentRoomBookingAPI(additionalrequirements: [""], bookingid: self.bookingId, requirementdetails: details, totalprice: self.totalPriceMeetingRoom, vatamount: self.vatAmountMeetingRoom)
+           
+
         case .office: 
             paymentServiceManager.currentViewController = self
             paymentServiceManager.currentNavigationController = self.navigationController
@@ -675,14 +683,14 @@ extension PaymentViewController: ButtonPayNowTableViewCellDelegate {
         }
     }
 }
-extension PaymentViewController: LoginScreenActionDelegate {
-    func loginScreenDismissed() {
-        DispatchQueue.main.async {
-            self.coordinator?.updateTabButtons()
-            self.btnPayNowTappedAction()
-        }
-    }
-}
+//extension PaymentViewController: LoginScreenActionDelegate {
+//    func loginScreenDismissed() {
+//        DispatchQueue.main.async {
+//            self.coordinator?.updateTabButtons()
+//            self.btnPayNowTappedAction()
+//        }
+//    }
+//}
 
 extension PaymentViewController: TermsAndConditionsDelegate {
     func didToggleTermsCheckbox(isSelected: Bool) {

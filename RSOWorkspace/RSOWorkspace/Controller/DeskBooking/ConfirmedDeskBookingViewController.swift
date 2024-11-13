@@ -199,7 +199,7 @@ extension ConfirmedDeskBookingViewController: UITableViewDataSource, UITableView
             
         case .confirmAndProceedToPayment:
             let cell = tableView.dequeueReusableCell(withIdentifier: cellType.rawValue, for: indexPath) as! ConfirmAndProceedToPayementTableViewCell
-            cell.btnConfirmAndProceed.isEnabled = true
+          //  cell.btnConfirmAndProceed.isEnabled = true
             cell.delegate = self
             if !UserHelper.shared.isGuest(){
                 cell.btnConfirmAndProceed.setTitle("Confirm", for: .normal)
@@ -245,6 +245,12 @@ extension ConfirmedDeskBookingViewController:ButtonEditTableViewCellDelegate{
 }
 extension ConfirmedDeskBookingViewController:ConfirmAndProceedToPayementTableViewCellDelegate{
     func btnConfirmAndProceedTappedAction() {
+        
+        if UserHelper.shared.isUserExplorer() {
+             CurrentLoginType.shared.loginScreenDelegate = self
+             LogInViewController.showLoginViewController()
+             return
+     }
         let apidefaultTime = Date.formatSelectedDate(format: .HHmm, date: Date())
         
         let startTime = self.deskbookingConfirmDetails?.start_time ?? apidefaultTime
@@ -268,5 +274,13 @@ extension ConfirmedDeskBookingViewController:ConfirmAndProceedToPayementTableVie
         storeDeskBookingAPI(requestModel: requestModel)
         
     }
-    
+}
+
+extension ConfirmedDeskBookingViewController: LoginScreenActionDelegate {
+    func loginScreenDismissed() {
+        DispatchQueue.main.async {
+            self.coordinator?.updateTabButtons()
+            //self.btnPayNowTappedAction()
+        }
+    }
 }

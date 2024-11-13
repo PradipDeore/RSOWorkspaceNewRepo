@@ -61,7 +61,11 @@ class DeskCollectionViewCell: UICollectionViewCell {
             self.lblDescription.text = "Conference Phone"
            
         } else {
-            self.lblDescription.text = item.description
+            //self.lblDescription.text = item.description
+            // If the description is in HTML, we need to convert it to an NSAttributedString
+                  if let descriptionHTML = item.description {
+                      self.lblDescription.attributedText = convertHTMLToAttributedString(html: descriptionHTML)
+                  }
         }
         
         if item.type == "desk" {
@@ -97,4 +101,30 @@ class DeskCollectionViewCell: UICollectionViewCell {
         
     }
 }
+
+// Helper function to convert HTML to NSAttributedString
+func convertHTMLToAttributedString(html: String) -> NSAttributedString? {
+    guard let data = html.data(using: .utf8) else { return nil }
+    do {
+        let options: [NSAttributedString.DocumentReadingOptionKey: Any] = [
+            .documentType: NSAttributedString.DocumentType.html,
+            .characterEncoding: String.Encoding.utf8.rawValue
+        ]
+        let attributedString = try NSAttributedString(data: data, options: options, documentAttributes: nil)
+        let mutableAttributedString = NSMutableAttributedString(attributedString: attributedString)
+        let font = RSOFont.inter(size: 11, type: .Regular)
+        let textColor = UIColor(named: "515151")
+        mutableAttributedString.addAttributes([
+            .font: font,
+            .foregroundColor: textColor!
+        ], range: NSRange(location: 0, length: mutableAttributedString.length))
+        
+        return mutableAttributedString
+    } catch {
+        print("Error converting HTML to NSAttributedString: \(error)")
+        return nil
+    }
+}
+
+
 

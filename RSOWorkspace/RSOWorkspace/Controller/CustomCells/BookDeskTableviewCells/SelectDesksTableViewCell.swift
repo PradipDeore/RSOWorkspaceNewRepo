@@ -50,7 +50,6 @@ class SelectDesksTableViewCell: UITableViewCell , UICollectionViewDataSource, UI
             cell.lblDeskNo.textColor = .black
         }
         cell.lblDeskNo.text = desk.roomName
-        
         return cell
     }
     
