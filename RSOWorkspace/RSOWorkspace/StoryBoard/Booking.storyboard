@@ -65,7 +65,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MP5-dc-Psj" customClass="RSOButton" customModule="RSOWorkspace" customModuleProvider="target">
-                                                <rect key="frame" x="70" y="0.0" width="184" height="29"/>
+                                                <rect key="frame" x="70" y="0.0" width="186" height="29"/>
                                                 <color key="backgroundColor" name="000000"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="117" id="2bW-Tj-lss"/>
@@ -83,7 +83,7 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y8O-ve-jb1" customClass="RSOButton" customModule="RSOWorkspace" customModuleProvider="target">
-                                                <rect key="frame" x="264" y="0.0" width="79" height="29"/>
+                                                <rect key="frame" x="266" y="0.0" width="77" height="29"/>
                                                 <color key="backgroundColor" name="000000"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="106" id="aLw-am-6lS"/>
@@ -876,7 +876,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="dummyQRCode" translatesAutoresizingMaskIntoConstraints="NO" id="hcw-1u-myl">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hcw-1u-myl">
                                         <rect key="frame" x="174" y="65" width="151" height="150"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
@@ -972,7 +972,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="dummyQRCode" width="8000" height="8000"/>
         <image name="floorImage" width="4894" height="3420"/>
         <namedColor name="000000">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

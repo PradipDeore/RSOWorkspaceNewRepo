@@ -43,7 +43,7 @@ class MembershipPlanTableViewCell: UITableViewCell {
         
     }
     func setupUI(){
-        if UserHelper.shared.isGuest() || UserHelper.shared.isSocialLoginUser(){
+        if UserHelper.shared.isGuest() || UserHelper.shared.isSocialLoginUser() {
             self.btnRenewPlan.isHidden = true
             self.btnBuyMemberShip.isHidden = false
             self.lblMembershipPlan.isHidden = false
@@ -67,15 +67,20 @@ class MembershipPlanTableViewCell: UITableViewCell {
             self.titleLableMonthlyAccessibleDays.isHidden = false
             self.lblPlanLength.text = "\(item.data?.planLength ?? "") Months"
             self.lblPlanType.text = "\(item.data?.planType ?? "")"
-
             self.lblMonthlyAccessibleDays.text = item.data?.monthlyAccessibleDays
             self.lblMonthlyCost.text = "AED \(item.data?.monthlyCost ?? "")"
             self.lblMembershipPlan.text = item.data?.membershipName
-            
             self.btnRenewPlan.isHidden = false
             self.btnBuyMemberShip.isHidden = true
-        
+            if let qrCodeUrlString = item.qrCodeUrl {
+                print("QR Code URL: \(qrCodeUrlString)") // Check the URL being passed
+                if let qrCodeUrl = URL(string: qrCodeUrlString) {
+                    self.imgQRCode.kf.setImage(with: qrCodeUrl)
+                }
+            }
+            
         }else{
+            self.lblMembershipPlan.isHidden = false
             self.lblMembershipPlan.text = "no active membership"
             self.lblPlanType.isHidden = true
             self.lblPlanLength.isHidden = true
@@ -85,26 +90,12 @@ class MembershipPlanTableViewCell: UITableViewCell {
             self.titleLabelPlanLength.isHidden = true
             self.titleLabelMonthlyCost.isHidden = true
             self.titleLableMonthlyAccessibleDays.isHidden = true
-            
             self.btnBuyMemberShip.isHidden = false
             self.btnRenewPlan.isHidden = true
+            self.imgQRCode.image = nil
         }
-       
-      
-        if let qrCodeUrlString = item.qrCodeUrl {
-               print("QR Code URL: \(qrCodeUrlString)") // Check the URL being passed
-               if let qrCodeUrl = URL(string: qrCodeUrlString) {
-                   self.imgQRCode.kf.setImage(with: qrCodeUrl)
-               }
-           } else {
-               print("QR Code URL is nil")
-               self.imgQRCode.image = UIImage(named: "dummyQRCode")
-           }
-        
     }
-    
-   
-
+      
     // Helper functions to show or hide the membership plan details
     func showPlanDetails() {
         self.titleLabelPlanType.isHidden = false

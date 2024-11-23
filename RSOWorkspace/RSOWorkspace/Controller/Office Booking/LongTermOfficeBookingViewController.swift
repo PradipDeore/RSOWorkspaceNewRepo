@@ -111,14 +111,15 @@ class LongTermOfficeBookingViewController: UIViewController {
                         // Safely unwrap status
                         if let status = responseData.status {
                             if status {
-                                RSOToastView.shared.show(responseData.msg, duration: 2.0, position: .center)
+                                self.showAlert(title: "Success", message: responseData.msg ?? "")
                                 self.clearFormFields()
                             } else {
                                 RSOToastView.shared.show("Request failed: \(String(describing: responseData.msg))", duration: 2.0, position: .center)
                                 self.clearFormFields()
                             }
                         } else {
-                            RSOToastView.shared.show("Status is missing in the response.", duration: 2.0, position: .center)
+                            self.showAlert(title: "Error", message: "Status is missing in the response.")
+
                         }
                     }
                     self.eventHandler?(.dataLoaded)
@@ -196,7 +197,6 @@ class LongTermOfficeBookingViewController: UIViewController {
         //print("bookingRequest",bookingRequest)
         longTermOfficeBookingAPI(requestModel: bookingRequest)
     }
-    
 }
 
 extension LongTermOfficeBookingViewController {
@@ -204,5 +204,16 @@ extension LongTermOfficeBookingViewController {
         
         case dataLoaded
         case error(Error?)
+    }
+}
+
+extension LongTermOfficeBookingViewController {
+    func showAlert(title: String, message: String, completion: (() -> Void)? = nil) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default) { _ in
+            completion?()
+        }
+        alert.addAction(okAction)
+        self.present(alert, animated: true, completion: nil)
     }
 }

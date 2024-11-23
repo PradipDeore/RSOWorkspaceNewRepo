@@ -281,7 +281,7 @@ extension BookRoomDetailsViewController: UITableViewDataSource, UITableViewDeleg
             let cell = tableView.dequeueReusableCell(withIdentifier: "SelectMeetingRoomLabelTableViewCell", for: indexPath) as! SelectMeetingRoomLabelTableViewCell
             cell.selectionStyle = .none
             if self.confirmBookingDetails.amenityArray.isEmpty{
-                cell.lblMeetingRoom.text = "Paid Amenities Not Available"
+                cell.lblMeetingRoom.text = ""
             }else{
                 cell.lblMeetingRoom.text = "Choose Amenities"
             }

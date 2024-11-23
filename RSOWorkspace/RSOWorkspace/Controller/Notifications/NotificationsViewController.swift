@@ -29,6 +29,7 @@ class NotificationsViewController: UIViewController {
         // Register custom cell
         tableView.register(UINib(nibName: "NotificationTableViewCell", bundle: nil), forCellReuseIdentifier: "NotificationTableViewCell")
         tableView.register(UINib(nibName: "NotificationDescTableViewCell", bundle: nil), forCellReuseIdentifier: "NotificationDescTableViewCell")
+        tableView.register(UINib(nibName: "NoDataAvailableTableViewCell", bundle: nil), forCellReuseIdentifier: "NoDataAvailableTableViewCell")
         // Set delegate and data source
         tableView.delegate = self
         tableView.dataSource = self
@@ -49,7 +50,7 @@ class NotificationsViewController: UIViewController {
                     // let notificationCount  = self.notificationList.count
                     //UserHelper.shared.saveNotificationCount(notificationCount: notificationCount)
                     let notificationCount = response.unseenCount
-                    UserHelper.shared.saveUnreadNotificationCount(notificationCount: notificationCount )
+                    UserHelper.shared.saveUnreadNotificationCount(notificationCount: notificationCount ?? 0 )
                     UserHelper.shared.saveReadNotificationCount(notificationCount: self.unreadNotificationCount)
                     
                     DispatchQueue.main.async {
@@ -85,10 +86,19 @@ class NotificationsViewController: UIViewController {
 extension NotificationsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return notificationList.count // Row count
+        return notificationList.isEmpty ? 1 : notificationList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        if notificationList.isEmpty {
+                  // Show "No Data" cell
+                  let cell = tableView.dequeueReusableCell(withIdentifier: "NoDataAvailableTableViewCell", for: indexPath) as! NoDataAvailableTableViewCell
+            cell.lblMessage.text = "Notification Not Found"
+                  cell.selectionStyle = .none
+                  return cell
+              }
+        
         if expandedIndexSet.contains(indexPath.row) {
                // Show the description cell
                let cell = tableView.dequeueReusableCell(withIdentifier: "NotificationDescTableViewCell", for: indexPath) as! NotificationDescTableViewCell
@@ -134,6 +144,10 @@ extension NotificationsViewController: UITableViewDelegate, UITableViewDataSourc
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        if notificationList.isEmpty {
+            return 50 // Make "No Data" cell full screen height if desired
+               }
         // Return different heights depending on the state
         if expandedIndexSet.contains(indexPath.row) {
             return UITableView.automaticDimension // Dynamic height for description cell

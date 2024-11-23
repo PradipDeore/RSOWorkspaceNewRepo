@@ -11,9 +11,9 @@ import Foundation
 struct NotificationResponseModel: Codable {
     let status: Bool
     let data: [NotificationData]?
-    let unseenCount: Int
-    let seenCount: Int
-    let id: Int
+    let unseenCount: Int?
+    let seenCount: Int?
+    let id: Int?
 
     enum CodingKeys: String, CodingKey {
         case status

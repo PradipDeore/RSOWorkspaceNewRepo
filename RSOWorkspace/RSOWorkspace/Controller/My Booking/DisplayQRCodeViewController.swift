@@ -76,8 +76,6 @@ class DisplayQRCodeViewController: UIViewController {
                 DispatchQueue.main.async {
                     self.imgQRCode.image = image // Update UI on the main thread
                 }
-            } else {
-                print("Unable to create image from data")
             }
         }
         task.resume() // Start the data task
