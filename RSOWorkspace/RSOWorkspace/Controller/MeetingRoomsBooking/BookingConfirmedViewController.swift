@@ -85,13 +85,11 @@ class BookingConfirmedViewController: UIViewController{
         }
     }
     func storeRoomBookingAPI(requestModel: StoreRoomBookingRequest) {
-        
         APIManager.shared.request(
             modelType: StoreRoomBookingResponse.self,
             type: PaymentRoomBookingEndPoint.getStoreRoomBooking(requestModel: requestModel)) { response in
                 switch response {
                 case .success(let response):
-                    
                     self.apiResponseData = response
                     self.bookingConfirmDetails.setValuesforOrderDetails(model: response)
 
@@ -315,7 +313,6 @@ extension BookingConfirmedViewController:ConfirmAndProceedToPayementTableViewCel
         let startTime = self.bookingConfirmDetails.startTime
         let endTime =  self.bookingConfirmDetails.endTime
         let BookingTime =  "\(startTime ) - \(endTime )"
-        
         let locationId = String(locationId)
         let location = StoreRoomBookingLocation(id: locationId, name: locationName)
         let teamlist = convertToTeamList(from: teamMembersArray)
@@ -335,8 +332,8 @@ extension BookingConfirmedViewController:ConfirmAndProceedToPayementTableViewCel
 extension BookingConfirmedViewController: LoginScreenActionDelegate {
     func loginScreenDismissed() {
         DispatchQueue.main.async {
-            self.coordinator?.updateTabButtons()
-            //self.btnPayNowTappedAction()
+            //self.coordinator?.updateTabButtons()
+            self.btnConfirmAndProceedTappedAction()
         }
     }
 }

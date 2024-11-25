@@ -38,7 +38,7 @@ class LogInViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.addEventHandler()
+        //self.addEventHandler()
         customizeUI()
         btnSocialFacebook.addTarget(self, action: #selector(facebookLoginAction), for: .touchUpInside)
         btnSocialGoogle.addTarget(self, action: #selector(googleLoginAction), for: .touchUpInside)
@@ -252,33 +252,33 @@ class LogInViewController: UIViewController {
             }
     }
     
-        func addEventHandler() {
-            self.eventHandler = { [weak self] (event, message) in
-                guard let self = self else { return }
-                DispatchQueue.main.async {
-                    switch event {
-                    case .dataLoaded:
-                        RSOToastView.shared.show("\(message)", duration: 2.0, position: .center)
-    //                    DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-    //                        self.navigationController?.popViewController(animated: true)
-    //                    }
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-                                               // Check if it's explorer login and handle accordingly
-                                               if CurrentLoginType.shared.isExplorerLogin {
-                                                   CurrentLoginType.shared.isExplorerLogin = false
-                                                   CurrentLoginType.shared.loginScreenDelegate?.loginScreenDismissed()
-                                                   CurrentLoginType.shared.explorerNavigationController?.dismiss(animated: true)
-                                               } else {
-                                                  // self.navigationController?.popViewController(animated: true)
-                                                   RSOTabBarViewController.presentAsRootController()
-                                               }
-                                           }
-                    case .error(_):
-                        RSOToastView.shared.show("\(message)", duration: 2.0, position: .center)
-                    }
-                }
-            }
-        }
+//        func addEventHandler() {
+//            self.eventHandler = { [weak self] (event, message) in
+//                guard let self = self else { return }
+//                DispatchQueue.main.async {
+//                    switch event {
+//                    case .dataLoaded:
+//                        RSOToastView.shared.show("\(message)", duration: 2.0, position: .center)
+//    //                    DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+//    //                        self.navigationController?.popViewController(animated: true)
+//    //                    }
+//                        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+//                                               // Check if it's explorer login and handle accordingly
+//                                               if CurrentLoginType.shared.isExplorerLogin {
+//                                                   CurrentLoginType.shared.isExplorerLogin = false
+//                                                   CurrentLoginType.shared.loginScreenDelegate?.loginScreenDismissed()
+//                                                   CurrentLoginType.shared.explorerNavigationController?.dismiss(animated: true)
+//                                               } else {
+//                                                  // self.navigationController?.popViewController(animated: true)
+//                                                   RSOTabBarViewController.presentAsRootController()
+//                                               }
+//                                           }
+//                    case .error(_):
+//                        RSOToastView.shared.show("\(message)", duration: 2.0, position: .center)
+//                    }
+//                }
+//            }
+//        }
   func loginAPI(email: String, password: String) {
     RSOLoader.showLoader()
     let requestModel = LoginRequestModel(email: email, password: password)

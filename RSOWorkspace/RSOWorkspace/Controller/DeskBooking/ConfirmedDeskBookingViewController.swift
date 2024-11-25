@@ -245,8 +245,8 @@ extension ConfirmedDeskBookingViewController:ButtonEditTableViewCellDelegate{
                    if let navigationController = self.navigationController {
                        // Ensure there are at least two view controllers in the stack
                        let viewControllers = navigationController.viewControllers
-                       if viewControllers.count >= 3 {
-                           let targetViewController = viewControllers[viewControllers.count - 3]
+                       if viewControllers.count >= 2 {
+                           let targetViewController = viewControllers[viewControllers.count - 2]
                            navigationController.popToViewController(targetViewController, animated: true)
                        } else {
                            // If less than 3 view controllers, just pop the current one
@@ -297,7 +297,7 @@ extension ConfirmedDeskBookingViewController: LoginScreenActionDelegate {
     func loginScreenDismissed() {
         DispatchQueue.main.async {
             self.coordinator?.updateTabButtons()
-            //self.btnPayNowTappedAction()
+            self.btnConfirmAndProceedTappedAction()
         }
     }
 }

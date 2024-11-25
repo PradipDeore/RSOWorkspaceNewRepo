@@ -542,12 +542,15 @@ extension PaymentViewController: UITableViewDataSource, UITableViewDelegate {
         case .buttonPayNow:
             let cell = tableView.dequeueReusableCell(withIdentifier: cellType.rawValue, for: indexPath) as! ButtonPayNowTableViewCell
             cell.delegate = self
-            if UserHelper.shared.isGuest() || UserHelper.shared.isUserExplorer(){
+            if UserHelper.shared.isGuest() {
                 cell.btnPayNow.setTitle("Pay Now", for: .normal)
-
-            }else{
+            } else if UserHelper.shared.isUserExplorer() {
+                cell.btnPayNow.setTitle("Pay Now", for: .normal)
+            } else if UserHelper.shared.isSocialLoginUser() {
+                print("Social login user")
+                cell.btnPayNow.setTitle("Pay Now", for: .normal)
+            } else {
                 cell.btnPayNow.setTitle("Proceed To Booking", for: .normal)
-
             }
             cell.selectionStyle = .none
             return cell
@@ -558,7 +561,6 @@ extension PaymentViewController: UITableViewDataSource, UITableViewDelegate {
                 switch bookingType {
                 case .desk:
                     break
-                    
                 case .office:
                     let item = orderdetailsaArray[indexPath.item]
                     cell.lbltitle.text = item.title
@@ -610,12 +612,7 @@ extension PaymentViewController {
 
 extension PaymentViewController: ButtonPayNowTableViewCellDelegate {
     func btnPayNowTappedAction() {
-//      
-//        if UserHelper.shared.isUserExplorer() {
-//            CurrentLoginType.shared.loginScreenDelegate = self
-//            LogInViewController.showLoginViewController()
-//            return
-//    }
+
         // Check if the Terms and Conditions are accepted
                if !isTermsAccepted {
                    RSOToastView.shared.show("Please agree to the Terms and Conditions before proceeding", duration: 2.0, position: .center)
@@ -623,7 +620,6 @@ extension PaymentViewController: ButtonPayNowTableViewCellDelegate {
                }
         
         print("Is Social Login User: \(UserHelper.shared.isSocialLoginUser())")
-
            
         guard let obj = self.requestParameters else { return }
         
@@ -635,7 +631,6 @@ extension PaymentViewController: ButtonPayNowTableViewCellDelegate {
                 requestModel.total = totalPriceDesk
                 requestModel.email = UserHelper.shared.getUserEmail()
                 requestModel.BookdeskID = "\(bookingId)"
-                 
                 paymentServiceManager.currentViewController = self
                 paymentServiceManager.currentNavigationController = self.navigationController
                 paymentServiceManager.paymentTypeEntity = .desk
@@ -649,19 +644,14 @@ extension PaymentViewController: ButtonPayNowTableViewCellDelegate {
                 }
             }
         case .meetingRoom:
-//            let additionalServicesVC = UIViewController.createController(storyBoard: .Payment, ofType: ChooseAdditionalServicesViewController.self)
-//            additionalServicesVC.vatAmount = self.vatAmountMeetingRoom
-//            additionalServicesVC.totalPrice =  self.totalPriceMeetingRoom
-//            additionalServicesVC.bookingId = self.bookingId
-//            additionalServicesVC.coordinator = self.coordinator
-//            self.navigationController?.pushViewController(additionalServicesVC, animated: true)
+
             
             let details = "RSO booking"
             paymentServiceManager.paymentTypeEntity = .room
             paymentServiceManager.currentViewController = self
             paymentServiceManager.currentNavigationController = self.navigationController
             paymentServiceManager.paymentRoomBookingAPI(additionalrequirements: [""], bookingid: self.bookingId, requirementdetails: details, totalprice: self.totalPriceMeetingRoom, vatamount: self.vatAmountMeetingRoom)
-           
+
 
         case .office: 
             paymentServiceManager.currentViewController = self
@@ -683,14 +673,6 @@ extension PaymentViewController: ButtonPayNowTableViewCellDelegate {
         }
     }
 }
-//extension PaymentViewController: LoginScreenActionDelegate {
-//    func loginScreenDismissed() {
-//        DispatchQueue.main.async {
-//            self.coordinator?.updateTabButtons()
-//            self.btnPayNowTappedAction()
-//        }
-//    }
-//}
 
 extension PaymentViewController: TermsAndConditionsDelegate {
     func didToggleTermsCheckbox(isSelected: Bool) {
