@@ -32,13 +32,11 @@ class LogInViewController: UIViewController {
     @IBOutlet weak var btnSocialApple: RSOSocialButton!
     @IBOutlet weak var btnSocialFacebook: RSOSocialButton!
     @IBOutlet weak var btnSocialGoogle: RSOSocialButton!
-    
-    //var eventHandler: ((_ event: Event) -> Void)? // Data Binding Closure
+    var fullName: String = ""
     var eventHandler: ((_ event: Event, _ message: String) -> Void)? // Data Binding Closure
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        //self.addEventHandler()
         customizeUI()
         btnSocialFacebook.addTarget(self, action: #selector(facebookLoginAction), for: .touchUpInside)
         btnSocialGoogle.addTarget(self, action: #selector(googleLoginAction), for: .touchUpInside)
@@ -153,25 +151,25 @@ class LogInViewController: UIViewController {
  
     //apple
     @objc func handleAppleIdRequest() {
-        let appleIDProvider = ASAuthorizationAppleIDProvider()
-        let request = appleIDProvider.createRequest()
-        request.requestedScopes = [.fullName, .email]
-        let authorizationController = ASAuthorizationController(authorizationRequests: [request])
-        authorizationController.delegate = self
-        authorizationController.performRequests()
-    }
+           let appleIDProvider = ASAuthorizationAppleIDProvider()
+           let request = appleIDProvider.createRequest()
+           request.requestedScopes = [.fullName, .email]
+           
+           let authorizationController = ASAuthorizationController(authorizationRequests: [request])
+           authorizationController.delegate = self
+           authorizationController.presentationContextProvider = self
+           authorizationController.performRequests()
+       }
+
     
-    private func handleAppleSignIn(userIdentifier: String, fullName: PersonNameComponents?, email: String?) {
-        // Convert `fullName` to a string or use directly if needed
-        let name = fullName?.givenName ?? ""
-        
-        // Use the provided email if available, or handle the case where it might be nil
+    private func handleAppleSignIn(userIdentifier: String, fullName: String?, email: String?, identityToken: String) {
+        let name = fullName ?? ""
         let emailAddress = email ?? ""
         
-        // Create a model to send to your backend or perform additional actions
+        // Pass identityToken as auth_id
         let requestModel = SocailLoginRequestModel(auth_type: "apple", auth_id: userIdentifier, email: emailAddress, name: name)
         
-        // Call the social login API
+        // Call the social login API with the updated request model
         socialloginAPI(requestModel: requestModel)
     }
     private func checkAppleIDCredentialState(userID: String) {
@@ -193,7 +191,6 @@ class LogInViewController: UIViewController {
         }
     }
     
-    
     func socialloginAPI(requestModel:SocailLoginRequestModel) {
         RSOLoader.showLoader()
         // let requestModel = SocailLoginRequestModel(requestModel: requestModel)
@@ -209,17 +206,17 @@ class LogInViewController: UIViewController {
                         RSOToken.shared.save(token: token)
                         UserHelper.shared.saveSocialLoginUser(true)
                         UserHelper.shared.saveSocialuser(name: requestModel.name, email: requestModel.email)
-                        // Check if the user was a guest before the social login
-//                        if UserHelper.shared.isGuest() || UserHelper.shared.isUserExplorer() {
-//                            // Save user as guest using social login details
-//                            UserHelper.shared.saveSocialuser(name: requestModel.name, email: requestModel.email)
-//                            UserHelper.shared.saveUserIsGuest(true) // Set guest flag to true
-//                        } else {
-//                            // Save user as a regular logged-in user
-//                            UserHelper.shared.saveSocialuser(name: requestModel.name, email: requestModel.email)
-//                            UserHelper.shared.saveUserIsGuest(false) // Set guest flag to false
-//                        }
-                        // -------------------  -------------------
+                        
+                        KeychainHelper.shared.saveUserToKeychain(token: token, email: requestModel.email, username: requestModel.name)
+
+                        
+                        let userIdentifier = KeychainHelper.shared.getUserFromKeychain().token
+                        let email = KeychainHelper.shared.getUserFromKeychain().email
+                        let fullName =  KeychainHelper.shared.getUserFromKeychain().username
+                        print("saved successfully in key chain")
+                        print("User id is \(userIdentifier) \n Full Name is \(String(describing: fullName)) \n Email id is \(String(describing: email))")
+                        
+                        
                         DispatchQueue.main.async {
                             RSOLoader.removeLoader()
                             // Login successful
@@ -252,33 +249,7 @@ class LogInViewController: UIViewController {
             }
     }
     
-//        func addEventHandler() {
-//            self.eventHandler = { [weak self] (event, message) in
-//                guard let self = self else { return }
-//                DispatchQueue.main.async {
-//                    switch event {
-//                    case .dataLoaded:
-//                        RSOToastView.shared.show("\(message)", duration: 2.0, position: .center)
-//    //                    DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-//    //                        self.navigationController?.popViewController(animated: true)
-//    //                    }
-//                        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-//                                               // Check if it's explorer login and handle accordingly
-//                                               if CurrentLoginType.shared.isExplorerLogin {
-//                                                   CurrentLoginType.shared.isExplorerLogin = false
-//                                                   CurrentLoginType.shared.loginScreenDelegate?.loginScreenDismissed()
-//                                                   CurrentLoginType.shared.explorerNavigationController?.dismiss(animated: true)
-//                                               } else {
-//                                                  // self.navigationController?.popViewController(animated: true)
-//                                                   RSOTabBarViewController.presentAsRootController()
-//                                               }
-//                                           }
-//                    case .error(_):
-//                        RSOToastView.shared.show("\(message)", duration: 2.0, position: .center)
-//                    }
-//                }
-//            }
-//        }
+
   func loginAPI(email: String, password: String) {
     RSOLoader.showLoader()
     let requestModel = LoginRequestModel(email: email, password: password)
@@ -294,6 +265,7 @@ class LogInViewController: UIViewController {
             RSOToken.shared.save(token: token)
             UserHelper.shared.saveUser(user)
             UserHelper.shared.saveUserIsGuest(response.isGuest ?? false)
+              
             CardListManager.shared.getCardDetails()
               
             // -------------------  -------------------
@@ -383,14 +355,40 @@ extension LogInViewController:ASAuthorizationControllerDelegate {
     func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
         if let appleIDCredential = authorization.credential as?  ASAuthorizationAppleIDCredential {
             let userIdentifier = appleIDCredential.user
-            let fullName = appleIDCredential.fullName
-            let email = appleIDCredential.email
-            print("User id is \(userIdentifier) \n Full Name is \(String(describing: fullName)) \n Email id is \(String(describing: email))")
-            UserHelper.shared.saveSocialuser(name: userIdentifier, email: email ?? "")
-            handleAppleSignIn(userIdentifier: userIdentifier, fullName: fullName, email: email)
+            
+            if let nameComponents = appleIDCredential.fullName {
+                var nameParts: [String] = []
+                
+                if let givenName = nameComponents.givenName {
+                    nameParts.append(givenName)
+                }
+                
+                if let familyName = nameComponents.familyName {
+                    nameParts.append(familyName)
+                }
+                
+                fullName = nameParts.joined(separator: " ") // Combine given and family name
+            }
+            
+            if fullName.isEmpty {
+                fullName = KeychainHelper.shared.getUserFromKeychain().username ?? ""
+            }
+            
+            let email = appleIDCredential.email ?? KeychainHelper.shared.getUserFromKeychain().email
+            let identityToken = appleIDCredential.identityToken
+            
+            print("saveSocialLoginUser --> User id is \(userIdentifier) \n Full Name is \(String(describing: fullName)) \n Email id is \(String(describing: email))")
+            
+            UserHelper.shared.saveSocialLoginUser(true)
+            // Convert identityToken to a String for the API call
+            if let tokenData = identityToken, let tokenString = String(data: tokenData, encoding: .utf8) {
+                handleAppleSignIn(userIdentifier: userIdentifier, fullName: fullName, email: email, identityToken: tokenString)
+            } else {
+                print("Failed to convert identity token to string")
+            }
         }
-        
     }
+    
     func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
         // Handle the error appropriately here
         print("Sign in with Apple failed: \(error.localizedDescription)")
@@ -398,3 +396,8 @@ extension LogInViewController:ASAuthorizationControllerDelegate {
     }
 }
 
+extension LogInViewController: ASAuthorizationControllerPresentationContextProviding {
+    func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
+        return self.view.window!
+    }
+}

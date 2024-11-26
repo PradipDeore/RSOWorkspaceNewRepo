@@ -109,6 +109,7 @@
 		5843D76D2BC6F4FD00D5C8DD /* VisitorDetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5843D76B2BC6F4FD00D5C8DD /* VisitorDetailsTableViewCell.swift */; };
 		5843D76E2BC6F4FD00D5C8DD /* VisitorDetailsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5843D76C2BC6F4FD00D5C8DD /* VisitorDetailsTableViewCell.xib */; };
 		5843D7702BC7007900D5C8DD /* MyVisitorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5843D76F2BC7007900D5C8DD /* MyVisitorResponse.swift */; };
+		584A3F8F2CF5788C00E590B8 /* KeychainHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584A3F8E2CF5788C00E590B8 /* KeychainHelper.swift */; };
 		584B4B4B2B9207AA00C6F5B2 /* LocationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584B4B492B9207AA00C6F5B2 /* LocationTableViewCell.swift */; };
 		584B4B4C2B9207AA00C6F5B2 /* LocationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 584B4B4A2B9207AA00C6F5B2 /* LocationTableViewCell.xib */; };
 		584B4B4F2B9216B800C6F5B2 /* DateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 584B4B4D2B9216B800C6F5B2 /* DateTableViewCell.swift */; };
@@ -617,6 +618,7 @@
 		5843D76B2BC6F4FD00D5C8DD /* VisitorDetailsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitorDetailsTableViewCell.swift; sourceTree = "<group>"; };
 		5843D76C2BC6F4FD00D5C8DD /* VisitorDetailsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VisitorDetailsTableViewCell.xib; sourceTree = "<group>"; };
 		5843D76F2BC7007900D5C8DD /* MyVisitorResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyVisitorResponse.swift; sourceTree = "<group>"; };
+		584A3F8E2CF5788C00E590B8 /* KeychainHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainHelper.swift; sourceTree = "<group>"; };
 		584B4B492B9207AA00C6F5B2 /* LocationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationTableViewCell.swift; sourceTree = "<group>"; };
 		584B4B4A2B9207AA00C6F5B2 /* LocationTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LocationTableViewCell.xib; sourceTree = "<group>"; };
 		584B4B4D2B9216B800C6F5B2 /* DateTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTableViewCell.swift; sourceTree = "<group>"; };
@@ -1520,6 +1522,7 @@
 				58BE90C22B9F0551001FCE54 /* RSOCollectionItem.swift */,
 				EEE105B42C49256B007ECE4D /* RSOLoader.swift */,
 				58F2C6E62C5C975A0028538C /* PhoneCallUtility.swift */,
+				584A3F8E2CF5788C00E590B8 /* KeychainHelper.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -2627,6 +2630,7 @@
 				586F73412CAE75450006B24D /* SelectPlanTypeLableTableViewCell.swift in Sources */,
 				58049D982C59056300314E7A /* ChangePasswordViewController.swift in Sources */,
 				58696B0D2BAD833800937A4F /* RSVPButtonViewController.swift in Sources */,
+				584A3F8F2CF5788C00E590B8 /* KeychainHelper.swift in Sources */,
 				58F4584B2B91DB2900CF8AFA /* MeetingRoomsCollectionViewCell.swift in Sources */,
 				5862D9252BC0374400214AE2 /* LabelVisitorsTableViewCell.swift in Sources */,
 				586FA7122BBC362C00EA2772 /* GalleryCollectionViewCell.swift in Sources */,

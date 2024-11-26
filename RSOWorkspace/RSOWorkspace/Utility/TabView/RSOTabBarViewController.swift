@@ -122,6 +122,9 @@ class RSOTabBarViewController: UIViewController {
           let originX = (tabButtons.count - 1 ) * itemWidth
             button.leadingAnchor.constraint(equalTo: tabBarView.leadingAnchor, constant: CGFloat(originX)).isActive = true
             
+            button.isUserInteractionEnabled = true
+            button.alpha = 1.0
+            
             if (index == 2 || index == 3) && UserHelper.shared.isGuest()  {
                 button.isUserInteractionEnabled = false
                 button.alpha = 0.5

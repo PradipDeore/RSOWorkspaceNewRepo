@@ -332,7 +332,7 @@ extension BookingConfirmedViewController:ConfirmAndProceedToPayementTableViewCel
 extension BookingConfirmedViewController: LoginScreenActionDelegate {
     func loginScreenDismissed() {
         DispatchQueue.main.async {
-            //self.coordinator?.updateTabButtons()
+            self.coordinator?.updateTabButtons()
             self.btnConfirmAndProceedTappedAction()
         }
     }
