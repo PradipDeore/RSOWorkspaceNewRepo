@@ -18,7 +18,8 @@ extension SocialLoginEndPoint: EndPointType {
     var path: String {
         switch self {
         case .socialLogin(let requestModel):
-            return "social-login?auth_type=\(requestModel.auth_type)&\(requestModel.auth_id)"
+           // return "social-login?auth_type=\(requestModel.auth_type)&\(requestModel.auth_id)"
+            return "social-login?auth_type = \(requestModel.auth_type)&auth_id = \(requestModel.auth_id)&name = \(requestModel.name) &email = \(requestModel.email)"
         }
     }
     var url: URL? {

@@ -12,4 +12,6 @@ struct SocialLoginResponse: Codable {
     let status: Bool?
     let token: String?
     let message:String?
+    let email:String?
+    let name:String?
 }

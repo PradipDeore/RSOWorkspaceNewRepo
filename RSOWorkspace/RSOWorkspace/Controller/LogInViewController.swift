@@ -168,7 +168,7 @@ class LogInViewController: UIViewController {
         
         // Pass identityToken as auth_id
         let requestModel = SocailLoginRequestModel(auth_type: "apple", auth_id: userIdentifier, email: emailAddress, name: name)
-        
+        print("requestmodel for apple sign in ",requestModel)
         // Call the social login API with the updated request model
         socialloginAPI(requestModel: requestModel)
     }
@@ -207,14 +207,29 @@ class LogInViewController: UIViewController {
                         UserHelper.shared.saveSocialLoginUser(true)
                         UserHelper.shared.saveSocialuser(name: requestModel.name, email: requestModel.email)
                         
-                        KeychainHelper.shared.saveUserToKeychain(token: token, email: requestModel.email, username: requestModel.name)
-
+                        // Fetch user details from response or use existing values
+                        let nameFromResponse = response.name ?? ""
+                        let emailFromResponse = response.email ?? ""
                         
+//                        KeychainHelper.shared.saveUserToKeychain(token: token, email: requestModel.email, username: requestModel.name)
+//                        
+//                        let userIdentifier = KeychainHelper.shared.getUserFromKeychain().token
+//                        let email = KeychainHelper.shared.getUserFromKeychain().email
+//                        let fullName =  KeychainHelper.shared.getUserFromKeychain().username
+                        // Check if the name and email are already stored in the Keychain
+                      
                         let userIdentifier = KeychainHelper.shared.getUserFromKeychain().token
-                        let email = KeychainHelper.shared.getUserFromKeychain().email
-                        let fullName =  KeychainHelper.shared.getUserFromKeychain().username
+                        let storedName = KeychainHelper.shared.getUserFromKeychain().username ?? ""
+                        let storedEmail = KeychainHelper.shared.getUserFromKeychain().email ?? ""
+                                        
+                        let finalName = !storedName.isEmpty ? storedName : nameFromResponse
+                        let finalEmail = !storedEmail.isEmpty ? storedEmail : emailFromResponse
+                                        
+                        // Save the user details to the Keychain
+                        KeychainHelper.shared.saveUserToKeychain(token: token, email: finalEmail, username: finalName)
+                                        
                         print("saved successfully in key chain")
-                        print("User id is \(userIdentifier) \n Full Name is \(String(describing: fullName)) \n Email id is \(String(describing: email))")
+                        print("User id is \(userIdentifier) \n Full Name is \(String(describing: finalName)) \n Email id is \(String(describing: finalEmail))")
                         
                         
                         DispatchQueue.main.async {
@@ -380,7 +395,6 @@ extension LogInViewController:ASAuthorizationControllerDelegate {
             print("saveSocialLoginUser --> User id is \(userIdentifier) \n Full Name is \(String(describing: fullName)) \n Email id is \(String(describing: email))")
             
             UserHelper.shared.saveSocialLoginUser(true)
-            // Convert identityToken to a String for the API call
             if let tokenData = identityToken, let tokenString = String(data: tokenData, encoding: .utf8) {
                 handleAppleSignIn(userIdentifier: userIdentifier, fullName: fullName, email: email, identityToken: tokenString)
             } else {
