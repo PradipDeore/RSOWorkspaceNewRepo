@@ -80,6 +80,8 @@
 		583403AA2B99CE3F00318BB8 /* ProvideRequirementDetailsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 583403A82B99CE3F00318BB8 /* ProvideRequirementDetailsTableViewCell.xib */; };
 		583403AD2B99EFC100318BB8 /* CancelAndRequestButtonTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 583403AB2B99EFC100318BB8 /* CancelAndRequestButtonTableViewCell.swift */; };
 		583403AE2B99EFC100318BB8 /* CancelAndRequestButtonTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 583403AC2B99EFC100318BB8 /* CancelAndRequestButtonTableViewCell.xib */; };
+		58361EED2CF84799009B1C6D /* DeleteAccountTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58361EEB2CF84799009B1C6D /* DeleteAccountTableViewCell.swift */; };
+		58361EEE2CF84799009B1C6D /* DeleteAccountTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 58361EEC2CF84799009B1C6D /* DeleteAccountTableViewCell.xib */; };
 		58374A3B2B84B8B100CA34C5 /* Products.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58374A3A2B84B8B100CA34C5 /* Products.storyboard */; };
 		58374A422B84BBF400CA34C5 /* RoomListingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58374A412B84BBF400CA34C5 /* RoomListingViewController.swift */; };
 		58374A452B84BC2100CA34C5 /* DeskCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58374A432B84BC2100CA34C5 /* DeskCollectionViewCell.swift */; };
@@ -589,6 +591,8 @@
 		583403A82B99CE3F00318BB8 /* ProvideRequirementDetailsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProvideRequirementDetailsTableViewCell.xib; sourceTree = "<group>"; };
 		583403AB2B99EFC100318BB8 /* CancelAndRequestButtonTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancelAndRequestButtonTableViewCell.swift; sourceTree = "<group>"; };
 		583403AC2B99EFC100318BB8 /* CancelAndRequestButtonTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CancelAndRequestButtonTableViewCell.xib; sourceTree = "<group>"; };
+		58361EEB2CF84799009B1C6D /* DeleteAccountTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAccountTableViewCell.swift; sourceTree = "<group>"; };
+		58361EEC2CF84799009B1C6D /* DeleteAccountTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DeleteAccountTableViewCell.xib; sourceTree = "<group>"; };
 		58374A3A2B84B8B100CA34C5 /* Products.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Products.storyboard; sourceTree = "<group>"; };
 		58374A412B84BBF400CA34C5 /* RoomListingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomListingViewController.swift; sourceTree = "<group>"; };
 		58374A432B84BC2100CA34C5 /* DeskCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeskCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -1901,6 +1905,8 @@
 				582A272E2C462E7A00CD5729 /* AddPaymentMethodTableViewCell.xib */,
 				58E2D0DF2BBA89AD0016DEB6 /* RewardPointsTableViewCell.swift */,
 				58E2D0E02BBA89AD0016DEB6 /* RewardPointsTableViewCell.xib */,
+				58361EEB2CF84799009B1C6D /* DeleteAccountTableViewCell.swift */,
+				58361EEC2CF84799009B1C6D /* DeleteAccountTableViewCell.xib */,
 			);
 			path = ProfileTableViewCells;
 			sourceTree = "<group>";
@@ -2330,6 +2336,7 @@
 				58F263562BAC12FB00AEDEC9 /* CompaniesListTableViewCell.xib in Resources */,
 				EEAB97BC2C524AB300BD5E0D /* PlanPriceTableViewCell.xib in Resources */,
 				58BB6B132B986C65001E1F3D /* DiscountCodeTableViewCell.xib in Resources */,
+				58361EEE2CF84799009B1C6D /* DeleteAccountTableViewCell.xib in Resources */,
 				EEAB97B62C52493000BD5E0D /* PlanTypeCollectionViewCell.xib in Resources */,
 				58F261CC2BBD9EAA00A5D633 /* ButtonCancelAndSaveTableViewCell.xib in Resources */,
 				58F4583A2B91982400CF8AFA /* SelectTimeTableViewCell.xib in Resources */,
@@ -2495,6 +2502,7 @@
 				586488282BBAB2560024CBA2 /* MyProfile.swift in Sources */,
 				5804181F2BD13BF5008EA858 /* NotificationsViewController.swift in Sources */,
 				587EA9DF2B95B216002BD4D1 /* InviteTeamMembersTableViewCell.swift in Sources */,
+				58361EED2CF84799009B1C6D /* DeleteAccountTableViewCell.swift in Sources */,
 				5843D7692BC6F3E300D5C8DD /* MyVisitorsViewController.swift in Sources */,
 				58D2D1CD2C54BF57008425DA /* ConfirmShortTermBookingViewController.swift in Sources */,
 				58374A452B84BC2100CA34C5 /* DeskCollectionViewCell.swift in Sources */,
@@ -2888,7 +2896,7 @@
 				CODE_SIGN_ENTITLEMENTS = RSOWorkspace/RSOWorkspace.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 18;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = D2BKM938GX;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				"EXCLUDED_ARCHS[sdk=*]" = "";
@@ -2905,7 +2913,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = aquil.com.RSOWorkspace;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -2925,7 +2933,7 @@
 				CODE_SIGN_ENTITLEMENTS = RSOWorkspace/RSOWorkspace.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 18;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = D2BKM938GX;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -2941,7 +2949,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = aquil.com.RSOWorkspace;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

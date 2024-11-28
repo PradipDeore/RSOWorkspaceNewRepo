@@ -2222,8 +2222,8 @@
             filePath = "RSOWorkspace/Controller/Profile/ProfileViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "214"
-            endingLineNumber = "214"
+            startingLineNumber = "223"
+            endingLineNumber = "223"
             landmarkName = "sendDetails()"
             landmarkType = "7">
             <Locations>
@@ -2315,8 +2315,8 @@
             filePath = "RSOWorkspace/Controller/Profile/ProfileViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "224"
-            endingLineNumber = "224"
+            startingLineNumber = "233"
+            endingLineNumber = "233"
             landmarkName = "subviewDismmised()"
             landmarkType = "7">
             <Locations>

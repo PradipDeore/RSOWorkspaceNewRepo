@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import UIKit
 
 class MarketPlaceViewController: UIViewController {
     

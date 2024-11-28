@@ -41,7 +41,7 @@ class ProfileViewController: UIViewController {
     }
     
     private func registerTableCells() {
-        let cellIdentifiers = ["ProfileDetailsTableViewCell", "ChangePasswordTableViewCell", "MembershipPlanTableViewCell","AddPaymentMethodTableViewCell","RewardPointsTableViewCell"]
+        let cellIdentifiers = ["ProfileDetailsTableViewCell", "ChangePasswordTableViewCell", "MembershipPlanTableViewCell","AddPaymentMethodTableViewCell","RewardPointsTableViewCell","DeleteAccountTableViewCell"]
         for identifier in cellIdentifiers {
             tableView.register(UINib(nibName: identifier, bundle: nil), forCellReuseIdentifier: identifier)
         }
@@ -78,6 +78,7 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
         case changePassword
         case membershipPlan
         case paymentMethod
+        case deleteAccount
        
         var cellIdentifier: String {
             switch self {
@@ -85,6 +86,7 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
             case .changePassword: return "ChangePasswordTableViewCell"
             case .membershipPlan: return "MembershipPlanTableViewCell"
             case .paymentMethod: return "AddPaymentMethodTableViewCell"
+            case .deleteAccount: return "DeleteAccountTableViewCell"
             }
         }
 
@@ -94,6 +96,7 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
             case .changePassword: return 50
             case .membershipPlan:   return 265
             case .paymentMethod: return 0 //return 50
+            case .deleteAccount: return 60
             default : return 100
             
             }
@@ -153,6 +156,12 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
         case .paymentMethod:
             if let paymentMethodCell = cell as? AddPaymentMethodTableViewCell {
                 return paymentMethodCell
+                
+            }
+        case .deleteAccount:
+            if let accountDeleteCell = cell as? DeleteAccountTableViewCell {
+                accountDeleteCell.delegate = self
+                return accountDeleteCell
                 
             }
         default:
@@ -233,7 +242,14 @@ extension ProfileViewController: MembershipPlanDelegate {
     }
 }
 
+extension ProfileViewController: DeleteAccountDelegate {
+    func didTapDeleteAccountButton() {
+        if let url = URL(string: "https://www.rsoworkplace.com/account-delete-request") {
+                   UIApplication.shared.open(url)
+               }
+    }
     
-    
+   
+}
     
 
