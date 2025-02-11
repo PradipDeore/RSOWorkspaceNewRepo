@@ -141,7 +141,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="29.770992366412212" y="-195.07042253521126"/>
+            <point key="canvasLocation" x="-527" y="-194"/>
         </scene>
         <!--Book Meeting Room View Controller-->
         <scene sceneID="22O-5n-csu">
@@ -969,6 +969,37 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zCc-k9-DG0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="6532" y="-194"/>
+        </scene>
+        <!--ReserveA Seat View Controller-->
+        <scene sceneID="w6u-mZ-YVn">
+            <objects>
+                <viewController storyboardIdentifier="ReserveASeatViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="dIH-w4-5yX" customClass="ReserveASeatViewController" customModule="RSOWorkspace" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="7Uz-Vd-JDL">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="qOj-1H-5EK">
+                                <rect key="frame" x="0.0" y="79" width="393" height="773"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="3tM-UT-XS6"/>
+                        <color key="backgroundColor" name="F2F2F2"/>
+                        <constraints>
+                            <constraint firstItem="qOj-1H-5EK" firstAttribute="top" secondItem="3tM-UT-XS6" secondAttribute="top" constant="20" id="2Xq-0d-Hfv"/>
+                            <constraint firstItem="qOj-1H-5EK" firstAttribute="leading" secondItem="3tM-UT-XS6" secondAttribute="leading" id="cID-Vn-Cuq"/>
+                            <constraint firstItem="qOj-1H-5EK" firstAttribute="trailing" secondItem="3tM-UT-XS6" secondAttribute="trailing" id="sHj-ZA-gob"/>
+                            <constraint firstAttribute="bottom" secondItem="qOj-1H-5EK" secondAttribute="bottom" id="wXP-WC-oDe"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="M4R-UF-L6t"/>
+                    <connections>
+                        <outlet property="tableView" destination="qOj-1H-5EK" id="BG4-MQ-pNl"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LMd-8k-RbG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="158" y="-194"/>
         </scene>
     </scenes>
     <resources>

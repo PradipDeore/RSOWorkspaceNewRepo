@@ -104,9 +104,12 @@ class SideMenuSubViewController: UIViewController {
         }
         menu.append(SideMenuModel(title: .dashboard))
         menu.append(SideMenuModel(title: .empty))
+        menu.append(SideMenuModel(title: .commune))
+        menu.append(SideMenuModel(title: .concierage))
         if !UserHelper.shared.isUserExplorer() {
             menu.append(SideMenuModel(title: .scheduleVisitors))
         }
+        
         menu.append(SideMenuModel(title: .myVisitors))
         menu.append(SideMenuModel(title: .empty))
         menu.append(SideMenuModel(title: .amenities))

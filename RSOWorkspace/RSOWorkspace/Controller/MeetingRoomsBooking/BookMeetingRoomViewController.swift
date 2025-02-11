@@ -17,7 +17,6 @@ enum CellIdentifier: String {
     case selectMeetingRoom = "SelectMeetingRoomTableViewCell"
 }
 
-
 enum SectionType: Int, CaseIterable {
     case selectLocation
     case selectDate

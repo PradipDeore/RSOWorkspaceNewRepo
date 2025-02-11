@@ -8,7 +8,7 @@
 import Foundation
 // Enum to represent different server environments
 enum ServerEnvironment: String {
-    case development = "https://finance.ardemos.co.in/rso-live-live/api/"
+    case development = "https://rso.preproductiondemo.com/api/" //"https://finance.ardemos.co.in/rso-live-live/api/"
     case production = "https://rso.teamalo.com/api/"
     case live = "https://www.rsoworkplace.com/api/"
 }
@@ -19,7 +19,7 @@ class Configuration {
     static let shared = Configuration()
 
     // The current environment (change this as needed)
-    private var environment: ServerEnvironment = .live
+    private var environment: ServerEnvironment = .development
 
     // Private initializer to prevent instantiation
     private init() {}

@@ -14,4 +14,5 @@ struct StoreOfficeBookingRequest: Codable {
     var is_fullday:String?
     var office_id:Int?
     var seats:Int = 0
+    var platform = "iOS"
 }

@@ -15,4 +15,5 @@ struct StoreDeskBookingRequest: Codable {
     var desktype: Int?
     var desk_id: [Int] = []
     var teammembers: [Int] = [] as! [Int]
+    var platform = "iOS"
 }

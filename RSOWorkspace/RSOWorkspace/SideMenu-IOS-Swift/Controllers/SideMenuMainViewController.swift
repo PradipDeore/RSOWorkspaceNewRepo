@@ -167,6 +167,15 @@ extension SideMenuMainViewController: SideMenuViewControllerDelegate {
           menuNavVC?.pushViewController(profileVC, animated: true)
         case .dashboard:
             RSOTabBarViewController.presentAsRootController()
+        case .commune:
+//            let communeVC = UIViewController.createController(storyBoard: .TabBar, ofType: CommuneViewController.self)
+//          menuNavVC?.pushViewController(communeVC, animated: true)
+            let communeVC = UIViewController.createController(storyBoard: .Booking, ofType: ReserveASeatViewController.self)
+          menuNavVC?.pushViewController(communeVC, animated: true)
+        case .concierage:
+            let concierageVC = UIViewController.createController(storyBoard: .TabBar, ofType: ConciergeViewController.self)
+          menuNavVC?.pushViewController(concierageVC, animated: true)
+            
         case .scheduleVisitors:
             let scheduleVisitorsVC = UIViewController.createController(storyBoard: .VisitorManagement, ofType: ScheduleVisitorsViewController.self)
           menuNavVC?.pushViewController(scheduleVisitorsVC, animated: true)

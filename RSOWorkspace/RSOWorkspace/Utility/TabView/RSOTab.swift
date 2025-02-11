@@ -12,7 +12,8 @@ enum RSOTabItem: Int, CaseIterable {
   case home
   case booking
   case concierge
-  case commune
+  //case commune
+  case enterprise
   case more
   
 
@@ -24,8 +25,10 @@ enum RSOTabItem: Int, CaseIterable {
       return "Booking"
     case .concierge:
       return "Concierge"
-    case .commune:
-      return "Commune"
+    case .enterprise:
+      return "Enterprise"
+//    case .commune:
+//      return "Commune"
     case .more:
       return "More"
     
@@ -44,9 +47,12 @@ enum RSOTabItem: Int, CaseIterable {
       case .concierge:
           return (UIImage(named: "concierge_unselected"),
                   UIImage(named: "concierge_selected"))
-      case .commune:
-          return (UIImage(named: "commune_unselected"),
-                  UIImage(named: "commune_selected"))
+//      case .commune:
+//          return (UIImage(named: "commune_unselected"),
+//                  UIImage(named: "commune_selected"))
+      case .enterprise:
+          return (UIImage(named: "Enterprise"),
+                  UIImage(named: "Enterprise"))
       case .more:
           return (UIImage(named: "more_unselected"),
                   UIImage(named: "more_selected"))
@@ -65,9 +71,12 @@ enum RSOTabItem: Int, CaseIterable {
       case .concierge:
           let conciergeVC = UIViewController.createController(storyBoard: .TabBar, ofType: ConciergeViewController.self)
           return conciergeVC
-      case .commune:
-          let communeVC = UIViewController.createController(storyBoard: .TabBar, ofType: CommuneViewController.self)
-          return communeVC
+//      case .commune:
+//          let communeVC = UIViewController.createController(storyBoard: .TabBar, ofType: CommuneViewController.self)
+//          return communeVC
+      case .enterprise:
+          let enterpriseVC = UIViewController.createController(storyBoard: .TabBar, ofType: EnteripriseViewController.self)
+          return enterpriseVC
       case .more:
          return UIViewController()
          

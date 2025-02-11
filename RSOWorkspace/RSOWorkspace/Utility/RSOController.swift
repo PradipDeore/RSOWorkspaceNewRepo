@@ -23,8 +23,8 @@ enum SBName: String {
     case Dashboard
     case Notifications
     case OfficeBooking
-    
     case Membership
+    case Alert
 }
 
 extension UIViewController {

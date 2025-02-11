@@ -8,6 +8,7 @@
 import UIKit
 import Toast_Swift
 
+
 struct MyBookingItem {
     var dateString: String = ""
     var filteredBookings: [MeetingBooking] = []
@@ -42,9 +43,7 @@ class MyBookingViewController: UIViewController {
         setupTableView()
         buttonSetUp()
         reloadTable(dataArray: myBookingResponseData?.mergedBookings)
-       
         setButtonAppearance(button: btnAll, backgroundColor: selectedButtonColor, textColor: .white)
-        
         
     }
 
@@ -73,7 +72,6 @@ class MyBookingViewController: UIViewController {
                             self.reloadData()
                           RSOLoader.removeLoader()
                         }
-                    
                         self.eventHandler?(.dataLoaded)
                     
                 case .failure(let error):
@@ -181,7 +179,7 @@ extension MyBookingViewController: UITableViewDataSource, UITableViewDelegate {
 //              let bookingDesk = filteredSections[indexPath.section].filteredBookingsDesk[indexPath.row]
 //              cell.setDataDesk(item: bookingDesk)
 //          }
-        cell.delegate = self
+        cell.meetingDelegate = self
         return cell
     }
 
@@ -193,11 +191,10 @@ extension MyBookingViewController: UITableViewDataSource, UITableViewDelegate {
         // Handle cell selection if needed
     }
 }
-extension MyBookingViewController:MyBookingOpenTableViewCellDelegate {
-    func displayBookingQRCode(item: MeetingBooking){
+extension MyBookingViewController:MeetingBookingDelegate {
+    func displayBookingQRCode(forMeeting item: MeetingBooking){
         let displayQRVC = UIViewController.createController(storyBoard: .Booking, ofType: DisplayQRCodeViewController.self)
         displayQRVC.setQRCodeImage(item: item)
-      
         displayQRVC.modalTransitionStyle = .crossDissolve
         displayQRVC.modalPresentationStyle = .overCurrentContext
         self.present(displayQRVC, animated: true)

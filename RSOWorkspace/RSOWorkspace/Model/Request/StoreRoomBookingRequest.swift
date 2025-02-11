@@ -33,6 +33,7 @@ struct StoreRoomBookingRequest:Codable {
     let time: String?
     let start_time:String?
     let end_time:String?
+    var platform = "iOS"
 }
 
 // MARK: - Amenity

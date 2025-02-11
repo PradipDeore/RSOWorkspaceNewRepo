@@ -11,6 +11,8 @@ enum SideMenuOption: String {
     case empty = ""
     case myProfile = "My Profile"
     case dashboard = "Dashboard"
+    case commune = "Commune"
+    case concierage = "Concierge"
     case scheduleVisitors = "Schedule Visit"
     case myVisitors = "My Visitors"
     case payments = "Payments"
@@ -21,4 +23,5 @@ enum SideMenuOption: String {
     case aboutUs = "About RSO"
     case logout = "Logout"
     case login = "LogIn"
+  
 }

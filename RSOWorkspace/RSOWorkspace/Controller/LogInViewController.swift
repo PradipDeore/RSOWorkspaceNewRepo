@@ -338,10 +338,10 @@ class LogInViewController: UIViewController {
         }
         
          //Check if password is valid
-        if !RSOValidator.isValidPassword(password) {
-            RSOToastView.shared.show("The password must be more than 8 characters, at least 1 lower case, 1 upper case, 1 digit", duration: 2.0, position: .center)
-            return
-        }
+//        if !RSOValidator.isValidPassword(password) {
+//            RSOToastView.shared.show("The password must be more than 8 characters, at least 1 lower case, 1 upper case, 1 digit", duration: 2.0, position: .center)
+//            return
+//        }
         loginAPI(email: email, password: password)
 
         

@@ -183,7 +183,6 @@ class RSOTabBarViewController: UIViewController {
         // Create your RSOTabBarVC instance
        // let rsoTabBarVC = UIViewController.createController(storyBoard: .TabBar, ofType: RSOTabBarViewController.self)
        let moreVC = UIViewController.createController(storyBoard: .TabBar, ofType:  SideMenuMainViewController.self)
-
         // Set the navigation controller as the root view controller of the window
         AppDelegate.setWindowRoot(viewController: moreVC)
 

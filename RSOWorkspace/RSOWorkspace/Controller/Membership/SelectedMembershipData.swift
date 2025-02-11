@@ -16,6 +16,7 @@ class SelectedMembershipData: Codable {
       self.monthlyCost = ""
       self.agreementLength = 0
       self.planType = ""
+      self.platform = "iOS"
     }
     var packageName: String
     var id: Int
@@ -23,6 +24,7 @@ class SelectedMembershipData: Codable {
     var agreementLength: Int
     var planType: String
     var monthlyCost: String
+    var platform:String
 }
 
 struct RecurringCallbackRequestModel: Codable {

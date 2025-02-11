@@ -385,12 +385,17 @@ extension BookRoomDetailsViewController:sendteamMemberNameDelegate{
 }
 extension BookRoomDetailsViewController:InviteGuestsTableViewCellDelegate{
     func  btnInviteGuestsTappedAction(){
-        let inviteGuestsVC = UIViewController.createController(storyBoard: .Booking, ofType: InviteGuestsViewController.self)
-        inviteGuestsVC.modalPresentationStyle = .overFullScreen
-        inviteGuestsVC.modalTransitionStyle = .crossDissolve
-        inviteGuestsVC.view.backgroundColor = UIColor.clear
-        inviteGuestsVC.guestEmailDelegate = self
-        self.present(inviteGuestsVC, animated: true)
+//        let inviteGuestsVC = UIViewController.createController(storyBoard: .Booking, ofType: InviteGuestsViewController.self)
+//        inviteGuestsVC.modalPresentationStyle = .overFullScreen
+//        inviteGuestsVC.modalTransitionStyle = .crossDissolve
+//        inviteGuestsVC.view.backgroundColor = UIColor.clear
+//        inviteGuestsVC.guestEmailDelegate = self
+//        self.present(inviteGuestsVC, animated: true)
+        let meetingExpiredVC = UIViewController.createController(storyBoard: .Alert, ofType: MeetingExpiredViewController.self)
+        meetingExpiredVC.modalPresentationStyle = .overFullScreen
+        meetingExpiredVC.modalTransitionStyle = .crossDissolve
+        meetingExpiredVC.view.backgroundColor = UIColor.clear
+        self.present(meetingExpiredVC, animated: true)
     }
     func btnDeleteGuest(buttonTag: Int) {
         guestEmailArray.remove(at:buttonTag)
